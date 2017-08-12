@@ -2,7 +2,7 @@
 
 For all data services like Database, Document Stores and other content related services we offer a basic Backup and Restore integration. For Services like MariaDB for example we rely on `mysqldump.`
 
-We choose to take this approach to enable customers an easy integration with existing Backup and Restore methods they know from general interaction with their Database and Document Store.
+We chose to take this approach to enable customers an easy integration with existing Backup and Restore methods they know from general interaction with their Database and Document Store.
 
 ## Availability
 
