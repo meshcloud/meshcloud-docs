@@ -14,6 +14,8 @@ _We may restrict this in future release depending on the load, but our Backup Fe
 
 ### File Endpoint
 
+A File Endpoint is a Swift
+
 ### Backup Plan
 
 ### Backup Job
