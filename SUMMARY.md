@@ -5,7 +5,7 @@
   * [Applications](first-question/applicatoins.md)
   * [Services](first-question/services.md)
     * [Backup](first-question/services/backup.md)
-      * Preparation
-      * Configuration
+      * [Preparation](first-question/services/backup/preparation.md)
+      * [Configuration](first-question/services/backup/configuration.md)
     * Restore
 

@@ -6,13 +6,17 @@ We choose to take this approach to enable customers an easy integration with exi
 
 ## Availability
 
-The Backup Feature is included in **all Services **independent of the level of Services. 
+The Backup Feature is included in **all Services **independent of the level of Services.
 
 _We may restrict this in future release depending on the load, but our Backup Features architecture enables a cloud-native scalability._
 
-## Terminology 
+## Terminology
 
+### File Endpoint
 
+### Backup Plan
+
+### Backup Job
 
 
 
