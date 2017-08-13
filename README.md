@@ -2,7 +2,7 @@
 
 ### Compute
 
-* ![Linux Virtual Machines](/assets/virtualmachine.svg)
+* ![Linux Virtual Machines](/assets/virtualmachine.svg =100x20)
 
 
 
