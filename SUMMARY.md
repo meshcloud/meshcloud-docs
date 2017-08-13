@@ -1,8 +1,9 @@
 # Summary
 
 * [Meshcloud](README.md)
-* Compute
+* [Compute](compute.md)
 * Storage
+* Security
 * Networking
 * [Container](paas.md)
   * [Applications](paas/applications.md)
