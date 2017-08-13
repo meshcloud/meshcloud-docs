@@ -8,9 +8,8 @@
         <ul>
           <li><strong>Linux Virtual Machines</strong></li>
           <li>
-            <strong>Windows Virtual Machines 
-              <img src="assets/virtualmachine.svg" width="100" />
-            </strong>
+            <img src="assets/virtualmachine.svg" width="50" />
+            <strong>Windows Virtual Machines</strong>
           </li>
         </ul>
       </td>
