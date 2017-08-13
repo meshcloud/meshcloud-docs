@@ -1,6 +1,6 @@
 # Meshcloud Documentation
 
-| ![](/assets/virtualmachine.svg) | ![](/assets/virtualmachine.svg) |
+| ![](/assets/virtualmachine.svg) Linux Virtual Machines | ![](/assets/virtualmachine.svg) Windows Virtual Machines|
 | :--- | :--- |
 |  |  |
 
