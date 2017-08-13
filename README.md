@@ -11,7 +11,7 @@
             <strong>Linux Virtual Machines</strong>
           </li>
           <li style="height: 30px; line-height: 30px;">
-            <img src="assets/virtualmachine.svg" width="35" />
+            <img src="assets/virtualmachine.svg" width="25" />
             <strong>Windows Virtual Machines</strong>
           </li>
         </ul>
