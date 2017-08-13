@@ -9,7 +9,7 @@
           <li><strong>Linux Virtual Machines</strong></li>
           <li>
             <strong>Windows Virtual Machines 
-              <img src="assets/virtualmachine.svg" />
+              <img src="assets/virtualmachine.svg" width="100" />
             </strong>
           </li>
         </ul>
