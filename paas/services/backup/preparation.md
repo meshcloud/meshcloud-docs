@@ -18,7 +18,7 @@ As you should never use your personal Account for the configuration of a File En
 
 6. In the Platform Section select OpenStack DARZ
 
-7. Click on the ![](/assets/Screen Shot 2017-08-12 at 09.54.03.png) to add the Service User
+7. Click on the ![](/assets/plus-sign.png) to add the Service User
 
 8. Note down the password, as it won't be visible and/or recoverable anymore
 
@@ -41,7 +41,7 @@ on the same Location and Project as you did it for the Service User.
 
 4. After selecting a Location & Project choose in the Menu Bar on the left **Storage &gt; Blobs**
 
-5. Enter the Name of the Swift Container and press the ![](/assets/Screen Shot 2017-08-12 at 09.54.03.png)
+5. Enter the Name of the Swift Container and press the ![](/assets/plus-sign.png)
 
 6. You have not successfully created a Swift Container
 
