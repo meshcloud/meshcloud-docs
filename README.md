@@ -1,8 +1,23 @@
 # Meshcloud Documentation
 
-| Linux Virtual Machines | Windows Virtual Machines | Virtual Machine Scaler |
-| :--- | :--- | :--- |
-|  |  |  |
-
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <h3>Compute</h3>
+        <ul>
+          <li><strong>Linux Virtual Machines</strong></li>
+          <li>
+            <strong>Windows Virtual Machines 
+              <img src="assets/virtualmachine.svg" />
+            </strong>
+          </li>
+        </ul>
+      </td>
+      <td align="center">See the list</td>
+      <td align="right">from the first column</td>
+    </tr>
+  </tbody>
+</table>
 
 
