@@ -5,7 +5,7 @@
     <tr>
       <td>
         <h3>Compute</h3>
-        <ul style="display: flex">
+        <ul style="list-style-type: none;">
           <li>
             <img src="assets/virtualmachine.svg" width="35" />
             <strong>Linux Virtual Machines</strong>
