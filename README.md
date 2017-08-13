@@ -7,7 +7,7 @@
         <h3>Compute</h3>
         <ul style="list-style-type: none;">
           <li><strong>Linux Virtual Machines</strong></li>
-          <li>
+          <li style="vertical-align: middle;">
             <img src="assets/virtualmachine.svg" width="35" />
             <strong>Windows Virtual Machines</strong>
           </li>
