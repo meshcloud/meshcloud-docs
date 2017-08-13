@@ -1,7 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
-* Meshcloud
+* [Meshcloud](README.md)
 * [PaaS](paas.md)
   * [Applications](paas/applications.md)
   * [Services](paas/services.md)
