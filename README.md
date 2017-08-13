@@ -2,7 +2,7 @@
 
 ### Compute
 
-* ![](/assets/virtualmachine.svg)
+* ![Linux Virtual Machines](/assets/virtualmachine.svg)
 
 
 
