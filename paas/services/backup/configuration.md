@@ -28,9 +28,10 @@ After you have successfully completed the steps above you need to access the Das
 4. When you have completed the steps above, you are all set and you can continue to create the Service File Endpoint and Backup Plan Configuration
 
 ## Configure a File Endpoint
-Now, that you have accessed the Dashboard you should see an overview of the Service Brokers capabilites.  File Endpoint. To create a new File Endpoint, please use the URL above from `cf service yourServiceName` and open it in a Browser. 
+First we need to create a File Endpoint (if you want to know what a File Endpoint is, please continue to read here: [Backup](/paas/services/backup.md)). To create a File Endpoint, please follow the steps below:
 
-
+1. In the Dashboard Overview, you should see the following sections: File Endpoints, Backup Plans, Backup Jobs
+2. 
 
 
 ## Configure a Backup Plan
