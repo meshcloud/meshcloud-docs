@@ -19,11 +19,18 @@ Documentation url:
 Dashboard: https://example-dev.cf.eu-de-netde.msh.host/v2/dashboard/0f377a9a-7f4e-4965-b226-04c05d493db9
 ```
 
-## Configure a File Endpoint
-When you have completed the checklist successfully the next steps involve the creation of a File Endpoint. To create a new File Endpoint, please use the URL above from `cf service yourServiceName` and open it in a Browser. 
+## General
+After you have successfully completed the steps above you need to access the Dashboard URL.
 
-1. The Dashboard page is loading after you have entered the Dashboard URL. 
-2. When you are logged in, you will directly be redirected to the Dashboard Overview. If you are not logged in, you will be redirected to the Meshfed SSO Login. To login, please read 
+1. The Dashboard page is loading after you have entered the Dashboard URL 
+2. When you are logged in, you will be directly redirected to the Dashboard Overview. If you are not logged in, you will be redirected to the Meshfed SSO Login. To login, please read [Logging in via MeshFed SSO](/profile.md)
+3. After a successful login and the **first** access of the Dashboard URL you will be asked to authorize the access of the Service. Click on **Authorize** to proceed
+4. When you have completed the steps above, you are all set and you can continue to create the Service File Endpoint and Backup Plan Configuration
+
+## Configure a File Endpoint
+Now, that you have accessed the Dashboard you should see an overview of the Service Brokers capabilites.  File Endpoint. To create a new File Endpoint, please use the URL above from `cf service yourServiceName` and open it in a Browser. 
+
+
 
 
 ## Configure a Backup Plan
