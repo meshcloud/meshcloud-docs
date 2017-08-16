@@ -14,4 +14,5 @@
       * [Configuration](paas/services/backup/configuration.md)
   * [Restore](paas/services/restore.md)
   * [Dashboards](paas/services/dashboards.md)
+* [Service User](service-user.md)
 

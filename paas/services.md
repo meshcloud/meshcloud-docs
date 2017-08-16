@@ -1,6 +1,6 @@
 # Services
 
-Services on our PaaS offering enable application developers to easily bind their applications to Databases, Document Stores, Queuing an other backend Services. 
+Services on our PaaS offering enable application developers to easily bind their applications to Databases, Document Stores, Queuing an other backend Services.
 
 Our platform differentiates between several Services types:
 
@@ -9,7 +9,7 @@ Our platform differentiates between several Services types:
 
 ## Platform Services
 
-MeshCloud offers a marketplace of services, from which users can provision reserved resources on-demand. Platform Services include Database Services like MariaDB \(MySQL\), Elasticsearch, MongoDB, RabbitMQ and many more. MeshCloud offers different Flavors of Platform Services, from small for testing and development, over dedicated up to clustered. The different types of service can be identified by:
+Meshcloud offers a marketplace of services, from which users can provision reserved resources on-demand. Platform Services include Database Services like MariaDB \(MySQL\), Elasticsearch, MongoDB, RabbitMQ and many more. Meshcloud offers different Flavors of Platform Services, from small for testing and development, over dedicated up to clustered. The different types of service can be identified by:
 
 * S - Shared Service on a Cluster with an limited amount of storage and connections
 * D - Dedicated Service on a single VM, with the VM being the limitation of storage and connections
@@ -17,12 +17,7 @@ MeshCloud offers a marketplace of services, from which users can provision reser
 
 ## User Provided Services
 
-User-provided service instances enable developers to use services that are not available in the marketplace with their applications running on MeshCloud PaaS.
+User-provided service instances enable developers to use services that are not available in the marketplace with their applications running on Meshcloud PaaS.
 
-User Provided Services enable application Developers to use the credentials of a Service deployed in MeshCloud IaaS, or 3rd party Service being used as if they are "native" Platform Services.
-
-  
-
-
-
+User Provided Services enable application Developers to use the credentials of a Service deployed in Meshcloud IaaS, or 3rd party Service being used as if they are "native" Platform Services.
 
