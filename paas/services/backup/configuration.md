@@ -20,7 +20,11 @@ Dashboard: https://example-dev.cf.eu-de-netde.msh.host/v2/dashboard/0f377a9a-7f4
 ```
 
 ## Configure a File Endpoint
-When you have completed the checklist successfully the next 
+When you have completed the checklist successfully the next steps involve the creation of a File Endpoint. To create a new File Endpoint, please use the URL above from `cf service yourServiceName` and open it in a Browser. 
+
+1. The Dashboard page is loading after you have entered the Dashboard URL. 
+2. When you are logged in, you will directly be redirected to the Dashboard Overview. If you are not logged in, you will be redirected to the Meshfed SSO Login. To login, please read 
+
 
 ## Configure a Backup Plan
 

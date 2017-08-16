@@ -1,6 +1,7 @@
 # Summary
 
 * [Meshcloud](README.md)
+  * [Profile](profile.md)
 * [Compute](compute.md)
 * Storage
 * Security
