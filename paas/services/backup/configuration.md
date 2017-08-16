@@ -33,7 +33,7 @@ After you have successfully completed the steps above you need to access the Das
 First we need to create a File Endpoint \(if you want to know what a File Endpoint is, please continue to read here: [Backup](/paas/services/backup.md)\). To create a File Endpoint, please follow the steps below:
 
 1. In the Dashboard Overview, you should see the following sections: File Endpoints, Backup Plans, Backup Jobs
-2. To create a File Endpoint click on the `Create File Endpoint`button and fill presented form with the Credentials of the Service User you created beforehand. 
+2. To create a File Endpoint click on the `Create File Endpoint`button and fill presented form with the Credentials of the Service User you created beforehand.
 
 3. Click on `Validate`if the system can authenticate the systems prompts you an `Submit`button to save the File Endpoint. If an error is presented please check the  your input and try again.
 
@@ -72,8 +72,6 @@ To create a regular backup you can configure multiple Backup Plans. To create a 
       4. **DAYS** deletes all backup files older than the number of days specified in the period field.
 
    3. Select the destination where the backups should be stored.
-
-   
 
 
 
