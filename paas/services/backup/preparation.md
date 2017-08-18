@@ -1,6 +1,6 @@
 # Preparing Backup
 
-To use the Backup Service for Databases, Document Stores and other content related services you need to configure the MeshCloud Platform accordingly.
+To use the Backup Service for Databases, Document Stores and other content related services you need to configure the Meshcloud Platform accordingly.
 
 ## Configure a Service User
 
@@ -30,7 +30,7 @@ Doing backups in Cloud Environments is heavily dependent on Object File Stores l
 
 ```
 Please be aware, that Service Users are per Location and Project. That means, you need to create the Swift Container 
-on the same Location and Project as you did it for the Service User. 
+on the same Location and Project as you did it for the Service User.
 ```
 
 1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io)
