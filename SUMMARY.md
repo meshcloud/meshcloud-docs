@@ -4,8 +4,8 @@
   * [Profile](profile.md)
 * [Compute](compute.md)
 * [Storage](storage.md)
-* Security
-* Networking
+* [Security](security.md)
+* [Networking](networking.md)
 * [Container](paas.md)
   * [Applications](paas/applications.md)
   * [Services](paas/services.md)
