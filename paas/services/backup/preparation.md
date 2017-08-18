@@ -1,6 +1,6 @@
 # Preparing Backup
 
-To use the Backup Service for Databases, Document Stores and other content related services you need to configure the Meshcloud Platform accordingly.
+To use the Backup Service for Databases, Document Stores and other content related services you need to configure the Meshcloud Platform accordingly. abc
 
 ## Configure a Service User
 
