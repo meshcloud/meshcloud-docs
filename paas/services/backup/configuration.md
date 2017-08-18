@@ -24,7 +24,7 @@ To configure Backup for Services you should have completed the following steps:
 After you have successfully completed the steps above you need to access the Dashboard URL.
 
 1. The Dashboard page is loading after you have entered the Dashboard URL 
-2. When you are logged in, you will be directly redirected to the Dashboard Overview. If you are not logged in, you will be redirected to the Meshfed SSO Login. To login, please read [Logging in via MeshFed SSO](/profile.md)
+2. When you are logged in, you will be directly redirected to the Dashboard Overview. If you are not logged in, you will be redirected to the Meshfed SSO Login. To login, please read [Logging in via Meshfed SSO](/profile.md)
 3. After a successful login and the **first** access of the Dashboard URL you will be asked to authorize the access of the Service. Click on **Authorize** to proceed
 4. When you have completed the steps above, you are all set and you can continue to create the Service File Endpoint and Backup Plan Configuration
 
