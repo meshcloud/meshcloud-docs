@@ -47,8 +47,8 @@ To create a regular backup you can configure multiple Backup Plans. To create a 
 
 3. Fill in the presented form.
 
-   1. Frequeny: When should the backup be executed? You must provide an cron type string with 6 fields.  
-      For example `* * */5 * * *` every 5-hours
+   1. Frequency: When should the backup be executed? You must provide a cron type string with 6 fields.  
+      Example: Each value is separated by a space. `* * 5 * * *` means everyday at 5 o'clock, while `* * */5 * * *`  means every 5 hours. 
 
       1. The first field represents for **seconds. **Valid values are 0-59
 
