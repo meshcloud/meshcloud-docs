@@ -43,11 +43,12 @@ For MacOS \(with homebrew\):
 * Type `cf api LOCATION_ENDPOINT`, for example `cf api  https://api.cf.eu-de-darz.msh.host` for the DARZ data center
 
 * Type `cf login -sso` for single-sign-on authentication. You will be asked for your temporary authentication code. Paste it here and hit enter.
+
 * You will see a list of your Cloud Foundry spaces. A Cloud Foundry space corresponds to a Meshcloud Project.
 
 ## **Choose a Project**
 
-To get started choose a space/project by typing`cf target -s YOURPROJECTNAME`
+To get started choose a space/project by typing `cf target -s YOURPROJECTNAME`
 
 **Congratulations, you successfully installed the CF CLI tools and are ready to get started with Cloud Foundry now.**
 
