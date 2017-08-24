@@ -1,6 +1,6 @@
 # Deploying an Application to Cloud Foundry
 
-In this article we help you deploy your first application to Cloud Foundry. If you have not installed the CF CLI tools yet, you should read [this article](https://support.meshcloud.io/hc/en-us/categories/115000588869-Getting-Started) first.
+In this article we help you deploy your first application to Cloud Foundry. If you have not installed the CF CLI tools yet, you should read [this article](https://meshcloud.gitbooks.io/meshcloud/content/paas/cloud-foundry-cli-access.html) first.
 
 ### Sample Spring Boot Application
 
@@ -12,7 +12,7 @@ Open your PowerShell or Terminal, type `git clone https://github.com/cloudfoundr
 
 ### Access Cloud Foundry
 
-From the Meshpanel get your temporary Cloud Foundry authentication token and login to Cloud Foundry using`cf login -sso`in your Terminal/PowerShell. You will be asked to enter the passcode. From the list of spaces, choose the space to which you want to deploy your sample application. \(For more detailed instructions read [this](https://support.meshcloud.io/hc/en-us/articles/115003198625-Getting-Started-Cloud-Foundry-CLI-Access) first\).
+From the Meshpanel get your temporary Cloud Foundry authentication token and login to Cloud Foundry using`cf login -sso`in your Terminal/PowerShell. You will be asked to enter the passcode. From the list of spaces, choose the space to which you want to deploy your sample application. \(For more detailed instructions read [this](https://meshcloud.gitbooks.io/meshcloud/content/paas/cloud-foundry-cli-access.html) first\).
 
 ### Build the Application
 
