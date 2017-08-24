@@ -9,7 +9,7 @@
 * [Container](paas.md)
   * [Applications](paas/applications.md)
   * [Cloud Foundry CLI Access](paas/cloud-foundry-cli-access.md)
-  * [Deploying an Application to Cloud Foundry](paas/deploying-an-application-to-cloud-foundry.md)
+  * [Deploying an Application](paas/deploying-an-application-to-cloud-foundry.md)
   * [Services](paas/services.md)
     * [Backup](paas/services/backup.md)
       * [Preparation](paas/services/backup/preparation.md)
