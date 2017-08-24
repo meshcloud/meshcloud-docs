@@ -14,7 +14,7 @@
     * [Backup](paas/services/backup.md)
       * [Preparation](paas/services/backup/preparation.md)
       * [Configuration](paas/services/backup/configuration.md)
-    * [Binding a Service to your Application](paas/services/binding-a-service-to-your-application.md)
+  * [Binding a Service to your Application](paas/services/binding-a-service-to-your-application.md)
   * [Restore](paas/services/restore.md)
   * [Dashboards](paas/services/dashboards.md)
 * [Service User](service-user.md)
