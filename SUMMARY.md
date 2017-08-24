@@ -12,6 +12,7 @@
     * [Backup](paas/services/backup.md)
       * [Preparation](paas/services/backup/preparation.md)
       * [Configuration](paas/services/backup/configuration.md)
+  * [Cloud Foundry CLI Access](paas/cloud-foundry-cli-access.md)
   * [Restore](paas/services/restore.md)
   * [Dashboards](paas/services/dashboards.md)
 * [Service User](service-user.md)
