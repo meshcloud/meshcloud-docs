@@ -4,6 +4,8 @@
   * [Profile](profile.md)
 * [Compute](compute.md)
 * [Storage](storage.md)
+  * [Object Storage](storage/object-storage.md)
+    * [Via Meshpanel](storage/object-storage/via-meshpanel.md)
 * [Security](security.md)
 * [Networking](networking.md)
 * [Container](paas.md)
