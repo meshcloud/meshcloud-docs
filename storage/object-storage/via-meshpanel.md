@@ -14,10 +14,11 @@
 
 # Upload Files to your Swift Container
 
-1. In the Meshpanel click on the container you created to get to the container detail page
+1. In the Meshpanel click on the container you created to get to the container detail page \(**Storage &gt; Blobs &gt; YourContainer**\)
 2. You can either choose a file from your file system or drag and drop the file that you want to upload
 3. The files will appear in the upload queue on the right. Click the upload button to start your file upload
-4. Your files will appear in the Blobs list on the bottom of this page.
+4. Your files will appear in the Blobs list on the bottom of this page
+5. Congratulations. You successfully uploaded your files to your Swift Container
 
 
 
