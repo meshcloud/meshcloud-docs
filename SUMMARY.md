@@ -18,6 +18,7 @@
       * [Configuration](paas/services/backup/configuration.md)
     * [Creating a Service](paas/services/creating-a-service.md)
     * [Service Keys](paas/services/service-keys.md)
+    * [Cre](paas/services/cre.md)
   * [Restore](paas/services/restore.md)
   * [Dashboards](paas/services/dashboards.md)
 * [Service User](service-user.md)
