@@ -1,7 +1,6 @@
 # Meshcloud Documentation
-Howdy! We welcome you to the documentation of the Meshcloud Platform!
 
+Welcome to the Meshcloud Platform documentation!
 
-
-
+Here you find information about the use of the Meshpanel browser UI and the processes behind its functions.
 
