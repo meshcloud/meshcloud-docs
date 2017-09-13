@@ -7,8 +7,6 @@ We have invested a lot of work and time to enable a seamless Cloud experience ac
 
 ## Registration
 
-Register [here](https://panel.meshcloud.io/#/register) to create your Meshfed SSO Account. In order to do this, you need to fill in the form with your full name, email address, company name, country and a password to your account. Check the checkbox at the bottom to accept our terms and conditions and press "Create Account" afterwards.
-
 ## Login
 
 After a successful registration the next step is to Login into your federated Meshfed SSO Account. This can be done by:
