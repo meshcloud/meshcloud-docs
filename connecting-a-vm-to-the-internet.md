@@ -2,8 +2,7 @@
 
 ## 1. Create a Keypair
 
-Go to “Project” -&gt; “Keypairs” and press “Create” in order to create a new SSH key pair. Type in a name for your keypair and click “Create”. An automatic download will start to provide you with your keyfile which will be named accordingly. In case the download does not start automatically, please use the static link also given on the page to download the file. Do not delete the file or change its name and keep it safe as it contains your private key  
-.
+Go to “Project” -&gt; “Keypairs” and press “Create” in order to create a new SSH key pair. Type in a name for your keypair and click “Create”. An automatic download will start to provide you with your keyfile which will be named accordingly. In case the download does not start automatically, please use the static link also given on the page to download the file. Do not delete the file or change its name and keep it safe as it contains your private key.
 
 ## 2. Create a Network
 
