@@ -2,7 +2,8 @@
 
 ## 1. Create a Keypair
 
-Go to “Project” -&gt; “Keypairs” and press “Create” in order to create a new SSH key pair. Type in a name for your keypair and click “Create”. An automatic download will start to provide you with your keyfile which will be named accordingly. In case the download does not start automatically, please use the static link also given on the page to download the file. Do not delete the file or change its name and keep it safe as it contains your private key.
+Go to “Project” -&gt; “Keypairs” and press “Create” in order to create a new SSH key pair. Type in a name for your keypair and click “Create”. An automatic download will start to provide you with your keyfile which will be named accordingly. In case the download does not start automatically, please use the static link also given on the page to download the file. Do not delete the file or change its name and keep it safe as it contains your private key  
+.
 
 ## 2. Create a Network
 
@@ -14,13 +15,10 @@ If you want to access your instance via SSH you should create a new security gro
 
 ## 4. Create an Instance
 
-Go to "Instances” and click “Create Instance” to create your virtual machine \(VM\). Fill in a name for your VM, choose the flavor of it \(click on the wished size to indicate your choice\) and select the keypair you just created \(click on it\). Then press “Next”.
-
-Select your preferred image \(click on it\) and press “Next”.
-
-After that you have to select the network you just created \(click on it\) and press “Next”.
-
-To complete the creation of your VM, choose the newly created security group by clicking on it and press “Create Instance”.
+1. Go to "Instances” and click “Create Instance” to create your virtual machine \(VM\). Fill in a name for your VM, choose the flavor of it \(click on the wished size to indicate your choice\) and select the keypair you just created \(click on it\). Then press “Next”.
+2. Select your preferred image \(click on it\) and press “Next”.
+3. After that you have to select the network you just created \(click on it\) and press “Next”.
+4. To complete the creation of your VM, choose the newly created security group by clicking on it and press “Create Instance”.
 
 ## 5. Create a floating IP
 
@@ -32,9 +30,6 @@ Go to “Routers” in order to create a new router. Provide a name for it and s
 
 ## 7. Assign your floating IP to your Instance
 
-Go back to “Instances” and assign the floating IP you just created to your instance by clicking on the pencil symbol first and then on the globe symbol. Select the floating IP you just created and press the “+”-sign. You can now access your VM via SSH.
-
-
-
-
+Go back to “Instances” and assign the floating IP you just created to your instance by clicking on the pencil symbol first and then on the globe symbol. Select the floating IP you just created and press the “+”-sign.  
+ You can now access your VM via SSH.
 
