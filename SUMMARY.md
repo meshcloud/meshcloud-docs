@@ -10,6 +10,7 @@
       * [Via Meshpanel](storage/object-storage/via-meshpanel.md)
   * [Security](security.md)
   * [Networking](networking.md)
+  * [OpenStack CLI Access](openstack-cli-access.md)
 * [PaaS functions in Meshpanel](paas-functions-in-meshpanel.md)
   * [Container](paas.md)
     * [Applications](paas/applications.md)
@@ -23,6 +24,4 @@
       * [Service Keys](paas/services/service-keys.md)
     * [Restore](paas/services/restore.md)
     * [Dashboards](paas/services/dashboards.md)
-
-
 
