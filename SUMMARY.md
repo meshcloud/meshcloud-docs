@@ -2,7 +2,7 @@
 
 * [Meshcloud Concepts](README.md)
   * [Account](profile.md)
-  * [Service User](https://www.gitbook.com/book/meshcloud/meshcloud/edit#)
+  * [Service User](service-user.md)
 * [IaaS functions in Meshpanel](iaas-functions-in-meshpanel.md)
   * [Compute](compute.md)
   * [Storage](storage.md)
@@ -24,6 +24,4 @@
       * [Service Keys](paas/services/service-keys.md)
     * [Restore](paas/services/restore.md)
     * [Dashboards](paas/services/dashboards.md)
-
-
 
