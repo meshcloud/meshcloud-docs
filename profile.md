@@ -7,6 +7,12 @@ We have invested a lot of work and time to enable a seamless Cloud experience ac
 
 ## Registration
 
+To create a new account, go to [https://panel.meshcloud.io/\#/register](https://panel.meshcloud.io/#/register) and fill out the form.
+
+Submit the form to create an account.
+
+You will receive an email to confirm your account and after that you can start using your account. For an on-going use of the account, you need to provide your payment details within 30 days from registration.
+
 ## Login
 
 After a successful registration the next step is to Login into your federated Meshfed SSO Account. This can be done by:
