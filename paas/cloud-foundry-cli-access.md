@@ -35,7 +35,9 @@ For MacOS \(with homebrew\):
 * Type \`brew tap cloudfoundry/tap\` and hit enter
 * Type \`brew install cf-cli\` and hit enter
 * Type `cf help` to test wether the installation was successful
-* ## **Cloud Foundry Authentification**
+
+## **Cloud Foundry Authentification**
+
 * In the Meshpanel on the CLI Access page click on **Get Passcode**. This will open a new tab in your browser. **Click on Login with Meshcloud below the input fields. **Copy the temporary authentication code.
 
 * In your PowerShell \(Windows\) or Terminal \(MacOS\)
