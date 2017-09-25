@@ -8,7 +8,7 @@
   * [Compute](compute.md)
   * [Storage](storage.md)
     * [Object Storage](storage/object-storage.md)
-      * [Via Meshpanel](iaas/storage/object-storage/via-meshpanel.md)
+      * [Uploading Files](iaas/storage/object-storage/via-meshpanel.md)
   * [Security](security.md)
   * [Networking](networking.md)
   * [OpenStack CLI Access](openstack-cli-access.md)

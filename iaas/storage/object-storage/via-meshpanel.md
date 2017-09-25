@@ -1,4 +1,8 @@
-# Configure a Swift Container
+# Uploading Files
+
+The easiest way to upload files is via Meshpanel. 
+
+## Configure a Swift Container
 
 1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io)
 
@@ -12,7 +16,7 @@
 
 6. You have now successfully created a Swift Container
 
-# Upload Files to your Swift Container
+## Upload Files to your Swift Container
 
 1. In the Meshpanel click on the container you created to get to the container detail page \(**Storage &gt; Blobs &gt; YourContainer**\)
 2. You can either choose a file from your file system or drag and drop the file that you want to upload
