@@ -32,3 +32,9 @@ Go to “Routers” in order to create a new router. Provide a name for it and s
 Go back to “Instances” and assign the floating IP you just created to your instance by clicking on the pencil symbol first and then on the globe symbol. Select the floating IP you just created and press the “+”-sign.  
  You can now access your VM via SSH.
 
+## 8. SSH to your newly created VM
+
+We configured the virtual machine in a way that enables you to connect via SSH. To do so, in your Terminal type `ssh -i [PATHTOYOURPRIVATEKEY] ubuntu@[YOURFLOATINGIP]`. If you are on Windows you can use a tool like PuTTY or the git bash to access your VM via ssh.
+
+
+
