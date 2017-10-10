@@ -36,5 +36,5 @@ The environment file contains all the information that you need to authorize aga
 5. You can try the following command to confirm that your authentication was successful: `openstack server list`
 6. Congratulations. You are now ready to get going.
 
-You just have to run through all these steps the first time you access OpenStack via the CLI. Keep your environment file for future accesses. You will have to source it again to reconnect to OpenStack next time.
+You just have to run through all these steps the first time you access OpenStack via the CLI. Keep your environment file for future accesses. You will have to source it again to reconnect to OpenStack next time. If you are aiming to use the CLI for the deployment of Heat scripts, you need to create an OpenStack Service User and use the according rc file for the authentication in the CLI.
 
