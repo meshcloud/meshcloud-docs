@@ -13,6 +13,7 @@
   * [Networking](networking.md)
   * [OpenStack CLI Access](openstack-cli-access.md)
   * [Connecting a VM to the internet](connecting-a-vm-to-the-internet.md)
+  * [Deploying a Heat Stack](deploying-a-heat-script.md)
 * [PaaS functions in Meshpanel](paas-functions-in-meshpanel.md)
   * [Container](paas.md)
     * [Applications](paas/applications.md)
