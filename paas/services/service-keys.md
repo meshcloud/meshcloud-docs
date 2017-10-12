@@ -30,9 +30,7 @@ Cloud Foundry enables you to inject service data directly to your running applic
 
 ## Get Credentials for a Service Key
 
-1. `cf service-key yourService` will display the credentials for your service
-
-
+1. `cf service-key yourService yourKey` will display the credentials for your service
 
 
 
