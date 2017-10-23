@@ -38,7 +38,7 @@ For MacOS \(with homebrew\):
 
 ## **Cloud Foundry Authentification**
 
-* In the Meshpanel on the CLI Access page click on **Get Passcode**. This will open a new tab in your browser. **Click on Login with Meshcloud below the input fields. **Copy the temporary authentication code.
+* In the Meshpanel on the CLI Access page click on **Get Passcode**. Copy the temporary authentication code that opens up in a new window.
 
 * In your PowerShell \(Windows\) or Terminal \(MacOS\)
 
