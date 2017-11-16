@@ -10,7 +10,8 @@ Generally, you create storage volumes in order to attach them to one of your ins
 
 4. After selecting Project & Location, go to **Tools &gt; Service Users **in the menu bar on the left.
 
+5. Provide a description, chose your desired platform and press "+".
 
-
+6. 
 
 
