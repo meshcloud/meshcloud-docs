@@ -10,5 +10,5 @@ Log on to the Meshpanel with your account credentials and press "Create". Type i
 
 ## Invite users to access a Meshproject
 
-If you would like to give others access to your Meshproject, go to "Users" and provide the full name as well as the email address under "Pending Invitations". Press "+" to send an invitation email to this person. Note that only users with a valid account on the Meshpanel can access your projects.
+If you would like to give others access to your Meshproject, go to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. Note that only users with a valid account on the Meshpanel can access your projects.
 
