@@ -1,6 +1,6 @@
 # Uploading Files
 
-The easiest way to upload files is via Meshpanel. 
+The easiest way to upload files is via Meshpanel.
 
 ## Configure a Swift Container
 
@@ -22,7 +22,7 @@ The easiest way to upload files is via Meshpanel.
 2. You can either choose a file from your file system or drag and drop the file that you want to upload
 3. The files will appear in the upload queue on the right. Click the upload button to start your file upload
 4. Your files will appear in the Blobs list on the bottom of this page
-5. Congratulations. You successfully uploaded your files to your Swift Container
+5. Congratulations. You successfully uploaded your files to your Swift Container.
 
 
 
