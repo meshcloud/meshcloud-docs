@@ -43,7 +43,7 @@ on the same Location and Project as you did it for the Service User.
 
 5. Enter the Name of the Swift Container and press the ![](/assets/plus-sign.png)
 
-6. You have not successfully created a Swift Container
+6. You have now successfully created a Swift Container
 
 
 
