@@ -16,17 +16,19 @@ Generally, you create storage volumes in order to attach them to one of your ins
 
 7. Name your keypair and click "Create". An automatic download will start downloading the .pem file for your keypair. Make sure to store this file safely.
 
-8. Go to **Network &gt; Networks **and click "Create Network". 
+8. Go to **Network &gt; Networks **and click "Create Network".
 
-9. Name your network. provide a description for it and save it. Then 
+9. Create a subnet.
 
-10. Go to **Compute &gt; Instances **and press "Create Instance".
+10. Name your network. provide a description for it and save it. Then
 
-11. Name your instance, choose a flavor as well as the keypair you just created and press "Next".
+11. Go to **Compute &gt; Instances **and press "Create Instance".
 
-12. Choose your desired image and click "Next".
+12. Name your instance, choose a flavor as well as the keypair you just created and press "Next".
 
-13. Choose the subnet you just created and click "Next" again.
+13. Choose your desired image and click "Next".
+
+14. Choose the subnet you just created and click "Next" again.
 
 
 
