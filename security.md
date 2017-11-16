@@ -1,30 +1,18 @@
 # Security
 
-When you launch a virtual machine, you can inject akey pair, which provides SSH access to your instance. For this to work, the image must contain thecloud-initpackage.
+When launching a virtual machine, a key pair gives you SSH access to your instance. On the Meshpanel, you have to have at least one key pair for each project. If you have not created a security group by yourself, you can just use the default security group for this. The key pair can be used for multiple instances within a Meshproject. If you wish to generate your own key pair using an external tool, it is possible to import it into OpenStack.
 
-You can create at least one key pair for each project. You can use the key pair for multiple instances that belong to that project. If you generate a key pair with an external tool, you can import it into OpenStack.
+A key pair always belongs to an individual user, not to a project. That means that if you would like to share a key pair among multiple users, every single user has to import that key pair.
 
-_NOTE:_A key pair belongs to an individual user, not to a project. To share a key pair across multiple users, each user needs to import that key pair.
+A security group is a number of network access rules which limit access, i.e. traffic to the instances within that security group. Assigning multiple security groups to an instance is possible but it has to have at least one assigned to it. The default security group will be used if you have not yet created your own security group.
 
-If an image uses a static root password or a static key set \(neither is recommended\), you must not provide a key pair when you launch the instance.
+The rules of a security group can be edited \(e.g. new rules can be added, old ones removed\). It is also possible to edit the rules of the default security group. These rules specify  through which ports and protocols instances can be accessed \(e.g. through SSH, UDP or DNS\). A rule consists of several parameters:
 
-Asecurity groupis a named collection of network access rules that are use to limit the types of traffic that have access to instances. When you launch an instance, you can assign one or more security groups to it. If you do not create security groups, new instances are automatically assigned to the default security group, unless you explicitly specify a different security group.
+* Traffic Source: Specifying from where IP addresses can access instances \(e.g. from inside the cloud or from outside\).
 
-The associatedrulesin each security group control the traffic to instances in the group. Any incoming traffic that is not matched by a rule is denied access by default. You can add rules to or remove rules from a security group, and you can modify rules for the default and any other security group.
+* Protocol: Specifying either TCP for SSH, ICMP for pings, or UDP.
 
-You can modify the rules in a security group to allow access to instances through different ports and protocols. For example, you can modify rules to allow access to instances through SSH, to ping instances, or to allow UDP traffic; for example, for a DNS server running on an instance. You specify the following parameters for rules:
+* Destination Port on the virtual machine: Specifying a port range \(not supported by ICMP, enter values defining the codes and types of ICMP traffic instead\).
 
-* Source of traffic. Enable traffic to instances from either IP addresses inside the cloud from other group members or from all IP addresses.
-
-* Protocol. Choose TCP for SSH, ICMP for pings, or UDP.
-
-* Destination port on virtual machine. Define a port range. To open a single port only, enter the same value twice. ICMP does not support ports; instead, you enter values to define the codes and types of ICMP traffic to be allowed.
-
-Rules are automatically enforced as soon as you create or modify them.
-
-_NOTE:_Instances that use the default security group cannot, by default, be accessed from any IP address outside of the cloud. If you want those IP addresses to access the instances, you must modify the rules for the default security group. Additionally, security groups will automatically drop DHCP responses coming from instances.
-
-You can also assign a floating IP address to a running instance to make it accessible from outside the cloud. See .
-
-
+Instances within the default security group cannot be accessed by IP addresses outside the cloud. Modify the default security rules to change this. In addition to that, DHCP responses coming from instances will be automatically dropped by security groups. It is also possible to assign a floating IP address to a running instance in order to get access to it from outside the cloud.
 
