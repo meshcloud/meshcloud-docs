@@ -18,17 +18,15 @@ Generally, you create storage volumes in order to attach them to one of your ins
 
 8. Go to **Network &gt; Networks **and click "Create Network".
 
-9. Create a subnet.
+9. Name your network. provide a description for it and save it. Then create a subnet.
 
-10. Name your network. provide a description for it and save it. Then
+10. Go to **Compute &gt; Instances **and press "Create Instance".
 
-11. Go to **Compute &gt; Instances **and press "Create Instance".
+11. Name your instance, choose a flavor as well as the keypair you just created and press "Next".
 
-12. Name your instance, choose a flavor as well as the keypair you just created and press "Next".
+12. Choose your desired image and click "Next".
 
-13. Choose your desired image and click "Next".
-
-14. Choose the subnet you just created and click "Next" again.
+13. Choose the subnet you just created and click "Next" again.
 
 
 
