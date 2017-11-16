@@ -8,6 +8,7 @@
 6. Name your instance, choose a flavor as well as the keypair you just created and press "Next".
 7. Choose your desired image and click "Next".
 8. Choose the subnet you just created and click "Next" again.
+9. Choose your desired security group and press "Create Instance".
 
 
 
