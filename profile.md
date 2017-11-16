@@ -26,7 +26,5 @@ After a successful registration the next step is to Login into your federated Me
 
 ## Change Password
 
-TBD
-
-
+Coming soon.
 
