@@ -4,7 +4,7 @@ When launching a virtual machine, a key pair gives you SSH access to your instan
 
 A key pair always belongs to an individual user, not to a project. That means that if you would like to share a key pair among multiple users, every single user has to import that key pair.
 
-A security group is a number of network access rules which limit access, i.e. traffic to the instances within that security group. Assigning multiple security groups to an instance is possible but it has to have at least one assigned to it. The default security group will be used if you have not yet created your own security group.
+A security group is a number of network access rules, which limit access, i.e. traffic to the instances within that security group. Assigning multiple security groups to an instance is possible but it has to have at least one assigned to it. You can use the default security group if you have not yet created your own security group.
 
 The rules of a security group can be edited \(e.g. new rules can be added, old ones removed\). It is also possible to edit the rules of the default security group. These rules specify  through which ports and protocols instances can be accessed \(e.g. through SSH, UDP or DNS\). A rule consists of several parameters:
 
