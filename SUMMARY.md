@@ -12,6 +12,7 @@
       * [Uploading Files](iaas/storage/object-storage/via-meshpanel.md)
     * [Block Storage](storage/block-storage.md)
       * [Creating a Volume](storage/block-storage/creating-a-volume.md)
+      * [Binding a Volume to an Instance](storage/block-storage/binding-a-volume-to-an-instance.md)
   * [Security](security.md)
   * [Networking](networking.md)
   * [OpenStack CLI Access](openstack-cli-access.md)
