@@ -1,4 +1,4 @@
-# Creating a Volume
+# Creating a Volume in Meshpanel
 
 Generally, you create storage volumes in order to attach them to one of your instances.
 
@@ -10,9 +10,22 @@ Generally, you create storage volumes in order to attach them to one of your ins
 
 4. After selecting Project & Location, go to** Storage &gt; Volumes **in the service menu bar on the left
 
-1. Provide a name as well as a description for your volume and choose your desired size. Then click "Create"
+5. Provide a name as well as a description for your volume and choose your desired size. Then click "Create"
 
-2. Congratulations, you have now created a volume
+6. Congratulations, you have now created a volume
+
+# Creating a Volume in the OpenStack CLI
+
+Before getting started, please make sure that you have [access to the OpenStack CLI.](/openstack-cli-access.md)
+
+If you would like to create a new volume with the OpenStack CLI, type:
+
+```
+$ openstack volume create --size SIZE_IN_GB NAME
+$ openstack volume create --size 1 MyFirstVolume
+```
+
+Now, you can boot an instance and attach it to the volume.
 
 
 
