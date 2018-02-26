@@ -1,9 +1,9 @@
 # Summary
 
 * [Meshcloud Concepts](README.md)
-  * [Account](profile.md)
-  * [Meshprojects](project.md)
-  * [Service User](service-user.md)
+  * [Account](meshcloud/profile.md)
+  * [Meshprojects](meshcloud/project.md)
+  * [Service User](meshcloud/service-user.md)
 * [IaaS functions in Meshpanel](iaas-functions-in-meshpanel.md)
   * [Compute](compute.md)
   * [Connecting a VM to the internet](connecting-a-vm-to-the-internet.md)
