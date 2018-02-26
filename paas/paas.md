@@ -1,4 +1,0 @@
-# Meshcloud PaaS Offering
-
-
-
