@@ -13,6 +13,7 @@
     * [Block Storage](iaas/storage/block-storage.md)
       * [Creating a Volume](iaas/storage/block-storage/creating-a-volume.md)
       * [Binding a Volume to an Instance](iaas/storage/block-storage/binding-a-volume-to-an-instance.md)
+    * [Images](iaas/storage/images.md)
   * [Security](iaas/security.md)
   * [Networking](iaas/networking.md)
   * [OpenStack CLI Access](iaas/openstack-cli-access.md)
