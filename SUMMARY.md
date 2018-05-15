@@ -31,6 +31,7 @@
       * [Configuration](paas/services/backup/configuration.md)
     * [Restore](paas/services/restore.md)
     * [Service Keys](paas/services/service-keys.md)
+  * [Private Domains](paas/private-domains.md)
   * Service Details
     * [Volume Service](paas/service-details/volume.md)
 
