@@ -2,6 +2,7 @@
 
 * [Meshcloud Concepts](README.md)
   * [Account](meshcloud/profile.md)
+  * [Customer](meshcloud/customer.md)
   * [Projects](meshcloud/project.md)
   * [Service User](meshcloud/service-user.md)
 * [IaaS functions in Meshpanel](iaas-functions-in-meshpanel.md)
