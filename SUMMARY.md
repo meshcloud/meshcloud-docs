@@ -4,6 +4,7 @@
   * [Account](meshcloud/profile.md)
   * [Projects](meshcloud/project.md)
   * [Service User](meshcloud/service-user.md)
+  * [Partner](meshcloud/partner.md)
 * [IaaS functions in Meshpanel](iaas-functions-in-meshpanel.md)
   * [Compute](iaas/compute.md)
   * [Connecting a VM to the internet](iaas/connecting-a-vm-to-the-internet.md)
