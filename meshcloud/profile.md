@@ -30,4 +30,4 @@ Coming soon.
 
 ## Profile
 
-Navigate to the **Profile** Page via the navigation on the top right of the Meshpanel. Here you can find all your personal information stored in the Meshportal. You can also expand an area on the bottom of the page, that shows you all systems related to the Meshportal, that also persist your personal information. In general the Meshportal tries to store as litlle of your personal information as possible in the different systems.
+Navigate to the **Profile** Page via the navigation on the top right of the Meshpanel. Here you can find all your personal information stored in the Meshportal. You can also expand an area on the bottom of the page, that shows you all systems related to the Meshportal, that also persist your personal information. In general the Meshportal tries to store as little of your personal information as possible in the different systems.
