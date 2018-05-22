@@ -2,9 +2,11 @@
 
 * [Meshcloud Concepts](README.md)
   * [Account](meshcloud/profile.md)
+  * [Customer](meshcloud/customer.md)
   * [Projects](meshcloud/project.md)
   * [Service User](meshcloud/service-user.md)
   * [Partner](meshcloud/partner.md)
+  * [Marketplace](meshcloud/marketplace.md)
 * [IaaS functions in Meshpanel](iaas-functions-in-meshpanel.md)
   * [Compute](iaas/compute.md)
   * [Connecting a VM to the internet](iaas/connecting-a-vm-to-the-internet.md)

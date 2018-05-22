@@ -8,7 +8,10 @@ In order to use cloud computing resources, you have to create a Meshproject. Wit
 
 Log on to the Meshpanel with your account credentials and press "Create". Type in a name for your new project and press "Next". Choose a payment method as well as your billing address and press "Next" again. In the last step, you can choose the locations from which you can obtain the cloud computing resources for your project. Press "Create Project" and you will see your new project listed in the Projects List.
 
-## Invite users to access a Meshproject
+## Assign user to a Meshproject
 
-If you would like to give others access to your Meshproject, go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your projects. Note that only users with a valid account on the Meshpanel can access your projects.
+Before being able to assign a user to a Meshproject, the user must have been [invited to the Meshcustomer](customer.md). Then go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Projects" and click the pen button to edit the project. In the "Project Users" section you can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Press the "+" to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects.
 
+## Delete a Meshproject
+
+If you would like to delete a project which is no longer used, go to your "Account" settings. Navigate to "Projects" and click the button with the trash icon. The system now checks whether any resources still exist for your project. If there are existing resources, you will be informed about which resources still exist. As deletion of a project is an irrevocable action, you cannot delete projects with resources. You have to delete those resources manually before to be sure, that you really want to delete these resources that may contain production relevant workloads. When no resources exist anymore you have to confirm the deletion by entering the identifier of your project again.
