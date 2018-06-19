@@ -1,5 +1,7 @@
-# Meshcloud Project Management
-
+---
+id: meshcloud.project
+title: Project
+---
 ## What is a Meshproject?
 
 In order to use cloud computing resources, you have to create a Meshproject. Within the Meshproject, you can manage and scale the resources you use across all locations.

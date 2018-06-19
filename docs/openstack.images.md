@@ -1,4 +1,7 @@
-# Images
+---
+id: openstack.images
+title: Images
+---
 
 Images are snapshots of virtual machines that can be used to create new compute instances.
 Usually These snapshots have been configured to allow injection of user defined credentials (SSH key) during setup.

@@ -1,5 +1,7 @@
-# Marketplace
-
+---
+id: meshcloud.marketplace
+title: Marketplace
+---
 ## What is the Mesh Marketplace?
 
 The Marketplace provides users with a set of services they can spin up for their projects (i.e. databases, message brokers, filesystems, etc). Platform operators can connect any service that implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) to the marketplace and make it available to their users.

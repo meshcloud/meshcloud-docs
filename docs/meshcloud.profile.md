@@ -1,8 +1,10 @@
-# Meshcloud Account
-
+---
+id: meshcloud.profile
+title: Account
+---
 The following section covers all the relevant details regarding your Meshfed SSO Account.
 
-**What is the Meshfed SSO Account?**
+## What is the Meshfed SSO Account?
 We have invested a lot of work and time to enable a seamless Cloud experience across a large number of different Datacenter Locations and Cloud Platforms. To support the seamless access of all of our services across every datacenter location we rely on an Open ID Connect authentication flow.
 
 ## Registration

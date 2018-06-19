@@ -1,4 +1,7 @@
-# OpenStack CLI Access
+---
+id: openstack.cli
+title: Using the OpenStack CLI
+---
 
 The OpenStack CLI tools enable you to experience the full set of our OpenStack Services. The OpenStack command line client is written in Python. So you will need to have Python installed to get started. If this is not the case, you can get it from [here.](https://www.python.org/downloads/)
 

@@ -1,4 +1,7 @@
-# Meshcloud Customer Management
+---
+id: meshcloud.customer
+title:  Customer Accounts
+---
 
 ## What is a Meshcustomer?
 
