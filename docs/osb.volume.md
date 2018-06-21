@@ -1,4 +1,7 @@
-# Volume Service
+---
+id: osb.volume
+title: Volume Service (osb-samba)
+---
 
 In Cloud Foundry, the local file system of a container is typically ephemeral. Meshcloud's Volume Service allows you to mount a persistent data volume into a running container file system. Instances of the volume service can be shared among different applications and instances. They are backed by a secure SMB file share and suitable for workloads like content-management-systems that only support file-based storage.
 
@@ -20,11 +23,8 @@ To customize this mount-point, you can specify the `container_dir` parameter whe
 
 Using the following `volume-binding.json` , we can tell Cloud Foundry to mount the volume at `/app/htdocs/wp-content` when creating the binding using `cf bind-service my-app my-service -c volume-binding.json`
 
-```
+```json
 {
   "container_dir": "/app/htdocs/wp-content"
 }
 ```
-
-
-

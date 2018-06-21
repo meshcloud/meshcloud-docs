@@ -1,6 +1,9 @@
-# Services
+---
+id: cloudfoundry.services
+title: Services
+---
 
-Services on our PaaS offering enable application developers to easily bind their applications to Databases, Document Stores, Queuing and other backend Services. 
+Services on our PaaS offering enable application developers to easily bind their applications to Databases, Document Stores, Queuing and other backend Services. As you may know, containers are stateless. However, most applications, require some persistent components, such as databases or message queues. With our Cloud Foundry Service Brokers you are able to bind persistent services to your stateless application.
 
 ## Cloud Foundry Marketplace
 
@@ -33,7 +36,17 @@ They enable application developers to use the credentials of a Service deployed 
 
 ## Creating a new Service
 
-To create a new service, type `cf create-service SERVICE_NAME SERVICE_PLAN YOUR_SERVICE_NAME`. For example, you can create a MongoDB database for the with `cf create-service MongoDB S musicdb`. The service will automatically start running, you can check the status with `cf service musicdb`. Here, you will also see that there are no applications bound to it yet.
+To create a new service, type 
+```bash
+cf create-service SERVICE_NAME SERVICE_PLAN YOUR_SERVICE_NAME
+```
+
+For example, you can create a MongoDB database for the with 
+```bash
+cf create-service MongoDB S musicdb
+```
+
+The service will automatically start running, you can check the status with `cf service musicdb`. Here, you will also see that there are no applications bound to it yet.
 
 ## Binding a Service to your Application
 

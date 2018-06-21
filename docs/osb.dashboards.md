@@ -1,4 +1,7 @@
-# Dashboards
+---
+id: osb.dashboards
+title: Dashboards
+---
 
 To give you a better overview on what you are capable to do with your services, we created Service Dashboards. From the Service Dashboards you are able to [create Backup Routines ](/paas/services/backup.md)for your services or to create Service Keys for your services.
 
@@ -13,6 +16,3 @@ To give you a better overview on what you are capable to do with your services, 
 4. Copy the URL shown under Dashboard to your browser
 
 5. Congratulations. You accessed your Service Dashboard
-
-
-

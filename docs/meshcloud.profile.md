@@ -1,6 +1,6 @@
 ---
 id: meshcloud.profile
-title: Account
+title: User Account
 ---
 The following section covers all the relevant details regarding your Meshfed SSO Account.
 

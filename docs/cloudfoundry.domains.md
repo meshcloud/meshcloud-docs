@@ -1,4 +1,7 @@
-# Private Domains
+---
+id: cloudfoundry.domains
+title: Private Domains
+---
 
 If another domain name as the predefined shared domains should be used a so called Private Domain can be registered with Cloud Foundry. This domain can then be used to create a route to a deployed app similiar to what would be possible with the predefined shared domains.
 

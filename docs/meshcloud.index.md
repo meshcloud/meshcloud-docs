@@ -1,6 +1,6 @@
 ---
 id: meshcloud.index
-title: Meshcloud Documentation
+title: Overview
 ---
 
 Welcome to the Meshcloud Platform documentation!

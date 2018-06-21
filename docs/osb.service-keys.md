@@ -1,4 +1,7 @@
-# Service Keys
+---
+id: osb.service-keys
+title: Service Keys
+---
 
 Cloud Foundry enables you to inject service data directly to your running application. However, you might want to access your database from a local client or from applications running outside of Cloud Foundry. In these cases you will need credentials to your services. They are calles Service Keys.
 
