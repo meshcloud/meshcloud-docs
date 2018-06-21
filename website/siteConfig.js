@@ -40,8 +40,8 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
+  headerIcon: 'img/favicon.png',
+  footerIcon: 'img/meshcloud.svg',
   favicon: 'img/favicon.png',
 
   /* colors for website */
@@ -81,8 +81,8 @@ const siteConfig = {
   onPageNav: 'separate',
 
   /* Open Graph and Twitter card images */
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/favicon.png',
+  twitterImage: 'img/favicon.png',
 
   scrollToTop: true,
   scrollToTopOptions: {
