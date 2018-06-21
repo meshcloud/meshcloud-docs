@@ -73,7 +73,9 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href={docUrl('meshcloud.index.html', language)}>User Docs</Button>
+            <Button href={docUrl('meshcloud.index.html', language)}>meshcloud Platform Docs</Button>
+            <Button href={docUrl('meshcloud.index.html', language)}>Federation User Guide</Button>
+            <Button href={docUrl('meshstack.index.html', language)}>meshstack Overview</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -91,7 +93,37 @@ const Block = props => (
 );
 
 const Features = props => (
-  <Block layout="fourColumn">
+  <Block layout="threeColumn">
+    {[
+      {
+        title: `[**mesh**cloud](${docUrl('cloudfoundry.index.html', props.language)})`,
+        content: 'User documentation',
+      },
+      {
+        title: `[**mesh**cloud Federation](${docUrl('cloudfoundry.index.html', props.language)})`,
+        content: 'our public cloud offering',
+      },
+      {
+        title: `[**mesh**stack](${docUrl('cloudfoundry.index.html', props.language)})`,
+        content: 'Technology',
+      },
+    ]}
+  </Block>
+);
+
+const FeatureCallout = props => (
+  // <Container background='light'>
+    <div
+      className="productShowcaseSection paddingTop lightBackground"
+      style={{ textAlign: 'center' }}>
+      <h2><a href={docUrl('meshcloud.index.html', props.language)}>Supported Cloud Technologies</a></h2>
+      <MarkdownBlock>Combine best-of-breed cloud technologies with meshcloud</MarkdownBlock>
+    </div>
+  
+);
+
+const LearnHow = props => (
+  <Block background="light" layout="fourColumn">
     {[
       {
         content: 'Deploy Applications and Containers in no time.',
@@ -105,27 +137,17 @@ const Features = props => (
         imageAlign: 'top',
         title: `[OpenStack](${docUrl('openstack.index.html', props.language)})`,
       },
-    ]}
-  </Block>
-);
-
-const FeatureCallout = props => (
-  <div
-    className="productShowcaseSection paddingBottom"
-    style={{ textAlign: 'center' }}>
-    <h2><a href={docUrl('meshcloud.index.html', props.language)}>Use all the Clouds</a></h2>
-    <MarkdownBlock>The future of cloud computing is multi-cloud</MarkdownBlock>
-  </div>
-);
-
-const LearnHow = props => (
-  <Block background="light">
-    {[
       {
-        content: 'Meshcloud manages all things cloud for you. It\'s magic!',
-        image: imgUrl('favicon.png'),
-        imageAlign: 'right',
-        title: 'How Meshcloud Works',
+        content: 'Manage Kubernetes Clusters',
+        image: imgUrl('k8s.png'),
+        imageAlign: 'top',
+        title: `Kubernetes`,
+      },
+      {
+        content: 'Open Service Broker API.',
+        image: imgUrl('osbapi.png'),
+        imageAlign: 'top',
+        title: `Open Service Broker API`,
       },
     ]}
   </Block>

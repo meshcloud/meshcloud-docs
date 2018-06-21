@@ -32,7 +32,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'meshcloud.index', label: 'Docs' },
+    { doc: 'meshcloud.index', label: 'meshcloud docs' },
+    { doc: 'federation.index', label: 'meshcloud federation guide' },
+    { doc: 'meshstack.index', label: 'meshstack docs' },
     { page: 'help', label: 'Help' },
   ],
 
