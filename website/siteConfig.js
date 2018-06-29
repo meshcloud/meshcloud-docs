@@ -43,7 +43,7 @@ const siteConfig = {
 
   /* path to images for header/footer */
   headerIcon: 'img/favicon.png',
-  footerIcon: 'img/meshcloud.svg',
+  footerIcon: 'img/meshcloud_white.svg',
   favicon: 'img/favicon.png',
 
   /* colors for website */
@@ -56,7 +56,7 @@ const siteConfig = {
   fonts: {
     headerFont: [
       "Montserrat",
-      "Serif"
+      "sans-serif"
     ],
     textFont: [
       "Roboto",
