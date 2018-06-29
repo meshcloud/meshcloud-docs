@@ -3,31 +3,31 @@ id: partner.index
 title: Overview
 ---
 
-Within the Meshcloud platform we differentiate the following roles.
+Meshcloud Partners have the ability to manage multiple, child-customer accounts within the Meshcloud platform. Therefore, a Meshcloud Partner account has additional functionality to enable customer management. Partner functionality can only be activated by a Meshcloud administrator. 
 
-## Meshcloud Partners \(Support Partners\)
+## Creating a Managed Customer
 
-Meshcloud Partners have the ability to manage multiple Meshcloud Customer accounts within the Meshcloud platform. Therefore, a Meshcloud Partner account has additional functionality to enable customer management.
+The following steps describe how to create a Managed Customer:
 
-## Customer Admin
+1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io/).
 
-Customers can create multiple projects and can have multiple customer employees \(users\) belonging to one company or one department. A customer admin can add users to a project via e-mail invite. 
+2. If not logged in, please login with your partner account credentials.
 
-As a Customer Admin you can:
+3. On the Welcome Dashboard, please make sure that you have selected your partner account in the account drop-down menu on the top left.
 
-* Create projects on the platform
-* Create users for your account
-* Grant users access to specific projects
-* Remove user access from specific projects
-* Edit the company information of your account \(Company Address, Billing Address, Payment Method\)
+4. Select the **Partner Area** from the toolbox and go to **Customers** in the menu bar on the left.
 
-## Users
+5. Enter a name and an identifier for your new managed customer and create the account by clicking on the `+`.
+> **Attention**: Currently the identifiers can not be changed. Please choose them carefully.
 
-Users are generally customer employees. They have to be granted access to a project by the Customer Admin. They can manage resources within the projects that they have been granted access to.
+## Add a User to a Managed Customer
 
-As a User you can:
+In order to use a customer account users must be assigned to it. In order to access the account with our partner credentials we must first assign ourself to the account:
 
-* Create and delete resources within the projects that you have been granted access to by a customer admin
+1. Go to **Partner Area &gt; Customers** and click on the **Users** icon on the managed customer account you want to edit.
 
+2. In the **Customers Users** view click on the button **Add Myself** in the top right corner.
 
+3. After you have successfully assigned yourself to the account you can now choose the account in the top left drop-down. Please select the account there.
 
+4. In the toolbox go to **Account &gt; Users** there you can invite and add users to the managed customer account.

@@ -3,6 +3,6 @@ id: federation.index
 title: Overview
 ---
 
-Welcome to the Meshcloud Platform documentation!
+Welcome to the Meshcloud Federation documentation!
 
-Here, you can find information about the use of the Meshpanel browser UI and the processes behind its functions.
+Here, you can find information about the use of the Meshcloud Federation's public cloud services.
