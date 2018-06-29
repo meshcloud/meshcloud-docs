@@ -74,7 +74,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href={docUrl('meshcloud.index.html', language)}>meshcloud Platform Docs</Button>
-            <Button href={docUrl('meshcloud.index.html', language)}>Federation User Guide</Button>
+            <Button href={docUrl('federation.index.html', language)}>Federation User Guide</Button>
             <Button href={docUrl('meshstack.index.html', language)}>meshstack Overview</Button>
           </PromoSection>
         </div>
