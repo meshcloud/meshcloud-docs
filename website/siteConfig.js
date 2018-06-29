@@ -76,6 +76,10 @@ const siteConfig = {
     theme: 'atom-one-dark',
   },
 
+  stylesheets: [
+    'https://fonts.googleapis.com/css?family=Montserrat|Roboto'
+  ],
+
   // Add custom scripts here that would be placed in <script> tags
   scripts: ['https://buttons.github.io/buttons.js'],
 
