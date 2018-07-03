@@ -28,5 +28,14 @@ With Meshcloud you can easily create customer accounts. The Meshcloud partner ar
 
 You will soon be able to change the User Role to Customer Admin.
 
+## Show Usage Report of customer
+
+In order to see a report of the resource usage of your administered customer do the following:
+
+1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials.
+2. Navigate **Settings &gt; Partner Area** via the settings button on the top right or use this link:
+   [https://panel.meshcloud.io/\#/partner](https://panel.meshcloud.io/#/partner).
+3. Click on **"Customers"** on the left menu. In the Actions column in the customer table you can see the icon **Usage Report**. Click on this icon and you get an overview about the resource usage of this customer.
+
 
 
