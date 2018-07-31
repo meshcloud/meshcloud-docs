@@ -19,7 +19,7 @@ The first thing you should do on the Meshcloud Platform is to create a project. 
 
 ## Choose Location
 
-Within the new project, choose a location for the deployment of your first Cloud Foundry applications. Go to **CLI Access **in the left menu.
+Within the new project, choose a location for the deployment of your first Cloud Foundry applications. Go to **CLI Access** in the left menu.
 
 ## Cloud Foundry CLI Tools
 

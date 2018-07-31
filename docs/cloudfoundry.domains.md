@@ -20,7 +20,7 @@ More information about Private Domains can be found in the Cloud Foundry [refere
 
 In order for your apps to receive traffic under the newly registered domain you need to map them to a route. To do this for an already existing app
 
-1. Open a [Cloud Foundry CLI terminal](cloud-foundry-cli-access.md)
+1. Open a [Cloud Foundry CLI terminal](cloudfoundry.cli.md)
 2. Enter `$ cf map-route APPNAME private-domain-example.com --hostname test`
 3. Your domain test.private-domain-example.com will routed to this app
 
@@ -31,7 +31,7 @@ There are many other options for route binding for example the app can directly 
 
 **Please note**: Before you can delete a Private Domain all routes containing this domain must be deleted beforehand. Deleting the app is not enough to release the created routes again. 
 
-1. Open a [Cloud Foundry CLI terminal](cloud-foundry-cli-access.md)
+1. Open a [Cloud Foundry CLI terminal](cloudfoundry.cli.md)
 2. Issue a `cf delete-route private-domain-example.com --hostname test` to delete the previously created domain (in your case the correct syntax might differ since the command must equal the options used to create the route in the first place)
 
 Please see the Cloud Foundry [route delete documentation](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#delete-route) for more information.
