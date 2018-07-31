@@ -7,7 +7,7 @@ Cloud Foundry enables you to inject service data directly to your running applic
 
 ## Creating a Service Key via the Service Dashboard
 
-1. [Access the Service Dashboard](/paas/services/dashboards.md) for which you want to create a Service Key
+1. [Access the Service Dashboard](osb.dashboards.md) for which you want to create a Service Key
 
 2. Navigate to **Service Key** in the top menu
 
