@@ -5,11 +5,11 @@ title:  Customer Accounts
 
 ## What is a Meshcustomer?
 
-A Meshcustomer is automatically created for you when you [sign up](profile.md) for a new account. A Meshcustomer usually represents your Company. On a customer you manage multiple [projects](project.md), manage your users and their access rights and maintan general data like addresses and payment methods.
+A Meshcustomer is automatically created for you when you [sign up](meshcloud.profile.md) for a new account. A Meshcustomer usually represents your Company. On a customer you manage multiple [projects](meshcloud.project.md), manage your users and their access rights and maintan general data like addresses and payment methods.
 
 ## Invite users to access a Meshcustomer
 
-If you would like to give others access to your Meshcustomer and the related Meshprojects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](project.md).
+If you would like to give others access to your Meshcustomer and the related Meshprojects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](meshcloud.project.md).
 
 ## Remove users from a Meshcustomer
 
