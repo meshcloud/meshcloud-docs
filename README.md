@@ -11,3 +11,8 @@ To build and start the docs locally with live-reloading, simply run:
 ```bash
 cd website && yarn && yarn start
 ```
+
+## License
+Like Docusaurus, the Meshcloud documentation portal is open source and MIT licensed.
+
+The documentation (e.g., .md files in the /docs folder) is Creative Commons licensed.
