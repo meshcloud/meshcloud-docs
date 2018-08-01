@@ -12,7 +12,7 @@ Log on to the Meshpanel with your account credentials and press "Create". Type i
 
 ## Assign user to a Meshproject
 
-Before being able to assign a user to a Meshproject, the user must have been [invited to the Meshcustomer](customer.md). Then go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Projects" and click the pen button to edit the project. In the "Project Users" section you can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Press the "+" to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects.
+Before being able to assign a user to a Meshproject, the user must have been [invited to the Meshcustomer](meshcloud.customer.md). Then go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Projects" and click the pen button to edit the project. In the "Project Users" section you can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Press the "+" to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects.
 
 ## Add/remove locations from a Meshproject
 
