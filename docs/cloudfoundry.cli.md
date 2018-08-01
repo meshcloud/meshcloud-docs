@@ -23,21 +23,8 @@ Within the new project, choose a location for the deployment of your first Cloud
 
 ## Cloud Foundry CLI Tools
 
-If you are using Cloud Foundry for the first time you will have to install the Cloud Foundry CLI tools. We show installation options for MacOS and Windows here. For further installation support check [this site](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
+If you are using Cloud Foundry for the first time you will have to install the Cloud Foundry CLI tools. Please follow the official [installation instructions](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
 
-For Windows:
-
-* Download the CF CLI installer [here](https://cli.run.pivotal.io/stable?release=windows64&source=github)
-* Unpack the zip-file and run the .exe file
-* Follow the dialogue
-* Start the Windows PowerShell and type `cf help` to test wether the installation was successful 
-
-For MacOS \(with homebrew\):
-
-* Start the terminal
-* Type \`brew tap cloudfoundry/tap\` and hit enter
-* Type \`brew install cf-cli\` and hit enter
-* Type `cf help` to test wether the installation was successful
 
 ## Cloud Foundry Authentification
 
