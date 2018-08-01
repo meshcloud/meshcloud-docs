@@ -14,7 +14,7 @@ You can use Cinder via the OpenStack API and CLI or via the Meshpanel.
 
 ### Creating a Volume 
 
-Before getting started, please make sure that you have [access to the OpenStack CLI.](/openstack.cli-access.md)
+Before getting started, please make sure that you have [access to the OpenStack CLI.](openstack.cli.md)
 
 If you would like to create a new volume with the OpenStack CLI, type:
 

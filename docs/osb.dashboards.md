@@ -7,9 +7,9 @@ To give you a better overview on what you are capable to do with your services, 
 
 ## Accessing your Service Dashboard
 
-1. [Login to your Cloud Foundry CLI ](/paas/cloud-foundry-cli-access.md)
+1. [Login to your Cloud Foundry CLI](cloudfoundry.cli.md)
 
-2. See a list of your services with `cf services`. If you do not have any services yet, get started by [Creating a Service](/paas/services/creating-a-service.md)
+2. See a list of your services with `cf services`. If you do not have any services yet, get started by [Creating a Service](cloudfoundry.services.md#creating-a-new-service)
 
 3. With `cf service yourServiceName` you get to see more details on your existing services
 
