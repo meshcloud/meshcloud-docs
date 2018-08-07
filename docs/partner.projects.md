@@ -18,7 +18,7 @@ To edit the quotas, please follow these steps:
 
 ## Deleted Projects
 
-When a Meshproject is deleted, it is not completely removed in the cloud platforms and in the database. Cloud Admins shall be able to check, whether there is no hidden workload still running in the project. Cloud Admins can find a list of **"Deleted Projects"** in the **"Projects"** Section of the **"Partner Area"**. This list allows Cloud Admins to check for projects that can be deleted finally in the cloud plattforms.
+When a Meshproject is deleted, it is not completely removed in the in the database. Partners and Admins can find a list of **"Deleted Projects"** in the **"Projects"** Section of the **"Partner Area"**. This list allows Cloud Admins to check for projects that have been deleted. The "Deleted in platforms On" column shows, when the background process, that actually deletes the "marked for deletion" projects in the platforms, has been executed successfully.
 
 ## Project History
 
