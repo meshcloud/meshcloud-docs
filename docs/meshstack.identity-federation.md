@@ -1,3 +1,7 @@
+---
+id: meshstack.identity-federation
+title: Identity Federation
+---
 # Identity Federation
 
 Meshstack supports integration with common enterprise single-sign-on system infrastructures. Identity Federation enables enterprises to integrate corporate SSO systems at a single point (the **Mesh Identity Broker**). Meshstack then automatically ensures identity and authorization federation into all connected **Platform Instances** as depicted below.
