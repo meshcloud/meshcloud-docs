@@ -18,7 +18,7 @@ The main supported technologies for Identity Federation with Meshstack are
 
 ## Requirements and Limitations
 
-Integrators must be aware of the following requirements and limitations for Enterprise Identity Providers (IdPs).
+Integrators must be aware of the following requirements and limitations for Enterprise Identity Providers (IdPs) which serve as identity sources for the Meshcloud multi-cloud system.
 
 - IdP must provide
   - a stable and immutable user identifier (e.g. an OIDC `sub` claim)
@@ -26,10 +26,10 @@ Integrators must be aware of the following requirements and limitations for Ente
   - an email address
 - IdP should provide name (first name, given name) information to improve user experience
 
-> \* Please note that meshstack only offers limited support for propagation of changed usernames from IdPs.
+> \* Please note that meshstack currently only offers limited support for propagation of changed usernames from IdPs.
 
 ## Concerns for High Availability
 
-Identity Fedeation is designed for high-availability and can be deployed in a redudant data-center HA setup. A potentiall loss of meshfed availabilty as the multi-cloud "control plane" is tolerable for the system. When configured correctly, users are still able to log in directly at cloud platform instances with the Mesh IdB and its optional upstream IdPs.
+Identity Fedeation is designed for high-availability and can be deployed in a redundant data-center HA setup. A potential loss of meshfed availability as the multi-cloud "control plane" is tolerable for the system. When configured correctly, users are still able to log in directly at cloud platform instances with the Mesh IdB and its optional upstream IdPs.
 
 Please consult the platform-specific documentation for the required configuration.
