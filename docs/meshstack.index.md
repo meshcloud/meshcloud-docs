@@ -5,5 +5,5 @@ title: Overview
 
 Welcome to the Meshstack!
 
-This document is targeted at cloud architects and SREs. 
+This document is targeted at cloud architects and SREs.
 
