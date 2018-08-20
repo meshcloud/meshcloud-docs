@@ -9,7 +9,7 @@ Meshstack supports integration with common enterprise single-sign-on system infr
 ```text
 Enterprise IdP A --> Mesh IdB -> Meshfed ---> Platform Instance X
                   /                       \
-Enterprise IdP B -  . . . . . . . . . . .  -> Platform Instance Y
+Enterprise IdP B -                         -> Platform Instance Y
 ```
 
 ## Supported Technologies
