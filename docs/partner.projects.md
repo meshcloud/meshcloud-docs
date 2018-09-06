@@ -11,8 +11,8 @@ To edit the quotas, please follow these steps:
 
 1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials
 2. Navigate to the** "Partner Area"** via the settings button on the top right or use this link: [https://panel.meshcloud.io/\#/partner](https://panel.meshcloud.io/#/partner)
-3. Click on **“Manage Customers”**. In this area you can create new customers and manage your customers’ quotas. You will see a list of your customers here.
-4. Under **"Actions", **you can click on **"Customer Projects" **and you will see a list of all the projects belonging to that customer.
+3. Click on **"Manage Customers"**. In this area you can create new customers and manage your customers’ quotas. You will see a list of your customers here.
+4. Under **"Actions"**, you can click on **"Customer Projects"** and you will see a list of all the projects belonging to that customer.
 5. Again under **"Actions"**, you reach the **"Quota Dashboard".** These quotas are project specific.
 6. You can now edit the quotas to your needs.
 
