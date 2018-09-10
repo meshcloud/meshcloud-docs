@@ -9,4 +9,4 @@ Here, you can find information about the use of the Meshpanel browser UI and the
 
 ## Contributing
 
-Feel free to [contribute](CONTRIBUTING.md) to the documentation.
+Feel free to [contribute](https://github.com/Meshcloud/meshcloud-docs/blob/master/CONTRIBUTING.md) to the documentation.
