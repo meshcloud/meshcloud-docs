@@ -1,6 +1,9 @@
 # Contributions
 
-Please create pull request for your changes and additions and request a reviewer of your choice. The reviewer reads the article and checks if the style guidelines are met. If (s)he is satisfied (s)he merges and publishes the changes.
+Please create pull request for your changes and additions and request a reviewer from the Meshcloud team. The reviewer reads the article and checks if the style guidelines are met. If (s)he is satisfied (s)he merges and publishes the changes.
+
+## Docusaurus
+Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
 
 # Style Guide for Meshcloud Documentation
 
@@ -16,4 +19,4 @@ Please create pull request for your changes and additions and request a reviewer
 
 The following formatting should be applied for contribution to the Meshcloud documentation.
 
-* Navigation Items: When you name navigation items such as menu labels put them in **bold**. For buttons use backticks (\`). No quotation marks around item names (") please.
+* Navigation Items: When you name navigation items such as **menu labels** put them in double-star **bold** (\*\*menu-label\*\*) . For `buttons` use backticks (\`button\`). No quotation marks around item names (") please.
