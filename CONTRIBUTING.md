@@ -12,4 +12,4 @@
 
 The following formatting should be applied for contribution to the Meshcloud documentation.
 
-* Navigation Items: When you name navigation items such as menu labels, buttons etc. put them in **bold**. No quotation marks (") please.
+* Navigation Items: When you name navigation items such as menu labels put them in **bold**. For buttons use backticks (\`). No quotation marks around item names (") please.
