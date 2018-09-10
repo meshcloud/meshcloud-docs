@@ -1,3 +1,7 @@
+# Contributions
+
+Please create pull request for your changes and additions and request a reviewer of your choice. The reviewer reads the article and checks if the style guidelines are met. If (s)he is satisfied (s)he merges and publishes the changes.
+
 # Style Guide for Meshcloud Documentation
 
 ## Language
