@@ -73,9 +73,9 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href={docUrl('meshcloud.index.html', language)}>meshcloud Platform Docs</Button>
+            <Button href={docUrl('meshcloud.index.html', language)}>meshcloud User Docs</Button>
             <Button href={docUrl('federation.index.html', language)}>Federation User Guide</Button>
-            <Button href={docUrl('meshstack.index.html', language)}>meshstack Overview</Button>
+            <Button href={docUrl('meshstack.index.html', language)}>meshstack Technology Guide</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -126,13 +126,13 @@ const LearnHow = props => (
   <Block background="light" layout="fourColumn">
     {[
       {
-        content: 'Deploy Applications and Containers in no time.',
+        content: 'Deploy Apps and Containers in no time',
         image: imgUrl('cloudfoundry.png'),
         imageAlign: 'top',
         title: `[Cloud Foundry](${docUrl('cloudfoundry.index.html', props.language)})`,
       },
       {
-        content: 'Deploy virtual infrastructure on OpenStack.',
+        content: 'Deploy virtual infrastructure on OpenStack',
         image: imgUrl('openstack.png'),
         imageAlign: 'top',
         title: `[OpenStack](${docUrl('openstack.index.html', props.language)})`,
@@ -144,7 +144,7 @@ const LearnHow = props => (
         title: `Kubernetes`,
       },
       {
-        content: 'Open Service Broker API.',
+        content: 'Open Service Broker API',
         image: imgUrl('osbapi.png'),
         imageAlign: 'top',
         title: `Open Service Broker API`,

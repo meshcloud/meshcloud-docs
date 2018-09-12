@@ -46,12 +46,30 @@ class Footer extends React.Component {
             </a>
           </div>
           <div>
-            <h5>Community</h5>
+            <h5>Community &amp; Follow us</h5>
             <a
               href="https://twitter.com/meshstack"
               target="_blank"
               rel="noreferrer noopener">
               Twitter
+            </a>
+            <a
+              href="https://www.facebook.com/meshstack/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Facebook
+            </a>
+            <a
+              href="https://www.linkedin.com/company/meshcloud"
+              target="_blank"
+              rel="noreferrer noopener">
+              LinkedIn
+            </a>
+            <a
+              href="https://www.xing.com/companies/meshcloud"
+              target="_blank"
+              rel="noreferrer noopener">
+              XING
             </a>
           </div>
           <div>

@@ -15,4 +15,4 @@ cd website && yarn && yarn start
 ## License
 Like Docusaurus, the Meshcloud documentation portal is open source and MIT licensed.
 
-The documentation (e.g., .md files in the /docs folder) is Creative Commons licensed.
+The contents of the documentation (e.g. the .md files in the /docs folder) is Creative Commons licensed.
