@@ -1,6 +1,6 @@
 # Contributions
 
-Please create pull request for your changes and additions and request a reviewer from the Meshcloud team. The reviewer reads the article and checks if the style guidelines are met. If (s)he is satisfied (s)he merges and publishes the changes.
+Please create pull request against `master` for your changes and additions and request a reviewer from the Meshcloud team. The reviewer reads the article and checks if the style guidelines are met. If (s)he is satisfied (s)he merges and publishes the changes.
 
 ## Docusaurus
 Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
