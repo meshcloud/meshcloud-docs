@@ -101,11 +101,11 @@ const Features = props => (
       },
       {
         title: `[**mesh**cloud Federation](${docUrl('cloudfoundry.index.html', props.language)})`,
-        content: 'our public cloud offering',
+        content: 'Our public cloud offering',
       },
       {
         title: `[**mesh**stack](${docUrl('cloudfoundry.index.html', props.language)})`,
-        content: 'Technology',
+        content: 'Technical Documentation',
       },
     ]}
   </Block>
@@ -144,7 +144,11 @@ const LearnHow = props => (
         title: `Kubernetes`,
       },
       {
+<<<<<<< HEAD
         content: 'Open Service Broker API',
+=======
+        content: 'Integrate external services',
+>>>>>>> 19b785733f712d1968e68e8e871ab217f5a64ad9
         image: imgUrl('osbapi.png'),
         imageAlign: 'top',
         title: `Open Service Broker API`,
