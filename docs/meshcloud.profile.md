@@ -28,7 +28,10 @@ After a successful registration the next step is to Login into your federated Me
 
 ## Change Password
 
-Coming soon.
+1. In the Meshpanel, click on the **Login** link in the upper right corner
+2. Below the input field for your username or e-mail, click the **Forgot Password?** link.
+3. Enter your e-mail address and click **Reset Passsword**
+4. You will receive an e-mail with further instructions.
 
 ## Profile
 
