@@ -144,11 +144,7 @@ const LearnHow = props => (
         title: `Kubernetes`,
       },
       {
-<<<<<<< HEAD
-        content: 'Open Service Broker API',
-=======
         content: 'Integrate external services',
->>>>>>> 19b785733f712d1968e68e8e871ab217f5a64ad9
         image: imgUrl('osbapi.png'),
         imageAlign: 'top',
         title: `Open Service Broker API`,
