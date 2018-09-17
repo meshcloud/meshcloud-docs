@@ -9,7 +9,7 @@ The OpenStack CLI tools enable you to experience the full set of our OpenStack S
 
 You install the OpenStack CLI tools from PyPI using pip
 
-```
+```bash
 pip install python-openstackclient
 ```
 

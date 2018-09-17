@@ -4,6 +4,7 @@ title: Cloud Foundry
 ---
 
 ## Architektur
+
 Der Zugriff auf Cloud Foundry Plattformen erfolgt durch die Authentifizierung über OIDC (OpenID Connect-Protokoll) und die Autorisierung über replizierte Berechtigungen.
 
 Beim Zugriff auf die Cloud bringt der Nutzer ein Token mit (JWT), das vom Meshstack-Keycloak ausgestellt wurde und vom UAA validiert wird (s. Ablauf beim Zugriff). Der Meshstack-Keycloak wiederum greift auf eine externe Identitätsquelle zurück (z.B. LDAP, Cloud IdP).
@@ -19,6 +20,7 @@ Werden die Berechtigungen auf die Cloud für Nutzer über den Meshstack geänder
 ![Cloud Foundry Architecture](assets/cf-architecture.png)
 
 ## Cloud Foundry Access
+
 Der Zugriff eines Users auf Cloud Foundry läuft nun nach dem folgenden Schema ab:
 
 1. Der User greift über den Browser auf den Meshstack zu.

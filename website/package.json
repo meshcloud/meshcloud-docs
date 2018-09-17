@@ -3,17 +3,22 @@
   "scripts": {
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
-    "prebuild": "yarn lint",
+    "prebuild": "run-s lint",
     "build": "docusaurus-build",
     "publish-gh-pages": "docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
-    "lint": "textlint ../docs/"
+    "lint": "run-s lint:*",
+    "lint:text": "textlint ../docs/",
+    "lint:markdown": "markdownlint ../docs/*.md"
   },
   "devDependencies": {
-    "docusaurus": "~1.3.0",
     "@textlint-rule/textlint-rule-no-dead-link": "^3.2.0",
+    "docusaurus": "~1.3.0",
+    "markdownlint": "^0.11.0",
+    "markdownlint-cli": "^0.13.0",
+    "npm-run-all": "^4.1.3",
     "textlint": "^11.0.0"
   }
 }

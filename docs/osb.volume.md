@@ -13,7 +13,7 @@ Please see the [pricing sheet](https://panel.meshcloud.io/#/billing/prices?tab=c
 
 ## Mounting a Volume
 
-When binding an instance of the Volume service, the volume will be mounted to `/mnt` by default. 
+When binding an instance of the Volume service, the volume will be mounted to `/mnt` by default.
 
 To customize this mount-point, you can specify the `container_dir` parameter when creating a service binding. We recommend storing custom binding parameters as a `volume-binding.json` file next to your `manifest.yml` \(manifests themselves do [not yet](https://github.com/cloudfoundry/cli/issues/1173) support service binding parameters\).
 

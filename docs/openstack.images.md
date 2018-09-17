@@ -13,6 +13,7 @@ There you can chose an image file to upload and set a name.
 Disk and container format must reflect the format of the image file you wish to upload (currently only raw images are supported).
 
 The visibility options are:
+
 * Public: Any user may read the image and it's presented as a default image to all users.
 * Community: Any user may read the image but it's not presented as a default image.
 * Shared: The image can be shared with others but only if they are added explicitly by the owner.

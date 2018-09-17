@@ -26,10 +26,9 @@ In order for your apps to receive traffic under the newly registered domain you 
 
 There are many other options for route binding for example the app can directly be binded via a `Manifest` entry during a `cf-push` operation. For other options regarding the route binding see the Cloud Foundry [route documentation](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#map-route).
 
-
 ## Delete a Private Domain
 
-**Please note**: Before you can delete a Private Domain all routes containing this domain must be deleted beforehand. Deleting the app is not enough to release the created routes again. 
+**Please note**: Before you can delete a Private Domain all routes containing this domain must be deleted beforehand. Deleting the app is not enough to release the created routes again.
 
 1. Open a [Cloud Foundry CLI terminal](cloudfoundry.cli.md)
 2. Issue a `cf delete-route private-domain-example.com --hostname test` to delete the previously created domain (in your case the correct syntax might differ since the command must equal the options used to create the route in the first place)

@@ -25,7 +25,6 @@ Within the new project, choose a location for the deployment of your first Cloud
 
 If you are using Cloud Foundry for the first time you will have to install the Cloud Foundry CLI tools. Please follow the official [installation instructions](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
 
-
 ## Cloud Foundry Authentification
 
 * In the Meshpanel on the CLI Access page click on **Get Passcode**. Copy the temporary authentication code that opens up in a new window.
@@ -43,4 +42,3 @@ If you are using Cloud Foundry for the first time you will have to install the C
 To get started choose a space/project by typing `cf target -s YOURPROJECTNAME`
 
 **Congratulations, you successfully installed the CF CLI tools and are ready to get started with Cloud Foundry now.**
-

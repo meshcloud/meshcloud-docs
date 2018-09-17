@@ -3,7 +3,7 @@ id: partner.projects
 title: Administrate Projects
 ---
 
-# Managing Project Quotas
+## Managing Project Quotas
 
 The Partner Area includes a quota dashboard that lets you define the amount of resources your customers can use for their projects. These resource definitions are called quotas. Quotas can be set per customer project. OpenStack and Cloud Foundry quotas are defined independently.
 
@@ -23,4 +23,3 @@ When a Meshproject is deleted, it is not completely removed in the cloud platfor
 ## Project History
 
 Sometimes it might be necessary to get additional information about the lifecycle of the project. The archive icon in the list of deleted projects shows all major events that have happened on the project. This history is also available for existing projects in the **Customers** section of the **Partner Area**. Navigate to the **Customer Projects** of a specific customer and click the archive icon on the project you want to get details about.
-

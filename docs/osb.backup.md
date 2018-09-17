@@ -2,8 +2,6 @@
 id: osb.backup
 title: Backup & Restore
 ---
-
-
 For all data services like Database, Document Stores and other content related services we offer a basic Backup and Restore integration. For Services like MariaDB for example we rely on `mysqldump.`
 
 We chose to take this approach to enable customers an easy integration with existing Backup and Restore methods they know from general interaction with their Database and Document Store.
@@ -58,23 +56,15 @@ As you should never use your personal Account for the configuration of a File En
 
 Doing backups in Cloud Environments is heavily dependent on Object File Stores like Swift. To successfully configure a File Endpoint for your Service it is necessary that you configure a Swift Container before. Follow the steps below to create a Swift Container.
 
-```
-Please be aware, that Service Users are per Location and Project. That means, you need to create the Swift Container 
-on the same Location and Project as you did it for the Service User.
-```
+> Please be aware, that Service Users are per Location and Project.
+> That means, you need to create the Swift Container on the same Location and Project as you did it for the Service User.
 
 1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io)
-
 2. If not logged in, please login with your personal credentials
-
 3. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files
-
 4. After selecting a Location & Project choose in the Menu Bar on the left **Storage &gt; Blobs**
-
 5. Enter the Name of the Swift Container and press the ![Plus Sign](assets/plus-sign.png)
-
 6. You have now successfully created a Swift Container
-
 
 ## Configuration of Backup for Services
 
@@ -85,15 +75,16 @@ To configure Backup for Services you should have completed the following steps:
 1. Created a Service User
 2. Created a Swift Container
 3. Created a Service via `cf marketplace`
-4. Accessed the Service Dashboard via `cf service yourServiceName` picking the Dashboard URL. For example: 
-   ```bash
+4. Accessed the Service Dashboard via `cf service yourServiceName` picking the Dashboard URL. For example:
+
+   ```text
    Service instance: sample
    Service: Sample-DEV
-   Bound apps: 
-   Tags: 
+   Bound apps:
+   Tags:
    Plan: S
    Description: Sample Instances
-   Documentation url: 
+   Documentation url:
    Dashboard: https://example-dev.cf.eu-de-netde.msh.host/v2/dashboard/0f377a9a-7f4e-4965-b226-04c05d493db9
    ```
 
@@ -101,7 +92,7 @@ To configure Backup for Services you should have completed the following steps:
 
 After you have successfully completed the steps above you need to access the Dashboard URL.
 
-1. The Dashboard page is loading after you have entered the Dashboard URL 
+1. The Dashboard page is loading after you have entered the Dashboard URL
 2. When you are logged in, you will be directly redirected to the Dashboard Overview. If you are not logged in, you will be redirected to the Meshfed SSO Login. To login, please read [Logging in via Meshfed SSO](meshcloud.profile.md#login)
 3. After a successful login and the **first** access of the Dashboard URL you will be asked to authorize the access of the Service. Click on **Authorize** to proceed
 4. When you have completed the steps above, you are all set and you can continue to create the Service File Endpoint and Backup Plan Configuration
@@ -126,7 +117,7 @@ To create a regular backup you can configure multiple Backup Plans. To create a 
 3. Fill in the presented form.
 
    1. Frequency: When should the backup be executed? You must provide a cron type string with 6 fields.  
-      Example: Each value is separated by a space. `* * 5 * * *` means everyday at 5 o'clock, while `* * */5 * * *`  means every 5 hours. 
+      Example: Each value is separated by a space. `* * 5 * * *` means everyday at 5 o'clock, while `* * */5 * * *`  means every 5 hours.
 
       1. The first field represents for **seconds.** Valid values are 0-59.
 
@@ -151,6 +142,3 @@ To create a regular backup you can configure multiple Backup Plans. To create a 
       4. **DAYS** deletes all backup files older than the number of days specified in the period field.
 
    3. Select the destination where the backups should be stored.
-
-
-

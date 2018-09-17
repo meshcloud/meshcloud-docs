@@ -7,7 +7,7 @@ Within the Meshcloud platform we differentiate the following roles for users
 
 ## Customer Admin
 
-Customers can create multiple projects and can have multiple customer employees \(users\) belonging to one company or one department. A customer admin can add users to a project via e-mail invite. 
+Customers can create multiple projects and can have multiple customer employees \(users\) belonging to one company or one department. A customer admin can add users to a project via e-mail invite.
 
 As a Customer Admin you can:
 

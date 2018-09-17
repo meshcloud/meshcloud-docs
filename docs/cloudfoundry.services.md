@@ -36,12 +36,14 @@ They enable application developers to use the credentials of a Service deployed 
 
 ## Creating a new Service
 
-To create a new service, type 
+To create a new service, type
+
 ```bash
 cf create-service SERVICE_NAME SERVICE_PLAN YOUR_SERVICE_NAME
 ```
 
-For example, you can create a MongoDB database for the with 
+For example, you can create a MongoDB database for the with
+
 ```bash
 cf create-service MongoDB S musicdb
 ```

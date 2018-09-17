@@ -3,11 +3,12 @@
 Please create pull request against `master` for your changes and additions and request a reviewer from the Meshcloud team. The reviewer reads the article and checks if the style guidelines are met. If (s)he is satisfied (s)he merges and publishes the changes.
 
 ## Docusaurus
+
 Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
 
-# Style Guide for Meshcloud Documentation
+## Style Guide for Meshcloud Documentation
 
-## Language
+### Language
 
 * Primary documentation language is **English**.
 * The tone is practical without personal opinions, viewpoints, rants etc. – it's a sober technical documentation.
@@ -15,8 +16,11 @@ Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
 * Do not bloat your texts by getting anecdotic, stating too many details or providing too many alternatives to reach a certain goal.
 * Use paragraphs and sub headings in a meaningful way to structure your text for quick scanning.
 
-## Formatting
+### Formatting
 
 The following formatting should be applied for contribution to the Meshcloud documentation.
 
-* Navigation Items: When you name navigation items such as **menu labels** put them in double-star **bold** (\*\*menu-label\*\*) . For `buttons` use backticks (\`button\`). No quotation marks around item names (") please.
+* Navigation Items: When you name navigation items such as **menu labels** put them in double-star **bold** (\*\*menu-label\*\*) .
+* For `buttons` use backticks (\`button\`).
+* No quotation marks around item names (") please.
+* Use the style as recommended by [markdownlint](https://github.com/markdownlint/markdownlint). For VSCode use the extensions `davidanson.vscode-markdownlint` to get inline linting.
