@@ -23,18 +23,18 @@ class Help extends React.Component {
     const supportLinks = [
       {
         content: `Learn more using the [documentation on this site.](${docUrl(
-          'doc1.html',
+          'meshcloud.index.html',
           language
         )})`,
         title: 'Browse Docs',
       },
       {
-        content: 'Ask questions about the documentation and project',
-        title: 'Join the community',
+        content: 'Visit our [Homepage](https://www.meshcloud.io) for more information.',
+        title: 'More Meshcloud',
       },
       {
-        content: "Find out what's new with this project",
-        title: 'Stay up to date',
+        content: "Find more multi-cloud related posts in our [Blog](https://www.meshcloud.io/blog).",
+        title: 'Visit our Blog',
       },
     ];
 
@@ -45,7 +45,9 @@ class Help extends React.Component {
             <header className="postHeader">
               <h2>Need help?</h2>
             </header>
-            <p>This project is maintained by a dedicated group of people.</p>
+            <p>This project is maintained by <a href="https://www.meshcloud.io/en/impressum/">Meshcloud GmbH</a>.
+            </p>
+            <p>Visit <a href="https://support.meshcloud.io">support.meshcloud.io</a> for direct support on your issues.</p>
             <GridBlock contents={supportLinks} layout="threeColumn" />
           </div>
         </Container>
