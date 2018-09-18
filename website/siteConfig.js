@@ -35,6 +35,7 @@ const siteConfig = {
     { doc: 'meshcloud.index', label: 'meshcloud user docs' },
     { doc: 'federation.index', label: 'meshcloud federation guide' },
     { doc: 'meshstack.index', label: 'meshstack tech docs' },
+    { blog: true, label: 'release notes' },
     { page: 'help', label: 'Help' },
   ],
 
