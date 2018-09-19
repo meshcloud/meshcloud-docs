@@ -21,7 +21,7 @@ Meshstack currently supports OpenShift version 3.7 as either Open-Source (OKD) o
 
 ### IdP Configuration
 
-In order to integrate with [Meshstack Identity Federation](./meshstack.identity-federation.md), Operators need to configure the Meshstack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.openshift.org/latest/install_config/configuring_authentication.html#OpenID) using the following settings:
+In order to integrate with [Meshstack Identity Federation](./meshstack.identity-federation.md), Operators need to configure the Meshstack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.okd.io/latest/install_config/configuring_authentication.html#OpenID) using the following settings:
 
 ```yml
 identityProviders:
