@@ -18,11 +18,11 @@ In order to provision a service instance for your project you first have to choo
 
 ### Maintain Service Instances
 
-In order to see the status of your instances, add a binding, or remove a provisioned instance go to the **Instances** section und **Marketplace** in the navigation on the left. You find a list of all your service instances and can also access their dashboards via the dashboard icon on the right.
+In order to see the status of your instances, add a binding, or remove a provisioned instance go to the **Instances** section under **Marketplace** in the navigation on the left. You find a list of all your service instances and can also access their dashboards via the dashboard icon on the right.
 
 #### Update Service Instance
 
-Via the `pen` icon you can edit the service instance. Changing the name is always available. Just enter a new name if you want to change it. If the service supports an upgrade of plans, a dropdown with all plans of the service is displayed. You can select another plan if you want to change the plan for the given service instance. You can also change the parameters of the service (see "Service Parameters" section below). Only enter the parameters you want to change. Empty parameters will be ignored.
+Via the `pen` icon you can edit the service instance. Changing the name is always available. Just enter a new name if you want to change it. If the service supports an upgrade of plans, a dropdown with all plans of the service is displayed. You can select another plan if you want to change the plan for the given service instance. You can also change the parameters of the service (see [Service Parameters](#service-parameters) section below). Only enter the parameters you want to change. Empty parameters will be ignored.
 
 ### Service Parameters
 
