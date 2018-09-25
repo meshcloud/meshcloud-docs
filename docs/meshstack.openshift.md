@@ -9,7 +9,7 @@ Meshstack supports project creation, configuration, user management and SSO for 
 
 ## Integration Overview
 
-To enable integration with OpenShift, Operators deploy and configure the Meshstack OpenShift Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` OpenShift. This makes OpenShift available to Projects like any other cloud platform in Meshstack.
+To enable integration with OpenShift, operators deploy and configure the Meshstack OpenShift Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` OpenShift. This makes OpenShift available to Meshprojects like any other cloud platform in Meshstack.
 
 Meshstack automatically configures OpenShift Projects and Permissions to integrate SSO with [Meshstack Identity Federation](./meshstack.identity-federation.md).
 
@@ -21,7 +21,7 @@ Meshstack currently supports OpenShift version 3.7 as either Open-Source (OKD) o
 
 ### IdP Configuration
 
-In order to integrate with [Meshstack Identity Federation](./meshstack.identity-federation.md), Operators need to configure the Meshstack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.okd.io/latest/install_config/configuring_authentication.html#OpenID) using the following settings:
+In order to integrate with [Meshstack Identity Federation](./meshstack.identity-federation.md), operators need to configure the Meshstack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.okd.io/latest/install_config/configuring_authentication.html#OpenID) using the following settings:
 
 ```yml
 identityProviders:
