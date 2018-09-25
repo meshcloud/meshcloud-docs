@@ -11,7 +11,7 @@ Meshstack supports project creation, configuration, user management and SSO for 
 
 To enable integration with AWS, Operators deploy and configure the Meshstack AWS Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` AWS. In a typical setup, we recommend grouping each AWS `PlatformInstance` in a separate `Location`.
 
-This makes AWS available to Projects like any other cloud platform in Meshstack.
+This makes AWS available to Meshprojects like any other cloud platform in Meshstack.
 
 Meshstack automatically configures AWS IAM in all managed accounts to integrate SSO with [Meshstack Identity Federation](./meshstack.identity-federation.md).
 
@@ -19,7 +19,7 @@ Meshstack automatically configures AWS IAM in all managed accounts to integrate 
 
 ### AWS Root Account
 
-Meshstack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [MeshProjects](./meshcloud.project.md). To use AWS with a Meshstack deployment, operators will need an AWS "root" account acting as the parent of all Accounts managed by Meshstack.
+Meshstack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [Meshprojects](./meshcloud.project.md). To use AWS with a Meshstack deployment, operators will need an AWS "root" account acting as the parent of all accounts managed by Meshstack.
 
 ### Identifier Configuration
 
@@ -69,7 +69,7 @@ Operators need to securely inject the generated credentials into the configurati
 
 ### Project-Account Email Addresses
 
-AWS requires a unique email address for each Account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder). For example, this pattern
+AWS requires a unique email address for each account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder). For example, this pattern
 
 ```yaml
 accountEmailTemplate: aws+%s@meshcloud.io
@@ -82,6 +82,8 @@ allows generation of account names:
 
 ### IAM Roles and Service Control Policies
 
-When a Meshstack User accesses an AWS Project, they are assigned an AWS IAM Role based on their project role configured on the MeshProject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template.
+When a Meshstack user accesses an AWS project, they are assigned an AWS IAM role based on their project role configured on the Meshproject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template.
 
-When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) and  Please contact us for more details and reference configurations.
+When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) and [...].
+
+Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
