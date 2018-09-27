@@ -65,35 +65,6 @@ Attach the following inline policy using this json
 }
 ```
 
-<<<<<<< HEAD
-These keys need to be securely injected into the configuration of the AWS Connector.
-
-```yaml
-replicator-aws:
-  platforms:
-    - platform: aws.aws-meshstack-dev # qualified platform id (location-id.platform-id)
-      region:  us-east-1              # AWS Organizations API is only available here
-      accessKey: "<accessKey>"
-      secretKey: "<secretKey>"
-```
-
-### Project-Account Email Addresses
-
-AWS requires a unique email address for each Account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder).
-
-```yaml
-replicator-aws:
-  platforms:
-    - platform: ...
-      accountEmailTemplate: aws+%s@meshcloud.io
-```
-
-### IAM Roles and Service Control Policies
-
-When a Meshstack User accesses an AWS Project, they are assigned an AWS IAM Role based on their project role configured on the MeshProject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template.
-
-When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) and  Please contact us for more details and reference configurations.
-=======
 Operators need to securely inject the generated credentials into the configuration of the AWS Connector.
 
 ### Project-Account Email Addresses
@@ -116,4 +87,3 @@ When a Meshstack user accesses an AWS project, they are assigned an AWS IAM role
 When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 
 Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
->>>>>>> master
