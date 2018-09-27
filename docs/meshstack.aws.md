@@ -84,6 +84,6 @@ allows generation of account names:
 
 When a Meshstack user accesses an AWS project, they are assigned an AWS IAM role based on their project role configured on the Meshproject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template.
 
-When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) and [...].
+When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 
 Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
