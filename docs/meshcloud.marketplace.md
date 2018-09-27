@@ -28,14 +28,6 @@ Via the `pen` icon you can edit the service instance. Changing the name is alway
 
 If the service fully supports parameters you see input fields for all parameters of the service. Sometimes services do not fully support parameters, but you know which parameters a service requires. In that case, use the textarea to enter the parameters in JSON format.
 
-#### Update Service Instance
-
-Via the **pen** icon you can also edit the service instance. Changing the name is always available. Just enter a new name, if you want to change it. If the service supports an upgrade of plans, a dropdown with all plans of the service is displayed. You can select another plan if you want to change the plan for the given service instance. You can also change the parameters of the service. (see "Service Parameters" section below) Only enter the parameters you want to change. Empty parameters will be ignored.
-
-### Service Parameters
-
-If the service fully supports parameters you see input fields for all paramaters of the service. If the service does not fully support parameters, but you are sure it requires some paramaters, a textarea is displayed. You can enter the parameters in JSON format in that case.
-
 ### Add a Binding
 
 To finally get your connection information and credentials you have to add a binding to the service instance. You have to enter a name for the binding. When the binding has been created you can see the access information and connect to the service from within your application.
