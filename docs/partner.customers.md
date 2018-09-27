@@ -21,19 +21,23 @@ With Meshcloud you can easily create customer accounts. The Meshcloud partner ar
 
 1. Create a project for your customer from the project dashboard.
 2. Navigate to Users in your Account Settings or use this link:
-    [https://panel.meshcloud.io/\#/partner/customers](https://panel.meshcloud.io/#/partner/customers).
-3. In the **Actions** colum click on the envelope icon.
-
-There you can write your messages and you can choose which recipient should receive the messages: all users of the customer or only the admin user.
-It is also possible to specify a read mode: **All must read** will show the message to all recipients and everyone has to acknowledged the message. Or you can choose **Single read only** which will hide the message for all other users if one single user has acknowledged it.
+    [https://panel.meshcloud.io/\#/customer/users](https://panel.meshcloud.io/#/customer/users)
+3. Add new users to the customer. They will receive an invitation via e-mail.
+4. As a customer admin you have to provide users access to the project for which they should manage the resources.
+5. Navigate to **Settings &gt; Accounts &gt; Projects** and provide access to the project.
 
 ## Send messages to customer users
 
-If you want to send a short notification to the user of your managed customers account you can do so:
+Partner are able to send short notification messages to the users of their managed customer accounts. These notifications will be displayed upon login for the recipients.
+
+In order to send such a message:
 
 1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials.
 2. Navigate **Settings &gt; Partner Area** via the settings button on the top right or use this link:
    [https://panel.meshcloud.io/\#/partner](https://panel.meshcloud.io/#/partner).
+3. In the **Actions** colum click on the envelope icon.
+
+There you can write your messages and you can choose which recipient should receive the messages: **All must read** will show the message to all recipients and everyone has to acknowledged the message. Or you can choose **Single read only** which will hide the message for all other users if one single user has acknowledged it.
 
 ## Show Usage Report of customer
 
