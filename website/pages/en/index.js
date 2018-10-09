@@ -75,7 +75,7 @@ class HomeSplash extends React.Component {
           <PromoSection>
             <Button href={docUrl('meshcloud.index.html', language)}>meshcloud User Docs</Button>
             <Button href={docUrl('federation.index.html', language)}>Federation User Guide</Button>
-            <Button href={docUrl('meshstack.index.html', language)}>meshstack Technology Guide</Button>
+            <Button href={docUrl('meshstack.index.html', language)}>meshstack Operator Docs</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -96,16 +96,16 @@ const Features = props => (
   <Block layout="threeColumn">
     {[
       {
-        title: `[**mesh**cloud](${docUrl('cloudfoundry.index.html', props.language)})`,
-        content: 'User documentation',
+        title: `[**mesh**cloud](${docUrl('meshcloud.index.html', props.language)})`,
+        content: 'Documentation for users of a meshcloud (mesh of clouds) managed by meshstack',
       },
       {
         title: `[**mesh**cloud Federation](${docUrl('cloudfoundry.index.html', props.language)})`,
-        content: 'Our public cloud offering',
+        content: 'Our public cloud offering based on meshstack',
       },
       {
         title: `[**mesh**stack](${docUrl('cloudfoundry.index.html', props.language)})`,
-        content: 'Technical Documentation',
+        content: 'Technical documentation for operators of our meshstack multi-cloud platform.',
       },
     ]}
   </Block>
@@ -148,7 +148,7 @@ const LearnHow = props => (
         image: imgUrl('osbapi.png'),
         imageAlign: 'top',
         title: `Open Service Broker API`,
-      },
+      }
     ]}
   </Block>
 );

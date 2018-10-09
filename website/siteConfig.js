@@ -15,7 +15,7 @@ const users = [
 
 const siteConfig = {
   title: 'Meshcloud Documentation Portal' /* title for your website */,
-  tagline: 'User and Developer Documentation',
+  tagline: 'User and Operator Documentation',
   url: 'https://docs.meshcloud.io' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -32,10 +32,10 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'meshcloud.index', label: 'meshcloud user docs' },
-    { doc: 'federation.index', label: 'meshcloud federation guide' },
-    { doc: 'meshstack.index', label: 'meshstack tech docs' },
-    { blog: true, label: 'release notes' },
+    { doc: 'meshcloud.index', label: 'User docs' },
+    { doc: 'meshstack.index', label: 'Operator docs' },
+    { doc: 'federation.index', label: 'Meshcloud Federation' },
+    { blog: true, label: 'Release notes' },
     { page: 'help', label: 'Help' },
   ],
 
