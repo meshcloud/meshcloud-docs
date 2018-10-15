@@ -19,13 +19,8 @@ The following steps describe how to create a Service User:
 
 5. On the form enter a description for the Service User, e.g. _PaaS Backup Service User._
 
-6. In the Platform Section select the platform for which you wish to create the service user. For Service Broker Backups you require a Service User for OpenStack DARZ. If you are aiming to build a continuous integration pipeline you are probably looking for a Cloud Foundry Service User.
+6. Click on the **+** button to add the Service User. An automated download will start and provide you with the Service User credentials.
 
-7. Click on the **+** button to add the Service User. An automated download will start and provide you with the Service User credentials.
+7. Note down the password, as it won't be visible and/or recoverable anymore.
 
-8. Note down the password, as it won't be visible and/or recoverable anymore.
-
-9. Congratulations. You successfully created a Service User.
-
-
-
+8. Congratulations. You successfully created a Service User.
