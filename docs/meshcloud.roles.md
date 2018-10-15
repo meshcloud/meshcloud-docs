@@ -3,7 +3,7 @@ id: meshcloud.roles
 title: User Roles
 ---
 
-Within the Meshcloud platform we differentiate the following roles for users
+Within the Meshcloud platform we differentiate the following roles for users.
 
 ## Customer Admin
 
@@ -24,3 +24,7 @@ Customer Employees need to be granted access to projects by an Customer Admin. T
 As a Customer Employee you can:
 
 * Create and delete resources within the projects that you have been granted access to by a customer admin
+
+## Project Roles
+
+Users can also be assigned different roles on project level, which is described in our [Project section](meshcloud.project.md)
