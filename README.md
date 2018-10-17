@@ -1,5 +1,7 @@
 # Meshcloud Documentation
 
+[![Build Status](https://travis-ci.com/Meshcloud/meshcloud-docs.svg?branch=develop)](https://travis-ci.com/Meshcloud/meshcloud-docs)
+
 Welcome to the Meshcloud Platform documentation!
 
 It's all built on [docusaurus](https://docusaurus.io/en/) and available on [GitHub](https://github.com/Meshcloud/meshcloud-docs). We accept community contributions!
