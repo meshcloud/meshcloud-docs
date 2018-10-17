@@ -3,8 +3,11 @@ node_js: "8"
 cache:
   yarn: true
 
+before_install:
+  - cd website # changes directory for all subsequent steps
+
 install:
-  - ls -la && cd website && yarn install --frozen-lockfile
+  - yarn install --frozen-lockfile
 
 script:
-  - ls -la && cd website && yarn build
+  - yarn build
