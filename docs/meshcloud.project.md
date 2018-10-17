@@ -20,6 +20,7 @@ In the **Project Users** section you can find a `type email` field at the bottom
 ### Project Roles
 
 Project Roles grant users a configured set of permissions in cloud platforms used by the project. There are currently two roles available:
+
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
