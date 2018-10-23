@@ -59,14 +59,14 @@ kind: ServiceAccount
 metadata:
   name: meshfed-service
   annotations:
-    io.meshcloud/meshstack.replicator-openshift.version: "1.0"
+    io.meshcloud/meshstack.replicator-kubernetes.version: "1.0"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: meshfed-service
   annotations:
-    io.meshcloud/meshstack.replicator-openshift.version: "1.0"
+    io.meshcloud/meshstack.replicator-kubernetes.version: "1.0"
 rules:
 - apiGroups:
   - ""
@@ -114,7 +114,7 @@ kind: ClusterRoleBinding
 metadata:
   name: meshfed-service
   annotations:
-    io.meshcloud/meshstack.replicator-openshift.version: "1.0"
+    io.meshcloud/meshstack.replicator-kubernetes.version: "1.0"
 subjects:
 - kind: ServiceAccount
   name: meshfed-service
