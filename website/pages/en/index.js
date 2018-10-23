@@ -96,15 +96,15 @@ const Features = props => (
   <Block layout="threeColumn">
     {[
       {
-        title: `[**mesh**cloud](${docUrl('meshcloud.index.html', props.language)})`,
+        title: `[mesh**cloud**](${docUrl('meshcloud.index.html', props.language)})`,
         content: 'Documentation for users of a meshcloud (mesh of clouds) managed by meshstack',
       },
       {
-        title: `[**mesh**cloud Federation](${docUrl('cloudfoundry.index.html', props.language)})`,
+        title: `[mesh**cloud Federation**](${docUrl('federation.index.html', props.language)})`,
         content: 'Our public cloud offering based on meshstack',
       },
       {
-        title: `[**mesh**stack](${docUrl('cloudfoundry.index.html', props.language)})`,
+        title: `[mesh**stack**](${docUrl('meshstack.index.html', props.language)})`,
         content: 'Technical documentation for operators of our meshstack multi-cloud platform.',
       },
     ]}
@@ -129,25 +129,25 @@ const LearnHow = props => (
         content: 'Deploy Apps and Containers in no time',
         image: imgUrl('cloudfoundry.png'),
         imageAlign: 'top',
-        title: `[Cloud Foundry](${docUrl('cloudfoundry.index.html', props.language)})`,
+        title: `[Cloud Foundry](${docUrl('cloudfoundry.index.html', props.language)})`
       },
       {
         content: 'Deploy virtual infrastructure on OpenStack',
         image: imgUrl('openstack.png'),
         imageAlign: 'top',
-        title: `[OpenStack](${docUrl('openstack.index.html', props.language)})`,
+        title: `[OpenStack](${docUrl('openstack.index.html', props.language)})`
       },
       {
         content: 'Manage Kubernetes Clusters',
         image: imgUrl('k8s.png'),
         imageAlign: 'top',
-        title: `Kubernetes`,
+        title: `[Kubernetes](${docUrl('kubernetes.index.html', props.language)})`
       },
       {
-        content: 'Integrate external services',
+        content: 'Integrate cloud services based on the Open Service Broker API',
         image: imgUrl('osbapi.png'),
         imageAlign: 'top',
-        title: `Open Service Broker API`,
+        title: `[Open Service Marketplace](${docUrl('osb-marketplace.index.html', props.language)})`
       }
     ]}
   </Block>
