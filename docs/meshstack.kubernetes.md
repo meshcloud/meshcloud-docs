@@ -1,5 +1,5 @@
 ---
-id: meshstack.k8s
+id: meshstack.kubernetes
 title: Kubernetes
 ---
 
