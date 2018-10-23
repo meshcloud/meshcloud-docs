@@ -1,5 +1,5 @@
 ---
-id: meshstack.cloud-foundry
+id: meshstack.cloudfoundry
 title: Cloud Foundry
 ---
 
