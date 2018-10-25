@@ -39,7 +39,7 @@ be replaced with the appropriate values for your individual meshstack installati
 
 ```yaml
 authorization-mode: RBAC
-oidc-issuer-url: "https://$SSO_URL"
+oidc-issuer-url: "https://$SSO_URL/auth/realms/meshfed"
 oidc-client-id: "meshfed-oidc"
 oidc-username-claim: "sub"
 oidc-username-prefix: "mesh:"
