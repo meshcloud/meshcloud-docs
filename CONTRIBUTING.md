@@ -6,6 +6,17 @@ Please create pull request against `master` for your changes and additions and r
 
 Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
 
+## Audience Personas
+
+Meshcloud offers different functionality to people with different roles. To make documentation clearer, we introduce different *audience personas* which helps to direct a feature or description to a defined target role. Authors of documentation or Release Notes should tailor their descriptions using these roles to communicate efficiently.
+
+* **User**  
+Someone who uses the meshcloud panel to consume the meshcloud functionality, usually a developer or DevOps engineer. Users are focused on delivering value with their application deployments and use meshcloud to efficiently access, automate and administer the cloud technology they want to use. They want quick access to their deployment spaces and the resources they need. This means avoiding lenghty processes as much as possible, self-service and straight-through processing is key. 
+
+* **Partner**
+
+* **Operator**
+
 ## Style Guide for Meshcloud Documentation
 
 ### Language
