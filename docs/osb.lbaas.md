@@ -1,6 +1,6 @@
 ---
 id: osb.lbaas
-title: Load Balancer Service (osb-lbaas/lbaas-ng)
+title: Load Balancer Service (osb-lbaas)
 ---
 
 Cloud Foundry offers shared and private [domains](cloudfoundry.domains.md). To successfully use private domains with HTTPS, users need to [provision a private domain](cloudfoundry.domains.md) and a load-balancer that terminates SSL and forwards it to Cloud Foundry's platform router. The recommended way to achieve this is to use this LBaaS service.
