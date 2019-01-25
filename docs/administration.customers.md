@@ -3,16 +3,20 @@ id: administration.customers
 title: Administrate Customers
 ---
 
+With a Partner Account you can easily manage multiple customer accounts with the Meshcloud Portal. The Meshcloud administration area is the place to create and manage your customer accounts. You can access the Meshcloud **Administration** Area by opening the settings menu and navigating to the **Administration** Area. In case you do not see a menu entry called **Administration** in your settings menu, your account is probably not a partner account yet. Please contact [Meshcloud Support](https://support.meshcloud.io), we are happy to transform your account at any time.
+
+When selecting **Customers** in the menu bar on the left you can see the list of all customers managed by you.
+
 ## Creating Managed Customer Accounts
 
-With Meshcloud you can easily create customer accounts. The Meshcloud administration area is the place to create and manage your customer accounts. You can access the Meshcloud **Administration** Area by opening the settings menu and navigating to the **Administration** Area. In case you do not see a menu entry called **Administration** in your settings menu, your account is probably not a partner account yet. Please contact [Meshcloud Support](https://support.meshcloud.io), we are happy to transform your account at any time.
+With Meshcloud you can easily create customer accounts.
 
 1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials
 2. If not logged in, please login with your Partner account credentials.
 3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account drop-down menu on the top left.
 4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left or use this link:
    [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration)
-4. On the top of the table enter the new managed customer's name and identifier. Then click on the `+` button. Your managed customer is created.
+5. On the top of the table enter the new managed customer's name and identifier. Then click on the `+` button. Your managed customer is created.
 > **Attention**: The identifiers can not be changed. Please choose them carefully.
 
 ## Providing access to the managed customer account
