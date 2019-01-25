@@ -1,15 +1,15 @@
 ---
-id: partner.customers
+id: administration.customers
 title: Administrate Customers
 ---
 
 ## Creating Customer Accounts
 
-With Meshcloud you can easily create customer accounts. The Meshcloud partner area is the place to create and manage your customer accounts. You can access the Meshcloud "Partner Area" by opening the settings menu and navigating to the **Partner Area**. In case you do not see a menu entry called **Partner Area** in your settings menu, your account is probably not a partner account yet. Please contact [Meshcloud Support](https://support.meshcloud.io),  we are happy to transform your account at any time.
+With Meshcloud you can easily create customer accounts. The Meshcloud administration area is the place to create and manage your customer accounts. You can access the Meshcloud **Administration** Area by opening the settings menu and navigating to the **Administration** Area. In case you do not see a menu entry called **Administration** in your settings menu, your account is probably not a partner account yet. Please contact [Meshcloud Support](https://support.meshcloud.io), we are happy to transform your account at any time.
 
 1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials
-2. Navigate **Settings &gt; Partner Area** via the settings button on the top right or use this link:
-   [https://panel.meshcloud.io/\#/partner](https://panel.meshcloud.io/#/partner)
+2. Navigate **Settings &gt; Administration** via the settings button on the top right or use this link:
+   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration)
 3. Click on **Customers** on the left menu. In this area you can create new customers and manage
    your customers’ project quotas and assigned users.
 4. On the top just enter the customer and your identifier (which is usually the same, but please be aware that you can not change the identifier later on). Then click on the `+` button. Your new customer is created.
@@ -33,8 +33,8 @@ Partner are able to send short notification messages to the users of their manag
 In order to send such a message:
 
 1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials.
-2. Navigate **Settings &gt; Partner Area** via the settings button on the top right or use this link:
-   [https://panel.meshcloud.io/\#/partner](https://panel.meshcloud.io/#/partner).
+2. Navigate **Settings &gt; Administration** via the settings button on the top right or use this link:
+   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration).
 3. In the **Actions** colum click on the envelope icon.
 
 There you can write your messages and you can choose which recipient should receive the messages: **All must read** will show the message to all recipients and everyone has to acknowledged the message. Or you can choose **Single read only** which will hide the message for all other users if one single user has acknowledged it.
@@ -44,8 +44,8 @@ There you can write your messages and you can choose which recipient should rece
 In order to see a report of the resource usage of your administered customer do the following:
 
 1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials.
-2. Navigate **Settings &gt; Partner Area** via the settings button on the top right or use this link:
-   [https://panel.meshcloud.io/\#/partner](https://panel.meshcloud.io/#/partner).
+2. Navigate **Settings &gt; Administration** via the settings button on the top right or use this link:
+   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration).
 3. Click on **Customers** on the left menu. In the Actions column in the customer table you can see the icon **Usage Report**. Click on this icon and you get an overview about the resource usage of this customer.
 
 

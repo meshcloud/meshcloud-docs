@@ -1,13 +1,13 @@
 ---
-id: partner.users
+id: administration.users
 title: Administrate Users
 ---
 
-If details or deletion of a user are requested, this can be done in the **"Users" section** of the **"Partner Area"**
+If details or deletion of a user are requested, this can be done in the **Users** section of the **Administration** Area
 
 To search for a user, please follow these steps:
 
-1. Click on **“All Users”** in the **"Partner Area"**.
+1. Click on **All Users** in the **Administration** Area.
 2. Enter a part or the complete first name, last name or email address of the user you are searching for.
 3. The list will restrict the results to your search criteria automatically
 
