@@ -12,5 +12,3 @@ In order to see a report of the resource usage of your managed customers, do the
    [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration).
 3. Click on **Usage & Billing** on the left menu.
 4. You can access the usage information and download invoices for your managed customers here.
-
-
