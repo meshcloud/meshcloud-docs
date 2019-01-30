@@ -41,3 +41,13 @@ In order to send such a message:
 3. In the **Actions** colum click on the envelope icon.
 
 Write your messages and choose which recipient should receive the messages: **All must read** will show the message to all recipients and everyone has to acknowledged the message. Or you can choose **Single read only** which will hide the message for all other users if one single user has acknowledged it. This is useful e.g. for maintenance task required to be done by the project team. Once one team member has solved the task, displaying the notification is no longer necessary.
+
+## Customer quota management
+
+Partners and Administrators can manage the quota, that limits the maximum number of projects per customer.
+
+1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your credentials
+2. Navigate **Settings &gt; Administration** via the settings button on the top right or use this link:
+   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration).
+3. Go to **Administration &gt; Customers** and click on the **Quota** icon on the managed customer account you want to edit.
+4. Then you can increase and decrease the number of projects per customer.
