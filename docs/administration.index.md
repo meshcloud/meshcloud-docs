@@ -39,6 +39,6 @@ The following table provides details about the functionality available to the di
 | [User&nbsp;List](administration.users.md) |  |  |  |  | X |
 | &nbsp;&nbsp;[Delete&nbsp;User](administration.users.md#delete-user) |  |  |  |  | X |
 | &nbsp;&nbsp;[Download&nbsp;User&nbsp;Info](administration.users.md#download-user-information) |  |  |  |  | X |
-| Service&nbsp;Broker&nbsp;List |  |  |  |  | X |
-| &nbsp;&nbsp;Approve&nbsp;Service&nbsp;Broker |  |  |  |  | X |
+| [Service&nbsp;Broker](administration.service-brokers.md) |  |  |  |  | X |
+| &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker) |  |  |  |  | X |
 | Performance&nbsp;KPIs |  |  |  | X | X |
