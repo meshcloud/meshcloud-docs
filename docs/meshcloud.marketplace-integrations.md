@@ -19,7 +19,7 @@ Registering your Service Broker does not publish your Service Broker directly fo
 You can register your service broker via the **Register Service Broker** button. The following information must be provided for this:
 
 - **Name**: Give a name to the service broker you want to register. It is mainly used as a display name for your administrative Screens.
-- **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs. Choose wisely as this identifier cannot be changed later on.
+- **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs. Choose wisely as *this identifier cannot be changed later* on.
 - **Endpoint**: Root URL to your Service Broker's API endpoint. It must start with "http(s)://". Below this API endpoint the **/v2/catalog** endpoint must be available, as described in the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
 - **Basic Auth Username**: Communication between the meshMarketplace and your Service Broker is secured via HTTP Basic Auth. Therefore username and password have to be defined here, so the meshMarketplace can authenticate successfully to your Service Broker. Enter the username for HTTP Basic Auth here. The username can be changed at any time.
 - **Basic Auth Password**: Enter the password for your HTTP Basic Auth. A set password will never be shown to you again. This password will be stored encrypted in the database. You can set a new password at any time. No restrictions regarding the characters used in your password are applied. Please be sure to always use a secure password!
@@ -43,7 +43,7 @@ You can choose which public Marketplace you want to publish your Service Broker 
 
 Location-based Service Brokers should be running independently from each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
 
-When you published your Service Broker it won't be available in the meshMarketplace you published it to directly. A meshAdmin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A meshAdmin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### Refresh Catalog of Published Service Broker
 
@@ -51,11 +51,11 @@ Like for your private Service Broker, you can also actively [refresh the catalog
 
 ## Deletion of Service Brokers
 
-The deletion of a Service Broker is only allowed as it is not [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker). As soon as an approved Service Broker exists users can create their Service Instances from your services. Therefore a deletion of Service Brokers could effect productive data of other users and is therefore not possible.
+The deletion of a Service Broker is only allowed if it has not been [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker). As soon as an approved Service Broker exists users can create Service Instances from your services. The deletion of a Service Broker could affect productive data of other users and is therefore not possible.
 
-Unpublished, unapproved Service Brokers can be deleted from the list of Service Brokers via the **trash** button. A safety dialogue pops up, where you have to enter the name of the Service Broker for confirmation. The deletion will only delete the Service Broker in the meshPortal. **No deprovisioning** in the Service Broker will be triggered! You have to clean up existing Service Instances in your Service Broker by yourself!
+Unpublished, unapproved Service Brokers can be deleted from the list of Service Brokers via the **trash** button. A safety dialogue pops up, where you have to enter the name of the Service Broker for confirmation. The deletion will only delete the Service Broker in the meshPortal. **No deprovisioning** will be triggered in the Service Broker! You have to clean up existing Service Instances in your Service Broker by yourself!
 
-When you published your Service Broker and this publishing is not yet approved, you can also revoke this publishing by clicking the **trash** icon in the Publishing list of your Service Broker.
+After you have published your Service Broker you can also revoke this publishing by clicking the **trash** icon in the Publishing list of your Service Broker as long as it has not been approved.
 
 ## Analytics
 
@@ -66,7 +66,7 @@ If the Metering Component of meshStack is available in your installation, Meteri
 The screen provides you with information about:
 
 - Which customers and projects are using your services?
-- How long are or have the Service Instances been running?
+- How long have the Service Instances been running?
 - When has the Service Instance been provisioned?
 - When has the Service Instance been deprovisioned or is it still running?
 - What are the costs per Service Instance?
