@@ -3,40 +3,39 @@ id: meshstack.cloudfoundry
 title: Cloud Foundry
 ---
 
-## Architektur
+meshStack supports access to Cloud Foundry platforms which provide convienent application hosting capabilities to software and DevOps engineers. Usually, there are also many backing services available within the platforms marketplace such as database, data processing, queueing, and many more (depending on the platform operators choice of services).
 
-Der Zugriff auf Cloud Foundry Plattformen erfolgt durch die Authentifizierung über OIDC (OpenID Connect-Protokoll) und die Autorisierung über replizierte Berechtigungen.
+For Cloud Foundry, meshStack provides org and space creation and configuration, user management and SSO via Cloud Foundry's UAA.
 
-Beim Zugriff auf die Cloud bringt der Nutzer ein Token mit (JWT), das vom Meshstack-Keycloak ausgestellt wurde und vom UAA validiert wird (s. Ablauf beim Zugriff). Der Meshstack-Keycloak wiederum greift auf eine externe Identitätsquelle zurück (z.B. LDAP, Cloud IdP).
+## Integration Overview
 
-Das Meshpanel-Frontend validiert die JWT-Token ebenfalls gegen Keycloak, um dem Nutzer den notwendigen Zugriff einzuräumen.
+To enable integration with Cloud Foundry, operators deploy and configure the meshStack Cloud Foundry connector to make Cloud Foundry platforms available at their meshStack instance.
 
-Das Backend nutzt ebenfalls das JWT-Token, um die Berechtigungen des Users zu prüfen.
+meshStack provides users access to Cloud Foundry (CF) instances via the OIDC protocol for authentication while it replicates permission rights directly to authorize correct access.
 
-Die Replizierung im Backend stellt sicher, dass beim Zugriff auf Cloud Foundry die Spaces und Orgs in CF angelegt und der aktuelle Benutzer mit den entsprechenden Berechtigungen auf seine Spaces im UAA versehen ist.
+When accessing the platform the user carrises an OIDC Token (JWT) which is issued by the meshIdB (and, potentially, by an upstream corporate identity provider, cf. [Identity Federation](meshstack.identity-federation.md)). Cloud Foundry's Auth component UAA validates the token upon access. Also for CF access within meshPanel the token is used to request status information about apps and services to display within meshPanel.
 
-Werden die Berechtigungen auf die Cloud für Nutzer über den Meshstack geändert, aktualisiert das Backend die im UAA hinterlegten Berechtigungen für diesen User.
+The meshFed replication ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's meshProject permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
 
-![Cloud Foundry Architecture](assets/cf-architecture.png)
+![Cloud Foundry Architecture](assets/cf-architecture.svg)
 
-## Cloud Foundry Access
+## Cloud Foundry Access Workflow
 
-Der Zugriff eines Users auf Cloud Foundry läuft nun nach dem folgenden Schema ab:
+The full workflow to access the Cloud Foundry platform is as follows:
 
-1. Der User greift über den Browser auf den Meshstack zu.
-2. Im ausgeloggten Zustand wird der User auf Keycloak weitergeleitet, um seine Credentials einzugeben.
-3. Diese Credentials werden ggf. gegen den angeschlossenen externen IdP abgeglichen (z.B. LDAP).
-4. Bei erfolgreicher Anmeldung stellt Keycloak dem User ein OIDC-Token (JWT, hier MToken) aus und gibt es dem User mit in das Meshpanel, so dass der User angemeldet ist und damit arbeiten kann.
-5. Für einen Cloud-Zugriff über das Panel, wird mit dem OIDC-Token ein entsprechender Request an das Backend gestellt.
-6. Bevor der Zugriff an den UAA weitergeleitet wird, stellt der Meshstack sicher, dass die korrekten Berechtigungen auf die Spaces für den aktuellen Benutzer in den UAA repliziert sind.
-7. Das Backend nutzt das mitgeschickte OIDC-Token, um beim UAA (an der Cloud) wiederum ein UAA-Token (UToken) zu erhalten. Es erfolgt also ein Token-Tausch. Dieser Token Austausch erfordert die Aktivierung des jwt-bearer Auth-Grants auf dem UAA client. Um nicht den allgemeinen "CF" UAA-Client dafür zu öffnen, liegt im UAA ein spezfiischer "meshfed" UAA-Client vor, der nur diesen jwt-bearer Grant erlaubt. Da er durch ein Secret abgesichert ist kann er nur vom Meshstack Backend aus genutzt werden. Es ist also nur dem Meshstack Backend möglich ein MToken gegen ein UToken mittels API Request gegen den UAA auszutauschen.
-8. Der Token Exchange Request gegen UAA führt dazu, dass dieser das OIDC-Token validiert (Zeitliche Gültigkeit, Signatur des Keycloaks).
-9. Ist das OIDC-Token gültig, leitet der UAA ein UAA-Token (UToken) an das Backend zurück.
-10. Das Backend schickt das erhaltene UToken an das Panel, so dass dieses direkt auf die jeweiligen Cloud Foundry APIs zugreifen kann.
-11. Beim Zugriff auf die Cloud Foundry API wird nun das UToken eingesetzt.
-12. Die Cloud Foundry API validiert das UToken gegen den UAA.
-13. Ist es valide und hat der Benutzer die Berechtigungen, um auf die angefragte Ressource zuzugreifen, werden die angeforderten Requests beantwortet und der Zugriff auf die Cloud Foundry Dienste ist abgeschlossen.
+1. User accesses the meshPanel via browser.
+2. If logged out the user is forwarded to the meshIdB component to enter his credentials.
+3. If there is an external identity provider connected, the user or his credentials are forwarded for authentication purposes.
+4. Upon successful authentication, the meshIdB issues an OIDC token (meshToken) which provides the user authorized access to the meshPanel and the cloud platform tenants he is authorized to access.
+5. If the user accesses a cloud platform via meshPanel, meshStack ensures full replication of the current tenant configuration including permissions.
+6. The meshStack backend exchanges the user's meshToken against an UAA token for the user.
+9. When accessing CF, the UAA validates the token and grants access if it is valid (time, issuer).
+10. The meshPanel also uses the UAA token to access and display status information about the CF space in focus.
+11. Every time the user accesses the CF API, CF's UAA validates the token to ensure authorized access to the requested resource.
+12. If the UAA token is expired, the meshToken/UAA token exchange must be executed again via the meshStack backend. If the meshToken is expired, the user must re-authenticate against the meshIdB and/or the delegated enterprise SSO system.
 
-Läuft das UToken ab, muss der OIDC/UAA Token Exchange (7-9) erneut durchgeführt werden. Ist das OIDC-Token abgelaufen, muss der User sich erneut gegenüber dem Keycloak authentifizieren.
+## Prequisites
 
-![Cloud Foundry Communication](assets/cf-communication.png)
+### UAA configuration
+
+UAA needs to have jwt-bearer Auth grants enabled which is configured against a corresponding OIDC client configuration within the meshIdB.
