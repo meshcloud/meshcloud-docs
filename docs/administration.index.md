@@ -35,7 +35,7 @@ The following table provides details about the functionality available to the di
 | [Usage&nbsp;&&nbsp;Billing](administration.usage.md) |  |  |  |  | X |
 | [Deleted&nbsp;Projects](administration.projects.md#deleted-projects) | X |  | X | X | X |
 | &nbsp;&nbsp;[History](administration.projects.md#project-history) | X |  | X | X | X |
-| Platform Notifications | X |  |  |  | X |
+| [Platform&nbsp;Notifications](administration.platforms.md) | X |  |  |  | X |
 | [User&nbsp;List](administration.users.md) |  |  |  |  | X |
 | &nbsp;&nbsp;[Delete&nbsp;User](administration.users.md#delete-user) |  |  |  |  | X |
 | &nbsp;&nbsp;[Download&nbsp;User&nbsp;Info](administration.users.md#download-user-information) |  |  |  |  | X |
