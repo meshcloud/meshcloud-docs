@@ -29,10 +29,10 @@ The full workflow to access the Cloud Foundry platform is as follows:
 4. Upon successful authentication, the meshIdB issues an OIDC token (meshToken) which provides the user authorized access to the meshPanel and the cloud platform tenants he is authorized to access.
 5. If the user accesses a cloud platform via meshPanel, meshStack ensures full replication of the current tenant configuration including permissions.
 6. The meshStack backend exchanges the user's meshToken against an UAA token for the user.
-9. When accessing CF, the UAA validates the token and grants access if it is valid (time, issuer).
-10. The meshPanel also uses the UAA token to access and display status information about the CF space in focus.
-11. Every time the user accesses the CF API, CF's UAA validates the token to ensure authorized access to the requested resource.
-12. If the UAA token is expired, the meshToken/UAA token exchange must be executed again via the meshStack backend. If the meshToken is expired, the user must re-authenticate against the meshIdB and/or the delegated enterprise SSO system.
+7. When accessing CF, the UAA validates the token and grants access if it is valid (time, issuer).
+8. The meshPanel also uses the UAA token to access and display status information about the CF space in focus.
+9. Every time the user accesses the CF API, CF's UAA validates the token to ensure authorized access to the requested resource.
+10. If the UAA token is expired, the meshToken/UAA token exchange must be executed again via the meshStack backend. If the meshToken is expired, the user must re-authenticate against the meshIdB and/or the delegated enterprise SSO system.
 
 ## Prequisites
 
