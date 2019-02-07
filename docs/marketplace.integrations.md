@@ -1,16 +1,16 @@
 ---
-id: meshcloud.marketplace-integrations
+id: marketplace.integrations
 title: Marketplace Integrations
 ---
 ## What are Marketplace Integrations?
 
-You can provide your own services in the [meshMarketplace](meshcloud.marketplace.md) via the Marketplace Integrations. The functionality is currently
+You can provide your own services in the [meshMarketplace](marketplace.index.md) via the Marketplace Integrations. The functionality is currently
 only available for [Customer Admins](meshcloud.customer.md#manage-groups-of-assigned-users).
 You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal.
 
 ## How to use it
 
-You can find the **Marketplace Integrations** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. Analyzation screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace Integrations** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analyzation](marketplace.analytics.md) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
@@ -56,17 +56,3 @@ The deletion of a Service Broker is only allowed if it has not been [published](
 Unpublished, unapproved Service Brokers can be deleted from the list of Service Brokers via the **trash** button. A safety dialogue pops up, where you have to enter the name of the Service Broker for confirmation. The deletion will only delete the Service Broker in the meshPortal. **No deprovisioning** will be triggered in the Service Broker! You have to clean up existing Service Instances in your Service Broker by yourself!
 
 After you have published your Service Broker you can also revoke this publishing by clicking the **trash** icon in the Publishing list of your Service Broker as long as it has not been approved.
-
-## Analytics
-
-### Metering & Usage
-
-If the Metering Component of meshStack is available in your installation, Metering & Usage information is available for your Service Brokers. You see a list of all provisioned Service Instances of your Service Broker's services. This information is available individually per Marketplace you published your Service Broker to. It is also available for your private Service Broker. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data.
-
-The screen provides you with information about:
-
-- Which customers and projects are using your services?
-- How long have the Service Instances been running?
-- When has the Service Instance been provisioned?
-- When has the Service Instance been deprovisioned or is it still running?
-- What are the costs per Service Instance?
