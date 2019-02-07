@@ -10,7 +10,7 @@ You can provide your service (e.g. databases, message brokers, filesystems, etc)
 
 ## How to use it
 
-You can find the **Marketplace Integrations** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analyzation](marketplace.analytics.md) screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace Integrations** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](marketplace.analytics.md) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
