@@ -3,7 +3,7 @@ id: meshstack.billing
 title: Metering and Billing
 ---
 
-Pay-per-use is a core principle of cloud computing. Thus, meshStack includes sophisticated metering & billing capabilities to help developers, platform operators and controllers monitor resource consumption for their Multi-Cloud setup managed by meshStack.
+Pay-per-use is a core principle of cloud computing. Thus, meshStack includes sophisticated metering & billing capabilities to help developers, platform operators and controllers monitor resource consumption for their multi-cloud setup managed by meshStack.
 
 The figure below outlines the principal components of the multi-cloud metering process in meshStack:
 
