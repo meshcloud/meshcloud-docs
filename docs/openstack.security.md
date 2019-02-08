@@ -4,7 +4,7 @@ title: Security Features
 ---
 ## Keypairs
 
-When launching an instance, a key pair gives you SSH access to your instance. On the Meshpanel, you have to have at least one key pair for each project. If you have not created a security group by yourself, you can just use the default security group for this. The key pair can be used for multiple instances within a Meshproject. If you wish to generate your own key pair using an external tool, it is possible to import it into OpenStack.
+When launching an instance, a key pair gives you SSH access to your instance. On the Meshpanel, you have to have at least one key pair for each project. If you have not created a security group by yourself, you can just use the default security group for this. The key pair can be used for multiple instances within a meshProject. If you wish to generate your own key pair using an external tool, it is possible to import it into OpenStack.
 
 A key pair always belongs to an individual user, not to a project. That means that if you would like to share a key pair among multiple users, every single user has to import that key pair.
 
