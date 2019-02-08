@@ -10,7 +10,7 @@ required APIs and configuration options available.
 
 ## Integration Overview
 
-To enable integration with Kubernetes, operators deploy and configure the Meshstack Kubernetes Module. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` Kubernetes. This makes Kubernetes available to Meshprojects like any other cloud platform in Meshstack.
+To enable integration with Kubernetes, operators deploy and configure the Meshstack Kubernetes Module. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` Kubernetes. This makes Kubernetes available to meshProjects like any other cloud platform in Meshstack.
 
 Meshstack automatically configures Kubernetes namespaces and RBAC permissions to integrate SSO with [Meshstack Identity Federation](./meshstack.identity-federation.md).
 
