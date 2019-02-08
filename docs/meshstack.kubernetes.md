@@ -25,7 +25,7 @@ Meshstack should work with any Kubernetes version and distribution that offers t
 
 Meshstack has been specifically validated to work with RKE (Rancher Kubernetes Enginge) and CFCR (Cloud Foundry Container Runtime).
 
-### Mesh Configuration
+### meshStack Configuration
 
 Your meshstack installation needs to be configured to restrict MeshProject and MeshCustomer identifiers in the following ways:
 
