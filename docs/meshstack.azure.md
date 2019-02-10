@@ -100,6 +100,7 @@ Principal (which is basically an app). The app must be authorized in the scope o
 ### meshStack Configuration
 
 To enable the replication the meshFed Azure replicator needs the platform instance configuration as a .yml file. A possible configuration could look like this:
+
 ```yml
 replicator-azure:
   platforms:
