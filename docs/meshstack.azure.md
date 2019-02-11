@@ -16,15 +16,17 @@ To enable integration with Azure, operators deploy and configure the meshStack A
 
 If configured correctly the meshStack entities are mapped as described in the following table:
 
-| Meshcloud | Azure                                                                       |
-| --------- | --------------------------------------------------------------------------- |
-| Customer  | Account, but the Account can currently contain multiple customers projects. |
-| Project   | Resource Group                                                              |
-| User      | AD User                                                                     |
+| Meshcloud    | Azure                                                                       |
+| ------------ | --------------------------------------------------------------------------- |
+| meshCustomer | Account, but the Account can currently contain multiple customers projects. |
+| meshProject  | Resource Group                                                              |
+| meshUser     | AD User                                                                     |
 
 Currently all meshProjects are mapped to a single Subscription inside a `PlatformInstances` Subscription. This is subject to change as we extend the Azure support.
 
 But this is not the use case we follow, because we use a Keycloak server as Identity Provider. The use of an external IDP in combination with Azure is only possible with a SAML compatible IDP and is [documented by Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).
+
+Deleting a meshUser from the project again is currently (begin of February 2019) not yet implemented.
 
 ## Integration Steps
 
