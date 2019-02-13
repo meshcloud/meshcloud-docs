@@ -87,3 +87,26 @@ When a Meshstack user accesses an AWS project, they are assigned an AWS IAM role
 When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 
 Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
+
+### Monitoring
+
+The AWS replicator does expose a [Prometheus](https://prometheus.io/) endpoint which can be scraped. The endpoint can be accessed under the URL:
+
+```bash
+/prometheus
+```
+
+It is secured via `Basic Auth` which can be configured via this `application.yml` section:
+
+```yml
+auth:
+  basic:
+    realm: meshfed-replicator-aws
+    users:
+      - username: <USERNAME>
+        password: <PASSWORD>
+        authorities:
+          - ACTUATOR
+```
+
+You must use the username and password in your Prometheus scraper.
