@@ -3,9 +3,11 @@ id: administration.platforms
 title: Platform Notifications
 ---
 
-Administrators can inform users about platform specific events (updates, new features, service disruptions, etc.) by creating platform notifications:
+Administrators can inform users about platform specific events (updates, new features, service disruptions, etc.) by creating platform
+notifications:
 
-- **Platforms**: Select the platforms relevant to your notification so they can be shown on the affected platform's dashboards. Users can also [subscribe](meshcloud.profile.md#profile) to notifications by platform and will receive new notifications via email.
+- **Platforms**: Select the platforms relevant to your notification so they can be shown on the affected platform's dashboards. Users
+  can also [subscribe](meshcloud.profile.md#profile) to notifications by platform and will receive new notifications via email.
 - **Message**: The message that will be shown to all users.
 - **Severity**: The type of message (info, warning, critical).
   - Info: for new features, upcoming services updates and general information that is not expected to disrupt platform operation
