@@ -38,8 +38,8 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;Customer&nbsp;User&nbsp;List |  |  |  |  | X |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.customers.md#providing-access-to-the-managed-customer-account) |  |  |  |  | X |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](administration.customers.md#send-messages-to-customer-users) |  |  |  |  | X |
-| &nbsp;&nbsp;Quota&nbsp;Export | X | X |  |  | X |
-| &nbsp;&nbsp;Project&nbsp;Export |  | X |  |  | X |
+| &nbsp;&nbsp;[Project&nbsp;Export](administration.projects.md#project-export) |  | X |  |  | X |
+| &nbsp;&nbsp;[Quota&nbsp;Export](administration.projects.md#quota-export) | X | X |  |  | X |
 | [Usage&nbsp;&&nbsp;Billing](administration.usage.md) |  |  |  |  | X |
 | [Deleted&nbsp;Projects](administration.projects.md#deleted-projects) | X |  | X | X | X |
 | &nbsp;&nbsp;[History](administration.projects.md#project-history) | X |  | X | X | X |
