@@ -7,6 +7,12 @@ title:  Customer Accounts (meshCustomer)
 
 A meshCustomer is automatically created for you when you [sign up](meshcloud.profile.md) for a new account. A meshCustomer usually represents your company or department. Within a meshCustomer you manage multiple [projects](meshcloud.project.md), your users and their access rights and maintain general data like addresses and payment methods.
 
+## Customer Settings
+
+General information of a meshCustomer, like its name can be edited here. The customer identifier is also shown here, but this identifier can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
+
+If applicable in your Meshcloud installation, also a Tax ID can be defined here for your meshCustomer.
+
 ## Invite users to access a meshCustomer
 
 If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](meshcloud.project.md).
