@@ -19,7 +19,7 @@ Das Backend nutzt ebenfalls das JWT-Token, um die Berechtigungen des Users zu pr
 
 1. Der User greift über den Browser auf den Meshstack zu.
 2. Im ausgeloggten Zustand wird der User auf Keycloak weitergeleitet, um seine Credentials einzugeben.
-3. Diese Credentials werden ggf. gegen den angeschlossenen externen IdP abgeglichen (LDAP).
+3. Diese Credentials werden ggf. gegen den angeschlossenen externen IdP abgeglichen (z.B. LDAP).
 4. Bei erfolgreicher Anmeldung stellt Keycloak dem User ein OIDC-Token (JWT, hier MToken) aus und gibt es dem User mit in das Meshpanel, so dass der User angemeldet ist und damit arbeiten kann.
 5. Für einen Cloudzugriff über das Panel, wird mit dem OIDC-Token ein entsprechender Request an das Backend gestellt.
 6. Das Backend nutzt das mitgeschickte OIDC-Token, um bei Keystone (an der Cloud) wiederum ein Keystone-Token (KToken) zu erhalten. Es erfolgt also ein Token-Tausch. Der Nutzer könnte auch mit dem OIDC-Token direkt an die Cloud gehen, z.B. über CLI-Tools o.ä.

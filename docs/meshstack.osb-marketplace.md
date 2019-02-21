@@ -5,6 +5,14 @@ title: Open Service Broker Marketplace
 
 The Open Service Broker (OSB) Marketplace provides a common integration point for any remote service which can be provisioned by an API (e.g. a database). A lightweight service broker component implementing the [Open Service Broker API Specification](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md) allows such services to become a resource within a meshProject and be included in the project lifecycle management at the Meshstack platform.
 
+The following image illustrates how the integration of Service Brokers into a Platform Marketplace works.
+
+![OSB Marketplace integration](assets/marketplace1.png)
+
+Access to the Service Instance is executed via the URL, that is provided by the Service Broker. How to actually access the instance depends on the credentials provided by the Service Broker during a provisioning request. In general the application accesses the Service Instance directly without any communication via the meshStack.
+
+![OSB Credentials](assets/marketplace2.png)
+
 ## Definitions
 
 ### Service Broker
