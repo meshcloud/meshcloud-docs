@@ -11,7 +11,7 @@ In the project dashboard you get an overview of all locations and their platform
 
 ## Project Platform Dashboard
 
-The project platform dashboard provides some general statistics for your meshProject in this cloud platform. Dependent on the Cloud Platform Type, the menu on the left provides different options. For [OpenStack](openstack.index.md) you can managed your VMs, network components, etc. For [Cloud Foundry](cloudfoundry.index.md) you can managed your apps and services. For these platforms and also for other ones like AWS, Kubernetes, Azure or OpenShift, you get a SSO login option to their CLI or web console.
+The project platform dashboard provides some general statistics for your meshProject in this cloud platform. Dependent on the Cloud Platform type, the menu on the left provides different options. For [OpenStack](openstack.index.md) you can managed your VMs, network components, etc. For [Cloud Foundry](cloudfoundry.index.md) you can managed your apps and services. For these platforms and also for other ones like AWS, Kubernetes, Azure or OpenShift, you get a SSO login option to their CLI or web console.
 
 A [Mesh Marketplace](marketplace.index.md) is another type of cloud platform, that allows you to provision different type of services.
 

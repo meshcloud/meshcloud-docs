@@ -3,13 +3,13 @@ id: meshcloud.payment
 title: Payment
 ---
 
-The Meshcloud platform provides central [multi-cloud billing](meshstack.billing.md). Therefore you have to configure a billing address and a payment method for your meshCustomer as a Customer Admin. Depending on your Meshcloud installation, either payment via credit card, invoice or via a cost center is available. All options are described in the following.
+The Meshcloud platform provides central [multi-cloud billing](meshstack.billing.md). Therefore you have to configure a billing address and a payment method for your meshCustomer as a Customer Admin. Depending on your meshcloud installation, either payment via credit card, invoice or via a cost center is available. All options are described in the following.
 
 ## Company & Billing Addresses
 
 You can configure company addresses for your meshCustomer as contact addresses. If this address shall also be used for billing, you are done when having configured a Customer Address.
 
-You can also define multiple additional Billing Addresses, that can be used for your meshProjects. You can select from these configured addresses per meshProject.
+You can also define additional Billing Addresses, that can be used for your meshProjects. You can select from these configured addresses per meshProject.
 
 ## Payment Methods
 
