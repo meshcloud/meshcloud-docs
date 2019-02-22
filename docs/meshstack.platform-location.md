@@ -20,4 +20,4 @@ provider only to customer accounts that passed a certain data-protection clearan
 ### Project-level
 
 Customers can create [Projects](meshcloud.project.md) that use the Locations available to their Customer account.
-Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.roles.md), providing a further level of possible delegation.
+Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.groups.md), providing a further level of possible delegation.
