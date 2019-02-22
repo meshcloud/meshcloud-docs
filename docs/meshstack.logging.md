@@ -63,7 +63,7 @@ This section overlaps in some parts with the previously mentioned log files, but
 
 | Event (What?) | Log-File / DB-Table (Where) |
 | --------------------- | --- |
-| Successful and Denied Login attempts, as well as logouts | Keycloak Events, events.log |
+| Successful and denied login attempts, as well as logouts | Keycloak Events, events.log |
 | Create, change, lock, unlock and delete accounts and roles | Customer/Project Event table, mesh.log |
 | Password changes - Authorization via meshIdB | Keycloak Events, events.log, mesh.log |
 | Password changes - Authorization via federated IdP | Federated IdP |
