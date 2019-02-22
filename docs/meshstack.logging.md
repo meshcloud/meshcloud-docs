@@ -174,4 +174,4 @@ As the database is also backed up, deleted events will persist in the backup, as
 
 ## Location of Log Files
 
-All log files are stored locally in the VM, container or PaaS system, where the component is running. These instances require authentication (e.g. via SSH with a private key) for access to the logs.
+All log files are stored locally in the VM, container or PaaS system, where the component is running. For these instances user authentication  is required (e.g. via SSH with a private key) to access their logs.
