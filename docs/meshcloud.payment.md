@@ -9,7 +9,7 @@ The Meshcloud platform provides central [multi-cloud billing](meshstack.billing.
 
 You can configure company addresses for your meshCustomer as contact addresses. If this address shall also be used for billing, you are done when having configured a Customer Address.
 
-You can also define multiple additional Billing Addresses, that can be used for your meshProjects. You can select from these configured addresses per meshProject.
+You can also define additional Billing Addresses, that can be used for your meshProjects. You can select from these configured addresses per meshProject.
 
 ## Payment Methods
 
