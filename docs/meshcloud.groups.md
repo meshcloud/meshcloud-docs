@@ -3,7 +3,7 @@ id: meshcloud.groups
 title: User Groups
 ---
 
-Within the Meshcloud platform we differentiate the following groups for users of normal customers. The groups that are available for Partner and Admin customers are described in the [Administration](administration.index.md) section.
+Within the meshcloud platform we differentiate the following groups for users of normal customers. The groups that are available for Partner and Admin customers are described in the [Administration](administration.index.md) section.
 
 - **Customer Admin**: Has full access to the meshCustomer. He can create projects, manage users of the customer and more. He also has full access to project resources.
 - **Customer Employee**: Has access to customer projects he is assigned to and full access to their resources. Customer Employees need to be granted access to projects by a Customer Admin. They cannot create new projects or grant access to other users.
