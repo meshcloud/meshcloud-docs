@@ -9,7 +9,7 @@ Sometimes you may need a local user account in a platform with separate credenti
 
 When accessing a project without Service Users you may see a notification reminding you to create one. It is usually a good idea to have Service Users for important projects and platforms so that they remain accessible (i.e. in case of lost credentials, unforseen outages, etc.) which is why Operating may enable this notification for their users.
 
-The user who created the Service User is also responisble for the secure usage of this Service User. Therefore the creator's name is also displayed in the list of Service Users.
+The user who created the Service User is also responsible for the secure usage of it. Therefore the creator's name is also displayed in the list of Service Users.
 
 ## Creating a Service User
 
