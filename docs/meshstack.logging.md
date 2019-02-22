@@ -79,7 +79,7 @@ All log file entries always contain a formatted UTC timestamp and the log level.
 
 ### Keycloak Log
 
-The keycloak log only contains operational keycloak information. It is mainly used for error analysis. Therefore only a few fields are provided in this log file.
+The Keycloak log only contains operational information. It is mainly used for error analysis. Therefore only a few fields are provided in this log file.
 
 - Class that wrote the log entry
 - Name of current thread
