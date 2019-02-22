@@ -15,7 +15,7 @@ You can also define additional Billing Addresses, that can be used for your mesh
 
 ### Credit Card
 
-The credit card payment method is used in our public cloud offer and is described [here](federation.payment.md)
+The credit card payment method is used in our public cloud offer and is described [here](federation.payment.md).
 
 ### Invoice
 
