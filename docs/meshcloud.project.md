@@ -17,7 +17,7 @@ The following diagram shows how access rights and project replication result in 
 
 ![Project User Role Replication](assets/project-user-roles.png)
 
-Project Users always get access to all cloud platforms, that are assigned to the project.
+Project users always get access to all cloud platforms, that are assigned to the project.
 
 ### User Management on a meshProject
 

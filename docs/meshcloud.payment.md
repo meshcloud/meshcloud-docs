@@ -15,7 +15,7 @@ You can also define multiple additional Billing Addresses, that can be used for 
 
 ### Credit Card
 
-The credit card payment method is used in our public cloud offer and is described [here](federation.payment.md)
+The credit card payment method is used in our public cloud offer and is described [here](federation.payment.md).
 
 ### Invoice
 

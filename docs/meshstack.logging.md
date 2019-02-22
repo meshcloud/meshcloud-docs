@@ -10,7 +10,7 @@ Besides log files, event tables are also used in meshStack. They can be used for
 - Who gave or revoked a certain user access to a project?
 - Who updated the payment information on a project?
 
-The event tables always contain a reference (DB Id) to the user who created it and the timestamp of the event.
+The event tables always contain a reference to the user who created it and the timestamp of the event.
 
 ## Logging for error analysis
 
