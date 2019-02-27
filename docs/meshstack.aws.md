@@ -21,6 +21,11 @@ Meshstack automatically configures AWS IAM in all managed accounts to integrate 
 
 Meshstack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a Meshstack deployment, operators will need an AWS "root" account acting as the parent of all accounts managed by Meshstack.
 
+> Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
+> a working AWS integration using meshstack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
+> We advise operators to determine the specific needs and requirements for their usage of AWS and implement more restrictive
+> roles and policies.
+
 ### Identifier Configuration
 
 Meshstack operators that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
@@ -53,7 +58,12 @@ Attach the following inline policy using this json
             "Sid": "StsAccessMemberAccount",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::*:role/OrganizationAccountAccessRole"
+            "Resource": "arn:aws:iam::*:role/OrganizationAccountAccessRole",
+            "Condition": {
+              "StringEquals": {
+                "sts:ExternalId": "${privilegedExternalId}"
+              }
+            }
         },
         {
             "Sid": "IamFullAccess",
@@ -65,7 +75,12 @@ Attach the following inline policy using this json
 }
 ```
 
-Operators need to securely inject the generated credentials into the configuration of the AWS Connector.
+Operators should generate a unique and random value for `${privilegedExternalId}`, e.g. a GUID. Meshstack AWS Connector is architected
+to supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only
+when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases
+the security of member accounts in your organization.
+
+Operators need to securely inject the generated credentials and `${privilegedExternalId}` into the configuration of the AWS Connector.
 
 ### Project-Account Email Addresses
 
@@ -82,31 +97,8 @@ allows generation of account names:
 
 ### IAM Roles and Service Control Policies
 
-When a Meshstack user accesses an AWS project, they are assigned an AWS IAM role based on their project role configured on the meshProject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template.
+When a user (e.g. a developer) accesses an AWS Account, they are assigned an AWS IAM role based on their project role configured on the corresponding meshProject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template. Meshstack uses this template to initialize and update AWS Account configurations.
 
 When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 
 Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
-
-### Monitoring
-
-The AWS replicator does expose a [Prometheus](https://prometheus.io/) endpoint which can be scraped. The endpoint can be accessed under the URL:
-
-```bash
-/prometheus
-```
-
-It is secured via `Basic Auth` which can be configured via this `application.yml` section:
-
-```yml
-auth:
-  basic:
-    realm: meshfed-replicator-aws
-    users:
-      - username: <USERNAME>
-        password: <PASSWORD>
-        authorities:
-          - ACTUATOR
-```
-
-You must use the username and password in your Prometheus scraper.
