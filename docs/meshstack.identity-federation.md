@@ -17,9 +17,11 @@ The main supported technologies for Identity Federation with meshStack are
 - Open ID Connect
 - SAML
 
+meshStack supports the simultaneous integration of multiple Enterprise Identity Providers (IdPs) at the Identity Broker. This allows operators to combine identities from different sources in the platform and unify management of multi-cloud access in meshStack.
+
 ## Requirements and Limitations
 
-Integrators must be aware of the following requirements and limitations for Enterprise Identity Providers (IdPs) which serve as identity sources for meshStack.
+Integrators must be aware of the following requirements and limitations for IdPs which serve as identity sources for meshStack.
 
 - IdP must provide
   - a stable and immutable user identifier (e.g. an OIDC `sub` claim)
