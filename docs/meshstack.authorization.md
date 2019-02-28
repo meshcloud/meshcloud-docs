@@ -11,6 +11,20 @@ On top level there are two different types of meshCustomers available. On the on
 
 For both meshCustomer types different groups can be assigned to the users. For **consumer meshCustomer** the available groups and the functionality they have access to is described [here](meshcloud.groups.md). Besides this access control on meshCustomer level, users also have to be assigned to the projects of a customer, which is described [here](meshcloud.project.md#manage-meshprojects). For **partner meshCustomer** the overview of groups and what they have access to is available [here](administration.index.md).
 
+### User Group Approval
+
+In case you are required to to implement a 4-eye-principle for user role assignment for compliance puposes you can configure the meshStack to do so. By setting:
+
+```yml
+web:
+  user:
+    rolerequest:
+      approval-count: 1 # Number of approvals from other customer admins
+      enable-single-customer-warning: true
+```
+
+New project role assignments must be assigned bevore they are finalized. Upon a new project role request an email will be send to all customer admins assigned to this project. When `enable-single-customer-warning` is true and only a single customer admin is assigned to the project then role assignments will get automatically approved by the system but a warning will get displayed to the  customer admin.
+
 ## Authentication
 
 The authentication of a user in meshStack and all Cloud Platforms is done via the meshIdB as described in [Identity Federation](meshstack.identity-federation.md).
