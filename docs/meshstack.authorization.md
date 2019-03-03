@@ -9,21 +9,26 @@ As described in [Identity Federation](meshstack.identity-federation.md) a SSO so
 
 On top level there are two different types of meshCustomers available. On the one hand a [consumer meshCustomer](meshcloud.customer.md) who is responsible for his own projects. On the other hand a [partner meshCustomer](administration.index.md), who can manage multiple assigned meshCustomers.
 
-For both meshCustomer types different groups can be assigned to the users. For **consumer meshCustomer** the available groups and the functionality they have access to is described [here](meshcloud.groups.md). Besides this access control on meshCustomer level, users also have to be assigned to the projects of a customer, which is described [here](meshcloud.project.md#manage-meshprojects). For **partner meshCustomer** the overview of groups and what they have access to is available [here](administration.index.md).
+For both meshCustomer types different groups can be assigned to the users. For **consumer meshCustomer** the available groups and the functionality they have access to is described [here](meshcloud.groups.md). For **partner meshCustomer** the overview of groups and what they have access to is available [here](administration.index.md).
 
-### User Group Approval
+Besides this access control on meshCustomer level, users also have to be assigned to the projects of a customer, which is described [here](meshcloud.project.md#manage-meshprojects).
 
-In case you are required to to implement a 4-eye-principle for user role assignment for compliance puposes you can configure the meshStack to do so. By setting:
+### User Project Role Approval
+
+In case you are required to implement a 4-eye-principle for user role assignment for compliance puposes you can configure the meshStack to do so. By setting:
 
 ```yml
 web:
   user:
     rolerequest:
-      approval-count: 1 # Number of approvals from other customer admins
-      enable-single-customer-warning: true
+      min-approval-count: 2 # Number of approvals from customer admins
 ```
 
-New project role assignments must be assigned bevore they are finalized. Upon a new project role request an email will be send to all customer admins assigned to this project. When `enable-single-customer-warning` is true and only a single customer admin is assigned to the project then role assignments will get automatically approved by the system but a warning will get displayed to the  customer admin.
+New project role assignments must be approved before the assignment takes effect. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval of the request. This ensures that a _different_ customer admin must register the 2nd approval before the assignment takes effect.
+
+Customer admins will be notified by email about pending approvals.
+
+> Note: When a customer has less custome admins than the requested `min-approval-count`, role requests will get automatically approved when all customer admins have registered an approval. The Panel can be configured to display a warning in this case.
 
 ## Authentication
 
