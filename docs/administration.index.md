@@ -3,9 +3,12 @@ id: administration.index
 title: Overview
 ---
 
-Meshcloud Partners have access to a so called **meshAdmin** account. This account type enables management of multiple child-customer accounts (so called **managed customers**) within the meshcloud platform. Therefore, with this functionality the **meshAdmin** account is needed to enable customer management. A **meshAdmin** account can only be activated by a **meshcloud Operator**.
+Meshcloud Partners have access to a so called **meshAdmin** account. This account type enables to manage multiple child-customer accounts
+(so called **managed customers**) within the meshcloud platform. Therefore, With this functionality the **meshAdmin** account is needed to enable
+customer management. A **meshAdmin** account can only be activated by a **meshcloud Operator**.
 
-Different groups of people may need access to the different administration puposes. For this reason the following administrative roles are currently available out of the box:
+Different groups of people may need access to the different administration functionality. Therefore the following administrative roles are currently
+available to users of partner or admin accounts:
 
 - **meshcloud Operator**: Is the super admin and operator of the whole meshcloud platform. He can also create **meshAdmin** accounts.
 - **meshAdmin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
