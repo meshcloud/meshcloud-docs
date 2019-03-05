@@ -3,8 +3,8 @@ id: administration.index
 title: Overview
 ---
 
-Meshcloud Partners have access to a so called **meshAdmin** account. This account type enables to manage multiple child-customer accounts
-(so called **managed customers**) within the meshcloud platform. Therefore, With this functionality the **meshAdmin** account is needed to enable
+Meshcloud Partners have access to a so called **meshAdmin** account. This account type enables management of multiple child-customer accounts
+(so called **managed customers**) within the meshcloud platform. Therefore, with this functionality the **meshAdmin** account is needed to enable
 customer management. A **meshAdmin** account can only be activated by a **meshcloud Operator**.
 
 Different groups of people may need access to the different administration functionality. Therefore the following administrative roles are currently
@@ -14,11 +14,11 @@ available to users of partner or admin accounts:
 - **meshAdmin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
   administrator/partner account.
 - **meshAdmin Employee**: Has full access to all administration functionality, but **cannot** manage users of the administrator/partner account.
-- **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This group can do platform operation
-  related tasks in the administration area.
+- **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This group can perform tasks related to
+  platform operations in the administration area.
 - **Ops Support**: Not all Ops operations must be executed by Platform Operators. E.g. setting quotas is a task that can also be done by
   a separate Ops Support team.
-- **Onboarding Support**: A support team in place that supports users who want to sign up may also need access to some administration
+- **Onboarding Support**: A support team in place to help users who want to sign up may also need access to some administration
   functionality which is granted by this role.
 - **Controller**: A Controller has access to billing and usage information of customer projects.
 
