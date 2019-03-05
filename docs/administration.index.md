@@ -49,4 +49,4 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;[Download&nbsp;User&nbsp;Info](administration.users.md#download-user-information) |  |  |  |  | X |
 | [Service&nbsp;Broker](administration.service-brokers.md) |  |  |  |  | X |
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker) |  |  |  |  | X |
-| Performance&nbsp;KPIs |  |  |  | X | X |
+| [Performance&nbsp;Analytics](administration.analytics.md) |  |  |  | X | X |
