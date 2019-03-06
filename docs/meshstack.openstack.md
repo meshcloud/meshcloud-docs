@@ -5,19 +5,19 @@ title: OpenStack
 
 ## Architektur
 
-Der Zugriff auf OpenStack-Plattformen erfolgt durch eine förderierte Identität (federated identity), d.h. es existiert eine Vertrauensbeziehung zwischen dem für die Cloud zuständigen Auth-Dienst Keystone und dem IdP des Meshstack (Keycloak). Innerhalb OpenStacks bestimmt dann Keystone über die erlaubten Zugriffe.
+Der Zugriff auf OpenStack-Plattformen erfolgt durch eine förderierte Identität (federated identity), d.h. es existiert eine Vertrauensbeziehung zwischen dem für die Cloud zuständigen Auth-Dienst Keystone und dem IdP des meshStack (Keycloak). Innerhalb OpenStacks bestimmt dann Keystone über die erlaubten Zugriffe.
 
-OpenStack Keystone delegiert die Authentifizierung im förderierten Fall an ein Apache-Modul, in unserem Fall mod_auth_openidc, das u.a. das OpenID Connect-Protokoll für verteilte Authentifizierung implementiert. Beim Zugriff auf die Cloud bringt der Nutzer ein Token mit (JWT), das vom Meshstack-Keycloak ausgestellt und mit den notwendigen Zugriffsinformationen versehen wurde und von mod_auth_openidc validiert wird (s. Ablauf beim Zugriff). Der Meshstack-Keycloak wiederum greift auf eine externe Identitätsquelle zurück (z.B. LDAP, zentraler IdP).
+OpenStack Keystone delegiert die Authentifizierung im förderierten Fall an ein Apache-Modul, in unserem Fall mod_auth_openidc, das u.a. das OpenID Connect-Protokoll für verteilte Authentifizierung implementiert. Beim Zugriff auf die Cloud bringt der Nutzer ein Token mit (JWT), das vom meshStack-Keycloak ausgestellt und mit den notwendigen Zugriffsinformationen versehen wurde und von mod_auth_openidc validiert wird (s. Ablauf beim Zugriff). Der meshStack-Keycloak wiederum greift auf eine externe Identitätsquelle zurück (z.B. LDAP, zentraler IdP).
 
 Das Meshpanel-Frontend validiert die JWT-Token ebenfalls gegen Keycloak, um dem Nutzer den notwendigen Zugriff einzuräumen.
 
-Das Backend nutzt ebenfalls das JWT-Token, um die Berechtigungen des Users zu prüfen. Werden die Berechtigungen auf die Cloud für Nutzer über den Meshstack geändert, aktualisiert das Backend die in Keycloak hinterlegten Berechtigungen für diesen User.
+Das Backend nutzt ebenfalls das JWT-Token, um die Berechtigungen des Users zu prüfen. Werden die Berechtigungen auf die Cloud für Nutzer über den meshStack geändert, aktualisiert das Backend die in Keycloak hinterlegten Berechtigungen für diesen User.
 
 ![OpenStack Architecture](assets/os-architecture.png)
 
 ## OpenStack Access
 
-1. Der User greift über den Browser auf den Meshstack zu.
+1. Der User greift über den Browser auf den meshStack zu.
 2. Im ausgeloggten Zustand wird der User auf Keycloak weitergeleitet, um seine Credentials einzugeben.
 3. Diese Credentials werden ggf. gegen den angeschlossenen externen IdP abgeglichen (z.B. LDAP).
 4. Bei erfolgreicher Anmeldung stellt Keycloak dem User ein OIDC-Token (JWT, hier MToken) aus und gibt es dem User mit in das Meshpanel, so dass der User angemeldet ist und damit arbeiten kann.
