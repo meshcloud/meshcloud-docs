@@ -56,3 +56,5 @@ Additional roles exist for consumers who are using the platform:
 
 - **Customer Admins**: They are administrator for their own space and can manage projects and cloud platform access/resources. This can be departments of your organization, sub-contractors or single persons.
 - **Customer Employees**: They can not manage the projects but can optain access to the cloud platform resources connected to the single projects.
+
+For more information regarding these roles please see the [user groups](meshcloud.groups.md) documentation.

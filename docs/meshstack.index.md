@@ -11,3 +11,13 @@ It is a modular software platform solution that connects organizational processe
 It is NOT a meta-layer across clouds. Users access native cloud APIs for their deployments, but meshStack helps them to ensure a proper and common configuration across cloud technologies with additional functionality such as metering, billing, surveillance and others.
 
 ![meshStack Context and Components](assets/meshstack-chart.svg)
+
+## Technological Terms
+
+Different Cloud technologies often introduce their own terms for similiar technological principles. In order to match them against each other and also show how this namings and technologies translate into the meshcloud terminology their connections are shown in the following matrix table:
+
+|  meshStack   | Cloud Foundry |   OpenStack   |     AWS      |             Azure              | Kubernetes  |  OpenShift  |
+| :----------: | :-----------: | :-----------: | :----------: | :----------------------------: | :---------: | :---------: |
+| meshCustomer | Organization  |    Domain     | Organization |               -                |      -      |    Group    |
+| meshProject  |     Space     |    Project    |      -       | Subscription or Resource Group |  Namespace  |   Project   |
+|   meshUser   |     User      | Platform User |   Account    |         Azure AD User          | Rolebinding | Rolebinding |

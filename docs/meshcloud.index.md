@@ -2,8 +2,7 @@
 id: meshcloud.index
 title: Overview
 ---
-
-Welcome to the meshcloud platform documentation!
+<h3 style="margin-top: 0">Welcome to the meshcloud platform documentation!</h3>
 
 Here, you can find information about the use of the meshPanel browser UI and the processes behind its functions.
 
