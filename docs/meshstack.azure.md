@@ -22,7 +22,7 @@ If configured correctly the meshStack entities are mapped as described in the fo
 | meshProject  | Resource Group |
 | meshUser     | AD User        |
 
-Currently all meshProjects are mapped to a single Subscription inside a `PlatformInstances` Subscription. This is subject to change as we extend the Azure support.
+> Note: Currently all meshProjects are mapped to a single Subscription in Azure. This is subject to change as we extend the Azure support.
 
 But this is not the use case we follow, because we use a Keycloak server as Identity Provider. The use of an external IDP in combination with Azure is only possible with a SAML compatible IDP and is [documented by Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).
 
@@ -95,9 +95,16 @@ Set-MsolDomainAuthentication -DomainName msh.host -Authentication Federated \
 In order to allow the meshFed to access and replicate the Azure user there needs to be a way to access the Subscription. This is done via a Service
 Principal (which is basically an app). The app must be authorized in the scope of the subscription.
 
-1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app.
+1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app (call it e.g. meshSync).
 2. Add an client secret under **Certificates &amp; secrets** and write it down.
 3. Add the `Directory.ReadWriteAll` permission and click **Grant permissions**.
+
+The App must also have access to the Subscription you plan to use. The easiest way is to add the app to the Subscription as well. This grant the necessairy rights. In the Azure
+Portal follow these steps:
+
+1. Under **Subscriptions** &rarr; **Access control (IAM)** click on **Add a role assignment**.
+2. Search for the name of the app you created earlier (meshSync) and select it.
+3. Grant the role **Owner** to the app
 
 ### meshStack Configuration
 
