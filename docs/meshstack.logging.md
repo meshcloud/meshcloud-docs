@@ -12,64 +12,64 @@ Besides log files, event tables are also used in meshStack. They can be used for
 
 The event tables always contain a reference to the user who created it and the timestamp of the event.
 
-## Logging for error analysis
+## Logging for Error Analysis
 
 In order to provide an available system, logging is required for error analysis. Operations and Support can access these logs for analyzation and identification in case of an error.
 
-| Event (What?) | Log-File / DB-Table (Where) |
-| --------------------- | --- |
-| Error during Login/Authentication | Keycloak Events table, events.log |
-| Error in Keycloak| Keycloak log (server.log) |
-| Error in meshStack (during interactions, jobs, etc.) | Backend log (mesh.log) |
-| Error during replication to OpenStack | replicator-openstack.log |
-| Error during replication to CloudFoundry| replicator-cloudfoundry.log |
-| Error during replication to AWS| replicator-aws.log |
-| Error during replication to Kubernetes| replicator-kubernetes.log |
-| Error during start or stop of application components| According component log (i.e. mesh.log) |
-| Error during function calls, in business logic| According component log (i.e. mesh.log) |
-| Error in static UI server (nginx)| nginx.log |
-| Error during external system call| According component log |
+| Event (What?)                                        | Log-File / DB-Table (Where)             |
+| ---------------------------------------------------- | --------------------------------------- |
+| Error during Login/Authentication                    | Keycloak Events table, events.log       |
+| Error in Keycloak                                    | Keycloak log (server.log)               |
+| Error in meshStack (during interactions, jobs, etc.) | Backend log (mesh.log)                  |
+| Error during replication to OpenStack                | replicator-openstack.log                |
+| Error during replication to CloudFoundry             | replicator-cloudfoundry.log             |
+| Error during replication to AWS                      | replicator-aws.log                      |
+| Error during replication to Kubernetes               | replicator-kubernetes.log               |
+| Error during start or stop of application components | According component log (i.e. mesh.log) |
+| Error during function calls, in business logic       | According component log (i.e. mesh.log) |
+| Error in static UI server (nginx)                    | nginx.log                               |
+| Error during external system call                    | According component log                 |
 
 ## Logging of User and Data Access
 
 Changes (add, change, delete) to data are logged to provide traceability. Regarding logging of personal user data, meshStack only logs the Username or the Keycloak Id of the user. No further personal information is logged.
 
-| Event (What?) | Log-File / DB-Table (Where) |
-| --------------------- | --- |
-| Authentication ((invalid) Logins, Logout, Timeout of session, …) | Keycloak Events table, events.log |
-| Create/Edit/Delete Project, Add/Remove Location from Project | ProjectEvent table, mesh.log |
-| Replication to cloud platform | According component log |
-| Interactions with Service Brokers (create/update/delete instance & bindings) | mesh.log, ServiceInstanceEvent table |
-| Register Customer, Edit Customer Master Data (Payment Info, Addresses) | CustomerEvent table, mesh.log |
-| Invite/Remove/Update users in customer | CustomerEvent table, mesh.log |
-| Edit Project (Assign/Unassign users, edit user roles, edit billing information) | ProjectEvent table, mesh.log |
+| Event (What?)                                                                   | Log-File / DB-Table (Where)          |
+| ------------------------------------------------------------------------------- | ------------------------------------ |
+| Authentication ((invalid) Logins, Logout, Timeout of session, …)                | Keycloak Events table, events.log    |
+| Create/Edit/Delete Project, Add/Remove Location from Project                    | ProjectEvent table, mesh.log         |
+| Replication to cloud platform                                                   | According component log              |
+| Interactions with Service Brokers (create/update/delete instance & bindings)    | mesh.log, ServiceInstanceEvent table |
+| Register Customer, Edit Customer Master Data (Payment Info, Addresses)          | CustomerEvent table, mesh.log        |
+| Invite/Remove/Update users in customer                                          | CustomerEvent table, mesh.log        |
+| Edit Project (Assign/Unassign users, edit user roles, edit billing information) | ProjectEvent table, mesh.log         |
 
-## Logging of business-related administrative access
+## Logging of Business-Related Administrative Access
 
 Administrators and meshPartner have access rights, that exceed the normal user’s capabilities. Therefore administrative actions require special control and traceability.
 
-| Event (What?) | Log-File / DB-Table (Where) |
-| --------------------- | --- |
-| Assign yourself to a customer | User Event table, Customer Event Table, mesh.log |
-| Change project quota | Project Event table, mesh.log |
-| Update financial information of a project | Project Event table, mesh.log |
-| Send message to customer | mesh.log |
-| Change status of customer (Disabled/Verified) | Customer Event table, mesh.log |
-| Deletion of a user | User table in deletedOn and deletedBy fields |
+| Event (What?)                                 | Log-File / DB-Table (Where)                      |
+| --------------------------------------------- | ------------------------------------------------ |
+| Assign yourself to a customer                 | User Event table, Customer Event Table, mesh.log |
+| Change project quota                          | Project Event table, mesh.log                    |
+| Update financial information of a project     | Project Event table, mesh.log                    |
+| Send message to customer                      | mesh.log                                         |
+| Change status of customer (Disabled/Verified) | Customer Event table, mesh.log                   |
+| Deletion of a user                            | User table in deletedOn and deletedBy fields     |
 
-## Security relevant events
+## Security Relevant Events
 
 This section overlaps in some parts with the previously mentioned log files, but it summarizes all logs that are written for security related actions, like giving and revoking access.
 
-| Event (What?) | Log-File / DB-Table (Where) |
-| --------------------- | --- |
-| Successful and denied login attempts, as well as logouts | Keycloak Events, events.log |
-| Create, change, lock, unlock and delete accounts and roles | Customer/Project Event table, mesh.log |
-| Password changes - Authorization via meshIdB | Keycloak Events, events.log, mesh.log |
-| Password changes - Authorization via federated IdP | Federated IdP |
-| Access Right changes (i.e. user rights) | Customer/Project Event table, mesh.log |
+| Event (What?)                                                         | Log-File / DB-Table (Where)                     |
+| --------------------------------------------------------------------- | ----------------------------------------------- |
+| Successful and denied login attempts, as well as logouts              | Keycloak Events, events.log                     |
+| Create, change, lock, unlock and delete accounts and roles            | Customer/Project Event table, mesh.log          |
+| Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log           |
+| Password changes - Authorization via federated IdP                    | Federated IdP                                   |
+| Access Right changes (i.e. user rights)                               | Customer/Project Event table, mesh.log          |
 | Changes to logging configuration (especially deactivation of logging) | Can only be done by an operator, no logging atm |
-| Start and stop administrative processes (Batch-Jobs) | mesh.log |
+| Start and stop administrative processes (Batch-Jobs)                  | mesh.log                                        |
 
 ## Structure / Content, Format and Retention
 
@@ -154,15 +154,15 @@ Example:
 
 Log information must be available for as long as it is required for audit and error analysis reasons. But also data privacy laws have to be considered. So logs must be deleted after a certain amount of time. The following table shows the recommended retention times for the different log types. The specific retention times will be configured individually for a meshStack installation.
 
-| Log-File / DB Entry | Minimum Retention Time | Maximum Retention Time |
-| --- | --- | --- |
-| Keycloak Events in DB | 2 month | 12 month |
-| Keycloak Events in log file | 1 month | 6 month |
-| Keycloak Logs | 1 month | 6 month |
-| meshStack component logs | 1 month | 6 month |
-| meshStack Events in DB | 12 month | 5 years |
+| Log-File / DB Entry         | Minimum Retention Time | Maximum Retention Time |
+| --------------------------- | ---------------------- | ---------------------- |
+| Keycloak Events in DB       | 2 month                | 12 month               |
+| Keycloak Events in log file | 1 month                | 6 month                |
+| Keycloak Logs               | 1 month                | 6 month                |
+| meshStack component logs    | 1 month                | 6 month                |
+| meshStack Events in DB      | 12 month               | 5 years                |
 
-## Deletion Process of log files
+## Deletion Process of Log Files
 
 As all components use logging frameworks, these frameworks are configured to automatically delete log files after a configured period of time.
 
@@ -175,3 +175,31 @@ As the database is also backed up, deleted events will persist in the backup, as
 ## Location of Log Files
 
 All log files are stored locally in the VM, container or PaaS system, where the component is running. For these instances user authentication  is required (e.g. via SSH with a private key) to access their logs.
+
+## Project Role Assignments
+
+User with an administrative role (see available roles) in a customer can assign project roles to other users. This assignment process can be configured in order to require multiple approvals of other admins in order to be complient with buisness or legal requirements. The config key in the meshFed application is:
+
+```yml
+web:
+  user:
+    rolerequest:
+      min-approval-count: 0 # Set to 2 if 2 persons approval is required for role assignments
+```
+
+> The `min-approcal-count` must be at least 2 in order to have a visible effect. If an admin assigns a new user a role the admins approval is automatically granted.
+
+All assigned admins of a customer will be informed via an e-mail if a role request is made. They can approve or decline the role request. If one person declined the role request is canceled and if the configured amount of admins have approved the role is granted to the user.
+
+The backend usually allows role assignments with less then the configured approval count if only one admin exists inside a customer. Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so the injected environment config for the panel must include the following flag.
+
+```json
+{
+  mesh: {
+    dashboardNotification: {
+      show4EyePrincipleWarning: true
+    }
+}
+```
+
+Removal of roles currently works without asking for permission.
