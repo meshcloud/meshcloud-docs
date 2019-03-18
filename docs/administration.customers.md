@@ -15,11 +15,10 @@ When selecting **Customers** in the menu bar on the left you can see the list of
 
 With Meshcloud you can easily create customer accounts.
 
-1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials
+1. Login to the meshPanel with your partner credentials
 2. If not logged in, please login with your Partner account credentials.
-3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account drop-down menu on the top left.
-4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left or use this link:
-   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration)
+3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account selection on the top left.
+4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left.
 5. On the top of the table enter the new managed customer's name and identifier. Then click on the `+` button. Your managed customer is created.
 
 > **Attention**: The identifiers can not be changed. Please choose them carefully.
@@ -43,9 +42,8 @@ upon login.
 
 In order to send such a message:
 
-1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your partner credentials.
-2. Navigate **Settings &gt; Administration** via the settings button on the top right or use this link:
-   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration).
+1. Login to the Meshpanel with your partner credentials.
+2. Navigate to the **Administration** area via the toolbox on the top right and then click on **Customers** in the menu.
 3. In the **Actions** colum click on the envelope icon.
 
 Write your messages and choose which recipient should receive the messages: **All must read** will show the message to all recipients and everyone has
@@ -57,8 +55,7 @@ notification is no longer necessary.
 
 Partners and Administrators can manage the quota, that limits the maximum number of projects per customer.
 
-1. Login to the Meshpanel \([panel.meshcloud.io](https://panel.meshcloud.io)\) with your credentials
-2. Navigate **Settings &gt; Administration** via the settings button on the top right or use this link:
-   [https://panel.meshcloud.io/\#/administration](https://panel.meshcloud.io/#/administration).
-3. Go to **Administration &gt; Customers** and click on the **Quota** icon on the managed customer account you want to edit.
+1. Login to the Meshpanel with your credentials
+2. Navigate to the **Administration** area via the toolbox on the top right and then click on **Customers** in the menu.
+3. In the **Actions** colum click on the **Quota** icon on the managed customer account you want to edit.
 4. Then you can increase and decrease the number of projects per customer.

@@ -3,11 +3,11 @@ id: cloudfoundry.cli
 title: CLI Access
 ---
 
-Once here, you successfully registered to the Meshcloud Platform on [https://panel.meshcloud.io/](https://panel.meshcloud.io/). If not just follow the short registration form [here](https://panel.meshcloud.io/#/register). We will now show you how to get started with the Cloud Foundry CLI:
+The single sign on technology is able to provide you easy access to the Cloud Foundry CLI. With it you can manage your Cloud Foundry app container.
 
 ## Login
 
-If you just registered, make sure you validated your e-mail address. Afterwards log in [here](https://panel.meshcloud.io/#/login/mesh) with your credentials.
+If you just registered, make sure you validated your e-mail address. Afterwards log in to the meshPanel with your credentials.
 
 ## Create Project
 
@@ -28,13 +28,9 @@ If you are using Cloud Foundry for the first time you will have to install the C
 ## Cloud Foundry Authentification
 
 * In the Meshpanel on the CLI Access page click on **Get Passcode**. Copy the temporary authentication code that opens up in a new window.
-
 * In your PowerShell \(Windows\) or Terminal \(MacOS\)
-
 * Type `cf api LOCATION_ENDPOINT`, for example `cf api  https://api.cf.eu-de-darz.msh.host` for the DARZ data center
-
 * Type `cf login -sso` for single-sign-on authentication. You will be asked for your temporary authentication code. Paste it here and hit enter.
-
 * You will see a list of your Cloud Foundry spaces. A Cloud Foundry space corresponds to a Meshcloud Project.
 
 ## Choose a Project

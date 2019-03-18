@@ -4,7 +4,7 @@ title: Service Instances
 ---
 ## How to provision and manage service instances
 
-You can find the marketplace when selecting a project in the Meshpanel. Click on the **Marketplace** in the navigation on the left. You find a list of all available services here. Choose the one you are interessted in. On the details page you will get additional information about the service.
+You can find the marketplace when selecting a project in the meshPanel. Click on the **Marketplace** in the navigation on the left. You find a list of all available services here. Choose the one you are interessted in. On the details page you will get additional information about the service.
 
 ### Provision Service Instance
 

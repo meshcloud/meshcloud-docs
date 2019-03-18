@@ -27,24 +27,23 @@ swift list
 
 ### Uploading Files
 
-The easiest way to upload files to OpenStack Swift is via Meshpanel.
+The easiest way to upload files to OpenStack Swift is via meshPanel.
 
 ### Configure a Swift Container
 
-  1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io)
-  1. If not logged in, please login with your personal credentials
-  1. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files
-  1. After selecting a Location & Project choose in the Service Menu on the left **Storage &gt; Blobs**
-  1. Enter the Name of the Swift Container and press the **+**
-  1. You have now successfully created a Swift Container
+1. Navigate to and login with your personal credentials.
+2. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files.
+3. After selecting a Location & Project choose in the Service Menu on the left **Storage &gt; Blobs**.
+4. Enter the Name of the Swift Container and press the **+**.
+5. You have now successfully created a Swift Container.
 
 ### Upload Files to your Swift Container
 
-  1. In the Meshpanel click on the container you created to get to the container detail page \(**Storage &gt; Blobs &gt; YourContainer**\)
-  1. You can either choose a file from your file system or drag and drop the file that you want to upload
-  1. The files will appear in the upload queue on the right. Click the upload button to start your file upload
-  1. Your files will appear in the Blobs list on the bottom of this page
-  1. Congratulations. You successfully uploaded your files to your Swift Container.
+1. In the Meshpanel click on the container you created to get to the container detail page \(**Storage &gt; Blobs &gt; YourContainer**\).
+2. You can either choose a file from your file system or drag and drop the file that you want to upload.
+3. The files will appear in the upload queue on the right. Click the upload button to start your file upload.
+4. Your files will appear in the Blobs list on the bottom of this page.
+5. Congratulations. You successfully uploaded your files to your Swift Container.
 
 
 

@@ -15,7 +15,7 @@ If applicable in your Meshcloud installation, also a Tax ID can be defined here 
 
 ## Invite users to access a meshCustomer
 
-If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the panel. From here, navigate to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](meshcloud.project.md).
+If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the meshPanel. From here, navigate to "Users" and provide the full name as well as the email address of that person under "Pending Invitations". Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](meshcloud.project.md).
 
 ## Manage groups of assigned users
 

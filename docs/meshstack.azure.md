@@ -65,7 +65,7 @@ In order to start the setup please make sure the following exist:
 1. In order to switch the domain into federation mode download the
    [MSOnline PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0). The successor AD Connect won't work.
 2. Call `Connect-MssolService` and login with your Azure account and password. If this fails and the tools complains about a wrong username/password you probably need to create another
-   Azure AD user via the panel. Put this user in **Global Administrator** mode. After the federation was setup the user can be deleted again. You must first
+   Azure AD user via the meshPanel. Put this user in **Global Administrator** mode. After the federation was setup the user can be deleted again. You must first
    login into the panel via this newly created user because the password needs to be reset. After you set a permanent password you can login via CLI with this user.
 3. In order to setup the federated mode you need to find the signing certificate for the Keycloak IDP server and set it into a shell variable. You will find
   this certificate under **Realm Settings &rarr; Keys &rarr; Certificate**

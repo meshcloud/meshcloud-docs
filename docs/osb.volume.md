@@ -9,7 +9,7 @@ In Cloud Foundry, the local file system of a container is typically ephemeral. M
 
 Each service instance of the volume service has dedicated resources available to it and thus offers constant performance.
 
-Please see the [pricing sheet](https://panel.meshcloud.io/#/billing/prices?tab=cf) for available sizes and prices of the `osb-samba` service.
+Please see the pricing sheet (found in the footer of the meshPanel) for available sizes and prices of the `osb-samba` service.
 
 ## Mounting a Volume
 
