@@ -175,31 +175,3 @@ As the database is also backed up, deleted events will persist in the backup, as
 ## Location of Log Files
 
 All log files are stored locally in the VM, container or PaaS system, where the component is running. For these instances user authentication  is required (e.g. via SSH with a private key) to access their logs.
-
-## Project Role Assignments
-
-User with an administrative role (see available roles) in a customer can assign project roles to other users. This assignment process can be configured in order to require multiple approvals of other admins in order to be complient with buisness or legal requirements. The config key in the meshFed application is:
-
-```yml
-web:
-  user:
-    rolerequest:
-      min-approval-count: 0 # Set to 2 if 2 persons approval is required for role assignments
-```
-
-> The `min-approcal-count` must be at least 2 in order to have a visible effect. If an admin assigns a new user a role the admins approval is automatically granted.
-
-All assigned admins of a customer will be informed via an e-mail if a role request is made. They can approve or decline the role request. If one person declined the role request is canceled and if the configured amount of admins have approved the role is granted to the user.
-
-The backend usually allows role assignments with less then the configured approval count if only one admin exists inside a customer. Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so the injected environment config for the panel must include the following flag.
-
-```json
-{
-  mesh: {
-    dashboardNotification: {
-      show4EyePrincipleWarning: true
-    }
-}
-```
-
-Removal of roles currently works without asking for permission.
