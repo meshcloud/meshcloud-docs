@@ -34,23 +34,14 @@ To use the Backup Service for Databases, Document Stores and other content relat
 
 As you should never use your personal Account for the configuration of a File Endpoint it is highly recommend you create a Service User. The following steps describe how to create a Service User:
 
-1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io)
-
-2. If not logged in, please login with your personal credentials
-
-3. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files
-
-4. After selecting a Location & Project choose in the Menu Bar on the left **Tools &gt; Service Users**
-
-5. On the form enter a description for the Service User, e.g. _PaaS Backup Service User _
-
-6. In the Platform Section select OpenStack DARZ
-
-7. Click on the ![Plus sign](assets/plus-sign.png) to add the Service User
-
-8. Note down the password, as it won't be visible and/or recoverable anymore
-
-9. You have now successfully created a Service User
+1. Navigate to the meshPanel and login with your personal credentials.
+2. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files.
+3. After selecting a Location & Project choose in the Menu Bar on the left **Tools &gt; Service Users**.
+4. On the form enter a description for the Service User, e.g. _PaaS Backup Service User_.
+5. In the Platform Section select OpenStack DARZ.
+6. Click on the ![Plus sign](assets/plus-sign.png) to add the Service User.
+7. Note down the password, as it won't be visible and/or recoverable anymore.
+8. You have now successfully created a Service User.
 
 ### Configure a Swift Container
 
@@ -59,12 +50,11 @@ Doing backups in Cloud Environments is heavily dependent on Object File Stores l
 > Please be aware, that Service Users are per Location and Project.
 > That means, you need to create the Swift Container on the same Location and Project as you did it for the Service User.
 
-1. Navigate to [https://panel.meshcloud.io](https://panel.meshcloud.io)
-2. If not logged in, please login with your personal credentials
-3. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files
-4. After selecting a Location & Project choose in the Menu Bar on the left **Storage &gt; Blobs**
-5. Enter the Name of the Swift Container and press the ![Plus Sign](assets/plus-sign.png)
-6. You have now successfully created a Swift Container
+1. Navigate to the meshPanel and login with your personal credentials.
+2. On the Welcome Dashboard, please select the Location & Project where you want to create your Swift Container for the Backup Files.
+3. After selecting a Location & Project choose in the Menu Bar on the left **Storage &gt; Blobs**.
+4. Enter the Name of the Swift Container and press the ![Plus Sign](assets/plus-sign.png).
+5. You have now successfully created a Swift Container.
 
 ## Configuration of Backup for Services
 
@@ -72,9 +62,9 @@ Doing backups in Cloud Environments is heavily dependent on Object File Stores l
 
 To configure Backup for Services you should have completed the following steps:
 
-1. Created a Service User
-2. Created a Swift Container
-3. Created a Service via `cf marketplace`
+1. Created a Service User.
+2. Created a Swift Container.
+3. Created a Service via `cf marketplace`.
 4. Accessed the Service Dashboard via `cf service yourServiceName` picking the Dashboard URL. For example:
 
    ```text
@@ -111,34 +101,23 @@ First we need to create a File Endpoint \(if you want to know what a File Endpoi
 To create a regular backup you can configure multiple Backup Plans. To create a Backup Plan folly the steps below:
 
 1. If you haven't already done so create a File Endpoint first.
-
 2. In the Backup Overview click on the `Create Backup Plan`button in the **Backup Plan** section.
-
 3. Fill in the presented form.
+   1. Frequency: When should the backup be executed? You must provide a cron type string with 6 fields.
 
-   1. Frequency: When should the backup be executed? You must provide a cron type string with 6 fields.  
       Example: Each value is separated by a space. `* * 5 * * *` means everyday at 5 o'clock, while `* * */5 * * *`  means every 5 hours.
-
-      1. The first field represents for **seconds.** Valid values are 0-59.
-
-      2. The second field represents for** minutes.** Valid values are 0-59.
-
-      3. The third field represents **hours.** Valid values are 0-24.
-
-      4. The fourth field represents **the day of the month.** Valid values are 1-31.
-
-      5. The fifth field represents the **month.** Valid values are 1-12
-
-      6. The sixth field represents the **day of the week.** Valid values are 0-6 with 0 being Sunday.
+      - The first field represents for **seconds.** Valid values are 0-59.
+      - The second field represents for** minutes.** Valid values are 0-59.
+      - The third field represents **hours.** Valid values are 0-24.
+      - The fourth field represents **the day of the month.** Valid values are 1-31.
+      - The fifth field represents the **month.** Valid values are 1-12
+      - The sixth field represents the **day of the week.** Valid values are 0-6 with 0 being Sunday.
 
    2. Retention style and Retention Period define how may backup files should be stored.
 
-      1. **ALL** keeps all files, ignores the period.
-
-      2. **FILES** keeps a number of backup files. The amount can specified via the period field.
-
-      3. **HOURS** deletes all backup files older than the number of hours specified in the period field.
-
-      4. **DAYS** deletes all backup files older than the number of days specified in the period field.
+      - **ALL** keeps all files, ignores the period.
+      - **FILES** keeps a number of backup files. The amount can specified via the period field.
+      - **HOURS** deletes all backup files older than the number of hours specified in the period field.
+      - **DAYS** deletes all backup files older than the number of days specified in the period field.
 
    3. Select the destination where the backups should be stored.

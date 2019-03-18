@@ -8,7 +8,7 @@ We have invested a lot of work and time to enable a seamless cloud experience ac
 
 ## Registration
 
-To create a new account, go to [https://panel.meshcloud.io/\#/register](https://panel.meshcloud.io/#/register) and fill out the form.
+To create a new account, go to the account registration and fill out the form.
 
 Submit the form to create an account.
 
@@ -18,12 +18,11 @@ You will receive an email to confirm your account and after that you can start u
 
 After a successful registration the next step is to login into your federated meshFed SSO account. This can be done by:
 
-1. Either navigate to [meshcloud.io](https://www.meshcloud.io) or directly to our [meshPanel](https://panel.meshcloud.io)
-2. In the upper right corner click on the **Login** link
-3. You will be redirected to the meshFed SSO login
-4. Enter your credentials consisting of your e-mail address and the password you specified during registration
-5. After a successful login, you will be automatically redirected to the meshPanel project overview
-6. You are ready to rumble
+1. Either navigate to [meshcloud.io](https://www.meshcloud.io) or directly to our meshPanel.
+2. In the upper right corner click on the **Login** link.
+3. You will be redirected to the meshFed SSO login.
+4. Enter your credentials consisting of your e-mail address and the password you specified during registration.
+5. After a successful login, you will be automatically redirected to the meshPanel project overview.
 
 ## Change Password
 
