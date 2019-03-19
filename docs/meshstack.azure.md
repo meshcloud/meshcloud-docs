@@ -23,7 +23,7 @@ If configured correctly the meshStack entities are mapped as described in the fo
 | meshCustomer     | Account, but the Account can currently contain multiple customer projects.  |
 | meshUser         | AD User                                                                     |
 
-Currently, all meshProjects are mapped to a single Subscription per `PlatformInstance`. This is subject to change as we extend the Azure support.
+Currently all meshProjects are mapped to a single Subscription per `PlatformInstance`. This is subject to change as we extend the Azure support.
 
 The meshIdB provides SSO to Azure via SAML. The use of an external IDP in combination with Azure is [documented by Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).
 
