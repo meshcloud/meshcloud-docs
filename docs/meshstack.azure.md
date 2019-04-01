@@ -16,15 +16,16 @@ To enable integration with Azure, operators deploy and configure the meshStack A
 
 If configured correctly the meshStack entities are mapped as described in the following table:
 
-| Meshcloud    | Azure          |
-| ------------ | -------------- |
-| meshCustomer | -              |
-| meshProject  | Resource Group |
-| meshUser     | AD User        |
+| meshcloud        | Azure                                                                       |
+| ---------------- | --------------------------------------------------------------------------- |
+| PlatformInstance | Subscription (currently)                                                    |
+| meshProject      | Resource Group                                                              |
+| meshCustomer     | Account, but the Account can currently contain multiple customer projects.  |
+| meshUser         | AD User                                                                     |
 
-> Note: Currently all meshProjects are mapped to a single Subscription in Azure. This is subject to change as we extend the Azure support.
+Currently all meshProjects are mapped to a single Subscription per `PlatformInstance`. This is subject to change as we extend the Azure support.
 
-But this is not the use case we follow, because we use a Keycloak server as Identity Provider. The use of an external IDP in combination with Azure is only possible with a SAML compatible IDP and is [documented by Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).
+The meshIdB provides SSO to Azure via SAML. The use of an external IDP in combination with Azure is [documented by Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).
 
 Deleting a meshUser from the project is currently (begin of February 2019) not yet implemented.
 
@@ -32,18 +33,17 @@ Deleting a meshUser from the project is currently (begin of February 2019) not y
 
 ### IDP Configuration
 
-In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as an [federated SAML IDP](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) using the following steps. The steps are based on the provided documentation from Microsoft. However some
-steps where misleading and incomplete. So stick to the steps in this document and refer to the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) if additional information is needed.
+In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the Meshstack Identity Broker as an [federated SAML IDP](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) using the following steps. The steps are based on the provided documentation from Microsoft, but some
+steps are misleading and/or incomplete. So stick to the steps in this document and refer to the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) if additional information is needed.
 
-1. Create a new SAML Client like described in the official documentation. It is possible to use the Azure SAML Metadate file as starting point. Please check if the signature algorithm
-   is set to SHA-1 after the import.
+1. Create a new SAML Client as described in the official documentation. It is possible to use the Azure SAML Metadate file as starting point. Please check if the signature algorithm is set to SHA-1 after the import.
 2. Add a mapper which will map the `azure-email` user attribute to `IDPEmail`.
 
 ### Azure Configuration
 
 In order to start the setup please make sure the following exist:
 
-1. An Azure account ([you can create one if it does not](https://azure.microsoft.com/en-us/features/azure-portal/)).
+1. An Azure account ([you can create one if it does not exist](https://azure.microsoft.com/en-us/features/azure-portal/)).
 2. Add a valid Subscription to the account and remember the Subscription ID (e.g. `0688c9ba-183b-49d3-a3a5-98735b3702df`)
 
 #### Domain Setup
@@ -123,7 +123,7 @@ replicator-azure:
 
 ```
 
-## Limitations
+## Current Limitations
 
 - Logout in the Azure Panel is currently not possible. You need to logout from the meshPanel.
 - All Projects in one Azure location are mapped in a single Subscription. As a workaround multiple Azure locations could be registered. This will be changed soon.
