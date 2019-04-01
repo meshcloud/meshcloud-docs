@@ -3,25 +3,25 @@ id: meshstack.openshift
 title: OpenShift
 ---
 
-Meshstack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
+meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
 
-Meshstack supports project creation, configuration, user management and SSO for OpenShift.
+meshStack supports project creation, configuration, user management and SSO for OpenShift.
 
 ## Integration Overview
 
-To enable integration with OpenShift, operators deploy and configure the Meshstack OpenShift Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` OpenShift. This makes OpenShift available to meshProjects like any other cloud platform in Meshstack.
+To enable integration with OpenShift, operators deploy and configure the meshStack OpenShift Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` OpenShift. This makes OpenShift available to meshProjects like any other cloud platform in meshStack.
 
-Meshstack automatically configures OpenShift Projects and Permissions to integrate SSO with [Meshstack Identity Federation](./meshstack.identity-federation.md).
+meshStack automatically configures OpenShift Projects and Permissions to integrate SSO with [meshStack Identity Federation](./meshstack.identity-federation.md).
 
 ## Prerequisites
 
 ### OpenShift Versions
 
-Meshstack currently supports OpenShift version 3.7 as either Open-Source (OKD) or OpenShift Enterprise variants.
+meshStack currently supports OpenShift version 3.7 as either Open-Source (OKD) or OpenShift Enterprise variants.
 
 ### IdP Configuration
 
-In order to integrate with [Meshstack Identity Federation](./meshstack.identity-federation.md), operators need to configure the Meshstack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.okd.io/latest/install_config/configuring_authentication.html#OpenID) using the following settings:
+In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.okd.io/latest/install_config/configuring_authentication.html#OpenID) using the following settings:
 
 ```yml
 identityProviders:
@@ -55,9 +55,9 @@ identityProviders:
         userInfo: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/userinfo
 ```
 
-### Meshstack Service Account
+### meshStack Service Account
 
-The Meshstack OpenShift Module uses a dedicated OpenShift ServiceAccount to work with OpenShift APIs on behalf of Meshstack. To create these credentials, create the following objects via `oc apply` as a Cluster Administrator.
+The meshStack OpenShift Module uses a dedicated OpenShift ServiceAccount to work with OpenShift APIs on behalf of meshStack. To create these credentials, create the following objects via `oc apply` as a Cluster Administrator.
 
 ```yaml
 ---

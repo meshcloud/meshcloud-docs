@@ -3,12 +3,12 @@ id: meshstack.platform-location
 title: Platforms & Locations
 ---
 
-Meshstack operators can configure the [Platforms & Locations](meshcloud.platform-location.md) available to
+meshStack operators can configure the [Platforms & Locations](meshcloud.platform-location.md) available to
 users. See the Platforms section in the sidebar for details on the platforms supported by meshstack.
 
 ## Restricting Access
 
-Meshstack provides simple and effective means to implement access policies, for example to control data
+meshStack provides simple and effective means to implement access policies, for example to control data
 sovereignty and access to public cloud platforms. Operators are also able to define "boundaries" on various
 levels and allow controlled delegation to self-service while retaining full control over policies.
 

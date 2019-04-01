@@ -1,6 +1,6 @@
 ---
 id: meshcloud.customer
-title:  Customer Accounts (meshCustomer)
+title:  meshCustomer
 ---
 
 ## What is a meshCustomer?

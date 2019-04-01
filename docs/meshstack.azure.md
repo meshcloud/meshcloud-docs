@@ -32,7 +32,7 @@ Deleting a meshUser from the project is currently (begin of February 2019) not y
 
 ### IDP Configuration
 
-In order to integrate with [Meshstack Identity Federation](./meshstack.identity-federation.md), operators need to configure the Meshstack Identity Broker as an [federated SAML IDP](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) using the following steps. The steps are based on the provided documentation from Microsoft. However some
+In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as an [federated SAML IDP](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) using the following steps. The steps are based on the provided documentation from Microsoft. However some
 steps where misleading and incomplete. So stick to the steps in this document and refer to the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-fed-saml-idp) if additional information is needed.
 
 1. Create a new SAML Client like described in the official documentation. It is possible to use the Azure SAML Metadate file as starting point. Please check if the signature algorithm

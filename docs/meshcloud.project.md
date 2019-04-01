@@ -1,6 +1,6 @@
 ---
 id: meshcloud.project
-title: Project
+title: meshProject
 ---
 
 In order to use cloud computing resources, you have to create a meshProject. Within the meshProject, you can manage and scale the resources you use across all locations. Only Customer Admins have access to the administrative functionality described in this section.
