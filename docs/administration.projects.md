@@ -38,4 +38,24 @@ When a user deletes a meshProject it is not completely removed in the cloud plat
 
 ## Project History
 
-Sometimes it might be necessary to get additional information about the lifecycle of the project. The archive icon in the list of deleted projects shows all major events that have happened on the project. This history is also available for existing projects in the **Customers** section of the **Administration** area. Navigate to the **Customer Projects** of a specific customer and click the archive icon on the project you want to get details about.
+Sometimes additional information about the lifecycle of the project is required. The archive icon in the list of deleted projects shows all major events that happened on the project. This history is also available for existing projects in the **Customers** section of the **Administration** area. Navigate to the **Customer Projects** of a specific customer and click the archive icon on the project you want to see details about.
+
+The following events are available:
+
+- **PROJECT_CREATED**: A new meshProject was created.
+- **PROJECT_DELETED**: A meshProject was deleted.
+- **PROJECT_DELETED_IN_ALL_LOCATIONS**: Tenants of a meshProject are deleted asynchronously after the user deleted the project. When this deletion is successful, this event is written.
+- **LOCATIONS_ADDED**: One or more locations were added to a project.
+- **LOCATION_REMOVED**: One or more locations were removed from a project.
+- **PLATFORM_MAPPINGS_UPDATED**: A tenant was created for the meshProject. meshStack stores a mapping between the meshProject and the cloud tenant (the representation of a meshProject in a cloud platform).
+- **USER_ASSIGNED**: A user was assigned to the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.
+- **USER_UNASSIGNED**: A user was removed from the project.
+- **PROJECT_ROLE_CHANGED**: The user role was changed on the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.
+- **PROJECT_ROLE_APPROVED**: If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written for every approval.
+- **PROJECT_ROLE_REJECTED**: If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written when a role request is rejected.
+- **EDIT_PROJECT_TAGS**: If Project Tags are configured, this event is written every time a tag is edited by a customer admin.
+- **PARTNER_EDIT_PROJECT_TAGS**: If Project Tags are configured, this event is written every time a partner/admin edits the restricted project tags.
+- **ADDRESS_EDITED**: The billing address of the project was changed.
+- **QUOTA_EDITED**: Quota Settings for the project were changed.
+- **SERVICE_USER_CREATED**: A Service User was created for the project.
+- **SERVICE_USER_DELETED**: A Service User was deleted for the project.
