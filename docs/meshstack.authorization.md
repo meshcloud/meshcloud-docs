@@ -26,11 +26,11 @@ web:
 
 New project role assignments must be approved before the assignment takes effect. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for a role request. This ensures that a _different_ customer admin must register the 2nd approval before the assignment takes effect.
 
-Customer admins will be notified by email about pending approvals.
+Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests.
 
 When any customer admin declines the role request, the role request is immediately cancelled.
 
-> Note: When a customer has less custome admins than the requested `min-approval-count`, role requests will get automatically approved when all customer admins have registered an approval. The Panel can be configured to display a warning in this case.
+> Note: When a customer has less customer admins than the requested `min-approval-count`, role requests will get automatically approved when all customer admins have registered an approval. The Panel can be configured to display a warning in this case.
 
 Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so the config for the panel must include the following flag.
 

@@ -21,7 +21,9 @@ Project users always get access to all cloud platforms, that are assigned to the
 
 ### User Management on a meshProject
 
-Before being able to assign a user to a meshProject, the user must have been [invited to the Meshcustomer](meshcloud.customer.md). In the **Project Users** section of the project edit screen all users of the project are listed and new ones can be added.
+Before being able to assign a user to a meshProject, the user must have been [invited to the Meshcustomer](meshcloud.customer.md). In the **Project Users** section of the project edit screen all users of the project are listed and new ones can be added. When adding/changing or removing a user, the user will be informed via email about this change of access rights he has.
+
+If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is activated in your meshStack installation, an additional approval might be necessary, before a user is actually assigned/remove/updated on a project.
 
 #### Assign user to a meshProject
 
