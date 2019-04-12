@@ -3,34 +3,34 @@ id: meshstack.openstack
 title: OpenStack
 ---
 
-## Architektur
+## Architecture
 
-Der Zugriff auf OpenStack-Plattformen erfolgt durch eine förderierte Identität (federated identity), d.h. es existiert eine Vertrauensbeziehung zwischen dem für die Cloud zuständigen Auth-Dienst Keystone und dem IdP des meshStack (Keycloak). Innerhalb OpenStacks bestimmt dann Keystone über die erlaubten Zugriffe.
+Access to OpenStack platforms takes place via a federated identity, i.e. there is a relationship of trust between the Auth service Keystone responsible for the cloud and the IdP of the meshStack (Keycloak). Within OpenStacks, Keystone then determines the permitted accesses.
 
-OpenStack Keystone delegiert die Authentifizierung im förderierten Fall an ein Apache-Modul, in unserem Fall mod_auth_openidc, das u.a. das OpenID Connect-Protokoll für verteilte Authentifizierung implementiert. Beim Zugriff auf die Cloud bringt der Nutzer ein Token mit (JWT), das vom meshStack-Keycloak ausgestellt und mit den notwendigen Zugriffsinformationen versehen wurde und von mod_auth_openidc validiert wird (s. Ablauf beim Zugriff). Der meshStack-Keycloak wiederum greift auf eine externe Identitätsquelle zurück (z.B. LDAP, zentraler IdP).
+OpenStack Keystone delegates the authentication in the federated case to an Apache module, in our case `mod_auth_openidc`, which among other things implements the OpenID Connect protocol for distributed authentication. When accessing the cloud, the user brings a token (JWT) with him, which was issued by the meshStack Keycloak and provided with the necessary access information and is validated by `mod_auth_openidc` (see access procedure). The meshStack Keycloak in turn accesses an external identity source (e.g. LDAP, central IdP).
 
-Das Meshpanel-Frontend validiert die JWT-Token ebenfalls gegen Keycloak, um dem Nutzer den notwendigen Zugriff einzuräumen.
+The Meshpanel frontend also validates the JWT tokens against Keycloak in order to grant the user the necessary access.
 
-Das Backend nutzt ebenfalls das JWT-Token, um die Berechtigungen des Users zu prüfen. Werden die Berechtigungen auf die Cloud für Nutzer über den meshStack geändert, aktualisiert das Backend die in Keycloak hinterlegten Berechtigungen für diesen User.
+The backend also uses the JWT token to check the user's permissions. If the permissions to the cloud for users are changed via the meshStack, the backend updates the permissions stored in Keycloak for this user.
 
 ![OpenStack Architecture](assets/os-architecture.png)
 
 ## OpenStack Access
 
-1. Der User greift über den Browser auf den meshStack zu.
-2. Im ausgeloggten Zustand wird der User auf Keycloak weitergeleitet, um seine Credentials einzugeben.
-3. Diese Credentials werden ggf. gegen den angeschlossenen externen IdP abgeglichen (z.B. LDAP).
-4. Bei erfolgreicher Anmeldung stellt Keycloak dem User ein OIDC-Token (JWT, hier MToken) aus und gibt es dem User mit in das Meshpanel, so dass der User angemeldet ist und damit arbeiten kann.
-5. Für einen Cloudzugriff über das Panel, wird mit dem OIDC-Token ein entsprechender Request an das Backend gestellt.
-6. Das Backend nutzt das mitgeschickte OIDC-Token, um bei Keystone (an der Cloud) wiederum ein Keystone-Token (KToken) zu erhalten. Es erfolgt also ein Token-Tausch. Der Nutzer könnte auch mit dem OIDC-Token direkt an die Cloud gehen, z.B. über CLI-Tools o.ä.
-7. Der Token Exchange Request gegen Keystone führt dazu, dass mod_auth_openidc aktiv wird und das OIDC-Token validiert (Zeitliche Gültigkeit, Signatur des Keycloaks).
-8. Ist das OIDC-Token gültig, leitet mod_auth_openidc den Request einschließlich User-Attributen an Keystone weiter, das bei gültigen Tokendaten ein Keystone-Token (KToken) ausstellt und zurückliefert.
-9. Das Backend schickt das erhaltene KToken an das Panel, so dass dieses direkt auf die jeweiligen OpenStack-Services zugreifen kann.
-10. Zunächst holt das Panel den Service Catalog von Keystone, um zu wissen, welche OpenStack Services verfügbar sind.
-11. Beim Zugriff auf anderen OpenStack-Dienste wird nun das KToken gegenüber den anderen OpenStack-Diensten eingesetzt.
-12. Die anderen Dienste wiederum validieren das KToken gegen Keystone.
-13. Ist es valide, werden die angeforderten Requests beantwortet und der Zugriff auf die OpenStack-Dienste ist abgeschlossen.
+1. The user accesses the meshStack via the browser.
+2. In the logged out state the user is forwarded to Keycloak to enter his credentials.
+3. These credentials are compared with the connected external IdP (e.g. LDAP) if necessary.
+4. On successful login Keycloak issues an OIDC token (JWT, here MToken) to the user and gives it to the user in the meshPanel, so that the user is logged in and can work with it.
+5. For cloud access via the panel, a corresponding request is made to the backend with the OIDC token.
+6. The backend uses the OIDC token sent with the panel to obtain a Keystone token (KToken) from Keystone (at the cloud). A token exchange therefore takes place. The user could also go directly to the cloud with the OIDC token, e.g. via CLI tools or similar.
+7. The Token Exchange Request against Keystone leads `to mod_auth_openidc` becoming active and validating the OIDC token (temporal validity, signature of the keycloak).
+8. If the OIDC token is valid, `mod_auth_openidc` forwards the request including user attributes to Keystone, which issues and returns a Keystone token (KToken) for valid token data.
+9. The backend sends the received KToken to the panel so that it can directly access the respective OpenStack services.
+10. First, the Panel fetches the Keystone Service Catalog to know which OpenStack services are available.
+11. When accessing other OpenStack services, the KToken is now used against the other OpenStack services.
+12. The other services in turn validate the KToken against Keystone.
+13. If it is valid, the requested requests are answered and access to the OpenStack services is completed.
 
-Läuft das KToken ab, muss der OIDC/Keystone Token Exchange (6-8) erneut durchgeführt werden. Ist das OIDC-Token abgelaufen, muss der User sich erneut gegenüber dem Keycloak authentifizieren.
+If the KToken expires, the OIDC/Keystone Token Exchange (steps 6-8) must be executed again. Once the OIDC token has expired, the user must authenticate again to the keycloak.
 
 ![OpenStack Communication](assets/os-communication.png)
