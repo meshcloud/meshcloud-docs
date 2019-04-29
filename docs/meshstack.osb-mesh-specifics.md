@@ -76,6 +76,15 @@ The response when calling this URL has the following content:
 }
 ```
 
+## meshSpecific Service Tags
+
+The [OSB Spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#service-object) provides a field `tags` for services. By providing specific tags here, the meshMarketplace will interpret them and provide specific functionality for these services. The tags described in the following sections are currently supported.
+
+### Sensitive Service Brokers
+
+Usually the meshMarketplace shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the "sensitive" tag for the according service in the OSB catalog. This will result in not displaying the credentials in the meshMarketplace. Instead only on initial creation of the Binding a download of the credentials is triggered. The precondition for this to work is, that the creation of the binding is synchronous. No asyn binding is supported for sensitive services. The meshMarketplace does not store any credentials provided by sensitive service brokers. It only directly passes the credentials through to the user via the download of a text file containing the credentials.
+
+
 ## meshMarketplace Profile
 
 The OSB API Spec allows platforms to define various extensions as part of a [Profile](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/profile.md)
