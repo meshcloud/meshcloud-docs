@@ -103,6 +103,14 @@ It is recommended that Service Brokers store this information as it allows opera
 
 The OSB API Spec defines free-form metadata fields for service instances and plans. Even though not standardized, there are established conventions around their use. In order to have their service properly rendered on the meshMarketplace User Interface, Service Brokers must stick to the [OSB Profile metadata conventions](https://github.com/openservicebrokerapi/servicebroker/blob/master/profile.md#service-metadata).
 
+#### Cost Information
+
+The OSB profile also contains properties to provide [cost information](https://github.com/openservicebrokerapi/servicebroker/blob/master/profile.md#cost-object) via the OSB catalog. Besides showing this information to the user of the meshMarketplace, this information is also used in the [meshMetering](meshstack.metering-meshmarketplace.md) component. That means cost information provided via the OSB catalog will be used to calculate costs for used services my meshMetering. In order to successfully parse the cost information provided via the catalog, the following rules have to be considered, as the OSB Profile is not specific enough to use the cost information for automated pricing of service usages:
+
+- unit must be one of: `HOURLY, WEEKLY, MONTHLY, YEARLY, MB, GB`
+- currently only one cost component can be set per service plan. Multiple different cost components per plan are not supported yet. If provided anyway, meshMetering will only use one of the defined cost components (most likely the last one).
+- currently only `eur` is supported as a currency
+
 ### Service Instance / Binding Parameters
 
 The meshMarketplace intends to support JSON schema for custom parameters used for service instance creation and service binding. You can find the description of the schema [here](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object)
