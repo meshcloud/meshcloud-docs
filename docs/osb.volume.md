@@ -15,7 +15,7 @@ Please see the pricing sheet (found in the footer of the meshPanel) for availabl
 
 When binding an instance of the Volume service, the volume will be mounted to `/mnt` by default.
 
-To customize this mount-point, you can specify the `container_dir` parameter when creating a service binding. We recommend storing custom binding parameters as a `volume-binding.json` file next to your `manifest.yml` \(manifests themselves do [not yet](https://github.com/cloudfoundry/cli/issues/1173) support service binding parameters\).
+To customize this mount-point, you can specify the `container_dir` parameter when creating a service binding. We recommend storing custom binding parameters as a `volume-binding.json` file next to your `manifest.yml` \(manifests themselves do [not yet](https://github.com/cloudfoundry/cloud_controller_ng/issues/1332) support service binding parameters\).
 
 Using the following `volume-binding.json` , we can tell Cloud Foundry to mount the volume at `/app/htdocs/wp-content` when creating the binding using `cf bind-service my-app my-service -c volume-binding.json`
 
