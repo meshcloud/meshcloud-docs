@@ -6,7 +6,7 @@ title: Marketplace Integrations
 
 You can provide your own services in the [meshMarketplace](marketplace.index.md) via the Marketplace Integrations. The functionality is currently
 only available for [Customer Admins](meshcloud.customer.md#manage-groups-of-assigned-users).
-You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal.
+You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.osb-overview.md).
 
 ## How to use it
 
