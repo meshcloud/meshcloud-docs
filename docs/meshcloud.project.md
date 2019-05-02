@@ -32,6 +32,8 @@ You can configure one or multiple [payment methods](meshcloud.project-metering.m
 ## User Management on a meshProject
 
 Before being able to assign a user to a meshProject, the user must have been [invited to the Meshcustomer](meshcloud.customer.md). In the **Project Users** section of the project edit screen all users of the project are listed and new ones can be added. When adding/changing or removing a user, the user will be informed via email about this change of access rights he has.
+While adding or updating a user on a project they exists the option to set an expiry date. All expired and soon expired users will be listed under projects/expired access.
+Soon expired access (expiry date < 7 days) will be highlighted with **yellow** and expired access will be highlighted with **red**.
 
 If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is activated in your meshStack installation, an additional approval might be necessary, before a user is actually assigned/remove/updated on a project.
 
