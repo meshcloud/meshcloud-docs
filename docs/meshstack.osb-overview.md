@@ -30,6 +30,7 @@ A *service instance* is a specific deployed service that you can include in your
 ### Service Binding
 
 A *service binding* is a set of credentials you need to access your service instance, e.g. the connection string to access your database instance.
+Service bindings can come with an expiration in which case they will be deleted after a set amount of days.
 
 ### Marketplace
 

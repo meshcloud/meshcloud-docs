@@ -119,9 +119,13 @@ The OSB profile also contains properties to provide [cost information](https://g
 - currently only one cost component can be set per service plan. Multiple different cost components per plan are not supported yet. If provided anyway, meshMetering will only use one of the defined cost components (most likely the last one).
 - currently only `eur` is supported as a currency
 
+#### Expiring Service Bindings
+
+Additionally, the meshMarketplace supports expiring service bindings which can be used to force credential rolling. Service catalogs can specify service plans with expiring bindings by settings `metadata.expiryDays` to the number of days after which a service binding for a service instance based on this plan should be deleted.
+The meshStack regularly checks expiring service bindings, notifies users about upcoming expiration dates through the marketplace dashboard and enforces their deletion once they are expired.
+
 ### Service Instance / Binding Parameters
 
 The meshMarketplace intends to support JSON schema for custom parameters used for service instance creation and service binding. You can find the description of the schema [here](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object)
 
 Delivering this schema information allows the Marketplace UI to assist users in crafting proper parameters.
-
