@@ -5,9 +5,9 @@ title: meshMarketplace Specifics
 
 The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration.
 
-## Permissions on service instance level
+## Permissions on Service Instance Level
 
-The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users, that are assigned to the project in the meshMarketplace where the service instance was created in, shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property permission_url:
+The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users, that are assigned to the project in the meshMarketplace where the service instance was created, shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property permission_url:
 
 ```json
 {
@@ -32,7 +32,7 @@ The response of this request contains a simple json object with a permission fie
 
 If NONE is returned, the access to the dashboard must be denied for the user. If USER is returned, access must be granted. If the service instance id is not known by the platform (meshMarketplace), HTTP Status 404 is returned.
 
-## Initiating the OAuth flow
+## Initiating the OAuth Flow
 
 There are two ways for Service Brokers to initiate the OAuth flow for SSO. Implementers can choose the way that’s more convenient for them.
 
@@ -57,7 +57,7 @@ For the OAuth flow, a token endpoint is required too. It is a static link and th
 }
 ```
 
-### 2) Use X-Api-Info-Location header like in Cloud Foundry
+### 2) Use X-Api-Info-Location header as in Cloud Foundry
 
 For being compatible with Cloud Foundry and making integration easy for Service Brokers, that are already using the Cloud Foundry SSO, an X-Api-Info-Location header is submitted on every request the meshMarketplace executes to the Service Broker.
 
@@ -82,8 +82,7 @@ The [OSB Spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/
 
 ### Sensitive Service Brokers
 
-Usually the meshMarketplace shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the "sensitive" tag for the according service in the OSB catalog. This will result in not displaying the credentials in the meshMarketplace. Instead only on initial creation of the Binding a download of the credentials is triggered. The precondition for this to work is, that the creation of the binding is synchronous. No asyn binding is supported for sensitive services. The meshMarketplace does not store any credentials provided by sensitive service brokers. It only directly passes the credentials through to the user via the download of a text file containing the credentials.
-
+Usually the meshMarketplace shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the "sensitive" tag for the according service in the OSB catalog. This will result in not displaying the credentials in the meshMarketplace. Instead a download of the credentials is triggered once on initial creation of the binding . The precondition for this to work is, that the creation of the binding is synchronous. Async binding is not supported for sensitive services. The meshMarketplace does not store any credentials provided by sensitive service brokers. It only passes the credentials directly through to the user via the download of a text file containing the credentials.
 
 ## meshMarketplace Profile
 
