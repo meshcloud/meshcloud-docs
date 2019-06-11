@@ -24,6 +24,13 @@ web:
       min-approval-count: 2 # Number of approvals from customer admins
 ```
 
+If this option is set to 2 or higher upon project user invitation a popup will ask the inviting user to enter some additional information like why this role is required and for how long. These information will be visible to customer administrators who then can accept or decline such a request.
+
+<figure>
+  <img src="assets/authorization.additional-role-info.png" style="width: 50%;" alt="Additional Information Role Request Popup">
+  <figcaption>Popup requesting additional information for a project role assignment</figcaption>
+</figure>
+
 New project role assignments must be approved before the assignment takes effect. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for a role request. This ensures that a _different_ customer admin must register the 2nd approval before the assignment takes effect.
 
 Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests.
