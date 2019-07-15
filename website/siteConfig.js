@@ -14,8 +14,8 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Meshcloud Documentation Portal' /* title for your website */,
-  tagline: 'User and Operator Documentation',
+  title: 'meshcloud Multi-Cloud Management' /* title for your website */,
+  tagline: 'Documentation',
   url: 'https://docs.meshcloud.io' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:

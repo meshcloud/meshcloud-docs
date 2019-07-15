@@ -91,30 +91,15 @@ const Block = props => (
   </Container>
 );
 
-const Features = props => (
-  <Block layout="threeColumn">
-    {[
-      {
-        title: `[mesh**cloud**](${docUrl('meshcloud.index.html', props.language)})`,
-        content: 'Documentation for users of a meshcloud (mesh of clouds) managed by meshstack',
-      },
-      {
-        title: `[mesh**stack**](${docUrl('meshstack.index.html', props.language)})`,
-        content: 'Technical documentation for operators of our meshstack multi-cloud platform.',
-      },
-    ]}
-  </Block>
-);
-
 const FeatureCallout = props => (
   // <Container background='light'>
-    <div
-      className="productShowcaseSection paddingTop lightBackground"
-      style={{ textAlign: 'center' }}>
-      <h2><a href={docUrl('meshcloud.index.html', props.language)}>Supported Cloud Technologies</a></h2>
-      <MarkdownBlock>Combine best-of-breed cloud technologies with meshcloud</MarkdownBlock>
-    </div>
-  
+  <div
+    className="productShowcaseSection paddingTop lightBackground"
+    style={{ textAlign: 'center' }}>
+    <h2><a href={docUrl('meshcloud.index.html', props.language)}>Supported Cloud Technologies</a></h2>
+    <MarkdownBlock>Combine private & public cloud technologies with meshcloud</MarkdownBlock>
+  </div>
+
 );
 
 const LearnHow = props => (
@@ -186,7 +171,6 @@ class Index extends React.Component {
       <div>
         <HomeSplash language={language} />
         <div className="mainContainer">
-          <Features />
           <FeatureCallout />
           <LearnHow />
           <Showcase language={language} />
