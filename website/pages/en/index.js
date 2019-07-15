@@ -74,7 +74,6 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href={docUrl('meshcloud.index.html', language)}>meshcloud User Docs</Button>
-            <Button href={docUrl('federation.index.html', language)}>Federation User Guide</Button>
             <Button href={docUrl('meshstack.index.html', language)}>meshstack Operator Docs</Button>
           </PromoSection>
         </div>
@@ -98,10 +97,6 @@ const Features = props => (
       {
         title: `[mesh**cloud**](${docUrl('meshcloud.index.html', props.language)})`,
         content: 'Documentation for users of a meshcloud (mesh of clouds) managed by meshstack',
-      },
-      {
-        title: `[mesh**cloud Federation**](${docUrl('federation.index.html', props.language)})`,
-        content: 'Our public cloud offering based on meshstack',
       },
       {
         title: `[mesh**stack**](${docUrl('meshstack.index.html', props.language)})`,

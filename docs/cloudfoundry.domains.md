@@ -39,14 +39,5 @@ Tip: To quickly delete all routes no longer bound to an app use `cf delete-orpha
 
 ## DNS and Load-Balanacer Setup
 
-Registering a Private Domain will not associate it with a external DNS system. In order to correctly receive and forward incoming traffic for the private domain to your Apps, you need to setup DNS records. You can either setup DNS records for each hostname under your domain individually or use DNS wildcard records so that Cloud Foundry.
-
-### For HTTP Traffic
-
-To receive HTTP traffic, set a DNS CNAME record to point to a shared domain of the Cloud Foundry platform hosting your apps, for example `cf.eu-de-darz.msh.host`. You can list the shared domains of a Cloud Foundry platform using `cf domains`.
-
-### For HTTPS Traffic
-
-The best way to receive HTTPS traffic is to provision a pre-configured load-balancer as a service (LBaaS) from the Cloud Foundry marketplace. This load-balancer needs to be configured to terminate SSL for your private domain and forward traffic to the Cloud Foundry Router (an example for such a service is the [osb-lbaas](osb.lbaas.md) service on the [meshcloud federation](federation.index.md)).
-
-An LBaaS Service Instance will typically have a static IP address. You will need to create a DNS A record for your domain to this loadbalancer.
+Registering a Private Domain will not associate it with a external DNS system. In order to correctly receive and forward incoming traffic for the private domain to your Apps, you need to setup DNS records and you may also have to provision a load-balancer/reverse-proxy service.
+Please contact your platform operator for details.
