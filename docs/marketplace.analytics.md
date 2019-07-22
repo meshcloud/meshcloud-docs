@@ -2,7 +2,7 @@
 id: marketplace.analytics
 title: Analytics
 ---
-The Analytics functionality for Service Owners is available to Customer Admins, who already [registered a Service Broker](marketplace.integrations.md#register-your-service-broker).
+The Analytics functionality for Service Owners is available to Customer Admins, who already [registered a Service Broker](marketplace.development.md#register-your-service-broker).
 
 ## Service Communication Logs
 
@@ -10,7 +10,7 @@ Especially when an error occurs during a service broker call, detailed informati
 
 All relevant information like the request date and the type of operation that was executed, all request and response headers as well as the body of the request and in case of an error also the response from the service broker, are available. The duration of the call and information about the used Service Plan and [Service Instance](marketplace.service-instances.md) are also available. This information, combined with the application logs of the service broker should provide all information for a successful error analysis.
 
-The communication logs are available for [private](marketplace.integrations.md#register-your-service-broker) and [published](marketplace.integrations.md#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the marketplace integration phase of your service broker.
+The communication logs are available for [private](marketplace.development.md#register-your-service-broker) and [published](marketplace.development.md#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the marketplace integration phase of your service broker.
 
 A searchable overview of all communication logs is the starting point for analyzing communication logs. When more details about a specific log is needed, the **info** icon in the list of logs provides you with all details that are available to a specific call that was made.
 

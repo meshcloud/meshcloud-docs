@@ -16,6 +16,7 @@ The main supported technologies for Identity Federation with meshStack are
 - LDAP
 - Open ID Connect
 - SAML
+- Azure AD
 
 meshStack supports the simultaneous integration of multiple [Enterprise Identity Providers (IdPs)](https://en.wikipedia.org/wiki/Identity_provider) at the Identity Broker. This allows operators to combine identities from different sources in the platform and unify management of multi-cloud access in meshStack.
 

@@ -27,20 +27,29 @@ If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is a
 
 #### Assign user to a meshProject
 
-In the **Project Users** section you can find a `type email` field at the bottom. You can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Also select a project role for the user. Press the `+` to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects.
+In the **Project Users** section you can find a type-ahead `email` field at the bottom. You can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Also select a project role for the user. Press the `+` to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects.
 
 #### Project Roles
 
-Project Roles grant users a configured set of permissions in cloud platforms used by the project. There are currently two roles available:
+Project Roles grant users a configured set of permissions in cloud platforms used by the project. There are currently three roles available:
 
+- Project Reader: A read-only user, like a controller or similar.
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
-Currently these Project Roles are only used in our AWS integration. But in future, this will allow more fine-grained access control in the cloud platforms. The “Mesh Project Role” will be mapped to the platform’s internal access groups.
+Currently these Project Roles are only used in our AWS and Azure integration. But in future, this will allow more fine-grained access control in the cloud platforms. The “Mesh Project Role” will be mapped to the platform’s internal access groups.
 
 #### Update Project Role
 
 You can change the Project Role of a user, by choosing a different role for the user in the dropdown at the **Project Users** section, and clicking the **disc** icon afterwards to save the change.
+
+#### Expiry of a user assignment
+
+An expiry date can be set for a user assignment to a project. When this expiry date is reached, access to the project will be revoked for this user. An expiry date
+can be set directly when assigning a user to the project. It can also be updated any time.
+
+Customer Admins are informed about project role assignments that will expire soon via dashboard notifications on the my project screen and in the Account Dashboard.
+Via "Projects" -> "Expired Access", the expired or soon to expire role assignments are listed and can be extended.
 
 #### Unassign user from a meshProject
 
@@ -52,7 +61,7 @@ You can configure one or multiple [payment methods](meshcloud.payment.md#payment
 
 ### Add/remove locations from a meshProject
 
-In the edit screen of a project, the list of all available locations is shown. Via the checkbox, new locations can be selected. They will be added to the project when clicking the `Save` button.
+In the edit screen of a project, the list of all assigned locations is shown. Via the dropdown, new locations can be added. They will be added to the project when clicking the `+` button.
 Locations can also be removed from the project with some limitations. All resources related to the project in that location (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a location.
 
 ### Delete a meshProject

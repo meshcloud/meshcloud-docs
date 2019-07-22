@@ -3,11 +3,6 @@ id: administration.usage
 title: Usage Reports
 ---
 
-## Show Usage Report of managed customers
-
-In order to see a report of the resource usage of your managed customers, do the following:
-
-1. Login to the Meshpanel with your partner credentials.
-2. Navigate to the **Administration** area via the toolbox on the top right.
-3. Click on **Usage & Billing** on the left menu.
-4. You can access the usage information and download invoices for your managed customers here.
+Administrators and Partners have access to detailed usage reports of all their assigned meshCustomers and their meshProjects.
+This enables administrators and partners to bill their meshCustomers per usage for all cloud platforms managed by meshStack.
+Details about tenant usage reports and project statements can be found [here](meshcloud.project-metering.md).

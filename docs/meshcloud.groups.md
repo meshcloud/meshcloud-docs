@@ -12,32 +12,35 @@ The following table provides details about the functionality available to the di
 
 |                       | Customer Admin | CustomerEmployee |
 | --------------------- | :---: | :---: |
-| [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects) | X | |
-| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject) | X | |
-| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects) | X | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Project&nbsp;Locations](meshcloud.project.md#add-remove-locations-from-a-meshproject) | X | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) | X | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Manage&nbsp;Users](meshcloud.project.md#user-management-on-a-meshproject) | X | |
-| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject) | X | |
-| [Customer&nbsp;Users](meshcloud.customer.md) | X | |
-| &nbsp;&nbsp;[Invite&nbsp;User](meshcloud.customer.md#invite-users-to-access-a-meshcustomer) | X | |
-| &nbsp;&nbsp;[Edit&nbsp;User&nbsp;Group](meshcloud.customer.md#manage-groups-of-assigned-users) | X | |
-| &nbsp;&nbsp;[Remove&nbsp;User](meshcloud.customer.md#remove-users-from-a-meshcustomer) | X | |
-| [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | X | |
-| [Company&nbsp;Address](meshcloud.payment.md#company-billing-addresses) | X | |
-| [Billing&nbsp;Address](meshcloud.payment.md#company-billing-addresses) | X | |
-| [Payment&nbsp;Methods](meshcloud.payment.md#payment-methods) | X | |
-| Domains | X | |
-| [Marketplace&nbsp;Integrations](marketplace.integrations.md) | X | |
-| &nbsp;&nbsp;[Service&nbsp;Broker](marketplace.integrations.md#how-to-use-it) | X | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](marketplace.integrations.md#publish-your-service-broker) | X | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](marketplace.analytics.md) | X | |
-| &nbsp;&nbsp;Failed&nbsp;Instances | X | |
+| [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects) | &#10003; | |
+| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject) | &#10003; | |
+| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Project&nbsp;Locations](meshcloud.project.md#add-remove-locations-from-a-meshproject) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Manage&nbsp;Users](meshcloud.project.md#user-management-on-a-meshproject) | &#10003; | |
+| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiry-of-a-user-assignment) | &#10003; | |
+| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement) | &#10003; | |
+| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject) | &#10003; | |
+| [Customer&nbsp;Users](meshcloud.customer.md) | &#10003; | |
+| &nbsp;&nbsp;[Invite&nbsp;User](meshcloud.customer.md#invite-users-to-access-a-meshcustomer) | &#10003; | |
+| &nbsp;&nbsp;[Edit&nbsp;User&nbsp;Group](meshcloud.customer.md#manage-groups-of-assigned-users) | &#10003; | |
+| &nbsp;&nbsp;[Remove&nbsp;User](meshcloud.customer.md#remove-users-from-a-meshcustomer) | &#10003; | |
+| [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | |
+| [Company&nbsp;Address](meshcloud.payment.md#company-billing-addresses) | &#10003; | |
+| [Billing&nbsp;Address](meshcloud.payment.md#company-billing-addresses) | &#10003; | |
+| [Payment&nbsp;Methods](meshcloud.payment.md#payment-methods) | &#10003; | |
+| Domains | &#10003; | |
+| [Marketplace&nbsp;Development](marketplace.development.md) | &#10003; | |
+| &nbsp;&nbsp;[Service&nbsp;Broker](marketplace.development.md#how-to-use-it) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](marketplace.development.md#publish-your-service-broker) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](marketplace.analytics.md) | &#10003; | |
+| &nbsp;&nbsp;Failed&nbsp;Instances | &#10003; | |
 | | | |
-| [Project&nbsp;Resources](meshcloud.project-resources.md) | X | X |
-| &nbsp;&nbsp;[Project&nbsp;Dashboard](meshcloud.project-resources.md#project-dashboard) | X | X |
-| &nbsp;&nbsp;[Project&nbsp;Platform&nbsp;Dashboard](meshcloud.project-resources.md#project-platform-dashboard) | X | X |
-| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md) | X | X |
+| [Project&nbsp;Resources](meshcloud.project-resources.md) | &#10003; | &#10003; |
+| &nbsp;&nbsp;[Project&nbsp;Dashboard](meshcloud.project-resources.md#project-dashboard) | &#10003; | &#10003; |
+| &nbsp;&nbsp;[Project&nbsp;Platform&nbsp;Dashboard](meshcloud.project-resources.md#project-platform-dashboard) | &#10003; | &#10003; |
+| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md) | &#10003; | &#10003; |
+| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report) | &#10003; | &#10003; |
 
 ## Project Roles
 

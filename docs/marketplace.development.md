@@ -1,20 +1,20 @@
 ---
-id: marketplace.integrations
-title: Marketplace Integrations
+id: marketplace.development
+title: Marketplace Development
 ---
-## What are Marketplace Integrations?
+## What is Marketplace Development?
 
-You can provide your own services in the [meshMarketplace](marketplace.index.md) via the Marketplace Integrations. The functionality is currently
+You can provide your own services in the [meshMarketplace](marketplace.index.md) via the Marketplace Development. The functionality is currently
 only available for [Customer Admins](meshcloud.customer.md#manage-groups-of-assigned-users).
 You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.osb-overview.md).
 
 ## How to use it
 
-You can find the **Marketplace Integrations** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](marketplace.analytics.md) screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace Development** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](marketplace.analytics.md) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
-Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshCustomer will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace integration from the first steps on. A new Marketplace Location for your Customer will be available for your [projects](meshcloud.project.md#add-remove-locations-from-a-meshproject) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
+Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshCustomer will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace development from the first steps on. A new Marketplace Location for your Customer will be available for your [projects](meshcloud.project.md#add-remove-locations-from-a-meshproject) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
 
 You can register your service broker via the **Register Service Broker** button. The following information must be provided for this:
 
