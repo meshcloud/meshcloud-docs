@@ -9,7 +9,7 @@ The meshMarketplace allows users to manage service instances attached to a Proje
 
 ![OSB Marketplace integration](assets/osb-overview.png)
 
-A [self-service registration](marketplace.integrations.md) of your Service Brokers in the meshMarketplace is also available.
+A [self-service registration](marketplace.development.md) of your Service Brokers in the meshMarketplace is also available.
 
 ## Definitions
 

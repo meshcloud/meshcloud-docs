@@ -6,30 +6,31 @@ The following section covers all the relevant details regarding your meshFed SSO
 
 We have invested a lot of work and time to enable a seamless cloud experience across a large number of different datacenter locations and cloud platforms. To support the seamless access of all of our services across every datacenter location we rely on an OpenID Connect authentication flow.
 
-## Registration
+## Account Creation
 
-To create a new account, go to the account registration and fill out the form.
+In most meshcloud installations an external identiy provider (IdP) is available and configured for authentication in meshcloud.
+That way users and their credentials already exist and can be used to login to meshPanel. If an IdP is not available, the registration of new users is enabled in the meshIdB. Before being able to create a new meshCustomer, users have to create their user in meshIdB first.
+
+When a user already exists, he can create a new account (meshCustomer) after login. Click "Create meshCustomer" and fill out the form.
 
 Submit the form to create an account.
 
-You will receive an email to confirm your account and after that you can start using your account. For an on-going use of the account, you need to provide your payment details within 30 days from registration.
+You will receive an email to confirm your account and after that you can start using your account.
 
 ## Login
 
-After a successful registration the next step is to login into your federated meshFed SSO account. This can be done by:
+Logging in to your federated meshFed SSO account can be done by:
 
-1. Either navigate to [meshcloud.io](https://www.meshcloud.io) or directly to our meshPanel.
-2. In the upper right corner click on the **Login** link.
+1. Navigate to your meshPanel.
+2. In the upper right corner or inside the home screen. click on the **Login** link.
 3. You will be redirected to the meshFed SSO login.
-4. Enter your credentials consisting of your e-mail address and the password you specified during registration.
+4. Enter your credentials (in most cases your known company credentials, or the ones you created during registration).
 5. After a successful login, you will be automatically redirected to the meshPanel project overview.
 
 ## Change Password
 
-1. In the meshPanel, click on the **Login** link in the upper right corner
-2. Below the input field for your username or e-mail, click the **Forgot Password?** link.
-3. Enter your e-mail address and click **Reset Passsword**
-4. You will receive an e-mail with further instructions.
+If a company IdP is used for authentication, you have to contact your IT to centrally change your credentials. If no IdP is available
+and the user account was registered via the meshIdB, you can access the "Forgot Password" from the login screen.
 
 ## Profile
 
@@ -37,7 +38,7 @@ Navigate to the **Profile** page via the navigation on the top right of the mesh
 
 ### Information
 
-Here you can find all your personal information stored in the meshPortal. You can also expand an area on the bottom of the page, that shows you all systems related to the meshPortal, that also persist your personal information. In general the meshPortal tries to store as little of your personal information as possible in the different systems.
+Here you can find all your personal information stored in the meshStack. You can also expand an area on the bottom of the page, to see a list of related systems, that also persist your personal information (e.g. cloud platforms). In general meshStack tries to store as little of your personal information as possible in the different systems.
 
 ### Platform Notification Subscriptions
 

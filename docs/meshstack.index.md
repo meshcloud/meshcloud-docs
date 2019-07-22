@@ -16,9 +16,9 @@ It is NOT a meta-layer across clouds. Users access native cloud APIs for their d
 
 Different Cloud technologies often introduce their own terms for similiar technological principles. In order to match them against each other and also show how this namings and technologies map to meshcloud's terminology of business entities. The connections are shown in the following matrix table:
 
-|  meshStack   | Cloud Foundry |      OpenStack       |     AWS      |             Azure              |   Kubernetes    |  OpenShift  |
-| :----------: | :-----------: | :------------------: | :----------: | :----------------------------: | :-------------: | :---------: |
-| meshCustomer | Organization  |        Domain        | Organization |               -                |        -        |    Group    |
-| meshProject  |     Space     |       Project        |   Account    | Subscription or Resource Group |    Namespace    |   Project   |
-|   meshUser   |     User      | Keystone Shadow User | Rolebinding  |         Azure AD User          |   Rolebinding   | Rolebinding |
-| Service User | Service User  |    Platform User     |  IAM Policy  |               -                | Service Account |      -      |
+|  meshStack   | Cloud Foundry |      OpenStack       |     AWS      |          Azure        |   Kubernetes    |  OpenShift  |
+| :----------: | :-----------: | :------------------: | :----------: | :-------------------: | :-------------: | :---------: |
+| meshCustomer | Organization  |        Domain        | Organization |            -          |        -        |    Group    |
+| meshProject  |     Space     |       Project        |   Account    |      Subscription     |    Namespace    |   Project   |
+|   meshUser   |     User      | Keystone Shadow User | Rolebinding  |      Azure AD User    |   Rolebinding   | Rolebinding |
+| Service User | Service User  |    Platform User     |  IAM Policy  |            -          | Service Account |      -      |

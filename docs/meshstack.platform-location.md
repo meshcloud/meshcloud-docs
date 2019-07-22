@@ -12,9 +12,7 @@ meshStack provides simple and effective means to implement access policies, for 
 
 ### Customer-level
 
-Operators can restrict the [Customer](meshcloud.customer.md) accounts that are allowed to access a particular [Platform Instance inside any Location](meshcloud.platform-location.md).
-
-If a Platform Instance is set to private (currently the UI interface for doing so is missing) only allowed meshCustomers can access the resources in this instance.
+Operators can restrict the [Customer](meshcloud.customer.md) accounts that are allowed to access a particular [Platform Instance inside any Location](meshcloud.platform-location.md). The UI for maintaining the restricted access is described [here](administration.platforms.md#restrict-platform-instances).
 
 This feature can be used for example to restrict access to a public cloud provider only to customer accounts that passed a certain data-protection clearance process.
 
