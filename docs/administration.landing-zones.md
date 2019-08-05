@@ -20,5 +20,6 @@ subscription and additional specific policies can be defined. A blueprint can be
 resources and policies created by the blueprint.
 
 ## Disabled Landing Zones
+
 Disabled Landing Zones can't be assigned to projects anymore. If the Landing Zone has already been assigned to a project,
 this assignment will remain.
