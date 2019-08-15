@@ -26,12 +26,10 @@ Searching the communication logs to e.g. find a specific issue that was reported
 
 ## Metering & Usage
 
-If the Metering Component of meshStack is available in your installation, Metering & Usage information is available for your Service Brokers. You see a list of all provisioned Service Instances of your Service Broker's services. This information is available individually per Marketplace you published your Service Broker to. It is also available for your private Service Broker. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data.
+If the Metering Component of meshStack is available in your installation, Metering & Usage information is available for your Service Brokers. You see a list of all plans  of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per Marketplace you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
 
 The screen provides you with information about:
 
 - Which customers and projects are using your services?
-- How long have the Service Instances been running?
-- When has the Service Instance been provisioned?
-- When has the Service Instance been deprovisioned or is it still running?
-- What are the costs per Service Instance?
+- How long have certain plans been used in projects?
+- What are the costs per plan and project for one period?
