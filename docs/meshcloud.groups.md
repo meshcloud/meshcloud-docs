@@ -26,9 +26,9 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;[Edit&nbsp;User&nbsp;Group](meshcloud.customer.md#manage-groups-of-assigned-users) | &#10003; | |
 | &nbsp;&nbsp;[Remove&nbsp;User](meshcloud.customer.md#remove-users-from-a-meshcustomer) | &#10003; | |
 | [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | |
-| [Company&nbsp;Address](meshcloud.payment.md#company-billing-addresses) | &#10003; | |
-| [Billing&nbsp;Address](meshcloud.payment.md#company-billing-addresses) | &#10003; | |
-| [Payment&nbsp;Methods](meshcloud.payment.md#payment-methods) | &#10003; | |
+| [Company&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | |
+| [Billing&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | |
+| [Payment&nbsp;Methods](meshcloud.project-metering.md#payment-methods) | &#10003; | |
 | Domains | &#10003; | |
 | [Marketplace&nbsp;Development](marketplace.development.md) | &#10003; | |
 | &nbsp;&nbsp;[Service&nbsp;Broker](marketplace.development.md#how-to-use-it) | &#10003; | |
