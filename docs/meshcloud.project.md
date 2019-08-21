@@ -57,7 +57,7 @@ In the **Project Users** section you can click the `-` button in the row of a us
 
 ### Provide Payment Information for meshProject
 
-You can configure one or multiple [payment methods](meshcloud.payment.md#payment-methods) and [billing addresses](meshcloud.payment.md#company-billing-addresses) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
+You can configure one or multiple [payment methods](meshcloud.project-metering.md#payment-methods) and [billing addresses](meshcloud.project-metering.md#company-billing-addresses) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
 
 ### Add/remove locations from a meshProject
 

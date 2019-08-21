@@ -3,10 +3,33 @@ id: meshcloud.project-metering
 title: Project Metering
 ---
 
-meshStack collects usage information from all your cloud platforms and provides central access to this. You get a detailed overview
-about when and how long your resources were running and how much this costs.
+meshStack provides central [multi-cloud billing](meshstack.billing.md). It can automatically collect usage information from all your cloud platforms and provides central access to cost and usage data.
 
-## Tenant Usage Report
+Project owners can get a detailed overview about when and how long your resources were running and how much this costs.
+
+## Project Payment Information
+
+Project owners associate their project with payment information. This is used for the chargeback process.
+
+### Company & Billing Addresses
+
+You can configure company addresses for your meshCustomer as contact addresses. If this address shall also be used for billing, you are done when having configured a Customer Address.
+
+You can also define additional Billing Addresses, that can be used for your meshProjects. You can select from these configured addresses per meshProject.
+
+### Payment Methods
+
+#### Invoice
+
+The invoice payment method simply results in an invoice, that is send to your billing address. No automation for the payment process is applied here.
+
+#### Cost Center
+
+When Meshcloud is used inside a company, cloud resources may have to be billed to different cost centers of the company. You can configure a default cost center for your meshCustomer, which will initially be applied to your meshProjects. It can also be changed per meshProject.
+
+## Reviewing Metering Data
+
+### Tenant Usage Reports
 
 A tenant usage report provides usage information of one tenant (project representation in a specific platform). E.g. all resources like VMs, Storage, Public IPs, etc are shown in this report.
 
@@ -18,12 +41,16 @@ From a Tenant Usage Report you can also access a Detailed Report to see every si
 
 Partner accounts can access tenant usage reports for all their assigned meshCustomers in the Administration Area via "Platforms" -> "Usage Reports".
 
-## Project Statement
+### Chargeback Statements
 
-These are summarized views on all your tenant usages per project. They can be used as an input to actually bill the resources. An overview of all different cloud
-platforms used in the project is listed and additionally you also get the tenant usage reports listed below the overview. You can also access the previously described
-Detailed Tenant Reports from here.
+Each project in meshStack is associated with a Chargeback Account. Tenant Usage Reports are booked into these
+Chargeback Accounts as soon as they are processed by meshStack.
 
-A chart in the project dashboard shows the total costs of the last project statements to get a quick overview of your project cost.
+meshStack periodically generates account statements, called chargeback statements. These list all the charges incurred by
+tenants for this project that were booked in the selected period.
 
-Customer Admins also have access to an overview of the Project Statements of all their projects in the Account Area via "Projects" -> "Project Statements". Also Partner accounts can access the project statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Project Statements".
+> Note that chargeback statements aggregate usage reports by their **entry date** when they were charged to the chargeback account. This date is typically after the **report date** (i.e. time when the report was generated) of the usage reports booked. It's therefore possible that the chargeback statement for the month of June includes usage reports for the month of May etc.
+
+A chart in the project dashboard shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
+
+Customer Admins also have access to an overview of the Chargeback Statements of all their projects in the Account Area via "Projects" -> "Chargeback Statements". Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Chargeback Statements".
