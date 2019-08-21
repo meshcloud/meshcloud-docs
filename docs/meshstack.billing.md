@@ -3,20 +3,65 @@ id: meshstack.billing
 title: Metering and Billing
 ---
 
-Pay-per-use is a core principle of cloud computing. Thus, meshStack includes sophisticated metering & billing capabilities to help developers, platform operators and controllers monitor resource consumption for their multi-cloud setup managed by meshStack.
+Pay-per-use is a core principle of cloud computing. Without pay-per-use, there's no incentive for developer times to elastically scale their resource consumption with demand.
 
-The figure below outlines the principal components of the multi-cloud metering process in meshStack:
+meshStack includes sophisticated metering & billing capabilities to help developers, platform operators and controllers monitor resource consumption for their multi-cloud setup managed by meshStack. We divide these capabilities into three sections of a end-to-end
+integrated process that serves all stakeholders (platform owners, project owners, controllers).
 
 ```text
-Cloud Platforms ⟶ Metering ⟶ Usage Reporting ⟶  Billing ⟶ Invoicing ⟶ Chargeback
-Product Catalog ⭧         Public Cloud Reports ⭧
+Metering ⟶ Billing ⟶ Chargeback
 ```
 
-- **Cloud Platforms** produce metering events and records. For example, starting and stopping a virtual machine in OpenStack generates a corresponding stream of events.
-- The **Product Catalog** defines the cloud resources and their usage components. For example, a virtual machine may be metered by the amount of RAM and CPU consumed.
-- **Metering** is the process of collecting and processing the event stream produced by the *Cloud Platforms* in accordance with the *Product Catalog* to produce resource consumption data.
-- **Usage Reporting** is the process of aggregating all resource consumption of a meshProject across all of its connected cloud tenants. This typically also involves creating periodic (e.g. monthly) usage reports for each project.
-- **Public Cloud Reports** also integrate into the *Usage Reporting* process. Because public cloud providers define their own product catalogs and metering, their data is ingested unaltered into the usage reporting step.
-- **Billing** is the process of applying pricing rules from the product catalog onto a *Usage Report* to produce a set of chargeable line items.
-- **Invoicing** combines line items and project metadata like billing address and cost center to produce an invoice for a usage period.
-- **Chargeback** is the process of collecting payments for invoices
+## Metering
+
+> Metering is the process of collecting and calculating cloud resource usage. Metering also involves pricing this resource usage to calculate cost.
+
+Cloud Platforms record events and other information about deployed cloud resources. Some of these events are relevant
+for metering. For example, starting and stopping a virtual machine may generate a corresponding stream of events that describes how long the virtual machine was running. For example, we can use data from the cloud platform to calculate how much RAM-hours and vCPU-hours a virtual machine consumed in a given period.
+
+Cloud resources have many different traits, i.e. we saw that a virtual machine has RAM and vCPU.
+A Product Catalog defines which of these traits are relevant for metering and how their usage is calculated. Typically
+usage is the product of a quantity and a duration, i.e. a single vCPU used for an hour. But their may be other usage units as well that consist only of quantities (i.e. bytes transferred over the network) or a duration (i.e. resource usage hour).
+
+A product catalog also contains pricing rules that determine the cost for a particular resource usage.
+
+## Billing
+
+> Billing is the process of attributing resource usage to cloud tenants and creating appropiate invoices.
+
+There are two principal steps to the billing process. The first is creating periodic (e.g. monthly) [Tenant Usage Reports](meshcloud.project-metering.md) that
+aggregate cloud resource usage data for tenants. meshStack makes [Tenant Usage Reports](meshcloud.project-metering.md) available to all 
+involved users, i.e. customer & project owners, platform operators and partners.
+
+The second is invocing the customer according to agreed terms for this usage. This may also involve applying additional
+pricing and discount rules to aggregated usage reports, i.e. volume discounts.
+
+### Public cloud billing with meshcloud
+
+Public cloud providers like AWS, Azure and GCP provide their own metering and billing processes. Thes can be very intricate
+and involve complex pricing rules. However, a common theme is that they all provide the enterprise with a single invoice
+for its aggregated cloud spend. These invoices list the cloud spend by individual cloud tenants. Putting all tenants on
+ a single invoice leads to attractive volume discounts, however it necessitates breaking down that invoice into
+ different Tenant Usage Reports and feeding them to a [chargeback](#chargeback)
+ process to correctly attribute costs to the individual cloud consumers.
+
+### Private cloud billing with meshcloud
+
+Private cloud platforms like OpenStack, OpenShift and Cloud Foundry usually do not provide built-in metering and biling capabilities.
+While they may have APIs or facilities to expose basic usage information, they do not come with metering and pricing capabilities
+that match the expectations developers and project managers have grown accustomed to from public cloud billing.
+
+One core aspect is that metering data must be made plausible for the consumers. Consumers demand resource-level usage
+reporting so that they can verify how each of their deployed cloud resources contributes to the total usage.
+meshStack includes a sophisticated private-cloud metering engine that allows operators to define their own product catalogs
+and create accurate metering data.
+
+## Chargeback
+
+> Chargeback is the process of allocating IT cost to consumers and feeding it into the company-wide finance and controlling processes.
+
+Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.project-metering.md#chargeback-statements).
+
+## Budgeting
+
+> under construction, get in touch for more details
