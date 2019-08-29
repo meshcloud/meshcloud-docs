@@ -1,25 +1,18 @@
 ---
-id: administration.landing-zones
+id: meshcloud.landing-zones
 title: Landing Zones
 ---
 
-Landing Zones can be configured per platform instance. They relate to a "bootstrap" configuration in the platform instance, that sets
-up and configures the cloud tenant according to policies and requirements of your company. E.g. specific networks or region restrictions
-can be configured via these landing zones. Multiple Landing Zones can be defined per platform instance, which allows e.g. different setups
-for a Dev, QA and Production stage.
+## Configuring Landing Zones
 
-## Supported Platforms
+Platform Operators can configure the [Landing Zones](./meshcloud.landing-zones.md) available for each platform instance. The capabilities supported by meshcloud differ per platform type as we support "native" tooling provided by the different cloud platforms and vendors.
 
-Currently the following platforms are supported for landing zone configuration in meshStack.
+This ensures enterprises can seamlessly integrate existing operational capabilities and leverage the most powerful
+and best-integrated tooling available for each platform. In most instances, this tooling follows an infrastructure-as-code paradigm that fits naturally with meshcloud's multi-cloud orchestration approach.
 
-### Azure
+Please consult the [operator documentation](./meshstack.index.md) of the respective cloud platforms for more details.
 
-In Azure, a landing zone is defined via a management group the subscription for the project will be assigned to. Policies can be applied
-to these management groups. Optionally a blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the
-subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the
-resources and policies created by the blueprint.
-
-## Disabled Landing Zones
+## Disabling Landing Zones
 
 Disabled Landing Zones can't be assigned to projects anymore. If the Landing Zone has already been assigned to a project,
-this assignment will remain.
+this assignment will remain, but customer admins can no longer create new projects using this Landing Zone.

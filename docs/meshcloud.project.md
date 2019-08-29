@@ -17,19 +17,29 @@ The following diagram shows how access rights and project replication result in 
 
 ![Project User Role Replication](assets/project-user-roles.png)
 
-Project users always get access to all cloud platforms, that are assigned to the project.
+Projects have a representation in each cloud platform that we call **Tenant**. Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabeld for the project.
+Meshcloud uses orchestration to ensure users assigned to a meshProject always have the same role on all Tenants associated with the Project.
 
-### User Management on a meshProject
+### Add/remove locations from a meshProject
+
+In the edit screen of a project, the list of all assigned locations is shown. Via the dropdown, new locations can be added. They will be added to the project when clicking the `+` button.
+Locations can also be removed from the project with some limitations. All resources related to the project in that location (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a location.
+
+### Provide Payment Information for meshProject
+
+You can configure one or multiple [payment methods](meshcloud.project-metering.md#payment-methods) and [billing addresses](meshcloud.project-metering.md#company-billing-addresses) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
+
+## User Management on a meshProject
 
 Before being able to assign a user to a meshProject, the user must have been [invited to the Meshcustomer](meshcloud.customer.md). In the **Project Users** section of the project edit screen all users of the project are listed and new ones can be added. When adding/changing or removing a user, the user will be informed via email about this change of access rights he has.
 
 If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is activated in your meshStack installation, an additional approval might be necessary, before a user is actually assigned/remove/updated on a project.
 
-#### Assign user to a meshProject
+### Assign user to a meshProject
 
 In the **Project Users** section you can find a type-ahead `email` field at the bottom. You can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Also select a project role for the user. Press the `+` to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects.
 
-#### Project Roles
+### Project Roles
 
 Project Roles grant users a configured set of permissions in cloud platforms used by the project. There are currently three roles available:
 
@@ -39,11 +49,11 @@ Project Roles grant users a configured set of permissions in cloud platforms use
 
 Currently these Project Roles are only used in our AWS and Azure integration. But in future, this will allow more fine-grained access control in the cloud platforms. The “Mesh Project Role” will be mapped to the platform’s internal access groups.
 
-#### Update Project Role
+### Update Project Role
 
 You can change the Project Role of a user, by choosing a different role for the user in the dropdown at the **Project Users** section, and clicking the **disc** icon afterwards to save the change.
 
-#### Expiry of a user assignment
+### Expiry of a user assignment
 
 An expiry date can be set for a user assignment to a project. When this expiry date is reached, access to the project will be revoked for this user. An expiry date
 can be set directly when assigning a user to the project. It can also be updated any time.
@@ -51,19 +61,10 @@ can be set directly when assigning a user to the project. It can also be updated
 Customer Admins are informed about project role assignments that will expire soon via dashboard notifications on the my project screen and in the Account Dashboard.
 Via "Projects" -> "Expired Access", the expired or soon to expire role assignments are listed and can be extended.
 
-#### Unassign user from a meshProject
+### Unassign user from a meshProject
 
 In the **Project Users** section you can click the `-` button in the row of a user to remove the user from the project. This user will not be able to access this project in Meshportal and the cloud platforms anymore. You can add the user to your project again later on and he will get access again.
 
-### Provide Payment Information for meshProject
-
-You can configure one or multiple [payment methods](meshcloud.project-metering.md#payment-methods) and [billing addresses](meshcloud.project-metering.md#company-billing-addresses) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
-
-### Add/remove locations from a meshProject
-
-In the edit screen of a project, the list of all assigned locations is shown. Via the dropdown, new locations can be added. They will be added to the project when clicking the `+` button.
-Locations can also be removed from the project with some limitations. All resources related to the project in that location (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a location.
-
-### Delete a meshProject
+## Delete a meshProject
 
 If you would like to delete a project which is no longer used, go to your **Account** settings. Navigate to **Projects** and click the button with the trash icon. The system now checks whether any resources still exist for your project. If there are existing resources, you will be informed about which resources still exist. As deletion of a project is an irrevocable action, you cannot delete projects with resources. You have to delete those resources manually before to be sure that you really want to delete these resources that may contain production relevant workloads. When no resources exist anymore you have to confirm the deletion by entering the identifier of your project again. The actual project deletion in the platforms will be done in the background and may take a while.
