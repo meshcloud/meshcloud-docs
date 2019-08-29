@@ -1,5 +1,5 @@
 ---
-id: meshcloud.landing-zones
+id: administration.landing-zones
 title: Landing Zones
 ---
 
