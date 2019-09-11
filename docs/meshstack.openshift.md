@@ -57,7 +57,10 @@ identityProviders:
 
 ### meshStack Service Account
 
-The meshStack OpenShift Module uses a dedicated OpenShift ServiceAccount to work with OpenShift APIs on behalf of meshStack. To create these credentials, create the following objects via `oc apply` as a Cluster Administrator.
+The meshStack OpenShift Module uses a dedicated OpenShift ServiceAccount to work with OpenShift APIs on behalf of meshStack.
+To create these credentials, create the following objects via `oc create -f <file>` as a Cluster Administrator.
+
+> You can also use `oc replace -f <file>` to update existing definitions.
 
 ```yaml
 ---
@@ -109,6 +112,19 @@ rules:
   - delete
   - get
   - list
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - resourcequotas
+  - resourcequotas/status
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
   - update
   - watch
 - apiGroups:
@@ -184,3 +200,11 @@ oc get serviceaccount meshfed-service -o json | jq '.secrets[].name' | grep toke
 ```
 
 Operators need to securely inject this access token into the configuration of the OpenShift module.
+
+## Landing Zones
+
+By defining a Landing Zone for OpenShift certain configurations can be enforced during replication.
+
+### Resource Quota
+
+With OpenShift [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html) the number of resources inside a namespace (meshProject) can be limited. In order to setup such a quota limit write, or drag and drop, your OpenShift ResourceQuota file into the respective field when creating a Landing Zone.
