@@ -38,11 +38,8 @@ class Footer extends React.Component {
             <a href={this.docUrl('meshcloud.index.html', this.props.language)}>
               Getting Started
             </a>
-            <a href={this.docUrl('openstack.index.html', this.props.language)}>
-              OpenStack IaaS
-            </a>
-            <a href={this.docUrl('cloudfoundry.index.html', this.props.language)}>
-              Cloud Foundry PaaS
+            <a href={this.docUrl('meshstack.index.html', this.props.language)}>
+              Operator Docs
             </a>
           </div>
           <div>
