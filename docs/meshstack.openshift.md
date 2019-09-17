@@ -205,6 +205,24 @@ Operators need to securely inject this access token into the configuration of th
 
 By defining a Landing Zone for OpenShift certain configurations can be enforced during replication.
 
+### Default Labels
+
+Labels are used to identify existing Resources inside OpenShift or Kubernetes projects. It is possible to define a set of default labels which get applied to every resource created via meshtack. Usually these managed resources are created by a Landing Zone configuration.
+
+In order to set these default labels use the replicator OpenShift platform configuration and set the property `default-resource-labels` like so:
+
+```yml
+replicator-openshift:
+  platforms:
+    - platform: okd.eu-de-central
+      validateSslCerts: false
+      access-token: ...
+      base-url: https://example.com:8443
+      default-resource-labels:
+        my-label-1: sample-value-123
+        my-label-2: sample-value-456
+```
+
 ### Resource Quota
 
 With OpenShift [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html) the number of resources inside a namespace (meshProject) can be limited. In order to setup such a quota limit write, or drag and drop, your OpenShift ResourceQuota file into the respective field when creating a Landing Zone.
