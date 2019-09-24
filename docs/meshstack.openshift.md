@@ -129,6 +129,19 @@ rules:
   - watch
 - apiGroups:
   - ""
+  - "template.openshift.io"
+  resources:
+  - templates
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
   - quota.openshift.io
   resources:
   - appliedclusterresourcequotas
