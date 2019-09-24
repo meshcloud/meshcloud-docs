@@ -79,18 +79,29 @@ To provide Azure Subscription for your organization's meshProjects, meshcloud su
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization.
 
-#### Setting up the Enrollment Account
+#### 1. Setting up the Enrollment Account
 
-We recommend using dedicated enrollment accounts for exclusive use by meshcloud.
+We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
 
 > EA Administrators must be careful to chose an EA Account Owner that's homed in the meshcloud AAD Tenant!
 
 Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
 If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
 
-After creating the EA Account, please note down the `EA_ACCOUNT_ID`.
+To list your available EA accounts you can use the [`Get-AzEnrollmentAccount`](https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azenrollmentaccount?view=azps-2.6.0) powershell command:
 
-#### Authorizing the meshcloud Service Principal for EA
+```powershell
+PS C:\> Get-AzEnrollmentAccount
+
+ObjectId                             PrincipalName
+--------                             -------------
+dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
+7ff524ac-a0de-4402-876f-934ccee3b601 carol@contoso.onmicrosoft.com
+```
+
+After creating (or finding) a suitable EA Account, please note down the accounts object id as `EA_ACCOUNT_ID`.
+
+#### 2. Authorizing the meshcloud Service Principal for EA
 
 To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
@@ -172,9 +183,13 @@ and has [elevated access to all management groups](https://docs.microsoft.com/en
 
 > In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
-Once you have elevated access, use the Azure Portal to Navigate to the "Management Groups"  blade, then click on the "Details"
-link of the Tenant Root Group. Select "Access Control (IAM)" from the menu and create a Role assignment that grants the
-[App created above](#meshcloud-service-principal) for the meshcloud Service Principal (i.e. `meshReplicator`) the `Owner` permission on this resource.
+Once you have elevated access, use the Azure Portal to Navigate to the "Management Groups"  blade, then click on the "Details" link of the Tenant Root Group. Select "Access Control (IAM)" from the menu and create a Role assignment that grants the [App created above](#meshcloud-service-principal) for the meshcloud Service Principal (i.e. `meshReplicator`) the `Owner` permission on this resource.
+
+In this screen you can also find the Object ID and Application ID of your service principal. In case you prefer the CLI and have the Azure CLI installed the following Powershell command can also reveal this ID for you:
+
+```powershell
+Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
+```
 
 ## meshStack Configuration
 
