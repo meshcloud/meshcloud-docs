@@ -129,9 +129,11 @@ rules:
   - watch
 - apiGroups:
   - ""
-  - "template.openshift.io"
+  - template.openshift.io
   resources:
   - templates
+  - templateinstances
+  - templateconfigs
   verbs:
   - create
   - delete
