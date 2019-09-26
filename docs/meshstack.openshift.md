@@ -50,7 +50,7 @@ identityProviders:
         email:
         - email
       urls:
-        authorize: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/auth/auth?response_mode=query
+        authorize: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/auth?response_mode=query
         token: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/token
         userInfo: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/userinfo
 ```
