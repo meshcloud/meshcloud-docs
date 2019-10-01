@@ -61,7 +61,7 @@ externally-provisioned Identities that help ensure users have a single cloud ide
 
 Users managed in the meshcloud AAD Tenant do not require AAD Premium Licenses.
 
-## meshcloud Service Principal
+## Service Principal
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
 The Service Principal must be authorized in the scope of the meshcloud AAD Tenant.
@@ -193,7 +193,7 @@ In this screen you can also find the Object ID and Application ID of your servic
 Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
 ```
 
-## meshStack Configuration
+## meshStack Azure Configuration
 
 With the information we gathered in the above section we now can configure the Azure Replicator.
 This will typcially configured by your meshcloud experts, but please consult the following example as a reference
@@ -232,3 +232,22 @@ replicator-azure:
         admin: b24988ac-6180-42a0-ab88-20f7382dd24c # magic GUID for contributor
         user: acdd72a7-3385-48ef-bd42-f606fba81ae7  # magic GUID for reader
 ```
+
+### Automatic User Invitation
+
+Users can automatically get invited via Azure. The system needs an email address which is usually fetched from the euid (a configurable value of the user specification send to the replicator). The email must exist inside an Azure Active Directory (AAD) and automatically gets invited to the AAD in which the meshProject subscriptions live.
+
+In order to activate it just add the `b2b-user-invitation` configuration to your Azure platform config:
+
+```yml
+replicator-azure:
+  platforms:
+    - platform: azure.meshcloud-azure-dev
+      b2b-user-invitation:
+        # URL the user is redirected to when he manually accepts an invitation
+        redirect-url: http://localhost
+        send-azure-invitation-mail: false
+```
+
+You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
+the invitation notifications.
