@@ -46,6 +46,8 @@ way not affect other applications using the home tenant like Office 356 etc.
 Using pre-provisioned user identities requires your IdP to provide a user identifier suitable to locate user identities
 in the "home tenant". This external user id needs to be mapped to the `euid` user attribute in the [meshIdB](./meshstack.identity-federation.md).
 
+It is important that the provided euid's are <b>case-sensitive</b> and must match the user entries saved in the AAD against which the replication should happen! This is a limitation imposed by the search queries of Microsoft Graph API.
+
 > meshcloud can support complex Azure AD setups involving user identity lookup rules and multiple home tenants. Please contact our experts for more details.
 
 ### Auto-Provisioned Identities
