@@ -119,4 +119,78 @@ When a user (e.g. a developer) accesses an AWS Account, they are assigned an AWS
 
 When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 
+### Stack Set Replication
+
+meshStack is able to perform a provision of customer projects into a defined [AWS Stack Set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html). By defining a Landing Zone for AWS, setting a Stack Template all projects with this Landing Zone assigned will be put into the given AWS Stack Set. This allows operators to manage and update the projects AWS resources convienently by this Stack Set in the AWS Console.
+
+In order to use this feature you need to setup a few prerequisites:
+
+<!-- markdownlint-disable -->
+1. Choose an administrative account in which the Stack Sets will be placed
+2. We need a permission setup [Template](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) which adds a special role to the administrator account named **AWSCloudFormationStackSetAdministrationRole**, with the following policy attached:
+
+```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+  }
+```
+
+3. In the administration account create a StackSet with the template you later want to apply to the newly provisioned accounts. We need a created StackSet in order to have the ID. This might only work if you apply the template to a placeholder account which you can remove again afterwards.
+4. Prepare a [Template](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) which will setup a **AWSCloudFormationStackSetExecutionRole**. This role must allow the adminstration account/Cloud Formation to perform actions on behalf of the users. It must also allow access to all services you plan to use in your Cloud Formation Templates. A example role policy could look like:
+
+```yml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Configure the AWSCloudFormationStackSetExecutionRole to enable use of your account as a target account in AWS CloudFormation StackSets.
+
+Resources:
+  ExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: AWSCloudFormationStackSetExecutionRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS:
+                # Adapt this Account ID to the ID of your designated Stack Set admin account
+                - arn:aws:iam::ADMIN_ACCOUNT_ID:root
+            Action:
+              - sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: StackSetExecutionPolicy # Adapt the name if you want
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              # According to the AWS Docs this is the minimal rights needed for StackSets to work. Please extend it with the specific rights needed
+              # for your Stack Templates you wish to roll out.
+              - cloudformation:*
+              - s3:*
+              - sns:*
+              Resource: '*'
+```
+
+5. As a last step setup an AWS Landing Zone in meshStack. You need the URL of the above defined Permission Setup Template, the actual Stack Set template you wish to apply, the Account ID of the admin account which will contain the stack sets and the StackSet Admin Region (the region in which the StackSet in the Admin account is placed) as well as the StackInstance Deploy Region.
+<!-- markdownlint-enabled -->
+
+Each AWS project which now gets this Landing Zone assigned will be setup to receive the Cloud Formation Stack Instance setup.
+
+> **Important:** A StackInstance can currently only be deployed in one region. In order to work around you can create another StackInstance in different regions via e.g. a Lambda during creation of the first StackInstance.
+
+> **Important:** Currently only Templates without parameters are supported.
+
 Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
