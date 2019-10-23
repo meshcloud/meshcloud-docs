@@ -49,31 +49,49 @@ Attach the following inline policy using this json
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "OrganizationsFullAccess",
-            "Effect": "Allow",
-            "Action": "organizations:*",
-            "Resource": "*"
-        },
-        {
             "Sid": "StsAccessMemberAccount",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
             "Resource": "arn:aws:iam::*:role/OrganizationAccountAccessRole",
             "Condition": {
-              "StringEquals": {
-                "sts:ExternalId": "${privilegedExternalId}"
-              }
+                "StringEquals": {
+                    "sts:ExternalId": "${privilegedExternalId}"
+                }
             }
         },
         {
-            "Sid": "IamFullAccess",
+            "Sid": "OrgManagementAccess1",
             "Effect": "Allow",
-            "Action": "iam:*",
+            "Action": [
+                "organizations:DescribeOrganizationalUnit",
+                "organizations:DescribeAccount",
+                "organizations:ListParents",
+                "organizations:ListOrganizationalUnitsForParent",
+                "organizations:CreateOrganizationalUnit",
+                "organizations:MoveAccount"
+            ],
+            "Resource": [
+                "arn:aws:organizations::*:account/o-*/*",
+                "arn:aws:organizations::${awsOrgAccountId}:root/o-*/r-*",
+                "arn:aws:organizations::*:ou/o-*/ou-*"
+            ]
+        },
+        {
+            "Sid": "OrgManagementAccess2",
+            "Effect": "Allow",
+            "Action": [
+                "organizations:ListRoots",
+                "organizations:ListAccounts",
+                "organizations:CreateAccount",
+                "organizations:DescribeCreateAccountStatus"
+            ],
             "Resource": "*"
         }
     ]
 }
 ```
+
+The `${awsOrgAccountId}` is the ID of the AWS Organization Root account under which all the created accounts are placed.
 
 Operators should generate a unique and random value for `${privilegedExternalId}`, e.g. a GUID. meshStack AWS Connector is architected
 to supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only
