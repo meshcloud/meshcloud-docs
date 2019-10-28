@@ -37,9 +37,9 @@ In most organizations, other applications like Office 365 already consume user i
 #### meshcloud AAD Tenant
 
 Because meshcloud requires read-write permissions to manage user roles on Azure Subscriptions, we recommend creating a
-separate "meshcloud AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates (Guest Users) in the meshcloud AAD Tenant that reference user identities from the "home tenant". This way, users have a single cloud identity managed
-by your organization-wide policies while isolating "development" related Azure activies into its own AAD Tenant that has no
-way not affect other applications using the home tenant like Office 356 etc.
+separate "meshcloud AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant". This way, users have a single cloud identity managed
+by your organization-wide policies while isolating "development" related Azure activies into its own AAD Tenant which has no
+way of affecting other applications using the home tenant like Office 356 etc.
 
 #### External User Id (euid)
 
@@ -68,7 +68,7 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
 
 1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app (call it e.g. `meshReplicator`).
 2. Add an client secret under **Certificates &amp; secrets** and write it down (it is the `SERVICE_PRINCIPAL_CLIENT_SECRET`).
-3. Add the `Directory.ReadWriteAll`, `Group.ReadWriteAll` and `User.Read` permission and click **Grant permissions**. You will also need to grant admin consent to your app. Therefore click **Grant admin consent** in the permissions screen.
+3. Add the `Directory.ReadWriteAll`, `Group.ReadWriteAll` and `User.Read` permissions (application type) and click **Grant permissions**. You will also need to grant admin consent to your app. Therefore click **Grant admin consent** in the permissions screen.
 4. Go to the App overview and write down the following: **Application (client) ID** (`SERVICE_PRINCIPAL_CLIENT_ID`), **Directory (tenant) ID** (`AAD_TENANT`, typically a `*.onmicrosoft.com` domain) and the **object id** (`SERVICE_PRINCIPAL_OBJECT_ID`).
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
