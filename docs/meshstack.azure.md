@@ -1,6 +1,6 @@
 ---
 id: meshstack.azure
-title: Azure
+title: Microsoft Azure
 ---
 
 meshcloud can automatically provision Azure Subscriptions as Tenants for [meshProjects](./meshcloud.project.md) and configure them according to your organiziations policies
@@ -23,7 +23,7 @@ by automatically replicating [meshProject Role Assignments](./meshcloud.project.
 However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant.
 Meshcloud supports two different ways to achieve this.
 
-### Pre-Provisioned Identities
+### Externally-provisioned Identities
 
 The default model expected by Microsoft is [Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/), i.e. a local Active Directory (AD) synced to Azure (Azure Active Directory, AAD). Organizations can implement this sync using
 [Azure Active Directory Connect (AD Connect)](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-azure-ad-connect). This sync populates user identities into an AAD Tenant owned by the organization and can also synchronize existing groups and memberships.
@@ -37,25 +37,25 @@ In most organizations, other applications like Office 365 already consume user i
 #### meshcloud AAD Tenant
 
 Because meshcloud requires read-write permissions to manage user roles on Azure Subscriptions, we recommend creating a
-separate "meshcloud AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant". This way, users have a single cloud identity managed
+separate "meshcloud AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant" (AAD B2B). This way, users have a single cloud identity managed
 by your organization-wide policies while isolating "development" related Azure activies into its own AAD Tenant which has no
 way of affecting other applications using the home tenant like Office 356 etc.
 
 #### External User Id (euid)
 
-Using pre-provisioned user identities requires your IdP to provide a user identifier suitable to locate user identities
+Using [externally-provisioned user identities](./meshstack.identity-federation.md#externally-provisioned-identities) requires your IdP to provide a user identifier suitable to locate user identities
 in the "home tenant". This external user id needs to be mapped to the `euid` user attribute in the [meshIdB](./meshstack.identity-federation.md).
 
 It is important that the provided euid's are <b>case-sensitive</b> and must match the user entries saved in the AAD against which the replication should happen! This is a limitation imposed by the search queries of Microsoft Graph API.
 
 > meshcloud can support complex Azure AD setups involving user identity lookup rules and multiple home tenants. Please contact our experts for more details.
 
-### Auto-Provisioned Identities
+### meshStack-provisioned Identities
 
-In this setup meshcloud provisions user identities itself under a virtual domain in a "meshcloud AAD Tenant". This AAD tenant is then configured for federated authentication against [meshIdB](./meshstack.identity-federation.md).
+In the [meshStack-provisioned Identities](./meshstack.identity-federation.md#meshstack-provisioned-identities) setup meshStack provisions user identities itself under a virtual domain in a "meshcloud AAD Tenant". This AAD tenant is then configured for federated authentication against [meshIdB](./meshstack.identity-federation.md).
 
 This setup is useful for smaller organizations do not have existing AAD Tenants. We recommend large organizations use
-pre-provisioned Identities that help ensure users have a single cloud identity only.
+externally-provisioned Identities that help ensure users have a single cloud identity with Microsoft Azure only.
 
 ### Licensing Considerations
 
@@ -75,7 +75,7 @@ Operators need to supply these variables to the [meshStack Configuration](#meshs
 
 ## Subscription Provisioning
 
-To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions.
+To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of externally-provisioned subscriptions.
 
 ### Using Enterprise Enrollment
 
@@ -107,13 +107,13 @@ After creating (or finding) a suitable EA Account, please note down the accounts
 
 To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
-### Using a Pool of Pre-Provisioned Subscriptions
+### Using a Pool of externally-provisioned Subscriptions
 
 If your organization does not have access to an Enterprise Enrolment, you can alternatively configure meshcloud to
-consume subscriptions from a pool of pre-provisioned subscriptions. This is useful for smaller organizations that whish
+consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that whish
 to use "Pay-as-you-go" subscriptions or if you're organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
 
-The meshcloud Azure replication detects pre-provisioned subscriptions based on a configurable prefix in the subscription
+The meshcloud Azure replication detects externally-provisioned subscriptions based on a configurable prefix in the subscription
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](#landing-zones) configuration
 and removed from the subscription pool.
 
@@ -219,7 +219,7 @@ replicator-azure:
         subscription-owner-object-ids:
           - <SUB_OWNER_OBJECT_ID>
         # provide one of the following two keys
-        pre-provisioned:
+        externally-provisioned:
           # Unused subscriptions must begin with this name
           unused-subscription-name-prefix: mesh
       enterprise-enrollment:

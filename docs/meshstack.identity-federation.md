@@ -9,7 +9,35 @@ Identity Federation enables enterprises to integrate corporate SSO systems at a 
 
 ![meshStack SSO architecture](./assets/sso-architecture.png)
 
-## Supported Technologies
+
+## Federated Multi-Cloud Identities
+
+meshStack enables multi-cloud identity federation so that end-users of the system like developers can access all their cloud environments using a single user identity. This allows enterprises to easily retain full control over identities and credentials.
+
+The identity provisioning mechanism and the resulting federation setup depends on the type of cloud platform and its specific configuration. Please consult the respective platform's operator documentation for more configuration details.
+
+### meshStack-provisioned Identities
+
+In this mode meshStack identies used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation an deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation invoves involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
+
+### Externally-provisioned Identities
+
+Some public cloud platforms like [Microsoft Azure](./meshstack.azure.md) or [Google Cloud Platform](./meshstack.gcp.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google G-Suite.
+
+meshStack supports using user identities from these cloud directories for the resepective cloud [platform instance](./meshcloud.platform-location.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation bebtween on-premise and cloud-directory happens outside of meshStack. In order to use the right externally provisioned user identity when provisioning permissions, meshStack needs to map a federated user identity used in meshStack to its corresponding externally provisioned user identy. This mapping is based on the `external user id` or `euid` in short.
+
+When using externally provisioned user idenitites, IdPs must also provide a stable and immutable `euid` claim or user property that is also present in the cloud directory. meshStack will use the `euid` to map identities from meshStack to their respective cloud identity. Most setups use an existing `email` or `username` property as the `euid`.
+
+> Operators need to ensure that all user identities available to meshStack are also provisioned on the cloud platform.
+> meshStack cannot provision permissions for user identities missing on the cloud platform. Failure to replicate permissions for externally provisioned user identities will be logged as replication warnings.
+
+In this mode, identity federation does not involve the meshIdB. Platform Operators have to setup identity sync and federated authentication between the cloud platform and on-premise IdPs themselves.
+
+## Requirements for Identity Providers
+
+Operators must be aware of the following requirements and limitations for IdPs serving as identity sources for meshStack.
+
+### Supported Federation Technologies
 
 The main supported technologies for Identity Federation with meshStack are
 
@@ -20,21 +48,41 @@ The main supported technologies for Identity Federation with meshStack are
 
 meshStack supports the simultaneous integration of multiple [Enterprise Identity Providers (IdPs)](https://en.wikipedia.org/wiki/Identity_provider) at the Identity Broker. This allows operators to combine identities from different sources in the platform and unify management of multi-cloud access in meshStack.
 
-## Requirements and Limitations
+### User Attributes
 
-Integrators must be aware of the following requirements and limitations for IdPs which serve as identity sources for meshStack.
-
-- IdP must provide
+- IdPs must provide
   - a stable and immutable user identifier (e.g. an OIDC `sub` claim)
   - a human-readable, unique username*
   - an email address
-- IdP should provide name (first name, given name) information to improve user experience
+  - an `euid` when using [externally-provisioned identities](#externally-provisioned-identities)
+- IdPs should provide name (first name, given name) information to improve user experience
 
 > \* Please note that meshStack currently only offers limited support for propagation of changed usernames from IdPs.
 
-## Configuration of federated IdP
+### External User Identities
 
-### AD FS
+Some public cloud platforms like [Microsoft Azure](./meshstack.azure.md) or [Google Cloud Platform](./meshstack.gcp.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google G-Suite.
+
+meshStack supports using user identities from these cloud directories for the resepective cloud [platform instance](./meshcloud.platform-location.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation bebtween on-premise and cloud-directory happens outside of meshStack. In order to use the right externally provisioned user identity when provisioning permissions, meshStack needs to map a federated user identity used in meshStack to its corresponding externally provisioned user identy. This mapping is based on the `external user id` or `euid` in short.
+
+When using externally provisioned user idenitites, IdPs must also provide a stable and immutable `euid` claim or user property that is also present in the cloud directory. meshStack will use the `euid` to map identities from meshStack to their respective cloud identity. Most setups use an existing `email` or `username` property as the `euid`.
+
+> Operators need to ensure that all user identities available to meshStack are also provisioned on the cloud platform.
+> meshStack cannot provision permissions for user identities missing on the cloud platform. Failure to replicate permissions for externally provisioned user identities will be logged as replication warnings.
+
+Please consult the respective platform's operator documentation for more configuration details.
+
+## Concerns for High Availability
+
+meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](./meshcloud.project.md) are temporarily unavailable in this case.
+
+User can still authenticate and work with cloud platforms using [meshStack-provisioned identities](#meshstack-provisioned-identities), as long as the meshIdB is available. meshcloud therefore supports deploying the meshIdB in a data-center redundant HA setup.
+
+Availability of the meshIdB does not affect cloud platforms using [externally-provisioned identities](#externally-provisioned-identities). These platforms can tolerate a full loss of meshStack availability.
+
+## Identity Provider Configuration Tutorials
+
+### Active Directory Federation Services (AD FS)
 
 Initially provide the URL of your AD FS to meshcloud, so a Identity Provider can be configured in the meshIdB. meshcloud will then provide a SAML descriptor URL, that can be used to configure AD FS.
 
@@ -73,14 +121,9 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 2. Select `Send Group Membership as a Claim` rule type.
 3. Usually two groups should be defined via this. They should result in Outgoing claim type `Group` with Outgoing claim values `meshUser` and `meshManager`. A `meshUser` can login to meshcloud and be invited to existing meshCustomers. A `meshManager` is allowed to create new `meshCustomers`.
 
-### Azure AD
+### Azure AD (AAD)
 
 - Create a new App registration in AAD. You can choose a display name like `meshcloud SSO`. Define the redirect URI that will be provided by meshcloud. It is individual per meshcloud installation.
 - Provide "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, to meshcloud.
 - Create a Client secret via "Manage -> Certficates & secrets". This secret must be provided to meshcloud.
 
-## Concerns for High Availability
-
-Identity Federation is designed for high-availability when the meshIdB is deployed in a redundant data-center HA setup. A potential loss of meshFed availability as the multi-cloud "control plane" is tolerable for the system. When configured correctly, users are still able to log in directly at cloud platform instances with the meshIdB and its optional upstream IdPs. Workload uptimes are never affected by outages of meshStack.
-
-Please consult the platform-specific documentation for the required configuration.
