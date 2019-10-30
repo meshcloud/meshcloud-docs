@@ -45,7 +45,7 @@ In AD FS Management console, right-click "Trust relationships → Relying Party 
 Now the SAML protocol would proceed correctly, AD FS would be able to correctly authenticate the users according to requests from Keycloak, but the requested name ID format is not yet recognized and SAML response would not contain any additional information like e-mail. It is hence necessary to map claims from AD user details into SAML document.
 We will set up three rules: one for mapping user ID, second for mapping standard user attributes, and optionally third for a user group, if needed.
 
-#### Rule for Mapping user ID¶
+#### Rule for Mapping user ID
 
 1. Open the `Edit Claim Rules` dialog.
 2. In the `Add Transform Claim Rule` dialog, select `Transform an incoming claim`.
@@ -56,7 +56,7 @@ We will set up three rules: one for mapping user ID, second for mapping standard
     - `Windows qualified Domain Name` for property `Outgoing name ID format`
 4. Click Finish to add the rule.
 
-#### Rule for Mapping the Attributes of the Standard User¶
+#### Rule for Mapping the Attributes of the Standard User
 
 1. Open the `Edit Claim Rules` dialog.
 2. In the `Add Transform Claim Rule` dialog, select `Send LDAP attributes as Claims rule`.
@@ -65,7 +65,7 @@ We will set up three rules: one for mapping user ID, second for mapping standard
     - `SAM-Account-Name` to `Subject Name`
     - Your LDAP attributes for `surname` and `given name`
 
-#### Rule for Mapping AD groups¶
+#### Rule for Mapping AD groups
 
 If meshcloud shall restrict access via certain AD groups, you can define another claim.
 
