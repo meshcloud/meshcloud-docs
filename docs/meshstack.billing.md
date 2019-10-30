@@ -38,7 +38,7 @@ pricing and discount rules to aggregated usage reports, i.e. volume discounts.
 
 ### Public cloud billing with meshcloud
 
-Public cloud providers like AWS, Azure and GCP provide their own metering and billing processes. Thes can be very intricate
+Public cloud providers like AWS, Azure and GCP provide their own metering and billing processes. These can be very intricate
 and involve complex pricing rules. However, a common theme is that they all provide the enterprise with a single invoice
 for its aggregated cloud spend. These invoices list the cloud spend by individual cloud tenants. Putting all tenants on
  a single invoice leads to attractive volume discounts, however it necessitates breaking down that invoice into
