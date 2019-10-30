@@ -59,19 +59,6 @@ meshStack supports the simultaneous integration of multiple [Enterprise Identity
 
 > \* Please note that meshStack currently only offers limited support for propagation of changed usernames from IdPs.
 
-### External User Identities
-
-Some public cloud platforms like [Microsoft Azure](./meshstack.azure.md) or [Google Cloud Platform](./meshstack.gcp.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google G-Suite.
-
-meshStack supports using user identities from these cloud directories for the resepective cloud [platform instance](./meshcloud.platform-location.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation bebtween on-premise and cloud-directory happens outside of meshStack. In order to use the right externally provisioned user identity when provisioning permissions, meshStack needs to map a federated user identity used in meshStack to its corresponding externally provisioned user identy. This mapping is based on the `external user id` or `euid` in short.
-
-When using externally provisioned user idenitites, IdPs must also provide a stable and immutable `euid` claim or user property that is also present in the cloud directory. meshStack will use the `euid` to map identities from meshStack to their respective cloud identity. Most setups use an existing `email` or `username` property as the `euid`.
-
-> Operators need to ensure that all user identities available to meshStack are also provisioned on the cloud platform.
-> meshStack cannot provision permissions for user identities missing on the cloud platform. Failure to replicate permissions for externally provisioned user identities will be logged as replication warnings.
-
-Please consult the respective platform's operator documentation for more configuration details.
-
 ## Concerns for High Availability
 
 meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](./meshcloud.project.md) are temporarily unavailable in this case.

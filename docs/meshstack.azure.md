@@ -61,7 +61,69 @@ externally-provisioned Identities that help ensure users have a single cloud ide
 
 Users managed in the meshcloud AAD Tenant do not require AAD Premium Licenses.
 
-## Service Principal
+## Subscription Provisioning
+
+To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions.
+
+### Enterprise Enrollment Account
+
+meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement and want to provide a large number of subscriptions in a fully automated fashion.
+
+> Microsoft currently has limitation of a maximum of 250 Subscriptions per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [platform instance](./meshcloud.platform-location.md). Please contact our experts for more details.
+
+### Pre-provisioned Subscriptions
+
+If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
+consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that whish
+to use "Pay-as-you-go" subscriptions or if you're organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
+
+The meshcloud Azure replication detects externally-provisioned subscriptions based on a configurable prefix in the subscription
+name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](#landing-zones) configuration
+and removed from the subscription pool.
+
+## Platform Instance Configuration
+
+With the information we gathered in the above section we now can configure the Azure Replicator.
+This will typcially configured by your meshcloud experts, but please consult the following example as a reference
+of possible configuration settings.
+
+```yml
+replicator-azure:
+  platforms:
+    - platform: azure.meshcloud-azure-dev
+      # This is the ID of the "Azure Blueprint" service principal which must be known beforehand.
+      blueprint-service-principal: <AZURE_BLUEPRINT_PRINCIPAL>
+      # https://docs.microsoft.com/en-us/rest/api/blueprints/assignments/createorupdate#assignmentlockmode
+      blueprint-lock-assignment: "AllResourcesReadOnly"
+      blueprint-location: "westeurope"
+      service-principal:
+        aad-tenant: <AAD_TENANT> # Either friendly domain name or your tenants GUID
+        object-id: <SERVICE_PRINCIPAL_OBJECT_ID>
+        client-id: <SERVICE_PRINCIPAL_CLIENT_ID>
+        client-secret: <SERVICE_PRINCIPAL_CLIENT_SECRET>
+      provisioning:
+        # You can configure multiple owners of the created/assigned subscriptions. Enter the object IDs of the
+        # subscription owners. This is useful for extended automation.
+        subscription-owner-object-ids:
+          - <SUB_OWNER_OBJECT_ID>
+        # provide one of the following two keys
+        externally-provisioned:
+          # Unused subscriptions must begin with this name
+          unused-subscription-name-prefix: mesh
+      enterprise-enrollment:
+          enrollment-account-id: <EA_ACCOUNT_ID>
+          subscription-offer-type: MS-AZR-0017P
+      role-mappings:
+        # The mesh project role is mapped to an Azure role. You can enter the role which should be assigned for the
+        # user holding this meshProject roles.For more information about Azure roles see
+        # https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles
+        admin: b24988ac-6180-42a0-ab88-20f7382dd24c # magic GUID for contributor
+        user: acdd72a7-3385-48ef-bd42-f606fba81ae7  # magic GUID for reader
+```
+
+The next sections will describe individual setup steps.
+
+### Service Principal Setup
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
 The Service Principal must be authorized in the scope of the meshcloud AAD Tenant.
@@ -73,13 +135,7 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
-## Subscription Provisioning
-
-To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of externally-provisioned subscriptions.
-
-### Using Enterprise Enrollment
-
-meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization.
+### Configuring Enterprise Enrollment
 
 #### 1. Setting up the Enrollment Account
 
@@ -107,15 +163,24 @@ After creating (or finding) a suitable EA Account, please note down the accounts
 
 To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
-### Using a Pool of externally-provisioned Subscriptions
+### Automatic User Invitation
 
-If your organization does not have access to an Enterprise Enrolment, you can alternatively configure meshcloud to
-consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that whish
-to use "Pay-as-you-go" subscriptions or if you're organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
+Users can automatically get invited via Azure. The system needs an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities). The email must exist inside an Azure Active Directory (AAD) and automatically gets invited to the AAD in which the meshProject subscriptions live.
 
-The meshcloud Azure replication detects externally-provisioned subscriptions based on a configurable prefix in the subscription
-name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](#landing-zones) configuration
-and removed from the subscription pool.
+In order to activate it just add the `b2b-user-invitation` configuration to your Azure platform config:
+
+```yml
+replicator-azure:
+  platforms:
+    - platform: azure.meshcloud-azure-dev
+      b2b-user-invitation:
+        # URL the user is redirected to when he manually accepts an invitation
+        redirect-url: http://localhost
+        send-azure-invitation-mail: false
+```
+
+You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
+the invitation notifications.
 
 ## Landing Zones
 
@@ -192,62 +257,3 @@ In this screen you can also find the Object ID and Application ID of your servic
 ```powershell
 Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
 ```
-
-## meshStack Azure Configuration
-
-With the information we gathered in the above section we now can configure the Azure Replicator.
-This will typcially configured by your meshcloud experts, but please consult the following example as a reference
-of possible configuration settings.
-
-```yml
-replicator-azure:
-  platforms:
-    - platform: azure.meshcloud-azure-dev
-      # This is the ID of the "Azure Blueprint" service principal which must be known beforehand.
-      blueprint-service-principal: <AZURE_BLUEPRINT_PRINCIPAL>
-      # https://docs.microsoft.com/en-us/rest/api/blueprints/assignments/createorupdate#assignmentlockmode
-      blueprint-lock-assignment: "AllResourcesReadOnly"
-      blueprint-location: "westeurope"
-      service-principal:
-        aad-tenant: <AAD_TENANT> # Either friendly domain name or your tenants GUID
-        object-id: <SERVICE_PRINCIPAL_OBJECT_ID>
-        client-id: <SERVICE_PRINCIPAL_CLIENT_ID>
-        client-secret: <SERVICE_PRINCIPAL_CLIENT_SECRET>
-      provisioning:
-        # You can configure multiple owners of the created/assigned subscriptions. Enter the object IDs of the
-        # subscription owners. This is useful for extended automation.
-        subscription-owner-object-ids:
-          - <SUB_OWNER_OBJECT_ID>
-        # provide one of the following two keys
-        externally-provisioned:
-          # Unused subscriptions must begin with this name
-          unused-subscription-name-prefix: mesh
-      enterprise-enrollment:
-          enrollment-account-id: <EA_ACCOUNT_ID>
-          subscription-offer-type: MS-AZR-0017P
-      role-mappings:
-        # The mesh project role is mapped to an Azure role. You can enter the role which should be assigned for the
-        # user holding this meshProject roles.For more information about Azure roles see
-        # https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles
-        admin: b24988ac-6180-42a0-ab88-20f7382dd24c # magic GUID for contributor
-        user: acdd72a7-3385-48ef-bd42-f606fba81ae7  # magic GUID for reader
-```
-
-### Automatic User Invitation
-
-Users can automatically get invited via Azure. The system needs an email address which is usually fetched from the euid (a configurable value of the user specification send to the replicator). The email must exist inside an Azure Active Directory (AAD) and automatically gets invited to the AAD in which the meshProject subscriptions live.
-
-In order to activate it just add the `b2b-user-invitation` configuration to your Azure platform config:
-
-```yml
-replicator-azure:
-  platforms:
-    - platform: azure.meshcloud-azure-dev
-      b2b-user-invitation:
-        # URL the user is redirected to when he manually accepts an invitation
-        redirect-url: http://localhost
-        send-azure-invitation-mail: false
-```
-
-You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
-the invitation notifications.
