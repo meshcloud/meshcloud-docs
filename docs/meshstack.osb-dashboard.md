@@ -1,13 +1,13 @@
 ---
 id: meshstack.osb-dashboard
-title: Dashboard
+title: Implementing a Dashboard
 ---
 
-Service Brokers can offer dashboards for their service instances. Users can use the dashboard to interact with the service, e.g. for monitoring and service configuration. Since only the Marketplace knows which users may have access to a specific service instance, Service Broker Dashboards must integrate with the Marketplace’s SSO provider (meshIdB).
+Service Brokers can offer dashboards for their service instances. Users can use the dashboard to interact with the service, e.g. for monitoring and service configuration. This tutorial explains how to implement a dashboard for the meshMarketplace.
 
 ## Overview of the SSO Flow
 
-This section describes the OAuth code flow, that must be used by the Service Broker to provide a Dashboard integrated with meshStack Single-Sign-On (SSO).
+Since only the Marketplace knows which users may have access to a specific service instance, Service Broker Dashboards must integrate with the Marketplace’s SSO provider (meshIdB). This section describes the OAuth code flow, that must be used by the Service Broker to provide a Dashboard integrated with meshStack Single-Sign-On (SSO).
 
 ### 1. Create restricted client in meshIdB for Service Broker
 
@@ -24,3 +24,79 @@ When the user accesses the dashboard, the dashboard has to follow the auth flow 
 ![OSB Marketplace integration](assets/osb-dashboard-2.png)
 
 Service Brokers need to discover the URLs for initiating the OAuth flow and for retrieving the permissions on the service instance from meshMarketplace.
+
+## Implementing a dashboard for the meshMarketplace
+
+
+The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration with a marketplace. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration with meshMarketplace specifically, leveraging the [meshMarketplace OSB API Profile](./meshstack.osb-mesh-specifics.md).
+
+### Permissions on Service Instance Level
+
+The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users, that are assigned to the project in the meshMarketplace where the service instance was created, shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property permission_url:
+
+```json
+{
+  "permission_url": "https://{mesh-hostname}/serviceInstances/c48d065b-a123-4a1e-8021-2965928d022d/permissions",
+  "...": "..."
+}
+```
+
+When requesting the URL, the access token retrieved via the described OAuth flow, must be submitted in the Authorization header:
+
+```yml
+Authorization: Bearer eyHKJDSA57...
+```
+
+The response of this request contains a simple json object with a permission field, that can currently have the values NONE and USER.
+
+```json
+{
+  "permission" : "USER"
+}
+```
+
+If NONE is returned, the access to the dashboard must be denied for the user. If USER is returned, access must be granted. If the service instance id is not known by the platform (meshMarketplace), HTTP Status 404 is returned.
+
+### Initiating the OAuth Flow
+
+There are two ways for Service Brokers to initiate the OAuth flow for SSO. Implementers can choose the way that’s more convenient for them.
+
+#### 1. Use OAuth URLs available in the context
+
+To simplify the OAuth flow for the service brokers and to guarantee, that the service broker uses the same IdB as the platform, the auth_url is part of the context when provisioning a service instance.
+
+```json
+{
+  "auth_url":"https://{mesh-hostname}/auth/realms/meshfed/protocol/openid-connect/auth?client_id=my-service-client-id&response_type=code&redirect_uri={redirect_uri}&nonce={nonce}&state={state}",
+  "...": "..."
+}
+```
+
+This URL is a template. The redirect_uri must be set by the Service Broker (to redirect to a specific URI containing the service instance id or similar). The random parameters nonce and state have to be generated and replaced by the service broker (see OpenID documentation for this.)
+For the OAuth flow, a token endpoint is required too. It is a static link and the request must be build as described in the OpenId documentation.
+
+```json
+{
+  "token_url": "https://{mesh-hostname}/auth/realms/meshfed/protocol/openid-connect/token",
+  "...": "..."
+}
+```
+
+#### 2. Use X-Api-Info-Location header as in Cloud Foundry
+
+For being compatible with Cloud Foundry and making integration easy for Service Brokers, that are already using the Cloud Foundry SSO, an X-Api-Info-Location header is submitted on every request the meshMarketplace executes to the Service Broker.
+
+The header contains an URL to retrieve general information like the auth URL.
+
+```yml
+X-Api-Info-Location: http://{mesh-hostname}/info
+```
+
+The response when calling this URL has the following content:
+
+```json
+{
+  "authorization_endpoint": "https://{mesh-hostname}/auth/realms/meshfed/protocol/openid-connect/auth",
+  "token_endpoint": "https://{mesh-hostname}/auth/realms/meshfed/protocol/openid-connect/token"
+}
+```
