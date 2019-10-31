@@ -1,6 +1,6 @@
 ---
-id: meshstack.metering-openstack
-title: OpenStack Metering
+id: meshstack.openstack.metering
+title: Metering
 ---
 
 meshStack supports metering and billing for most common OpenStack versions. For fine-granular metering and best-performance, we recommend the use of OpenStack Panko for OpenStack Releases Pike and later.

@@ -1,6 +1,6 @@
 ---
-id: meshstack.cloudfoundry
-title: Cloud Foundry
+id: meshstack.cloudfoundry.index
+title: Integration
 ---
 
 meshStack supports access to Cloud Foundry platforms which provide convenient application hosting capabilities to software and DevOps engineers. Usually, there are also many backing services available within the platforms marketplace such as database, data processing, queueing, and many more (depending on the platform operators choice of services).

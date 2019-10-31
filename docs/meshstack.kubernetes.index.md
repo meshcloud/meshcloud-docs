@@ -1,6 +1,6 @@
 ---
-id: meshstack.kubernetes
-title: Kubernetes
+id: meshstack.kubernetes.index
+title: Integration
 ---
 
 meshStack supports project creation, configuration, user management and SSO for Kubernetes clusters.

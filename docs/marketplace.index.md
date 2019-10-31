@@ -8,4 +8,4 @@ The Marketplace provides users with a set of services they can spin up for their
 
 Using the marketplace, users can provision service instances (e.g. a database) and get connection information and credentials to use in their applications. This allows users to easily provision services for any application, independent of the hosting platform. For example, users can use the Mesh Markeptlace to share a message queue between an application deployed to IaaS and an application deployed to Cloud Foundry PaaS in the same project.
 
-If you want to write your own Service Broker, you can find further information [here](meshstack.osb-overview.md).
+If you want to write your own Service Broker, you can find further information [here](meshstack.meshmarketplace.index.md).

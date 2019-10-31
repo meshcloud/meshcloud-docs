@@ -1,6 +1,6 @@
 ---
-id: meshstack.openstack
-title: OpenStack
+id: meshstack.openstack.index
+title: Integration
 ---
 
 ## Architecture
