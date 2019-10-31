@@ -3,7 +3,7 @@ id: administration.index
 title: Overview
 ---
 
-Meshcloud Partners have access to a so called **meshAdmin** account. This account type enables to manage multiple child-customer accounts
+meshcloud Partners have access to a so called **meshAdmin** account. This account type enables to manage multiple child-customer accounts
 (so called **managed customers**) within the meshcloud platform. Therefore, With this functionality the **meshAdmin** account is needed to enable
 customer management. A **meshAdmin** account can only be activated by a **meshcloud Operator**.
 

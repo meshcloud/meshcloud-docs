@@ -83,4 +83,4 @@ Each AWS project which now gets this Landing Zone assigned will be setup to rece
 >
 > **Important:** Currently only templates without parameters are supported. Support for parameters provided by meshStack will be added in a future release.
 
-Please contact [Meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
+Please contact [meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.

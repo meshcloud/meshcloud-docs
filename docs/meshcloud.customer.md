@@ -11,7 +11,7 @@ A meshCustomer is automatically created for you when you [sign up](meshcloud.pro
 
 General information of a meshCustomer (like its name) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
 
-If applicable in your Meshcloud installation, also a Tax ID can be defined here for your meshCustomer.
+If applicable in your meshcloud installation, also a Tax ID can be defined here for your meshCustomer.
 
 ## Invite users to access a meshCustomer
 

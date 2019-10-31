@@ -30,7 +30,7 @@ class Help extends React.Component {
       },
       {
         content: 'Visit our [Homepage](https://www.meshcloud.io) for more information.',
-        title: 'More Meshcloud',
+        title: 'More meshcloud',
       },
       {
         content: "Find more multi-cloud related posts in our [Blog](https://www.meshcloud.io/blog).",
@@ -45,7 +45,7 @@ class Help extends React.Component {
             <header className="postHeader">
               <h2>Need help?</h2>
             </header>
-            <p>This project is maintained by <a href="https://www.meshcloud.io/en/impressum/">Meshcloud GmbH</a>.
+            <p>This project is maintained by <a href="https://www.meshcloud.io/en/impressum/">meshcloud GmbH</a>.
             </p>
             <p>Visit <a href="https://support.meshcloud.io">support.meshcloud.io</a> for direct support on your issues.</p>
             <GridBlock contents={supportLinks} layout="threeColumn" />
