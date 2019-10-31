@@ -11,7 +11,7 @@ using [Landing Zones](./meshcloud.landing-zones.md).
 To enable integration with Azure, operators need to deploy and configure the meshStack Azure Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.Azure`. This makes Azure available to meshProjects like any other cloud platform in meshStack.
 
 Azure relies on Azure Active Directoy (AAD) for authentication and authorization. meshcloud can seamlessly integrate with common
-AAD setups like [Azure Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/). Meshcloud helps you implement Azure in line with [Governance best-practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/governance-disciplines) by integrating [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) and Management Groups using [Landing Zones](#landing-zones)
+AAD setups like [Azure Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/). meshcloud helps you implement Azure in line with [Governance best-practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/governance-disciplines) by integrating [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) and Management Groups using [Landing Zones](#landing-zones)
 
 In order to plan and execute a successful integration of Azure using meshcloud, organizations need to consider the following parts described in the sections below.
 
@@ -21,7 +21,7 @@ All Subscriptions in Azure must be associated with exactly one AAD Tenant storin
 by automatically replicating [meshProject Role Assignments](./meshcloud.project.md) to this AAD Tenant.
 
 However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant.
-Meshcloud supports two different ways to achieve this.
+meshcloud supports two different ways to achieve this.
 
 ### Externally-provisioned Identities
 

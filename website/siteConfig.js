@@ -14,9 +14,9 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'meshcloud Multi-Cloud Management' /* title for your website */,
-  tagline: 'Documentation',
-  url: 'https://docs.meshcloud.io' /* your website url */,
+  title: 'meshcloud' /* title for your website */,
+  tagline: 'we enable cloud-native organizations',
+  url: 'https://meshcloud.io' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
@@ -69,7 +69,7 @@ const siteConfig = {
   copyright:
     'Copyright © ' +
     new Date().getFullYear() +
-    ' Meshcloud GmbH',
+    ' meshcloud GmbH',
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks

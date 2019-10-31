@@ -3,17 +3,17 @@ id: administration.customers
 title: Administrate Customers
 ---
 
-With a Partner Account you can easily manage multiple customer accounts with the Meshcloud Portal. The Meshcloud administration area is the
-place to create and manage your customer accounts. You can access the Meshcloud **Administration** Area by opening the settings menu and
+With a Partner Account you can easily manage multiple customer accounts with the meshcloud Portal. The meshcloud administration area is the
+place to create and manage your customer accounts. You can access the meshcloud **Administration** Area by opening the settings menu and
 navigating to the **Administration** Area. In case you do not see a menu entry called **Administration** in your settings menu, your account
-is probably not a partner account yet. Please contact [Meshcloud Support](https://support.meshcloud.io) to transform your account into a
+is probably not a partner account yet. Please contact [meshcloud Support](https://support.meshcloud.io) to transform your account into a
 partner account.
 
 When selecting **Customers** in the menu bar on the left you can see the list of all customers managed by you.
 
 ## Creating Managed Customer Accounts
 
-With Meshcloud you can easily create customer accounts.
+With meshcloud you can easily create customer accounts.
 
 1. Login to the meshPanel with your partner credentials
 2. If not logged in, please login with your Partner account credentials.

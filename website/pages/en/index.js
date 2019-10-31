@@ -72,10 +72,6 @@ class HomeSplash extends React.Component {
       <SplashContainer>
         <div className="inner">
           <ProjectTitle />
-          <PromoSection>
-            <Button href={docUrl('meshcloud.index.html', language)}>meshcloud User Docs</Button>
-            <Button href={docUrl('meshstack.index.html', language)}>meshstack Operator Docs</Button>
-          </PromoSection>
         </div>
       </SplashContainer>
     );
@@ -96,8 +92,6 @@ const FeatureCallout = props => (
   <div
     className="productShowcaseSection paddingTop lightBackground"
     style={{ textAlign: 'center' }}>
-    <h2><a href={docUrl('meshcloud.index.html', props.language)}>Supported Cloud Technologies</a></h2>
-    <MarkdownBlock>Combine private & public cloud technologies with meshcloud</MarkdownBlock>
   </div>
 
 );
@@ -106,28 +100,12 @@ const LearnHow = props => (
   <Block background="light" layout="fourColumn">
     {[
       {
-        content: 'Deploy Apps and Containers in no time',
-        image: imgUrl('cloudfoundry.png'),
-        imageAlign: 'top',
-        title: `[Cloud Foundry](${docUrl('cloudfoundry.index.html', props.language)})`
+        title: `[User Documentation](${docUrl('meshcloud.index.html', props.language)})`,
+        content: 'Documentation for DevOps Teams and IT Managers using a meshcloud installation.',
       },
       {
-        content: 'Deploy virtual infrastructure on OpenStack',
-        image: imgUrl('openstack.png'),
-        imageAlign: 'top',
-        title: `[OpenStack](${docUrl('openstack.index.html', props.language)})`
-      },
-      {
-        content: 'Manage Kubernetes Clusters',
-        image: imgUrl('k8s.png'),
-        imageAlign: 'top',
-        title: `[Kubernetes](${docUrl('kubernetes.index.html', props.language)})`
-      },
-      {
-        content: 'Integrate cloud services based on the Open Service Broker API',
-        image: imgUrl('osbapi.png'),
-        imageAlign: 'top',
-        title: `[Open Service Marketplace](${docUrl('osb-marketplace.index.html', props.language)})`
+        title: `[Operator Documentation](${docUrl('meshstack.index.html', props.language)})`,
+        content: 'Documentation for multi-cloud management and Cloud Platform Operation teams operating a meshcloud installation.',
       }
     ]}
   </Block>

@@ -36,10 +36,10 @@ class Footer extends React.Component {
           <div>
             <h5>Docs</h5>
             <a href={this.docUrl('meshcloud.index.html', this.props.language)}>
-              Getting Started
+              User Documentation
             </a>
             <a href={this.docUrl('meshstack.index.html', this.props.language)}>
-              Operator Docs
+              Operator Documentation
             </a>
           </div>
           <div>
@@ -72,7 +72,7 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             <a href={this.props.config.baseUrl + 'blog'}>Release Notes</a>
-            <a href="https://github.com/Meshcloud">GitHub</a>
+            <a href="https://github.com/meshcloud">GitHub</a>
           </div>
         </section>
         <section className="copyright">{this.props.config.copyright}</section>

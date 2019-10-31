@@ -25,7 +25,7 @@ The invoice payment method simply results in an invoice, that is send to your bi
 
 #### Cost Center
 
-When Meshcloud is used inside a company, cloud resources may have to be billed to different cost centers of the company. You can configure a default cost center for your meshCustomer, which will initially be applied to your meshProjects. It can also be changed per meshProject.
+When meshcloud is used inside a company, cloud resources may have to be billed to different cost centers of the company. You can configure a default cost center for your meshCustomer, which will initially be applied to your meshProjects. It can also be changed per meshProject.
 
 ## Reviewing Metering Data
 
