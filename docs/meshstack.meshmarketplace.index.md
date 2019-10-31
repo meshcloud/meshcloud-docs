@@ -1,6 +1,6 @@
 ---
-id: meshstack.osb-overview
-title: Overview
+id: meshstack.meshmarketplace.index
+title: Integration
 ---
 
 The Open Service Broker (OSB) Marketplace provides a common integration point for any remote service which can be provisioned by an API (e.g. a database). A lightweight service broker component implementing the [Open Service Broker API Specification](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md) allows such services to become a resource within a meshProject and be included in the project lifecycle management at the meshStack platform.
@@ -61,17 +61,3 @@ The meshMarketplace provides support for global and local services. Service Prov
 - Service is provided from a single location only
 - Location of data etc. is important
 - Examples: DBaaS
-
-## Implementation Recommendations
-
-This section has some implementation recommendations based on experience:
-
-- Follow the specification closely
-- Use consistent Ids for services and plans, do not change them after announcing them from the catalog
-- Implement proper error handling for all operations, return the correct response codes
-- Properly implement synchronous/asynchronous operations
-- Deal with orphaned Service Instances
-- “The platform marketplace is the source of truth for service instances and bindings. Service brokers are expected to have successfully provisioned all the service instances and bindings that the marketplace knows about, and none that it doesn't.”
-- Consider supporting multiple service bindings per service instance, prefer to create separate credentials for each binding
-- Consider checking your service implementation using the official [checker tool (experimental)](https://github.com/openservicebrokerapi/osb-checker)
-- We also provide an [example implementation](https://github.com/Meshcloud/generic-osb-api) of a Service broker, that can provide you some guidance for your own implementation

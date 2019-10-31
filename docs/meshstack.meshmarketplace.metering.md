@@ -1,6 +1,6 @@
 ---
-id: meshstack.metering-meshmarketplace
-title: meshMarketplace Metering
+id: meshstack.meshmarketplace.metering
+title: Metering
 ---
 
 meshStack supports metering of meshMarketplace services.

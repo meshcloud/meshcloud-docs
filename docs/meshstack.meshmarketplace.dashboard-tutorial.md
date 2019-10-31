@@ -1,6 +1,6 @@
 ---
-id: meshstack.osb-dashboard
-title: Implementing a Dashboard
+id: meshstack.meshmarketplace.dashboard-tutorial
+title: "Tutorial: Dashboards"
 ---
 
 Service Brokers can offer dashboards for their service instances. Users can use the dashboard to interact with the service, e.g. for monitoring and service configuration. This tutorial explains how to implement a dashboard for the meshMarketplace.
@@ -28,7 +28,7 @@ Service Brokers need to discover the URLs for initiating the OAuth flow and for 
 ## Implementing a dashboard for the meshMarketplace
 
 
-The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration with a marketplace. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration with meshMarketplace specifically, leveraging the [meshMarketplace OSB API Profile](./meshstack.osb-mesh-specifics.md).
+The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration with a marketplace. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration with meshMarketplace specifically, leveraging the [meshMarketplace OSB API Profile](./meshstack.meshmarketplace.profile.md).
 
 ### Permissions on Service Instance Level
 

@@ -97,7 +97,7 @@ Project Users get the following OpenStack roles:
 
 The actual access rights associated with these roles are managed by the OpenStack instance and are not part of meshStack.
 
-More details about the User Federation with OpenStack can be found [here](meshstack.openstack.md).
+More details about the User Federation with OpenStack can be found [here](meshstack.openstack.index.md).
 
 ### Authorization via replication
 

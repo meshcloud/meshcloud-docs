@@ -85,6 +85,16 @@ const siteConfig = {
 
   /* On page navigation for the current documentation page */
   onPageNav: 'separate',
+  
+  // For sites with a sizable amount of content, set collapsible to true.
+  // Expand/collapse the links and subcategories under categories.
+  docsSideNavCollapsible: true,
+
+  // Show documentation's last contributor's name.
+  enableUpdateBy: false,
+
+  // Show documentation's last update time.
+  enableUpdateTime: true,
 
   /* Open Graph and Twitter card images */
   ogImage: 'img/favicon.png',

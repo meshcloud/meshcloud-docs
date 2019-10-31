@@ -1,6 +1,6 @@
 ---
-id: meshstack.metering-cloudfoundry
-title: Cloud Foundry Metering
+id: meshstack.cloudfoundry.metering
+title: Metering
 ---
 
 meshStack supports metering and billing for all versions of Cloud Foundry.
