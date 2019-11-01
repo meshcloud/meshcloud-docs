@@ -1,6 +1,6 @@
 ---
 id: meshstack.meshmarketplace.profile
-title: OSB API Profile & Extensions
+title: meshcloud OSB API Profile
 ---
 
 The OSB API Specification itself is a generic protocol and allows extension for specific implementations. meshMarketplace uses these extensions to allow service brokers to receive metadata from meshStack, control how their services are presented and made available in the marketplace as well as how they are to be billed.

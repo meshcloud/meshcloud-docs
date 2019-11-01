@@ -27,7 +27,6 @@ Service Brokers need to discover the URLs for initiating the OAuth flow and for 
 
 ## Implementing a dashboard for the meshMarketplace
 
-
 The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration with a marketplace. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration with meshMarketplace specifically, leveraging the [meshMarketplace OSB API Profile](./meshstack.meshmarketplace.profile.md).
 
 ### Permissions on Service Instance Level

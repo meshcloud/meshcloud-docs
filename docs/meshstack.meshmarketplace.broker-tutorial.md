@@ -1,6 +1,6 @@
 ---
 id: meshstack.meshmarketplace.broker-tutorial
-title: "Tutorial: Service Broker"
+title: "Tutorial: Implement a Broker"
 ---
 
 This tutorial will show you how to setup a service broker deploys services using CI/CD tools you already know.

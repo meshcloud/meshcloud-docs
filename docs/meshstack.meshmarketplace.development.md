@@ -1,16 +1,15 @@
 ---
-id: marketplace.development
+id: meshstack.meshmarketplace.development
 title: Marketplace Development
 ---
-## What is Marketplace Development?
 
 You can provide your own services in the [meshMarketplace](marketplace.index.md) via the Marketplace Development. The functionality is currently
 only available for [Customer Admins](meshcloud.customer.md#manage-groups-of-assigned-users).
 You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
 
-## How to use it
+## Marketplace Development
 
-You can find the **Marketplace Development** in your Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](marketplace.analytics.md) screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace Development** in your meshCustomer Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
@@ -48,6 +47,35 @@ When you publish your Service Broker it won't be available in the meshMarketplac
 ### Refresh Catalog of Published Service Broker
 
 Like for your private Service Broker, you can also actively [refresh the catalog](#refresh-service-broker-catalog) of your published Service Broker. This is done via the **Refresh Catalog** button in the Publishing list of your Service Broker.
+
+The Analytics functionality for Service Owners is available to Customer Admins, who already [registered a Service Broker](meshstack.meshmarketplace.development.md#register-your-service-broker).
+
+## Debugging your Service Broker
+
+### Reviewing failed Service Instances
+
+From the meshCustomer Account area, you can access an overview of all failed service instances of your service brokers under the "Failed Instances" menu entry. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+
+### Service Communication Logs
+
+Especially when an error occurs during a service broker call, detailed information about the request that was made from the meshMarketplace to the service broker helps in analyzing the reason why a call failed. But the communication logs are not only available in error cases, they are availbale for all requests that were made from the meshMarketplace to the Service Broker. Instead of implementing a detailed request and response logging in every service broker, the meshMarketplace provides this information for all service brokers.
+
+All relevant information like the request date and the type of operation that was executed, all request and response headers as well as the body of the request and in case of an error also the response from the service broker, are available. The duration of the call and information about the used Service Plan and [Service Instance](marketplace.service-instances.md) are also available. This information, combined with the application logs of the service broker should provide all information for a successful error analysis.
+
+The communication logs are available for [private](meshstack.meshmarketplace.development.md#register-your-service-broker) and [published](meshstack.meshmarketplace.development.md#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the marketplace integration phase of your service broker.
+
+A searchable overview of all communication logs is the starting point for analyzing communication logs. When more details about a specific log is needed, the **info** icon in the list of logs provides you with all details that are available to a specific call that was made.
+
+### Searching the Communication Logs
+
+Searching the communication logs to e.g. find a specific issue that was reported or to have a look at a specific call that was made is an essential feature of the communication logs. The search is executed automatically while entering your search criteria. You can search by the following criteria:
+
+- **Request Date**: When e.g. a user reported that an issue occurred at 10 o'clock at a specific day, you can quickly find the related communication log by searching for the request date. The date you search for will be interpreted as the latest request date to find. So you will retrieve all communication logs before this date. As the ordering of the list is descending, the communication log that is closest to the requested date will appear at the top of the list. The date must be entered in format yyyy-MM-dd HH:mm:ss (e.g. 2019-01-01 10:00:00). Enter the date in your local timezone here.
+- **Operation Type**: You can filter by the different operation types, that are defined by the [OSB specification](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md). A dropdown with the different operation types like FETCH_CATALOG or PROVISION_INSTANCE is available for selection.
+- **Response Code**: The response code (HTTP Status Code) is an often used filter criteria as you can search e.g. for all error responses by entering ">399", which will return all requests that failed with a client (4xx) or server (5xx) HTTP response code. But you can also search for a specific response codes like "403".
+- **Service Plan**: When you know that there was an issue with a specific service plan, you can search for all service plan related requests by entering the id of the service plan, that you defined in your [service broker catalog](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
+- **Servcie Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances.md), you can search for all related logs by entering the id of the service instance.
+
 
 ## Deletion of Service Brokers
 
