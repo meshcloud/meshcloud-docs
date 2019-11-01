@@ -30,10 +30,10 @@ The following table provides details about the functionality available to the di
 | [Billing&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | |
 | [Payment&nbsp;Methods](meshcloud.project-metering.md#payment-methods) | &#10003; | |
 | Domains | &#10003; | |
-| [Marketplace&nbsp;Development](marketplace.development.md) | &#10003; | |
-| &nbsp;&nbsp;[Service&nbsp;Broker](marketplace.development.md#how-to-use-it) | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](marketplace.development.md#publish-your-service-broker) | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](marketplace.analytics.md) | &#10003; | |
+| [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md) | &#10003; | |
+| &nbsp;&nbsp;[Service&nbsp;Broker](meshstack.meshmarketplace.development.md#how-to-use-it) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](meshstack.meshmarketplace.development.md#publish-your-service-broker) | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](meshstack.meshmarketplace.development.md#debugging-your-service-broker) | &#10003; | |
 | &nbsp;&nbsp;Failed&nbsp;Instances | &#10003; | |
 | | | |
 | [Project&nbsp;Resources](meshcloud.project-resources.md) | &#10003; | &#10003; |
