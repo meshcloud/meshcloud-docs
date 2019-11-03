@@ -15,6 +15,8 @@ meshcloud offers different functionality to people with different roles. To make
 * **Partners** are specialized operators who provide managed services to *customers* and, potentially, their *users*. Partners receive access to customer resources (recorded for auditing purposes) and are able to support deployment of resources or other administrative tasks. There is usually a contractual agreement between *partners* and *customers* that defines the obligations and rights of the *partner*.
 * **Operators** are technical roles responsible for operating and providing cloud technology to *users* and who use meshcloud to easily distribute cloud services to their stakeholders. This includes monitoring of cloud operations, permission management, data privacy, compliance and cost control (some of these roles might be taken by different people than technical cloud operators, however we include them to the operator role for now as it is the intermediate role for providing this kind of information). Important KPIs for *operators* are e.g. availability, auditability, utilization, reliability, speed and cost.
 
+Note that right now documentation is split between the "User/Operator" line as that split has proven more useful than a too-fine grained split. Customer and Partner docs are mostly part of the User section (because they interact with the system as "end users").
+
 ## Style Guide for meshcloud Documentation
 
 ### Language
