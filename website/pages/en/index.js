@@ -57,14 +57,6 @@ const ProjectTitle = props => (
   </h2>
 );
 
-const PromoSection = props => (
-  <div className="section promoSection">
-    <div className="promoRow">
-      <div className="pluginRowBlock">{props.children}</div>
-    </div>
-  </div>
-);
-
 class HomeSplash extends React.Component {
   render() {
     let language = this.props.language || '';
@@ -87,59 +79,20 @@ const Block = props => (
   </Container>
 );
 
-const FeatureCallout = props => (
-  // <Container background='light'>
-  <div
-    className="productShowcaseSection paddingTop lightBackground"
-    style={{ textAlign: 'center' }}>
-  </div>
-
-);
-
 const LearnHow = props => (
-  <Block background="light" layout="fourColumn">
+  <Block background="light" layout="twoColumn">
     {[
       {
         title: `[User Documentation](${docUrl('meshcloud.index.html', props.language)})`,
-        content: 'Documentation for DevOps Teams and IT Managers using a meshcloud installation.',
+        content: 'Documentation for DevOps Teams and IT Managers using a meshcloud installation as end-users.',
       },
       {
         title: `[Operator Documentation](${docUrl('meshstack.index.html', props.language)})`,
-        content: 'Documentation for multi-cloud management and Cloud Platform Operation teams operating a meshcloud installation.',
+        content: 'Documentation for multi-cloud management and cloud operation teams operating a meshcloud installation and connected cloud platforms.',
       }
     ]}
   </Block>
 );
-
-const Showcase = props => {
-  if ((siteConfig.users || []).length === 0) {
-    return null;
-  }
-  const showcase = siteConfig.users
-    .filter(user => {
-      return user.pinned;
-    })
-    .map((user, i) => {
-      return (
-        <a href={user.infoLink} key={i}>
-          <img src={user.image} alt={user.caption} title={user.caption} />
-        </a>
-      );
-    });
-
-  return (
-    <div className="productShowcaseSection paddingBottom">
-      <h2>{"Who's Using This?"}</h2>
-      <p>This project is used by all these people</p>
-      <div className="logos">{showcase}</div>
-      <div className="more-users">
-        <a className="button" href={pageUrl('users.html', props.language)}>
-          More {siteConfig.title} Users
-        </a>
-      </div>
-    </div>
-  );
-};
 
 class Index extends React.Component {
   render() {
@@ -149,11 +102,77 @@ class Index extends React.Component {
       <div>
         <HomeSplash language={language} />
         <div className="mainContainer">
-          <FeatureCallout />
           <LearnHow />
-          <Showcase language={language} />
+          <div className="testimonials">
+            <Container padding={['bottom', 'top']}>
+              <GridBlock
+                align="center"
+                contents={[
+                  {
+                    content: 
+                      `DevOps Teams use meshcloud to setup and [configure a team](${docUrl('meshcloud.customer.html', language)}),
+                       [create projects](${docUrl('meshcloud.project.html', language)}) and provision managed cloud environments using [Landing Zones](${docUrl('meshcloud.landing-zones.html', language)}).
+                       Once setup you can [manage resources](${docUrl('meshcloud.project-resources.html', language)}), [review costs](${docUrl('meshcloud.project-metering.html', language)})
+                       and [consume marketplace services](${docUrl('marketplace.index.html', language)}).`,
+                    image: `${imgUrl('persona_devops.png')}`,
+                    imageAlign: 'top',
+                    imageAlt: 'DevOps Teams',
+                    title:
+                      'DevOps Teams <br/><font size="2">Product Owners & Developers</font>',
+                  },
+                  {
+                    content:
+                    `Multi-cloud management teams use meshcloud to provide [managed cloud envirornments](${docUrl('administration.landing-zones.html', language)}) to internal [customers](${docUrl('administration.customers.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
+                    They set the standards for cloud usage and ensure that teams can move to the cloud quickly and safely while [staying in control](${docUrl('administration.analytics.html', language)}).
+                    `,
+                    image: `${imgUrl('persona_governance.png')}`,
+                    imageAlign: 'top',
+                    imageAlt: 'IT Governance',
+                    title:
+                      'IT Governance <br/><font size="2">IAM & Compliance Management</font>',
+                  },
+                  {
+                    content:
+                      `Platform operators are responsible for [configuring and maintaining cloud platforms](${docUrl('meshstack.index.html', language)}) like AWS, Azure or OpenShift clusters. 
+                      As experts for the cloud platforms they [integrate platforms](${docUrl('meshstack.index.html#integrations', language)}) with meshcloud, provide Landing Zone implementations and governance automation.`,
+                    image: `${imgUrl('persona_platformops.png')}`,
+                    imageAlign: 'top',
+                    imageAlt: 'Platform Operators ',
+                    title:
+                      'Platform Operators <br/><font size="2">Cloud Platform Experts</font>',
+                  },
+
+                  {
+                    content:
+                      `Service Owners provide application services like managed databases, on-prem connectivity, firewall automation and email services to DevOps teams. 
+                      Service Owners can offer their services on the [meshMarketplace](${docUrl('meshstack.meshmarketplace.index.html', language)}) 
+                      and use meshcloud to [develop and manage](${docUrl('meshstack.meshmarketplace.development.html', language)}) their service offerings.`,
+                    image: `${imgUrl('persona_serviceowner.png')}`,
+                    imageAlign: 'top',
+                    imageAlt: 'Service Owners ',
+                    title:
+                      'Service Owners <br/><font size="2">Network & Application Services</font>',
+                  },
+                  {
+                    content:
+                      `IT Controllers use meshcloud to automate [metering and chargeback](${docUrl('meshstack.billing.html', language)})
+                      for all cloud platforms. Controllers can set product catalogs and pricing for private cloud platforms and
+                      [review cost and charges](${docUrl('administration.usage.html', language)}) for private & public clouds from a single pane of glass.
+                      
+                      `,
+                    image: `${imgUrl('persona_controlling.png')}`,
+                    imageAlign: 'top',
+                    imageAlt: 'IT Controlling',
+                    title:
+                      'IT Controlling <br/><font size="2">Managing Cost & Chargeback</font>',
+                  },
+                ]}
+                layout="threeColumn"
+              />
+            </Container>
+          </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

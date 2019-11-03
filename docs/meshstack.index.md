@@ -12,7 +12,18 @@ It is NOT a meta-layer across clouds. Users access native cloud APIs for their d
 
 ![meshStack Context and Components](assets/meshstack-chart.svg)
 
-## Mesh-Entity Mapping to Cloud Platform Concepts
+## Integrations
+
+Integrating a cloud platform with meshStack generally consists of these steps:
+
+- prepare the cloud platform for integration (Service Accounts, [Identity Federation](./meshstack.identity-federation.md))
+- configure & [register the platform](./meshstack.platform-location.md)) in meshStack
+- provide Landing Zone implementations
+- configure [Metering & Billing](./meshstack.billing.md)
+
+Please review the detailed documentation for each cloud platform type in the sidebar for more details.
+
+### meshModel mapping to Cloud Platform Concepts
 
 Different Cloud technologies often introduce their own terms for similiar technological principles. In order to match them against each other and also show how this namings and technologies map to meshcloud's terminology of business entities.
 These mappings can be customized. For more details, please consult documentation of the platforms.
