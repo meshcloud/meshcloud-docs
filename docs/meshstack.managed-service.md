@@ -21,7 +21,11 @@ from a product owner perspective.
 
 meshcloud can assist in selecting the right integration and configuration options for your unique requirements.
 All [configuration](./meshstack.configuration.md) for your installation is managed in a git repository and thus readily
-available for review and auditing.
+available for audit and review.
+
+### Compliance
+
+meshcloud provides customers with comprehensive security and compliance documentation for meshStack. This includes documentation of the security measures and controls implemented in the system. Based on this documentation, meshcloud can assist customers in evaluating and documenting compliance of their individually configured meshStack installation to various industry standard control frameworks such as ISO 27001 and ISO 27017.
 
 ## Continuous Delivery
 
