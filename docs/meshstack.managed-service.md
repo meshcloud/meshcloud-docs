@@ -10,11 +10,11 @@ meshcloud will typically operate your meshStack installation as a managed servic
 
 ## Infrastructure
 
-Our managed installations are always "on-prem". In addition to OpenStack, "on-prem" can also be a public cloud tenant, e.g. an AWS Account or Azure subscription owned by the customer. meshcloud's operation team will need access to this environment, e.g. using VPN and similar solutions.
+Our managed installations are always "on-prem". In addition to a deployment on OpenStack, "on-prem" can also be a public cloud tenant, e.g. an AWS Account or Azure subscription owned by the customer. meshcloud's operation team will need access to this environment, e.g. using VPN and similar solutions.
 
 We do explicitly support and encourage to operate meshStack on a cloud environment that's managed by meshStack itself.
 This makes all of meshStack's advantages (IAM, Policies and Governance, Cost Management) available to our own operations.
-It's also a great opportunity for multi-cloud management teams to experience the multi-cloud infrastructure they provide
+It is also a great opportunity for multi-cloud management teams to experience the multi-cloud infrastructure they provide
 from a product owner perspective.
 
 ## Configuration
@@ -29,14 +29,13 @@ meshcloud provides customers with comprehensive security and compliance document
 
 ## Continuous Delivery
 
-meshcloud releases new versions of meshStack on a continuous schedule. As you can see by reviewing our [release notes](/blog), this
-can happen multiple times a week. Our managed service ensures that your installation and configuration is kept up to date at all times.
+meshcloud releases new versions of meshStack on a continuous schedule. As you can see by reviewing our [release notes](/blog), this can happen multiple times a week. Our managed service ensures that your installation and configuration is kept up to date at all times when delivering new releases to your staging and production environments.
 
 ### Artefact Delivery
 
 meshcloud pushes artefacts for new releases to a customer-provided artefact store. This enables us to fulfill software admission/delivery and archival requirements you may have.
 
-Similarly, we deliver configuration and infrastructure as code for your installations to acustomer-priovded git repository.
+Similarly, we deliver configuration and infrastructure as code for your installations to a customer-provided git repository.
 
 ### Staging Environment
 
@@ -46,7 +45,7 @@ new functionality, bug fixes or configuration changes.
 ### Production Environment
 
 Production releases are also automated via a CI/CD pipeline but are typically not automatically triggered by meshcloud.
-Instead, customers need to provide a manual approval or gating process before updates are rolled out to a productino environment
+Instead, customers need to provide a manual approval or gating process before updates are rolled out to a production environment.
 
 ## Monitoring and Support
 
