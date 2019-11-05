@@ -26,5 +26,5 @@ auth:
           - ACTUATOR
 ```
 
-Realm ist the [RFC-1945](https://tools.ietf.org/html/rfc1945#section-11) part of the authorization challenge and can be an arbitrary value for the Prometheus page.
+Realm is the [RFC-1945](https://tools.ietf.org/html/rfc1945#section-11) part of the authorization challenge and can be an arbitrary value for the Prometheus page.
 The entered username and password must be used set in your Prometheus scraper configuration.
