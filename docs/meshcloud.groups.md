@@ -10,7 +10,7 @@ Within the meshcloud platform we differentiate the following groups for users of
 
 The following table provides details about the functionality available to the different groups.
 
-|                       | Customer Admin | CustomerEmployee |
+|                       | Customer Admin | Customer Employee |
 | --------------------- | :---: | :---: |
 | [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects) | &#10003; | |
 | &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject) | &#10003; | |

@@ -112,3 +112,20 @@ allows generation of account names:
 
 - aws+customer.projectA@meshcloud.io
 - aws+customer.projectB@meshcloud.io
+
+### AWS Role Mapping
+
+The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in AWS. This mapping is fully customizable. It is also possible to attach a AWS policy automatically to the user role in AWS.
+
+In order to configure the mapping use the following configuration:
+
+```yml
+replicator-aws:
+  platforms:
+      role-mappings:
+        admin: # Name of project role in meshStack
+          roleName: meshstack-project-admin # AWS Role Name
+          policyArn: "arn:aws:iam::aws:policy/AdministratorAccess" # Optional: The policy which is attached to the role.
+```
+
+If the role does not exist in AWS the replicator tries to create it. It also is setting up a trust relationship to the IdP in order to allow SSO for the project users. If the AWS role does already exist the replicator will update the IdP trust relationship and (if configured) attach the policy via its ARN. Already attached policies to the role won't be changed.
