@@ -20,3 +20,15 @@ This feature can be used for example to restrict access to a public cloud provid
 
 Customers can create [Projects](meshcloud.project.md) that use the Locations available to their Customer account.
 Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.groups.md), providing a further level of possible delegation.
+
+## Deprovisioning / Deleting Projects
+
+Before a project can be deleted by meshStack you must make sure that no resources are left in any platform it uses. This is a security measure as we do not want to accidently delete resources still used from the cloud platforms. We therefore check the absence of resources prior of project deletion and upon presence of a resource we stop the deprovisioning process.
+
+This security check is currently supported for the platforms:
+
+* CloudFoundry
+* OpenStack
+* Service Marketplace
+
+> Since this security measure is very important, deprovisioning projects from other platforms is currently not supported. We are looking into extending this support and adding the missing platforms as soon as possible.
