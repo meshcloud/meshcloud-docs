@@ -137,3 +137,16 @@ in  P.Platform.Aws
 If the role does not exist in AWS the replicator tries to create it. It also is setting up a trust relationship to the IdP in order to allow SSO for the project users.
 
 If the AWS role does already exist the replicator will update the IdP trust relationship and (if configured) attach the policy via its ARN. Already attached policies to the role won't be changed.
+
+### Account Alias
+
+Accounts in AWS get an alias assigned. This alias is fully customizable. In order to do so set the following config:
+
+```yml
+replicator-aws:
+  platforms:
+    - platform: aws.aws-meshstack-dev
+      account-alias-pattern: <customer>-<project>
+```
+
+You can use the placeholder `<customer>` and `<project>`, they are replaced with the customer and the project identifier during replication.
