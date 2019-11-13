@@ -218,7 +218,63 @@ roleRef:
   name: meshfed-service
 ```
 
+### Custom Account Roles
+
+If you want to use custom account roles (and not the pre-defined `admin`, `edit` and `view`) you need to make sure to also list these roles in the clusterrole binding section for the meshfed-service principle. It is not allowed for the service-principle to grant roles granting more rights then itself has, so the right to bind these roles must be explicitly granted.
+
+For example if you plan to use a role named `my-custom-role` please change the relevant section in the above document to:
+
+```yml
+- apiGroups:
+  - ""
+  - rbac.authorization.k8s.io
+  - authorization.openshift.io
+  resources:
+  - clusterroles
+  verbs:
+  - bind
+  resourceNames:
+  - admin
+  - edit
+  - view
+  - my-custom-role
+```
+
 #### Metering
+Next, retrieve the access token for the service account:
+
+```bash
+oc get serviceaccount meshfed-service -o json | jq '.secrets[].name' | grep token | xargs oc describe secret
+```
+
+Operators need to securely inject this access token into the configuration of the OpenShift module.
+
+## Landing Zones
+
+By defining a Landing Zone for OpenShift certain configurations can be enforced during replication.
+
+### Resource Quota
+
+With OpenShift [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html) the number of resources inside a namespace (meshProject) can be limited. In order to setup such a quota limit write, or drag and drop, your OpenShift ResourceQuota file into the respective field when creating a Landing Zone.
+
+### Templates
+
+Templates can also be synchronized automatically with OpenShift if they are put into a Landing Zone and assigned to a meshProject. This is similar to the ResourceQuotas handling. This template then shows up in the web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
+
+It is possible to automatically instance this template inside a project via meshStacks project replication procedure. However doing so requires currently that the service principal, created with the rights above, gets all the additional rights required to instance the template. Like for example creating Pods. This might be not desirable and because of this this function is disabled by default. To enable automatic Template instancing set the flag `enableTemplateInstancing` to true:
+
+```yml
+replicator-openshift:
+  platforms:
+    - platform: okd.eu-de-central
+      enableTemplateInstancing: true
+```
+
+### Default Labels
+
+Labels are used to identify existing Resources inside OpenShift or Kubernetes projects. It is possible to define a set of default labels which get applied to every resource created via meshStack. Usually these managed resources are created by a Landing Zone configuration (e.g. [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/admin_guide/quota.html) or [Templates](https://docs.openshift.com/container-platform/3.11/dev_guide/templates.html)).
+
+In order to set these default labels use the replicator OpenShift platform configuration and set the property `default-resource-labels` like so:
 
 ```yaml
 ---
