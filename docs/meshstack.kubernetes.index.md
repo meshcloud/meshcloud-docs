@@ -48,9 +48,18 @@ oidc-groups-prefix: ""
 cors-allowed-origins: "http://localhost:9001,https://.*"
 ```
 
-### MeshFed Service Account
+### meshStack Service Accounts
 
-The meshStack Kubernetes Module uses a dedicated OpenShift ServiceAccount to work with Kubernetes APIs on behalf of meshStack. To create these credentials, create the following objects via `kubectl apply` as a Cluster Administrator.
+The meshStack Kubernetes Modules use dedicated Kubernetes ServiceAccounts to work with Kubernetes APIs on behalf of meshStack.
+To create these credentials, create the following objects via `kubectl apply` as a Cluster Administrator.
+
+Service principals are located in configured namespaces. In the following yaml files we use the "meshcloud" namespace for the principals.
+You can also define a different namespace if you prefer.
+Before applying the yaml file, the namespace has to be created first via `kubectl create namespace meshcloud`.
+
+#### Tenant Management
+
+The tenant management component of meshStack requires the following principal.
 
 ```yaml
 ---
@@ -58,6 +67,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: meshfed-service
+  namespace: meshcloud
   annotations:
     io.meshcloud/meshstack.replicator-kubernetes.version: "1.0"
 ---
@@ -118,16 +128,63 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: meshfed-service
-  namespace: default
+  namespace: meshcloud
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: meshfed-service
 ```
 
-Next, retrieve the access token for the service account so that it can be securely injected into the configuration
-of the Kubernetes Module.
+#### Metering
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: meshfed-metering
+  namespace: meshcloud
+  annotations:
+    io.meshcloud/meshstack.metering-kubernetes.version: "1.0"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: meshfed-metering
+  annotations:
+    io.meshcloud/meshstack.metering-kubernetes.version: "1.0"
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: meshfed-metering
+  annotations:
+    io.meshcloud/meshstack.metering-kubernetes.version: "1.0"
+subjects:
+- kind: ServiceAccount
+  name: meshfed-metering
+  namespace: meshcloud
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: meshfed-metering
+```
+
+#### Get service account token
+
+Next, retrieve the access token for the service accounts:
 
 ```bash
-kubectl get serviceaccount meshfed-service -o json | jq '.secrets[].name' | grep token | xargs oc describe secret
+oc get serviceaccount meshfed-service -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs oc describe secret -n meshcloud
+oc get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs oc describe secret -n meshcloud
 ```
+
+Operators need to securely inject these access token into the configuration of the Kubernetes modules.
