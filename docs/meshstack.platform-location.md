@@ -18,12 +18,12 @@ This feature can be used for example to restrict access to a public cloud provid
 
 ### Project-level
 
-Customers can create [Projects](meshcloud.project.md) that use the Locations available to their Customer account.
+Customers can create [meshProjects](meshcloud.project.md) that use the Locations available to their Customer account.
 Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.groups.md), providing a further level of possible delegation.
 
 ## Deprovisioning / Deleting Projects
 
-Before a project can be deleted by meshStack you must make sure that no resources are left in any platform it uses. This is a security measure as we do not want to accidently delete resources still used from the cloud platforms. We therefore check the absence of resources prior of project deletion and upon presence of a resource we stop the deprovisioning process.
+When [meshProjects](meshcloud.project.md) are deleted in meshStack, meshStack can automatically also delete associated tenants associated with the project in the connected cloud platforms. Before a project can be automatically deleted by meshStack, users must make sure that no resources are left in the cloud platform tenants. This is a security measure as we do not want to accidently delete a tenant with resources still used from the cloud platforms. We therefore check the absence of resources prior of project deletion and upon presence of a resource we stop the deprovisioning process.
 
 This security check is currently supported for the platforms:
 
@@ -31,4 +31,4 @@ This security check is currently supported for the platforms:
 * OpenStack
 * Service Marketplace
 
-> Since this security measure is very important, deprovisioning projects from other platforms is currently not supported. We are looking into extending this support and adding the missing platforms as soon as possible.
+> Since this security measure is very important, fully automated deprovisioning of projects from other platforms is currently not supported and requires manual intervention. We are looking into extending support for further autmoating this process in the future.
