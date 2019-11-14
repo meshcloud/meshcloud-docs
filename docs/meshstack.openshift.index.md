@@ -218,9 +218,9 @@ roleRef:
   name: meshfed-service
 ```
 
-### Custom Account Roles
+### Custom meshProject Roles
 
-If you want to use custom account roles (and not the pre-defined `admin`, `edit` and `view`) you need to make sure to also list these roles in the clusterrole binding section for the meshfed-service principle. It is not allowed for the service-principle to grant roles granting more rights then itself has, so the right to bind these roles must be explicitly granted.
+If you want to use custom roles to be mapped to your meshProject roles (and not just the pre-defined `admin`, `edit` and `view` roles) you need to make sure to also list these roles in the clusterrole binding section for the meshfed-service principle. It is not allowed for the service-principle to bind roles granting more rights then itself has, so the right to bind these roles must be explicitly given.
 
 For example if you plan to use a role named `my-custom-role` please change the relevant section in the above document to:
 
@@ -241,6 +241,7 @@ For example if you plan to use a role named `my-custom-role` please change the r
 ```
 
 #### Metering
+
 Next, retrieve the access token for the service account:
 
 ```bash
