@@ -140,13 +140,12 @@ If the AWS role does already exist the replicator will update the IdP trust rela
 
 ### Account Alias
 
-Accounts in AWS get an alias assigned. This alias is fully customizable. In order to do so set the following config:
+Accounts in AWS get an alias assigned. This alias is fully customizable. You can use the placeholder `<customer>` and `<project>`, they are replaced with the customer and the project identifier during replication.
 
-```yml
-replicator-aws:
-  platforms:
-    - platform: aws.aws-meshstack-dev
-      account-alias-pattern: <customer>-<project>
-```
 
-You can use the placeholder `<customer>` and `<project>`, they are replaced with the customer and the project identifier during replication.
+
+ In order to do so set the following config:
+
+| Aws.dhall             | Description                                                                                          |
+| --------------------- | :--------------------------------------------------------------------------------------------------- |
+| `accountAliasPattern` | Controls the name of the AWS Account alias. You can use the placeholder `<customer>` and `<project>` |
