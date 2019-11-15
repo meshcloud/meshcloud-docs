@@ -163,7 +163,7 @@ After creating (or finding) a suitable EA Account, please note down the accounts
 
 To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
-### Automatic User Invitation
+### Automated B2B User Invitation
 
 Users can automatically get invited via Azure. The system needs an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities). The email must exist inside an Azure Active Directory (AAD) and automatically gets invited to the AAD in which the meshProject subscriptions live.
 
@@ -181,3 +181,125 @@ replicator-azure:
 
 You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
 the invitation notifications.
+
+
+### Configuring Blueprint Automation
+
+In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) the meshcloud Azure replicator needs to be configured with the service principal id of the `Azure Blueprints` app
+provided by Microsoft.
+
+#### Finding the Azure Blueprints App Id
+
+The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
+of the app in the meshcloud AAD Tenant.
+
+The easiest way to accomplish this is to start an Azure cloud shell in a subscription on the meshcloud AAD Tenant and execute the following command:
+
+```powershell
+PS Azure:\> Get-AzureRmADServicePrincipal -ApplicationId f71766dc-90d9-4b7d-bd9d-4499c4331c3f
+```
+
+The response should be similar to
+
+```powershell
+ServicePrincipalNames : {f71766dc-90d9-4b7d-bd9d-4499c4331c3f}
+ApplicationId         : f71766dc-90d9-4b7d-bd9d-4499c4331c3f
+ObjectType            : ServicePrincipal
+DisplayName           : Azure Blueprints
+Id                    : 227ac22a-************
+```
+
+Write down the ID (in this case `227ac22a-*`) as this is the `AZURE_BLUEPRINT_PRINCIPAL`.
+
+If this call **does not** return a usable ID then you can try an alternative way and find this principal via the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer):
+
+
+1. Open [https://developer.microsoft.com/en-us/graph/graph-explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
+2. Login with a Global Admin user from the directory in which you want to check for the `AZURE_BLUEPRINT_PRINCIPAL`
+3. You need sufficient permissions to read the principal. Select modify permissions to get the permissions
+![Modify Explorer permissions](assets/graph-explorer-permissions.png)
+4. Enable the `Directory.AccessAsUser.All`, `Directory.Read.All`, `Directory.ReadWrite.All` rights and give your admin consent
+![Grant additional rights](assets/graph-explorer-rights.png)
+5. List your Blueprint Service Principal ID via
+
+    ```text
+    GET https://graph.microsoft.com/beta/<AAD_TENANT_ID>/servicePrincipals?$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
+    ```
+
+    Replace the `<AAD_TENANT_ID>` with the Directory ID of your AAD (can be found in the properties screen of the AAD in [https://portal.azure.com](https://portal.azure.com))
+6. Remember to delete the Graph Explorer App access afterwards from your **Enterprise applications** section of your Active Directory in the Azure portal
+
+The response should look like this:
+
+```json
+
+{
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#servicePrincipals",
+    "value": [
+        {
+            "id": "227ac22a-************",
+            "deletedDateTime": null,
+            "accountEnabled": true,
+            "appDisplayName": "Azure Blueprints",
+            "appId": "f71766dc-90d9-4b7d-bd9d-4499c4331c3f",
+            "applicationTemplateId": null,
+            "appOwnerOrganizationId": "f8cdef31-a31e-4b4a-93e4-5f571e91255a",
+            "appRoleAssignmentRequired": false,
+            "displayName": "Azure Blueprints",
+            "errorUrl": null,
+            "homepage": null,
+            "loginUrl": null,
+            "logoutUrl": null,
+            "notificationEmailAddresses": [],
+            "preferredSingleSignOnMode": null,
+            "preferredTokenSigningKeyEndDateTime": null,
+            "preferredTokenSigningKeyThumbprint": null,
+            "publisherName": "Microsoft Services",
+            "replyUrls": [],
+            "samlMetadataUrl": null,
+            "samlSingleSignOnSettings": null,
+            "servicePrincipalNames": [
+                "f71766dc-90d9-4b7d-bd9d-4499c4331c3f"
+            ],
+            "signInAudience": "AzureADMultipleOrgs",
+            "tags": [],
+            "addIns": [],
+            "api": {
+                "resourceSpecificApplicationPermissions": []
+            },
+            "appRoles": [],
+            "info": {
+                "termsOfServiceUrl": null,
+                "supportUrl": null,
+                "privacyStatementUrl": null,
+                "marketingUrl": null,
+                "logoUrl": null
+            },
+            "keyCredentials": [],
+            "publishedPermissionScopes": [],
+            "passwordCredentials": []
+        }
+    ]
+}
+```
+
+Write down the ID (in this case `227ac22a-*`) as this is the `AZURE_BLUEPRINT_PRINCIPAL`.
+
+> In case your admin user can not grant the Graph Explorer the admin access rights he needs to query the AAD, try to create a new user via the Azure Portal in the AAD and grant this temporary user `Global Admin`rights. Try to use this user for login with the Graph Explorer. After you did your query you can delete this user again.
+
+#### Authorize the meshcloud Service Principal
+
+You must must grant the meshcloud Service Principal `owner` access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) in the meshcloud AAD Tenant.
+
+Before you can grant this access, you must have access to the root Management Group yourself. If you haven't already done so, please make sure your user is a `Global Administrator` on the meshcloud AAD Tenant
+and has [elevated access to all management groups](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin).
+
+> In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
+
+Once you have elevated access, use the Azure Portal to Navigate to the "Management Groups"  blade, then click on the "Details" link of the Tenant Root Group. Select "Access Control (IAM)" from the menu and create a Role assignment that grants the [App created above](#meshcloud-service-principal) for the meshcloud Service Principal (i.e. `meshReplicator`) the `Owner` permission on this resource.
+
+In this screen you can also find the Object ID and Application ID of your service principal. In case you prefer the CLI and have the Azure CLI installed the following Powershell command can also reveal this ID for you:
+
+```powershell
+Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
+```
