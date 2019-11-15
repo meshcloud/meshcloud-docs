@@ -188,3 +188,26 @@ oc get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].nam
 ```
 
 Operators need to securely inject these access token into the configuration of the Kubernetes modules.
+
+
+### Custom meshProject Roles
+
+If you want to use custom roles to be mapped to your meshProject roles (and not just the pre-defined `admin`, `edit` and `view` roles) you need to make sure to also list these roles in the clusterrole binding section for the meshfed-service principle. It is not allowed for the service-principle to bind roles granting more rights then itself has, so the right to bind these roles must be explicitly given.
+
+For example if you plan to use a role named `my-custom-role` please change the relevant section in the tenant management document to:
+
+```yml
+- apiGroups:
+  - ""
+  - rbac.authorization.k8s.io
+  - authorization.openshift.io
+  resources:
+  - clusterroles
+  verbs:
+  - bind
+  resourceNames:
+  - admin
+  - edit
+  - view
+  - my-custom-role
+```
