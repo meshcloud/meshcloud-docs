@@ -3,7 +3,7 @@ id: meshstack.aws.index
 title: Integration
 ---
 
-*AWS* is a proprietary public cloud platform provided by Amazon Web Services. meshStack supports project and user management for AWS to include AWS services into cloud projects managed by meshStack.
+AWS is a proprietary public cloud platform provided by Amazon Web Services. meshStack supports project and user management for AWS to include AWS services into cloud projects managed by meshStack.
 
 meshStack supports project creation, configuration, user management and SSO for AWS.
 
@@ -117,35 +117,67 @@ allows generation of account names:
 
 The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in AWS. This mapping is fully customizable. It is also possible to attach a AWS policy automatically to the user role in AWS.
 
-In order to configure the mapping use the following configuration:
+In order to configure the mapping use the `roleMappings` key in the [platform config](#configuration-reference).
 
-#### Aws.dhall
-
-```dhall
-in  P.Platform.Aws
-  { platform = "aws.test-aws"
-  , region = "us-east-1"
-  , roleMappings = [
-    { mapKey = "admin" // Name of project role in meshStack
-    , mapValue =
-      { roleName = "CustomRole" // AWS Role Name
-      , policyArn = None Text // Optional: The policy which is attached to the role.
+```haskell
+{ roleMappings =
+    [ { mapKey ="admin" {- Name of project role in meshStack -}
+      , mapValue =
+            { roleName = "meshProjectAdminRole" {- Name of IAM role in AWS -}
+            , policyArn = None Text {- Optional: The ARN of an IAM policy to attach to the role. -}
+            }
       }
-    } ]
+    ]
+}
 ```
 
-If the role does not exist in AWS the replicator tries to create it. It also is setting up a trust relationship to the IdP in order to allow SSO for the project users.
+If the role does not exist in AWS the replicator tries to create it and attaches a configured IAM Policy to it.
+The replicator also sets up a trust relationship to meshStack's IdP in order to allow SSO for the project users.
 
 If the AWS role does already exist the replicator will update the IdP trust relationship and (if configured) attach the policy via its ARN. Already attached policies to the role won't be changed.
+
 
 ### Account Alias
 
 Accounts in AWS get an alias assigned. This alias is fully customizable. You can use the placeholder `<customer>` and `<project>`, they are replaced with the customer and the project identifier during replication.
+In order to configure the mapping use the `accountAliasPattern` key in the [platform config](#configuration-reference).
+
+```haskell
+{ accountAliasPattern =
+    Some "meshcloud-<customer>-<project>"
+}
+```
 
 
+### Configuration Reference
 
- In order to do so set the following config:
+Please find the full `Aws.dhall` [configuration options](./meshstack.configuration.md) below:
 
-| Aws.dhall             | Description                                                                                          |
-| --------------------- | :--------------------------------------------------------------------------------------------------- |
-| `accountAliasPattern` | Controls the name of the AWS Account alias. You can use the placeholder `<customer>` and `<project>` |
+```haskell
+  λ(Secret : Type)
+→ { platform :
+      Text
+  , region :
+      Text
+  , accessKey :
+      Secret
+  , secretKey :
+      Secret
+  , automationAccount :
+      Optional { role: Text, privilegedExternalId: Optional Text  }
+  , waitForExternalAvm :
+      Bool
+  , privilegedExternalId :
+      Text
+  , roleMappings :
+      List { mapKey : Text, mapValue : { roleName : Text, policyArn : Optional Text } }
+  , meshProvisioning :
+      Optional { accountEmailTemplate : Text }
+  , externalProvisioning :
+      Optional (./Aws/ExternalProvisioning.dhall Secret)
+  , accountAccessRole :
+      Optional Text
+  , accountAliasPattern :
+      Optional Text
+  }
+```
