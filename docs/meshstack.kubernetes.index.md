@@ -183,8 +183,8 @@ roleRef:
 Next, retrieve the access token for the service accounts:
 
 ```bash
-oc get serviceaccount meshfed-service -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs oc describe secret -n meshcloud
-oc get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs oc describe secret -n meshcloud
+kubectl get serviceaccount meshfed-service -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs kubectl describe secret -n meshcloud
+kubectl get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs kubectl describe secret -n meshcloud
 ```
 
 Operators need to securely inject these access token into the configuration of the Kubernetes modules.
