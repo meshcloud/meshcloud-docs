@@ -62,13 +62,13 @@ To create these credentials, create the following objects via `oc create -f <fil
 
 > You can also use `oc replace -f <file>` to update existing definitions.
 
-Service principals are located in configured namespaces. In the following yaml files we use the "meshcloud" namespace for the principals.
+The meshStack ServiceAccounts can be located in a dedicated namespace. In the following yaml files we use the `meshcloud` namespace for the ServiceAccounts.
 You can also define a different namespace if you prefer.
 Before applying the yaml file, the namespace has to be created first via `oc create namespace meshcloud`.
 
 #### Tenant Management
 
-The tenant management component of meshStack requires the following principal.
+The tenant management component of meshStack requires the following ServiceAccount.
 
 ```yaml
 ---
