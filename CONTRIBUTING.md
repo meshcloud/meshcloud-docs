@@ -35,3 +35,4 @@ The following formatting should be applied for contribution to the meshcloud doc
 * For `buttons` use backticks (\`button\`).
 * No quotation marks around item names (") please.
 * Use the style as recommended by [markdownlint](https://github.com/markdownlint/markdownlint). For VSCode use the extensions `davidanson.vscode-markdownlint` to get inline linting.
+* Format `dhall` code in fenced code blocks using `haskell`. The `highlight.js`/`prism.js` used by docusaurus unfortunately don't support dhall natively yet.

@@ -15,7 +15,7 @@ The configuration documentation will occasionally also make references to [YAML]
 
 meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.customer.md) and [meshProjects](./meshcloud.project.md). This is useful to ensure projects can be identifiers are compatible with all connected cloud platforms and don't require additional name mangling to comply with cloud specific naming rules.
 
-```dhall
+```haskell
 { customerIdentifierLength :
     Optional Natural
 , projectIdentifierLength :
