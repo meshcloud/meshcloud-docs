@@ -1,6 +1,6 @@
 ---
-id: meshstack.aws.tutorial.avm
-title: Configuration Tutorial using AVM
+id: meshstack.aws.avm-tutorial
+title: "Account Vending Machine: Tutorial"
 ---
 
 > This tutorial is work in progress!
@@ -64,7 +64,6 @@ Resources:
               - lambda:InvokeFunction
             Resource": arn:aws:lambda:<region>:${AutomationAccountId}:function:AVMEntryPoint
 ```
- 
 
 ## Workflow
 
@@ -77,4 +76,3 @@ The flow of privileges is the following
     - the managed account contains an `OrganizationAccountAccessRole`
       - allows [AdministratorAccess](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
       - can be assumed from all principals of the root account
- 

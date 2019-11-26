@@ -1,5 +1,5 @@
 ---
-id: meshstack.aws.tutorial
+id: meshstack.aws.landing-zone-tutorial
 title: Configuration Tutorial
 ---
 
@@ -119,7 +119,7 @@ Resources:
   LZStackSetUser:
     Type: 'AWS::IAM::User'
     Properties:
-        # configure credentials etc. here ... 
+        # configure credentials etc. here ...
   LZStackSetUserPolicy:
     Type: 'AWS::IAM::Policy'
     Properties:
