@@ -24,3 +24,19 @@ To finally get your connection information and credentials you have to add a bin
 ### Update Service Instance
 
 Via the `pen` icon you can edit the service instance. Changing the name is always available. Just enter a new name if you want to change it. If the service supports an upgrade of plans, a dropdown with all plans of the service is displayed. You can select another plan if you want to change the plan for the given service instance. You can also change the parameters of the service (see [Service Parameters](#service-parameters) section below). Only enter the parameters you want to change. Empty parameters will be ignored.
+
+### Tenant Bindings
+
+Some services require to bind a meshTenant. In that case you have to select one of your meshTenants when creating a binding.
+
+If the service is located in the "Global" meshLocation, you can select all meshTenants of your meshProject. If the service is located in a Location-specific meshMarketplace, you can only select tenants of this meshLocation.
+
+It is not possible to select the same meshTenant for multiple bindings of the same service instance.
+
+### Share Service Instance
+
+If the Service Broker [supports](meshstack.meshmarketplace.profile.md#sharable-service-instances) it, service Instances can be shared between meshProjects of the same meshCustomer. It is only sharable to projects, if the meshLocation the Service Instance relates to exists in the meshProject the instance shall be shared with.
+
+Shared Instances are read-only. Only “own” bindings can be created/updated/deleted.
+
+Sharing of a service instance can also be revoked. This can be done in the sharing as well as the shared with meshProject.
