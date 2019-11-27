@@ -32,7 +32,7 @@ meshMarketplace defines its own context objects for service provisioning request
 
 ```json
 {
-  "platform": "http://{mesh-hostname}/serviceRegistry/location/1",
+  "platform": "meshmarketplace",
   "customer_id": "testCustomer",
   "project_id": "testProject",
   "auth_url": "https://{mesh-hostname}/auth/realms/meshfed/protocol/openid-connect/auth?client_id=1d4ad6d8-dfaa-4913-9c12-fd64b42a5c8d&response_type=code&redirect_uri={redirect_uri}&nonce={nonce}&state={state}",
@@ -65,11 +65,3 @@ The meshStack regularly checks expiring service bindings, notifies users about u
 The meshMarketplace intends to support JSON schema for custom parameters used for service instance creation and service binding. You can find the description of the schema [here](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object)
 
 Delivering this schema information allows the Marketplace UI to assist users in crafting proper parameters.
-
-## Service Tags
-
-The [OSB Spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#service-object) provides a field `tags` for services. By providing specific tags here, the meshMarketplace will interpret them and provide specific functionality for these services. The tags described in the following sections are currently supported.
-
-### Sensitive Service Brokers
-
-Usually the meshMarketplace shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the "sensitive" tag for the according service in the OSB catalog. This will result in not displaying the credentials in the meshMarketplace. Instead a download of the credentials is triggered once on initial creation of the binding . The precondition for this to work is, that the creation of the binding is synchronous. Async binding is not supported for sensitive services. The meshMarketplace does not store any credentials provided by sensitive service brokers. It only passes the credentials directly through to the user via the download of a text file containing the credentials.
