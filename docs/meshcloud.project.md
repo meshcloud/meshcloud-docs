@@ -43,13 +43,13 @@ In the **Project Users** section you can find a type-ahead `email` field at the 
 
 ### Project Roles
 
-Project Roles grant users a configured set of permissions in cloud platforms used by the project. There are currently three roles available:
+Project roles grant users a configured set of permissions in cloud platforms used by the project. Project roles can be configured according to exisiting requirements or policies, by default the following roles are used:
 
 - Project Reader: A read-only user, like a controller or similar.
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
-Currently these Project Roles are only used in our AWS and Azure integration. But in future, this will allow more fine-grained access control in the cloud platforms. The “Mesh Project Role” will be mapped to the platform’s internal access groups.
+Currently, project roles are only used for AWS and Azure integration. But in future, they will allow more fine-grained access control in additional cloud platforms by mapping the “Mesh Project Role” to the platform’s internal access groups.
 
 ### Update Project Role
 
