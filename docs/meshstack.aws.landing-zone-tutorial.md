@@ -1,11 +1,9 @@
 ---
 id: meshstack.aws.landing-zone-tutorial
-title: Configuration Tutorial
+title: Tutorial: Landing Zone
 ---
 
-> This tutorial is work in progress!
-
-Purpose: show you how to create secure landing zones for AWS.
+Purpose: show you how to create secure landing zones for AWS in a simple step by step guide.
 
 Terms:
 
@@ -69,6 +67,8 @@ This policy "jails" member accounts in the organization
 
 ## Automation Account
 
+Choose an administrative account in which the Stack Sets will be placed (this is usually the `automation account` mentioned in [Platform Instance Configuration](/docs/meshstack.aws.index.html#platform-instance-configuration)).
+
 Setup these resources on the Automation Account, here expressed as CloudFormation Templates.
 
 ### LZCFNStackSetAdministrationRole
@@ -105,7 +105,7 @@ Resources:
 
 ### LZStackSet
 
-> tbd
+In the administration account create a StackSet with the template you later want to apply to the newly provisioned accounts. We need a created StackSet in order to have the ID. This might only work if you apply the template to a placeholder account which you can remove again afterwards.
 
 ### LZStackSetUser
 
@@ -144,6 +144,43 @@ Resources:
 ```
 
 ## Access Stack to boostrap Managed Accounts
+
+Prepare a [Template](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) which will setup a **AWSCloudFormationStackSetExecutionRole**. This role must allow the adminstration account/CloudFormation to perform actions on behalf of the users. It must also allow access to all services you plan to use in your Cloud Formation Templates. A example role policy could look like this:
+
+    ```yml
+    AWSTemplateFormatVersion: '2010-09-09'
+    Description: Configure the AWSCloudFormationStackSetExecutionRole to enable use of your account as a target account in AWS CloudFormation StackSets.
+
+    Resources:
+    ExecutionRole:
+        Type: 'AWS::IAM::Role'
+        Properties:
+        RoleName: AWSCloudFormationStackSetExecutionRole
+        AssumeRolePolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+                Principal:
+                AWS:
+                    # Adapt this Account ID to the ID of your designated Stack Set admin account
+                    - arn:aws:iam::ADMIN_ACCOUNT_ID:root
+                Action:
+                - sts:AssumeRole
+        Path: /
+        Policies:
+            - PolicyName: StackSetExecutionPolicy # Adapt the name if you want
+            PolicyDocument:
+                Version: '2012-10-17'
+                Statement:
+                - Effect: Allow
+                Action:
+                # According to the AWS Docs this is the minimal rights needed for StackSets to work. Please extend it with the specific rights needed
+                # for your Stack Templates you wish to roll out.
+                - cloudformation:*
+                - s3:*
+                - sns:*
+                Resource: '*'
+    ```
 
 ### OrganizationAccountAccessRole
 
@@ -199,9 +236,6 @@ Resources:
             Resource: arn:aws:iam::*:saml-provider/meshstack-saml-idp
 ```
 
-
-
-
 ### AWSCloudFormationStackSetExecutionRole
 
 ```yaml
@@ -226,3 +260,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AdministratorAccess
 ```
+
+1. As a last step setup an AWS Landing Zone in meshStack. You need the URL of the above defined Permission Setup Template, the actual Stack Set template you wish to apply, the Account ID of the admin account which will contain the stack sets and the StackSet Admin Region (the region in which the StackSet in the Admin account is placed) as well as the StackInstance Deploy Region.
+
+Please contact [meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.

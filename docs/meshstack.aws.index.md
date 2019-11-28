@@ -21,6 +21,13 @@ meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to pro
 * Org Root Account - All accounts created by meshstack are living "under" this account and its Organization Units. `meshfed-service` needs to assume a role in this account.
 * Automation Account - This account is usually used to host certain CloudFormation templates, provide an Account Vending Machine and is needed to properly setup Landing Zones.
 
+
+### IAM Roles and Service Control Policies
+
+When a user (e.g. a developer) accesses an AWS Account, they are assigned an AWS IAM role based on their project role configured on the corresponding meshProject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template. meshStack uses this template to initialize and update AWS Account configurations.
+
+When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
+
 ## Platform Instance Configuration
 
 ### AWS Root Account Setup
