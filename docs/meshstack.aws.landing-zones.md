@@ -3,88 +3,51 @@ id: meshstack.aws.landing-zones
 title: Landing Zones
 ---
 
-AWS Landing Zones use Cloud Formation templates to orchestrate configuration of managed AWS accounts.
+AWS Landing Zones use Cloud Formation templates to orchestrate configuration of managed AWS accounts. In the following section the options for this Landing Zone are described.
 
-## IAM Roles and Service Control Policies
+You have two paths for provisionig AWS accounts. You can simply use CloudFormation StackSets in order to bootstrap your account or you can use an existing, "external" (in the sense of not controlled via meshstack) Account Vending Machine (AVM). Decide for a bootstrap path and configure the Landing Zone accordingly.
 
-When a user (e.g. a developer) accesses an AWS Account, they are assigned an AWS IAM role based on their project role configured on the corresponding meshProject. Operators can configure these roles and their permissions by providing an [AWS Cloud Formation](https://aws.amazon.com/cloudformation/) template. meshStack uses this template to initialize and update AWS Account configurations.
+## Common Configuration
 
-When configuring these roles, operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
+* **Target Organization Unit Name**: This value is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
+* **AccessStack Template URL**: This StackSet will be created in every new AWS account. It usually contains simple bootstraping resources e.g. like required roles and drops the rights of the admin access which is pre-assigned to each new account by AWS (the `OrganizationAccountAccessRole`). For more information see the [Landing Zone Tutorial](/docs/meshstack.aws.landing-zone-tutorial.html).
 
-## Cloud Formation Stack Set
+## CloudFormation StackSet
 
 Operators can also configure an [CloudFormation StackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html) on an AWS Landing Zone. meshStack will then ensure that all AWS Accounts provisioned using this Landing Zone will receive a StackInstance from the StackSet. This allows operators to leverage that StackSet to centrally manage configuration and resources for all AWS Accounts under the landing zone.
 
-In order to use this feature you need to setup a few prerequisites:
-
-1. Choose an administrative account in which the Stack Sets will be placed (this is usually the `automation account` mentioned in [Platform Instance Configuration](/docs/meshstack.aws.index.html#platform-instance-configuration))
-2. We need a permission setup [Template](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) which adds a special role to the administrator account named **AWSCloudFormationStackSetAdministrationRole**, with the following policy attached:
-
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Action": [
-                    "sts:AssumeRole"
-                ],
-                "Resource": [
-                    "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
-                ],
-                "Effect": "Allow"
-            }
-        ]
-    }
-    ```
-
-3. In the administration account create a StackSet with the template you later want to apply to the newly provisioned accounts. We need a created StackSet in order to have the ID. This might only work if you apply the template to a placeholder account which you can remove again afterwards.
-4. Prepare a [Template](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) which will setup a **AWSCloudFormationStackSetExecutionRole**. This role must allow the adminstration account/CloudFormation to perform actions on behalf of the users. It must also allow access to all services you plan to use in your Cloud Formation Templates. A example role policy could look like this:
-
-    ```yml
-    AWSTemplateFormatVersion: '2010-09-09'
-    Description: Configure the AWSCloudFormationStackSetExecutionRole to enable use of your account as a target account in AWS CloudFormation StackSets.
-
-    Resources:
-    ExecutionRole:
-        Type: 'AWS::IAM::Role'
-        Properties:
-        RoleName: AWSCloudFormationStackSetExecutionRole
-        AssumeRolePolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-            - Effect: Allow
-                Principal:
-                AWS:
-                    # Adapt this Account ID to the ID of your designated Stack Set admin account
-                    - arn:aws:iam::ADMIN_ACCOUNT_ID:root
-                Action:
-                - sts:AssumeRole
-        Path: /
-        Policies:
-            - PolicyName: StackSetExecutionPolicy # Adapt the name if you want
-            PolicyDocument:
-                Version: '2012-10-17'
-                Statement:
-                - Effect: Allow
-                Action:
-                # According to the AWS Docs this is the minimal rights needed for StackSets to work. Please extend it with the specific rights needed
-                # for your Stack Templates you wish to roll out.
-                - cloudformation:*
-                - s3:*
-                - sns:*
-                Resource: '*'
-    ```
-
-5. As a last step setup an AWS Landing Zone in meshStack. You need the URL of the above defined Permission Setup Template, the actual Stack Set template you wish to apply, the Account ID of the admin account which will contain the stack sets and the StackSet Admin Region (the region in which the StackSet in the Admin account is placed) as well as the StackInstance Deploy Region.
-
 Each AWS project which now gets this Landing Zone assigned will be setup to receive the Cloud Formation Stack Instance setup.
 
-> **Important:** A StackInstance can currently only be deployed in one region. In order to work around you can create another StackInstance in different regions from the first instance.
->
-> **Important:** Currently only templates without parameters are supported. Support for parameters provided by meshStack will be added in a future release.
+The following parameter can be used in the StackSet template:
 
-Please contact [meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
+| Parameter    | Description                                                                              |
+| ------------ | :--------------------------------------------------------------------------------------- |
+| AccountName  | Account name of the created AWS account                                                  |
+| AccountEmail | Account email of the created AWS account                                                 |
+| CostCenter   | ID of the CostCenter defined for this meshProject.                                       |
+| ContactEmail | E-Mail of the meshProject creator. Currently this is the user which created the project. |
+| Stage        | The name of the assigned Landing Zone                                                    |
+
+> Soon the parameter names will be editable in the Landing Zone configuration.
+
+* **StackSet ARN**: This StackSet get all new meshProject AWS accounts added as StackInstances. The templated configured in this StackSet will get applied.
+* **StackInstance Deploy Region**: The StackInstances will get deployed in this region.
+
+> **Important:** A StackInstance can currently only be deployed in one region. In order to work around you can create another StackInstance in different regions triggered by the first instance.
 
 ## Account Vending Machines
 
-> TODO
+As some users might have already their own custom AWS account provisioning solution, usually called Account Vending Machines (AVM), other mechanisms are needed in order to bootstrap newly created AWS accounts.
+
+While it is possible to trigger an AVM execution via a StackSet a better alternative is usually to trigger it by an custom Lambda function invocation. During the AWS account replication meshStack is able to invoke such a function with custom parameters. From this function the external AVM can start its provisioning process.
+
+> Please make sure the `MeshfedServiceRole` has the rights in order to trigger the configured Lambda.
+
+In order to detect the finished execution of the AVM meshStack looks for certain tags on the AWS account. If such a tag is present the success of the external replication is assumed and the replication process is handed back to meshStack.
+
+Currently the account must contain these tags to be picked up:
+
+* ProductName: Must contain the customer identifier
+* Stage: Must contain the project identifier
+
+> These tags will soon be customizable in the AWS Landing Zone configuration.
