@@ -15,34 +15,24 @@ This makes AWS available to meshProjects like any other cloud platform in meshSt
 
 meshStack automatically configures AWS IAM in all managed accounts to integrate SSO with [meshStack Identity Federation](./meshstack.identity-federation.md).
 
+meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS "root" account acting as the parent of all accounts managed by meshStack. The complete account setup contains three dedicated accounts:
+
+* meshcloud Account - Here lives the `meshfed-service` user.
+* Org Root Account - All accounts created by meshstack are living "under" this account and its Organization Units. `meshfed-service` needs to assume a role in this account.
+* Automation Account - This account is usually used to host certain CloudFormation templates, provide an Account Vending Machine and is needed to properly setup Landing Zones.
+
 ## Platform Instance Configuration
 
-### AWS Root Account
-
-meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS "root" account acting as the parent of all accounts managed by meshStack.
+### AWS Root Account Setup
 
 > Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
 > a working AWS integration using meshstack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
 > We advise operators to determine the specific needs and requirements for their usage of AWS and implement more restrictive
 > roles and policies.
 
-### Identifier Configuration
+This account needs the `MeshfedServiceRole`. The `meshfed-service` user needs to assume it.
 
-meshStack operators that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
-
-```yaml
-customer_identifier_length: 16
-project_identifier_length: 30
-```
-
-### meshStack IAM User
-
-The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshstack. To create these credentials, create a user in IAM with these specifications:
-
-- User name: meshfed-service
-- AWS access type: Programmatic access - with an access key
-
-Attach the following inline policy using this json
+Attach the following inline policy using this json:
 
 ```json
 {
@@ -52,7 +42,7 @@ Attach the following inline policy using this json
             "Sid": "StsAccessMemberAccount",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::*:role/OrganizationAccountAccessRole",
+            "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
             "Condition": {
                 "StringEquals": {
                     "sts:ExternalId": "${privilegedExternalId}"
@@ -100,18 +90,91 @@ the security of member accounts in your organization.
 
 Operators need to securely inject the generated credentials and `${privilegedExternalId}` into the configuration of the AWS Connector.
 
-### Project-Account Email Addresses
+Also attach the following trust policy to this role:
 
-AWS requires a unique email address for each account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder). For example, this pattern
-
-```yaml
-accountEmailTemplate: aws+%s@meshcloud.io
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::${meshcloudAccountId}:user/meshfed-service"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
+    }
+  ]
+}
 ```
 
-allows generation of account names:
+`${meshcloudAccountId}` is the ID of the dedicated meshcloud AWS account where the `meshfed-service` users lives.
 
-- aws+customer.projectA@meshcloud.io
-- aws+customer.projectB@meshcloud.io
+### meshStack Account Setup
+
+The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshstack. To create these credentials, create a user in IAM with these specifications:
+
+* User name: `meshfed-service`
+* AWS access type: Programmatic access - with an access key
+
+### Automation Account Setup
+
+The automation account, containing all components for AWS account provisioning should have a `MeshfedAutomationRole` which is also assumed by the `mesfed-service` user in order to execute certain CloudFormation setup steps.
+
+This account needs the `MeshfedAutomationRole`. The `meshfed-service` user needs to assume it.
+
+Attach the following inline policy using this json:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateUploadBucket",
+                "cloudformation:EstimateTemplateCost",
+                "cloudformation:DescribeStackDriftDetectionStatus",
+                "cloudformation:ListExports",
+                "cloudformation:ListStacks",
+                "cloudformation:ListImports",
+                "cloudformation:DescribeAccountLimits",
+                "cloudformation:CreateStackSet",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "cloudformation:*",
+            "Resource": [
+                "arn:aws:cloudformation:*:*:stack/*/*",
+                "arn:aws:cloudformation:*:*:stackset/*:*"
+            ]
+        }
+    ]
+}
+```
+
+Also attach the following trust policy to this role:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::${meshcloudAccountId}:user/meshfed-service"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
+    }
+  ]
+}
+```
 
 ### AWS Role Mapping
 
@@ -137,6 +200,20 @@ The replicator also sets up a trust relationship to meshStack's IdP in order to 
 If the AWS role does already exist the replicator will update the IdP trust relationship and (if configured) attach the policy via its ARN. Already attached policies to the role won't be changed.
 
 
+### Project-Account Email Addresses
+
+AWS requires a unique email address for each account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder). For example, this pattern
+
+```yaml
+accountEmailTemplate: aws+%s@meshcloud.io
+```
+
+allows generation of account names:
+
+* aws+customer.projectA@meshcloud.io
+* aws+customer.projectB@meshcloud.io
+
+
 ### Account Alias
 
 Accounts in AWS get an alias assigned. This alias is fully customizable. You can use the placeholder `<customer>` and `<project>`, they are replaced with the customer and the project identifier during replication.
@@ -148,8 +225,16 @@ In order to configure the mapping use the `accountAliasPattern` key in the [plat
 }
 ```
 
+### Identifier Configuration
 
-### Configuration Reference
+meshStack operators that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
+
+```yaml
+customer_identifier_length: 16
+project_identifier_length: 30
+```
+
+## Configuration Reference
 
 Please find the full `Aws.dhall` [configuration options](./meshstack.configuration.md) below:
 
@@ -159,20 +244,20 @@ Please find the full `Aws.dhall` [configuration options](./meshstack.configurati
       Text
   , region :
       Text
-  , accessKey :
-      Secret
-  , secretKey :
-      Secret
-  , automationAccount :
-      Optional { role: Text, privilegedExternalId: Optional Text  }
+  , meshfedServiceUser:
+  { accessKey : Secret
+  , secretKey : Secret
+  }
+  , organizationRootAccountRole : Text
+  , organizationRootAccountExternalId : Optional Text
+  , automationAccountRole : Text
+  , automationAccountExternalId : Optional Text
   , waitForExternalAvm :
       Bool
-  , privilegedExternalId :
-      Text
   , roleMappings :
       List { mapKey : Text, mapValue : { roleName : Text, policyArn : Optional Text } }
   , meshProvisioning :
-      Optional { accountEmailTemplate : Text }
+      Optional ./Aws/MeshProvisioning.dhall
   , externalProvisioning :
       Optional (./Aws/ExternalProvisioning.dhall Secret)
   , accountAccessRole :
