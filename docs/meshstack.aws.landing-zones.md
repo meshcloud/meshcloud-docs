@@ -10,7 +10,7 @@ You have two paths for provisionig AWS accounts. You can simply use CloudFormati
 ## Common Configuration
 
 * **Target Organization Unit Name**: This value is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
-* **AccessStack Template URL**: This StackSet will be created in every new AWS account. It usually contains simple bootstraping resources e.g. like required roles and drops the rights of the admin access which is pre-assigned to each new account by AWS (the `OrganizationAccountAccessRole`). For more information see the [Landing Zone Tutorial](/docs/meshstack.aws.landing-zone-tutorial.html).
+* **AccessStack Template URL**: This StackSet will be created in every new AWS account. It usually contains simple bootstraping resources e.g. like required roles and drops the rights of the admin access which is pre-assigned to each new account by AWS (the `OrganizationAccountAccessRole`).
 
 ## CloudFormation StackSet
 

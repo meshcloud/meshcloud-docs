@@ -67,9 +67,7 @@ This policy "jails" member accounts in the organization
 
 ## Automation Account
 
-Choose an administrative account in which the Stack Sets will be placed (this is usually the `automation account` mentioned in [Platform Instance Configuration](/docs/meshstack.aws.index.html#platform-instance-configuration)).
-
-Setup these resources on the Automation Account, here expressed as CloudFormation Templates.
+Choose an automation account in which the Stack Sets will be placed. Setup these resources on the Automation Account, here expressed as CloudFormation Templates.
 
 ### LZCFNStackSetAdministrationRole
 
@@ -105,7 +103,7 @@ Resources:
 
 ### LZStackSet
 
-In the administration account create a StackSet with the template you later want to apply to the newly provisioned accounts. We need a created StackSet in order to have the ID. This might only work if you apply the template to a placeholder account which you can remove again afterwards.
+In the administration account create a StackSet with the template you later want to apply to the newly provisioned accounts. We need a created StackSet in order to have the ID. This might only work if you apply the template to a placeholder account which you can remove again afterwards as the AWS web interface does not allow to create a StackSet without an initial account to roll this out. After the creation the StackSetInstance can be removed again.
 
 ### LZStackSetUser
 
@@ -147,40 +145,40 @@ Resources:
 
 Prepare a [Template](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) which will setup a **AWSCloudFormationStackSetExecutionRole**. This role must allow the adminstration account/CloudFormation to perform actions on behalf of the users. It must also allow access to all services you plan to use in your Cloud Formation Templates. A example role policy could look like this:
 
-    ```yml
-    AWSTemplateFormatVersion: '2010-09-09'
-    Description: Configure the AWSCloudFormationStackSetExecutionRole to enable use of your account as a target account in AWS CloudFormation StackSets.
+```yml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Configure the AWSCloudFormationStackSetExecutionRole to enable use of your account as a target account in AWS CloudFormation StackSets.
 
-    Resources:
-    ExecutionRole:
-        Type: 'AWS::IAM::Role'
-        Properties:
-        RoleName: AWSCloudFormationStackSetExecutionRole
-        AssumeRolePolicyDocument:
+Resources:
+ExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+    RoleName: AWSCloudFormationStackSetExecutionRole
+    AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+            Principal:
+            AWS:
+                # Adapt this Account ID to the ID of your designated Stack Set admin account
+                - arn:aws:iam::ADMIN_ACCOUNT_ID:root
+            Action:
+            - sts:AssumeRole
+    Path: /
+    Policies:
+        - PolicyName: StackSetExecutionPolicy # Adapt the name if you want
+        PolicyDocument:
             Version: '2012-10-17'
             Statement:
             - Effect: Allow
-                Principal:
-                AWS:
-                    # Adapt this Account ID to the ID of your designated Stack Set admin account
-                    - arn:aws:iam::ADMIN_ACCOUNT_ID:root
-                Action:
-                - sts:AssumeRole
-        Path: /
-        Policies:
-            - PolicyName: StackSetExecutionPolicy # Adapt the name if you want
-            PolicyDocument:
-                Version: '2012-10-17'
-                Statement:
-                - Effect: Allow
-                Action:
-                # According to the AWS Docs this is the minimal rights needed for StackSets to work. Please extend it with the specific rights needed
-                # for your Stack Templates you wish to roll out.
-                - cloudformation:*
-                - s3:*
-                - sns:*
-                Resource: '*'
-    ```
+            Action:
+            # According to the AWS Docs this is the minimal rights needed for StackSets to work. Please extend it with the specific rights needed
+            # for your Stack Templates you wish to roll out.
+            - cloudformation:*
+            - s3:*
+            - sns:*
+            Resource: '*'
+```
 
 ### OrganizationAccountAccessRole
 
