@@ -39,83 +39,131 @@ When configuring these roles, operators must take care to correctly guard agains
 
 This account needs the `MeshfedServiceRole`. The `meshfed-service` user needs to assume it.
 
-Attach the following inline policy using this json:
+You can use the following CloudFormation template to setup the `MeshfedServiceRole`:
+
+```json
+The root account also needs a role for the mesh-service principal to assume. This role is created by this CloudFormation template:
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "StsAccessMemberAccount",
-            "Effect": "Allow",
-            "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
-            "Condition": {
-                "StringEquals": {
-                    "sts:ExternalId": "${privilegedExternalId}"
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "meshfed-service Role Setup",
+  "Parameters": {
+    "MeshcloudAccountId": {
+      "Type": "String",
+      "Description": "The ID of the meshCloud AWS Account"
+    },
+    "PrivilegedExternalId": {
+      "Type": "String",
+      "Description": "Privileged external ID for the meshfed-service to use"
+    }
+  },
+  "Resources": {
+    "MeshfedServiceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "MeshfedServiceRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:iam::",
+                      {
+                        "Ref": "MeshcloudAccountId"
+                      },
+                      ":user/meshfed-service"
+                    ]
+                  ]
                 }
+              },
+              "Action": "sts:AssumeRole"
             }
+          ]
         },
-        {
-            "Sid": "OrgManagementAccess1",
-            "Effect": "Allow",
-            "Action": [
-                "organizations:DescribeOrganizationalUnit",
-                "organizations:DescribeAccount",
-                "organizations:ListParents",
-                "organizations:ListOrganizationalUnitsForParent",
-                "organizations:CreateOrganizationalUnit",
-                "organizations:MoveAccount"
-            ],
-            "Resource": [
-                "arn:aws:organizations::*:account/o-*/*",
-                "arn:aws:organizations::${awsOrgAccountId}:root/o-*/r-*",
-                "arn:aws:organizations::*:ou/o-*/ou-*"
-            ]
-        },
-        {
-            "Sid": "OrgManagementAccess2",
-            "Effect": "Allow",
-            "Action": [
-                "organizations:ListRoots",
-                "organizations:ListAccounts",
-                "organizations:CreateAccount",
-                "organizations:DescribeCreateAccountStatus"
-            ],
-            "Resource": "*"
-        }
-    ]
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "MeshfedServicePolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "StsAccessMemberAccount",
+                  "Effect": "Allow",
+                  "Action": "sts:AssumeRole",
+                  "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
+                  "Condition": {
+                    "StringEquals": {
+                      "sts:ExternalId": {
+                        "Ref": "PrivilegedExternalId"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Sid": "OrgManagementAccess1",
+                  "Effect": "Allow",
+                  "Action": [
+                    "organizations:DescribeOrganizationalUnit",
+                    "organizations:DescribeAccount",
+                    "organizations:ListParents",
+                    "organizations:ListOrganizationalUnitsForParent",
+                    "organizations:CreateOrganizationalUnit",
+                    "organizations:ListTagsForResource",
+                    "organizations:MoveAccount"
+                  ],
+                  "Resource": [
+                    "arn:aws:organizations::*:account/o-*/*",
+                    "arn:aws:organizations::*:ou/o-*/ou-*",
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:organizations::",
+                          {
+                            "Ref": "AWS::AccountId"
+                          },
+                          ":root/o-*/r-*"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Sid": "OrgManagementAccess2",
+                  "Effect": "Allow",
+                  "Action": [
+                    "organizations:ListRoots",
+                    "organizations:ListAccounts",
+                    "organizations:CreateAccount",
+                    "organizations:DescribeCreateAccountStatus"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
 }
 ```
 
-The `${awsOrgAccountId}` is the ID of the AWS Organization Root account under which all the created accounts are placed.
-
-Operators should generate a unique and random value for `${privilegedExternalId}`, e.g. a GUID. meshStack AWS Connector is architected
+Operators should generate a unique and random value for `PrivilegedExternalId`, e.g. a GUID. meshStack AWS Connector is architected
 to supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only
 when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases
 the security of member accounts in your organization.
 
-Operators need to securely inject the generated credentials and `${privilegedExternalId}` into the configuration of the AWS Connector.
+Operators need to securely inject the generated credentials and `PrivilegedExternalId` into the configuration of the AWS Connector.
 
-Also attach the following trust policy to this role:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::${meshcloudAccountId}:user/meshfed-service"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {}
-    }
-  ]
-}
-```
-
-`${meshcloudAccountId}` is the ID of the dedicated meshcloud AWS account where the `meshfed-service` users lives.
+`MeshcloudAccountId` is the ID of the dedicated meshcloud AWS account where the `meshfed-service` users lives.
 
 ### meshStack Account Setup
 
