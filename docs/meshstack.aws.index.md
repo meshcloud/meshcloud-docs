@@ -196,7 +196,8 @@ Attach the following inline policy using this json:
                 "cloudformation:ListImports",
                 "cloudformation:DescribeAccountLimits",
                 "cloudformation:CreateStackSet",
-                "cloudformation:ValidateTemplate"
+                "cloudformation:ValidateTemplate",
+                "lambda:InvokeFunction"
             ],
             "Resource": "*"
         },
