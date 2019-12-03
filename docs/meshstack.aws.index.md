@@ -383,16 +383,18 @@ allows generation of account names:
 * aws+customer.projectB@meshcloud.io
 
 
-### Account Alias
+### Account Alias Pattern
 
-Accounts in AWS get an alias assigned. This alias is fully customizable. You can use the placeholder `<customer>` and `<project>`, they are replaced with the customer and the project identifier during replication.
-In order to configure the mapping use the `accountAliasPattern` key in the [platform config](#configuration-reference).
 
-```haskell
-{ accountAliasPattern =
-    Some "meshcloud-<customer>-<project>"
-}
-```
+Accounts in AWS get an alias assigned. This alias is fully customizable. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
+
+For example a string pattern `%s.%s` would generate: `customer.project`. Which is also the default.
+
+The following arguments are provided:
+
+1. argument: customer identifier
+2. argument: project identifier
+3. argument: meshProject ID
 
 ### Identifier Configuration
 
