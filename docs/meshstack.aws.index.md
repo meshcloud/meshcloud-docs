@@ -39,9 +39,6 @@ When configuring these roles, operators must take care to correctly guard agains
 
 This account needs the `MeshfedServiceRole`. The `meshfed-service` user needs to assume it.
 
-You can use the following CloudFormation template to setup the `MeshfedServiceRole`:
-
-```json
 The root account also needs a role for the mesh-service principal to assume. This role is created by this CloudFormation template:
 
 ```json
@@ -82,7 +79,14 @@ The root account also needs a role for the mesh-service principal to assume. Thi
                   ]
                 }
               },
-              "Action": "sts:AssumeRole"
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": {
+                    "Ref": "PrivilegedExternalId"
+                  }
+                }
+              }
             }
           ]
         },
@@ -97,14 +101,7 @@ The root account also needs a role for the mesh-service principal to assume. Thi
                   "Sid": "StsAccessMemberAccount",
                   "Effect": "Allow",
                   "Action": "sts:AssumeRole",
-                  "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
-                  "Condition": {
-                    "StringEquals": {
-                      "sts:ExternalId": {
-                        "Ref": "PrivilegedExternalId"
-                      }
-                    }
-                  }
+                  "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole"
                 },
                 {
                   "Sid": "OrgManagementAccess1",
@@ -178,57 +175,118 @@ The automation account, containing all components for AWS account provisioning s
 
 This account needs the `MeshfedAutomationRole`. The `meshfed-service` user needs to assume it.
 
-Attach the following inline policy using this json:
+You can use the following template inside the automation account to perform the necessairy role setup:
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:CreateUploadBucket",
-                "cloudformation:EstimateTemplateCost",
-                "cloudformation:DescribeStackDriftDetectionStatus",
-                "cloudformation:ListExports",
-                "cloudformation:ListStacks",
-                "cloudformation:ListImports",
-                "cloudformation:DescribeAccountLimits",
-                "cloudformation:CreateStackSet",
-                "cloudformation:ValidateTemplate",
-                "lambda:InvokeFunction"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "cloudformation:*",
-            "Resource": [
-                "arn:aws:cloudformation:*:*:stack/*/*",
-                "arn:aws:cloudformation:*:*:stackset/*:*"
-            ]
-        }
-    ]
-}
-```
-
-Also attach the following trust policy to this role:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::${meshcloudAccountId}:user/meshfed-service"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {}
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "meshfed-automation Role Setup",
+  "Parameters": {
+    "MeshcloudAccountId": {
+      "Type": "String",
+      "Description": "The ID of the meshCloud AWS Account"
+    },
+    "PrivilegedExternalId": {
+      "Type": "String",
+      "Description": "Privileged external ID for the meshfed-service to use"
     }
-  ]
+  },
+  "Resources": {
+    "MeshfedAutomationRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "MeshfedAutomationRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:iam::",
+                      {
+                        "Ref": "MeshcloudAccountId"
+                      },
+                      ":user/meshfed-service"
+                    ]
+                  ]
+                }
+              },
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": {
+                    "Ref": "PrivilegedExternalId"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "MeshfedAutomationPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "VisualEditor0",
+                  "Effect": "Allow",
+                  "Action": [
+                    "cloudformation:DescribeStackSet",
+                    "cloudformation:CreateStack",
+                    "cloudformation:ListStackInstances",
+                    "cloudformation:CreateStackInstances",
+                    "cloudformation:DescribeStacks"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "AWSCloudFormationStackSetAdministrationRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "AWSCloudFormationStackSetAdministrationRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cloudformation.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "AssumeRole-AWSCloudFormationStackSetExecutionRole",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "VisualEditor0",
+                  "Effect": "Allow",
+                  "Action": "sts:AssumeRole",
+                  "Resource": "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
 }
 ```
 
