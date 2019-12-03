@@ -81,49 +81,7 @@ The meshcloud Azure replication detects externally-provisioned subscriptions bas
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 
-## Platform Instance Configuration
-
-With the information we gathered in the above section we now can configure the Azure Replicator.
-This will typcially configured by your meshcloud experts, but please consult the following example as a reference
-of possible configuration settings.
-
-```yml
-replicator-azure:
-  platforms:
-    - platform: azure.meshcloud-azure-dev
-      # This is the ID of the "Azure Blueprint" service principal which must be known beforehand.
-      blueprint-service-principal: <AZURE_BLUEPRINT_PRINCIPAL>
-      # https://docs.microsoft.com/en-us/rest/api/blueprints/assignments/createorupdate#assignmentlockmode
-      blueprint-lock-assignment: "AllResourcesReadOnly"
-      blueprint-location: "westeurope"
-      service-principal:
-        aad-tenant: <AAD_TENANT> # Either friendly domain name or your tenants GUID
-        object-id: <SERVICE_PRINCIPAL_OBJECT_ID>
-        client-id: <SERVICE_PRINCIPAL_CLIENT_ID>
-        client-secret: <SERVICE_PRINCIPAL_CLIENT_SECRET>
-      provisioning:
-        # You can configure multiple owners of the created/assigned subscriptions. Enter the object IDs of the
-        # subscription owners. This is useful for extended automation.
-        subscription-owner-object-ids:
-          - <SUB_OWNER_OBJECT_ID>
-        # provide one of the following two keys
-        externally-provisioned:
-          # Unused subscriptions must begin with this name
-          unused-subscription-name-prefix: mesh
-      enterprise-enrollment:
-          enrollment-account-id: <EA_ACCOUNT_ID>
-          subscription-offer-type: MS-AZR-0017P
-      role-mappings:
-        # The mesh project role is mapped to an Azure role. You can enter the role which should be assigned for the
-        # user holding this meshProject roles.For more information about Azure roles see
-        # https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles
-        admin: b24988ac-6180-42a0-ab88-20f7382dd24c # magic GUID for contributor
-        user: acdd72a7-3385-48ef-bd42-f606fba81ae7  # magic GUID for reader
-```
-
-The next sections will describe individual setup steps.
-
-### Service Principal Setup
+## Service Principal Setup
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
 The Service Principal must be authorized in the scope of the meshcloud AAD Tenant.
@@ -303,3 +261,120 @@ In this screen you can also find the Object ID and Application ID of your servic
 ```powershell
 Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
 ```
+
+## Platform Instance Configuration
+
+With the information we gathered in the above section we now can configure the Azure Replicator.
+This will typcially configured by your meshcloud experts, but please consult the following example as a reference
+of possible configuration settings.
+
+```haskell
+let Provisioning = ./Azure/Provisioning.dhall
+let InviteB2BUserConfig = ./Azure/InviteB2bUserConfig.dhall
+
+in    λ(Secret : Type)
+    → { platform = "azure.meshcloud-azure-dev"
+      , accountNamePattern :
+          Optional Text
+      , groupNamePattern :
+          Optional Text
+      {- This is the ID of the "Azure Blueprint" service principal which must be known beforehand. -}
+      , blueprintServicePrincipal = "<AZURE_BLUEPRINT_PRINCIPAL>"
+      {- # https://docs.microsoft.com/en-us/rest/api/blueprints/assignments/createorupdate#assignmentlockmode -}
+      , blueprintLockAssignment = "AllResourcesReadOnly"
+      , blueprintLocation = "westeurope"
+      , servicePrincipal :
+          {- Either friendly domain name or your tenants GUID -}
+          { aadTenant = "<AAD_TENANT>"
+          , objectId = "<SERVICE_PRINCIPAL_OBJECT_ID>"
+          , clientId = "<SERVICE_PRINCIPAL_CLIENT_ID>"
+          , clientSecret = "<SERVICE_PRINCIPAL_CLIENT_SECRET>"
+          }
+      , b2bUserInvitation :
+          Optional InviteB2BUserConfig
+      , provisioning :
+          Provisioning
+      , roleMappings :
+          {-
+          The mesh project role is mapped to an Azure role. You can enter the role which should be assigned for the
+          user holding this meshProject roles.For more information about Azure roles see
+          https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles.
+          For example:
+            admin: b24988ac-6180-42a0-ab88-20f7382dd24c # magic GUID for contributor
+            user: acdd72a7-3385-48ef-bd42-f606fba81ae7  # magic GUID for reader
+          -}
+          [{ mapKey : "admin", mapValue : "b24988ac-6180-42a0-ab88-20f7382dd24c" }]
+      }
+```
+
+Where `Provisioning.dhall` consists of:
+
+```haskell
+let EnterpriseEnrollment =
+      {-
+      You can configure multiple owners of the created/assigned subscriptions.
+      Enter the object IDs of the subscription owners. This is useful for
+      extended automation.
+      -}
+      { subscriptionOwnerObjectIds ["<SUB_OWNER_OBJECT_ID>"]
+      , enterpriseEnrollment :
+          { enrollmentAccountId =  "<EA_ACCOUNT_ID>"
+          , subscriptionOfferType = "MS-AZR-0017P"
+          {-
+          There is a safty mechanism to avoid duplicate Subscription creation in case
+          of an error. This delay should be a bit higher then it usually takes to
+          create subscriptions. For big installations this is somewhere between 5-15
+          minutes.
+          -}
+          , subscriptionCreationErrorCooldownSec = 600
+          }
+      }
+
+let PreProvisioned =
+      { subscriptionOwnerObjectIds :
+          List Text
+      , preProvisioned :
+          {-
+          Unused subscriptions must begin with this name in order to be picked by
+          the replicator.
+          -}
+          { unusedSubscriptionNamePrefix = "mesh" }
+      }
+
+in  < EnterpriseEnrollment :
+        EnterpriseEnrollment
+    | PreProvisioned :
+        PreProvisioned
+    >
+```
+
+And `InviteB2BUserConfig.dhall` contains:
+
+```haskell
+{- URL used in the Azure invitation mail if send -}
+{ redirectUrl = "https://example.com"
+{- Flag if an Invitation mail by Azure should be send out -}
+, sendAzureInvitationMail = false
+}
+```
+
+### Azure Subscription Name
+
+The name of the generated subscriptions can be fully customized. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
+
+For example a string pattern `%s.%s` would generate: `customer.project`.
+
+The following arguments are provided:
+
+1. argument: customer identifier
+2. argument: project identifier
+3. argument: meshProject ID
+
+### Azure Group Name
+
+Similiar to the [Azure Subscription Name](#azure-subscription-name) a `printf` compatible string can be used. The arguments available here are:
+
+1. argument: customer identifier
+2. argument: project identifier
+3. argument: meshRole Name
+4. argument: meshProject ID
