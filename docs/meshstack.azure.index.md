@@ -362,7 +362,7 @@ And `InviteB2BUserConfig.dhall` contains:
 
 The name of the generated subscriptions can be fully customized. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
 
-For example a string pattern `%s.%s` would generate: `customer.project`.
+For example a string pattern `%s.%s` would generate: `customer.project`. Which is the default.
 
 The following arguments are provided:
 
