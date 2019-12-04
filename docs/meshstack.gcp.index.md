@@ -117,7 +117,7 @@ Add the `meshfed-service@dev.meshcloud.io` user to the `meshfed-service` role se
 
 Enable Automated Consent in the G Admin Console
 
-- Go to https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients
+- Go to [Manage OAuth Clients](https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients) 
 - Add a new Authorized client with these details
   - Client Name = `Client Id` of `meshfed-service` Service Account from Google Cloud Console (displayed under “Domain-wide Delegation” on the Service Account Details Page )
   - Scopes:
@@ -126,3 +126,42 @@ Enable Automated Consent in the G Admin Console
       https://www.googleapis.com/auth/admin.directory.user, https://www.googleapis.com/auth/cloud-platform, https://www.googleapis.com/auth/admin.directory.group
       ```
 
+## Platform Instance Config
+
+This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md).
+
+### Organization
+
+Configure the domain, service account and service user as they were setup above.
+
+```haskell
+{   domain =
+      "dev.meshcloud.io"
+  , serviceUser =
+      "meshfed-service@dev.meshcloud.io"
+  , serviceAccount =
+      { accountId =
+          "meshfed-service@meshstack-root.iam.gserviceaccount.com"
+      , privateKey =
+          { name = "GCP_PRIVATE_KEY" }
+      }
+}
+```
+
+### GCP Role Mapping
+
+The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in GCP. This mapping is fully customizable and can use custom as well as built-in roles.
+
+In order to configure the mapping use the `roleMappings` key in the [platform config](#configuration-reference).
+
+```haskell
+{ roleMappings =
+    [ { mapKey = "admin", mapValue = "roles/editor" } {- Uses a built-in GCP role -}
+    , { mapKey =
+          "user"
+      , mapValue =
+          "organizations/632614034120/roles/meshstack.project_developer" {- Uses a custom role defined on the organization -}
+      }
+    ]
+}
+```
