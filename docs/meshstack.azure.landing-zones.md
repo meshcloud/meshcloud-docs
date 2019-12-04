@@ -8,7 +8,7 @@ to these management groups. Optionally a blueprint can also be defined. Via an A
 subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the
 resources and policies created by the blueprint.
 
-The landingzone can be configured in the `Administration` section. If a project is selected to have an Azure location a landingzone must be picked by the user. By choosing a landing zone platform specific configuration can be set (in this case for Azure). The options for Azure are:
+The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have an Azure location a landingzone must be picked by the user. By choosing a landing zone platform specific configuration can be set (in this case for Azure). The options for Azure are:
 
 ## Management Group
 

@@ -78,7 +78,7 @@ consume subscriptions from a pool of externally-provisioned subscriptions. This 
 to use "Pay-as-you-go" subscriptions or if you're organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
 
 The meshcloud Azure replication detects externally-provisioned subscriptions based on a configurable prefix in the subscription
-name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](#landing-zones) configuration
+name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 
 ## Platform Instance Configuration
