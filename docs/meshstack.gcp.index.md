@@ -49,6 +49,9 @@ resourcemanager.projects.list
 resourcemanager.projects.move
 resourcemanager.projects.setIamPolicy
 resourcemanager.projects.update
+resourcemanager.projects.createBillingAssignment
+resourcemanager.projects.deleteBillingAssignment
+billing.resourceAssociations.create
 ```
 
 ## Root Project Configuration
@@ -61,7 +64,8 @@ For some resources we need a “root” project for meshStack in GCP. This proje
 Enable the following APIs on the `meshstack-root` project from the API Library
 
 - [Admin SDK](https://console.cloud.google.com/apis/api/admin.googleapis.com/overview)
-- [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=meshstack-root)
+- [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
+- [Cloud Billing API](https://console.cloud.google.com/apis/library/cloudbilling.googleapis.com/overview)
 
 ### meshfed-service ServiceAccount
 
@@ -147,6 +151,18 @@ Configure the domain, service account and service user as they were setup above.
       }
 }
 ```
+
+### Billing Account
+
+In order to maintain symmetry to other public cloud platforms, meshStack consolidates billing of all GCP projects managed
+under the same GCP Platform Instance to a single Google Cloud Billing Account. The billing account id is thus configured
+on the platform level.
+
+{   billingAccountId =
+      "123456-1234ABCD-1234FF"  {- The id of your Billing Account as it's displayed in Google Cloud Console -}
+}
+
+To use multiple billing accounts consider configuring multiple GCP platform instances in meshStack.
 
 ### GCP Role Mapping
 
