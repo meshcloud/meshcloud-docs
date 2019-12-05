@@ -121,7 +121,7 @@ Add the `meshfed-service@dev.meshcloud.io` user to the `meshfed-service` role se
 
 Enable Automated Consent in the G Admin Console
 
-- Go to [Manage OAuth Clients](https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients) 
+- Go to [Manage OAuth Clients](https://support.google.com/a/answer/162106?hl=en)
 - Add a new Authorized client with these details
   - Client Name = `Client Id` of `meshfed-service` Service Account from Google Cloud Console (displayed under “Domain-wide Delegation” on the Service Account Details Page )
   - Scopes:
