@@ -69,7 +69,7 @@ This policy "jails" member accounts in the organization
 
 ## Automation Account
 
-Choose an automation account in which the Stack Sets will be placed. Setup these resources on the Automation Account, here expressed as CloudFormation Templates.
+Choose an automation account in which the Stack Sets will be placed. Setup these resources inside the Automation Account. Have a look at the subsequent CloudFormation Templates for a reference.
 
 ### LZCFNStackSetAdministrationRole
 
