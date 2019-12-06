@@ -1,7 +1,9 @@
 ---
 id: meshstack.aws.landing-zone-tutorial
-title: Tutorial: Landing Zone
+title: "Tutorial: Landing Zone"
 ---
+
+> This tutorial is work in progress!
 
 Purpose: show you how to create secure landing zones for AWS in a simple step by step guide.
 

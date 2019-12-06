@@ -1,6 +1,6 @@
 ---
 id: meshstack.aws.avm-tutorial
-title: "Account Vending Machine: Tutorial"
+title: "Tutorial: Account Vending Machine"
 ---
 
 > This tutorial is work in progress!
