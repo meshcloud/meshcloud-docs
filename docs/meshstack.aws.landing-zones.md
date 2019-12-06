@@ -24,11 +24,12 @@ The following parameter can be used in the StackSet template:
 | ------------ | :--------------------------------------------------------------------------------------- |
 | AccountName  | Account name of the created AWS account                                                  |
 | AccountEmail | Account email of the created AWS account                                                 |
+| ProductName  | Customer Identifier                                                                      |
 | CostCenter   | ID of the CostCenter defined for this meshProject.                                       |
 | ContactEmail | E-Mail of the meshProject creator. Currently this is the user which created the project. |
-| Stage        | The name of the assigned Landing Zone                                                    |
+| Stage        | The project identifier                                                                   |
 
-> Soon the parameter names will be editable in the Landing Zone configuration.
+> Soon the parameter names will change but will be editable in the Landing Zone configuration.
 
 * **StackSet ARN**: This StackSet get all new meshProject AWS accounts added as StackInstances. The templated configured in this StackSet will get applied.
 * **StackInstance Deploy Region**: The StackInstances will get deployed in this region.

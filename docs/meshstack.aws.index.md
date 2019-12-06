@@ -101,7 +101,14 @@ The root account also needs a role for the mesh-service principal to assume. Thi
                   "Sid": "StsAccessMemberAccount",
                   "Effect": "Allow",
                   "Action": "sts:AssumeRole",
-                  "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole"
+                  "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
+                  "Condition": {
+                    "StringEquals": {
+                      "sts:ExternalId": {
+                        "Ref": "PrivilegedExternalId"
+                      }
+                    }
+                  }
                 },
                 {
                   "Sid": "OrgManagementAccess1",
@@ -168,6 +175,56 @@ The meshStack AWS Connector uses a dedicated set of IAM credentials to work with
 
 * User name: `meshfed-service`
 * AWS access type: Programmatic access - with an access key
+
+You can use this template for setup the account:
+
+```json
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "RootAccountId": {
+      "Type": "String",
+      "Default": "<INSERT_ROOT_ACC_ID>",
+      "Description": "The ID of the Root Org Account"
+    }
+  },
+  "Resources": {
+    "MeshstackAccountAccessRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "MeshstackAccountAccessRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:iam::",
+                      {
+                        "Ref": "RootAccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Path": "/",
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/AdministratorAccess"
+        ]
+      }
+    }
+  }
+}
+```
 
 ### Automation Account Setup
 
@@ -238,10 +295,8 @@ You can use the following template inside the automation account to perform the 
                   "Effect": "Allow",
                   "Action": [
                     "cloudformation:DescribeStackSet",
-                    "cloudformation:CreateStack",
                     "cloudformation:ListStackInstances",
-                    "cloudformation:CreateStackInstances",
-                    "cloudformation:DescribeStacks"
+                    "cloudformation:CreateStackInstances"
                   ],
                   "Resource": "*"
                 }
