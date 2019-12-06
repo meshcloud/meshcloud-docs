@@ -12,13 +12,9 @@ Terms:
 - **Managed Account** An AWS Account managed under this landing zone.
 - **CFN** shorthand for AWS CloudFormation
 
-## Automation Account
+## Acount Vending Machine
 
-Setup these resources on the Automation Account, here expressed as CloudFormation Templates.
-
-### Acount Vending Machine
-
-Use your existing AVM, we assume it has a single lambda as an Entry Point
+To use your existing AVM, make sure it has a single lambda as its Entry Point.
 
 ## Access Stack to boostrap Managed Accounts
 
