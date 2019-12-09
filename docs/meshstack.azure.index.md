@@ -370,9 +370,13 @@ The following arguments are provided:
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
 
-### Azure Group Name
+### AAD Group Name
 
-Similiar to the [Azure Subscription Name](#azure-subscription-name) a `printf` compatible string can be used. The arguments available here are:
+Similiar to the [Azure Subscription Name](#azure-subscription-name) a `printf` compatible string can be used.
+
+> Operators must be careful to ensure resulting group names are unique for project-role combinations.
+
+The arguments available here are:
 
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
