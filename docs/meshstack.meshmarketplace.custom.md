@@ -54,7 +54,7 @@ There are 2 different categories of Service Brokers that can be implemented that
 
 #### Create Service Binding
 
-When the service binding is created, meshMarketplace will provide properties `tenant_id` and `platform` in the `bind_resource` object of the bind request:
+When the service binding is created, meshMarketplace will provide a [Bind Resource object](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#bind-resource-object) properties `tenant_id` and `platform` in the `bind_resource` object of the bind request:
 
 ```json
 {
