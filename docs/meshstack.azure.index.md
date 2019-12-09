@@ -366,15 +366,15 @@ For example a string pattern `%s.%s` would generate: `customer.project`. Which i
 
 The following arguments are provided:
 
-1. argument: customer identifier
-2. argument: project identifier
-3. argument: meshProject ID
+1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
+2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
+3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
 
 ### Azure Group Name
 
 Similiar to the [Azure Subscription Name](#azure-subscription-name) a `printf` compatible string can be used. The arguments available here are:
 
-1. argument: customer identifier
-2. argument: project identifier
+1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
+2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshRole Name
-4. argument: meshProject ID
+4. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
