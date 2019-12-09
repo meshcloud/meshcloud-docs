@@ -52,3 +52,5 @@ Currently the account must contain these tags to be picked up:
 * Stage: Must contain the project identifier
 
 > These tags will soon be customizable in the AWS Landing Zone configuration.
+
+Please contact meshcloud for more details and reference configurations.
