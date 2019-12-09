@@ -390,6 +390,8 @@ Accounts in AWS get an alias assigned. This alias is fully customizable. A `prin
 
 For example a string pattern `%s.%s` would generate: `customer.project`. Which is also the default.
 
+> The account alias must be unique across all of AWS. Operators should thererfore consider using a company-specific prefix together with a combination of meshCustomer and meshProject identifier.
+
 The following arguments are provided:
 
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
