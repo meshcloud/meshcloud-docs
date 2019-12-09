@@ -31,6 +31,8 @@ The screen provides you with information about:
 - How long have certain plans been used in projects?
 - What are the costs per plan and project for one period?
 
-**CSV Export**:
+## Seller Usage Report (CSV Export)
 
-All the metering usage data can be downloaded as CSV. The download can be triggered directly from Metering & Usage information page. Currently active data transformations like sorting and filtering are also applied to the CSV export. Additionally information about the project owner is provided in the CSV export. If can also be configured which additional project tags shall also be provided.
+All the metering usage data for your services can be downloaded as CSV. This is called a seller usage report in meshcloud because the service owner acts as a seller on the meshMarketplace.
+
+The download can be triggered directly from Metering & Usage information page. The data transformations like sorting and filtering are also included. Additional meta information can be configured beneath the metering usage information. This information will only be visible within the exported CSV document.
