@@ -32,7 +32,7 @@ The following parameter can be used in the StackSet template:
 > Soon the parameter names will change but will be editable in the Landing Zone configuration.
 
 * **StackSet ARN**: This StackSet get all new meshProject AWS accounts added as StackInstances. The templated configured in this StackSet will get applied.
-* **StackInstance Deploy Region**: The StackInstances will get deployed in this region.
+* **StackInstance Deploy Region**: The StackInstances will be deployed in this region.
 
 > **Important:** A StackInstance can currently only be deployed in one region. In order to work around you can create another StackInstance in different regions triggered by the first instance.
 
