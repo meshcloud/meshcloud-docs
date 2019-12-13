@@ -369,6 +369,7 @@ The following arguments are provided:
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
+4. argument: tenantNumber (numeric), a running number specific to each platform which can be optionally enabled
 
 ### AAD Group Name
 
@@ -380,5 +381,6 @@ The arguments available here are:
 
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
-3. argument: meshRole Name
-4. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
+3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
+4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled.
+5. argument: meshRole name or platform specific role name alias
