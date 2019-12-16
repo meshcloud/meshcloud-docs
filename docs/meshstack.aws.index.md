@@ -294,6 +294,7 @@ You can use the following template inside the automation account to perform the 
                   "Sid": "VisualEditor0",
                   "Effect": "Allow",
                   "Action": [
+                    "cloudformation:UpdateStackInstances",
                     "cloudformation:DescribeStackSet",
                     "cloudformation:ListStackInstances",
                     "cloudformation:CreateStackInstances"
