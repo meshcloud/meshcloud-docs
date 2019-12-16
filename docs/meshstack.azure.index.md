@@ -296,18 +296,21 @@ in    λ(Secret : Type)
           Provisioning
       , roleMappings :
           {-
-          The mesh project role is mapped to an Azure role. You can enter the role which should be assigned for the
-          user holding this meshProject roles.For more information about Azure roles see
-          https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles.
-          For example:
-            admin: b24988ac-6180-42a0-ab88-20f7382dd24c # magic GUID for contributor
-            user: acdd72a7-3385-48ef-bd42-f606fba81ae7  # magic GUID for reader
+          Each mesh project role (specified by key, i.e. user) is mapped to an Azure role
+          (specified by id).
+          An alias is provided which can be used when naming related IAM groups.
+          For example, this mapping gives all users with project admin access to a project
+          owner access to the Azure subscription which was created for this project.
+
+            admin = { alias = "owner", id = "8e3af657-a8ff-443c-a75c-2fe8c4bcb635" }
           -}
-          [{ mapKey : "admin", mapValue : "b24988ac-6180-42a0-ab88-20f7382dd24c" }]
+          List { mapKey : Text, mapValue : { alias : Text, id : Text } }
       }
 ```
 
-Where `Provisioning.dhall` consists of:
+Role mappings must be configured for all [project roles](./meshcloud.project.md#project-roles), you can refer to the official [Azure documentation](https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles) for additional information on Azure roles.
+
+As [described](./meshstack.azure.index.md#subscription-provisioning), provisioning can be configured to use an enterprise enrollment account or pre provisioned subscriptions.
 
 ```haskell
 let EnterpriseEnrollment =
@@ -351,9 +354,9 @@ in  < EnterpriseEnrollment :
 And `InviteB2BUserConfig.dhall` contains:
 
 ```haskell
-{- URL used in the Azure invitation mail if send -}
+-- URL used in the Azure invitation mail if send
 { redirectUrl = "https://example.com"
-{- Flag if an Invitation mail by Azure should be send out -}
+-- Flag if an Invitation mail by Azure should be send out
 , sendAzureInvitationMail = false
 }
 ```
@@ -369,7 +372,7 @@ The following arguments are provided:
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
-4. argument: tenantNumber (numeric), a running number specific to each platform which can be optionally enabled
+4. argument: tenantNumber (numeric), a running number specific to each platform which can be optionally enabled.
 
 ### AAD Group Name
 
@@ -382,5 +385,5 @@ The arguments available here are:
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
-4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled.
-5. argument: meshRole name or platform specific role name alias
+4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled
+5. argument: role name alias.
