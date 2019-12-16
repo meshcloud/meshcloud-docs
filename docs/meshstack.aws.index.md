@@ -294,6 +294,7 @@ You can use the following template inside the automation account to perform the 
                   "Sid": "VisualEditor0",
                   "Effect": "Allow",
                   "Action": [
+                    "cloudformation:UpdateStackInstances",
                     "cloudformation:DescribeStackSet",
                     "cloudformation:ListStackInstances",
                     "cloudformation:CreateStackInstances"
@@ -425,10 +426,22 @@ Please find the full `Aws.dhall` [configuration options](./meshstack.configurati
   , organizationRootAccountExternalId : Optional Text
   , automationAccountRole : Text
   , automationAccountExternalId : Optional Text
+  {- Flag if the replicator should wait for an external AVM to finish. This is detected via Tags which should be placed on the account -}
   , waitForExternalAvm :
       Bool
-  , roleMappings :
-      List { mapKey : Text, mapValue : { roleName : Text, policyArn : Optional Text } }
+  {-
+    This role mappings are fully managed via meshstack. They are created if needed and
+    also the polices listed are checked and attached.
+    In order to do this the MeshfedAccountAccessRole needs write access to IAM roles.
+   -}
+  , roleMappingsManaged :
+      List { mapKey : Text, mapValue : { awsRoleName : Text, policies : List Text } }
+  {-
+    The external role mappings are only checked against the SAML IDP setting. No policies are attached nor checked. It is assumed
+    that an external source (e.g. an AVM) has assigned proper policies to them.
+  -}
+  , roleMappingsExternal :
+        List { mapKey : Text, mapValue : { awsRoleName : Text } }
   , meshProvisioning :
       Optional ./Aws/MeshProvisioning.dhall
   , externalProvisioning :
