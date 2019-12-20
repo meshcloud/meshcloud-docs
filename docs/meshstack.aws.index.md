@@ -346,6 +346,59 @@ You can use the following template inside the automation account to perform the 
 }
 ```
 
+### Account Access
+
+The following operations are performed via meshstack in the deployed AWS accounts:
+
+* Verifying SAML IDP integrity/update
+* Account Alias Setup
+
+The default access to AWS accounts is done via a assumed role to `MeshstackAccountAccessRole`. This role should have the following minimal policy attached:
+
+```json
+{
+  "ManagedPolicyName": "MeshcloudMinimalServicePolicy",
+  "Description": "Minimal Access for meshstack Automation Service",
+  "Roles": [
+    "MeshstackAccountAccessRole"
+  ],
+  "PolicyDocument": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "iam:CreateSAMLProvider",
+          "iam:GetSAMLProvider",
+          "iam:UpdateSAMLProvider",
+          "iam:DeleteSAMLProvider",
+          "iam:ListSAMLProviders"
+        ],
+        "Resource": [
+          "arn:aws:iam::<ACCOUNT_ID>:saml-provider/*",
+          "arn:aws:cloudformation:*:<ACCOUNT_ID>:stack/meshstack-cf-access*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "iam:CreateAccountAlias",
+          "iam:ListAccountAliases",
+          "iam:DeleteAccountAlias",
+          "iam:GetRole",
+          "iam:CreateRole",
+          "iam:AttachRolePolicy",
+          "iam:UpdateAssumeRolePolicy"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }
+}
+```
+
+> Depending of your mode of operation (usage of external Account Vending Machine) these "minimal rights" can be adapted and further restricted. Please [contact us](https://support.meshcloud.io) for more details on reducing these rights.
+
 ### AWS Role Mapping
 
 The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in AWS. This mapping is fully customizable. It is also possible to attach a AWS policy automatically to the user role in AWS.
