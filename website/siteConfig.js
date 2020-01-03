@@ -103,6 +103,11 @@ const siteConfig = {
   scrollToTop: true,
   scrollToTopOptions: {
     zIndex: 100,
+  },
+
+  algolia: {
+    apiKey: '651f9d1e5d32c2a465935a001a047407',
+    indexName: 'meshcloud_dev'
   }
 };
 
