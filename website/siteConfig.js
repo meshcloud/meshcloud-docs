@@ -106,8 +106,8 @@ const siteConfig = {
   },
 
   algolia: {
-    apiKey: '651f9d1e5d32c2a465935a001a047407',
-    indexName: 'meshcloud_dev'
+    apiKey: process.env.DOCSEARCH_APIKEY,
+    indexName: process.env.DOCSEARCH_INDEXNAME
   }
 };
 
