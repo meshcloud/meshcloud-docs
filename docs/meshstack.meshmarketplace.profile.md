@@ -41,6 +41,8 @@ meshMarketplace defines its own context objects for service provisioning request
 }
 ```
 
+> `auth_url`, `token_url` and `permission_url` will be `null`, unless the service broker's catalog specifies a dashboard client.
+
 It is recommended that Service Brokers store this information as it allows operators to more easily identify links between service instances and projects when handling support requests or monitoring service operation.
 
 ### Catalog Metadata
