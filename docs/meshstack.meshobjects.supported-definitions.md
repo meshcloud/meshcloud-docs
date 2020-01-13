@@ -3,7 +3,7 @@ id: meshstack.meshobjects.supported-definitions
 title: Supported definitions
 ---
 
-Currently we support meshUser, meshCustomer, meshProject, meshTenant, meshCustomerUserBinding and meshProjectUserBinding.
+Currently, we support meshUser, meshCustomer, meshProject, meshTenant, meshCustomerUserBinding, and meshProjectUserBinding.
 
 ## meshUser
 
