@@ -3,7 +3,7 @@ id: meshstack.meshobjects.index
 title: Overview
 ---
 
-To import existing cloud tenants to meshStack into existing company processes, meshStack provides an API to import meshObjects like meshCustomer, meshProject, etc.
+To import existing cloud tenants provisioned through existing company processes, meshStack provides an import API for meshObjects like meshCustomer, meshProject, etc.
 
 ## Import
 
