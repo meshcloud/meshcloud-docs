@@ -382,6 +382,7 @@ The default access to AWS accounts is done via a assumed role to `MeshstackAccou
       {
         "Effect": "Allow",
         "Action": [
+          "iam:ListAttachedRolePolicies",
           "iam:CreateAccountAlias",
           "iam:ListAccountAliases",
           "iam:DeleteAccountAlias",
@@ -396,6 +397,8 @@ The default access to AWS accounts is done via a assumed role to `MeshstackAccou
   }
 }
 ```
+
+Where `<ACCOUNT_ID>` is the current account id. Usually this service policy is rolled out via an Access Stack by an AWS [meshLandingZone](meshcloud.landing-zones.md). You can insert the current account id via the AWS template.
 
 > Depending of your mode of operation (usage of external Account Vending Machine) these "minimal rights" can be adapted and further restricted. Please [contact us](https://support.meshcloud.io) for more details on reducing these rights.
 
