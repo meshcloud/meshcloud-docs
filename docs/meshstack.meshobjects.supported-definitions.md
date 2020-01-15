@@ -63,7 +63,7 @@ metadata:
   ownedByCustomer: test-customer
   platformIdentifier: platform-identifier.location-identifier
 spec:
-  name: test-tenant
+  localId: 12345678
   landingZone: test-landing-zone
 ```
 
