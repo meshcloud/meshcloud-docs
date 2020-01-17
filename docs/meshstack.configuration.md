@@ -45,4 +45,22 @@ web:
     allow-partner-invite-links: true
 ```
 
+### User Identity Lookup
 
+When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider. This makes it easier for people to invite additional users without remembering their full contact details.
+
+If you have an Azure AAD as an upstream IDP you can configure this functionality by the following configuration:
+
+```haskell
+{ identityLookup =
+  { azure =
+    {- Either friendly domain name or your tenants GUID -}
+    { aadTenant = "<AAD_TENANT_ID>"
+    , clientId = "<SERVICE_PRINCIPAL_CLIENT_ID>"
+    , clientSecret = "<SERVICE_PRINCIPAL_CLIENT_SECRET>"
+    }
+  }
+}
+```
+
+The Azure Service Principal must have at least the `User.Read.All` permission for the [list users web call](https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#permissions).
