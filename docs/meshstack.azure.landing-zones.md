@@ -31,3 +31,7 @@ Blueprints are versioned in Azure and can be managed via the Azure Portal. To av
 
 * Existing projects with this Landing Zone will get their Blueprint updated to this version on the next replication
 * Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
+
+## Azure Function
+
+Assign a Azure function to the landing zone configuration to trigger a small piece of code in the cloud.
