@@ -64,6 +64,10 @@ The meshStack regularly checks expiring service bindings, notifies users about u
 
 ### Service Instance / Binding Parameters
 
-The meshMarketplace intends to support JSON schema for custom parameters used for service instance creation and service binding. You can find the description of the schema [here](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object)
+The meshMarketplace supports JSON schema for custom parameters used for service instance creation and service binding. You can find the description of the schema [in the OSB spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object).
 
-Delivering this schema information allows the Marketplace UI to assist users in crafting proper parameters.
+Delivering this schema information allows the meshMarketplace UI to assist users in crafting proper parameters.
+
+> Please be aware that the meshMarketplace UI currently only supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
+
+
