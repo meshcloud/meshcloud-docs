@@ -84,3 +84,10 @@ The deletion of a Service Broker is only allowed if it has not been [published](
 Unpublished, unapproved Service Brokers can be deleted from the list of Service Brokers via the **trash** button. A safety dialogue pops up, where you have to enter the name of the Service Broker for confirmation. The deletion will only delete the Service Broker in the meshPortal. **No deprovisioning** will be triggered in the Service Broker! You have to clean up existing Service Instances in your Service Broker by yourself!
 
 After you have published your Service Broker you can also revoke this publishing by clicking the **trash** icon in the Publishing list of your Service Broker as long as it has not been approved.
+
+
+## Deactivation of Service Brokers
+
+If a Service Broker has been [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker) it can no longer be deleted because there may already be provisioned service instances. Instead, a published Service Broker can be **deactivated**. Deactivating a Service Broker does not delete any service instances or bindings but ensures that no new service instances can be created. Marketplaces will no longer show any services offered by this broker and if the Service Broker uses a dashboard client it will no longer be available.
+
+> Deactivating a Service Broker is permanent and irreversible!
