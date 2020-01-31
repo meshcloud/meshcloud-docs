@@ -29,10 +29,8 @@ traits:
 ```text
 id: cf.service.instance
 traits:
-  - SERVICE
-  - PLAN
+  - PLAN_ID
   - TYPE
-  - STATE
 ```
 
 ### Spaces
