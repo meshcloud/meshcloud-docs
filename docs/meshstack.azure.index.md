@@ -308,7 +308,7 @@ in    λ(Secret : Type)
       }
 ```
 
-Role mappings must be configured for all [project roles](./meshcloud.project.md#project-roles), you can refer to the official [Azure documentation](https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles) for additional information on Azure roles.
+Role mappings must be configured for all [meshProject roles](./meshcloud.project.md#project-roles), you can refer to the official [Azure documentation](https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles) for additional information on Azure roles.
 
 As [described](./meshstack.azure.index.md#subscription-provisioning), provisioning can be configured to use an enterprise enrollment account or pre provisioned subscriptions.
 
@@ -351,7 +351,8 @@ in  < EnterpriseEnrollment :
     >
 ```
 
-And `InviteB2BUserConfig.dhall` contains:
+The field `b2bUserInvitation` allows you to optionally configure the replicator to create Azure B2B guest invitations for
+users missing in the target AAD tenant. The configuration reference for `InviteB2BUserConfig` is:
 
 ```haskell
 -- URL used in the Azure invitation mail if send

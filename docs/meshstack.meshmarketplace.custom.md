@@ -23,7 +23,7 @@ Usually the meshMarketplace shows credentials of a Service Binding to the users,
 }
 ```
 
-The meshMarketplace does not store any credentials provided by bindings on sensitive services. Instead, the meshMarketplace will only offer the credentials for download during the initial creation of the binding. The precondition for this to work is, that the creation of the binding is synchronous. Async bindings are not supported for sensitive services. 
+The meshMarketplace does not store any credentials provided by bindings on sensitive services. Instead, the meshMarketplace will only offer the credentials for download during the initial creation of the binding. The precondition for this to work is, that the creation of the binding is synchronous. Async bindings are not supported for sensitive services.
 
 ### Tenant-Aware Service Broker
 
