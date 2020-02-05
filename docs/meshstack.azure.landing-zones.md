@@ -56,3 +56,6 @@ The following HTTP headers are provided to the Azure Function:
 | x-mesh-costcenter          | ID of the CostCenter defined for this meshProject. |
 | x-mesh-project-identifier  | The project identifier                             |
 
+#### Azure Function Scope
+
+To securely call an Azure Function, meshcloud uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only). This means that behind the scenes meshcloud is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call. In order for meshcloud to fetch the right token it needs to know the unique ID of the Azure Enterprise Application your function belongs to. You can obtain this token by navigating to your function -> `Platform Features` -> `Authentication / Authorization` -> `Azure Active Directory` -> field `Client ID`.
