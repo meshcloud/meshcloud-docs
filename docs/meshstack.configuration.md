@@ -35,15 +35,28 @@ meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.custome
 }
 ```
 
-### Customer Invite Link for Administrators
+### Customer Registration
 
-The link can be enabled or disabled by setting this config key. For more invormation about this invite link see [invite links](administration.customers.md#invite-customer-via-link).
+Multiple options are available to control how [meshCustomers](./meshcloud.customer.md) can sign up to meshStack in
+self-service. meshStack can be configured to suit your organization's unique demands for sign up.
 
-```yaml
-web:
-  register:
-    allow-partner-invite-links: true
+```haskell
+  
+{ {- Configure an additional BCC email to receive registration related email notifications (e.g. a group inbox) -}
+  bccEmail = None Text
+  {- Allow sign up only if valid payment information was provided during registration  -}
+, requirePayment = None Bool
+  {- Allow generation of invite links (see below) -}
+, allowPartnerInviteLinks = None Bool
+  {- Require manual approval of new meshCustomer accounts by a partner before they can use cloud resources -}
+, approvalRequired = None Bool
+}
 ```
+
+Additional remarks and configuration links:
+
+- `allowPartnerInviteLinks` enables the use of [invite links](administration.customers.md#invite-customer-via-link)
+- `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
 
 ### User Identity Lookup
 
