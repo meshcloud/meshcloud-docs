@@ -11,9 +11,13 @@ You have two paths for provisionig AWS accounts. You can simply use CloudFormati
 
 Each Landing Zone has paremeters which control its behavior. The available parameters are described below.
 
-### Target Organization Unit Name
+### Target Organization Unit ID
 
 This value is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
+
+You must provide the ID of the OU which can be found in the AWS Organizational Management panel. The IDs start with `ou-*`.
+
+You can also use a root account under which the accounts will be placed when they are created. Root IDs start with `r-*`.
 
 ### AccessStack Template URL
 
