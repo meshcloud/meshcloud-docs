@@ -13,7 +13,7 @@ Each Landing Zone has paremeters which control its behavior. The available param
 
 ### Target Organization Unit ID
 
-This value is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
+This parameter is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
 
 You must provide the ID of the OU which can be found in the AWS Organizational Management panel. The IDs start with `ou-*`.
 
@@ -29,7 +29,7 @@ Operators can also configure an [CloudFormation StackSet](https://docs.aws.amazo
 
 Each AWS project which now gets this Landing Zone assigned will be setup to receive the Cloud Formation Stack Instance setup.
 
-The following parameter can be used in the StackSet template:
+The following parameters can be used in the StackSet template:
 
 | Parameter    | Description                                                                              |
 | ------------ | :--------------------------------------------------------------------------------------- |
@@ -57,7 +57,7 @@ While it is possible to trigger an AVM execution via a StackSet a better alterna
 > Please make sure the `MeshfedServiceRole` has the rights in order to trigger the configured Lambda.
 
 
-The following parameter can be used in the Lambda function and are provided as a JSON payload like the following pattern:
+The following parameters can be used in the Lambda function and are provided as a JSON payload like the following pattern:
 
 ```json
 {
