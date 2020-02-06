@@ -17,7 +17,7 @@ It is NOT a meta-layer across clouds. Users access native cloud APIs for their d
 Integrating a cloud platform with meshStack generally consists of these steps:
 
 - prepare the cloud platform for integration (Service Accounts, [Identity Federation](./meshstack.identity-federation.md))
-- configure & [register the platform](./meshstack.platform-location.md)) in meshStack
+- configure & [register the platform](./meshstack.platform-location.md) in meshStack
 - provide Landing Zone implementations
 - configure [Metering & Billing](./meshstack.billing.md)
 
