@@ -31,11 +31,12 @@ for use in a Landing Zone.
 
 The following parameter can be used in the Blueprint:
 
-| Parameter          | Description                                        |
-| ------------------ | :------------------------------------------------- |
-| customerIdentifier | Customer Identifier                                |
-| costcenter         | ID of the CostCenter defined for this meshProject. |
-| projectIdentifier  | The project identifier                             |
+| Parameter          | Description                                                       |
+| ------------------ | :---------------------------------------------------------------- |
+| customerIdentifier | Customer Identifier                                               |
+| costcenter         | ID of the CostCenter defined for this meshProject.                |
+| projectIdentifier  | The project identifier                                            |
+| subscriptionId     | The ID of the Azure Subscription associated with this meshProject |
 
 ### Max. Auto Upgrade Blueprint Version
 
@@ -50,11 +51,12 @@ Assign a Azure function to the landing zone configuration to trigger a small pie
 
 The following HTTP headers are provided to the Azure Function:
 
-| HTTP Header Name           | Description                                        |
-| -------------------------- | :------------------------------------------------- |
-| x-mesh-customer-identifier | Customer Identifier                                |
-| x-mesh-costcenter          | ID of the CostCenter defined for this meshProject. |
-| x-mesh-project-identifier  | The project identifier                             |
+| HTTP Header Name           | Description                                                       |
+| -------------------------- | :---------------------------------------------------------------- |
+| x-mesh-customer-identifier | Customer Identifier                                               |
+| x-mesh-costcenter          | ID of the CostCenter defined for this meshProject.                |
+| x-mesh-project-identifier  | The project identifier                                            |
+| x-mesh-subscription-id     | The ID of the Azure Subscription associated with this meshProject |
 
 #### Azure Function Scope
 
