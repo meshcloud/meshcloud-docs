@@ -162,7 +162,7 @@ on the platform level.
       "123456-1234ABCD-1234FF"  {- The id of your Billing Account as it's displayed in Google Cloud Console -}
 }
 
-To use multiple billing accounts consider configuring multiple GCP platform instances in meshStack.
+To use multiple billing accounts consider configuring multiple GCP meshPlatforms in meshStack.
 
 ### GCP Role Mapping
 

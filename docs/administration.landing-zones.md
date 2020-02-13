@@ -5,7 +5,7 @@ title: Landing Zones
 
 ## Configuring Landing Zones
 
-Platform Operators can configure the [Landing Zones](./meshcloud.landing-zones.md) available for each platform instance. The capabilities supported by meshcloud differ per platform type as we support "native" tooling provided by the different cloud platforms and vendors.
+Platform Operators can configure the [Landing Zones](./meshcloud.landing-zones.md) available for each meshPlatform. The capabilities supported by meshcloud differ per platform type as we support "native" tooling provided by the different cloud platforms and vendors.
 
 This ensures enterprises can seamlessly integrate existing operational capabilities and leverage the most powerful
 and best-integrated tooling available for each platform. In most instances, this tooling follows an infrastructure-as-code paradigm that fits naturally with meshcloud's multi-cloud orchestration approach.

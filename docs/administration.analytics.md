@@ -6,7 +6,7 @@ title: Analytics
 Administrators can access performance analytics to get an overview of platform usage, users and meshProjects.
 
 **Platform tenants**
-: These charts show the current number of platform tenants per *platform instance*, *location* and *platform type*. Platform tenants are platform specific representations of [meshProjects](meshcloud.project.md#manage-meshprojects). Hover your mouse over segments to see specific numbers.
+: These charts show the current number of platform tenants per *meshPlatform*, *location* and *platform type*. Platform tenants are platform specific representations of [meshProjects](meshcloud.project.md#manage-meshprojects). Hover your mouse over segments to see specific numbers.
 ![Platform Tenants](assets/administration.analytics.platform-tenants.png)
 
 **Active meshProjects**
