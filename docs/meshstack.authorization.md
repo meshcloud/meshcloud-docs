@@ -9,7 +9,7 @@ As described in [Identity Federation](meshstack.identity-federation.md) a SSO so
 
 On top level there are two different types of meshCustomers available. On the one hand a [consumer meshCustomer](meshcloud.customer.md) who is responsible for his own projects. On the other hand a [partner meshCustomer](administration.index.md), who can manage multiple assigned meshCustomers.
 
-For both meshCustomer types different groups can be assigned to the users. For **consumer meshCustomer** the available groups and the functionality they have access to is described [here](meshcloud.groups.md). For **partner meshCustomer** the overview of groups and what they have access to is available [here](administration.index.md).
+For both meshCustomer types different groups can be assigned to the users. For **consumer meshCustomer** the available groups and the functionality they have access to is described [here](meshcloud.customer.md#meshCustomer-roles). For **partner meshCustomer** the overview of groups and what they have access to is available [here](administration.index.md).
 
 Besides this access control on meshCustomer level, users also have to be assigned to the projects of a customer, which is described [here](meshcloud.project.md#manage-meshprojects).
 
