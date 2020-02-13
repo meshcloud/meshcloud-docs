@@ -3,7 +3,7 @@ id: meshcloud.project
 title: meshProject
 ---
 
-In order to use cloud computing resources, you have to create a meshProject. Within the meshProject, you can manage and scale the resources you use across all [meshPlatforms](meshcloud.platform-location.md) available to your [meshCustomer](meshcloud.customer.md).
+meshProjects are multi-cloud enabled projects that allow teams to manage and scale cloud resources across all [meshPlatforms](meshcloud.platform-location.md) made available to their [meshCustomer](meshcloud.customer.md).
 
 > Only users with the role [Customer Admin](meshcloud.customer.md#meshCustomer-roles) have access to the administrative functionality described in this section.
 
@@ -15,17 +15,20 @@ Log on to the Meshpanel with your account credentials and press `Create`. Type i
 
 In your **Account** section under **Projects** all meshProjects of your meshCustomer are listed. You find the **Account** section by pressing the settings icon on the top right of the mesPanel. You can execute administrative actions on your meshProjects from the **Projects** section. To edit a project, click the **pen** icon in the **Actions** column of the meshProject list. You can edit the assigned locations, payment information and the assigned users of the project.
 
-The following diagram shows how access rights and project replication result in the correct project access for your users.
+The following diagram shows how access rights and project [replication](./meshcloud.tenant.md) result in the correct project access for your users.
 
 ![Project User Role Replication](assets/project-user-roles.png)
 
 Projects have a representation in each cloud platform that we call **Tenant**. Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabeld for the project.
 meshcloud uses orchestration to ensure users assigned to a meshProject always have the same role on all Tenants associated with the Project.
 
-### Add/remove locations from a meshProject
+### Adding meshPlatforms
 
-In the edit screen of a project, the list of all assigned locations is shown. Via the dropdown, new locations can be added. They will be added to the project when clicking the `+` button.
-Locations can also be removed from the project with some limitations. All resources related to the project in that location (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a location.
+The edit screen of a project shows the list of all [meshPlatforms](meshcloud.platform-location.md) grouped by location. Via the dropdown, new meshPlatforms can be added to the project. They will be added to the project when clicking the `+` button. Depending on the configuration of the [meshPlatform](meshcloud.platform-location.md), users may also have to select a [Landing Zone](meshcloud.landing-zones.md) for this platform.
+
+When adding a [meshPlatform](meshcloud.platform-location.md) to a meshProject, meshStack creates a representation of the meshProject for that meshPlatform. This representation is called a [meshTenant](meshcloud.tenant.md) and is an isolated cloud environment e.g. an AWS Account, Azure Subscription or Cloud Foundry Space.
+
+[meshPlatforms](meshcloud.platform-location.md) can also be removed from the project with some limitations. All resources in the [meshTenant](meshcloud.tenant.md) (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a meshPlatform.
 
 ### Provide Payment Information for meshProject
 

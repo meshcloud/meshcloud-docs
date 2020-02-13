@@ -42,7 +42,7 @@ The following parameter can be used in the Blueprint:
 
 Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints there is this `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
-* Existing projects with this Landing Zone will get their Blueprint updated to this version on the next replication
+* Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
 * Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
 
 ### Azure Function
