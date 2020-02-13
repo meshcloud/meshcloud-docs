@@ -14,15 +14,19 @@ The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Admin
 
 Each Landing Zone has paremeters which control its behavior. The available parameters are described below.
 
-### Management Group
+### Management Group Assignment
 
-All newly created meshProjects get their corresponding Subscription assigned to this [Management Group](https://azure.microsoft.com/en-us/features/management-groups/). The Management Group can be configured by an platform operator throughout the Azure portal.
+All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://azure.microsoft.com/en-us/features/management-groups/). The Management Group can be configured by an platform operator through the Azure portal or using infrastructure as code.
 
-### Blueprint Name
+> Management Groups used in different Azure [Landing Zones](./meshcloud.landing-zones.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
+
+### Blueprint Assignment
+
+#### Blueprint Name
 
 The name of the [Blueprint](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) which should get assigned to the project. You can leave it empty, then no Blueprint will get automatically assigned.
 
-### Blueprint Management Group
+#### Blueprint Management Group
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
@@ -38,7 +42,7 @@ The following parameter can be used in the Blueprint:
 | projectIdentifier  | The project identifier                                            |
 | subscriptionId     | The ID of the Azure Subscription associated with this meshProject |
 
-### Max. Auto Upgrade Blueprint Version
+#### Max. Auto Upgrade Blueprint Version
 
 Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints there is this `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
