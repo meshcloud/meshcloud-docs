@@ -27,4 +27,4 @@ an external service provider.
 ## Using Platforms and Locations
 
 Users can configure which locations their [Projects](meshcloud.project.md) are enabled to use.
-A project is able to use and access all meshPlatforms contained in these locations. The locations and meshPlatforms available to your projects are governed by [access policies](meshstack.platform-location.md) configured by your [meshstack operator](meshstack.index.md).
+A project is able to use and access all meshPlatforms contained in these locations. The locations and meshPlatforms available to your projects are governed by [access policies](meshstack.platform-location.md) configured by your [meshStack operator](meshstack.index.md).
