@@ -10,11 +10,11 @@ Here, you can find information on how to use meshcloud and an explanation of the
 
 Quite a bit of complexity in multi-cloud management and multi-cloud governance comes from the use of different and inconsistent terminology between cloud platforms. meshcloud rectifies this using a unified language describing organization and governance structures independent of individual cloud platform implementations. We call this language the **mesh model**. To resolve ambiguity we're prefixing entities in the mesh model using the `mesh` prefix.
 
-The figure below explains the relation of the most important concepts in the mesh model. The table has a summary
+The figure and table below explain the relation of the most important concepts in the mesh model.
 
-![meshModel](assets/meshmodel-simplified.png)
+![meshModel](assets/meshmodel-simplified.svg)
 
-| Entity                                         | Description                                                                               |
+| Entity                                         | Summary                                                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | [meshUser](./meshcloud.profile.md)             | An individual user account. Roles define its level of access and permissions.             |
 | [meshPartner](administration.index.md)         | Partners administrate and support a meshcloud installation.                               |
