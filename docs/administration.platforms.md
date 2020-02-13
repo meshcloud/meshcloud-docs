@@ -21,7 +21,7 @@ notifications:
 ## Restrict Platform Instances
 
 Access to a specific platform can be restricted in the Administration Area via "Platforms" -> "Platform Instances". This feature is helpful
-when a new platform instance shall be integrated, but initially only be visible to a few customers for integration testing.
+when a new meshPlatform shall be integrated, but initially only be visible to a few customers for integration testing.
 
-To restrict the platform instance, go to the platform instance edit screen and search for the customers the platform shall be restricted to.
+To restrict the meshPlatform, go to the meshPlatform edit screen and search for the customers the platform shall be restricted to.
 Add these customers via the *+* button.

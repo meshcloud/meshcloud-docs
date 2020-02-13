@@ -48,7 +48,7 @@ per meshcloud installation.
 | &nbsp;&nbsp;[Chargeback&nbsp;Statements](administration.usage.md)                                                         |       &#10003;       |                   |             |            |                    |
 | [Platforms](administration.platforms.md)                                                                                  |       &#10003;       |                   |             |            |                    |
 | &nbsp;&nbsp;[Platform&nbsp;Notifications](administration.platforms.md#platform-notifications)                             |       &#10003;       |     &#10003;      |             |            |                    |
-| &nbsp;&nbsp;[Platform&nbsp;Restrictions](administration.platforms.md#restrict-platform-instances)                         |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |
+| &nbsp;&nbsp;[Platform&nbsp;Restrictions](administration.platforms.md#restrict-meshPlatforms)                         |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |
 | &nbsp;&nbsp;[Landing&nbsp;Zones](administration.landing-zones.md)                                                         |       &#10003;       |     &#10003;      |             |            |                    |
 | &nbsp;&nbsp;[Usage&nbsp;Reports](administration.usage.md)                                                                 |       &#10003;       |                   |             |            |                    |
 | [User&nbsp;List](administration.users.md)                                                                                 |       &#10003;       |                   |             |            |                    |

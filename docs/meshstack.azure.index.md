@@ -69,7 +69,7 @@ To provide Azure Subscription for your organization's meshProjects, meshcloud su
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement and want to provide a large number of subscriptions in a fully automated fashion.
 
-> Microsoft currently has limitation of a maximum of 250 Subscriptions per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [platform instance](./meshcloud.platform-location.md). Please contact our experts for more details.
+> Microsoft currently has limitation of a maximum of 250 Subscriptions per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](./meshcloud.platform-location.md). Please contact our experts for more details.
 
 ### Pre-provisioned Subscriptions
 
