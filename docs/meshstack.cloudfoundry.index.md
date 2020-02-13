@@ -15,7 +15,7 @@ meshStack provides users access to Cloud Foundry (CF) instances via the OIDC pro
 
 When accessing the platform the user has an OIDC Token (JWT) which is issued by the meshIdB (and potentially by an upstream corporate identity provider, cf. [Identity Federation](meshstack.identity-federation.md)). Cloud Foundry's Auth component UAA validates the token upon access. Also for CF access within meshPanel the token is used to request status information about apps and services to display within meshPanel.
 
-The meshFed replication ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's meshProject permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
+The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's meshProject permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
 
 ![Cloud Foundry Architecture](assets/cf-architecture.svg)
 

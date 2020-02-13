@@ -32,7 +32,7 @@ The user identities are synchronized to your organization's "home tenant", which
 In most organizations, other applications like Office 365 already consume user identities from this AAD Tenant.
 
 > Please make sure that all users who need access to the Azure Portal are replicated into the AAD. meshcloud will issue
-> a replication warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
+> a [replication](./meshcloud.tenant.md) warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
 
 #### meshcloud AAD Tenant
 
@@ -77,7 +77,7 @@ If your organization does not have access to an Enterprise Enrollment, you can a
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that whish
 to use "Pay-as-you-go" subscriptions or if you're organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
 
-The meshcloud Azure replication detects externally-provisioned subscriptions based on a configurable prefix in the subscription
+The meshcloud Azure [replication](./meshcloud.tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 

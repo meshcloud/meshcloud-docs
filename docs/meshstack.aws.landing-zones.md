@@ -52,7 +52,7 @@ The StackInstances will be deployed in this region.
 
 As some users might have already their own custom AWS account provisioning solution, usually called Account Vending Machines (AVM), other mechanisms are needed in order to bootstrap newly created AWS accounts.
 
-While it is possible to trigger an AVM execution via a StackSet a better alternative is usually to trigger it by an custom Lambda function invocation. During the AWS account replication meshStack is able to invoke such a function with custom parameters. From this function the external AVM can start its provisioning process.
+While it is possible to trigger an AVM execution via a StackSet a better alternative is usually to trigger it by an custom Lambda function invocation. During the AWS account [replication](./meshcloud.tenant.md) meshStack is able to invoke such a function with custom parameters. From this function the external AVM can start its provisioning process.
 
 > Please make sure the `MeshfedServiceRole` has the rights in order to trigger the configured Lambda.
 
@@ -78,7 +78,7 @@ The following parameters can be used in the Lambda function and are provided as 
 
 ## Account Vending Machines
 
-In order to detect the finished execution of the AVM meshStack looks for certain tags on the AWS account. If such a tag is present the success of the external replication is assumed and the replication process is handed back to meshStack.
+In order to detect the finished execution of the AVM meshStack looks for certain tags on the AWS account. If such a tag is present the success of the external [replication](./meshcloud.tenant.md) is assumed and the [replication](./meshcloud.tenant.md) process is handed back to meshStack.
 
 Currently the account must contain these tags to be picked up:
 

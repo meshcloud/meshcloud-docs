@@ -58,7 +58,7 @@ The authentication of a user in meshStack and all Cloud Platforms is done via th
 
 ## Authorization in Cloud Platforms
 
-There are two different ways how to apply access rights to the Cloud Platforms. Some Platforms can use the rights that are set in the OIDC or SAML token provided by the [meshIdB](meshstack.identity-federation.md). This is the preferred solution, but not all cloud platforms support this approach. Therefore the second option is the replication of the ACLs during project replication to the Cloud Platforms.
+There are two different ways how to apply access rights to the Cloud Platforms. Some Platforms can use the rights that are set in the OIDC or SAML token provided by the [meshIdB](meshstack.identity-federation.md). This is the preferred solution, but not all cloud platforms support this approach. Therefore the second option is the [replication](./meshcloud.tenant.md) of the ACLs during project [replication](./meshcloud.tenant.md) to the Cloud Platforms.
 
 ### Authorization via OIDC
 
