@@ -2,9 +2,7 @@
 id: meshcloud.profile
 title: User Account
 ---
-The following section covers all the relevant details regarding your meshFed SSO Account.
-
-We have invested a lot of work and time to enable a seamless cloud experience across a large number of different datacenter locations and cloud platforms. To support the seamless access of all of our services across every datacenter location we rely on an OpenID Connect authentication flow.
+The following section covers all the relevant details regarding your meshStack user account.
 
 ## Account Creation
 
