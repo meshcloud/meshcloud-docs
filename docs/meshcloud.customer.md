@@ -9,7 +9,7 @@ A meshCustomer usually represents a product team or department. Within a meshCus
 
 General information of a meshCustomer (like its name) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
 
-Depending on the requirements of your organization, you may be able to edit additional customer metadata.
+Depending on the configuration of your meshStack implementation, you may be able to edit additional customer metadata here.
 
 ## Invite users to a meshCustomer team
 
@@ -17,7 +17,7 @@ If you would like to give others access to your meshCustomer and the related mes
 
 ## Assign User Roles
 
-You can change the meshCustomer role for each user in the dropdown and save the changes via the *disc* icon. The following roles are available:
+You can change the role assigned to each user on the current meshCustomer. To change the assigned role choose a new role from the dropdown and save the changes via the disc icon. The following roles are available:
 
 - **Customer Admin**: Has full access to the meshCustomer and its projects and can manage users of the meshCustomer account.
 - **Customer Employee**: Has full access to project resources, but **cannot** manage users, create projects, etc of the meshCustomer account.
