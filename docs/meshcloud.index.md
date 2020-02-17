@@ -20,7 +20,7 @@ The figure and table below explain the relation of the most important concepts i
 | [meshPartner](administration.index.md)         | Partners administrate and support a meshcloud installation.                               |
 | [meshCustomer](./meshcloud.customer.md)        | A DevOps Team that manages its own [meshProject](./meshcloud.project.md)s and permissions |
 | [meshProject](./meshcloud.project.md)          | A multi-cloud project owned by a [meshCustomer](./meshcloud.customer.md)                  |
-| [meshTenant]                                     | An isolated environment in a specific cloud platform, e.g. an AWS Account.                |
+| [meshTenant](./meshcloud.tenant.md)                                     | An isolated environment in a specific cloud platform, e.g. an AWS Account.                |
 | [meshLandingZone](meshcloud.landing-zones.md)  | Defines configuration and governance policies for cloud environments.                     |
 | [meshPlatform](meshcloud.platform-location.md) | An individual cloud platform connected to meshcloud.                                      |
 | [meshLocation](meshcloud.platform-location.md) | A grouping of meshPlatforms, e.g. by geographic region.                                   |
