@@ -3,22 +3,22 @@ id: administration.emergency-users
 title: "Guide: Emergency Users"
 ---
 
-meshStack manages access to cloud platforms, projects and resources. In cases when urgent intervention is required and users with regular access permissions are not available there must be a defined process to securely access projects and their associated platform resources. This page outlines step-by-step procedures that meshStack administrators can use as the basis for providing emergency procedures to their customers. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
+meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access meshProjects and associated meshTenants. This page outlines step-by-step procedures that meshStack operators can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
 
 Example use cases for emergency users and emergency intervention include
 
-- An important application has stopped functioning and operating users needs access to debug and fix the problem.
-- Project access for a specific user must be immediately revoked (e.g. due to an account compromise).
+- An important application has stopped functioning and operating users needs access to debug and fix the problem
+- Project access for a specific user must be immediately revoked (e.g. due to an account compromise)
 
 In all cases access permissions can always be modified through the [meshPartner](administration.index.md) account which is managed by an operations team. If available, a user with customer admin access is also sufficient for some cases.
 
 ## Emergency Access with Customer Admin
 
-If a user with [customer admin](meshcloud.customer.md) access is available, project users and roles can be managed the normal way, even if the customer admin is not assigned to the project.
+If a user with [customer admin](meshcloud.customer.md) access is available, meshProject users and roles can be managed the normal way, even if the customer admin is not assigned to the meshProject.
 
-First, the user requiring emergency access must be invited to the customer
+First, the user requiring emergency access must be invited to the meshCustomer
 
-- Ensure that the correct customer is selected
+- Ensure that the correct meshCustomer is selected
 - Open "Account" from the settings menu in the top right
 - Navigate to "Users" and create an invitation
   
@@ -26,70 +26,70 @@ You can also grant customer admin rights to the newly invited user, i.e. if the 
 
 ### Adding emergency as Customer Admin
 
-The user can then be assigned to projects belonging to the customer:
+The user can then be assigned to meshProjects belonging to the meshCustomer:
 
 - Open "Account" from the settings menu in the top right
 - Navigate to "Projects" and select "Edit Project" from the actions column for the correct project
 - Add user to desired project role
 
-Since emergency access should only be temporary, it's strongly advised to assign the user a role with a [set expiration date](./meshcloud.project.md#expiry-of-a-user-assignment) which will ensure that the user is automatically removed from the project after the specified date.
+Since emergency access should only be temporary, it's strongly advised to assign the user a role with a [set expiration date](./meshcloud.project.md#expiry-of-a-user-assignment) which will ensure that the user is automatically removed from the meshProject after the specified date.
 
 ### Approving emergency user requests
 
 User project role assignments can be configured to require consent from multiple customer admins ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough customer admins are available to confirm an urgent user role request, the meshPartner can confirm project role requests directly:
 
-- Ensure that the partner is selected from the customer drop down
+- Ensure that the partner is selected from the meshCustomer drop down
 - Open "Administration" from the settings menu in the top right
-- Navigate to "Customers" and select "User Pending Role Requests" from the actions column for the customer to which the project is assigned
+- Navigate to "Customers" and select "User Pending Role Requests" from the actions column for the meshCustomer to which the project is assigned
 - Approve the user role request
 
-### Removing emergency user via Customer
+### Removing emergency user via meshCustomer
 
 When emergency access is no longer required the following steps will revert performed  changes:
 
-- Remove user from project via Account → Projects → Edit Project (performed automatically if expiration date was set)
-- Remove user from customer via Account → Users
+- Remove user from meshProject via Account → Projects → Edit Project (performed automatically if expiration date was set)
+- Remove user from meshCustomer via Account → Users
 
-## Access with Partner
+## Access with meshPartner
 
-Even when no customer admin is available, users with partner admin/employee access can manage permissions for their ,managed meshCustomers.
+Even when no customer admin is available, users with partner admin/employee access can manage permissions for their managed meshCustomers.
 
-### Adding emergency user as Partner
+### Adding emergency user as meshPartner
 
-In order to manage users for a specific project, the partner user must add their own account to the respective customer as a customer admin:
+In order to manage users for a specific meshProject, the partner user must add their own account to the respective meshCustomer as a customer admin:
 
-- Ensure that the partner is selected
+- Ensure that the meshPartner is selected from the meshCustomer dropdown
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Customers" and select "Customer User" from the actions column for the target customer
 - Activate “Add Myself” button in the top right
-  
-Afterwards they may proceed to manage users for this customer as a customer admin (see previous section).
 
-### Removing emergency user as Partner
+Afterwards they may proceed to manage users for this meshCustomer as a customer admin (see previous section).
 
-Since the partner user is now a customer admin the procedure is the same as outlined in the previous section.
+### Removing emergency user as meshPartner
+
+Since the meshPartner user is now a customer admin the procedure is the same as outlined in the previous section.
 However, to revert the temporary customer admin role assignment, another customer admin must remove the partner user from the customer via Account → Users.
 
 ## Access Through Service Users
 
 When access is only required for cloud resources and the cloud platform supports [service users](./meshcloud.service-user.md) emergency access can also be arranged by utilizing service users.
-Service user credentials can be generated by any user assigned to a project by navigating to the desired project and platform and selecting “Service Users”. When they are no longer required they can be deleted here as well.
+Service user credentials can be generated by any user assigned to a meshProject by navigating to the desired meshProject and meshPlatform and selecting “Service Users”. When they are no longer required they can be deleted here as well.
 
 ## Auditing Emergency Access
 
-Since customer/project access permissions should not be granted lightly all changes to them are logged and can be audited by partner admin/employee users.
+Since meshCustomer/meshProject access permissions should not be granted lightly all changes to them are logged and can be audited by partner admin/employee users.
 
 ### Customer History
 
-- Ensure that the partner is selected from the customer drop down
+- Ensure that the meshPartner is selected from the meshCustomer drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Customers" and select "Customer History"
 
-The list contains all customer events (i.e. sent invitations, added/removed users, role changes), when they occurred and who initiated the action. Event specific information (i.e. who the recipient of an invite was) is available via the “Details” button.
+The list contains all meshCustomer events (i.e. sent invitations, added/removed users, role changes), when they occurred and who initiated the action. Event specific information (i.e. who the recipient of an invite was) is available via the “Details” button.
 
 ### Project History
 
-- Ensure that the partner is selected from the customer drop down
+- Ensure that the meshPartner is selected from the meshCustomer drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Customers" and select "Customer Projects"
 - Find the project and select "Project History"
