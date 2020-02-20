@@ -39,3 +39,6 @@ The full workflow to access the Cloud Foundry platform is as follows:
 ### UAA configuration
 
 UAA needs to have jwt-bearer Auth grants enabled which is configured against a corresponding OIDC client configuration within the meshIdB.
+
+When users are replicated to the UAA of Cloud Foundry they always get the “Org User” and “Space Developer” role. With these roles, they are limited to managing resources in their assigned projects. Access management and creation of new projects is not possible with these roles. The actual access rights associated with these roles are managed by Cloud Foundry and are not part of meshStack.
+Cloud Foundry uses the Identity broker only to authenticate users. Authorization is done as described before via meshProject roles set by meshStack.

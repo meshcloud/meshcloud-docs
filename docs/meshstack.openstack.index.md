@@ -34,3 +34,17 @@ The backend also uses the JWT token to check the user's permissions. If the perm
 If the KToken expires, the OIDC/Keystone Token Exchange (steps 6-8) must be executed again. Once the OIDC token has expired, the user must authenticate again to the keycloak.
 
 ![OpenStack Communication](assets/os-communication.png)
+
+## Authorization
+
+As OpenStack has to scope authorization to a specific project, the token from the meshIdB is also scoped to a specific project in the request. The project information can then be read from the **MC_PROJECTS** claim in the token provided by the meshIdB. OpenStack maps this attribute to a local Group associated with the project, that contains the previously mentioned roles.
+
+Project Users get the following OpenStack roles:
+
+- _member_
+- heat_stack_owner
+- creator
+
+The actual access rights associated with these roles are managed by the OpenStack instance and are not part of meshStack.
+
+More details about the User Federation with OpenStack can be found [here](meshstack.openstack.index.md).

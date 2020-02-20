@@ -5,70 +5,122 @@ title: Authorization
 
 As described in [Identity Federation](meshstack.identity-federation.md) a SSO solution to access multiple cloud platforms is a central feature of meshStack. This section about **Authorization** describes in details on which level and how authorization is granted.
 
-## User Groups
+meshStack uses an RBAC authorization model. The default product configuration includes roles aggregating individual permissions (rights). These roles are modeled after functional roles expected in typical usage scenarios.
 
-On top level there are two different types of meshCustomers available. On the one hand a [consumer meshCustomer](meshcloud.customer.md) who is responsible for his own projects. On the other hand a [partner meshCustomer](administration.index.md), who can manage multiple assigned meshCustomers.
+> Make sure to review the [meshModel](meshcloud.index.md) for background on terminology used in this document.
 
-For both meshCustomer types different groups can be assigned to the users. For **consumer meshCustomer** the available groups and the functionality they have access to is described [here](meshcloud.customer.md#meshCustomer-roles). For **partner meshCustomer** the overview of groups and what they have access to is available [here](administration.index.md).
+## Overview
 
-Besides this access control on meshCustomer level, users also have to be assigned to the projects of a customer, which is described [here](meshcloud.project.md#manage-meshprojects).
+meshStack includes **meshObject roles** that manage permissions on different [meshObjects](meshcloud.index.md). For example meshCustomer Roles describe permissions on a meshCustomer object.
 
-### User Project Role Approval
+### Role Bindings
 
-In case you are required to implement a 4-eye-principle for user role assignment for compliance puposes you can configure the meshStack to do so. By setting:
+**Role bindings** assign a meshUser a meshObject role on specific meshObject. Role bindings are also exposed via the [meshObject API](meshstack.api.md#meshobject-api). For example, a `meshProjectUserBinding` associates a meshUser with a meshProject and a meshProject Role.
 
-```yml
-web:
-  user:
-    rolerequest:
-      min-approval-count: 2 # Number of approvals from customer admins
+Role bindings can also have a managed expiry date after which meshStack will automatically revoke the role.
+
+Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Customer Admin" [meshCustomer Role](meshcloud.customer.md#meshCustomer-roles) can add new role bindings to that meshCustomer.
+
+### Role Requests
+
+Any change in role binding always occurs via a **role request**. Role requests can be either approved or denied. Role requests may be subject to **approval conditions**. Operators can configure these conditions to meet a range of organisational and regulatory requirements like e.g. a 4 eyes principle.
+
+Role requests produce an audit trail and may trigger notifications to involved parties.
+
+## meshObject Roles
+
+### meshCustomer Roles
+
+[meshCustomer Roles](meshcloud.customer.md#meshCustomer-roles) control the permission on a [meshCustomer](meshcloud.customer.md) and the [meshObjects](meshcloud.index.md) owned by that meshCustomer. Users must have a corresponding role binding in order to access meshObjects owned by a meshCustomer like [meshProjects](meshcloud.project.md).
+
+Users with the right permissions can [assign meshCustomer roles](meshcloud.customer.md#assign-meshcustomer-roles) in self-service.
+
+### meshPartner Roles
+
+The [meshPartner](administration.index.md) is a special type of meshCustomer. meshPartners own other meshCustomer accounts and therefore have far-reaching permissions managed in [meshPartner Roles](administration.index.md).
+
+Users with the right permissions can assign meshCustomer roles in self-service with the same process used to [assign meshCustomer roles](meshcloud.customer.md#assign-meshcustomer-roles).
+
+### meshProject Roles
+
+[meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject roles bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platform-location.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
+
+Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users can only have meshProject role bindings as long as they also have a role binding on the meshCustomer that is the owner of that meshProject. Revocation of this meshCustomer role binding causes revocation of all associated meshProject role bindings.
+
+## Configuration Options
+
+### Available meshProject Roles
+
+Operators globally configure the names and identifiers of meshProject roles available in their meshStack implementation. The individual [meshPlatform](meshcloud.platform-location.md) and [Landing Zone](meshcloud.landing-zones.md) configuration determines how these meshProject roles are mapped to cloud roles/permissions for an individual meshTenant.
+
+The default configuration of meshStack ships with these roles and intended use.
+
+- Project Reader: A read-only user, like a controller or similar.
+- Project User: A default user, like a developer, who can manage resources in the cloud platform.
+- Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
+
+The meshProject roles can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.project` as follows:
+
+```haskell
+{ initialRole = Some "user"
+, roles =
+    Some
+      [ { name = "Project-Admin", identifier = "admin" }
+      , { name = "Project-User", identifier = "user" }
+      , { name = "Project-Reader", identifier = "reader" }
+      ]
+}
 ```
 
-If this option is set to 2 or higher upon project user invitation a popup will ask the inviting user to enter some additional information like why this role is required and for how long. These information will be visible to customer administrators who then can accept or decline such a request.
+The `initialRole` designates the default role that will be pre-selected for new role requests in the meshPanel.
+
+### Role Request Approval
+
+In case you are required to implement a 4-eye-principle for user role requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.user.rolerequest` as follows:
+
+```haskell
+{ minApprovalCount = Some 2
+, enforceUserAcceptanceRequired = Some True
+}
+```
+
+If the `minApprovalCount` option is set to 2 or higher upon project user invitation a popup will ask the inviting user to enter some additional information like why this role is required and for how long. These information will be visible to customer administrators who then can accept or decline such a request.
 
 <figure>
   <img src="assets/authorization.additional-role-info.png" style="width: 50%;" alt="Additional Information Role Request Popup">
-  <figcaption>Popup requesting additional information for a project role assignment</figcaption>
+  <figcaption>Popup requesting additional information for a project role request</figcaption>
 </figure>
 
-New project role assignments must be approved before the assignment takes effect. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for a role request. This ensures that a _different_ customer admin must register the 2nd approval before the assignment takes effect.
+New project role requests must be approved before the binding is created. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for a role request. This ensures that a _different_ customer admin must register the 2nd approval before the binding is created.
 
 Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests.
 
 When any customer admin declines the role request, the role request is immediately cancelled.
 
-> Note: When a customer has less customer admins than the requested `min-approval-count`, role requests will get automatically approved when all customer admins have registered an approval. The Panel can be configured to display a warning in this case.
+> Note: When a customer has less customer admins than the requested `minApprovalCount`, role requests will get automatically approved when all customer admins have registered an approval. The meshPanel can be configured to display a warning in this case.
 
-Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so the config for the panel must include the following flag.
+Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so configure the [meshStack configuration model](meshstack.configuration.md) under `panel.mesh.dashboardNotification`:
 
-```json
-{
-  mesh: {
-    dashboardNotification: {
-      show4EyePrincipleWarning: true
-    }
-}
+```haskell
+{ show4EyePrincipleWarning = Some True }
 ```
 
-Removal of roles currently works without asking for permission.
+It's currently not possible to configure required approval for removal of role bindings.
 
-## Authentication
+### Authorization in Cloud Platforms
 
-The authentication of a user in meshStack and all Cloud Platforms is done via the meshIdB as described in [Identity Federation](meshstack.identity-federation.md).
+There are two different ways how to apply access rights to the Cloud Platforms. Some Platforms can use the rights that are set in the OIDC or SAML token provided by the [meshIdB](meshstack.identity-federation.md). However, not all cloud platforms support this approach. Therefore the second option is the [replication](./meshcloud.tenant.md) of authorization attributes during meshTenant replication.
 
-## Authorization in Cloud Platforms
+> Please consult the documentation for the different cloud platforms for more details on the supported authorization mechanisms and their configuration.
 
-There are two different ways how to apply access rights to the Cloud Platforms. Some Platforms can use the rights that are set in the OIDC or SAML token provided by the [meshIdB](meshstack.identity-federation.md). This is the preferred solution, but not all cloud platforms support this approach. Therefore the second option is the [replication](./meshcloud.tenant.md) of the ACLs during project [replication](./meshcloud.tenant.md) to the Cloud Platforms.
+#### meshIdB Authorization
 
-### Authorization via OIDC
-
-In order to provide users access to their cloud resources, all relevant authorization information about a meshUser is stored in the corresponding meshIdB user. To provide the authorization information in the token, the request for the token must be scoped to a specific customer of the user. The tokens provided by Keycloak contain the scoped customer and the according group on this customer as well as information about the projects he has access to.
+In order to provide users access to their cloud resources, all relevant authorization information about a meshUser is stored in the corresponding meshIdB user. To provide the authorization information in the token, the request for the token must be scoped to a specific meshCustomer role. The tokens provided by Keycloak contain the scoped customer and the according meshCustomer role as well as information about the meshProjects the user has access to.
 
 The following claims in the OIDC token represent this information and can be used by the cloud platforms to apply the access rights.
 
 ```json
 {
-  ...
   "MC_PROJECTS": [
     "project1-noadmin",
     "project2-noadmin"
@@ -79,47 +131,24 @@ The following claims in the OIDC token represent this information and can be use
   ],
   "preferred_username": "user@meshcloud.io",
   "email": "user@meshcloud.io",
-  ...
 }
 ```
 
-The **MC_PROJECTS** claim contains all projects the user has access to in the scoped meshCustomer. The **MC_GROUPS** also contain only the Groups the user is assigned to in the current customer. This claim is currently defined as an array for future flexibility. Currently a user can only have one group assigned per meshCustomer.
+The `MC_PROJECTS` claim contains all projects the user has access to in the scoped meshCustomer. The `MC_GROUPS` also contain only the meshCustomer roles the user is assigned to in the current customer. This claim is currently defined as an array for future flexibility. Currently a user can only have one role assigned per meshCustomer.
 
-#### OpenStack
 
-As OpenStack has to scope authorization to a sepcific project, the token from the meshIdB is also scoped to a specific project in the request. The project information can then be read from the **MC_PROJECTS** claim in the token provided by the meshIdB. OpenStack maps this attribute to a local Group associated with the project, that contains the previously mentioned roles.
-
-Project Users get the following OpenStack roles:
-
-- _member_
-- heat_stack_owner
-- creator
-
-The actual access rights associated with these roles are managed by the OpenStack instance and are not part of meshStack.
-
-More details about the User Federation with OpenStack can be found [here](meshstack.openstack.index.md).
-
-### Authorization via replication
+#### Authorization via replication
 
 For platforms that don't support the [Authorization via OIDC](#authorization-via-oidc), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
 
-#### Cloud Foundry
+## Service Users
 
-When users are replicated to the UAA of Cloud Foundry they always get the “Org User” and “Space Developer” role. With these roles, they are limited to managing resources in their assigned projects. Access management and creation of new projects is not possible with these roles. The actual access rights associated with these roles are managed by Cloud Foundry and are not part of meshStack.
-Cloud Foundry uses the Identity broker only to authenticate users. Authorization is done as described before via roles set by meshStack.
+[Service Users](meshcloud.service-user.md) are technical users, that can be created for individual meshTenants. They are local platform users and can therefore only be used to access a specific project in a specific cloud platform. The password of such a generated user is only downloaded once when a service user is created. meshStack does not store this password. It is the user’s responsibility to safely store it. If the password is somehow compromised, the service user can easily be deleted and replaced by a new service user.
 
-#### AWS
+A Service User can be created and deleted by all users assigned to the project. Information about the Service User creator is available in meshStack. The creator is responsible for the secure usage of this Service User.
 
-The Project User Roles are mapped to [AWS IAM Roles](https://docs.aws.amazon.com/de_de/IAM/latest/UserGuide/access.html), which are the authorization roles in AWS. The access rights associated with these IAM roles is not part of meshStack.
+## Role Revocation
 
-## Service User
-
-[Service Users](meshcloud.service-user.md) are technical users, that can be created per meshPlatform in a project. They are mainly used in CI/CD pipelines. They are local platform users and can therefore only be used to access a specific project in a specific cloud platform. The password of such a generated user is only downloaded once when a service user is created. It is a random generated, 24 characters long password generated with Java's SecureRandom class. meshStack does not store this password. It is the user’s responsibility to safely store it. If the password is somehow compromised, the service user can easily be deleted and replaced by a new service user.
-Service Users are available for Cloud Foundry and OpenStack cloud platforms. Other cloud platforms supported by meshStack like AWS or Kubernetes offer superior “native” alternatives to service users (i.e. [IAM Policies](https://docs.aws.amazon.com/de_de/IAM/latest/UserGuide/access_policies_manage.html) & Credentials, ServiceAccounts).
-A Service User can be created and deleted by all users assigned to the project. Information about the Service User creator is available in meshStack. The creator is responsible for the secure usage of theis Service User.
-
-## User Revocation
-
-User Revocation on [project](meshcloud.project.md#unassign-user-from-a-meshproject) and [customer](meshcloud.customer.md#remove-users-from-a-meshcustomer) level allow Customer Admins to always limit access to the meshCustomer and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke access of a user to all meshCustomers and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
+User role revocation on [meshProject](meshcloud.project.md#unassign-user-from-a-meshproject) and [meshCustomer](meshcloud.customer.md#remove-users-from-a-meshcustomer) level allow Customer Admins to always limit access to the meshCustomer and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshCustomers and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
 
 Users who e.g. left the company, can automatically be revoked in meshStack as described [here](meshstack.user-revocation.md).
