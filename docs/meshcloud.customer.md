@@ -13,9 +13,9 @@ Depending on the configuration of your meshStack implementation, you may be able
 
 ## Invite users to a meshCustomer team
 
-If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the meshPanel. From here, navigate to "Users" and provide the full name as well as the email address of that person. You can initially setup the group in the dropdown which describe the access level of the invited user. Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](meshcloud.project.md). After this action the created invitation will be appear under the pending customer user role requests section.
+If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You can access them by pressing the settings icon on the top right of the meshPanel. From here, navigate to "Users" and provide the full name as well as the email address of that person. You can initially setup the role in the dropdown which describes the access level of the invited user. Press "+" to send an invitation email. This step is necessary in order to give a user access to your [projects](meshcloud.project.md). After this action the created invitation will be appear under the pending customer user role requests section.
 
-## Assign User Roles
+## Assign meshCustomer Roles
 
 You can change the role assigned to each user on the current meshCustomer. To change the assigned role choose a new role from the dropdown and save the changes via the disc icon. The following roles are available:
 
@@ -24,7 +24,7 @@ You can change the role assigned to each user on the current meshCustomer. To ch
 
 ### meshCustomer Roles
 
-The following table provides details about the functionality available to the different groups.
+The following table provides details about the functionality available to the different roles.
 
 |                       | Customer Admin | Customer Employee |
 | --------------------- | :---: | :---: |
@@ -59,8 +59,8 @@ The following table provides details about the functionality available to the di
 
 > The roles that are available for Partner and Admin customers are described in the [Administration](administration.index.md) section.
 
-meshCustomer roles grant rights in meshStack only. In order to access cloud resources users need to be [granted a  role on a meshProject](meshcloud.project.md#user-management-on-a-meshproject).
+meshCustomer roles grant rights in meshStack only. In order to access cloud resources users need to be [granted a role on a meshProject](meshcloud.project.md#user-management-on-a-meshproject).
 
-## Change or Remove User Roles
+## Change or Remove assigned meshCustomer Roles
 
 If you would like to remove a user from your meshCustomer go to your "Account" settings and select "Users". If the user already accepted the invitation, you can click the "trash" icon in the "Users" section to remove the user from your meshCustomer. If a user has already received an invitation before, but never claimed it, click the "trash" icon in the Pending Invitations section. When removing the user on the meshCustomer, the user is automatically removed from all projects he had access to. He also won't be able to access cloud resources of your projects anymore. The user will be informed via email, that his access to the meshCustomer was revoked.

@@ -54,8 +54,6 @@ Project roles grant users a configured set of permissions in cloud platforms use
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
-Currently, project roles are only used for AWS and Azure integration. But in future, they will allow more fine-grained access control in additional cloud platforms by mapping the “Mesh Project Role” to the platform’s internal access groups.
-
 ### Update Project Role
 
 You can change the Project Role of a user, by choosing a different role for the user in the dropdown at the **Project Users** section, and clicking the **disc** icon afterwards to save the change.

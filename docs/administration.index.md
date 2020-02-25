@@ -14,7 +14,7 @@ available to users of partner or admin accounts:
 - **meshAdmin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
   administrator/partner account.
 - **meshAdmin Employee**: Has full access to all administration functionality, but **cannot** manage users of the administrator/partner account.
-- **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This group can perform tasks related to
+- **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
 - **Ops Support**: Not all Ops operations must be executed by Platform Operators. E.g. setting quotas is a task that can also be done by
   a separate Ops Support team.
@@ -22,11 +22,9 @@ available to users of partner or admin accounts:
   functionality which is granted by this role.
 - **Controller**: A Controller has access to billing and usage information of customer projects.
 
-See the [Customer Account](meshcloud.customer.md#manage-groups-of-assigned-users) documentation for details about how you can manage the groups of your users.
+See the [meshCustomer](meshcloud.customer.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable by adding roles to reflect individual access requirements of your organization.
 
-This set of groups is easily extendable, so individual access requirements of your organization can be implemented.
-
-The following table provides details about the functionality available to the different groups by default. The Access rights can also be adapted individually
+The following table provides details about the functionality available to the different roles by default. The Access rights can also be adapted individually
 per meshcloud installation.
 
 |                                                                                                                           | meshAdmin / Employee | Platform Operator | Ops Support | Controller | Onboarding Support |
