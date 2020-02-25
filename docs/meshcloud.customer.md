@@ -13,7 +13,7 @@ Depending on the configuration of your meshStack implementation, you may be able
 
 ## Invite users to a meshCustomer team
 
-If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You access them by pressing the settings icon on the top right of the meshPanel. From here, navigate to "Users" and provide the full name as well as the email address of that person. You can initially setup the role in the dropdown which describe the access level of the invited user. Press "+" to send an invitation email to this person. This step is necessary in order to give a user access to your [projects](meshcloud.project.md). After this action the created invitation will be appear under the pending customer user role requests section.
+If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings. You can access them by pressing the settings icon on the top right of the meshPanel. From here, navigate to "Users" and provide the full name as well as the email address of that person. You can initially setup the role in the dropdown which describes the access level of the invited user. Press "+" to send an invitation email. This step is necessary in order to give a user access to your [projects](meshcloud.project.md). After this action the created invitation will be appear under the pending customer user role requests section.
 
 ## Assign meshCustomer Roles
 

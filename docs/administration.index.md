@@ -22,7 +22,7 @@ available to users of partner or admin accounts:
   functionality which is granted by this role.
 - **Controller**: A Controller has access to billing and usage information of customer projects.
 
-See the [meshCustomer](meshcloud.customer.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable, so individual access requirements of your organization can be implemented.
+See the [meshCustomer](meshcloud.customer.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable by adding roles to reflect individual access requirements of your organization.
 
 The following table provides details about the functionality available to the different roles by default. The Access rights can also be adapted individually
 per meshcloud installation.
