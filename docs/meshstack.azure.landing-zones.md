@@ -51,7 +51,7 @@ Blueprints are versioned in Azure and can be managed via the Azure Portal. To av
 
 #### Locking Mode
 
-Blueprint assignments are performed with a specific locking mode which determines if locked resources managed by Blueprints can be deleted and/or modified.
+Blueprint assignments are performed with a specific [resource locking mode](https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/resource-locking) which determines if locked resources managed by Blueprints can be deleted and/or modified.
 
 | Locking Mode            | Description                                                                               |
 | ----------------------- | :---------------------------------------------------------------------------------------- |
