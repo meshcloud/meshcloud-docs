@@ -41,7 +41,7 @@ The following parameter can be used in the Blueprint:
 | projectIdentifier  | The project identifier                                            |
 | subscriptionId     | The ID of the Azure Subscription associated with this meshProject |
 
-**Please Note:** that there are a few shortcomings when dealing with Azure parameters. Resource Group names and locations can not be directly parametrized as their format of reporting missing parameters is not compatible with the replicator.
+**Please Note:** there are some specialities to keep in mind when dealing with Azure parameters. Resource group names and locations can not be parameterised via meshStack.
 
 When parameters are marked as static in the Azure Panel, they can not be replaced or overwritten during replication. Usually default parameter should not be marked as static in the Azure Blueprint panel because doing so prevents their replacement by meshStack specific variables.
 
