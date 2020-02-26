@@ -68,7 +68,18 @@ meshStack assigns a default quota to newly registered [meshCustomers](./meshclou
 }
 ```
 
-[meshPartners](./administration.index.md) can change these quotas for each of their managed meshCustomers individually using the [administration area](administration.customers.md#customer-quota-management).
+The default only applies to newly registered [meshCustomers](./meshcloud.customer.md). [meshPartners](./administration.index.md) can change the individual quotas for managed meshCustomers at any time using the [administration area](administration.customers.md#customer-quota-management).
+
+### Feedback Mailbox
+
+Users have the option to quickly submit feedback via the meshPanel's "thumbs up/down" button in the navbar.
+Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
+
+```haskell
+{
+  feedbackEmail = Some "feedback@example.com"
+}
+```
 
 ### User Identity Lookup
 
