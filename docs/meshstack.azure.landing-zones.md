@@ -43,7 +43,7 @@ The following parameter can be used in the Blueprint:
 
 **Please Note:** that there are a few shortcomings when dealing with Azure parameters. Resource Group names and locations can not be directly parametrized as their format of reporting missing parameters is not compatible with the replicator.
 
-When parameter are marked as a static parameter in the Azure Panel, then they are not reported as missing parameters during project replication by the Azure API and thus can not be replaced anymore. This means a replaceable parameter should never be marked as static in the Azure Blueprint panel.
+When parameters are marked as static in the Azure Panel, they can not be replaced or overwritten during replication. Usually default parameter should not be marked as static in the Azure Blueprint panel because doing so prevents their replacement by meshStack specific variables.
 
 <figure>
   <img src="assets/azure-static-param.png" alt="Static Parameter usage in Azure Blueprint Panel">
