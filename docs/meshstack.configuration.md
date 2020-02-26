@@ -19,7 +19,7 @@ Objects in meshcloud can have three kinds of properties used to refer to them.
 - **Identifier**: An immutable id, unique in space. Drawn from a reduced character set, e.g. `my-project`.
 - **Name/Display Name**: A mutable display string to be used for display purposes e.g. `My Project`
 
-meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.customer.md) and [meshProjects](./meshcloud.project.md). This is useful to ensure projects can be identifiers are compatible with all connected cloud platforms and don't require additional name mangling to comply with cloud specific naming rules.
+meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.customer.md) and [meshProjects](./meshcloud.project.md). This is useful to ensure projects can be identifiers are compatible with all connected cloud platforms and don't require additional name mangling to comply with cloud specific naming rules. You can configure these options in `meshfed.web.restriction` as follows:
 
 ```haskell
 { customerIdentifierLength :
@@ -38,7 +38,7 @@ meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.custome
 ### Customer Registration
 
 Multiple options are available to control how [meshCustomers](./meshcloud.customer.md) can sign up to meshStack in
-self-service. meshStack can be configured to suit your organization's unique demands for sign up.
+self-service. meshStack can be configured to suit your organization's unique demands for sign up. You can configure these options in `meshfed.web.register` as follows
 
 ```haskell
   
@@ -58,20 +58,30 @@ Additional remarks and configuration links:
 - `allowPartnerInviteLinks` enables the use of [invite links](administration.customers.md#invite-customer-via-link)
 - `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
 
+### Default Quotas
+
+meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
+
+```haskell
+{ {- the number of allowed meshProjects per meshCustomer -}
+  meshProjects = 5
+}
+```
+
+[meshPartners](./administration.index.md) can change these quotas for each of their managed meshCustomers individually using the [administration area](administration.customers.md#customer-quota-management).
+
 ### User Identity Lookup
 
 When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider. This makes it easier for people to invite additional users without remembering their full contact details.
 
-If you have an Azure AAD as an upstream IDP you can configure this functionality by the following configuration:
+If you have an Azure AAD as an upstream IDP you can configure this functionality You can configure these options in `meshfed.web.identityLookup` as follows:
 
 ```haskell
-{ identityLookup =
-  { azure =
-    {- Either friendly domain name or your tenants GUID -}
-    { aadTenant = "<AAD_TENANT_ID>"
-    , clientId = "<SERVICE_PRINCIPAL_CLIENT_ID>"
-    , clientSecret = "<SERVICE_PRINCIPAL_CLIENT_SECRET>"
-    }
+{ azure =
+  {- Either friendly domain name or your tenants GUID -}
+  { aadTenant = "<AAD_TENANT_ID>"
+  , clientId = "<SERVICE_PRINCIPAL_CLIENT_ID>"
+  , clientSecret = "<SERVICE_PRINCIPAL_CLIENT_SECRET>"
   }
 }
 ```
