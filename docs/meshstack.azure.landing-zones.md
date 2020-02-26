@@ -30,7 +30,7 @@ The name of the [Blueprint](https://docs.microsoft.com/en-us/azure/governance/bl
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
-Operators must ensure to create these management groups in the meshcloud AAD Tenant before configuring them for use in a Landing Zone.
+Operators must ensure to create these management groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
 
 The following parameter can be used in the Blueprint:
 
