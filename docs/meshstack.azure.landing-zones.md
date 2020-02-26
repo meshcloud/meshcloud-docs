@@ -46,8 +46,18 @@ The following parameter can be used in the Blueprint:
 
 Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints there is this `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
-* Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
-* Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
+- Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
+- Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
+
+#### Locking Mode
+
+Blueprint assignments are performed with a specific locking mode which determines if locked resources managed by Blueprints can be deleted and/or modified.
+
+| Locking Mode            | Description                                                                               |
+| ----------------------- | :---------------------------------------------------------------------------------------- |
+| None                    | Resources are not protected                                                               |
+| AllResourcesReadOnly    | Locked resource groups are read only and other locked resources can't be modified at all. |
+| AllResourcesDoNotDelete | Locked resources can be modifiede but not deleted.                                        |
 
 ### Azure Function
 
