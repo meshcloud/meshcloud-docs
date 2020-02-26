@@ -30,8 +30,7 @@ The name of the [Blueprint](https://docs.microsoft.com/en-us/azure/governance/bl
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
-Operators must ensure to create these management groups in the meshcloud AAD Tenant before configuring them
-for use in a Landing Zone.
+Operators must ensure to create these management groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
 
 The following parameter can be used in the Blueprint:
 
@@ -41,6 +40,15 @@ The following parameter can be used in the Blueprint:
 | costcenter         | ID of the CostCenter defined for this meshProject.                |
 | projectIdentifier  | The project identifier                                            |
 | subscriptionId     | The ID of the Azure Subscription associated with this meshProject |
+
+**Please Note:** there are some specialities to keep in mind when dealing with Azure parameters. Resource group names and locations can not be parameterised via meshStack.
+
+When parameters are marked as static in the Azure Panel, they can not be replaced or overwritten during replication. Usually default parameter should not be marked as static in the Azure Blueprint panel because doing so prevents their replacement by meshStack specific variables.
+
+<figure>
+  <img src="assets/azure-static-param.png" alt="Static Parameter usage in Azure Blueprint Panel">
+  <figcaption>Static Parameter usage in Azure Blueprint Panel</figcaption>
+</figure>
 
 #### Max. Auto Upgrade Blueprint Version
 
