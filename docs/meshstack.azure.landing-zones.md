@@ -63,7 +63,7 @@ This flag allows you to use a User Assigned Managed Identity instead of the stan
 
 Currently we only recommend to use this flag only if you want to create resources that require permissions outside of the meshcloud managed subscription. A good example is if you want to connect a meshcloud managed subscription to a central log workspace. In order to do this, you require permissions in both the meshcloud managed subscription and the subscription your central Log Workspace App resides in.
 
-**Please note**: meshcloud automatically handles permissions in the subscription the blueprint is assigned to, but permissions outside of that cannot be handled and have to be setup by yourself.
+**Please note**: meshcloud automatically handles permissions in the subscription the Blueprint is assigned to, but permissions outside of that cannot be handled and have to be setup by yourself.
 
 The following parameters are required:
 | Parameter              | Description                                                                                                                                                                                                                                                            |
