@@ -35,7 +35,7 @@ Operators must ensure to create these management groups in the meshcloud AAD Ten
 The following parameter can be used in the Blueprint:
 
 | Parameter          | Description                                                       |
-| ------------------ | :---------------------------------------------------------------- |
+|--------------------|:------------------------------------------------------------------|
 | customerIdentifier | Customer Identifier                                               |
 | costcenter         | ID of the CostCenter defined for this meshProject.                |
 | projectIdentifier  | The project identifier                                            |
@@ -57,12 +57,28 @@ Blueprints are versioned in Azure and can be managed via the Azure Portal. To av
 - Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
 
+#### Use User Assigned Managed Identity (UAMI)
+
+This flag allows you to use a User Assigned Managed Identity instead of the standard System Assigned Managed identity during the assignment of your blueprint. For more details on their differences, refer to the [Azure Documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)).
+
+Currently we only recommend to use this flag only if you want to create resources that require permissions outside of the meshcloud managed subscription. A good example is if you want to connect a meshcloud managed subscription to a central log workspace. In order to do this, you require permissions in both the meshcloud managed subscription and the subscription your central Log Workspace App resides in.
+
+**Please note**: meshcloud automatically handles permissions in the subscription the blueprint is assigned to, but permissions outside of that cannot be handled and have to be setup by yourself.
+
+The following parameters are required:
+| Parameter              | Description                                                                                                                                                                                                                                                            |
+|------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| UAMI Azure Resource ID | Azure Resource ID of the identity; has the following form: `/subscriptions/[subscriptionId]/resourceGroups/[yourRG]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[userIdentity]`. When opening the UAMI in Azure Portal you can obtain this from the URL |
+| UAMI Object ID         | Object ID of the identity; When opening the UAMI in Azure Portal you can obtain this from the `Object ID` field                                                                                                                                                        |
+
+
+
 #### Locking Mode
 
 Blueprint assignments are performed with a specific [resource locking mode](https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/resource-locking) which determines if locked resources managed by Blueprints can be deleted and/or modified.
 
 | Locking Mode            | Description                                                                               |
-| ----------------------- | :---------------------------------------------------------------------------------------- |
+|-------------------------|:------------------------------------------------------------------------------------------|
 | None                    | Resources are not protected                                                               |
 | AllResourcesReadOnly    | Locked resource groups are read only and other locked resources can't be modified at all. |
 | AllResourcesDoNotDelete | Locked resources can be modifiede but not deleted.                                        |
@@ -74,7 +90,7 @@ Assign a Azure function to the landing zone configuration to trigger a small pie
 The following HTTP headers are provided to the Azure Function:
 
 | HTTP Header Name           | Description                                                       |
-| -------------------------- | :---------------------------------------------------------------- |
+|----------------------------|:------------------------------------------------------------------|
 | x-mesh-customer-identifier | Customer Identifier                                               |
 | x-mesh-costcenter          | ID of the CostCenter defined for this meshProject.                |
 | x-mesh-project-identifier  | The project identifier                                            |
