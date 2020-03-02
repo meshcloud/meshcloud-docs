@@ -48,6 +48,13 @@ The StackInstances will be deployed in this region.
 
 > **Important:** A StackInstance can currently only be deployed in one region. In order to work around you can create another StackInstance in different regions triggered by the first instance.
 
+### meshRole to Platform Role Mapping
+
+The meshProject roles must be mapped to AWS specific roles. Your are able to control this mapping with a Landing Zone setting. You can specifiy these mappings by adding role mappings and supplying a AWS Role Name here. The replicator will try to create this roles if necessairy so please make sure it has the correct right to do so, otherwise replication will fail. If you dont want to provide the meshStack with these rights
+you can also make sure that these roles already exist in AWS and the meshStack will only assign the users to these roles.
+
+You can also add multiple policies to such a role (by providing either a policy name or an ARN). During the meshProject replication meshStack will make sure that these policies are assigned to the AWS role (please make sure the replicator principal is allowed to do so, otherwise replication will fail as well). If no policy is assigned it is assumed that the roles will be pre-configured with the correct roles via for example some kind of account vending machine.
+
 ### Lambda ARN
 
 As some users might have already their own custom AWS account provisioning solution, usually called Account Vending Machines (AVM), other mechanisms are needed in order to bootstrap newly created AWS accounts.
