@@ -387,4 +387,4 @@ The arguments available here are:
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
 4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled
-5. argument: role name alias.
+5. argument: role name suffix ([configurable via Landing Zone](./meshstack.azure.landing-zones.md#meshrole-to-platform-role-mapping))
