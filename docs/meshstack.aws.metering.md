@@ -20,3 +20,12 @@ The following parameters are required to configure meshStack to process the AWS 
 * The region of the S3 bucket
 * The name of the report
 * The "Report path prefix" configured when creating the report
+
+When processing the AWS Cost and Usage Report to generate the Usage Report in the meshPanel,
+
+* Only the line items with [line item type](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L)
+`DiscountedUsage`, `Fee`, `Usage` and `SavingsPlanCoveredUsage` are taken into the calculation.
+* Only the line items with [bill type](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html#b-B)
+`Anniversary` are taken into the calculation
+* For each line item, we take the [effective cost](https://docs.aws.amazon.com/cur/latest/userguide/reservation-columns.html#r-E)
+when available and [unblended cost](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-U) otherwise
