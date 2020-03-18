@@ -263,4 +263,4 @@ Resources:
 
 1. As a last step setup an AWS Landing Zone in meshStack. You need the URL of the above defined Permission Setup Template, the actual Stack Set template you wish to apply, the Account ID of the admin account which will contain the stack sets and the StackSet Admin Region (the region in which the StackSet in the Admin account is placed) as well as the StackInstance Deploy Region.
 
-Please contact [meshcloud](https://www.meshcloud.io/en/team/) for more details and reference configurations.
+Please contact [meshcloud](https://support.meshcloud.io/hc/en-us/requests/new) for more details and reference configurations.
