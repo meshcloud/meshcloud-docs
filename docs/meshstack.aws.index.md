@@ -455,6 +455,8 @@ The following arguments are provided:
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
 
+You can decide if you want to enforce the account allias by using the `enforceAccountAlias` flag. If you want to keep any existing account alias (which might not fit into the defined pattern), set this flag to `false`.
+
 ### Identifier Configuration
 
 meshStack operators that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
@@ -506,5 +508,10 @@ Please find the full `Aws.dhall` [configuration options](./meshstack.configurati
       Optional Text
   , accountAliasPattern :
       Optional Text
+  {-
+    If set to true, then any existing account alias will be overwritten by the one determined in the accountAliasPattern. If set to
+    false any existing account alias will be kept as it is and only be set if there is none at all.
+  -}
+  , enforceAccountAlias : Bool
   }
 ```
