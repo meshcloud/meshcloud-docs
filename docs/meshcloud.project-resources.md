@@ -7,7 +7,11 @@ When a user is [assigned](meshcloud.project.md#assign-user-to-a-meshproject) to 
 
 ## Project Dashboard
 
-In the project dashboard you get an overview of all locations and their platforms, that are available for for the selected meshProject. Via the **Manage** button on the card for a specific platform, you get to the [Project Platform Dashboard](#project-platform-dashboard).
+In the project dashboard you get an overview of all locations and their platforms, that are available for for the selected meshProject.
+Via the **Manage** button on the card for a specific platform, you get to the [Project Platform Dashboard](#project-platform-dashboard).
+
+In each of the cards on the project dashboard, you can see the replication status of the tenant and the timestamp the tenant was last updated.
+The tenant status is one of 'Failed', 'Successful', 'Pending' or 'Not Started'
 
 ## Project Platform Dashboard
 
