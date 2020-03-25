@@ -108,9 +108,18 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 2. Select `Send Group Membership as a Claim` rule type.
 3. Usually two groups should be defined via this. They should result in Outgoing claim type `Group` with Outgoing claim values `meshUser` and `meshManager`. A `meshUser` can login to meshcloud and be invited to existing meshCustomers. A `meshManager` is allowed to create new `meshCustomers`.
 
-### Azure AD (AAD)
+#### Azure AD (AAD)
 
 - Create a new App registration in AAD. You can choose a display name like `meshcloud SSO`. Define the redirect URI that will be provided by meshcloud. It is individual per meshcloud installation.
 - Provide "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, to meshcloud.
 - Create a Client secret via "Manage -> Certficates & secrets". This secret must be provided to meshcloud.
 
+### Google Cloud Directory (GCD)
+
+The setup of the GCD Federation is quite straight forward. The easiest way to do is to setup a SAML login federation between meshstack and Google. To do so follow these steps (for more detailed steps you can also follow the [SAML guide](https://support.google.com/a/answer/6087519?hl=en) from Google):
+
+1. Login into the GCD Admin area ([admin.google.com](https://admin.google.com)).
+2. Click on `SAML Apps` and create a new SAML app by clicking on the plus button bottom right, then `Setup my own custom app`
+3. In the upcoming windows please download the IDP metadata. This data is important for setting up the Keycloak. Also copy the `SSO URL` and provide both to meshcloud.
+4. Chose a name (e.g. `meshstack sso`), a picture and description as you like.
+5. You probably need to input first a placeholder for the `ACS URL` and `Entity ID`, as meshcloud can only provide you these values when we setup the SSO with the data you gathered in the earlier steps. When this was done and we notified you about the correct `ACS URL` and `Entity ID` you can edit this SAML App again and finalize its setup with the information we provided you.
