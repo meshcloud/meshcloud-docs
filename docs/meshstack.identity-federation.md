@@ -108,11 +108,13 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 2. Select `Send Group Membership as a Claim` rule type.
 3. Usually two groups should be defined via this. They should result in Outgoing claim type `Group` with Outgoing claim values `meshUser` and `meshManager`. A `meshUser` can login to meshcloud and be invited to existing meshCustomers. A `meshManager` is allowed to create new `meshCustomers`.
 
-#### Azure AD (AAD)
+### Azure AD (AAD)
 
-- Create a new App registration in AAD. You can choose a display name like `meshcloud SSO`. Define the redirect URI that will be provided by meshcloud. It is individual per meshcloud installation.
-- Provide "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, to meshcloud.
-- Create a Client secret via "Manage -> Certficates & secrets". This secret must be provided to meshcloud.
+You can also use the plain Azure Active Directory to setup IDP authentication. In order to do so follow these steps:
+
+1. Create a new App registration in AAD. You can choose a display name like `meshcloud SSO`. Define the redirect URI that will be provided by meshcloud. It is individual per meshcloud installation.
+2. Provide "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, to meshcloud.
+3. Create a client secret via "Manage -> Certficates & Secrets". This secret must also be provided to meshcloud.
 
 ### Google Cloud Directory (GCD)
 
