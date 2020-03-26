@@ -28,3 +28,6 @@ The following HTTP headers are provided to the Cloud Function:
 | x-mesh-costcenter          | ID of the CostCenter defined for this meshProject.         |
 | x-mesh-project-identifier  | The project identifier                                     |
 | x-mesh-project-id          | The ID of the GCP project associated with this meshProject |
+
+In addition, any payment settings, project tags or customer tags are also provided to the Cloud Function, after formatting the tag name to an http header name.
+For example, a tag named myCustomerTag would be provided as an HTTP header with name x-mesh-tag-my-customer-tag.

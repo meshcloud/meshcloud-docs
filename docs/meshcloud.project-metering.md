@@ -53,4 +53,7 @@ tenants for this project that were booked in the selected period.
 
 A chart in the project dashboard shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
 
-Customer Admins also have access to an overview of the Chargeback Statements of all their projects in the Account Area via "Projects" -> "Chargeback Statements". Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Chargeback Statements".
+Customer Admins also have access to an overview of the chargeback statements of all their projects in the Account Area via "Projects" -> "Chargeback Statements".
+Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Chargeback Statements".
+It is possible to do an export from this view by clicking on the "CSV Export" button. This export will contain the line items of all the chargeback statements currently in the view.
+The export can be configured so that each row contains any customer tags, project tags or payment settings.

@@ -31,14 +31,17 @@ Each AWS project which now gets this Landing Zone assigned will be setup to rece
 
 The following parameters can be used in the StackSet template:
 
-| Parameter    | Description                                                                              |
-| ------------ | :--------------------------------------------------------------------------------------- |
-| AccountName  | Account name of the created AWS account                                                  |
-| AccountEmail | Account email of the created AWS account                                                 |
-| ProductName  | Customer Identifier                                                                      |
-| CostCenter   | ID of the CostCenter defined for this meshProject.                                       |
-| ContactEmail | E-Mail of the meshProject creator. Currently this is the user which created the project. |
-| Stage        | The project identifier                                                                   |
+| Parameter      | Description                                                                              |
+| ---------------| :--------------------------------------------------------------------------------------- |
+| AccountName    | Account name of the created AWS account                                                  |
+| AccountEmail   | Account email of the created AWS account                                                 |
+| ProductName    | Customer Identifier                                                                      |
+| ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter) |
+| ContactEmail   | E-Mail of the meshProject creator. Currently this is the user which created the project. |
+| Stage          | The project identifier                                                                   |
+
+In addition, any payment settings, project tags or customer tags can also be used in the StackSet template. These parameter keys will have the prefix `tag`.
+For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
 > Soon the parameter names will change but will be editable in the Landing Zone configuration.
 
@@ -74,14 +77,17 @@ The following parameters can be used in the Lambda function and are provided as 
 }
 ```
 
-| Parameter    | Description                                                                              |
-| ------------ | :--------------------------------------------------------------------------------------- |
-| AccountName  | Account name of the created AWS account                                                  |
-| AccountEmail | Account email of the created AWS account                                                 |
-| ProductName  | Customer Identifier                                                                      |
-| CostCenter   | ID of the CostCenter defined for this meshProject.                                       |
-| ContactEmail | E-Mail of the meshProject creator. Currently this is the user which created the project. |
-| Stage        | The project identifier                                                                   |
+| Parameter      | Description                                                                              |
+| ---------------| :--------------------------------------------------------------------------------------- |
+| AccountName    | Account name of the created AWS account                                                  |
+| AccountEmail   | Account email of the created AWS account                                                 |
+| ProductName    | Customer Identifier                                                                      |
+| ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter) |
+| ContactEmail   | E-Mail of the meshProject creator. Currently this is the user which created the project. |
+| Stage          | The project identifier                                                                   |
+
+In addition, any payment settings, project tags or customer tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
+For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
 ## Account Vending Machines
 
