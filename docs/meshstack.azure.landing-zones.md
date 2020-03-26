@@ -34,12 +34,15 @@ Operators must ensure to create these management groups in the meshcloud AAD Ten
 
 The following parameter can be used in the Blueprint:
 
-| Parameter          | Description                                                       |
-| ------------------ | :---------------------------------------------------------------- |
-| customerIdentifier | Customer Identifier                                               |
-| costcenter         | ID of the CostCenter defined for this meshProject.                |
-| projectIdentifier  | The project identifier                                            |
-| subscriptionId     | The ID of the Azure Subscription associated with this meshProject |
+| Parameter          | Description                                                                                |
+|--------------------|:-------------------------------------------------------------------------------------------|
+| customerIdentifier | Customer Identifier                                                                        |
+| ~~costcenter~~     | ID of the CostCenter defined for this meshProject. (Deprecated. Please use tagCostCenter)  |
+| projectIdentifier  | The project identifier                                                                     |
+| subscriptionId     | The ID of the Azure Subscription associated with this meshProject                          |
+
+In addition, any payment settings, project tags or customer tags can also be used in the Blueprints. These parameter keys will have the prefix `tag`.
+For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
 **Please Note:** there are some specialities to keep in mind when dealing with Azure parameters. Resource group names and locations can not be parameterised via meshStack.
 
@@ -67,7 +70,7 @@ Currently we only recommend to use this flag if you want to create resources tha
 
 The following parameters are required:
 | Parameter              | Description                                                                                                                                                                                                                                                            |
-| ---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | UAMI Azure Resource ID | Azure Resource ID of the identity; has the following form: `/subscriptions/[subscriptionId]/resourceGroups/[yourRG]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[userIdentity]`. When opening the UAMI in Azure Portal you can obtain this from the URL |
 | UAMI Object ID         | Object ID of the identity; When opening the UAMI in Azure Portal you can obtain this from the `Object ID` field                                                                                                                                                        |
 
@@ -78,7 +81,7 @@ The following parameters are required:
 Blueprint assignments are performed with a specific [resource locking mode](https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/resource-locking) which determines if locked resources managed by Blueprints can be deleted and/or modified.
 
 | Locking Mode            | Description                                                                               |
-| ----------------------- | :---------------------------------------------------------------------------------------- |
+|-------------------------|:------------------------------------------------------------------------------------------|
 | None                    | Resources are not protected                                                               |
 | AllResourcesReadOnly    | Locked resource groups are read only and other locked resources can't be modified at all. |
 | AllResourcesDoNotDelete | Locked resources can be modifiede but not deleted.                                        |
@@ -89,6 +92,7 @@ The meshProject roles must be mapped to Azure specific roles. You can control th
 
 The Azure Role Definition is the RBAC ID of the Azure role you want to use. You can either create your own roles or use the [predefined global IDs](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) from Azure.
 
+
 ### Azure Function
 
 Assign a Azure function to the landing zone configuration to trigger a small piece of code in the cloud. Currently this function is invoked via a `POST` request and carries parameter, similiar to the ones in the Blueprint via HTTP header values.
@@ -96,11 +100,14 @@ Assign a Azure function to the landing zone configuration to trigger a small pie
 The following HTTP headers are provided to the Azure Function:
 
 | HTTP Header Name           | Description                                                       |
-| -------------------------- | :---------------------------------------------------------------- |
+|----------------------------|:------------------------------------------------------------------|
 | x-mesh-customer-identifier | Customer Identifier                                               |
 | x-mesh-costcenter          | ID of the CostCenter defined for this meshProject.                |
 | x-mesh-project-identifier  | The project identifier                                            |
 | x-mesh-subscription-id     | The ID of the Azure Subscription associated with this meshProject |
+
+In addition, any payment settings, project tags or customer tags are also provided to the Azure function, after formatting the tag name to an http header name.
+For example, a tag named myCustomerTag would be provided as an HTTP header with name x-mesh-my-customer-tag.
 
 #### Azure Function Scope
 
