@@ -19,6 +19,7 @@ meshStack continuously reconciles the **actual state** of meshTenants with their
 ## Viewing tenant status
 
 Partners are able to see the full list of tenants with their status in the Administration area. Go to the Administration area and click on 'Tenants' below the Inventory header. The list contains all tenants and their status, which is either:
+
 - Replication successful
 - Replication in progress
 - Replication failed
