@@ -123,3 +123,11 @@ The setup of the GCD Federation is quite straight forward. The easiest way to do
 3. In the upcoming windows please download the IDP metadata. This data is important for setting up the Keycloak. Also copy the `SSO URL` and provide both to meshcloud.
 4. Chose a name (e.g. `meshstack sso`), a picture and description as you like.
 5. You probably need to input first a placeholder for the `ACS URL` and `Entity ID`, as meshcloud can only provide you these values when we setup the SSO with the data you gathered in the earlier steps. When this was done and we notified you about the correct `ACS URL` and `Entity ID` you can edit this SAML App again and finalize its setup with the information we provided you.
+
+You must also add three mappers so essential user information to identify the user is transferred to meshcloud during the SAML handshake. The attribute name must match exactly. The attributes are:
+
+| Attribute Name |            Source Property            |
+| -------------- | :-----------------------------------: |
+| email          | Basic Information -&gt; Primary Email |
+| firstName      |  Basic Information -&gt;  First Name  |
+| lastName       |   Basic Information -&gt; Last Name   |
