@@ -22,6 +22,7 @@ Partners are able to see the full list of tenants with their status in the Admin
 - Replication successful
 - Replication in progress
 - Replication failed
+
 Additionally, the list can be filtered on customer, project, location, platform and tenant status.
 
 For more information, click on 'View more' in the tenant list and in this screen additional information is available like System Remarks or User Remarks.
