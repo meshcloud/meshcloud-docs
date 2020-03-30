@@ -1,6 +1,6 @@
 # meshcloud Documentation
 
-[![Build Status](https://travis-ci.com/meshcloud/meshcloud-docs.svg?branch=develop)](https://travis-ci.com/meshcloud/meshcloud-docs)
+![CI Build](https://github.com/meshcloud/meshcloud-docs/workflows/CI%20Build/badge.svg?branch=develop)
 
 Welcome to the meshcloud Platform documentation!
 
