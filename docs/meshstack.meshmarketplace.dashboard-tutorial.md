@@ -31,7 +31,7 @@ The OSB API spec does not specify all necessary steps to achieve properly secure
 
 ### Permissions on Service Instance Level
 
-The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users, that are assigned to the project in the meshMarketplace where the service instance was created, shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property permission_url:
+The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users, that are assigned to the project in the meshMarketplace where the service instance was created, shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property `permission_url`:
 
 ```json
 {
@@ -46,7 +46,7 @@ When requesting the URL, the access token retrieved via the described OAuth flow
 Authorization: Bearer eyHKJDSA57...
 ```
 
-The response of this request contains a simple json object with a permission field, that can currently have the values NONE and USER.
+The response of this request contains a simple json object with a permission field, that can currently have the values `NONE` and `USER`.
 
 ```json
 {
@@ -54,7 +54,7 @@ The response of this request contains a simple json object with a permission fie
 }
 ```
 
-If NONE is returned, the access to the dashboard must be denied for the user. If USER is returned, access must be granted. If the service instance id is not known by the platform (meshMarketplace), HTTP Status 404 is returned.
+If `NONE` is returned, the access to the dashboard must be denied for the user. If `USER` is returned, access must be granted. If the service instance id is not known by the platform (meshMarketplace), HTTP Status 404 is returned.
 
 ### Initiating the OAuth Flow
 
@@ -62,7 +62,7 @@ There are two ways for Service Brokers to initiate the OAuth flow for SSO. Imple
 
 #### 1. Use OAuth URLs available in the context
 
-To simplify the OAuth flow for the service brokers and to guarantee, that the service broker uses the same IdB as the platform, the auth_url is part of the context when provisioning a service instance.
+To simplify the OAuth flow for the service brokers and to guarantee, that the service broker uses the same IdB as the platform, the `auth_url` is part of the context when provisioning a service instance.
 
 ```json
 {
@@ -71,7 +71,7 @@ To simplify the OAuth flow for the service brokers and to guarantee, that the se
 }
 ```
 
-This URL is a template. The redirect_uri must be set by the Service Broker (to redirect to a specific URI containing the service instance id or similar). The random parameters nonce and state have to be generated and replaced by the service broker (see OpenID documentation for this.)
+This URL is a template. The `redirect_uri` must be set by the Service Broker (to redirect to a specific URI containing the service instance id or similar). The random parameters nonce and state have to be generated and replaced by the service broker (see OpenID documentation for this.)
 For the OAuth flow, a token endpoint is required too. It is a static link and the request must be build as described in the OpenId documentation.
 
 ```json
@@ -83,7 +83,7 @@ For the OAuth flow, a token endpoint is required too. It is a static link and th
 
 #### 2. Use X-Api-Info-Location header as in Cloud Foundry
 
-For being compatible with Cloud Foundry and making integration easy for Service Brokers, that are already using the Cloud Foundry SSO, an X-Api-Info-Location header is submitted on every request the meshMarketplace executes to the Service Broker.
+For being compatible with Cloud Foundry and making integration easy for Service Brokers, that are already using the Cloud Foundry SSO, an `X-Api-Info-Location` header is submitted on every request the meshMarketplace executes to the Service Broker.
 
 The header contains an URL to retrieve general information like the auth URL.
 
