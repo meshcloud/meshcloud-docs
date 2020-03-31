@@ -41,7 +41,7 @@ Multiple options are available to control how [meshCustomers](./meshcloud.custom
 self-service. meshStack can be configured to suit your organization's unique demands for sign up. You can configure these options in `meshfed.web.register` as follows
 
 ```haskell
-  
+
 { {- Configure an additional BCC email to receive registration related email notifications (e.g. a group inbox) -}
   bccEmail = None Text
   {- Allow sign up only if valid payment information was provided during registration  -}
@@ -83,9 +83,11 @@ Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
 
 ### User Identity Lookup
 
-When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider. This makes it easier for people to invite additional users without remembering their full contact details.
+When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider and Google Cloud Directory (GCD). This makes it easier for people to invite additional users without remembering their full contact details.
 
-If you have an Azure AAD as an upstream IDP you can configure this functionality You can configure these options in `meshfed.web.identityLookup` as follows:
+#### Configure Azure AAD
+
+If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
 
 ```haskell
 { azure =
@@ -98,3 +100,20 @@ If you have an Azure AAD as an upstream IDP you can configure this functionality
 ```
 
 The Azure Service Principal must have at least the `User.Read.All` permission for the [list users web call](https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#permissions).
+
+
+#### Configure Google Cloud Directory
+
+In order to use GCD as a lookup provider you need to provide these credentials:
+
+```haskell
+{ gcd =
+  { domain = "<GCD_DOMAIN>"
+  , serviceUser = "<SERVICE_USER_MAIL>"
+  , accountId = "<SERVICE_USER_ACCOUNT_ID>"
+  , privateKey = "<PRIVATE_KEY>"
+  }
+}
+```
+
+The GCD Service User needs read access to the [GCD Directory API](https://developers.google.com/admin-sdk/directory/v1/get-start/getting-started).
