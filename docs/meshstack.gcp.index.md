@@ -158,9 +158,12 @@ In order to maintain symmetry to other public cloud platforms, meshStack consoli
 under the same GCP Platform Instance to a single Google Cloud Billing Account. The billing account id is thus configured
 on the platform level.
 
+```haskell
 {   billingAccountId =
-      "123456-1234ABCD-1234FF"  {- The id of your Billing Account as it's displayed in Google Cloud Console -}
+      {- The id of your Billing Account as it's displayed in Google Cloud Console -}
+      "123456-1234ABCD-1234FF"
 }
+```
 
 To use multiple billing accounts consider configuring multiple GCP meshPlatforms in meshStack.
 
