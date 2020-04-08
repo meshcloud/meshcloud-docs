@@ -16,7 +16,7 @@ Folders and the application of organization constrains on the projects contained
 
 ## Cloud Template Configuration URL
 
-You can specify an URL pointing to a GCP Bucket under your control which contains a YAML template config file. During project replication this file is read and then deployed as a template in the target project.
+You can specify a URL pointing to a GCP Bucket under your control which contains a YAML template config file. During project replication this file is read and then deployed as a template in the target project.
 
 In contrast to the official GCP documentation you **must leave out** the imports in your config file. It should have the following format:
 
@@ -30,7 +30,7 @@ Best practice is to keep the file as small and simple as possible and put more c
 
 > The YAML config file maximum size is 1 MB.
 
-The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. It's therefore necessary to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `&gt;PROJECT_ID&lt;@cloudservices.gserviceaccount.com`.
+The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `&gt;PROJECT_ID&lt;@cloudservices.gserviceaccount.com`.
 
 The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_IDENTIFIER>` cut to a maximum length of 63 chars.
 
@@ -43,7 +43,7 @@ When the template is deployed parameters are provided as properties for the refe
 | projectIdentifier  | The project identifier                                                                                |
 | projectId          | The ID of the GCP project associated with this meshProject                                            |
 
-In addition, any payment settings, project tags or customer tags are also provided to the template. For example, a tag named `myName` would be provided under the name `tagMyName`.
+In addition, any payment settings, project tags or customer tags are also provided to the Template. For example, a tag named `myName` would be provided under the name `tagMyName`.
 
 ## Cloud Function URL
 
