@@ -156,3 +156,29 @@ In order to use GCD as a lookup provider you need to provide these credentials:
 ```
 
 The GCD Service User needs read access to the [GCD Directory API](https://developers.google.com/admin-sdk/directory/v1/get-start/getting-started).
+
+### Customizable Descriptions
+
+Depending on your meshStack implementation, it may be helpful for you to customize error descriptions to guide
+end-users towards resolving common problems on their own. meshStack therefore provides the following configuration
+options in `panel.ui`.
+
+> Note: You can use sanitized HTML in all of these settings. This is useful to create links and apply minimal formatting.
+
+```haskell
+{
+    {- Generic error message displayed when meshPanel can't connect to backend services. Configure this if users need to e.g. use a certain VPN or browser with CAs pre-installed.-}
+    connectivityError : Text
+    {- Displayed when users are required to sign in before registering in self-service. Configure this to explain users which IDP/Credential they need to provide -}
+  , idpRegister : Optional Text
+
+    {- Displayed when users are required to sign in before accepting an invite. Configure this to explain users which IDP/Credential they need to provide -}
+  , idpAcceptCustomerUserRoleRequest : Optional Text
+    {- Displayed in when users provide a cost center that's already used by another meshStack customer. Configure this e.g. to encourage users to register only one meshCustomer per cost center. -}
+  , duplicateCostCenter : Optional Text
+    {- Display a configurable confidentiality label in the meshPanel navbar, e.g. "internal" or "secret". -}
+  , confidentialityLevel : Optional Text
+    {- Display a notification that users accept platform ToS when they create a meshProject. Configure this if you need to inform end-users about custom ToS that apply to cloud platforms available in your meshStack implementation.. -}
+  , platformTermsNote : Optional Text
+}
+```
