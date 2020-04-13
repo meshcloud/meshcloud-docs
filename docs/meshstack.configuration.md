@@ -43,13 +43,13 @@ self-service. meshStack can be configured to suit your organization's unique dem
 ```haskell
 
 { {- Configure an additional BCC email to receive registration related email notifications (e.g. a group inbox) -}
-  bccEmail = None Text
+  bccEmail: Optional Text
   {- Allow sign up only if valid payment information was provided during registration  -}
-, requirePayment = None Bool
+, requirePayment : Optional Bool
   {- Allow generation of invite links (see below) -}
-, allowPartnerInviteLinks = None Bool
+, allowPartnerInviteLinks : Optional Bool
   {- Require manual approval of new meshCustomer accounts by a partner before they can use cloud resources -}
-, approvalRequired = None Bool
+, approvalRequired : Optional Bool
 }
 ```
 
@@ -58,13 +58,44 @@ Additional remarks and configuration links:
 - `allowPartnerInviteLinks` enables the use of [invite links](administration.customers.md#invite-customer-via-link)
 - `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
 
+### Address Metadata
+
+meshStack can maintain company and billing address metadata for meshCustomers and meshProjects. This is useful if your
+meshStack implementation provides cloud services to 3rd parties or your cloud chargeback requires internal invoicing
+between different subsidiaries that cannot be covered using e.g. cost-center numbers.
+
+If you don't need address metadata, we recommend hiding it from end-users of meshStack by setting the `panel.environment.ui` configuration option:
+
+```haskell
+{
+  hideAddress : Optional Bool
+}
+```
+
+When enabling `hideAdress`, operators should also configure the `panel.environment.ui.register.defaultAddress` option:
+
+```haskell
+Optional {
+  street : Text
+, houseNumber : Text
+, zipCode : Text
+, city : Text
+, continent : Text
+, country : Text
+}
+```
+
+The configured address will be automatically used as a default billing address for all meshCustomers created using the
+self-service registration wizard.
+
+
 ### Default Quotas
 
 meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
 ```haskell
 { {- the number of allowed meshProjects per meshCustomer -}
-  meshProjects = 5
+  meshProjects : Natural
 }
 ```
 
@@ -77,7 +108,8 @@ Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
 
 ```haskell
 {
-  feedbackEmail = Some "feedback@example.com"
+  {- e.g. "feedback@example.com" -}
+  feedbackEmail : Optional Text
 }
 ```
 
@@ -90,11 +122,14 @@ When you add users to your [meshCustomers](./meshcloud.customer.md) we currently
 If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
 
 ```haskell
-{ azure =
-  {- Either friendly domain name or your tenants GUID -}
-  { aadTenant = "<AAD_TENANT_ID>"
-  , clientId = "<SERVICE_PRINCIPAL_CLIENT_ID>"
-  , clientSecret = "<SERVICE_PRINCIPAL_CLIENT_SECRET>"
+{ azure :
+  
+  { {- Either friendly domain name or your tenants GUID -}
+    aadTenant : Text
+    {- Service Principal Client Id -}
+  , clientId : Text
+    {- Service Principal Client Secret -}
+  , clientSecret : Text
   }
 }
 ```
@@ -107,11 +142,15 @@ The Azure Service Principal must have at least the `User.Read.All` permission fo
 In order to use GCD as a lookup provider you need to provide these credentials:
 
 ```haskell
-{ gcd =
-  { domain = "<GCD_DOMAIN>"
-  , serviceUser = "<SERVICE_USER_MAIL>"
-  , accountId = "<SERVICE_USER_ACCOUNT_ID>"
-  , privateKey = "<PRIVATE_KEY>"
+{ gcd :
+  { {- GCD Domain, e.g. example.com  -}
+    domain : Text
+    {- GCD Service User primary email, e.g. meshfed-service@example.com -}
+  , serviceUser : Text
+    {- GCP Service Account ID , e.g. meshfed-service@meshstack-root.iam.gserviceaccount.com -}
+  , accountId : Text
+  {- GCP Service Account Private Key -}
+  , privateKey : Text
   }
 }
 ```
