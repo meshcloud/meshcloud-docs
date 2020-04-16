@@ -43,7 +43,7 @@ When the template is deployed parameters are provided as properties for the refe
 | projectIdentifier  | The project identifier                                                                                |
 | projectId          | The ID of the GCP project associated with this meshProject                                            |
 
-In addition, any payment settings, project tags or customer tags are also provided to the Template. For example, a tag named `myName` would be provided under the name `tagMyName`.
+In addition, any payment settings, project tags or customer tags are also provided to the template. For example, a tag named `myName` would be provided under the name `tagMyName`.
 
 ## Cloud Function URL
 
