@@ -16,7 +16,7 @@ Folders and the application of organization constrains on the projects contained
 
 ## Cloud Template Configuration URL
 
-You can specify a URL pointing to a GCP Bucket under your control which contains a YAML template config file. During project replication this file is read and then deployed as a template in the target project.
+You can specify an URL pointing to a GCP Bucket under your control which contains a YAML template config file. During project replication this file is read and then deployed as a template in the target project.
 
 In contrast to the official GCP documentation you **must leave out** the imports in your config file. It should have the following format:
 
