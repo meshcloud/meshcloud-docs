@@ -30,7 +30,7 @@ Best practice is to keep the file as small and simple as possible and put more c
 
 > The YAML config file maximum size is 1 MB.
 
-The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `&gt;PROJECT_ID&lt;@cloudservices.gserviceaccount.com`.
+The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. It's therefore necessary to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `&gt;PROJECT_ID&lt;@cloudservices.gserviceaccount.com`.
 
 The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_IDENTIFIER>` cut to a maximum length of 63 chars.
 
