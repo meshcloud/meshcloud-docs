@@ -52,6 +52,11 @@ resourcemanager.projects.update
 resourcemanager.projects.createBillingAssignment
 resourcemanager.projects.deleteBillingAssignment
 billing.resourceAssociations.create
+serviceusage.services.enable
+serviceusage.services.get
+deploymentmanager.deployments.delete
+deploymentmanager.deployments.create
+deploymentmanager.deployments.get
 ```
 
 ## Root Project Configuration
