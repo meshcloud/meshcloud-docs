@@ -72,7 +72,7 @@ If you don't need address metadata, we recommend hiding it from end-users of mes
 }
 ```
 
-When enabling `hideAdress`, operators should also configure the `panel.environment.ui.register.defaultAddress` option:
+When enabling `hideAddress`, operators should also configure the `panel.environment.ui.register.defaultAddress` option:
 
 ```haskell
 Optional {
@@ -160,7 +160,7 @@ The GCD Service User needs read access to the [GCD Directory API](https://develo
 ### Customizable Descriptions
 
 Depending on your meshStack implementation, it may be helpful for you to customize error descriptions to guide
-end-users towards resolving common problems on their own. meshStack therefore provides the following configuration
+end-users towards resolving common problems in self-service. meshStack therefore provides the following configuration
 options in `panel.ui`.
 
 > Note: You can use sanitized HTML in all of these settings. This is useful to create links and apply minimal formatting.
