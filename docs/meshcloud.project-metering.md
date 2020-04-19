@@ -27,6 +27,12 @@ The invoice payment method simply results in an invoice, that is send to your bi
 
 When meshcloud is used inside a company, cloud resources may have to be billed to different cost centers of the company. You can configure a default cost center for your meshCustomer, which will initially be applied to your meshProjects. It can also be changed per meshProject.
 
+#### Custom Payment / Limited Payment Methods
+
+Operators can also provide custom payment methods that carry additional metadata information via the [meshStack API](./meshstack.api.md).
+
+This is useful if your organization needs additional [metadata](./meshcloud.tag-schema.md) like e.g. contract or budget numbers to chargeback cloud costs.
+
 ## Reviewing Metering Data
 
 ### Tenant Usage Reports
