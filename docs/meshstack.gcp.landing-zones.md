@@ -58,14 +58,11 @@ If you specify a Cloud Function URL this function will get invoked during a proj
 
 Please make sure the GCP service user of the replicator is allowed to access this function.
 
-The following HTTP headers are provided to the Cloud Function:
+Please review the [meshStack Landing Zone Http Header interface](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+
+In addition to the headers referenced above, meshStack provides the following GCP-specific HTTP headers:
 
 | HTTP Header Name           | Description                                                |
 | -------------------------- | :--------------------------------------------------------- |
-| x-mesh-customer-identifier | Customer Identifier                                        |
-| x-mesh-costcenter          | ID of the CostCenter defined for this meshProject.         |
-| x-mesh-project-identifier  | The project identifier                                     |
 | x-mesh-project-id          | The ID of the GCP project associated with this meshProject |
 
-In addition, any payment settings, project tags or customer tags are also provided to the Cloud Function, after formatting the tag name to an http header name.
-For example, a tag named `myCustomerLabel` would be provided as an HTTP header with name `x-mesh-tag-my-customer-label`.
