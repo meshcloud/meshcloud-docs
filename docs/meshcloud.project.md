@@ -50,9 +50,9 @@ In the **Project Users** section you can find a type-ahead `email` field at the 
 
 Project roles grant users a configured set of permissions in cloud platforms used by the project. Project roles can be configured according to exisiting requirements or policies, by default the following roles are used:
 
-- Project Reader: A read-only user, like a controller or similar.
-- Project User: A default user, like a developer, who can manage resources in the cloud platform.
-- Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
+- **Project Reader**: A read-only user, like a controller or similar.
+- **Project User**: A default user, like a developer, who can manage resources in the cloud platform.
+- **Project Admin**: An admin user, who can also change configurations of the project in the cloud platform.
 
 ### Update Project Role
 
