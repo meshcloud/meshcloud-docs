@@ -54,7 +54,6 @@ per meshcloud installation.
 | &nbsp;&nbsp;[Download&nbsp;User&nbsp;Info](administration.users.md#download-user-information)                             |       &#10003;       |                   |             |            |                    |
 | [Service&nbsp;Broker](administration.service-brokers.md)                                                                  |       &#10003;       |                   |             |            |                    |
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)                  |       &#10003;       |                   |             |            |                    |
-| Performance&nbsp;KPIs                                                                                                     |       &#10003;       |                   |             |            |      &#10003;      |
 | [Performance&nbsp;Analytics](administration.analytics.md)                                                                 |       &#10003;       |                   |             |            |      &#10003;      |
 
 Please review [meshCustomer roles](meshcloud.customer.md#meshCustomer-roles) for roles available to end-users of your meshStack implementation.
