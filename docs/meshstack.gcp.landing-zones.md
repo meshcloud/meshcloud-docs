@@ -8,42 +8,49 @@ to these folders.
 
 The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have an GCP location a Landing Zone must be selected by the user. By choosing a landing zone, platform specific configuration can be set (in this case for GCP). The options for GCP are:
 
-## Folder ID
+## Resource Manager Folder Id
 
 All newly created meshProjects get their corresponding GCP project assigned to this [Folder](https://cloud.google.com/resource-manager/docs/creating-managing-folders) in the [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
 
 Folders and the application of organization constrains on the projects contained in them through the use of [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) can be setup outside of meshcloud by an Operator.
 
-## Cloud Template Configuration URL
+## Template Config URL
 
-You can specify a URL pointing to a GCP Bucket under your control which contains a YAML template config file. During project replication this file is read and then deployed as a template in the target project.
+You can define an URL pointing to a template configuration for the Deployment Manager. These template, will be fetched and deployed during the execution process. These can be used to setup projects with certain pre-sets of resources.
 
 In contrast to the official GCP documentation you **must leave out** the imports in your config file. It should have the following format:
 
 ```yaml
 resources:
+- name: enable_api
+  type: gs://likvid-gdm-templates/single_vm2/enable_api.jinja
 - name: vm_template
-  type: gs://likvid-gdm-templates/single_vm/vm_template.py
+  type: gs://likvid-gdm-templates/single_vm2/vm_template.py
+  properties:
+    zone: europe-west1-b
 ```
 
-Best practice is to keep the file as small and simple as possible and put more complex template logic inside the referenced Python of Jinja templates.
+> The maximum filesize currently is 1MB please [contact us](mailto:support@meshcloud.io) if you need support for bigger template configurations.
 
-> The YAML config file maximum size is 1 MB.
-
-The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `&gt;PROJECT_ID&lt;@cloudservices.gserviceaccount.com`.
+The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
 
 The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_IDENTIFIER>` cut to a maximum length of 63 chars.
 
-When the template is deployed parameters are provided as properties for the referenced template files. The provided parameters are:
+If the URL is changed or the underlying template updated the projects will automatically get an update of the template. Please make sure that the templates can be deployed without errors beforehand.
 
-| Parameter Name     | Description                                                                                           |
-| ------------------ | :---------------------------------------------------------------------------------------------------- |
-| customerIdentifier | Customer Identifier                                                                                   |
-| costcenter         | **(Deprecated, please use tagCostCenter instead)** ID of the CostCenter defined for this meshProject. |
-| projectIdentifier  | The project identifier                                                                                |
-| projectId          | The ID of the GCP project associated with this meshProject                                            |
+Please note that you probably want to enable all the necessairy APIs in order to allow deployment of this template. Templates can enable APIs via the template type `deploymentmanager.v2.virtual.enableService`, for more information see the [Deployment Manager docs](https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types).
 
-In addition, any payment settings, project tags or customer tags are also provided to the Template. For example, a tag named `myName` would be provided under the name `tagMyName`.
+The properties of the provided configuration file will be expanded with properties from meshcloud and these can be used inside the template itself. The following properties are provided:
+
+| Template Property  | Description                                                |
+| ------------------ | :--------------------------------------------------------- |
+| customerIdentifier | Customer Identifier                                        |
+| tagCostCenter      | ID of the CostCenter defined for this meshProject.         |
+| projectIdentifier  | The project identifier                                     |
+| projectId          | The ID of the GCP project associated with this meshProject |
+
+In addition, any payment settings, project tags or customer tags are also provided to the template.
+For example, a tag named `myCustomerLabel` would be provided as a property with name `mesh-tag-my-customer-label`.
 
 ## Cloud Function URL
 
@@ -61,4 +68,4 @@ The following HTTP headers are provided to the Cloud Function:
 | x-mesh-project-id          | The ID of the GCP project associated with this meshProject |
 
 In addition, any payment settings, project tags or customer tags are also provided to the Cloud Function, after formatting the tag name to an http header name.
-For example, a tag named myCustomerTag would be provided as an HTTP header with name x-mesh-tag-my-customer-tag.
+For example, a tag named `myCustomerLabel` would be provided as an HTTP header with name `x-mesh-tag-my-customer-label`.
