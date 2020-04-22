@@ -189,3 +189,31 @@ In order to configure the mapping use the `roleMappings` key in the [platform co
     ]
 }
 ```
+
+### Project Id Pattern
+
+Operators can configure the pattern used to dervice [GCP Project Ids](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project) when meshStack creates a new GCP Project.
+
+The arguments available here are:
+
+1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
+2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
+3. argument: a random alphanumeric string suitable as a suffix
+
+The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
+We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of naming collisions. The example below shows a reference configuration:
+
+```haskell
+{ projectIdPattern =
+    {-
+      15 (up to) chars customer identifier
+      1 separator
+      10 (up to) chars project id, this is usually short e.g. "prod", "dev" "staging"
+      1 separator
+      3 chars random id, alphanumeric, case insensitive  = 26+10 characters -> 36^3 = ~46.5k possibilities
+      =
+      30 chars total
+    -}
+      "%.15s-%.10s-%.3s"
+}
+```
