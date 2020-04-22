@@ -38,7 +38,7 @@ The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_I
 
 If the URL is changed or the underlying template updated the projects will automatically get an update of the template. Please make sure that the templates can be deployed without errors beforehand.
 
-Please note that you probably want to enable all the necessairy APIs in order to allow deployment of this template. Templates can enable APIs via the template type `deploymentmanager.v2.virtual.enableService`, for more information see the [Deployment Manager docs](https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types).
+Please note that you probably want to enable all the necessary APIs on the GCP project in order to allow deployment of this template. Templates can enable APIs via the virtual template type `deploymentmanager.v2.virtual.enableService`. For more information see the official [Deployment Manager docs](https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types).
 
 The properties of the provided configuration file will be expanded with properties from meshcloud and these can be used inside the template itself. The following properties are provided:
 
