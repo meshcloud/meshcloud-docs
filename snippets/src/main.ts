@@ -5,8 +5,10 @@ import * as process from 'process';
 
 import { snippets } from './extract';
 
-export async function extract(src: string) {
-  const content = await fs.promises.readFile(src, 'utf8');
+export async function extractSnippets(srcPath: string) {
+  console.log(`scanning snippet definitions in: ${srcPath}`);
+
+  const content = await fs.promises.readFile(srcPath, 'utf8');
 
   const snips = snippets(content);
 
@@ -14,35 +16,72 @@ export async function extract(src: string) {
 }
 
 
-async function main(): Promise<number> {
-  program
-    .version('0.1.0')
-    .description('Updates documentation snippets')
-    .requiredOption('--src <src>', 'path to meshstack git repository')
-    .requiredOption('--out <out>', 'path to snippet output directory')
-    .allowUnknownOption(false)
-    .parse(process.argv);
+async function buildSnippetCache(repoPath: any, snipsPath: any) {
 
-  const repoPath = program['src'];
-  const outPath = program['out'];
-
+  // todo: scan the repo for snippet directivee
   const files = [
     'deployment/model/Mesh/Panel/Environment.dhall'
   ];
 
-  console.log(`repo path is ${repoPath}`);
-
   await Promise.all(files.map(async (file) => {
     const inPath = path.join(repoPath, file);
 
-    const snips = await extract(inPath);
+    const snips = await extractSnippets(inPath);
 
     for (const snip of snips) {
-      const destPath = path.join(outPath, snip.id);
-      console.log(`writing ${destPath}`);
+      const destPath = path.join(snipsPath, snip.id);
+
+      console.log(`extracted ${destPath}`);
       fs.promises.writeFile(destPath, snip.content);
     }
   }));
+}
+
+async function updateDocsSnippets(docsPath: any, snipsPath: any) {
+
+  // todo: scan the repo for snippet directivee
+  const files = [
+    'meshstack.configuration.md'
+  ];
+
+  await Promise.all(files.map(async (file) => {
+    const inPath = path.join(docsPath, file);
+
+    const snips = await findSnippets(inPath);
+
+    for (const snip of snips) {
+      const destPath = path.join(snipsPath, snip.id);
+
+      console.log(`extracted ${destPath}`);
+      fs.promises.writeFile(destPath, snip.content);
+    }
+  }));
+}
+
+
+async function main(): Promise<number> {
+  program
+    .version('0.1.0')
+    .description('Builds and updates documentation snippets')
+    .option('--src <src>', 'path to meshstack git repository. Specifying this will rebuild the snippets cache.')
+    .requiredOption('--snips <snips>', 'path to snippet cache directory')
+    .option('--docs <docs>', 'path to markdown docs directory.  Specifying this will update snippets in markdown docs.')
+    .allowUnknownOption(false)
+    .parse(process.argv);
+
+  const repoPath = program['src'];
+  const snipsPath = program['snips'];
+  const docsPath = program['docs'];
+
+  console.log(`repo path is ${repoPath}`);
+
+  if (repoPath && snipsPath) {
+    await buildSnippetCache(repoPath, snipsPath);
+  }
+
+  if (snipsPath && docsPath) {
+    await updateDocsSnippets(snipsPath, docsPath)
+  }
 
   return 0;
 }
@@ -55,3 +94,4 @@ async function main(): Promise<number> {
   console.error(e);
   process.exit(1);
 });
+
