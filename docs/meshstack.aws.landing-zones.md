@@ -45,7 +45,7 @@ For example, the value of the tag `costCenter` will be made available via the ke
 
 > Soon the parameter names will change but will be editable in the Landing Zone configuration.
 
-**Known Issues**: When you use parameter in your AWS template please make sure the parameter are indeed used in a resource depending on them. If only a parameter is specified without relationship towards a resource in the template, then update calls to this parameter will get silently ignored from AWS. In such a case the paramter wont receive a new value during a project replication. Only if you reference a parameter in a way that a change will affect a resource a real update is performed. An working parameter update could be this example, where the parameter alters the name of a S3 bucket:
+**Known Issues**: If you use parameters in your AWS template please make sure the parameters are used in a resource depending on them. If a parameter is specified without a relationship towards a resource in the template, the update calls to this parameter will get silently ignored from AWS. In such a case the parameter won't receive a new value during a project replication. Only if you reference a parameter in a way that a change will affect a resource a real update is performed. A working parameter update could be this example, where the parameter alters the name of a S3 bucket:
 
 ```json
 {
