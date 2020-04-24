@@ -56,6 +56,7 @@ serviceusage.services.enable
 serviceusage.services.get
 deploymentmanager.deployments.delete
 deploymentmanager.deployments.create
+deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
