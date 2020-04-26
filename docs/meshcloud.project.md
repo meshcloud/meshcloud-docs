@@ -19,7 +19,7 @@ The following diagram shows how access rights and project [replication](./meshcl
 
 ![Project User Role Replication](assets/project-user-roles.png)
 
-Projects have a representation in each cloud platform that we call [meshTenant](./meshcloud.tenant.md). Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabeld for the project.
+Projects have a representation in each cloud platform that we call [meshTenant](./meshcloud.tenant.md). Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabled for the project.
 meshcloud uses orchestration to ensure users assigned to a meshProject always have the same role on all Tenants associated with the Project.
 
 ### Adding meshPlatforms
