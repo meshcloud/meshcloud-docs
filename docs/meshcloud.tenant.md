@@ -7,7 +7,7 @@ meshTenants are the representation of a [meshProject](./meshcloud.project.md) in
 meshTenants are isolated cloud environments protected by multi-tenant mechanisms of the cloud platform such as
 AWS Accounts, Azure Subscriptions or Cloud Foundry Spaces.
 
-[meshCustomer] don't manually create or manage meshTenants. Instead, meshTenants always automatically managed through
+[meshCustomers](./meshcloud.customer.md) don't manually create or manage meshTenants. Instead, meshTenants always automatically managed through
 a [meshProject](./meshcloud.project.md).
 
 ## Replication and Reconciliation
@@ -27,3 +27,10 @@ Partners are able to see the full list of tenants with their status in the Admin
 Additionally, the list can be filtered on customer, project, location, platform and tenant status.
 
 For more information, click on 'View more' in the tenant list and in this screen additional information is available like System Remarks or User Remarks.
+
+## Metadata Tags
+
+meshStack automatically derives [metadata tags](./meshcloud.tag-schema.md) for meshTenants based on the metadata tags set on the meshProject, the [payment method](./meshcloud.project-metering.md#payment-methods) configured on the meshProject and
+the meshCustomer it belongs to.
+
+Any update to tenant metadata (e.g. a change in payment method) triggers a new meshTenant reconciliation cycle.

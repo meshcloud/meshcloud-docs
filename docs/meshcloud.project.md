@@ -19,7 +19,7 @@ The following diagram shows how access rights and project [replication](./meshcl
 
 ![Project User Role Replication](assets/project-user-roles.png)
 
-Projects have a representation in each cloud platform that we call **Tenant**. Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabeld for the project.
+Projects have a representation in each cloud platform that we call [meshTenant](./meshcloud.tenant.md). Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabled for the project.
 meshcloud uses orchestration to ensure users assigned to a meshProject always have the same role on all Tenants associated with the Project.
 
 ### Adding meshPlatforms
@@ -30,9 +30,11 @@ When adding a [meshPlatform](meshcloud.platform-location.md) to a meshProject, m
 
 [meshPlatforms](meshcloud.platform-location.md) can also be removed from the project with some limitations. All resources in the [meshTenant](meshcloud.tenant.md) (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a meshPlatform.
 
-### Provide Payment Information for meshProject
+### Editing Payment and Project Settings
 
 You can configure one or multiple [payment methods](meshcloud.project-metering.md#payment-methods) and [billing addresses](meshcloud.project-metering.md#company-billing-addresses) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
+
+Depending on the configuration of your meshStack implementation, you may be able to edit additional project [metadata tags](./meshcloud.tag-schema.md) here.
 
 ## User Management on a meshProject
 
