@@ -9,7 +9,7 @@ title: Administrate Projects
 
 Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.tag-schema.md#tag-schemas) for managed **meshProjects**.
 
-1. Login to the Meshpanel with your Administrator credentials.
+1. Login to the meshPanel with your administrator credentials.
 2. Navigate to the **Administration** via the settings button on the top right.
 3. Click on **Customers**. You will see a list of your customers here.
 4. Under the **Actions** column, you can click on **Customer Projects** and you will see a list of all the projects belonging to that customer.

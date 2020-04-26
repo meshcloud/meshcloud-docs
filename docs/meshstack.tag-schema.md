@@ -12,10 +12,10 @@ a wide range of use cases for orchestrating organizational processes across mult
 
 - centralized management and configuration of [cloud platforms](./meshcloud.platform-location.md)
 - life-cycle management for [cloud tenants](meshcloud.tenant.md) and [security policy automation](./meshcloud.landing-zones.md)
-- centralized Identity and Access management (IAM) via [multi-cloud identity federation](meshstack.identity-federation.md)
+- centralized Identity and Access Management (IAM) via [multi-cloud identity federation](meshstack.identity-federation.md)
 - unified [chargeback process](./meshcloud.project-metering.md) across all cloud platforms and services
 
-Many of these use-cases can require organizational metadata to be shared across different systems. Common examples of
+Many of these use cases can require organizational metadata to be shared across different systems. Common examples of
 such metadata include:
 
 - IT System identifiers that can link cloud tenants to an enterprise configuration management database
