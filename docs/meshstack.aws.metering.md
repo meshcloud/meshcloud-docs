@@ -25,7 +25,8 @@ When processing the AWS Cost and Usage Report to generate the Usage Report in th
 
 * Only the line items with [line item type](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L)
 `DiscountedUsage`, `Fee`, `Usage` and `SavingsPlanCoveredUsage` are taken into the calculation.
+In other words, `Credit`, `Refund`, `RIFee`, `Tax` `SavingsPlanUpfrontFee`, `SavingsPlanRecurringFee` and `SavingsPlanNegation` are excluded.
 * Only the line items with [bill type](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html#b-B)
-`Anniversary` are taken into the calculation
+`Anniversary` are taken into the calculation. In other words, line items with bill type `Purchase` and `Refund` are excluded.
 * For each line item, we take the [effective cost](https://docs.aws.amazon.com/cur/latest/userguide/reservation-columns.html#r-E)
 when available and [unblended cost](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-U) otherwise
