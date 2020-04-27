@@ -52,12 +52,12 @@ meshProject tags > payment method tags > meshCustomer tags
 Some landing zone assets like [GCP Cloud Functions](meshstack.gcp.landing-zones.md) or [Azure Functions](./meshstack.azure.landing-zones.md) receive metadata tags from meshStack using HTTP Headers. meshStack invokes these landing zone assets using the following http headers:
 
 
-| HTTP Header Name                | Description                                        |
-| ------------------------------- | :------------------------------------------------- |
-| `x-mesh-customer-identifier`    | meshCustomer Identifier                            |
-| `x-mesh-project-identifier`     | meshProject identifier                             |
-| `x-mesh-costcenter`             | ID of the CostCenter defined for this meshProject. |
-| `x-mesh-tag-${format(tagName)}` | metadata tags as defined in tag schema             |
+| HTTP Header Name                 | Description                                                                                                                                                      |
+| -------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `x-mesh-customer-identifier`     | meshCustomer Identifier                                                                                                                                          |
+| `x-mesh-project-identifier`      | meshProject identifier                                                                                                                                           |
+| `x-mesh-costcenter` *deprecated* | If available, ID of the CostCenter selected for this meshProject. Please use `x-mesh-tag-cost-center` or another [Payment Method tag](#payment-methods) instead. |
+| `x-mesh-tag-${format(tagName)}`  | metadata tags as defined in tag schema                                                                                                                           |
 
 Headers for *metadata tags* are formatted to an http-header name by converting `camelCase` tag names into a dashed string i.e. `camel-case` and prefixing them with `x-mesh-tag-`.
 As a full example, a tag named `myCustomerTag` would be provided as an HTTP header with name `x-mesh-tag-my-customer-tag`.
