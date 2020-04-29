@@ -47,6 +47,9 @@ From a Tenant Usage Report you can also access a Detailed Report to see every si
 
 Partner accounts can access tenant usage reports for all their assigned meshCustomers in the Administration Area via "Platforms" -> "Usage Reports".
 
+Note that Azure and GCP do not provide unit costs in their usage and billing data.
+Because of this, the unit costs are not available in the Tenant Usage Reports for those platforms.
+
 ### Chargeback Statements
 
 Each project in meshStack is associated with a Chargeback Account. Tenant Usage Reports are booked into these
