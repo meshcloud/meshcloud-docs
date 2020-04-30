@@ -29,7 +29,7 @@ meshcloud provides customers with comprehensive security and compliance document
 
 ## Continuous Delivery
 
-meshcloud releases new versions of meshStack on a continuous schedule. As you can see by reviewing our [release notes](/blog), this can happen multiple times a week. Our managed service ensures that your installation and configuration is kept up to date at all times when delivering new releases to your [staging](#staging-environment) and [production environments](#production-environment).
+meshcloud releases new versions of meshStack on a continuous schedule. As you can see by reviewing our [release notes](/blog), this can happen multiple times per week. Our managed service ensures that your installation and configuration is up to date at all times when delivering new releases to your [staging](#staging-environment) and [production environments](#production-environment).
 
 ### Artefact Delivery
 
@@ -51,11 +51,11 @@ Instead, customers need to provide a manual approval or gating process before up
 
 All meshStack releases have a version number based on the schema `$year.$version.$patch`:
 
-- `$year` is a number that indicates the year of the date when the feature release was first released.
-- `$version` is a number that increments with every **feature release**. Feature release can contain new functionality and introduce non-backwards compatible changes.
-- `$patch` is a number that increments with every **patch release**. Patch releases provide fixes or minor improvements for existing functionality. Patch releases always refer to a particular feature release and don' introduce non-backwards compatible changes (except for fixing bugs).
+- `$year` is a number that indicates the year of the feature release.
+- `$version` is a number that increments with every **feature release**. Feature releases can contain new functionality and introduce non-backwards compatible changes.
+- `$patch` is a number that increments with every **patch release**. Patch releases provide fixes or minor improvements for existing functionality. Patch releases always refer to a particular feature release and don't introduce non-backwards compatible changes (except for fixing bugs).
 
-All releases contain [release notes](/blog) describing the changes made in the release.
+All releases contain [release notes](/blog) describing the changes to the product in the respective release.
 
 > Note: meshStack used a [semantic versioning](https://semver.org/) scheme up until version 7.14.
 > However, meshStack is made up of many different components that can change indepenently. meshcloud therefore adopted
