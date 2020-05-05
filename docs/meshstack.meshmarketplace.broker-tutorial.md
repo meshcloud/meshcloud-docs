@@ -5,7 +5,7 @@ title: "Tutorial: Implement a Broker"
 
 This tutorial will show you how to setup a service broker deploys services using CI/CD tools you already know.
 
-> More to follow here soon, however you can find the sample code with instructions on github already at [meshcloud/generic-osb-api](https://github.com/meshcloud/generic-osb-api)
+> More to follow here soon, however you can find the sample code with instructions on GitHub already at [meshcloud/generic-osb-api](https://github.com/meshcloud/generic-osb-api)
 
 ## Implementation Recommendations
 
