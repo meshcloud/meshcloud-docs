@@ -97,17 +97,15 @@ The Azure Role Definition is the RBAC ID of the Azure role you want to use. You 
 
 Assign a Azure function to the landing zone configuration to trigger a small piece of code in the cloud. Currently this function is invoked via a `POST` request and carries parameter, similiar to the ones in the Blueprint via HTTP header values.
 
-The following HTTP headers are provided to the Azure Function:
+Please review the [meshStack Landing Zone Http Header interface](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+
+In addition to the headers referenced above, meshStack provides the following Azure-specific HTTP headers:
+
 
 | HTTP Header Name           | Description                                                       |
 |----------------------------|:------------------------------------------------------------------|
-| x-mesh-customer-identifier | Customer Identifier                                               |
-| x-mesh-costcenter          | ID of the CostCenter defined for this meshProject.                |
-| x-mesh-project-identifier  | The project identifier                                            |
 | x-mesh-subscription-id     | The ID of the Azure Subscription associated with this meshProject |
 
-In addition, any payment settings, project tags or customer tags are also provided to the Azure function, after formatting the tag name to an http header name.
-For example, a tag named `myCustomerLabel` would be provided as an HTTP header with name `x-mesh-my-customer-label`.
 
 #### Azure Function Scope
 

@@ -3,13 +3,23 @@ id: meshcloud.customer
 title:  meshCustomer
 ---
 
-A meshCustomer usually represents a product team or department. Within a meshCustomer you manage multiple [meshProjects](meshcloud.project.md), your users and their access rights and maintain general data like addresses and payment methods.
+A meshCustomer usually represents a product team or department in your organization. Self-service within a meshCustomer
+allows you to invite and manage team members, create [meshProjects](meshcloud.project.md) and maintain organizational metadata like billing-addresses and payment methods.
+
+## Customer Creation
+
+Organizations implementing meshStack can choose to offer self-service customer registration via meshPanel or externalize
+the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.configuration.md#customer-registration).
+
+In any case, the meshCustomer creation process always involves collecting basic customer information like Name, identifier
+and any additional [metadata specific to your organization](meshstack.tag-schema.md#customer-tag-schema).
+
 
 ## Customer Settings
 
-General information of a meshCustomer (like its name) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
+General information of a meshCustomer (like its name) and [Customer Tags](meshstack.tag-schema.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional customer metadata here.
+Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.tag-schema.md) here.
 
 ## Invite users to a meshCustomer team
 

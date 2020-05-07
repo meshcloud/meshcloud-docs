@@ -297,7 +297,8 @@ You can use the following template inside the automation account to perform the 
                     "cloudformation:UpdateStackInstances",
                     "cloudformation:DescribeStackSet",
                     "cloudformation:ListStackInstances",
-                    "cloudformation:CreateStackInstances"
+                    "cloudformation:CreateStackInstances",
+                    "cloudformation:UpdateStackInstances"
                   ],
                   "Resource": "*"
                 }
