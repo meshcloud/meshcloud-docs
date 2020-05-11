@@ -88,8 +88,15 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
 
 1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app (call it e.g. `meshReplicator`).
 2. Add an client secret under **Certificates &amp; secrets** and write it down (it is the `SERVICE_PRINCIPAL_CLIENT_SECRET`).
-3. Add the `Directory.ReadWriteAll`, `Group.ReadWriteAll` and `User.Read` permissions (application type) and click **Grant permissions**. You will also need to grant admin consent to your app. Therefore click **Grant admin consent** in the permissions screen.
-4. Go to the App overview and write down the following: **Application (client) ID** (`SERVICE_PRINCIPAL_CLIENT_ID`), **Directory (tenant) ID** (`AAD_TENANT`, typically a `*.onmicrosoft.com` domain) and the **object id** (`SERVICE_PRINCIPAL_OBJECT_ID`).
+3. Add the following **application permissions** (not delegated permissions):
+    - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
+    - `Group.ReadWrite.All`  this permissions is required to create new groups
+    - `User.Invite.All` - this permission is required if you want to enable B2B User Invitation (see below)
+4. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
+5. Go to the App overview and write down the following values needed for meshPlatform configuration later:
+    - **Application (client) ID** -> `SERVICE_PRINCIPAL_CLIENT_ID`
+    - **Directory (tenant) ID** -> `AAD_TENANT`, typically a `*.onmicrosoft.com` domain
+    - **Application object id** -> `SERVICE_PRINCIPAL_OBJECT_ID`.
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
