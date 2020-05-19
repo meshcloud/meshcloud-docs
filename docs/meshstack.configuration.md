@@ -58,6 +58,44 @@ Additional remarks and configuration links:
 - `allowPartnerInviteLinks` enables the use of [invite links](administration.customers.md#invite-customer-via-link)
 - `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
 
+### Customer User Invitations
+
+When a user is invited to a customer there are several configurations in order to customize this invitation flow which are explained below.
+
+```haskell
+{ web :
+  , user :
+    Optional
+      { rolerequest :
+        {- If set to a number higher then 1, then at least that many additional
+        administrator roles in a customer must approve a users role request.
+        Setting it to 2 basically activates the 4-eye-principle for customer
+        user role assignments. -}
+        { minApprovalCount : Optional Natural
+        {- If set to true the user must accept it, when the role his role on
+        the customer is changed (downgrades of roles still work automatically
+        without user acceptance)  -}
+        , enforceUserRoleUpgradeAcceptanceRequired : Optional Bool
+        {- If set to true the user must accept the role invitation by clicking
+        on an email link, otherwise he automatically gets the role assigned. -}
+        , userRoleInviteAcceptanceRequired : Optional Bool
+        {- Enables to add users with E-Mails from outside the used directory.
+        Depending on the cloud environment this is handled differently (in
+        Azure these users are added as guest users in the AAD)  -}
+        , enableGuestUser : Optional Bool
+        {- If set to true the users E-Mail is assumed as EUID which allows
+        GCP and Azure projects to directly replicate the users permission without
+        requiring him to login into the panel first -}
+        , setEmailAsEuid : Bool
+        }
+      , revocation : Optional UserRevocation
+      }
+}
+```
+
+
+
+
 ### Address Metadata
 
 meshStack can maintain company and billing address metadata for meshCustomers and meshProjects. This is useful if your
@@ -123,7 +161,7 @@ If you have an Azure AAD as an upstream IDP and want to use it for user lookup y
 
 ```haskell
 { azure :
-  
+
   { {- Either friendly domain name or your tenants GUID -}
     aadTenant : Text
     {- Service Principal Client Id -}
