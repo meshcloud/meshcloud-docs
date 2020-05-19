@@ -144,8 +144,12 @@ This section describes the configuration of a GCP Platform Instance in the meshS
 
 Configure the domain, service account and service user as they were setup above.
 
+To retrieve the value of your Google Customer Id you can use the [gcloud tool](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains#gcloud_2) or look it up from [Google Admin console](https://support.google.com/a/answer/9039510?hl=en).
+
 ```haskell
-{   domain =
+{   customerId =
+      "Cxxxx123"
+    domain =
       "dev.meshcloud.io"
   , serviceUser =
       "meshfed-service@dev.meshcloud.io"
@@ -157,6 +161,7 @@ Configure the domain, service account and service user as they were setup above.
       }
 }
 ```
+
 
 ### Billing Account
 
