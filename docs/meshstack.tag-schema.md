@@ -89,9 +89,14 @@ user confirmed a project's data classification.
 
 ### Defining Tag Schemas
 
-Operators define tag-schemas using JSON Schema.
+Operators define tag-schemas using JSON Schema. As described earlier on this page, meshStack uses metadata tags in a wide range of use
+cases like providing parameters to Landing Zones. To ensure compatibility with different interfaces, tags must be simple
+key-value pairs of strings only.
 
-> Please be aware that meshStack currently only supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
+The tag schema must therefore ensure all values are `string` values only. Operators that wish to represent numbers can
+restrict the string value via an appropriate `pattern`.
+
+> Please be aware that meshStack currently supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
 
 As an **example**, the following meshCustomer tag schema defines the following metadata tags:
 
