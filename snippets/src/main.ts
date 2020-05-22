@@ -5,6 +5,7 @@ import * as process from 'process';
 
 import { snippets } from './extract';
 import { SnippetRepository } from './SnippetRepository';
+import { SnippetsRenderer } from './SnippetsRenderer';
 import { update } from './update';
 
 export async function extractSnippets(srcPath: string) {
@@ -29,10 +30,10 @@ async function buildSnippetCache(srcGlob: string, repo: SnippetRepository) {
   }));
 }
 
-export async function updateSnippets(srcPath: string, repo: SnippetRepository) {
+export async function updateSnippets(srcPath: string, repo: SnippetRepository, renderer: SnippetsRenderer) {
   const content = await fs.promises.readFile(srcPath, 'utf8');
 
-  const updatedContent = await update(content, repo);
+  const updatedContent = await update(content, repo, renderer);
 
   if (updatedContent !== content) {
     console.log(`updating snippet referenes in: ${srcPath}`);
@@ -43,8 +44,10 @@ export async function updateSnippets(srcPath: string, repo: SnippetRepository) {
 async function updateDocsSnippets(docsGlob: string, repo: SnippetRepository) {
   const files = await glob(docsGlob);
 
+  const renderer = new SnippetsRenderer();
+
   await Promise.all(files.map(async (inPath) => {
-    await updateSnippets(inPath, repo);
+    await updateSnippets(inPath, repo, renderer);
   }));
 }
 

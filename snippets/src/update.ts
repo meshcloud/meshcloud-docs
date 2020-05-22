@@ -1,9 +1,13 @@
-import { parseSections, renderDocusaurusCodeBlock } from './render';
 import { SnippetRepository } from './SnippetRepository';
+import { SnippetsRenderer } from './SnippetsRenderer';
 
 const snippetRegex = /<!--snippet:(.*)-->[\s\S]+?<!--END_DOCUSAURUS_CODE_TABS-->/gm;
 
-export async function update(markdown: string, repository: SnippetRepository): Promise<string> {
+export async function update(
+  markdown: string,
+  repository: SnippetRepository,
+  renderer: SnippetsRenderer
+): Promise<string> {
 
   const matches = [...markdown.matchAll(snippetRegex)];
 
@@ -28,9 +32,7 @@ export async function update(markdown: string, repository: SnippetRepository): P
       throw Error(`Invalid snippet reference "${id}"`); // todo: should log where we found this...
     }
 
-    const sections = parseSections(snippet);
-
-    const renderedSnippet = renderDocusaurusCodeBlock(id, sections);
+    const renderedSnippet = renderer.render(snippet);
 
     result = result.replace(fullMatch, renderedSnippet);
   }
