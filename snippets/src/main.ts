@@ -9,8 +9,6 @@ import { SnippetsRenderer } from './SnippetsRenderer';
 import { update } from './update';
 
 export async function extractSnippets(srcPath: string) {
-  console.log(`scanning snippet definitions in: ${srcPath}`);
-
   const content = await fs.promises.readFile(srcPath, 'utf8');
 
   const snips = snippets(content);
@@ -19,12 +17,14 @@ export async function extractSnippets(srcPath: string) {
 }
 
 async function buildSnippetCache(srcGlob: string, repo: SnippetRepository) {
+  console.log(`Building snippet cache from ${srcGlob}`);
   const files = await glob(srcGlob);
 
   await Promise.all(files.map(async (inPath) => {
     const snips = await extractSnippets(inPath);
 
     for (const snip of snips) {
+      console.log(`- saving snippet ${snip.id}`);
       await repo.saveSnippet(snip);
     }
   }));
@@ -36,12 +36,13 @@ export async function updateSnippets(srcPath: string, repo: SnippetRepository, r
   const updatedContent = await update(content, repo, renderer);
 
   if (updatedContent !== content) {
-    console.log(`updating snippet referenes in: ${srcPath}`);
+    console.log(`- updating snippet referenes in: ${srcPath}`);
     await fs.promises.writeFile(srcPath, updatedContent, 'utf8');
   }
 }
 
 async function updateDocsSnippets(docsGlob: string, repo: SnippetRepository) {
+  console.log(`Updating docs in ${docsGlob}`);
   const files = await glob(docsGlob);
 
   const renderer = new SnippetsRenderer();
@@ -55,9 +56,9 @@ async function main(): Promise<number> {
   program
     .version('0.1.0')
     .description('Builds and updates documentation snippets')
-    .option('--src <src>', 'path to src files, may include glob patterns. Specifying this will rebuild the snippets cache.')
+    .option('--src <src>', 'absolute path to src files, may include glob patterns. Specifying this will rebuild the snippets cache.')
     .requiredOption('--snips <snips>', 'path to snippet cache directory')
-    .option('--docs <docs>', 'path to markdown docs directory.  Specifying this will update snippets in markdown docs.')
+    .option('--docs <docs>', 'absolute path to markdown files, may include glob patterns.  Specifying this will update snippets in markdown docs.')
     .allowUnknownOption(false)
     .parse(process.argv);
 
