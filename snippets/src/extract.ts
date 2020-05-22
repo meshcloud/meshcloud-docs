@@ -1,5 +1,7 @@
 import { takeWhile } from 'lodash';
 
+import { Snippet } from './Snippet';
+
 /**
    * find a snippet line
    * - full match is the full snippet line
@@ -21,13 +23,21 @@ export function indentLevel(line: string): number {
   return line.search(whitespaceRegex);
 }
 
-
 export interface ParsedLine {
+  /**
+   * Index of the line in the source file.
+   */
   index: number;
+  /**
+   * Indent level of the line (number of leading whitespace chars)
+   */
   indent: number;
+  /**
+   * If this line is a snippet header, the snippet id. Otherwise null.
+   */
   id: string | null;
   /**
-   * line content with indent removed
+   * line content (including indent)
    */
   content: string;
 }
@@ -48,16 +58,13 @@ export function parse(content: string): ParsedLine[] {
 
     const indent = indentLevel(lineContent);
 
-    return { index: index, indent: indent, id: id, content: lineContent.slice(indent) } as ParsedLine;
+    return {
+      index: index,
+      indent: indent,
+      id: id && id.trim(), // trim any extra whitespace
+      content: lineContent
+    } as ParsedLine;
   });
-}
-
-/**
- * An extracted code snippet.
- */
-export interface Snippet {
-  id: string;
-  content: string;
 }
 
 /**
@@ -76,11 +83,24 @@ export function snippets(content: string): Snippet[] {
   return snippetStarts.map(start => {
     const offsetSkipSnippetIdLine = 1;
     const linesAfterStart = parsed.slice(start.index + offsetSkipSnippetIdLine);
-    const snippetLines = takeWhile(linesAfterStart, x => x.indent >= start.indent);
+
+    // check if the snippet is empty
+    const firstSnippetLine = linesAfterStart[0];
+    if (!firstSnippetLine) {
+      console.warn(`Snippet ${start.id} appears to be empty`);
+      return { id: start.id, content: '' } as Snippet;
+    }
+
+    const snippetLines = takeWhile(linesAfterStart, x =>
+      // lines is empty or above indent level
+      x.indent < 0 || x.indent >= firstSnippetLine.indent
+    );
+
+    const reindentedLines = snippetLines.map(x => x.content.substr(firstSnippetLine.indent)); // cut indent
 
     return {
       id: start.id,
-      content: snippetLines.map(x => x.content).join('\n')
+      content: reindentedLines.join('\n')
     } as Snippet;
   });
 }
