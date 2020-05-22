@@ -6,8 +6,6 @@ import { Snippet } from './Snippet';
 import { SnippetRepository } from './SnippetRepository';
 
 describe('SnippetRepository', () => {
-
-
   let dir: tmp.DirResult;
   let sut: SnippetRepository;
 
