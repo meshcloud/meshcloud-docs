@@ -34,8 +34,6 @@ export class SnippetRepository {
   public async saveSnippet(snippet: Snippet): Promise<void> {
     const destPath = path.join(this.snipsPath, snippet.id);
 
-    console.log(`saving snippet ${destPath}`);
-
     return fs.promises.writeFile(destPath, snippet.content);
   }
 }
