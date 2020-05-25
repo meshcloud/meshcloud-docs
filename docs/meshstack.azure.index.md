@@ -269,12 +269,6 @@ In this screen you can also find the Object ID and Application ID of your servic
 Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
 ```
 
-## Secure Azure Function Setup
-
-In order to allow Azure Function to get called only by the replicator service principal quite a complex setup process is required which is described below.
-
-TODO
-
 
 ## Platform Instance Configuration
 
@@ -414,16 +408,16 @@ meshstack in total needs up to three service principals, one for replicating mes
 - `Group.ReadWrite.All` - this permissions is required to create new groups
 - `User.Invite.All` - this permission is required if you want to enable B2B User Invitations
 - `User Access Administrator` - to add and remove user group access to the Subscriptions
-- `Rights to call Azure Functions` - see the [end of this section](#azure-function-access-setup) for how to setup this
+- (optional)`Permissions to call Azure Functions` - see the [end of this section](#azure-function-access-setup) for how to setup this
 
-Created Subscriptions will have the Service Principal of the replicator registered as owner at first. As soon as all needed maintainance steps are performed (like renaming the subscription, moving it to the final management group etc.), the replicator removes itself as an owner.
+Created Subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
 
-All permissions left are therefore granted only via the management group hierarchy. The meshstack software does **not** need access related to actual workload inside this subscriptions, however to perform certain maintenance tasks the following permissions/roles must be granted to the replicator principal through the management group hierarchy:
+All permissions left are therefore granted only via the management group hierarchy. The meshstack software does **not** need access related to actual workload inside these subscriptions. However in order to perform certain maintenance tasks, the following permissions/roles must be granted to the replicator principal:
 
 - `Blueprint Operator` - required for assigning and managing Blueprint assignments to the Subscriptions
 - `Management Group Contributor` - required on the target management group for moving Subscriptions
 
-In order to prevent that the replicator is able to assign himself more permissions than originally anticipated its recommended to add a policy rule like this:
+In order to prevent that the replicator from assigning itself more permissions than originally anticipated, it is recommended to add the following policy rule:
 
 ```json
 {
@@ -460,13 +454,13 @@ In order to prevent that the replicator is able to assign himself more permissio
 }
 ```
 
-If you intend to call Azure functions via a Landing Zone configuration then you need to grant the replicator principal also permissions to the role you have created for the Azure secured function call, described [here](#secure-azure-function-setup).
+If you intend to call Azure functions via a Landing Zone configuration, then you need to grant the replicator principal also permissions to the role you have created for the [Azure secured function call](#secure-azure-function-setup).
 
 #### Azure Function Access Setup
 
 In order to make an Azure Function only accessible via the replicators Service Principal follow these steps:
 
-1. Create a system assigned identity for your function.
+1. Create a system assigned identity for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
 
     ![System assigned identity](assets/azure_function/system-assigned-identity.png)
 
@@ -498,7 +492,7 @@ In order to make an Azure Function only accessible via the replicators Service P
     ![Assign the Application Role to SP](assets/azure_function/sp-token.png)
 
 
-When these steps are successful, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets), and this token should contain a scop to the app. With this token you can call the Azure Function.
+After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the meshReplicator is using.
 
 ![Fetch Token](assets/azure_function/fetch-token.png)
 
@@ -506,7 +500,7 @@ When these steps are successful, you should be able to fetch a token scoped to t
 
 #### meshFed Identity Lookup
 
-This principal is only required if the AAD is actually be used as source for users information when assigning users to customers or projects inside the meshPanel. If this should be used then the following permissions are required on this principal:
+This principal is only required if the AAD is actually be used as source of user information when assigning users to customers or projects inside the meshPanel. In order to use this functionality, the principal requires the following permissions:
 
 - `User.Read.All`
 
