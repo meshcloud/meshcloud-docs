@@ -18,8 +18,12 @@ The full configuration format for GCP metering is as follows.
 { platform : Text
 , bigqueryTable : Text
 , credentialsB64 : Secret
+, additionalFilter : Optional Text
 }
 ```
+
+The configuration parameter `additionalFilter` is appended to the BigQuery query and can be used to further filter the data that is collected.
+This can be used if you want to collect billing information only for a specific organization or folder.
 
 The data is collected incrementally from the exported billing data by filtering by the `export_time` attribute.
 Any entries with `cost_type` `tax` are ignored in the metering process.

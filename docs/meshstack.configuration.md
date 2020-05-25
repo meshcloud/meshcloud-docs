@@ -38,7 +38,44 @@ meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.custome
 ### Customer Registration
 
 Multiple options are available to control how [meshCustomers](./meshcloud.customer.md) can sign up to meshStack in
-self-service. meshStack can be configured to suit your organization's unique demands for sign up. You can configure these options in `meshfed.web.register` as follows
+self-service. meshStack can be configured to suit your organization's unique demands for sign up.
+
+<!--snippet:mesh.panel.environment.mesh.registration-->
+
+The following configuration options are available for meshPanel at `panel.environment.mesh.registration`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+let Registration =
+    {-
+        requirePayment:
+            Determines if the customer registration wizard will collect a default "Cost Center" payment method.
+            Disabling this will cause new meshCustomers to be registered without a payment method.
+            This is useful if the meshStack implementation requires customers to register payment methods via an external
+            process (e.g. via API createLimitedPaymentMethod).
+
+            See ui.costCenter for customizing the default cost center payment method.
+
+        externalRegistrationUrl:
+            If set, disables the self-service customer registration wizard and instead redirects to the specified external
+            url. Use this if the meshStack implementation uses another way to register customers (e.g. via API).
+    -}
+      { requirePayment : Bool
+      , externalRegistrationUrl : Optional Text
+      }
+```
+<!--Example-->
+```haskell
+let example =
+        { requirePayment = True
+        , externalRegistrationUrl = Some
+            "https://itsm.example.com/order/meshcloud"
+        }
+      : Registration
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+Additional configuration options control backend behavior in `meshfed.web.register` as follows:
 
 ```haskell
 
@@ -55,8 +92,10 @@ self-service. meshStack can be configured to suit your organization's unique dem
 
 Additional remarks and configuration links:
 
+- `requirePayment` must be consistently configured between `panel` and `meshfed` configuration settings. The configuration model validates this.
 - `allowPartnerInviteLinks` enables the use of [invite links](administration.customers.md#invite-customer-via-link)
 - `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
+
 
 ### Customer User Invitations
 
@@ -104,6 +143,7 @@ between different subsidiaries that cannot be covered using e.g. cost-center num
 
 If you don't need address metadata, we recommend hiding it from end-users of meshStack by setting the `panel.environment.ui` configuration option:
 
+<!--snippet:panel.ui.hideAddress -->
 ```haskell
 {
   hideAddress : Optional Bool
