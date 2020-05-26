@@ -489,7 +489,7 @@ In order to make an Azure Function only accessible via the replicators Service P
 
 4. In your Service Principals API permissions screen, add the newly created Application Role. Don't forget to grant admin consent again afterwards.
 
-    ![Assign the Application Role to SP](assets/azure_function/sp-token.png)
+    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
 
 
 After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the meshReplicator is using.
