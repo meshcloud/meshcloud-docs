@@ -40,6 +40,23 @@ A meshStack installation can be configured to require a manual approval by a par
 
 ## Manage Customer Accounts
 
+### Update Account Status
+
+Partner users can update the status of meshCustomer accounts by clicking the `Edit` in the status column.
+
+#### Disabling Customer Accounts
+
+Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.project-metering.md#payment-methods) or do not maintain correct [metadata](meshstack.tag-schema.md).
+
+Setting the meshCustomer account status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this customer:
+
+- users can no longer access [meshTenants](meshcloud.tenant.md) via meshPanel
+- users can no longer create [Service Users](meshcloud.service-user.md)
+
+Disabling a customer does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, partners must add themselves to the customer account as an admin and manually remove user permissions and service users.
+
+If you want to only prevent the customer from creating new [meshProjects](meshcloud.project.md), you can [adjust the customer's meshProject quota](#set-customer-quotas).
+
 ### Access managed Customer Accounts
 
 As a partner user you can assign yourself a role on managed managed customer accounts.
