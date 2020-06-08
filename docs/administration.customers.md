@@ -55,7 +55,7 @@ Setting the meshCustomer account status to **Disabled** has the following effect
 
 Disabling a customer does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, partners must add themselves to the customer account as an admin and manually remove user permissions and service users.
 
-If you want to only prevent the customer from creating new [meshProjects](meshcloud.project.md), you can [adjust the customer's meshProject quota](#set-customer-quotas).
+If you want to prevent a customer from creating new [meshProjects](meshcloud.project.md), you can [adjust the customer's meshProject quota](#set-customer-quotas).
 
 ### Access managed Customer Accounts
 
