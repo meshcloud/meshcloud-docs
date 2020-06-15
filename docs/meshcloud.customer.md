@@ -30,6 +30,11 @@ You can initially setup the role in the dropdown which describes the access leve
 Press "+" to send an invitation email. This step is necessary in order to give a user access to your [projects](meshcloud.project.md).
 After this action the created invitation will appear under the pending customer user role requests section.
 
+## View User Groups
+
+You can view user groups within your customer account by going to the **Groups** section in the **Account** area.
+Currently, creating a group is only supported via [meshObject API](meshstack.api.md).
+
 ## Assign meshCustomer Roles
 
 You can change the role assigned to each user on the current meshCustomer.
@@ -66,6 +71,7 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;[Invite&nbsp;User](meshcloud.customer.md#invite-users-to-access-a-meshcustomer) | &#10003; | |
 | &nbsp;&nbsp;[Edit&nbsp;User&nbsp;Group](meshcloud.customer.md#manage-groups-of-assigned-users) | &#10003; | |
 | &nbsp;&nbsp;[Remove&nbsp;User](meshcloud.customer.md#remove-users-from-a-meshcustomer) | &#10003; | |
+| [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md) | &#10003; | |
 | [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | |
 | [Company&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | |
 | [Billing&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | |
