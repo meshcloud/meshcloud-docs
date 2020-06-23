@@ -100,6 +100,10 @@ While it is possible to trigger an AVM execution via a StackSet a better alterna
 
 > Please make sure the `MeshfedServiceRole` has the rights in order to trigger the configured Lambda.
 
+The Lambda is called synchronously, so please make sure your Lambdas execution time is kept low. If you have to do long running tasks its a good advice to call another lambda in an async fashion from the initial Lambda call, so you can return to the replication code without hitting HTTP timeouts.
+
+If the function could not be invoked because of an server error for example a permission error prevents the function of being called, this is regarded as a replication error and will fail the project replication.
+If the function itself signals an error, the error code returned by the function is currently not used but only logged for reference. This is done in order to allow the replication of the meshProject to be continued.
 
 The following parameters can be used in the Lambda function and are provided as a JSON payload like the following pattern:
 
