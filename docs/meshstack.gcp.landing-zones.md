@@ -54,7 +54,7 @@ For example, a tag named `myCustomerLabel` would be provided as a property with 
 
 ## meshRole to Platform Role Mapping
 
-The meshProject roles must be mapped to GCP specific roles. Your are able to control this mapping with a Landing Zone setting. You can specifiy these mappings by adding role mappings and supplying a GCP Role. You can both use custom roles which look like `organizations/123123123123/roles/meshstack.project_developer` or predifined GCP roles like `roles/editor`.
+The meshProject roles must be mapped to GCP specific roles. You are able to control this mapping with a Landing Zone setting. You can specifiy these mappings by adding role mappings and supplying a GCP Role. You can both use custom roles which look like `organizations/123123123123/roles/meshstack.project_developer` or predifined GCP roles like `roles/editor`.
 
 You can specify multiple GCP roles for each meshRole. All defined GCP roles are added to the user group of the assigned users.
 
@@ -71,4 +71,3 @@ In addition to the headers referenced above, meshStack provides the following GC
 | HTTP Header Name           | Description                                                |
 | -------------------------- | :--------------------------------------------------------- |
 | x-mesh-project-id          | The ID of the GCP project associated with this meshProject |
-
