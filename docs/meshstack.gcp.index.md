@@ -114,7 +114,7 @@ meshfed-service@dev.meshcloud.io
 You can reset the password of this user after completing the setup instructions. This helps ensure that only the
  `meshfed-service` Service Account is able to impersonate the technical user account.
 
-#### Assign admin Roles
+#### Assign Admin Roles
 
 Add the User to the following [admin roles](https://support.google.com/cloudidentity/answer/2405986?hl=en)
 
