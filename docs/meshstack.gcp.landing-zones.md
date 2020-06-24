@@ -52,6 +52,12 @@ The properties of the provided configuration file will be expanded with properti
 In addition, any payment settings, project tags or customer tags are also provided to the template.
 For example, a tag named `myCustomerLabel` would be provided as a property with name `mesh-tag-my-customer-label`.
 
+## meshRole to Platform Role Mapping
+
+The meshProject roles must be mapped to GCP specific roles. You are able to control this mapping with a Landing Zone setting. You can specifiy these mappings by adding role mappings and supplying a GCP Role. You can both use custom roles which look like `organizations/123123123123/roles/meshstack.project_developer` or predifined GCP roles like `roles/editor`.
+
+You can specify multiple GCP roles for each meshRole. All defined GCP roles are added to the user group of the assigned users.
+
 ## Cloud Function URL
 
 If you specify a Cloud Function URL this function will get invoked during a project replication. This can happen several times and thus your function invocation must be idempotent. The function gets variables provided via HTTP headers similar to the [Azure Function](./meshstack.azure.landing-zones.md#azure-function).
@@ -65,4 +71,3 @@ In addition to the headers referenced above, meshStack provides the following GC
 | HTTP Header Name           | Description                                                |
 | -------------------------- | :--------------------------------------------------------- |
 | x-mesh-project-id          | The ID of the GCP project associated with this meshProject |
-
