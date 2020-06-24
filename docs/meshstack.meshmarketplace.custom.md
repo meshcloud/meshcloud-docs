@@ -27,7 +27,7 @@ The meshMarketplace does not store any credentials provided by bindings on sensi
 
 ### Tenant-Aware Service Broker
 
-A Service Broker can define its services to be tenant-aware by providing a `tenantAware` flag in service metadata of the service definition. Tenant-aware Service Broker are special Service Bindings that provide the tenant context to the Service Broker. When users create a tenant service binding in the meshMarketplace, they have to select a tenant. Only tenants of the meshProject the Service Instance lives in can be selected.
+A Service Broker can define its services to be tenant-aware by providing a `tenantAware` flag in service metadata of the service definition. Tenant-aware Service Broker are special Service Bindings that provide the meshTenant context to the Service Broker using a special [Bind Resource Object](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#bind-resource-object). When users create a tenant service binding in the meshMarketplace, they have to select a meshTenant. Only the meshTenants of the meshProject, which contains the Service Instance, can be selected.
 
 #### Configuration in Service Catalog
 
@@ -54,7 +54,7 @@ There are 2 different categories of Service Brokers that can be implemented that
 
 #### Create Service Binding
 
-When the service binding is created, meshMarketplace will provide a [Bind Resource object](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#bind-resource-object) properties `tenant_id` and `platform` in the `bind_resource` object of the bind request:
+When the service binding is created, meshMarketplace will provide a [Bind Resource object](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#bind-resource-object) with properties `tenant_id` and `platform` in the `bind_resource` object of the bind request:
 
 ```json
 {

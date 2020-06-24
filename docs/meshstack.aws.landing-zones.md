@@ -31,14 +31,16 @@ Each AWS project which now gets this Landing Zone assigned will be setup to rece
 
 The following parameters can be used in the StackSet template:
 
-| Parameter      | Description                                                                              |
-| -------------- | :--------------------------------------------------------------------------------------- |
-| AccountName    | Account name of the created AWS account                                                  |
-| AccountEmail   | Account email of the created AWS account                                                 |
-| ProductName    | Customer Identifier                                                                      |
-| ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter) |
-| ContactEmail   | E-Mail of the meshProject creator. Currently this is the user which created the project. |
-| Stage          | The project identifier                                                                   |
+| Parameter      | Description                                                                                                                     |
+| -------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| AccountName    | Name of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)               |
+| AccountEmail   | Email associated with the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html) |
+| AccountId      | Unique Id of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)          |
+| AccountArn     | ARN of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)                |
+| ProductName    | meshCustomer Identifier                                                                                                             |
+| ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter)                                        |
+| ContactEmail   | E-Mail of the meshProject creator. Currently this is the user who created the project.                                        |
+| Stage          | The meshProject identifier                                                                                                          |
 
 In addition, any payment settings, project tags or customer tags can also be used in the StackSet template. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
@@ -98,6 +100,10 @@ While it is possible to trigger an AVM execution via a StackSet a better alterna
 
 > Please make sure the `MeshfedServiceRole` has the rights in order to trigger the configured Lambda.
 
+The Lambda is called synchronously, so please make sure your Lambdas execution time is kept low. If you have to do long running tasks its a good advice to call another lambda in an async fashion from the initial Lambda call, so you can return to the replication code without hitting HTTP timeouts.
+
+If the function could not be invoked because of a server error for example a permission error prevents the function of being called, this is regarded as a replication error and will fail the project replication.
+If the function itself signals an error, the error code returned by the function is currently not used but only logged for reference. This is done in order to allow the replication of the meshProject to be continued.
 
 The following parameters can be used in the Lambda function and are provided as a JSON payload like the following pattern:
 
@@ -109,14 +115,16 @@ The following parameters can be used in the Lambda function and are provided as 
 }
 ```
 
-| Parameter      | Description                                                                                |
-| -------------- | :----------------------------------------------------------------------------------------- |
-| AccountName    | Account name of the created AWS account                                                    |
-| AccountEmail   | Account email of the created AWS account                                                   |
-| ProductName    | Customer Identifier                                                                        |
-| ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use `tagCostCenter`) |
-| ContactEmail   | E-Mail of the meshProject creator. Currently this is the user which created the project.   |
-| Stage          | The project identifier                                                                     |
+| Parameter      | Description                                                                                                                     |
+| -------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| AccountName    | Name of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)               |
+| AccountEmail   | Email associated with the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html) |
+| AccountId      | Unique Id of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)          |
+| AccountArn     | ARN of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)                |
+| ProductName    | meshCustomer Identifier                                                                                                             |
+| ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter)                                        |
+| ContactEmail   | E-Mail of the meshProject creator. Currently this is the user who created the project.                                        |
+| Stage          | The meshProject identifier                                                                                                          |
 
 In addition, any payment settings, project tags or customer tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
@@ -127,8 +135,8 @@ In order to detect the finished execution of the AVM meshStack looks for certain
 
 Currently the account must contain these tags to be picked up:
 
-* ProductName: Must contain the customer identifier
-* Stage: Must contain the project identifier
+* ProductName: Must contain the meshCustomer identifier
+* Stage: Must contain the meshProject identifier
 
 > These tags will soon be customizable in the AWS Landing Zone configuration.
 
