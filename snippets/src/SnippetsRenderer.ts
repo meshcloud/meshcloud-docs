@@ -3,7 +3,7 @@ import { Snippet } from './Snippet';
 
 export interface SnippetSections {
   id: string;
-  type: string;
+  types: string;
   examples: string | null;
 }
 
@@ -41,7 +41,7 @@ export class SnippetsRenderer {
     const hasExample = exampleStartsAtIndex > 0;
 
     const typeEndsAtIndex = hasExample ? exampleStartsAtIndex : inStartsAtIndex;
-    const type = lines.slice(0, typeEndsAtIndex)
+    const types = lines.slice(0, typeEndsAtIndex)
       .map(x => x.content)
       .join('\n')
       .trimEnd();
@@ -55,7 +55,7 @@ export class SnippetsRenderer {
 
     return {
       id: snippet.id,
-      type: type,
+      types: types,
       examples: examples
     };
   }
@@ -73,13 +73,20 @@ ${fence}haskell
 ${sections.examples}
 ${fence}`;
 
+    // experimental - we sometimes need the option to just describe a dhall type in the documentation
+    // before actually using it in a meshStack configuration model snippet. By appending "#type" to the snippet
+    // id we can signal that
+    const snippetExplanation = id.endsWith('#type')
+      ? ``
+      : `The following configuration options are available at \`${id}\`:`;
+
     const template = `<!--snippet:${id}-->
 
-The following configuration options are available at \`${id}\`:
+${snippetExplanation}
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ${fence}haskell
-${sections.type}
+${sections.types}
 ${fence}${example}
 <!--END_DOCUSAURUS_CODE_TABS-->`;
 

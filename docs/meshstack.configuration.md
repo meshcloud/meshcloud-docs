@@ -42,7 +42,7 @@ self-service. meshStack can be configured to suit your organization's unique dem
 
 <!--snippet:mesh.panel.environment.mesh.registration-->
 
-The following configuration options are available for meshPanel at `panel.environment.mesh.registration`:
+The following configuration options are available at `mesh.panel.environment.mesh.registration`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```haskell
