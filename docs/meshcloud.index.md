@@ -25,6 +25,11 @@ The figure and table below explain the relation of the most important concepts i
 | [meshPlatform](meshcloud.platform-location.md) | An individual cloud platform connected to meshcloud.                                      |
 | [meshLocation](meshcloud.platform-location.md) | A grouping of meshPlatforms, e.g. by geographic region.                                   |
 
+
+## meshPanel supported browser
+Firefox & Chrome
+
 ## Contributing
 
 This documentation is open source! Please feel free to hit the `Edit` button any time and help us [improve](https://github.com/meshcloud/meshcloud-docs/blob/master/CONTRIBUTING.md) the documentation. Your feedback is very welcome.
+
