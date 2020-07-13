@@ -48,7 +48,7 @@ If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is a
 
 ### Assign user to a meshProject
 
-In the **Project Users** section you can find a type-ahead `email` field at the bottom. You can start typing the email address of a user assigned to your Meshcustomer and select the according user in the dropdown. Also select a project role for the user. Press the `+` to actually add this user to the project. Note that only users with a valid account on the Meshpanel can access your projects. A user can be assigned multiple project roles on the same project.
+In the **Project Users** section you can find a type-ahead `email` field at the bottom. You can start typing the email address of a user assigned to your meshCustomer and select the according user in the dropdown. Also select a project role for the user. Press the `+` to actually add this user to the project. Note that only users with a valid account on the meshPanel can access your projects. A user can be assigned multiple project roles on the same project.
 
 ### Project Roles
 
