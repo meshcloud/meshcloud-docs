@@ -7,7 +7,7 @@ meshcloud can automatically provision GCP Projects as Tenants for [meshProjects]
 
 ## Integration Overview
 
-To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes Azure available to meshProjects like any other cloud platform in meshStack.
+To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes GCP available to meshProjects like any other cloud platform in meshStack.
 
 Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups. For organizations that do not already use google identity services, meshStack supports fully federated
 [meshStack provisioned identities](./meshstack.identity-federation.md). Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
@@ -93,26 +93,37 @@ meshfed-service@meshstack-root.iam.gserviceaccount.com
 ### meshfed-service User
 
 meshStack needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
+Depending on your organization's setup of Google Cloud Identity, provisioning a technical user in the cloud directory
+may require one of the following two alternatives.
 
-> Note: Depending on your organizations setup of Google Cloud Identity provisioning a technical user in the cloud directory
-> may require an exception from standard procedures (e.g. federated SAML Login).
+1. Provisioning the user as a "cloud only" Account in the [Google Admin Console](https://admin.google.com/).
+2. Provisioning the user in an on-premises directory synced with the cloud directory
 
-Manually create a `meshfed-service` (directory-)user in the [Google Admin Console](https://admin.google.com/).
+> In any case, you will have to log in with the user once to accept Google's Terms of Service. If you provision the user
+> as a "cloud only" account but have federation enabled on your cloud directory, temporarily making the technical user
+> a ["Super Admin" disables SSO](https://support.google.com/a/answer/6341409?hl=en) and enables cloud only login.
 
-- You can throw away the password of this user after completing the setup
-- Add the User to the following admin roles
-  - `User Management`
-  - `Groups Admin`
 
-The directory-user will be identified by an email address like
+We recommend calling this user `meshfed-service`. You may also want to consider provisioning it on a domain reserved for technical
+user accounts. The user will be identified by an email like:
 
 ```text
 meshfed-service@dev.meshcloud.io
 ```
 
+You can reset the password of this user after completing the setup instructions. This helps ensure that only the
+ `meshfed-service` Service Account is able to impersonate the technical user account.
+
+#### Assign Admin Roles
+
+Add the User to the following [admin roles](https://support.google.com/cloudidentity/answer/2405986?hl=en)
+
+- `User Management Admin`
+- `Groups Admin`
+
 #### Accept Google ToS
 
-The user needs to accept Google’s ToS after signing in as `meshfed-service@dev.meshcloud.io`.
+The technical user needs to accept Google’s ToS after signing in as `meshfed-service@dev.meshcloud.io`.
 
 Open a private browser session and
 
