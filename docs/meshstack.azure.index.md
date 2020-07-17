@@ -194,7 +194,7 @@ In order to make an Azure Function only accessible via the replicators Service P
 
     ![Assigned users only](assets/azure_function/assigned-users.png)
 
-3. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). Its only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
+3. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
 
     ```json
     {
@@ -218,7 +218,7 @@ In order to make an Azure Function only accessible via the replicators Service P
     ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
 
 
-After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the meshReplicator is using.
+After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the replicator is using.
 
 ![Fetch Token](assets/azure_function/fetch-token.png)
 
