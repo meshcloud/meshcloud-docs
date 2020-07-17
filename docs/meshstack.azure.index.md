@@ -176,7 +176,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 
 ### Identity Provider (IdP) Lookup
 
-This principal is only required if the AAD is actually be used as source of user information when assigning users to customers or projects inside the meshPanel. In order to use this functionality, the principal requires the following permissions:
+This principal is only required if the AAD is actually be used as source of user information when assigning users to meshCustomers or meshProjects inside the meshPanel. In order to use this functionality, the principal requires the following permissions:
 
 - `User.Read.All`
 
