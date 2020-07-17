@@ -91,7 +91,7 @@ meshstack in total needs up to three service principals, one for replicating mes
 In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
 The Service Principal must be authorized in the scope of the meshcloud AAD Tenant.
 
-#### AAD Level permissions
+#### AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app (call it e.g. `meshReplicator`).
 2. Add an client secret under **Certificates &amp; secrets** and write it down (it is the `SERVICE_PRINCIPAL_CLIENT_SECRET`).
@@ -107,9 +107,9 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
-#### Subscription Level permissions
+#### Subscription Level Permissions
 
-Created Subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
+Created subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
 
 All permissions left are therefore granted only via the management group hierarchy. The meshstack software does **not** need access related to actual workload inside these subscriptions. However in order to perform certain maintenance tasks, the following permissions/roles must be granted to the replicator principal:
 
