@@ -17,7 +17,7 @@ In order to plan and execute a successful integration of Azure using meshcloud, 
 
 ## Azure Active Directory Integration
 
-All Subscriptions in Azure must be associated with exactly one AAD Tenant storing role and permission assignments. Azure uses this AAD Tenant to evaluate permissions on all resources contained in that subscription. meshcloud manages roles and assignments
+All subscriptions in Azure must be associated with exactly one AAD Tenant storing role and permission assignments. Azure uses this AAD Tenant to evaluate permissions on all resources contained in that subscription. meshcloud manages roles and assignments
 by automatically replicating [meshProject Role Assignments](./meshcloud.project.md) to this AAD Tenant.
 
 However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant.
