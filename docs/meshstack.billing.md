@@ -77,7 +77,8 @@ Using ScopeSelectors, Operators can for example define different prices for plat
 ```haskell
 let ScopeSelector =
     {-
-      The Scope Selector specifies the cloud resourcce scopes that a product catalog entry applies to.
+      The Scope Selector specifies the cloud resource scopes that a product catalog entry applies to.
+      Fields, depending on the type of scope selected:
 
         platformType:
             The PlatformType to target
@@ -91,19 +92,18 @@ let ScopeSelector =
         localProjectId:
             The platform identifier for the meshTenant, e.g. an Azure Subscription Id.
     -}
-      < PlatformType : { platformType : PlatformType }
-      | PlatformInstance :
-          { platformType : PlatformType
-          , location : Text
-          , platformInstance : Text
-          }
-      | Tenant :
-          { platformType : PlatformType
-          , location : Text
-          , platformInstance : Text
-          , localProjectId : Text
-          }
-      >
+
+      let ByPlatformType = { platformType : PlatformType }
+
+      let ByPlatformInstance =
+            ByPlatformType ⩓ { location : Text, platformInstance : Text }
+
+      let ByTenant = ByPlatformInstance ⩓ { localProjectId : Text }
+
+      in  < PlatformType : ByPlatformType
+          | PlatformInstance : ByPlatformInstance
+          | Tenant : ByTenant
+          >
 ```
 <!--Example-->
 ```haskell
@@ -133,26 +133,26 @@ Discounts allow Operators to add or deduct charges to Tenant Usage Reports. A co
 ```haskell
 let Discount =
     {-
-          scope:
-              Specifies the scope this discount applies to, see ScopeSelector
+        scope:
+            Specifies the scope this discount applies to, see ScopeSelector
 
-          discountRule:
-              Specifies the type of discount rule used to calculate the discount.
+        discountRule:
+            Specifies the type of discount rule used to calculate the discount.
 
-          displayName:
-              The name to display for this discount on the tenant usage report.
+        displayName:
+            The name to display for this discount on the tenant usage report.
 
-          description:
-              The description to display for this discount on the tenant usage report.
+        description:
+            The description to display for this discount on the tenant usage report.
 
-          sellerId:
-              The id of the seller to charge this discount to. A positive discount netAmounot will be credited to this
-              seller during chargeback, while a negative netAmount will be charged to this seller.
+        sellerId:
+            The id of the seller to charge this discount to. A positive discount netAmounot will be credited to this
+            seller during chargeback, while a negative netAmount will be charged to this seller.
 
-          sellerProductGroup:
-              A product group identifier for the seller. Specifying this field allows sellers to aggregate
-              charges and credits by different categories for reporting purposes.
-      -}
+        sellerProductGroup:
+            A product group identifier for the seller. Specifying this field allows sellers to aggregate
+            charges and credits by different categories for reporting purposes.
+    -}
       { scope : ScopeSelector
       , discountRule : DiscountRule
       , displayName : Text
