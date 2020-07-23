@@ -7,7 +7,7 @@ meshTenants are the representation of a [meshProject](./meshcloud.project.md) in
 meshTenants are isolated cloud environments protected by multi-tenant mechanisms of the cloud platform such as
 AWS Accounts, Azure Subscriptions or Cloud Foundry Spaces.
 
-[meshCustomers](./meshcloud.customer.md) don't manually create or manage meshTenants. Instead, meshTenants always automatically managed through
+[meshCustomers](./meshcloud.customer.md) don't manually create or manage meshTenants. Instead, meshTenants are always automatically managed through
 a [meshProject](./meshcloud.project.md).
 
 ## Replication and Reconciliation

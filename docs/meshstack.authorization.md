@@ -59,20 +59,38 @@ The default configuration of meshStack ships with these roles and intended use.
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
-The meshProject roles can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.project` as follows:
+<!--snippet:mesh.meshfed.web.project-->
 
+The following configuration options are available at `mesh.meshfed.web.project`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
 ```haskell
-{ initialRole = Some "user"
-, roles =
-    Some
-      [ { name = "Project-Admin", identifier = "admin" }
-      , { name = "Project-User", identifier = "user" }
-      , { name = "Project-Reader", identifier = "reader" }
-      ]
-}
-```
+let ProjectRoleConfiguration =
+    {-
+        initialRole:
+            Designates the default role that will be pre-selected for new role requests in meshPanel.
 
-The `initialRole` designates the default role that will be pre-selected for new role requests in the meshPanel.
+        roles:
+            The list of roles available on meshProjects. Each role has a display name and an
+            identifier used to reference the role in configuration (e.g. in Landing Zones).
+    -}
+      { initialRole : Optional Text
+      , roles : Optional (List ProjectRole)
+      }
+```
+<!--Example-->
+```haskell
+let example =
+        { initialRole = Some "user"
+        , roles = Some
+          [ { name = "Project-Admin", identifier = "admin" }
+          , { name = "Project-User", identifier = "user" }
+          , { name = "Project-Reader", identifier = "reader" }
+          ]
+        }
+      : ProjectRoleConfiguration
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Role Request Approval
 

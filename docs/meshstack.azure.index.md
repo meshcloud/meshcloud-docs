@@ -17,7 +17,7 @@ In order to plan and execute a successful integration of Azure using meshcloud, 
 
 ## Azure Active Directory Integration
 
-All Subscriptions in Azure must be associated with exactly one AAD Tenant storing role and permission assignments. Azure uses this AAD Tenant to evaluate permissions on all resources contained in that subscription. meshcloud manages roles and assignments
+All subscriptions in Azure must be associated with exactly one AAD Tenant storing role and permission assignments. Azure uses this AAD Tenant to evaluate permissions on all resources contained in that subscription. meshcloud manages roles and assignments
 by automatically replicating [meshProject Role Assignments](./meshcloud.project.md) to this AAD Tenant.
 
 However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant.
@@ -83,8 +83,15 @@ and removed from the subscription pool.
 
 ## Service Principal Setup
 
+meshstack in total needs up to three service principals, one for replicating meshProjects into the Azure platform, one if AAD should be used as an user lookup when users are added to a customer or project inside the meshfed panel, and one for gathering metering data for the billing subsystem.
+
+
+### Replicator
+
 In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
 The Service Principal must be authorized in the scope of the meshcloud AAD Tenant.
+
+#### AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app (call it e.g. `meshReplicator`).
 2. Add an client secret under **Certificates &amp; secrets** and write it down (it is the `SERVICE_PRINCIPAL_CLIENT_SECRET`).
@@ -100,9 +107,127 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
-### Configuring Enterprise Enrollment
+#### Subscription Level Permissions
 
-#### 1. Setting up the Enrollment Account
+Created subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
+
+All permissions left are therefore granted only via the management group hierarchy. The meshstack software does **not** need access related to actual workload inside these subscriptions. However in order to perform certain maintenance tasks, the following permissions/roles must be granted to the replicator principal:
+
+```hcl
+# Assigning Users
+"Microsoft.Authorization/permissions/read",
+"Microsoft.Authorization/roleAssignments/*",
+"Microsoft.Authorization/roleDefinitions/read",
+
+# Assigning Blueprints
+"Microsoft.Resources/deployments/*",
+"Microsoft.Blueprint/blueprintAssignments/*",
+"Microsoft.Resources/subscriptions/resourceGroups/read",
+"Microsoft.Resources/deployments/*",
+
+# Fetching Blueprints
+"Microsoft.Management/managementGroups/read",
+"Microsoft.Management/managementGroups/descendants/read",
+
+# Assigning Subscriptions to Management Groups
+"Microsoft.Management/managementGroups/subscriptions/write",
+"Microsoft.Management/managementGroups/write",
+
+# Permission we need to activate/register required Resource Providers
+"*/register/action"
+```
+
+Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy rule to your subscriptions:
+
+```json
+{
+    "properties": {
+        "mode": "all",
+        "displayName": "meshcloud Privilege Escalation Prevention",
+        "description": "Prevent meshcloud SP from assigning itself new roles.",
+        "policyRule": {
+          "if": {
+            "allOf": [
+              {
+                "equals": "Microsoft.Authorization/roleAssignments",
+                "field": "type"
+              },
+              {
+                "allOf": [
+                  {
+                    "field": "Microsoft.Authorization/roleAssignments/roleDefinitionId",
+                    "equals": "/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Authorization/roleDefinitions/<AZURE_SERVICE_PRINCIPAL_ROLE_ID>"
+                  },
+                  {
+                    "field": "Microsoft.Authorization/roleAssignments/principalId",
+                    "equals": "<AZURE_SERVICE_PRINCIPAL_ID>"
+                  },
+                ]
+              }
+            ]
+          },
+          "then": {
+            "effect": "audit"
+          }
+      }
+    }
+}
+```
+
+### Identity Provider (IdP) Lookup
+
+This principal is only required if the AAD is actually be used as source of user information when assigning users to meshCustomers or meshProjects inside the meshPanel. In order to use this functionality, the principal requires the following permissions:
+
+- `User.Read.All`
+
+> Since `User.Read.All` is a Role permission, you will also need to grant admin consent in AAD on the assignment
+
+### Azure Function Access
+
+In order to make an Azure Function only accessible via the replicators Service Principal follow these steps:
+
+1. Create a system assigned identity for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
+
+    ![System assigned identity](assets/azure_function/system-assigned-identity.png)
+
+2. Lock down your function to only allow assigned users.
+
+    ![Assigned users only](assets/azure_function/assigned-users.png)
+
+3. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
+
+    ```json
+    {
+      "allowedMemberTypes": [
+        "Application"
+      ],
+      "description": "Allows an SPP to get a token to a restricted application",
+      "displayName": "SPP-Access",
+      "id": "<RANDOM_UUID>",
+      "isEnabled": true,
+      "lang": null,
+      "origin": "Application",
+      "value": "Access"
+    }
+    ```
+
+    ![App Role Manifest](assets/azure_function/app-role-manifest.png)
+
+4. In your Service Principals API permissions screen, add the newly created Application Role. Don't forget to grant admin consent again afterwards.
+
+    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
+
+
+After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the replicator is using.
+
+![Fetch Token](assets/azure_function/fetch-token.png)
+
+![Decoded Token](assets/azure_function/decoded-token.png)
+
+
+## Configuring Enterprise Enrollment
+
+### 1. Setting up the Enrollment Account
 
 We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
 
@@ -124,7 +249,7 @@ dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
 
 After creating (or finding) a suitable EA Account, please note down the accounts object id as `EA_ACCOUNT_ID`.
 
-#### 2. Authorizing the meshcloud Service Principal for EA
+### 2. Authorizing the meshcloud Service Principal for EA
 
 To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
@@ -396,112 +521,3 @@ The arguments available here are:
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
 4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled
 5. argument: role name suffix ([configurable via Landing Zone](./meshstack.azure.landing-zones.md#meshrole-to-platform-role-mapping))
-
-## Permission Model
-<!-- markdownlint-disable MD001 -->
-
-meshstack in total needs up to three service principals, one for replicating meshProjects into the Azure platform, one if AAD should be used as an user lookup when users are added to a customer or project inside the meshfed panel and one for [gathering metering data](./meshstack.azure.metering.md) for the billing subsystem.
-
-#### meshReplicator Project Provisioning
-
-- `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
-- `Group.ReadWrite.All` - this permissions is required to create new groups
-- `User.Invite.All` - this permission is required if you want to enable B2B User Invitations
-- `User Access Administrator` - to add and remove user group access to the Subscriptions
-- (optional)`Permissions to call Azure Functions` - see the [end of this section](#azure-function-access-setup) for how to setup this
-
-Created Subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
-
-All permissions left are therefore granted only via the management group hierarchy. The meshstack software does **not** need access related to actual workload inside these subscriptions. However in order to perform certain maintenance tasks, the following permissions/roles must be granted to the replicator principal:
-
-- `Blueprint Operator` - required for assigning and managing Blueprint assignments to the Subscriptions
-- `Management Group Contributor` - required on the target management group for moving Subscriptions
-
-In order to prevent that the replicator from assigning itself more permissions than originally anticipated, it is recommended to add the following policy rule:
-
-```json
-{
-    "properties": {
-        "mode": "all",
-        "displayName": "meshcloud Privilege Escalation Prevention",
-        "description": "Prevent meshcloud SP from assigning itself new roles.",
-        "policyRule": {
-          "if": {
-            "allOf": [
-              {
-                "equals": "Microsoft.Authorization/roleAssignments",
-                "field": "type"
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "Microsoft.Authorization/roleAssignments/roleDefinitionId",
-                    "equals": "/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Authorization/roleDefinitions/<AZURE_SERVICE_PRINCIPAL_ROLE_ID>"
-                  },
-                  {
-                    "field": "Microsoft.Authorization/roleAssignments/principalId",
-                    "equals": "<AZURE_SERVICE_PRINCIPAL_ID>"
-                  },
-                ]
-              }
-            ]
-          },
-          "then": {
-            "effect": "audit"
-          }
-      }
-    }
-}
-```
-
-If you intend to call Azure functions via a Landing Zone configuration, then you need to grant the replicator principal also permissions to the role you have created for the [Azure secured function call](#secure-azure-function-setup).
-
-#### Azure Function Access Setup
-
-In order to make an Azure Function only accessible via the replicators Service Principal follow these steps:
-
-1. Create a system assigned identity for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
-
-    ![System assigned identity](assets/azure_function/system-assigned-identity.png)
-
-2. Lock down your function to only allow assigned users.
-
-    ![Assigned users only](assets/azure_function/assigned-users.png)
-
-3. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). Its only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
-
-    ```json
-    {
-      "allowedMemberTypes": [
-        "Application"
-      ],
-      "description": "Allows an SPP to get a token to a restricted application",
-      "displayName": "SPP-Access",
-      "id": "<RANDOM_UUID>",
-      "isEnabled": true,
-      "lang": null,
-      "origin": "Application",
-      "value": "Access"
-    }
-    ```
-
-    ![App Role Manifest](assets/azure_function/app-role-manifest.png)
-
-4. In your Service Principals API permissions screen, add the newly created Application Role. Don't forget to grant admin consent again afterwards.
-
-    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
-
-
-After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the meshReplicator is using.
-
-![Fetch Token](assets/azure_function/fetch-token.png)
-
-![Decoded Token](assets/azure_function/decoded-token.png)
-
-#### meshFed Identity Lookup
-
-This principal is only required if the AAD is actually be used as source of user information when assigning users to customers or projects inside the meshPanel. In order to use this functionality, the principal requires the following permissions:
-
-- `User.Read.All`
-
-<!-- markdownlint-enable -->
