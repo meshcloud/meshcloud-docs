@@ -15,15 +15,15 @@ meshStack includes **meshObject roles** that manage permissions on different [me
 
 ### Role Bindings
 
-**Role bindings** assign a meshUser a meshObject role on specific meshObject. Role bindings are also exposed via the [meshObject API](meshstack.api.md#meshobject-api). For example, a `meshProjectUserBinding` associates a meshUser with a meshProject and a meshProject Role.
+**Role bindings** assign a meshUser or meshCustomerUserGroup a meshObject role on specific meshObject. Role bindings are also exposed via the [meshObject API](meshstack.api.md#meshobject-api). For example, a `meshProjectUserBinding` associates a meshUser with a meshProject and a meshProject Role.
 
 Role bindings can also have a managed expiry date after which meshStack will automatically revoke the role.
 
-Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Customer Admin" [meshCustomer Role](meshcloud.customer.md#meshCustomer-roles) can add new role bindings to that meshCustomer.
+Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Customer Admin" [meshCustomer Role](meshcloud.customer.md#assign-meshCustomer-roles) can add new role bindings to that meshCustomer.
 
-### Role Requests
+### Access Requests
 
-Any change in role binding always occurs via a **role request**. Role requests can be either approved or denied. Role requests may be subject to **approval conditions**. Operators can configure these conditions to meet a range of organisational and regulatory requirements like e.g. a 4 eyes principle.
+Any change in role binding always occurs via an **access request**. Access requests can be either approved or denied. Access requests may be subject to **approval conditions**. Operators can configure these conditions to meet a range of organisational and regulatory requirements like e.g. a 4 eyes principle.
 
 Role requests produce an audit trail and may trigger notifications to involved parties.
 
@@ -31,7 +31,7 @@ Role requests produce an audit trail and may trigger notifications to involved p
 
 ### meshCustomer Roles
 
-[meshCustomer Roles](meshcloud.customer.md#meshCustomer-roles) control the permission on a [meshCustomer](meshcloud.customer.md) and the [meshObjects](meshcloud.index.md) owned by that meshCustomer. Users must have a corresponding role binding in order to access meshObjects owned by a meshCustomer like [meshProjects](meshcloud.project.md).
+[meshCustomer Roles](meshcloud.customer.md#assign-meshCustomer-roles) control the permission on a [meshCustomer](meshcloud.customer.md) and the [meshObjects](meshcloud.index.md) owned by that meshCustomer. Users must have a corresponding role binding in order to access meshObjects owned by a meshCustomer like [meshProjects](meshcloud.project.md).
 
 Users with the right permissions can [assign meshCustomer roles](meshcloud.customer.md#assign-meshcustomer-roles) in self-service.
 
@@ -43,9 +43,9 @@ Users with the right permissions can assign meshCustomer roles in self-service w
 
 ### meshProject Roles
 
-[meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject roles bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platform-location.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
+[meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platform-location.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
 
-Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users can only have meshProject role bindings as long as they also have a role binding on the meshCustomer that is the owner of that meshProject. Revocation of this meshCustomer role binding causes revocation of all associated meshProject role bindings.
+Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshCustomer that is the owner of that meshProject. Revocation of this meshCustomer role binding causes revocation of all associated meshProject role bindings.
 
 ## Configuration Options
 
@@ -94,7 +94,7 @@ let example =
 
 ### Role Request Approval
 
-In case you are required to implement a 4-eye-principle for user role requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.user.rolerequest` as follows:
+In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.user.rolerequest` as follows:
 
 ```haskell
 { minApprovalCount = Some 2
@@ -102,16 +102,16 @@ In case you are required to implement a 4-eye-principle for user role requests f
 }
 ```
 
-If the `minApprovalCount` option is set to 2 or higher upon project user invitation a popup will ask the inviting user to enter some additional information like why this role is required and for how long. These information will be visible to customer administrators who then can accept or decline such a request.
+If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to customer administrators who then can accept or decline such a request.
 
 <figure>
   <img src="assets/authorization.additional-role-info.png" style="width: 50%;" alt="Additional Information Role Request Popup">
   <figcaption>Popup requesting additional information for a project role request</figcaption>
 </figure>
 
-New project role requests must be approved before the binding is created. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for a role request. This ensures that a _different_ customer admin must register the 2nd approval before the binding is created.
+New project role requests must be approved before the binding is created. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for an access request. This ensures that a _different_ customer admin must register the 2nd approval before the binding is created.
 
-Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests.
+Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests. In case of a customer user group, all users of the group are informed.
 
 When any customer admin declines the role request, the role request is immediately cancelled.
 
@@ -154,7 +154,6 @@ The following claims in the OIDC token represent this information and can be use
 
 The `MC_PROJECTS` claim contains all projects the user has access to in the scoped meshCustomer. The `MC_GROUPS` also contain only the meshCustomer roles the user is assigned to in the current customer. This claim is currently defined as an array for future flexibility. Currently a user can only have one role assigned per meshCustomer.
 
-
 #### Authorization via replication
 
 For platforms that don't support the [Authorization via OIDC](#authorization-via-oidc), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
@@ -167,6 +166,6 @@ A Service User can be created and deleted by all users assigned to the project. 
 
 ## Role Revocation
 
-User role revocation on [meshProject](meshcloud.project.md#unassign-user-from-a-meshproject) and [meshCustomer](meshcloud.customer.md#remove-users-from-a-meshcustomer) level allow Customer Admins to always limit access to the meshCustomer and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshCustomers and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
+User role revocation on [meshProject](meshcloud.project.md#unassign-principal-from-a-meshproject) and [meshCustomer](meshcloud.customer.md#remove-assigned-meshcustomer-roles) level allow Customer Admins to always limit access to the meshCustomer and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshCustomers and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
 
 Users who e.g. left the company, can automatically be revoked in meshStack as described [here](meshstack.user-revocation.md).
