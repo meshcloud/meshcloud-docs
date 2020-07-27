@@ -100,9 +100,9 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable B2B User Invitation (see below)
 4. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
-5. The follogwing values are needed for meshPlatform configuration:
+5. The following values are needed for meshPlatform configuration:
     - Go to **Azure Active Directory** and write down either the **AAD Tenant ID** or the **Primary domain** (typically a `*.onmicrosoft.com` domain) -> `AAD_TENANT`
-    - Go to **Azure Active Direcory** &rarr; **Enterprise application** and seach the newly created web app (created in step 1.)
+    - Go to **Azure Active Direcory** &rarr; **Enterprise application** and search the newly created web app (created in step 1.)
       - **Application (client) ID** -> `SERVICE_PRINCIPAL_CLIENT_ID`
       - **Application object id** -> `SERVICE_PRINCIPAL_OBJECT_ID`
 
@@ -458,7 +458,7 @@ let EnterpriseEnrollment =
           { enrollmentAccountId =  "<EA_ACCOUNT_ID>"
           , subscriptionOfferType = "MS-AZR-0017P"
           {-
-          There is a safty mechanism to avoid duplicate Subscription creation in case
+          There is a safety mechanism to avoid duplicate Subscription creation in case
           of an error. This delay should be a bit higher then it usually takes to
           create subscriptions. For big installations this is somewhere between 5-15
           minutes.
