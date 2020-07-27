@@ -189,6 +189,20 @@ on the platform level.
 
 To use multiple billing accounts consider configuring multiple GCP meshPlatforms in meshStack.
 
+#### Billing Account owned by a different organization
+
+To use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
+
+Operators create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
+
+```text
+billing.resourceAssociations.create
+```
+
+The `meshfed-service` user needs to be granted the `meshfed-billing-creator` role in the organization that owns the target billing account.
+
+Following the principle of least privilege operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#meshfed-service-iam-role).
+
 ### GCP Role Mapping
 
 The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in GCP. This mapping is fully customizable and can use custom as well as built-in roles.
