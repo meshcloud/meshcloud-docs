@@ -201,7 +201,7 @@ billing.resourceAssociations.create
 
 The `meshfed-service` user needs to be granted the `meshfed-billing-creator` role in the organization that owns the target billing account.
 
-Following the principle of least privilege operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#meshfed-service-iam-role).
+Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#meshfed-service-iam-role).
 
 ### GCP Role Mapping
 
