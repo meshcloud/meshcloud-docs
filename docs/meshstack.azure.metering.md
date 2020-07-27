@@ -8,6 +8,6 @@ Azure only provides data for the previous day, so Azure Usage Reports shown in m
 
 ## Permission Model
 
-In order to read resource usages, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by the meshstack's metering service:
+In order to read resource usages, a metering principal is needed (creation steps of service princials are defined [here](./meshstack.azure.index.md#replicator)). It requires the following permissions/roles on all resources which should be accessed by the meshstack's metering service:
 
 - `Cost Management Reader`
