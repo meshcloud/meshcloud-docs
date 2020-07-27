@@ -191,7 +191,7 @@ To use multiple billing accounts consider configuring multiple GCP meshPlatforms
 
 #### Billing Account owned by a different organization
 
-To use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
+In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
 
 Operators create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
 
