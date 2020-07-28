@@ -32,7 +32,18 @@ resources:
 
 > The maximum filesize currently is 1MB please [contact us](mailto:support@meshcloud.io) if you need support for bigger template configurations.
 
-The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the `meshfed-service` role the **Storage Admin** permission on this bucket. The replicator then assignes read access for the projects service accounts which have the form of `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
+The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the meshfed service account the following permissions on the storage bucket:
+
+```text
+storage.buckets.setIamPolicy
+storage.buckets.getIamPolicy
+storage.objects.get
+storage.objects.list
+storage.buckets.list
+storage.buckets.get
+```
+
+We suggest to create a custom role containing this conditions. The replicator then assignes read access for the projects service accounts which have the form of `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
 
 The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_IDENTIFIER>` cut to a maximum length of 63 chars.
 
