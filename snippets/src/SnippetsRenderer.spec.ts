@@ -100,7 +100,7 @@ describe('render', () => {
       const result = sut.parseSections({ id: 'id', content: fullSnippet });
       const expected: SnippetSections = {
         id: 'id',
-        type: typeSection,
+        types: typeSection,
         examples: exampleSection
       };
 

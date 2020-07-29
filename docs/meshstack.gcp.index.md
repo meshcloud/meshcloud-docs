@@ -24,7 +24,7 @@ meshStack does not require Cloud Identity Premium nor G-Suite. Cloud Identity "F
 
 ### meshStack-provisioned Identities
 
-When using meshStack-provisioned identites operators need to setup SSO beftween the Cloud Identity directory and meshIdB.
+When using meshStack-provisioned identites operators need to setup SSO between the Cloud Identity directory and meshIdB.
 This can be achieved by following the official [instructions](https://cloud.google.com/blog/products/identity-security/using-your-existing-identity-management-system-with-google-cloud-platform).
 
 ## Organization Setup

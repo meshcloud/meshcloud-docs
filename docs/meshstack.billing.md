@@ -56,6 +56,183 @@ reporting so that they can verify how each of their deployed cloud resources con
 meshStack includes a sophisticated private-cloud metering engine that allows operators to define their own product catalogs
 and create accurate metering data.
 
+## Defining a custom Product Catalog
+
+The following sections will introduce features of the meshStack product catalog.
+
+### Core Concepts
+
+#### Scope Selectors
+
+Every cloud resource has a scope in meshcloud, defined by the meshTenant in belongs to.
+ScopeSelectors are hierarchical selectors that allow Product Catalog entries to specify the resource scopes they apply to. ScopeSelectors can target all platforms of a certain platform type, a specific meshPlatform or an individual meshTenant.
+
+Using ScopeSelectors, Operators can for example define different prices for platforms running in different locations.
+
+<!--snippet:mesh.kraken.productcatalog.scopeselector#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+let ScopeSelector =
+    {-
+      The Scope Selector specifies the cloud resource scopes that a product catalog entry applies to.
+      Fields, depending on the type of scope selected:
+
+        platformType:
+            The PlatformType to target
+
+        location:
+            The meshLocation identifier to target
+
+        platformInstance:
+            The meshPlatform identifier to target
+
+        localProjectId:
+            The platform identifier for the meshTenant, e.g. an Azure Subscription Id.
+    -}
+
+      let ByPlatformType = { platformType : PlatformType }
+
+      let ByPlatformInstance =
+            ByPlatformType ⩓ { location : Text, platformInstance : Text }
+
+      let ByTenant = ByPlatformInstance ⩓ { localProjectId : Text }
+
+      in  < PlatformType : ByPlatformType
+          | PlatformInstance : ByPlatformInstance
+          | Tenant : ByTenant
+          >
+```
+<!--Example-->
+```haskell
+let example =
+    -- this ScopeSelector targets all platforms of type "Azure"
+      ScopeSelector.PlatformType { platformType = PlatformType.Azure }
+
+let example2 =
+    -- this scope selector targets a specific OpenStack platform
+      ScopeSelector.PlatformInstance
+        { platformType = PlatformType.OpenStack
+        , location = "eu.de-central"
+        , platformInstance = "pike"
+        }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### Discounts
+
+Discounts allow Operators to add or deduct charges to Tenant Usage Reports. A common use case for Platform Operators is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
+
+<!--snippet:mesh.kraken.productcatalog.discount#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+let Discount =
+    {-
+        scope:
+            Specifies the scope this discount applies to, see ScopeSelector
+
+        discountRule:
+            Specifies the type of discount rule used to calculate the discount.
+
+        displayName:
+            The name to display for this discount on the tenant usage report.
+
+        description:
+            The description to display for this discount on the tenant usage report.
+
+        sellerId:
+            The id of the seller to charge this discount to. A positive discount netAmounot will be credited to this
+            seller during chargeback, while a negative netAmount will be charged to this seller.
+
+        sellerProductGroup:
+            A product group identifier for the seller. Specifying this field allows sellers to aggregate
+            charges and credits by different categories for reporting purposes.
+    -}
+      { scope : ScopeSelector
+      , discountRule : DiscountRule
+      , displayName : Text
+      , description : Text
+      , sellerId : Text
+      , sellerProductGroup : Text
+      }
+```
+<!--Example-->
+```haskell
+let example
+    : Discount
+    =
+      -- This Discount charges a 5% Management Fee on all Azure consumption and is credited to the operations team
+      { scope =
+          ScopeSelector.PlatformType { platformType = PlatformType.Azure }
+      , sellerId = "azure-cloud-foundation"
+      , sellerProductGroup = "fees"
+      , displayName = "Azure Management Fee"
+      , description =
+          "Management Fee for Azure Cloud Operations Team, based on usage"
+      , discountRule =
+          DiscountRule.fixedPercentage
+            { discountPercentage = 5.0
+            , sourceNetAmountBySellerId = "Azure"
+            }
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+Discount rules specify how a discount is computed.
+
+meshStack currently provides only a single discount rule. Future releases could provide additional discount rule options.
+
+<!--snippet:mesh.kraken.productcatalog.discountrule#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+let DiscountRule =
+      let FixedPercentageDiscountRule =
+          {-
+            Calculates the discount as a fixed percentage of a source amount using the formula
+            ```
+                discountNetAmount = sourceNetAmount * discountPercentage / 100
+            ```
+
+              sourceNetAmountBySellerId:
+                  The discount is calculated on a source amount computed by summing the usage line item net amounts
+                  filtered by this seller id. This is typcially used so that the discount only applies to usages
+                  generated by cloud consumption.
+
+              discountPerccentage:
+                  The discount percentage to apply. Use positive rates to generate additional fees, use negative rates
+                  to deduct charges.
+          -}
+            { sourceNetAmountBySellerId : Text
+            , discountPercentage : Double
+            }
+
+      in  < fixedPercentage : FixedPercentageDiscountRule >
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
+### Configuration
+
+
+<!--snippet:mesh.kraken.productcatalog-->
+
+The following configuration options are available at `mesh.kraken.productcatalog`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+{ discounts : List Discount }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
 ## Chargeback
 
 > Chargeback is the process of allocating IT cost to consumers and feeding it into the company-wide finance and controlling processes.
