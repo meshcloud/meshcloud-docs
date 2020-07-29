@@ -27,6 +27,7 @@ The figure and table below explain the relation of the most important concepts i
 
 
 ## meshPanel supported browser
+
 Firefox ESR
 last 2 Firefox versions
 last 2 Chrome versions
