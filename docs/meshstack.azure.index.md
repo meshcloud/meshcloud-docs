@@ -252,7 +252,7 @@ After creating (or finding) a suitable EA Account, please note down the accounts
 
 ### 2. Authorizing the meshcloud Service Principal for EA
 
-To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
+To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
 ### Automated B2B User Invitation
 
