@@ -223,7 +223,7 @@ In order to configure the mapping use the `roleMappings` key in the [platform co
 
 ### Project Id Pattern
 
-Operators can configure the pattern used to dervice [GCP Project Ids](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project) when meshStack creates a new GCP Project.
+Operators can configure the pattern used to derive [GCP Project Ids](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project) when meshStack creates a new GCP Project.
 
 The arguments available here are:
 
@@ -231,7 +231,7 @@ The arguments available here are:
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: a random alphanumeric string suitable as a suffix
 
-The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
+The allowed characters are restricted to hyphens and alphanumeric characters. The resulting string must not exceed a total length of 30 characters and not end with a hyphen.
 We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of naming collisions. The example below shows a reference configuration:
 
 ```haskell
