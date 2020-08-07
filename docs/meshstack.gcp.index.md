@@ -9,8 +9,8 @@ meshcloud can automatically provision GCP Projects as Tenants for [meshProjects]
 
 To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes GCP available to meshProjects like any other cloud platform in meshStack.
 
-Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups. For organizations that do not already use google identity services, meshStack supports fully federated
-[meshStack provisioned identities](./meshstack.identity-federation.md). Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
+Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
+Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
 
 meshcloud helps organizations implement Google Cloud Platform in line with [Governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](./meshstack.gcp.landing-zones.md)
 
@@ -20,12 +20,9 @@ In order to plan and execute a successful integration of GCP using meshcloud, or
 
 ## Cloud Identity Setup
 
-meshStack does not require Cloud Identity Premium nor G-Suite. Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack.
+Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack. meshStack does not require Cloud Identity Premium nor G-Suite features.
 
-### meshStack-provisioned Identities
-
-When using meshStack-provisioned identites operators need to setup SSO between the Cloud Identity directory and meshIdB.
-This can be achieved by following the official [instructions](https://cloud.google.com/blog/products/identity-security/using-your-existing-identity-management-system-with-google-cloud-platform).
+We recommend using [externally provisioned identities](./meshstack.identity-federation.md) with GCP.
 
 ## Organization Setup
 
