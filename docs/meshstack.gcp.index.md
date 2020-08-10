@@ -24,7 +24,7 @@ meshStack does not require Cloud Identity Premium nor G-Suite. Cloud Identity "F
 
 ### meshStack-provisioned Identities
 
-When using meshStack-provisioned identites operators need to setup SSO beftween the Cloud Identity directory and meshIdB.
+When using meshStack-provisioned identites operators need to setup SSO between the Cloud Identity directory and meshIdB.
 This can be achieved by following the official [instructions](https://cloud.google.com/blog/products/identity-security/using-your-existing-identity-management-system-with-google-cloud-platform).
 
 ## Organization Setup
@@ -188,6 +188,20 @@ on the platform level.
 ```
 
 To use multiple billing accounts consider configuring multiple GCP meshPlatforms in meshStack.
+
+#### Billing Account owned by a different organization
+
+In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
+
+Operators create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
+
+```text
+billing.resourceAssociations.create
+```
+
+The `meshfed-service` user needs to be granted the `meshfed-billing-creator` role in the organization that owns the target billing account.
+
+Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#meshfed-service-iam-role).
 
 ### GCP Role Mapping
 

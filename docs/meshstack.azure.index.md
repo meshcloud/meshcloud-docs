@@ -100,10 +100,11 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable B2B User Invitation (see below)
 4. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
-5. Go to the App overview and write down the following values needed for meshPlatform configuration later:
-    - **Application (client) ID** -> `SERVICE_PRINCIPAL_CLIENT_ID`
-    - **Directory (tenant) ID** -> `AAD_TENANT`, typically a `*.onmicrosoft.com` domain
-    - **Application object id** -> `SERVICE_PRINCIPAL_OBJECT_ID`.
+5. The following values are needed for meshPlatform configuration:
+    - Go to **Azure Active Directory** and write down either the **AAD Tenant ID** or the **Primary domain** (typically a `*.onmicrosoft.com` domain) -> `AAD_TENANT`
+    - Go to **Azure Active Direcory** &rarr; **Enterprise application** and search the newly created web app (created in step 1.)
+      - **Application (client) ID** -> `SERVICE_PRINCIPAL_CLIENT_ID`
+      - **Application object id** -> `SERVICE_PRINCIPAL_OBJECT_ID`
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
@@ -176,7 +177,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 
 ### Identity Provider (IdP) Lookup
 
-This principal is only required if the AAD is actually be used as source of user information when assigning users to meshCustomers or meshProjects inside the meshPanel. In order to use this functionality, the principal requires the following permissions:
+This principal is only required if the AAD is actually be used as source of user information when assigning users to meshCustomers or meshProjects inside the meshPanel. In order to use this functionality, create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions:
 
 - `User.Read.All`
 
@@ -251,7 +252,7 @@ After creating (or finding) a suitable EA Account, please note down the accounts
 
 ### 2. Authorizing the meshcloud Service Principal for EA
 
-To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#meshcloud-service-principal) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
+To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
 
 ### Automated B2B User Invitation
 
@@ -457,7 +458,7 @@ let EnterpriseEnrollment =
           { enrollmentAccountId =  "<EA_ACCOUNT_ID>"
           , subscriptionOfferType = "MS-AZR-0017P"
           {-
-          There is a safty mechanism to avoid duplicate Subscription creation in case
+          There is a safety mechanism to avoid duplicate Subscription creation in case
           of an error. This delay should be a bit higher then it usually takes to
           create subscriptions. For big installations this is somewhere between 5-15
           minutes.
