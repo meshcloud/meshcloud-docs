@@ -249,7 +249,7 @@ We recommend that configuration include at least 3 characters of the random para
 }
 ```
 
-## Audit Logs for meshfed-service User 
+## Audit Logs for meshfed-service User
 
 The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
 
