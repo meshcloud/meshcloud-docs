@@ -409,7 +409,7 @@ The [project roles](meshcloud.project.md#project-roles) are mapped to user roles
 
 In order to configure the mapping use the `roleMappings` key in the [platform config](#configuration-reference).
 
-```haskell
+```dhall
 { roleMappings =
     [ { mapKey ="admin" {- Name of project role in meshStack -}
       , mapValue =
@@ -471,7 +471,7 @@ project_identifier_length: 30
 
 Please find the full `Aws.dhall` [configuration options](./meshstack.configuration.md) below:
 
-```haskell
+```dhall
   λ(Secret : Type)
 → { platform :
       Text

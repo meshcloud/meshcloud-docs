@@ -185,7 +185,7 @@ let GcpPlatform =
 let GcpPlatformCoreConfiguration =
     {-
       platform:
-        The platform identifier
+        The meshPlatform identifier
 
       domain:
         The domain used for cloud identity directory-groups created and managed by meshStack. meshStack maintains separate
@@ -265,12 +265,12 @@ let GcpPlatformCredentialConfiguration =
         The username of the service user to impersonate in Google Cloud Identity Directory. The replicator uses
         this service user to automate directory operations (Google Admin SDK).
 
-      Service AccountCredentialsB64:
-        base64 encoded credentials.json filre for a GCP Service Account. The replicator uses this Service Account
+      serviceAccountCredentialsB64:
+        base64 encoded credentials.json file for a GCP ServiceAccount. The replicator uses this Service Account
         to automate GCP API operations (IAM, ResourceManager etc.).
     -}
       { impersonatedServiceUser : Text
-      , Service AccountCredentialsB64 : Secret
+      , serviceAccountCredentialsB64 : Secret
       }
 ```
 <!--Example-->
@@ -278,7 +278,7 @@ let GcpPlatformCredentialConfiguration =
 let example
     : GcpPlatformCredentialConfiguration
     = { impersonatedServiceUser = "meshfed-service@myorg.example.com"
-      , Service AccountCredentialsB64 = Secret.Native "b123"
+      , serviceAccountCredentialsB64 = Secret.Native "b123"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

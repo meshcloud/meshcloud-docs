@@ -18,7 +18,7 @@ meshStack comes with pre-configured alerting rules. These alerts are typically o
 
 These email inboxes be configured in the [meshStack configuration model](meshstack.configuration.md) under `monitor` as follows:
 
-```haskell
+```dhall
 {
 , additionalAlertAddresses = [ "alerts@example.com" ]
 }
@@ -37,7 +37,7 @@ These tests also include end-to-end interaction with [meshPlatforms](meshcloud.p
 
 Sonar can be configured in the [meshStack configuration model](meshstack.configuration.md) under `monitor.sonar` as follows:
 
-```haskell
+```dhall
 {
   -- Credentials for a technical user in meshIdB
   username = Text

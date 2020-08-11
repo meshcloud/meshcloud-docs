@@ -14,7 +14,7 @@ meshStack requires the full path to the BigQuery table where the billing data is
 
 The full configuration format for GCP metering is as follows.
 
-```haskell
+```dhall
 { platform : Text
 , bigqueryTable : Text
 , credentialsB64 : Secret
