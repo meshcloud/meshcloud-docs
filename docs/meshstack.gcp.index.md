@@ -9,8 +9,8 @@ meshcloud can automatically provision GCP Projects as Tenants for [meshProjects]
 
 To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes GCP available to meshProjects like any other cloud platform in meshStack.
 
-Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups. For organizations that do not already use google identity services, meshStack supports fully federated
-[meshStack provisioned identities](./meshstack.identity-federation.md). Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
+Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
+Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
 
 meshcloud helps organizations implement Google Cloud Platform in line with [Governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](./meshstack.gcp.landing-zones.md)
 
@@ -20,12 +20,9 @@ In order to plan and execute a successful integration of GCP using meshcloud, or
 
 ## Cloud Identity Setup
 
-meshStack does not require Cloud Identity Premium nor G-Suite. Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack.
+Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack. meshStack does not require Cloud Identity Premium nor G-Suite features.
 
-### meshStack-provisioned Identities
-
-When using meshStack-provisioned identites operators need to setup SSO between the Cloud Identity directory and meshIdB.
-This can be achieved by following the official [instructions](https://cloud.google.com/blog/products/identity-security/using-your-existing-identity-management-system-with-google-cloud-platform).
+We recommend using [externally provisioned identities](./meshstack.identity-federation.md) with GCP.
 
 ## Organization Setup
 
@@ -223,7 +220,7 @@ In order to configure the mapping use the `roleMappings` key in the [platform co
 
 ### Project Id Pattern
 
-Operators can configure the pattern used to dervice [GCP Project Ids](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project) when meshStack creates a new GCP Project.
+Operators can configure the pattern used to derive [GCP Project Ids](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project) when meshStack creates a new GCP Project.
 
 The arguments available here are:
 
@@ -231,7 +228,7 @@ The arguments available here are:
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: a random alphanumeric string suitable as a suffix
 
-The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
+The allowed characters are restricted to hyphens and alphanumeric characters. The resulting string must not exceed a total length of 30 characters and not end with a hyphen.
 We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of naming collisions. The example below shows a reference configuration:
 
 ```haskell
@@ -248,3 +245,28 @@ We recommend that configuration include at least 3 characters of the random para
       "%.15s-%.10s-%.3s"
 }
 ```
+
+## Audit Logs for meshfed-service User
+
+The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
+
+### Enable Audit Logs
+
+> Enabling Audit Logs may incur charges.
+
+meshcloud recommends to enable Audit Logs on the organizational level for monitoring `meshfed-service` User. This is achivied by following these steps:
+
+1. Navigate to the organizational level in [GCP Cloud Console](https://console.cloud.google.com/)
+2. Navigate to [IAM & Admin --> Audit logs](https://console.cloud.google.com/iam-admin/audit)
+3. Filter the table for `Cloud Resource Manager API` and select the resulting entry
+4. Enable all log types
+
+You may want to check the [official Google instructions](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable) on enabling Auit Logs for further information.
+
+The below screen shot show how to set up the Audit Logs for the organization `dev.meshcloud.io`
+
+![GCP Audit Logs](assets/gcp-enable-audit-logs.png)
+
+### Query Audit Logs in Google Cloud Console
+
+Please consult [Google docs](https://cloud.google.com/logging/docs/audit#viewing_audit_logs) for options to querying Audit Logs.
