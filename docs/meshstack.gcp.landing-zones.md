@@ -51,17 +51,21 @@ If the URL is changed or the underlying template updated the projects will autom
 
 Please note that you probably want to enable all the necessary APIs on the GCP project in order to allow deployment of this template. Templates can enable APIs via the virtual template type `deploymentmanager.v2.virtual.enableService`. For more information see the official [Deployment Manager docs](https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types).
 
+### Available Google Deployment Manager Properties
+
 The properties of the provided configuration file will be expanded with properties from meshcloud and these can be used inside the template itself. The following properties are provided:
 
-| Template Property  | Description                                                |
-| ------------------ | :--------------------------------------------------------- |
-| customerIdentifier | Customer Identifier                                        |
-| tagCostCenter      | ID of the CostCenter defined for this meshProject.         |
-| projectIdentifier  | The project identifier                                     |
-| projectId          | The ID of the GCP project associated with this meshProject |
+| Template Property          | Description                                                                       |
+| ---------------------------| :---------------------------------------------------------------------------------|
+| customerIdentifier         | Customer Identifier                                                               |
+| tagCostCenter              | ID of the CostCenter defined for this meshProject.                                |
+| projectIdentifier          | The project identifier                                                            |
+| projectId                  | The ID of the GCP project associated with this meshProject                        |
+| mesh-tag-my-customer-label | Example for a  [MetaData Tag](./meshstack.tag-schema.md) named `mycustomerLabel`  |
 
-In addition, any payment settings, project tags or customer tags are also provided to the template.
-For example, a tag named `myCustomerLabel` would be provided as a property with name `mesh-tag-my-customer-label`.
+As the example `mesh-tag-my-customer-label` in the above table indicates, any payment settings, project tags or customer tags are also provided to the template.
+In the example, a tag named `myCustomerLabel` would be provided as a property with name `mesh-tag-my-customer-label`.
+See [MetaData Tags](./meshstack.tag-schema.md) for more information.
 
 ## meshRole to Platform Role Mapping
 
