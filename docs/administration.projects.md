@@ -30,7 +30,29 @@ To edit the quotas, please follow these steps:
 
 ### Delete Projects
 
-When a user deletes a meshProject it is not completely removed in the cloud platforms and in the database, but first only flagged for deletion. An asynchronous background job removes tenants from platforms regularly. Partners and Admins can find a list of **Deleted Projects** in the **Projects** section of the **Administration** Area. This list allows Cloud Admins to check for projects that have been deleted. The "Deleted in platforms on" column shows when the background process that actually deletes the "marked for deletion" projects in the platforms has been executed successfully.
+When a user deletes a meshProject it is not completely removed in the cloud platforms and in the database, only flagged for deletion.
+The deletion procedure depends on the variaty of meshTenants under the project:
+
+1. a project contains exclusively tenants where we don't support automatic deletion (AWS, GCP, Azure, Kubernetes, OpenShift)
+2. a project contains exclusively tenants where we support automatic deletion (OpenStack, Cloud Foundry, Marketplace)
+3. a project containing a combination of 1. and 2.
+
+**1. No Automatic Deletion**: If a meshProject contains meshTenants from a public cloud platform, a partner or platform operator will have to perform the deletion of those platform tenants manually in the respective platform.
+
+The following steps need to be performed by an partner admin:
+In the **Deleted Projects** page in the **Administration** area, you have the option to filter for projects which contain tenants that require manual actions.
+For the projects that require manual deletion, you have the option to either confirm or decline the deletion. In order to confirm the deletion, you have to first perform the manual deletion of tenants in the platforms on which meshStack does not support automatic deletion. Once you have performed this task, you can confirm that the deletion is completed by clicking on the trash icon. You have to enter the project identifier and confirm that you have deleted all platform tenants for the project.
+You can also enter an optional reason for deletion which is limited to 255 characters. Once you confirm the deletion, an asynchronous background job that runs regularly will pick it up and perform any additional actions that are needed to complete the deletion. This includes deleting any OpenStack, Cloud Foundry and Marketplace platform tenants.
+The "Deleted in platforms on" column shows the time when the background process completed the project deletion successfully.
+
+If you choose to decline the project deletion, you can do so by clicking on the decline button. You have to enter the project identifier to confirm that you decline the deletion.
+You can also enter an optional reason for deletion which is limited to 255 characters. Once you decline the deletion, the project will be available in the **Projects** section under the **Account** of the meshCustomer.
+
+**2. Automatic Deletion**: If a project with OpenStack, Cloud Foundry and Marketplace tenants is marked for deletion, it will be eligible for **automatic deletion** and no manual actions are needed neither from the meshCustomer level nor the meshPartner level. An asynchronous background job removes tenants from platforms regularly.
+
+A list of deleted meshProject is shown in the Administration/Project section. To view a list of deleted meshProject which doesn't require manual deletion action on partner level **uncheck** the "Requires manual deletion" box on top of the list.
+
+**3. Combination Of meshTenants**: If a projects contains a combination of tenants for 1. and 2. the tenants which dont require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.
 
 ## Audit Projects
 
@@ -57,7 +79,9 @@ Sometimes additional information about the lifecycle of the project is required.
 The following events are available:
 
 - **PROJECT_CREATED**: A new meshProject was created.
-- **PROJECT_DELETED**: A meshProject was deleted.
+- **PROJECT_DELETED**: A meshProject was deleted by a customer admin.
+- **PROJECT_DELETION_CONFIRMED**: A partner or platform operator confirmed a meshProject deletion that required manual deletion of platform tenants.
+- **PROJECT_DELETION_DECLINED**: A partner or platform operator declined a meshProject deletion that required manual deletion of platform tenants.
 - **PROJECT_DELETED_IN_ALL_LOCATIONS**: Tenants of a meshProject are deleted asynchronously after the user deleted the project. When this deletion is successful, this event is written.
 - **LOCATIONS_ADDED**: One or more locations were added to a project.
 - **LOCATION_REMOVED**: One or more locations were removed from a project.
