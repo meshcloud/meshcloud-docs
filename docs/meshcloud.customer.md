@@ -24,40 +24,34 @@ Depending on the configuration of your meshStack implementation, you may be able
 
 If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings.
 You can access them by pressing the settings icon on the top right of the meshPanel.
-From here, navigate to "Access Control". Here you can assign principals (can be a user or a [group](#user-groups)).
+From here, navigate to "Access Control". Here you can invite users or groups to the meshCustomer.
 You can search for users via first & last name, email and username. The users that can be found via
-this search depend on the configured IAM system in you meshInstallation. It is e.g. possible to search for users in an Active Directory or
-a Google Cloud Directory. Additionally all users already known to meshStack can be found via this user search. Besides users, also [groups](#user-groups)
-can be searched for. You can search for groups via their name and identifier.
+this search depend on the configured IAM system in you meshInstallation. It is e.g. possible to search for users in an Active Directory or a Google Cloud Directory. Additionally all users already known to meshStack can be found via this user search. Besides users, also [groups](#user-groups) can be searched for. You can search for groups via their name and identifier.
 
 If you want to invite a user that it is not known to the connected IAM system and meshStack, you are able to invite a user by providing
 the first and last name as well as an email address. The invited user will be matched via the email address when he logs in the first time to meshStack.
 The "invite user" link is available when the search did not return any results.
 
-You can initially setup the role of the principal in the dropdown which describes the access level of the invited principal.
-Press "+" to add the principal to the customer. All users related to the principal will receive an email with the information,
+You can initially setup the meshCustomer role in the dropdown which describes the access level of the invited user or group.
+Press "+" to add to the meshCustomer. All users and members of the group will receive an email with the information,
 that they have been granted access to your meshCustomer.
 
-Assigning principals to a meshCustomer is necessary in order to give a principal access to your [projects](meshcloud.project.md).
-If 4 eyes-principle is active, the principal will not be assigned directly to your meshCustomer. Another Customer Admin has to approve this role
-assignment first. Therefore the principal will appear in the "Pending Requests" section.
+Assigning a meshCustomer role is necessary in order to give access to [meshProjects](meshcloud.project.md) insight the meshCustomer.
+If 4 eyes-principle is active, the user or group will not be assigned directly to your meshCustomer. Another Customer Admin has to approve this role assignment first. Therefore the user or group will appear in the "Pending Requests" section.
 
 ## User Groups
 
-For not having to assign multiple users individually to your projects, you can also group them in a User Group. The User Group is only available inside your
-meshCustomer. User Groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-anagement-on-a-meshproject) in the same way as for usual users.
-
-In order to reference groups and users in theis documentation and in meshStack, we call the abstraction which covers both types "principal".
+For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshCustomer. User groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-anagement-on-a-meshproject) in the same way as for usual users.
 
 You can view user groups within your customer account by going to the **Groups** section in the **Account** area.
 Currently, creating a group is only supported via [meshObject API](meshstack.api.md).
 
 ## Assign meshCustomer Roles
 
-You can change the role assigned to each principal on the current meshCustomer.
+You can change the role assigned to each user or group on the current meshCustomer.
 To change the assigned role choose a new role from the dropdown and save the changes via the disc icon.
 
-A principal can be assigned multiple roles simultaneously. All users of the principal will receive the combined rights of all their assigned roles.
+A user or a group can be assigned multiple roles simultaneously. All users and members will receive the combined rights of all their assigned roles.
 
 The following roles are available:
 
@@ -106,4 +100,4 @@ meshCustomer roles grant rights in meshStack only. In order to access cloud reso
 
 ## Remove assigned meshCustomer Roles
 
-If you would like to remove a principal from your meshCustomer go to your "Account" settings and select "Customer Access". You can click the "trash" icon in the "Customer Access" section to remove the principal from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the Pending Role Requests section. When removing the principal on the meshCustomer, the principal is automatically removed from all projects it had access to. All users of the principal also won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The principal users will be informed via email, that their access to the meshCustomer was revoked.
+If you would like to remove a user or group from your meshCustomer go to your "Account" settings and select "Customer Access". You can click the "trash" icon in the "Customer Access" section to remove the user or group from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the Pending Role Requests section. When removing someone from the meshCustomer, the user or group is automatically removed from all projects it had access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshCustomer was revoked.

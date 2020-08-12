@@ -71,7 +71,7 @@ Via "Projects" -> "Expired Access", the expired or soon to expire role assignmen
 
 ### Unassign user or group from a meshProject
 
-In the **Project Access** section you can click the `-` button in the row of a user or group to remove them from the project. The users and memebers will not be able to access this project in meshPortal and the cloud platforms anymore. You can add the  to your project again later on and all related users will get access again.
+In the **Project Access** section you can click the `-` button in the row of a user or group to remove them from the project. The users and memebers will not be able to access this project in meshPortal and the cloud platforms anymore. You can add the user or group to your project again later on and all related users will get access again.
 
 ## Delete a meshProject
 
