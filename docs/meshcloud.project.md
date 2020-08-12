@@ -80,6 +80,7 @@ If you would like to delete a project which is no longer used, go to your **Acco
 When you want to delete a meshProject it is not completely removed in the cloud platforms and in the database, only flagged for deletion.
 
 The deletion procedure depends on the variaty of meshTenants under the project:
+
 1. a project contains exclusively tenants where we don't support automatic deletion (AWS, GCP, Azure, Kubernetes,OpenShift)
 2. a project contains exclusively OpenStack, Cloud Foundry and Marketplace meshTenants
 3. a project contains a project containing a combination of 1. and 2.
