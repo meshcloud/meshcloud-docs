@@ -33,7 +33,7 @@ Operators need to setup a GCP Organization to be used by meshStack. Please revie
 meshStack needs a well-defined set of permissions for it's automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the principle of least privilege.
 
-Operators need to define a Custom Role called `meshfed-service` at the **Organization Level** with the following permissions
+Operators need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
 
 ```text
 resourcemanager.folders.get
@@ -61,7 +61,6 @@ deploymentmanager.deployments.get
 
 For some resources we need a “root” project for meshStack in GCP. This project is reserved for use by meshstack and operators. For this guide, we’ll call the root project `meshstack-root`.
 
-
 ### Enable APIs
 
 Enable the following APIs on the `meshstack-root` project from the API Library
@@ -70,26 +69,40 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 - [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
 - [Cloud Billing API](https://console.cloud.google.com/apis/library/cloudbilling.googleapis.com/overview)
 
-### meshfed-service ServiceAccount
+### meshfed-service Service Account
 
-Create a `meshfed-service` [ServiceAccount on the Organization](https://console.cloud.google.com/iam-admin/serviceaccounts/)
+Create a `meshfed-service` [Service Account](https://console.cloud.google.com/iam-admin/Service Accounts/) in the `meshstack-root` project.
 
-- Enable the ServiceAccount for “G Suite Domain-wide Delegation” and notate the generated `Client Id`
-- Generate and Download a [ServiceAccount Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+- Enable the Service Account for “G Suite Domain-wide Delegation” and notate the generated `Client Id`
+- Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 
-The ServiceAccount doesn’t need any roles on itself, it will be merely used to impersonate a technical user set up on the Cloud Identity directory using the [Admin Console](https://admin.google.com) for your Organization. This is required because Google does not support automation of Cloud Identity operations using ServiceAccounts.
-
-The ServiceAccount will be identified by an email address like
+The Service Account will be identified by an email address like
 
 ```text
-meshfed-service@meshstack-root.iam.gserviceaccount.com
+meshfed-service@meshstack-root.iam.gService Account.com
 ```
+
+#### Granting Resource Permissions
+
+The Service Account will be used by meshStack to perform project replication. Operators thus need to grant it the permissions of the
+`meshfed-service` IAM role on those folders of the [GCP resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+that make up the [Landing Zones](meshstack.gcp.landing-zones.md) for client projects.
+
+> It's a best practice to segregate "user" and "infrastructure" projects in GCP using the resource hierarchy.
+> By setting granular permissions (instead of organization-wide permissions) this can limit the access of meshStack's replicator
+> to only the parts of the resource hierarchy that it needs to actively manage (principle of least privilege).
+
+#### Grant Billing Account Permissions to the Service Account
+
+In order to associate created projects with a Billing Account, the replicator needs to be granted the
+`billing.resourceAssociations.create` permission "on the Billing Account. This is best achieved by assigning the
+`meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
 ## Cloud Identity Configuration
 
 ### meshfed-service User
 
-meshStack needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
+The Service Account created above needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
 Depending on your organization's setup of Google Cloud Identity, provisioning a technical user in the cloud directory
 may require one of the following two alternatives.
 
@@ -126,10 +139,6 @@ Open a private browser session and
 
 - sign in to the [admin console](https://admin.google.com/). Accept any ToS presented.
 - sign in to the [Google Cloud Console](https://console.cloud.google.com/). Accept the GCP ToS.
-
-#### Add to the meshfed-service GCP role
-
-Add the `meshfed-service@dev.meshcloud.io` user to the `meshfed-service` role setup earlier on the organization level in GCP.
 
 ### Enable Automated OAuth Consent
 
@@ -241,7 +250,7 @@ Following the principle of least privilege, operators should remove the `billing
 
 ### Credentials
 
-Configure the [meshfed-service ServiceAccount](#meshfed-service-serviceaccount) and [meshfed-service Service User](#meshfed-service-user)
+Configure the [meshfed-service Service Account](#meshfed-service-Service Account) and [meshfed-service Service User](#meshfed-service-user)
 using the following options.
 
 <!--snippet:mesh.platforms.gcp.credentials#type-->
@@ -256,12 +265,12 @@ let GcpPlatformCredentialConfiguration =
         The username of the service user to impersonate in Google Cloud Identity Directory. The replicator uses
         this service user to automate directory operations (Google Admin SDK).
 
-      serviceAccountCredentialsB64:
-        base64 encoded credentials.json filre for a GCP ServiceAccount. The replicator uses this Service Account
+      Service AccountCredentialsB64:
+        base64 encoded credentials.json filre for a GCP Service Account. The replicator uses this Service Account
         to automate GCP API operations (IAM, ResourceManager etc.).
     -}
       { impersonatedServiceUser : Text
-      , serviceAccountCredentialsB64 : Secret
+      , Service AccountCredentialsB64 : Secret
       }
 ```
 <!--Example-->
@@ -269,7 +278,7 @@ let GcpPlatformCredentialConfiguration =
 let example
     : GcpPlatformCredentialConfiguration
     = { impersonatedServiceUser = "meshfed-service@myorg.example.com"
-      , serviceAccountCredentialsB64 = Secret.Native "b123"
+      , Service AccountCredentialsB64 = Secret.Native "b123"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
