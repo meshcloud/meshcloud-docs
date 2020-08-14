@@ -19,7 +19,7 @@ This feature can be used for example to restrict access to a public cloud provid
 ### Project-level
 
 Customers can create [meshProjects](meshcloud.project.md) that use the Locations available to their Customer account.
-Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.customer.md#meshCustomer-roles), providing a further level of possible delegation.
+Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.customer.md#assign-meshCustomer-roles), providing a further level of possible delegation.
 
 ## Deprovisioning / Deleting Projects
 
