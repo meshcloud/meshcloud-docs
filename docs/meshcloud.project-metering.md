@@ -64,5 +64,6 @@ A chart in the project dashboard shows the total amount charged as of the last c
 
 Customer Admins also have access to an overview of the chargeback statements of all their projects in the Account Area via "Projects" -> "Chargeback Statements".
 Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Chargeback Statements".
-It is possible to do an export from this view by clicking on the "CSV Export" button. This export will contain the line items of all the chargeback statements currently in the view.
-The export can be configured so that each row contains any customer tags, project tags or payment settings.
+It is possible to do an export from these views by clicking on the "CSV Export" button. This export will contain the line items of all the chargeback statements currently in the view.
+Chargeback Statements also contain billing information per line item. It can be [configured](meshstack.billing.md#chargeback) per meshImplementation which information shall be shown there. This info will occur in the UI when looking at the line items of a chargeback statements.
+It will also be part of the CSV export. General payment information like payment name, identifier, expiration date and amount as well as any customer tags, project tags and payment tags can be [configured](meshstack.billing.md#chargeback) as a billing-related property.
