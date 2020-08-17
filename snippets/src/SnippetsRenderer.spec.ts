@@ -58,7 +58,7 @@ const renderedWithoutExample = `
 The following configuration options are available at \`a\`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-${fence}haskell
+${fence}dhall
 let Foo = {
   x: 1
 }
@@ -72,13 +72,13 @@ const renderedWithExample = `
 The following configuration options are available at \`b\`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-${fence}haskell
+${fence}dhall
 let Foo = {
   x: 1
 }
 ${fence}
 <!--Example-->
-${fence}haskell
+${fence}dhall
 let example = {
   y: 1
 }
