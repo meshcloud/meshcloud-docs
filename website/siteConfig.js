@@ -76,11 +76,10 @@ const siteConfig = {
     theme: 'atom-one-dark',
   },
 
-  usePrism: ['dhall'],
+  usePrism: ['dhall', 'json', 'yaml', 'bash'],
 
   stylesheets: [
-    'https://fonts.googleapis.com/css?family=Montserrat|Roboto',
-    'css/prism.css'
+    'https://fonts.googleapis.com/css?family=Montserrat|Roboto'
   ],
 
   // Add custom scripts here that would be placed in <script> tags
