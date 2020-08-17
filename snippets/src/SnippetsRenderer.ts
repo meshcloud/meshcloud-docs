@@ -69,7 +69,7 @@ export class SnippetsRenderer {
       ? ''
       : `
 <!--Example-->
-${fence}haskell
+${fence}dhall
 ${sections.examples}
 ${fence}`;
 
@@ -85,7 +85,7 @@ ${fence}`;
 ${snippetExplanation}
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-${fence}haskell
+${fence}dhall
 ${sections.types}
 ${fence}${example}
 <!--END_DOCUSAURUS_CODE_TABS-->`;
