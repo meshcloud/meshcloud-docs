@@ -61,11 +61,11 @@ The properties of the provided configuration file will be expanded with properti
 | tagCostCenter              | ID of the CostCenter defined for this meshProject.                                |
 | projectIdentifier          | The project identifier                                                            |
 | projectId                  | The ID of the GCP project associated with this meshProject                        |
-| mesh-tag-my-customer-label | Example for a  [MetaData Tag](./meshstack.tag-schema.md) named `mycustomerLabel`  |
+| mesh-tag-my-customer-label | Example for a  [metadata tag](./meshstack.tag-schema.md) named `mycustomerLabel`  |
 
 As the example `mesh-tag-my-customer-label` in the above table indicates, any payment settings, project tags or customer tags are also provided to the template.
 In the example, a tag named `myCustomerLabel` would be provided as a property with name `mesh-tag-my-customer-label`.
-See [MetaData Tags](./meshstack.tag-schema.md) for more information.
+See [metadata tags](./meshstack.tag-schema.md) for more information.
 
 ## meshRole to Platform Role Mapping
 
