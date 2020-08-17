@@ -27,15 +27,17 @@ meshStack has been specifically validated to work with RKE (Rancher Kubernetes E
 
 ### meshStack Configuration
 
-Your meshstack installation needs to be configured to restrict MeshProject and MeshCustomer identifiers in the following ways:
+Your meshStack installation needs to be configured to restrict meshProject and meshCustomer identifiers as follows:
 
 - alphanumeric characters only
 - maximum combined length of 63 characters
 
+You can refer to the [official Documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names).
+
 ### API Server Configuration
 
 In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as a trusted authentication provider. You will need to configure your Kubernetes distribution to apply the following configuration to [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/). Variables prefixed with `$` must
-be replaced with the appropriate values for your individual meshstack installation.
+be replaced with the appropriate values for your individual meshStack installation.
 
 ```yaml
 authorization-mode: RBAC

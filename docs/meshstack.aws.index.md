@@ -501,12 +501,9 @@ Please find the full `Aws.dhall` [configuration options](./meshstack.configurati
   -}
   , roleMappingsExternal :
         List { mapKey : Text, mapValue : { awsRoleName : Text } }
-  , meshProvisioning :
-      Optional ./Aws/MeshProvisioning.dhall
-  , externalProvisioning :
-      Optional (./Aws/ExternalProvisioning.dhall Secret)
   , accountAccessRole :
       Optional Text
+  , accountEmailPattern : Text
   , accountAliasPattern :
       Optional Text
   {-

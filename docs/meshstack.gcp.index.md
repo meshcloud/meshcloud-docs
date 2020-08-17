@@ -9,8 +9,8 @@ meshcloud can automatically provision GCP Projects as Tenants for [meshProjects]
 
 To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes GCP available to meshProjects like any other cloud platform in meshStack.
 
-Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups. For organizations that do not already use google identity services, meshStack supports fully federated
-[meshStack provisioned identities](./meshstack.identity-federation.md). Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
+Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
+Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
 
 meshcloud helps organizations implement Google Cloud Platform in line with [Governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](./meshstack.gcp.landing-zones.md)
 
@@ -20,12 +20,9 @@ In order to plan and execute a successful integration of GCP using meshcloud, or
 
 ## Cloud Identity Setup
 
-meshStack does not require Cloud Identity Premium nor G-Suite. Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack.
+Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack. meshStack does not require Cloud Identity Premium nor G-Suite features.
 
-### meshStack-provisioned Identities
-
-When using meshStack-provisioned identites operators need to setup SSO between the Cloud Identity directory and meshIdB.
-This can be achieved by following the official [instructions](https://cloud.google.com/blog/products/identity-security/using-your-existing-identity-management-system-with-google-cloud-platform).
+We recommend using [externally provisioned identities](./meshstack.identity-federation.md) with GCP.
 
 ## Organization Setup
 
@@ -36,7 +33,7 @@ Operators need to setup a GCP Organization to be used by meshStack. Please revie
 meshStack needs a well-defined set of permissions for it's automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the principle of least privilege.
 
-Operators need to define a Custom Role called `meshfed-service` at the **Organization Level** with the following permissions
+Operators need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
 
 ```text
 resourcemanager.folders.get
@@ -64,7 +61,6 @@ deploymentmanager.deployments.get
 
 For some resources we need a “root” project for meshStack in GCP. This project is reserved for use by meshstack and operators. For this guide, we’ll call the root project `meshstack-root`.
 
-
 ### Enable APIs
 
 Enable the following APIs on the `meshstack-root` project from the API Library
@@ -73,26 +69,40 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 - [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
 - [Cloud Billing API](https://console.cloud.google.com/apis/library/cloudbilling.googleapis.com/overview)
 
-### meshfed-service ServiceAccount
+### meshfed-service Service Account
 
-Create a `meshfed-service` [ServiceAccount on the Organization](https://console.cloud.google.com/iam-admin/serviceaccounts/)
+Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/service-accounts) in the `meshstack-root` project.
 
-- Enable the ServiceAccount for “G Suite Domain-wide Delegation” and notate the generated `Client Id`
-- Generate and Download a [ServiceAccount Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+- Enable the Service Account for “G Suite Domain-wide Delegation” and notate the generated `Client Id`
+- Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 
-The ServiceAccount doesn’t need any roles on itself, it will be merely used to impersonate a technical user set up on the Cloud Identity directory using the [Admin Console](https://admin.google.com) for your Organization. This is required because Google does not support automation of Cloud Identity operations using ServiceAccounts.
-
-The ServiceAccount will be identified by an email address like
+The Service Account will be identified by an email address like
 
 ```text
-meshfed-service@meshstack-root.iam.gserviceaccount.com
+meshfed-service@meshstack-root.iam.gService Account.com
 ```
+
+#### Granting Resource Permissions
+
+The Service Account will be used by meshStack to perform project replication. Operators thus need to grant it the permissions of the
+`meshfed-service` IAM role on those folders of the [GCP resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+that make up the [Landing Zones](meshstack.gcp.landing-zones.md) for client projects.
+
+> It's a best practice to segregate "user" and "infrastructure" projects in GCP using the resource hierarchy.
+> By setting granular permissions (instead of organization-wide permissions) this can limit the access of meshStack's replicator
+> to only the parts of the resource hierarchy that it needs to actively manage (principle of least privilege).
+
+#### Grant Billing Account Permissions to the Service Account
+
+In order to associate created projects with a Billing Account, the replicator needs to be granted the
+`billing.resourceAssociations.create` permission "on the Billing Account. This is best achieved by assigning the
+`meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
 ## Cloud Identity Configuration
 
 ### meshfed-service User
 
-meshStack needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
+The Service Account created above needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
 Depending on your organization's setup of Google Cloud Identity, provisioning a technical user in the cloud directory
 may require one of the following two alternatives.
 
@@ -130,10 +140,6 @@ Open a private browser session and
 - sign in to the [admin console](https://admin.google.com/). Accept any ToS presented.
 - sign in to the [Google Cloud Console](https://console.cloud.google.com/). Accept the GCP ToS.
 
-#### Add to the meshfed-service GCP role
-
-Add the `meshfed-service@dev.meshcloud.io` user to the `meshfed-service` role setup earlier on the organization level in GCP.
-
 ### Enable Automated OAuth Consent
 
 Enable Automated Consent in the G Admin Console
@@ -147,47 +153,86 @@ Enable Automated Consent in the G Admin Console
       https://www.googleapis.com/auth/admin.directory.user, https://www.googleapis.com/auth/cloud-platform, https://www.googleapis.com/auth/admin.directory.group
       ```
 
-## Platform Instance Config
+## Configuration Reference
 
-This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md).
+This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
+at `mesh.platforms`.
 
-### Organization
+For easier reference the following sections break down the configuration model in multiple parts. The union of these
+defines the full configuration model.
 
-Configure the domain, service account and service user as they were setup above.
+<!--snippet:mesh.platforms.gcp#type-->
 
-To retrieve the value of your Google Customer Id you can use the [gcloud tool](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains#gcloud_2) or look it up from [Google Admin console](https://support.google.com/a/answer/9039510?hl=en).
 
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
 ```haskell
-{   customerId =
-      "Cxxxx123"
-    domain =
-      "dev.meshcloud.io"
-  , serviceUser =
-      "meshfed-service@dev.meshcloud.io"
-  , serviceAccount =
-      { accountId =
-          "meshfed-service@meshstack-root.iam.gserviceaccount.com"
-      , privateKey =
-          { name = "GCP_PRIVATE_KEY" }
-      }
-}
+let GcpPlatform =
+        GcpPlatformCoreConfiguration
+      ⩓ GcpPlatformCredentialConfiguration
+      ⩓ GcpPlatformRoleMappingConfiguration
 ```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### Core Configuration
+
+<!--snippet:mesh.platforms.gcp.core#type-->
 
 
-### Billing Account
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+let GcpPlatformCoreConfiguration =
+    {-
+      platform:
+        The platform identifier
+
+      domain:
+        The domain used for cloud identity directory-groups created and managed by meshStack. meshStack maintains separate
+        groups for each meshProject role on each managed GCP project.
+
+      customerId:
+        A Google Customer Id. You can find this id via google cloud shell https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains#gcloud_2
+        Or alternatively following the instructions at https://support.google.com/a/answer/9039510?hl=en
+
+      billingAccountId:
+        The id of the billing account to associate with all GCP projects managed by meshStack
+
+      projectIdPattern:
+        A String.format format string receiving the following arguments:
+          1. customerIdentifier
+          2. projectIdentifier
+          3. a random alphanumeric string suitable as a suffix
+        The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
+        We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of
+        naming collisions.
+    -}
+      { platform : Text
+      , domain : Text
+      , customerId : Text
+      , billingAccountId : Text
+      , projectIdPattern : Text
+      }
+```
+<!--Example-->
+```haskell
+let example
+    : GcpPlatformCoreConfiguration
+    = { platform = "gcp.mylocation"
+      , domain = "myorg.example.com"
+      , customerId = " Cxxxx123"
+      , billingAccountId = "123456-1234ABCD-1234FF"
+      , projectIdPattern = "%.15s-%.10s-%.3s"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+#### Multiple Billing Accounts
 
 In order to maintain symmetry to other public cloud platforms, meshStack consolidates billing of all GCP projects managed
 under the same GCP Platform Instance to a single Google Cloud Billing Account. The billing account id is thus configured
-on the platform level.
+on the platform level. To use multiple billing accounts consider configuring multiple GCP meshPlatforms in meshStack.
 
-```haskell
-{   billingAccountId =
-      {- The id of your Billing Account as it's displayed in Google Cloud Console -}
-      "123456-1234ABCD-1234FF"
-}
-```
-
-To use multiple billing accounts consider configuring multiple GCP meshPlatforms in meshStack.
 
 #### Billing Account owned by a different organization
 
@@ -203,51 +248,77 @@ The `meshfed-service` user needs to be granted the `meshfed-billing-creator` rol
 
 Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#meshfed-service-iam-role).
 
+### Credentials
+
+Configure the [meshfed-service Service Account](#meshfed-service-Service Account) and [meshfed-service Service User](#meshfed-service-user)
+using the following options.
+
+<!--snippet:mesh.platforms.gcp.credentials#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+let GcpPlatformCredentialConfiguration =
+    {-
+      impersonatedServiceUser:
+        The username of the service user to impersonate in Google Cloud Identity Directory. The replicator uses
+        this service user to automate directory operations (Google Admin SDK).
+
+      Service AccountCredentialsB64:
+        base64 encoded credentials.json filre for a GCP Service Account. The replicator uses this Service Account
+        to automate GCP API operations (IAM, ResourceManager etc.).
+    -}
+      { impersonatedServiceUser : Text
+      , Service AccountCredentialsB64 : Secret
+      }
+```
+<!--Example-->
+```haskell
+let example
+    : GcpPlatformCredentialConfiguration
+    = { impersonatedServiceUser = "meshfed-service@myorg.example.com"
+      , Service AccountCredentialsB64 = Secret.Native "b123"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 ### GCP Role Mapping
 
-The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in GCP. This mapping is fully customizable and can use custom as well as built-in roles.
+The [project roles](meshcloud.project.md#project-roles) are mapped to user roles in GCP.
+This mapping is fully customizable and can use custom as well as built-in roles.
 
-In order to configure the mapping use the `roleMappings` key in the [platform config](#configuration-reference).
+Operators can also override these role mappings per [Landing Zone](meshstack.gcp.landing-zones.md). This also offers
+more granular control over possible role mappings. Any role mappings
+defined in the Landing Zone take precedence over the role mappings defined on the platform level.
 
+<!--snippet:mesh.platforms.gcp.rolemappings#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
 ```haskell
-{ roleMappings =
-    [ { mapKey = "admin", mapValue = "roles/editor" } {- Uses a built-in GCP role -}
-    , { mapKey =
-          "user"
-      , mapValue =
-          "organizations/632614034120/roles/meshstack.project_developer" {- Uses a custom role defined on the organization -}
-      }
-    ]
-}
-```
-
-### Project Id Pattern
-
-Operators can configure the pattern used to dervice [GCP Project Ids](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project) when meshStack creates a new GCP Project.
-
-The arguments available here are:
-
-1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
-2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
-3. argument: a random alphanumeric string suitable as a suffix
-
-The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
-We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of naming collisions. The example below shows a reference configuration:
-
-```haskell
-{ projectIdPattern =
+let GcpPlatformRoleMappingConfiguration =
     {-
-      15 (up to) chars customer identifier
-      1 separator
-      10 (up to) chars project id, this is usually short e.g. "prod", "dev" "staging"
-      1 separator
-      3 chars random id, alphanumeric, case insensitive  = 26+10 characters -> 36^3 = ~46.5k possibilities
-      =
-      30 chars total
+      roleMappings:
+        A list of mappingfgs from meshProjecRole identifiers to GCP role ids (e.g. roles/editor).
+        The replicator will use these
     -}
-      "%.15s-%.10s-%.3s"
-}
+      { roleMappings : List { mapKey : Text, mapValue : Text } }
 ```
+<!--Example-->
+```haskell
+let example
+    : GcpPlatformRoleMappingConfiguration
+    = { roleMappings =
+        [ { mapKey = "admin", mapValue = "roles/editor" }
+        , { mapKey = "user"
+          , mapValue = "organizations/123456/roles/custom-role"
+          }
+        ]
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Audit Logs for meshfed-service User
 

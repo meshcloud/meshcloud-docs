@@ -56,4 +56,4 @@ per meshcloud installation.
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)                  |       &#10003;       |                   |             |            |                    |
 | [Performance&nbsp;Analytics](administration.analytics.md)                                                                 |       &#10003;       |                   |             |            |      &#10003;      |
 
-Please review [meshCustomer roles](meshcloud.customer.md#meshCustomer-roles) for roles available to end-users of your meshStack implementation.
+Please review [meshCustomer roles](meshcloud.customer.md#assign-meshCustomer-roles) for roles available to end-users of your meshStack implementation.

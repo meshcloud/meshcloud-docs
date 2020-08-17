@@ -1,6 +1,7 @@
 import * as program from 'commander';
 import * as glob from 'fast-glob';
 import * as fs from 'fs';
+import * as path from 'path';
 import * as process from 'process';
 
 import { snippets } from './extract';
@@ -56,24 +57,32 @@ async function main(): Promise<number> {
   program
     .version('0.1.0')
     .description('Builds and updates documentation snippets')
-    .option('--src <src>', 'absolute path to src files, may include glob patterns. Specifying this will rebuild the snippets cache.')
+    .option('--src <src>', 'path to src files. Specifying this will rebuild the snippets cache.')
+    .option('--srcGlob <srcGlob>', 'glob pattern to filter source files.', 'deployment/model/**/*.dhall')
     .requiredOption('--snips <snips>', 'path to snippet cache directory')
-    .option('--docs <docs>', 'absolute path to markdown files, may include glob patterns.  Specifying this will update snippets in markdown docs.')
+    .option('--docs <docs>', 'path to doc files. Specifying this will update snippets in markdown docs.')
+    .option('--docsGlob <docsGlob>', 'glob pattern to filter docs', 'docs/**/*.md')
     .allowUnknownOption(false)
     .parse(process.argv);
 
-  const srcGlob = program['src'];
+  const src = program['src'];
+  const srcGlob = program['srcGlob'];
   const snipsPath = program['snips']!!; // it's a requiredOption so always truthy
-  const docsGlob = program['docs'];
+  const docs = program['docs'];
+  const docsGlob = program['docsGlob'];
 
   const repo = new SnippetRepository(snipsPath);
 
-  if (srcGlob) {
-    await buildSnippetCache(srcGlob, repo);
+  if (src) {
+    const absoluteSrc = await path.resolve(src);
+    const absoluteSrcGlob = await path.join(absoluteSrc, srcGlob);
+    await buildSnippetCache(absoluteSrcGlob, repo);
   }
 
-  if (docsGlob) {
-    await updateDocsSnippets(docsGlob, repo);
+  if (docs) {
+    const absoluteDocs = await path.resolve(docs);
+    const absoluteDocsGlob = await path.join(absoluteDocs, docsGlob);
+    await updateDocsSnippets(absoluteDocsGlob, repo);
   }
 
   return 0;
