@@ -71,12 +71,14 @@ const siteConfig = {
     new Date().getFullYear() +
     ' meshcloud GmbH',
 
+  // we prefer using prism.js for highlighting as it supports dhall (highlight.js does not)
+  // use it for all languages so we enjoy consistent highlighting, fallback on highlight.js only if needed
+  usePrism: ['dhall', 'json', 'yaml', 'bash'],
+
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: 'atom-one-dark',
+    theme: 'tomorrow-night-eighties',
   },
-
-  usePrism: ['dhall', 'json', 'yaml', 'bash'],
 
   stylesheets: [
     'https://fonts.googleapis.com/css?family=Montserrat|Roboto'
