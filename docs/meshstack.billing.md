@@ -239,6 +239,24 @@ The following configuration options are available at `mesh.kraken.productcatalog
 
 Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.project-metering.md#chargeback-statements).
 
+The attributes that shall be part of the billing info on the chargeback statements can be configured as relevant meta keys at `mesh.kraken.api.statements`
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```haskell
+{ relevantMetaKeys : List Text }
+```
+<!--Example-->
+```haskell
+relevantMetaKeys =
+  [ "costCenter"
+  , "paymentName"
+  , "paymentIdentifier"
+  , "paymentExpirationDate"
+  , "paymentAmount"
+  ]
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 ## Budgeting
 
 > under construction, get in touch for more details
