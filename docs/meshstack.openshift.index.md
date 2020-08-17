@@ -218,6 +218,49 @@ roleRef:
   name: meshfed-service
 ```
 
+#### Metering Service Account <a name="metering-sa"></a>
+
+The metering component of meshStack requires the following ServiceAccount.
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: meshfed-metering
+  annotations:
+    io.meshcloud/meshstack.metering-openshift.version: "1.0"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: meshfed-metering
+  annotations:
+    io.meshcloud/meshstack.metering-openshift.version: "1.0"
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: meshfed-metering
+  annotations:
+    io.meshcloud/meshstack.metering-openshift.version: "1.0"
+subjects:
+- kind: ServiceAccount
+  name: meshfed-metering
+  namespace: meshcloud
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: meshfed-metering
+```
+
 ### Custom meshProject Roles
 
 If you want to use custom roles to be mapped to your meshProject roles (and not just the pre-defined `admin`, `edit` and `view` roles) you need to make sure to also list these roles in the clusterrole binding section for the meshfed-service principle. It is not allowed for the service-principle to bind roles granting more rights then itself has, so the right to bind these roles must be explicitly given.
