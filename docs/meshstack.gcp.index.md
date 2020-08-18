@@ -166,7 +166,7 @@ defines the full configuration model.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatform =
         GcpPlatformCoreConfiguration
       ⩓ GcpPlatformCredentialConfiguration
@@ -181,7 +181,7 @@ let GcpPlatform =
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatformCoreConfiguration =
     {-
       platform:
@@ -215,7 +215,7 @@ let GcpPlatformCoreConfiguration =
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example
     : GcpPlatformCoreConfiguration
     = { platform = "gcp.mylocation"
@@ -258,7 +258,7 @@ using the following options.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatformCredentialConfiguration =
     {-
       impersonatedServiceUser:
@@ -274,7 +274,7 @@ let GcpPlatformCredentialConfiguration =
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example
     : GcpPlatformCredentialConfiguration
     = { impersonatedServiceUser = "meshfed-service@myorg.example.com"
@@ -297,7 +297,7 @@ defined in the Landing Zone take precedence over the role mappings defined on th
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatformRoleMappingConfiguration =
     {-
       roleMappings:
@@ -307,7 +307,7 @@ let GcpPlatformRoleMappingConfiguration =
       { roleMappings : List { mapKey : Text, mapValue : Text } }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example
     : GcpPlatformRoleMappingConfiguration
     = { roleMappings =

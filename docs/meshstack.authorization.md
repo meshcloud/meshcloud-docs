@@ -64,7 +64,7 @@ The default configuration of meshStack ships with these roles and intended use.
 The following configuration options are available at `mesh.meshfed.web.project`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let ProjectRoleConfiguration =
     {-
         initialRole:
@@ -79,7 +79,7 @@ let ProjectRoleConfiguration =
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example =
         { initial-role = Some "user"
         , roles = Some
