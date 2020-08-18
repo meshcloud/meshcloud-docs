@@ -27,11 +27,11 @@ The figure and table below explain the relation of the most important concepts i
 | [meshLocation](meshcloud.platform-location.md) | A grouping of meshPlatforms, e.g. by geographic region.                                   |
 
 
-## meshPanel supported browser
+## meshPanel supported browsers
 
-Firefox ESR
-last 2 Firefox versions
-last 2 Chrome versions
+- Firefox ESR
+- last 2 Firefox versions
+- last 2 Chrome versions
 
 If you experience problems with other browsers like Edge (Chromium), Safari or with mobile experience let us know.
 We are interested to make that work as well!
