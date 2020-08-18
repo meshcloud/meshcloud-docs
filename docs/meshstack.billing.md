@@ -239,22 +239,42 @@ The following configuration options are available at `mesh.kraken.productcatalog
 
 Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.project-metering.md#chargeback-statements).
 
-The attributes that shall be part of the billing info on the chargeback statements can be configured as relevant meta keys at `mesh.kraken.api.statements`
+The attributes that shall be part of the billing info on the chargeback statements can be configured as follows.
 
+<!--snippet:mesh.kraken.api.statements-->
+
+The following configuration options are available at `mesh.kraken.api.statements`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
-{ relevantMetaKeys : List Text }
+```dhall
+let Statements =
+    {-
+      relevantMetaKeys:
+        A list of metadata and tag keys that shall appear in chargeback statements as billing info.
+        General payment information can be accessed via paymentName, paymentIdentifier, paymentExpirationDate
+        and paymentAmount. Custom Tags can be referenced via their property name in the according tag JSON schema.
+        Custom Tags are customer tags, project tags and payment tags.
+    -}
+      { relevantMetaKeys : List Text }
 ```
 <!--Example-->
-```haskell
-relevantMetaKeys =
-  [ "costCenter"
-  , "paymentName"
-  , "paymentIdentifier"
-  , "paymentExpirationDate"
-  , "paymentAmount"
-  ]
+```dhall
+let example
+    -- these relevantMetaKeys reference all statically available payment information
+    : Statements
+    = { relevantMetaKeys =
+        [ "paymentName"
+        , "paymentIdentifier"
+        , "paymentExpirationDate"
+        , "paymentAmount"
+        ]
+      }
+
+let example2
+    -- these relevantMetaKeys reference tags that can be defined individually per meshImplementation
+    : Statements
+    = { relevantMetaKeys = [ "customTag1", "customTag2" ] }
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Budgeting
