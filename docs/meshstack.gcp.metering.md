@@ -5,25 +5,80 @@ title: Metering
 
 meshStack imports metering data from [GCP Cloud Billing data BigQuery Export](https://cloud.google.com/billing/docs/how-to/export-data-bigquery)
 
-Once billing export has been setup as explained in the GCP documentation, meshStack should be configured with the credentials of a GCP service account that has permission to access the exported billing dataset.
-This service account should also have the permission to run jobs. From the [predefined roles](https://cloud.google.com/bigquery/docs/access-control) these permissions are available in
-`roles/bigquery.jobUser` and `roles/bigquery.dataViewer`. The credentials should be exported in JSON format as mentioned in the [GCP Documentation](https://cloud.google.com/docs/authentication/production).
-This JSON content should be base 64 encoded in the meshstack configuration.
+## Service Account Configuration
 
-meshStack requires the full path to the BigQuery table where the billing data is stored, so that it can be queried to fetch the billing data.
+Once billing export has been setup as explained in the GCP documentation, meshStack should be configured with the credentials of a GCP service account that has permission to access the exported billing dataset. This service account must also have the permission to run jobs.
 
-The full configuration format for GCP metering is as follows.
+Assign the service account the following roles [predefined roles](https://cloud.google.com/bigquery/docs/access-control):
 
-```dhall
-{ platform : Text
-, bigqueryTable : Text
-, credentialsB64 : Secret
-, additionalFilter : Optional Text
-}
+```text
+roles/bigquery.jobUser
+roles/bigquery.dataViewer
 ```
 
-The configuration parameter `additionalFilter` is appended to the BigQuery query and can be used to further filter the data that is collected.
-This can be used if you want to collect billing information only for a specific organization or folder.
+## Configuration Reference
+
+This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
+at `mesh.platforms` for GCP metering.
+
+<!--snippet:mesh.platforms.gcp.kraken#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let GcpPlatformKrakenConfiguration =
+    {-
+      platform:
+        The meshPlatform identifier
+
+      bigQueryTable:
+        The big query table name containing the GCP Cloud Billing BigQuery export.
+        See https://cloud.google.com/billing/docs/how-to/export-data-bigquery
+
+      credentialsB64:
+        base64 encoded credentials.json file for a GCP ServiceAccount. meshStack uses this Service Account
+        to collect billing data from the BigQuery export table.
+
+      additionalFilter:
+        Additional big query predicates to append to meshStack's queries. This allows operators to restrict
+        what type of data is imported, e.g. to only include data for a specific organization or folder path.
+    -}
+      { platform : Text
+      , bigqueryTable : Text
+      , credentialsB64 : Secret
+      , additionalFilter : Optional Text
+      }
+```
+<!--Example-->
+```dhall
+let exampleAllData
+    : GcpPlatformKrakenConfiguration
+    =
+      -- configures meshStack to import all available billing data
+      { platform = "my.gcp"
+      , bigqueryTable =
+          "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
+      , credentialsB64 = Secret.Native "..."
+      , additionalFilter = None Text
+      }
+
+let exampleOnlyFolder
+    : GcpPlatformKrakenConfiguration
+    =
+      -- configures meshStack to only import billing data for projects that live in the GCP resource hierarchy
+      -- under folder id '123' in the organization with id '123'.
+      { platform = "my.gcp"
+      , bigqueryTable =
+          "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
+      , credentialsB64 = Secret.Native "..."
+      , additionalFilter = Some
+          "and STARTS_WITH(project.ancestry_numbers, '/123/345')"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+## Billing Data Import
 
 The data is collected incrementally from the exported billing data by filtering by the `export_time` attribute.
 Any entries with `cost_type` `tax` are ignored in the metering process.
