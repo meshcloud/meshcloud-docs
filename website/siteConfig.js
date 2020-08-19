@@ -73,7 +73,7 @@ const siteConfig = {
 
   // we prefer using prism.js for highlighting as it supports dhall (highlight.js does not)
   // use it for all languages so we enjoy consistent highlighting, fallback on highlight.js only if needed
-  usePrism: ['dhall', 'json', 'yaml', 'bash'],
+  usePrism: ['dhall', 'json', 'yaml', 'bash', 'powershell', 'text'],
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks

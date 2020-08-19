@@ -85,7 +85,6 @@ and removed from the subscription pool.
 
 meshstack in total needs up to three service principals, one for replicating meshProjects into the Azure platform, one if AAD should be used as an user lookup when users are added to a customer or project inside the meshfed panel, and one for gathering metering data for the billing subsystem.
 
-
 ### Replicator
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
@@ -183,48 +182,6 @@ This principal is only required if the AAD is actually be used as source of user
 
 > Since `User.Read.All` is a Role permission, you will also need to grant admin consent in AAD on the assignment
 
-### Azure Function Access
-
-In order to make an Azure Function only accessible via the replicators Service Principal follow these steps:
-
-1. Create a system assigned identity for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
-
-    ![System assigned identity](assets/azure_function/system-assigned-identity.png)
-
-2. Lock down your function to only allow assigned users.
-
-    ![Assigned users only](assets/azure_function/assigned-users.png)
-
-3. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
-
-    ```json
-    {
-      "allowedMemberTypes": [
-        "Application"
-      ],
-      "description": "Allows an SPP to get a token to a restricted application",
-      "displayName": "SPP-Access",
-      "id": "<RANDOM_UUID>",
-      "isEnabled": true,
-      "lang": null,
-      "origin": "Application",
-      "value": "Access"
-    }
-    ```
-
-    ![App Role Manifest](assets/azure_function/app-role-manifest.png)
-
-4. In your Service Principals API permissions screen, add the newly created Application Role. Don't forget to grant admin consent again afterwards.
-
-    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
-
-
-After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the replicator is using.
-
-![Fetch Token](assets/azure_function/fetch-token.png)
-
-![Decoded Token](assets/azure_function/decoded-token.png)
-
 
 ## Configuring Enterprise Enrollment
 
@@ -273,111 +230,6 @@ replicator-azure:
 You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
 the invitation notifications.
 
-
-### Configuring Blueprint Automation
-
-In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) the meshcloud Azure replicator needs to be configured with the service principal id of the `Azure Blueprints` app
-provided by Microsoft.
-
-#### Finding the Azure Blueprints App Id
-
-The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
-of the app in the meshcloud AAD Tenant.
-
-The easiest way to accomplish this is to start an Azure cloud shell in a subscription on the meshcloud AAD Tenant and execute the following command:
-
-```powershell
-PS Azure:\> Get-AzureRmADServicePrincipal -ApplicationId f71766dc-90d9-4b7d-bd9d-4499c4331c3f
-```
-
-The response should be similar to
-
-```powershell
-ServicePrincipalNames : {f71766dc-90d9-4b7d-bd9d-4499c4331c3f}
-ApplicationId         : f71766dc-90d9-4b7d-bd9d-4499c4331c3f
-ObjectType            : ServicePrincipal
-DisplayName           : Azure Blueprints
-Id                    : 227ac22a-************
-```
-
-Write down the ID (in this case `227ac22a-*`) as this is the `AZURE_BLUEPRINT_PRINCIPAL`.
-
-If this call **does not** return a usable ID then you can try an alternative way and find this principal via the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer):
-
-
-1. Open [https://developer.microsoft.com/en-us/graph/graph-explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
-2. Login with a Global Admin user from the directory in which you want to check for the `AZURE_BLUEPRINT_PRINCIPAL`
-3. You need sufficient permissions to read the principal. Select modify permissions to get the permissions
-![Modify Explorer permissions](assets/graph-explorer-permissions.png)
-4. Enable the `Directory.AccessAsUser.All`, `Directory.Read.All`, `Directory.ReadWrite.All` rights and give your admin consent
-![Grant additional rights](assets/graph-explorer-rights.png)
-5. List your Blueprint Service Principal ID via
-
-    ```text
-    GET https://graph.microsoft.com/beta/&lt;AAD_TENANT_ID&gt;/servicePrincipals?$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
-    ```
-
-    Replace the `<AAD_TENANT_ID>` with the Directory ID of your AAD (can be found in the properties screen of the AAD in [https://portal.azure.com](https://portal.azure.com))
-6. Remember to delete the Graph Explorer App access afterwards from your **Enterprise applications** section of your Active Directory in the Azure portal
-
-The response should look like this:
-
-```json
-
-{
-    "@odata.context": "https://graph.microsoft.com/beta/$metadata#servicePrincipals",
-    "value": [
-        {
-            "id": "227ac22a-************",
-            "deletedDateTime": null,
-            "accountEnabled": true,
-            "appDisplayName": "Azure Blueprints",
-            "appId": "f71766dc-90d9-4b7d-bd9d-4499c4331c3f",
-            "applicationTemplateId": null,
-            "appOwnerOrganizationId": "f8cdef31-a31e-4b4a-93e4-5f571e91255a",
-            "appRoleAssignmentRequired": false,
-            "displayName": "Azure Blueprints",
-            "errorUrl": null,
-            "homepage": null,
-            "loginUrl": null,
-            "logoutUrl": null,
-            "notificationEmailAddresses": [],
-            "preferredSingleSignOnMode": null,
-            "preferredTokenSigningKeyEndDateTime": null,
-            "preferredTokenSigningKeyThumbprint": null,
-            "publisherName": "Microsoft Services",
-            "replyUrls": [],
-            "samlMetadataUrl": null,
-            "samlSingleSignOnSettings": null,
-            "servicePrincipalNames": [
-                "f71766dc-90d9-4b7d-bd9d-4499c4331c3f"
-            ],
-            "signInAudience": "AzureADMultipleOrgs",
-            "tags": [],
-            "addIns": [],
-            "api": {
-                "resourceSpecificApplicationPermissions": []
-            },
-            "appRoles": [],
-            "info": {
-                "termsOfServiceUrl": null,
-                "supportUrl": null,
-                "privacyStatementUrl": null,
-                "marketingUrl": null,
-                "logoUrl": null
-            },
-            "keyCredentials": [],
-            "publishedPermissionScopes": [],
-            "passwordCredentials": []
-        }
-    ]
-}
-```
-
-Write down the ID (in this case `227ac22a-*`) as this is the `AZURE_BLUEPRINT_PRINCIPAL`.
-
-> In case your admin user can not grant the Graph Explorer the admin access rights he needs to query the AAD, try to create a new user via the Azure Portal in the AAD and grant this temporary user `Global Admin`rights. Try to use this user for login with the Graph Explorer. After you did your query you can delete this user again.
-
 #### Authorize the meshcloud Service Principal
 
 You must must grant the meshcloud Service Principal `owner` access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) in the meshcloud AAD Tenant.
@@ -395,7 +247,6 @@ In this screen you can also find the Object ID and Application ID of your servic
 Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
 ```
 
-
 ## Platform Instance Configuration
 
 With the information we gathered in the above section we now can configure the Azure Replicator.
@@ -412,7 +263,7 @@ in    λ(Secret : Type)
           Optional Text
       , groupNamePattern :
           Optional Text
-      {- This is the ID of the "Azure Blueprint" service principal which must be known beforehand. -}
+      {- See below for explanation. -}
       , blueprintServicePrincipal = "<AZURE_BLUEPRINT_PRINCIPAL>"
       {- # https://docs.microsoft.com/en-us/rest/api/blueprints/assignments/createorupdate#assignmentlockmode -}
       , blueprintLockAssignment = "AllResourcesReadOnly"
@@ -495,6 +346,53 @@ users missing in the target AAD tenant. The configuration reference for `InviteB
 , sendAzureInvitationMail = false
 }
 ```
+
+### Blueprint Service Principal
+
+The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
+of the app in the managed AAD Tenant.
+
+The easiest way to accomplish this is to start an Azure cloud shell in a subscription on the meshcloud AAD Tenant and execute the following command:
+
+```powershell
+Get-AzureRmADServicePrincipal -ApplicationId f71766dc-90d9-4b7d-bd9d-4499c4331c3f
+```
+
+The response should be similar to
+
+```text
+ServicePrincipalNames : {f71766dc-90d9-4b7d-bd9d-4499c4331c3f}
+ApplicationId         : f71766dc-90d9-4b7d-bd9d-4499c4331c3f
+ObjectType            : ServicePrincipal
+DisplayName           : Azure Blueprints
+Id                    : 2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20
+```
+
+This `Id` needs to be configured in the Azure Platform configuration.
+
+<!--snippet:mesh.platforms.azure.blueprintServicePrincipal-->
+
+The following configuration options are available at `mesh.platforms.azure.blueprintServicePrincipal`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let BlueprintServicePrincipalConfiguration =
+    {-
+        blueprintServicePrincipal:
+          The Service Principal Id (SAMI) used to execute Blueprints, unless overriden with an explicit UAMI
+          in the Landing Zone definition. The value is the Object Id of the Enterprise Application belongig
+          to the Microsoft Application "Azure Blueprints" with Application Id f71766dc-90d9-4b7d-bd9d-4499c4331c3f.
+    -}
+      { blueprintServicePrincipal : Text }
+```
+<!--Example-->
+```dhall
+let example
+    : BlueprintServicePrincipalConfiguration
+    = { blueprintServicePrincipal = "2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Azure Subscription Name
 

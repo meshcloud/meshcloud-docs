@@ -78,7 +78,14 @@ Blueprints are versioned in Azure and can be managed via the Azure Portal. To av
 - Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
 
-### Use User Assigned Managed Identity (UAMI)
+### Managed Identity
+
+#### Using System Assigned Managed Identity (SAMI)
+
+In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) the meshStack replicator needs to be configured with the service principal id of the `Azure Blueprints` app provided by Microsoft.
+Please refer to the [Azure Configuration Reference](./meshstack.azure.index.md#configuration-reference) for details.
+
+#### Use User Assigned Managed Identity (UAMI)
 
 This flag allows you to use a User Assigned Managed Identity (UAMI) instead of the standard System Assigned Managed Identity (SAMI) during the assignment of your blueprint. For more details on their differences, refer to the [Azure Documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)).
 
@@ -110,7 +117,7 @@ The Azure Role Definition is the RBAC ID of the Azure role you want to use. You 
 
 ## Azure Function Invocation
 
-Assign a Azure function to the landing zone configuration to trigger a small piece of code in the cloud. Currently this function is invoked via a `POST` request and carries parameter, similiar to the ones in the Blueprint via HTTP header values.
+Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
 Please review the [meshStack Landing Zone Http Header interface](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
@@ -121,11 +128,52 @@ In addition to the headers referenced above, meshStack provides the following Az
 |----------------------------|:------------------------------------------------------------------|
 | x-mesh-subscription-id     | The ID of the Azure Subscription associated with this meshProject |
 
+### Azure Function URL
 
-### Azure Function Authentication
+Enter the URL of your Azure Function here. This is typically a value like `https://my-function-app.azurewebsites.net/myfunc`.
+
+### Azure Function Scope
 
 To securely call an Azure Function, meshStack uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only).
 
 This means that behind the scenes meshStack is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call.
 In order for meshStack to fetch the right token it needs to know the unique ID of the Azure Enterprise Application your function belongs to.
-You can obtain this ID by navigating to your function -> `Platform Features` -> `Authentication / Authorization` -> `Azure Active Directory` -> field `Client ID`.
+
+You can obtain this ID by navigating to your function -> `Setting` -> `Authentication / Authorization` -> `App Service Authentication` -> `Azure Active Directory (Management Mode: Advanced)` -> field `Client ID`. Enter this value into the "Azure Function Scope" parameter.
+
+### Required Platform Configuration
+
+In order to make an Azure Function only accessible via the replicator's Service Principal follow these steps:
+
+1. Create a SAMI or UAMI for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
+
+    ![System assigned identity](assets/azure_function/system-assigned-identity.png)
+
+2. Lock down your function to only allow assigned users in the `Properties` section of the Enterprise Application created for the SAMI or UAMI in step 1.
+
+    ![Assigned users only](assets/azure_function/assigned-users.png)
+
+3. Modify the Manifest of the Enterprise Application from step 2. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
+
+    ```json
+    {
+      "allowedMemberTypes": [
+        "Application"
+      ],
+      "description": "Allows an SPP to get a token to a restricted application",
+      "displayName": "SPP-Access",
+      "id": "<RANDOM_UUID>",
+      "isEnabled": true,
+      "lang": null,
+      "origin": "Application",
+      "value": "Access"
+    }
+    ```
+
+    ![App Role Manifest](assets/azure_function/app-role-manifest.png)
+
+4. Now modify the API permissions of the **App Registration** belonging to the **replicator Service Principal**. This will allow meshStack's replicator to invoke the Azure Function. Open the `API permissions` screen and add the newly created `SPP-Access` Application Role. Don't forget to grant admin consent again afterwards.
+
+    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
+
+After these steps, the meshStack replicator should be able to fetch a token scoped to this Application Role so it can invoke the Azure Function using App Authentication.
