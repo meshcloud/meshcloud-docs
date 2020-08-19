@@ -45,7 +45,7 @@ self-service. meshStack can be configured to suit your organization's unique dem
 The following configuration options are available at `mesh.panel.environment.mesh.registration`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let Registration =
     {-
         requirePayment:
@@ -65,7 +65,7 @@ let Registration =
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example =
         { requirePayment = True
         , externalRegistrationUrl = Some
@@ -143,7 +143,6 @@ between different subsidiaries that cannot be covered using e.g. cost-center num
 
 If you don't need address metadata, we recommend hiding it from end-users of meshStack by setting the `panel.environment.ui` configuration option:
 
-<!--snippet:panel.ui.hideAddress -->
 ```dhall
 {
   hideAddress : Optional Bool
