@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+doc() {
+    cat <<-EOF
+Starts a local docusaurus development server
+
+USAGE:
+   start
+
+EXAMPLES:
+    update-snippets
+EOF
+}
+
+
+main() {
+    cd website
+
+    # make sure all dependencies are installed, this should be very quick
+    yarn install --silent
+
+    yarn start
+}
+
+if [[ $# == 0 ]]; then
+    main "$@"
+    exit 0;
+else
+    doc
+    exit 1;
+fi
+
+
