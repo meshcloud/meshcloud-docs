@@ -8,31 +8,32 @@ to these management groups. Optionally a blueprint can also be defined. Via an A
 subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the
 resources and policies created by the blueprint.
 
-The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have an Azure location a landingzone must be picked by the user. By choosing a landing zone platform specific configuration can be set (in this case for Azure). The options for Azure are:
+The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have an Azure location a landingzone must be picked by the user. By choosing a landing zone platform specific configuration can be set (in this case for Azure).
 
-## Parameters
+The next section describe the individual building blocks that platform operators can configure to make up an Azure Landing Zone.
 
-Each Landing Zone has paremeters which control its behavior. The available parameters are described below.
-
-### Management Group Assignment
+## Management Group Assignment
 
 All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://azure.microsoft.com/en-us/features/management-groups/). The Management Group can be configured by an platform operator through the Azure portal or using infrastructure as code.
 
 > Management Groups used in different Azure [Landing Zones](./meshcloud.landing-zones.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
 
-### Blueprint Assignment
+## Blueprint Assignment
 
-#### Blueprint Name
+Operators can optionally define one or more [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview)
+ that meshStack will assign to managed Subscriptions.
 
-The name of the [Blueprint](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) which should get assigned to the project. You can leave it empty, then no Blueprint will get automatically assigned.
+### Blueprint Name
 
-#### Blueprint Management Group
+The name of the Blueprint which should get assigned to the project. You can leave it empty, then no Blueprint will get automatically assigned.
+
+### Blueprint Management Group
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
 Operators must ensure to create these management groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
 
-#### Available Blueprint Parameters
+### Available Blueprint Parameters
 
 The following parameter can be used in the Blueprint:
 
@@ -70,14 +71,14 @@ When parameters are marked as static in the Azure Panel, they can not be replace
   <figcaption>Static Parameter usage in Azure Blueprint Panel</figcaption>
 </figure>
 
-#### Max. Auto Upgrade Blueprint Version
+### Max. Auto Upgrade Blueprint Version
 
 Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints there is this `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
 - Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
 
-#### Use User Assigned Managed Identity (UAMI)
+### Use User Assigned Managed Identity (UAMI)
 
 This flag allows you to use a User Assigned Managed Identity (UAMI) instead of the standard System Assigned Managed Identity (SAMI) during the assignment of your blueprint. For more details on their differences, refer to the [Azure Documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)).
 
@@ -91,9 +92,7 @@ The following parameters are required:
 | UAMI Azure Resource ID | Azure Resource ID of the identity; has the following form: `/subscriptions/[subscriptionId]/resourceGroups/[yourRG]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[userIdentity]`. When opening the UAMI in Azure Portal you can obtain this from the URL |
 | UAMI Object ID         | Object ID of the identity; When opening the UAMI in Azure Portal you can obtain this from the `Object ID` field                                                                                                                                                        |
 
-
-
-#### Locking Mode
+### Locking Mode
 
 Blueprint assignments are performed with a specific [resource locking mode](https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/resource-locking) which determines if locked resources managed by Blueprints can be deleted and/or modified.
 
@@ -103,14 +102,13 @@ Blueprint assignments are performed with a specific [resource locking mode](http
 | AllResourcesReadOnly    | Locked resource groups are read only and other locked resources can't be modified at all. |
 | AllResourcesDoNotDelete | Locked resources can be modifiede but not deleted.                                        |
 
-### meshRole to Platform Role Mapping
+## meshRole to Platform Role Mapping
 
 The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the [AAD group name generation](./meshstack.azure.index.md#aad-group-name), this setting is used or not.
 
 The Azure Role Definition is the RBAC ID of the Azure role you want to use. You can either create your own roles or use the [predefined global IDs](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) from Azure.
 
-
-### Azure Function
+## Azure Function Invocation
 
 Assign a Azure function to the landing zone configuration to trigger a small piece of code in the cloud. Currently this function is invoked via a `POST` request and carries parameter, similiar to the ones in the Blueprint via HTTP header values.
 
@@ -124,6 +122,10 @@ In addition to the headers referenced above, meshStack provides the following Az
 | x-mesh-subscription-id     | The ID of the Azure Subscription associated with this meshProject |
 
 
-#### Azure Function Scope
+### Azure Function Authentication
 
-To securely call an Azure Function, meshcloud uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only). This means that behind the scenes meshcloud is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call. In order for meshcloud to fetch the right token it needs to know the unique ID of the Azure Enterprise Application your function belongs to. You can obtain this token by navigating to your function -> `Platform Features` -> `Authentication / Authorization` -> `Azure Active Directory` -> field `Client ID`.
+To securely call an Azure Function, meshStack uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only).
+
+This means that behind the scenes meshStack is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call.
+In order for meshStack to fetch the right token it needs to know the unique ID of the Azure Enterprise Application your function belongs to.
+You can obtain this ID by navigating to your function -> `Platform Features` -> `Authentication / Authorization` -> `Azure Active Directory` -> field `Client ID`.
