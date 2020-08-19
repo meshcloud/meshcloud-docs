@@ -71,11 +71,14 @@ Your description of the snippet
 
 ### Updating Snippets References
 
-The following command automatically updates rendered snippet references in code
+The following command automatically updates rendered snippet references in code, assuming you have all required
+source repositories checked out to your local machine.
 
 ``` bash
-cd snippets && yarn start --src "pathToSource" --snips .cache --docs "pathToDocs"
+./hack/update-snippets
 ```
+
+Have a look at the `update-snippets` in case you want more fine-grained control over snippet updates for further options.
 
 ## License
 

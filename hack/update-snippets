@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+doc() {
+    cat <<-EOF
+Updates all snippets in the documentation. This 
+
+USAGE:
+   update-snippets
+
+EXAMPLES:
+    update-snippets
+EOF
+}
+
+testGit() {
+    local name=$1
+    local path=$2
+
+    if [ ! -d "$path/.git" ]; then
+        echo "Expected a clone of the $name repository at $path, but it appears there's no git repository there." >&2
+        exit 1
+    fi;
+}
+
+main() {
+    cd snippets
+
+    # make sure all dependencies are installed, this should be very quick
+    yarn install --silent
+
+    # make sure we have a cache dir
+    mkdir -p .cache
+
+    # test that we  standard repository layout exists in user's workspace
+    # todo: could also feed those from parameters
+    local monoRepoPath="../../meshfed-release" 
+    testGit "meshfed-release" $monoRepoPath
+    
+    local docsRepoPath="../"
+    testGit "meshcloud-docs" $docsRepoPath
+
+    echo "Extracting and rendering all snippets, assuming standard repository layout"
+    yarn start --src $monoRepoPath --snips .cache --docs $docsRepoPath
+}
+
+if [[ $# == 0 ]]; then
+    main "$@"
+    exit 0;
+else
+    doc
+    exit 1;
+fi
+
+
