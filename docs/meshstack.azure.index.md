@@ -402,7 +402,7 @@ With the information we gathered in the above section we now can configure the A
 This will typcially configured by your meshcloud experts, but please consult the following example as a reference
 of possible configuration settings.
 
-```haskell
+```dhall
 let Provisioning = ./Azure/Provisioning.dhall
 let InviteB2BUserConfig = ./Azure/InviteB2bUserConfig.dhall
 
@@ -446,7 +446,7 @@ Role mappings must be configured for all [meshProject roles](./meshcloud.project
 
 As [described](./meshstack.azure.index.md#subscription-provisioning), provisioning can be configured to use an enterprise enrollment account or pre provisioned subscriptions.
 
-```haskell
+```dhall
 let EnterpriseEnrollment =
       {-
       You can configure multiple owners of the created/assigned subscriptions.
@@ -488,7 +488,7 @@ in  < EnterpriseEnrollment :
 The field `b2bUserInvitation` allows you to optionally configure the replicator to create Azure B2B guest invitations for
 users missing in the target AAD tenant. The configuration reference for `InviteB2BUserConfig` is:
 
-```haskell
+```dhall
 -- URL used in the Azure invitation mail if send
 { redirectUrl = "https://example.com"
 -- Flag if an Invitation mail by Azure should be send out

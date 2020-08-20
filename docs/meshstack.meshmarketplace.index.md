@@ -49,7 +49,7 @@ meshMarketplace also supports two different options for authenticanting users of
 
 Please consult the following example as a reference of possible configuration settings.
 
-```haskell
+```dhall
 let PermissionReplication = ./PermissionReplication.dhall
 
 in    λ(Secret : Type)
@@ -61,7 +61,7 @@ offers no further configuration options. Note that these platforms do not need t
 
 Platforms that want to use AAD permission replication need to configure an instance of `AzureAd`
 
-```haskell
+```dhall
 let InviteB2BUserConfig =
   { redirectUrl = "https://example.com"
     {-  Redirect URL used in the Azure invitation mail sent -}

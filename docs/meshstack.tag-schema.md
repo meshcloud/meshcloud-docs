@@ -163,7 +163,7 @@ As an **example**, the following meshCustomer tag schema defines the following m
 
 Operators can configure tag schemas in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web` as follows:
 
-```haskell
+```dhall
 {
   customerTagSchema = Some "./my-customer-tag-schema.json"
 , projectTagSchema = Some "./my-project-tag-schema.json"

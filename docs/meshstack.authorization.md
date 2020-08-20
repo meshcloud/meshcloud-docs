@@ -64,7 +64,7 @@ The default configuration of meshStack ships with these roles and intended use.
 The following configuration options are available at `mesh.meshfed.web.project`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let ProjectRoleConfiguration =
     {-
         initialRole:
@@ -74,14 +74,14 @@ let ProjectRoleConfiguration =
             The list of roles available on meshProjects. Each role has a display name and an
             identifier used to reference the role in configuration (e.g. in Landing Zones).
     -}
-      { initialRole : Optional Text
+      { initial-role : Optional Text
       , roles : Optional (List ProjectRole)
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example =
-        { initialRole = Some "user"
+        { initial-role = Some "user"
         , roles = Some
           [ { name = "Project-Admin", identifier = "admin" }
           , { name = "Project-User", identifier = "user" }
@@ -96,7 +96,7 @@ let example =
 
 In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.user.rolerequest` as follows:
 
-```haskell
+```dhall
 { minApprovalCount = Some 2
 , enforceUserAcceptanceRequired = Some True
 }
@@ -119,7 +119,7 @@ When any customer admin declines the role request, the role request is immediate
 
 Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so configure the [meshStack configuration model](meshstack.configuration.md) under `panel.mesh.dashboardNotification`:
 
-```haskell
+```dhall
 { show4EyePrincipleWarning = Some True }
 ```
 

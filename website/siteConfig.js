@@ -71,17 +71,28 @@ const siteConfig = {
     new Date().getFullYear() +
     ' meshcloud GmbH',
 
+  // we prefer using prism.js for highlighting as it supports dhall (highlight.js does not)
+  // use it for all languages so we enjoy consistent highlighting, fallback on highlight.js only if needed
+  usePrism: ['dhall', 'json', 'yaml', 'bash'],
+
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: 'atom-one-dark',
+    theme: 'tomorrow-night-eighties',
   },
 
   stylesheets: [
-    'https://fonts.googleapis.com/css?family=Montserrat|Roboto'
+    'https://fonts.googleapis.com/css?family=Montserrat|Roboto',
   ],
 
   // Add custom scripts here that would be placed in <script> tags
-  scripts: ['https://buttons.github.io/buttons.js'],
+  scripts: [
+    'https://buttons.github.io/buttons.js',
+    
+    // add "copy code" buttons to code block
+    // see https://gist.github.com/yangshun/55db997ed0f8f4e6527571fc3bee4675
+    '/js/clipboard.min.js', // from https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js but we want to avoid 3rd party CDN
+    '/js/code-block-buttons.js', 
+  ],
 
   /* On page navigation for the current documentation page */
   onPageNav: 'separate',

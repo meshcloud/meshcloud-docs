@@ -166,7 +166,7 @@ defines the full configuration model.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatform =
         GcpPlatformCoreConfiguration
       ⩓ GcpPlatformCredentialConfiguration
@@ -181,11 +181,11 @@ let GcpPlatform =
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatformCoreConfiguration =
     {-
       platform:
-        The platform identifier
+        The meshPlatform identifier
 
       domain:
         The domain used for cloud identity directory-groups created and managed by meshStack. meshStack maintains separate
@@ -215,7 +215,7 @@ let GcpPlatformCoreConfiguration =
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example
     : GcpPlatformCoreConfiguration
     = { platform = "gcp.mylocation"
@@ -258,27 +258,27 @@ using the following options.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatformCredentialConfiguration =
     {-
       impersonatedServiceUser:
         The username of the service user to impersonate in Google Cloud Identity Directory. The replicator uses
         this service user to automate directory operations (Google Admin SDK).
 
-      Service AccountCredentialsB64:
-        base64 encoded credentials.json filre for a GCP Service Account. The replicator uses this Service Account
+      serviceAccountCredentialsB64:
+        base64 encoded credentials.json file for a GCP ServiceAccount. The replicator uses this Service Account
         to automate GCP API operations (IAM, ResourceManager etc.).
     -}
       { impersonatedServiceUser : Text
-      , Service AccountCredentialsB64 : Secret
+      , serviceAccountCredentialsB64 : Secret
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example
     : GcpPlatformCredentialConfiguration
     = { impersonatedServiceUser = "meshfed-service@myorg.example.com"
-      , Service AccountCredentialsB64 = Secret.Native "b123"
+      , serviceAccountCredentialsB64 = Secret.Native "b123"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -297,7 +297,7 @@ defined in the Landing Zone take precedence over the role mappings defined on th
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let GcpPlatformRoleMappingConfiguration =
     {-
       roleMappings:
@@ -307,7 +307,7 @@ let GcpPlatformRoleMappingConfiguration =
       { roleMappings : List { mapKey : Text, mapValue : Text } }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example
     : GcpPlatformRoleMappingConfiguration
     = { roleMappings =

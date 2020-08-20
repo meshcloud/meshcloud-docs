@@ -21,7 +21,7 @@ Objects in meshcloud can have three kinds of properties used to refer to them.
 
 meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.customer.md) and [meshProjects](./meshcloud.project.md). This is useful to ensure projects can be identifiers are compatible with all connected cloud platforms and don't require additional name mangling to comply with cloud specific naming rules. You can configure these options in `meshfed.web.restriction` as follows:
 
-```haskell
+```dhall
 { customerIdentifierLength :
     Optional Natural
 , projectIdentifierLength :
@@ -45,7 +45,7 @@ self-service. meshStack can be configured to suit your organization's unique dem
 The following configuration options are available at `mesh.panel.environment.mesh.registration`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-```haskell
+```dhall
 let Registration =
     {-
         requirePayment:
@@ -65,7 +65,7 @@ let Registration =
       }
 ```
 <!--Example-->
-```haskell
+```dhall
 let example =
         { requirePayment = True
         , externalRegistrationUrl = Some
@@ -77,7 +77,7 @@ let example =
 
 Additional configuration options control backend behavior in `meshfed.web.register` as follows:
 
-```haskell
+```dhall
 
 { {- Configure an additional BCC email to receive registration related email notifications (e.g. a group inbox) -}
   bccEmail: Optional Text
@@ -101,7 +101,7 @@ Additional remarks and configuration links:
 
 When a user is invited to a customer there are several configurations in order to customize this invitation flow which are explained below.
 
-```haskell
+```dhall
 { web :
   , user :
     Optional
@@ -143,8 +143,7 @@ between different subsidiaries that cannot be covered using e.g. cost-center num
 
 If you don't need address metadata, we recommend hiding it from end-users of meshStack by setting the `panel.environment.ui` configuration option:
 
-<!--snippet:panel.ui.hideAddress -->
-```haskell
+```dhall
 {
   hideAddress : Optional Bool
 }
@@ -152,7 +151,7 @@ If you don't need address metadata, we recommend hiding it from end-users of mes
 
 When enabling `hideAddress`, operators should also configure the `panel.environment.ui.register.defaultAddress` option:
 
-```haskell
+```dhall
 Optional {
   street : Text
 , houseNumber : Text
@@ -171,7 +170,7 @@ self-service registration wizard.
 
 meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
-```haskell
+```dhall
 { {- the number of allowed meshProjects per meshCustomer -}
   meshProjects : Natural
 }
@@ -184,7 +183,7 @@ The default only applies to newly registered [meshCustomers](./meshcloud.custome
 Users have the option to quickly submit feedback via the meshPanel's "thumbs up/down" button in the navbar.
 Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
 
-```haskell
+```dhall
 {
   {- e.g. "feedback@example.com" -}
   feedbackEmail : Optional Text
@@ -199,7 +198,7 @@ When you add users to your [meshCustomers](./meshcloud.customer.md) we currently
 
 If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
 
-```haskell
+```dhall
 { azure :
 
   { {- Either friendly domain name or your tenants GUID -}
@@ -219,7 +218,7 @@ The Azure Service Principal must have at least the `User.Read.All` permission fo
 
 In order to use GCD as a lookup provider you need to provide these credentials:
 
-```haskell
+```dhall
 { gcd :
   { {- GCD Domain, e.g. example.com  -}
     domain : Text
@@ -243,7 +242,7 @@ options in `panel.ui`.
 
 > Note: You can use sanitized HTML in all of these settings. This is useful to create links and apply minimal formatting.
 
-```haskell
+```dhall
 {
     {- Generic error message displayed when meshPanel can't connect to backend services. Configure this if users need to e.g. use a certain VPN or browser with CAs pre-installed.-}
     connectivityError : Text
