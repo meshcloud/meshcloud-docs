@@ -301,8 +301,10 @@ defined in the Landing Zone take precedence over the role mappings defined on th
 let GcpPlatformRoleMappingConfiguration =
     {-
       roleMappings:
-        A list of mappingfgs from meshProjecRole identifiers to GCP role ids (e.g. roles/editor).
-        The replicator will use these
+        A list of mappings from meshProjecRole identifiers to GCP role ids (e.g. roles/editor).
+        The replicator uses these to derive IAM Role bindings for meshProject roles in GCP.
+        
+        Operators can override these default role mappings in Landing Zones.
     -}
       { roleMappings : List { mapKey : Text, mapValue : Text } }
 ```
