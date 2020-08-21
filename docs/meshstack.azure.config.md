@@ -91,7 +91,7 @@ let example
 let AzurePlatformBlueprintConfiguration =
     {-
         blueprintServicePrincipal:
-          Object Id of the Enterprise Application belongig to the Microsoft Application "Azure Blueprints" with Application Id
+          Object Id of the Enterprise Application belonging to the Microsoft Application "Azure Blueprints" with Application Id
           f71766dc-90d9-4b7d-bd9d-4499c4331c3f in the managed AAD Tenant. meshStack will grant the necessary permissions on
           managed subscriptions to this SPN so that it can create System Assigned Managed Identities (SAMI) for Blueprint execution.
 
@@ -223,7 +223,8 @@ let SubscriptionOwner =
 
           subscriptionOwnerObjectIds:
               One or more principals Object Ids (e.g. Groups, SPNs) that meshStack will ensure have an "Owner" role
-              assignment on managed subscriptions.
+              assignment on managed subscriptions. This can be useful to satisfy Azure's constraint of at least
+              one direct "Owner" role assignment per Subscription.
     -}
       { subscriptionOwnerObjectIds : List Text }
 
