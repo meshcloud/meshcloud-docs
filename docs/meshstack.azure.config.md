@@ -172,7 +172,7 @@ the invitation notifications.
 This configuration is optional. When configured, instructs the replicator to create AAD B2B guest invitations for
 users missing in the AAD tenant managed by this meshPlatform.
 
-> B2B Invitations require an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities). 
+> B2B Invitations require an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
 
 <!--snippet:mesh.platform.azure.inviteB2BUserConfig#type-->
 
@@ -297,7 +297,7 @@ let examplePreProvisioned =
 Role mappings instruct the replicator how to map meshProject roles to Azure RBAC role assignments
 during replication. Operators can override these default role mappings in Landing Zones.
 
-Role mappings must be configured for all [meshProject roles](./meshcloud.project.md#project-roles), 
+Role mappings must be configured for all [meshProject roles](./meshcloud.project.md#project-roles),
 you can refer to the official [Azure documentation](https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles) for additional information on Azure roles.
 
 <!--snippet:mesh.platform.azure.roleMapping#type-->
