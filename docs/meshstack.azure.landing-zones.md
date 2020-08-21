@@ -57,6 +57,7 @@ See [metadata tags](./meshstack.tag-schema.md) for more information.
 > that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
 > 
 > Key takeaways here:
+>
 > - A resource can have a maximum of 50 tags.
 > - The characters < > % & \ ? / are not allowed in tag keys.
 
