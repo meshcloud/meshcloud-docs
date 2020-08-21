@@ -76,6 +76,7 @@ See [metadata tags](./meshstack.tag-schema.md) for more information.
 > that GCP has [described in their docs](https://cloud.google.com/compute/docs/labeling-resources#restrictions).
 > 
 > Key takeaways here:
+>
 > - A resource can have a maximum of 64 labels
 > - Keys and values can only contain lowercase letters, numeric characters, underscores and hyphens.
 > - Label keys must start with a lowercase letter

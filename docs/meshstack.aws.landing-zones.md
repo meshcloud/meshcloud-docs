@@ -49,6 +49,7 @@ For example, the value of the tag `costCenter` will be made available via the ke
 > that AWS has [described in their docs](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions).
 > 
 > Key takeaways here:
+>
 > - A resource can have a maximum of 50 user created tags
 > - The characters _ . : / = + - @ are not allowed in tag keys or values.
 > - Tag keys (and values) are case sensitive. It is recommend to use a consistent capitalizing strategy.
