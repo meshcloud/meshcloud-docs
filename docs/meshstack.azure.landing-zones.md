@@ -45,13 +45,20 @@ The following parameter can be used in the Blueprint:
 | tagCostCenter      | Example for a  [metadata tags](./meshstack.tag-schema.md) named `costCenter`              |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags can also be used in the Blueprints.
-The following modifications are applied to metdata tag keys by meshstack before making them available as parameters:
+The following modifications are applied to metadata tag keys by meshstack before making them available as parameters:
 
 - Parameters are prefixed with `tag`
 - First letter of metadata tag key is capitalized
 
 In the example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 See [metadata tags](./meshstack.tag-schema.md) for more information.
+
+> If you are planning on converting any of the blueprint parameters into Azure tags, please be aware of the limits and requirements
+> that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
+> 
+> Key takeaways here:
+> - A resource can have a maximum of 50 tags.
+> - The characters < > % & \ ? / are not allowed in tag keys.
 
 **Please Note:** there are some specialities to keep in mind when dealing with Azure parameters. Resource group names and locations can not be parameterised via meshStack.
 
