@@ -74,7 +74,7 @@ See [metadata tags](./meshstack.tag-schema.md) for more information.
 
 > If you are planning on converting any of the template properties into GCP labels, please be aware of the limits and requirements
 > that GCP has [described in their docs](https://cloud.google.com/compute/docs/labeling-resources#restrictions).
-> 
+>
 > Key takeaways here:
 >
 > - A resource can have a maximum of 64 labels
