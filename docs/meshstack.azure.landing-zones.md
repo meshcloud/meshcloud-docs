@@ -55,7 +55,7 @@ See [metadata tags](./meshstack.tag-schema.md) for more information.
 
 > If you are planning on converting any of the blueprint parameters into Azure tags, please be aware of the limits and requirements
 > that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
-> 
+>
 > Key takeaways here:
 >
 > - A resource can have a maximum of 50 tags.

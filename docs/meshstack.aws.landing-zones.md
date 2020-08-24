@@ -47,7 +47,7 @@ For example, the value of the tag `costCenter` will be made available via the ke
 
 > If you are planning on converting any of the StackSet parameters into AWS tags, please be aware of the limits and requirements
 > that AWS has [described in their docs](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions).
-> 
+>
 > Key takeaways here:
 >
 > - A resource can have a maximum of 50 user created tags
@@ -142,8 +142,8 @@ In order to detect the finished execution of the AVM meshStack looks for certain
 
 Currently the account must contain these tags to be picked up:
 
-* ProductName: Must contain the meshCustomer identifier
-* Stage: Must contain the meshProject identifier
+- ProductName: Must contain the meshCustomer identifier
+- Stage: Must contain the meshProject identifier
 
 > These tags will soon be customizable in the AWS Landing Zone configuration.
 
