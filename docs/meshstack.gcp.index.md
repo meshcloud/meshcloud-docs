@@ -73,7 +73,7 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 
 Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/service-accounts) in the `meshstack-root` project.
 
-- Enable the Service Account for “G Suite Domain-wide Delegation” and notate the generated `Client Id`
+- Enable the Service Account for “G Suite Domain-wide Delegation” and note the generated `Client Id`
 - Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 
 The Service Account will be identified by an email address like
