@@ -30,7 +30,7 @@ Operators need to setup a GCP Organization to be used by meshStack. Please revie
 
 ### meshfed-service IAM Role
 
-meshStack needs a well-defined set of permissions for it's automation. meshStack is designed so that it **does not require
+meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the principle of least privilege.
 
 Operators need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
