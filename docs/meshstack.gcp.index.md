@@ -95,7 +95,7 @@ that make up the [Landing Zones](meshstack.gcp.landing-zones.md) for client proj
 #### Grant Billing Account Permissions to the Service Account
 
 In order to associate created projects with a Billing Account, the replicator needs to be granted the
-`billing.resourceAssociations.create` permission "on the Billing Account. This is best achieved by assigning the
+`billing.resourceAssociations.create` permission on the Billing Account. This is best achieved by assigning the
 `meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
 ## Cloud Identity Configuration
