@@ -18,7 +18,7 @@ The identity provisioning mechanism and the resulting federation setup depends o
 
 ### meshStack-provisioned Identities
 
-In this mode meshStack identies used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation an deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation invoves involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
+In this mode meshStack identies used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation an deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
 
 ### Externally-provisioned Identities
 
