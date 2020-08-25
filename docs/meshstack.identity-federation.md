@@ -131,5 +131,5 @@ You must also add three mappers so essential user information to identify the us
 | Attribute Name |            Source Property            |
 | -------------- | :-----------------------------------: |
 | email          | Basic Information -&gt; Primary Email |
-| firstName      |  Basic Information -&gt;  First Name  |
-| lastName       |   Basic Information -&gt; Last Name   |
+| firstName      | Basic Information -&gt; First Name    |
+| lastName       | Basic Information -&gt; Last Name     |
