@@ -18,15 +18,15 @@ The identity provisioning mechanism and the resulting federation setup depends o
 
 ### meshStack-provisioned Identities
 
-In this mode meshStack identies used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation an deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation invoves involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
+In this mode meshStack provisions identities used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation and deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
 
 ### Externally-provisioned Identities
 
 Some public cloud platforms like [Microsoft Azure](./meshstack.azure.index.md) or [Google Cloud Platform](./meshstack.gcp.index.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google G-Suite.
 
-meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](./meshcloud.platform-location.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation bebtween on-premise and cloud-directory happens outside of meshStack. In order to use the right externally provisioned user identity when provisioning permissions, meshStack needs to map a federated user identity used in meshStack to its corresponding externally provisioned user identy. This mapping is based on the `external user id` or `euid` in short.
+meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](./meshcloud.platform-location.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation between on-premise and cloud-directory happens outside of meshStack. In order to use the right externally provisioned user identity when provisioning permissions, meshStack needs to map a federated user identity used in meshStack to its corresponding externally provisioned user identity. This mapping is based on the `external user id` or `euid` in short.
 
-When using externally provisioned user idenitites, IdPs must also provide a stable and immutable `euid` claim or user property that is also present in the cloud directory. meshStack will use the `euid` to map identities from meshStack to their respective cloud identity. Most setups use an existing `email` or `username` property as the `euid`.
+When using externally provisioned user identities, IdPs must also provide a stable and immutable `euid` claim or user property that is also present in the cloud directory. meshStack will use the `euid` to map identities from meshStack to their respective cloud identity. Most setups use an existing `email` or `username` property as the `euid`.
 
 > Operators need to ensure that all user identities available to meshStack are also provisioned on the cloud platform.
 > meshStack cannot provision permissions for user identities missing on the cloud platform. Failure to replicate permissions for externally provisioned user identities will be logged as replication warnings.
@@ -131,5 +131,5 @@ You must also add three mappers so essential user information to identify the us
 | Attribute Name |            Source Property            |
 | -------------- | :-----------------------------------: |
 | email          | Basic Information -&gt; Primary Email |
-| firstName      |  Basic Information -&gt;  First Name  |
-| lastName       |   Basic Information -&gt; Last Name   |
+| firstName      | Basic Information -&gt; First Name    |
+| lastName       | Basic Information -&gt; Last Name     |
