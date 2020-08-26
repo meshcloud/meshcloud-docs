@@ -32,7 +32,7 @@ The connections are shown in the following matrix table:
 
 |               | [meshCustomer](./meshcloud.customer.md) | [meshProject](./meshcloud.project.md) | [meshUser](./meshcloud.profile.md) | [Landing Zone](./meshcloud.landing-zones.md) |
 | :-----------: | :-------------------------------------: | :-----------------------------------: | :--------------------------------: | :-----------------------------------------: |
-|   OpenStack   |                 Domain                  |                Project                |        Keystone Shadow User        |                    Quota                    |
+|   OpenStack   |              Domain (optional)          |                Project                |        Keystone Shadow User        |                    Quota                    |
 | Cloud Foundry |              Organization               |                 Space                 |              UAA User              |                    Quota                    |
 |  Kubernetes   |                    -                    |               Namespace               |            Rolebinding             |               YAML Templates                |
 |   OpenShift   |                    -                    |                Project                |                User                |               YAML Templates                |
