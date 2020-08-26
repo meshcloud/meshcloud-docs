@@ -8,9 +8,9 @@ to these management groups. Optionally a blueprint can also be defined. Via an A
 subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the
 resources and policies created by the blueprint.
 
-The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have an Azure location a landing zone must be picked by the user. By choosing a landing zone platform specific configuration can be set (in this case for Azure).
+Operators can define and configure [Landing Zone](./meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
 
-The next section describe the individual building blocks that platform operators can configure to make up an Azure Landing Zone.
+The next section describe the individual building blocks that platform operators can configure in an Azure Landing Zone.
 
 ## Management Group Assignment
 
@@ -21,11 +21,11 @@ All newly created [meshProjects](./meshcloud.project.md) get their corresponding
 ## Blueprint Assignment
 
 Operators can optionally define one or more [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview)
- that meshStack will assign to managed Subscriptions.
+ which meshStack will assign to managed Subscriptions.
 
 ### Blueprint Name
 
-The name of the Blueprint which should get assigned to the project. You can leave it empty, then no Blueprint will get automatically assigned.
+The name of the Blueprint which should get assigned to the project. If left empty, meshProject replication will not create any Blueprint assignments.
 
 ### Blueprint Management Group
 
@@ -73,7 +73,7 @@ When parameters are marked as static in the Azure Panel, they can not be replace
 
 ### Max. Auto Upgrade Blueprint Version
 
-Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints there is this `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
+Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints, operators can configure the `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
 - Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
@@ -82,7 +82,7 @@ Blueprints are versioned in Azure and can be managed via the Azure Portal. To av
 
 #### Using System Assigned Managed Identity (SAMI)
 
-In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) the meshStack replicator needs to be configured with the service principal id of the `Azure Blueprints` app provided by Microsoft.
+In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview), the meshStack replicator needs to be configured with the service principal id of the `Azure Blueprints` app provided by Microsoft.
 Please refer to the [Azure Configuration Reference](./meshstack.azure.index.md#configuration-reference) for details.
 
 #### Use User Assigned Managed Identity (UAMI)
@@ -137,13 +137,13 @@ Enter the URL of your Azure Function here. This is typically a value like `https
 To securely call an Azure Function, meshStack uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only).
 
 This means that behind the scenes meshStack is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call.
-In order for meshStack to fetch the right token it needs to know the unique ID of the Azure Enterprise Application your function belongs to.
+In order for meshStack to fetch the right token, it needs to know the unique ID of the Azure Enterprise Application your function belongs to.
 
-You can obtain this ID by navigating to your function -> `Setting` -> `Authentication / Authorization` -> `App Service Authentication` -> `Azure Active Directory (Management Mode: Advanced)` -> field `Client ID`. Enter this value into the "Azure Function Scope" parameter.
+You can obtain this ID by navigating to your Azure Function App  -> `Settings` -> `Authentication / Authorization` -> `App Service Authentication` -> `Azure Active Directory (Management Mode: Advanced)` -> field `Client ID`. Enter this value into the "Azure Function Scope" parameter.
 
 ### Required Platform Configuration
 
-In order to make an Azure Function only accessible via the replicator's Service Principal follow these steps:
+In order to make an Azure Function only accessible via the replicator's Service Principal, follow these steps:
 
 1. Create a SAMI or UAMI for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
 
