@@ -1,6 +1,6 @@
 ---
 id: meshstack.azure.index
-title: Integration
+title: Integration Guide
 ---
 
 meshcloud can automatically provision Azure Subscriptions as Tenants for [meshProjects](./meshcloud.project.md) and configure them according to your organiziations policies
@@ -71,6 +71,41 @@ meshcloud can automatically provision new subscriptions from an Enterprise Enrol
 
 > Microsoft currently has limitation of a [maximum of 500 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](./meshcloud.platform-location.md). Please contact our experts for more details.
 
+#### Setting up the Enrollment Account
+
+We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
+
+> EA Administrators must be careful to chose an EA Account Owner that's homed in the meshcloud AAD Tenant!
+
+Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
+If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
+
+To list your available EA accounts you can use the [`Get-AzEnrollmentAccount`](https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azenrollmentaccount?view=azps-2.6.0) powershell command:
+
+```powershell
+PS C:\> Get-AzEnrollmentAccount
+
+ObjectId                             PrincipalName
+--------                             -------------
+dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
+7ff524ac-a0de-4402-876f-934ccee3b601 carol@contoso.onmicrosoft.com
+```
+
+After creating (or finding) a suitable EA Account, please note down the accounts object id as `EA_ACCOUNT_ID`.
+
+#### Authorizing the meshcloud Service Principal for EA
+
+To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
+
+#### Ensuring Retained Subscription Owners
+
+Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist. this Owner can also be the Azure [Blueprint Service Principal](#blueprint-configuration)
+
+In contrast to other provisioning methods, EA provisioning will not retain a default
+"Classic Administrator" role assignment on the subscription from the billing account owner. Operators should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. This owner can also be an empty AAD group or Service Principal.
+
+> You should never grant subscription owner roles to the meshStack replicator SPN.
+
 ### Pre-provisioned Subscriptions
 
 If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
@@ -84,7 +119,6 @@ and removed from the subscription pool.
 ## Service Principal Setup
 
 meshstack in total needs up to three service principals, one for replicating meshProjects into the Azure platform, one if AAD should be used as an user lookup when users are added to a customer or project inside the meshfed panel, and one for gathering metering data for the billing subsystem.
-
 
 ### Replicator
 
@@ -138,6 +172,18 @@ All permissions left are therefore granted only via the management group hierarc
 "*/register/action"
 ```
 
+
+You must must grant the meshcloud Service Principal this level access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) that contain managed subscriptions in the meshcloud AAD Tenant.
+
+Before you can grant this access, you must have access to the root Management Group yourself. If you haven't already done so, please make sure your user is a `Global Administrator` on the AAD Tenant
+and has [elevated access to all management groups](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin).
+
+> In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
+
+Once you have elevated access, use the Azure Portal to Navigate to the "Management Groups"  blade, then click on the "Details" link of the Tenant Root Group. Select "Access Control (IAM)" from the menu and create a Role assignment that grants the [App created above](#meshcloud-service-principal) for the meshcloud Service Principal (i.e. `meshReplicator`) the tailored permission on this resource.
+
+#### Privilege Escalation Prevention
+
 Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy rule to your subscriptions:
 
 ```json
@@ -183,342 +229,26 @@ This principal is only required if the AAD is actually be used as source of user
 
 > Since `User.Read.All` is a Role permission, you will also need to grant admin consent in AAD on the assignment
 
-### Azure Function Access
 
-In order to make an Azure Function only accessible via the replicators Service Principal follow these steps:
-
-1. Create a system assigned identity for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
-
-    ![System assigned identity](assets/azure_function/system-assigned-identity.png)
-
-2. Lock down your function to only allow assigned users.
-
-    ![Assigned users only](assets/azure_function/assigned-users.png)
-
-3. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
-
-    ```json
-    {
-      "allowedMemberTypes": [
-        "Application"
-      ],
-      "description": "Allows an SPP to get a token to a restricted application",
-      "displayName": "SPP-Access",
-      "id": "<RANDOM_UUID>",
-      "isEnabled": true,
-      "lang": null,
-      "origin": "Application",
-      "value": "Access"
-    }
-    ```
-
-    ![App Role Manifest](assets/azure_function/app-role-manifest.png)
-
-4. In your Service Principals API permissions screen, add the newly created Application Role. Don't forget to grant admin consent again afterwards.
-
-    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
-
-
-After these steps, you should be able to fetch a token scoped to this Application Role (via the Service Principal secrets). The scope field inside the JWT token should match the application's ID. With this token you can call the Azure Function. This is the same functionality that also the replicator is using.
-
-![Fetch Token](assets/azure_function/fetch-token.png)
-
-![Decoded Token](assets/azure_function/decoded-token.png)
-
-
-## Configuring Enterprise Enrollment
-
-### 1. Setting up the Enrollment Account
-
-We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
-
-> EA Administrators must be careful to chose an EA Account Owner that's homed in the meshcloud AAD Tenant!
-
-Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
-If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
-
-To list your available EA accounts you can use the [`Get-AzEnrollmentAccount`](https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azenrollmentaccount?view=azps-2.6.0) powershell command:
-
-```powershell
-PS C:\> Get-AzEnrollmentAccount
-
-ObjectId                             PrincipalName
---------                             -------------
-dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
-7ff524ac-a0de-4402-876f-934ccee3b601 carol@contoso.onmicrosoft.com
-```
-
-After creating (or finding) a suitable EA Account, please note down the accounts object id as `EA_ACCOUNT_ID`.
-
-### 2. Authorizing the meshcloud Service Principal for EA
-
-To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
-
-### Automated B2B User Invitation
-
-Users can automatically get invited via Azure. The system needs an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities). The email must exist inside an Azure Active Directory (AAD) and automatically gets invited to the AAD in which the meshProject subscriptions live.
-
-In order to activate it just add the `b2b-user-invitation` configuration to your Azure platform config:
-
-```yml
-replicator-azure:
-  platforms:
-    - platform: azure.meshcloud-azure-dev
-      b2b-user-invitation:
-        # URL the user is redirected to when he manually accepts an invitation
-        redirect-url: http://localhost
-        send-azure-invitation-mail: false
-```
-
-You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
-the invitation notifications.
-
-
-### Configuring Blueprint Automation
-
-In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) the meshcloud Azure replicator needs to be configured with the service principal id of the `Azure Blueprints` app
-provided by Microsoft.
-
-#### Finding the Azure Blueprints App Id
+## Blueprint Configuration
 
 The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
-of the app in the meshcloud AAD Tenant.
+of the app in the managed AAD Tenant.
 
 The easiest way to accomplish this is to start an Azure cloud shell in a subscription on the meshcloud AAD Tenant and execute the following command:
 
 ```powershell
-PS Azure:\> Get-AzureRmADServicePrincipal -ApplicationId f71766dc-90d9-4b7d-bd9d-4499c4331c3f
+Get-AzureRmADServicePrincipal -ApplicationId f71766dc-90d9-4b7d-bd9d-4499c4331c3f
 ```
 
 The response should be similar to
 
-```powershell
+```text
 ServicePrincipalNames : {f71766dc-90d9-4b7d-bd9d-4499c4331c3f}
 ApplicationId         : f71766dc-90d9-4b7d-bd9d-4499c4331c3f
 ObjectType            : ServicePrincipal
 DisplayName           : Azure Blueprints
-Id                    : 227ac22a-************
+Id                    : 2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20
 ```
 
-Write down the ID (in this case `227ac22a-*`) as this is the `AZURE_BLUEPRINT_PRINCIPAL`.
-
-If this call **does not** return a usable ID then you can try an alternative way and find this principal via the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer):
-
-
-1. Open [https://developer.microsoft.com/en-us/graph/graph-explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
-2. Login with a Global Admin user from the directory in which you want to check for the `AZURE_BLUEPRINT_PRINCIPAL`
-3. You need sufficient permissions to read the principal. Select modify permissions to get the permissions
-![Modify Explorer permissions](assets/graph-explorer-permissions.png)
-4. Enable the `Directory.AccessAsUser.All`, `Directory.Read.All`, `Directory.ReadWrite.All` rights and give your admin consent
-![Grant additional rights](assets/graph-explorer-rights.png)
-5. List your Blueprint Service Principal ID via
-
-    ```text
-    GET https://graph.microsoft.com/beta/&lt;AAD_TENANT_ID&gt;/servicePrincipals?$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
-    ```
-
-    Replace the `<AAD_TENANT_ID>` with the Directory ID of your AAD (can be found in the properties screen of the AAD in [https://portal.azure.com](https://portal.azure.com))
-6. Remember to delete the Graph Explorer App access afterwards from your **Enterprise applications** section of your Active Directory in the Azure portal
-
-The response should look like this:
-
-```json
-
-{
-    "@odata.context": "https://graph.microsoft.com/beta/$metadata#servicePrincipals",
-    "value": [
-        {
-            "id": "227ac22a-************",
-            "deletedDateTime": null,
-            "accountEnabled": true,
-            "appDisplayName": "Azure Blueprints",
-            "appId": "f71766dc-90d9-4b7d-bd9d-4499c4331c3f",
-            "applicationTemplateId": null,
-            "appOwnerOrganizationId": "f8cdef31-a31e-4b4a-93e4-5f571e91255a",
-            "appRoleAssignmentRequired": false,
-            "displayName": "Azure Blueprints",
-            "errorUrl": null,
-            "homepage": null,
-            "loginUrl": null,
-            "logoutUrl": null,
-            "notificationEmailAddresses": [],
-            "preferredSingleSignOnMode": null,
-            "preferredTokenSigningKeyEndDateTime": null,
-            "preferredTokenSigningKeyThumbprint": null,
-            "publisherName": "Microsoft Services",
-            "replyUrls": [],
-            "samlMetadataUrl": null,
-            "samlSingleSignOnSettings": null,
-            "servicePrincipalNames": [
-                "f71766dc-90d9-4b7d-bd9d-4499c4331c3f"
-            ],
-            "signInAudience": "AzureADMultipleOrgs",
-            "tags": [],
-            "addIns": [],
-            "api": {
-                "resourceSpecificApplicationPermissions": []
-            },
-            "appRoles": [],
-            "info": {
-                "termsOfServiceUrl": null,
-                "supportUrl": null,
-                "privacyStatementUrl": null,
-                "marketingUrl": null,
-                "logoUrl": null
-            },
-            "keyCredentials": [],
-            "publishedPermissionScopes": [],
-            "passwordCredentials": []
-        }
-    ]
-}
-```
-
-Write down the ID (in this case `227ac22a-*`) as this is the `AZURE_BLUEPRINT_PRINCIPAL`.
-
-> In case your admin user can not grant the Graph Explorer the admin access rights he needs to query the AAD, try to create a new user via the Azure Portal in the AAD and grant this temporary user `Global Admin`rights. Try to use this user for login with the Graph Explorer. After you did your query you can delete this user again.
-
-#### Authorize the meshcloud Service Principal
-
-You must must grant the meshcloud Service Principal `owner` access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) in the meshcloud AAD Tenant.
-
-Before you can grant this access, you must have access to the root Management Group yourself. If you haven't already done so, please make sure your user is a `Global Administrator` on the meshcloud AAD Tenant
-and has [elevated access to all management groups](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin).
-
-> In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
-
-Once you have elevated access, use the Azure Portal to Navigate to the "Management Groups"  blade, then click on the "Details" link of the Tenant Root Group. Select "Access Control (IAM)" from the menu and create a Role assignment that grants the [App created above](#meshcloud-service-principal) for the meshcloud Service Principal (i.e. `meshReplicator`) the `Owner` permission on this resource.
-
-In this screen you can also find the Object ID and Application ID of your service principal. In case you prefer the CLI and have the Azure CLI installed the following Powershell command can also reveal this ID for you:
-
-```powershell
-Get-AzADServicePrincipal | Where-Object {$_.Displayname -eq "<NAME_OF_THE_SERVICE_ACCOUNT>"}
-```
-
-
-## Platform Instance Configuration
-
-With the information we gathered in the above section we now can configure the Azure Replicator.
-This will typcially configured by your meshcloud experts, but please consult the following example as a reference
-of possible configuration settings.
-
-```dhall
-let Provisioning = ./Azure/Provisioning.dhall
-let InviteB2BUserConfig = ./Azure/InviteB2bUserConfig.dhall
-
-in    λ(Secret : Type)
-    → { platform = "azure.meshcloud-azure-dev"
-      , accountNamePattern :
-          Optional Text
-      , groupNamePattern :
-          Optional Text
-      {- This is the ID of the "Azure Blueprint" service principal which must be known beforehand. -}
-      , blueprintServicePrincipal = "<AZURE_BLUEPRINT_PRINCIPAL>"
-      {- # https://docs.microsoft.com/en-us/rest/api/blueprints/assignments/createorupdate#assignmentlockmode -}
-      , blueprintLockAssignment = "AllResourcesReadOnly"
-      , blueprintLocation = "westeurope"
-      , servicePrincipal :
-          {- Either friendly domain name or your tenants GUID -}
-          { aadTenant = "<AAD_TENANT>"
-          , objectId = "<SERVICE_PRINCIPAL_OBJECT_ID>"
-          , clientId = "<SERVICE_PRINCIPAL_CLIENT_ID>"
-          , clientSecret = "<SERVICE_PRINCIPAL_CLIENT_SECRET>"
-          }
-      , b2bUserInvitation :
-          Optional InviteB2BUserConfig
-      , provisioning :
-          Provisioning
-      , roleMappings :
-          {-
-          Each mesh project role (specified by key, i.e. user) is mapped to an Azure role
-          (specified by id).
-          An alias is provided which can be used when naming related IAM groups.
-          For example, this mapping gives all users with project admin access to a project
-          owner access to the Azure subscription which was created for this project.
-
-            admin = { alias = "owner", id = "8e3af657-a8ff-443c-a75c-2fe8c4bcb635" }
-          -}
-          List { mapKey : Text, mapValue : { alias : Text, id : Text } }
-      }
-```
-
-Role mappings must be configured for all [meshProject roles](./meshcloud.project.md#project-roles), you can refer to the official [Azure documentation](https://docs.microsoft.com/bs-latn-ba/azure/role-based-access-control/built-in-roles) for additional information on Azure roles.
-
-As [described](./meshstack.azure.index.md#subscription-provisioning), provisioning can be configured to use an enterprise enrollment account or pre provisioned subscriptions.
-
-```dhall
-let EnterpriseEnrollment =
-      {-
-      You can configure multiple owners of the created/assigned subscriptions.
-      Enter the object IDs of the subscription owners. This is useful for
-      extended automation.
-      -}
-      { subscriptionOwnerObjectIds ["<SUB_OWNER_OBJECT_ID>"]
-      , enterpriseEnrollment :
-          { enrollmentAccountId =  "<EA_ACCOUNT_ID>"
-          , subscriptionOfferType = "MS-AZR-0017P"
-          {-
-          There is a safety mechanism to avoid duplicate Subscription creation in case
-          of an error. This delay should be a bit higher then it usually takes to
-          create subscriptions. For big installations this is somewhere between 5-15
-          minutes.
-          -}
-          , subscriptionCreationErrorCooldownSec = 600
-          }
-      }
-
-let PreProvisioned =
-      { subscriptionOwnerObjectIds :
-          List Text
-      , preProvisioned :
-          {-
-          Unused subscriptions must begin with this name in order to be picked by
-          the replicator.
-          -}
-          { unusedSubscriptionNamePrefix = "mesh" }
-      }
-
-in  < EnterpriseEnrollment :
-        EnterpriseEnrollment
-    | PreProvisioned :
-        PreProvisioned
-    >
-```
-
-The field `b2bUserInvitation` allows you to optionally configure the replicator to create Azure B2B guest invitations for
-users missing in the target AAD tenant. The configuration reference for `InviteB2BUserConfig` is:
-
-```dhall
--- URL used in the Azure invitation mail if send
-{ redirectUrl = "https://example.com"
--- Flag if an Invitation mail by Azure should be send out
-, sendAzureInvitationMail = false
-}
-```
-
-### Azure Subscription Name
-
-The name of the generated subscriptions can be fully customized. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
-
-For example a string pattern `%s.%s` would generate: `customer.project`. Which is the default.
-
-The following arguments are provided:
-
-1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
-2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
-3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
-4. argument: tenantNumber (numeric), a running number specific to each platform which can be optionally enabled.
-
-### AAD Group Name
-
-Similiar to the [Azure Subscription Name](#azure-subscription-name) a `printf` compatible string can be used.
-
-> Operators must be careful to ensure resulting group names are unique for project-role combinations.
-
-The arguments available here are:
-
-1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
-2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
-3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
-4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled
-5. argument: role name suffix ([configurable via Landing Zone](./meshstack.azure.landing-zones.md#meshrole-to-platform-role-mapping))
+This `Id` needs to be configured in the Azure Platform configuration.

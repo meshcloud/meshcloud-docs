@@ -9,7 +9,7 @@ It's all built on [docusaurus](https://docusaurus.io/en/) and available on [GitH
 ## Running Locally
 
 To build and start the docs locally with live-reloading, simply run:
- 
+
 ```bash
 cd website && yarn && yarn start
 ```

@@ -9,10 +9,10 @@ meshcloud can automatically provision GCP Projects as Tenants for [meshProjects]
 
 To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes GCP available to meshProjects like any other cloud platform in meshStack.
 
-Google Cloud Platform relies on Google Cloud Identity (GCI) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
+Google Cloud Platform relies on [Google Cloud Identity (GCI)](https://cloud.google.com/identity/) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
 Organizations already using Google Cloud Directory Sync or G-Suite can use meshStack with an [externally provisioned identities](./meshstack.identity-federation.md) configuration.
 
-meshcloud helps organizations implement Google Cloud Platform in line with [Governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](./meshstack.gcp.landing-zones.md)
+meshcloud helps organizations implement Google Cloud Platform in line with [governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](./meshstack.gcp.landing-zones.md).
 
 In order to plan and execute a successful integration of GCP using meshcloud, organizations need to consider the following parts described in the sections below.
 
@@ -30,7 +30,7 @@ Operators need to setup a GCP Organization to be used by meshStack. Please revie
 
 ### meshfed-service IAM Role
 
-meshStack needs a well-defined set of permissions for it's automation. meshStack is designed so that it **does not require
+meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the principle of least privilege.
 
 Operators need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
@@ -73,7 +73,7 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 
 Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/service-accounts) in the `meshstack-root` project.
 
-- Enable the Service Account for “G Suite Domain-wide Delegation” and notate the generated `Client Id`
+- Enable the Service Account for “G Suite Domain-wide Delegation” and note the generated `Client Id`
 - Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 
 The Service Account will be identified by an email address like
@@ -95,7 +95,7 @@ that make up the [Landing Zones](meshstack.gcp.landing-zones.md) for client proj
 #### Grant Billing Account Permissions to the Service Account
 
 In order to associate created projects with a Billing Account, the replicator needs to be granted the
-`billing.resourceAssociations.create` permission "on the Billing Account. This is best achieved by assigning the
+`billing.resourceAssociations.create` permission on the Billing Account. This is best achieved by assigning the
 `meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
 ## Cloud Identity Configuration
@@ -301,8 +301,10 @@ defined in the Landing Zone take precedence over the role mappings defined on th
 let GcpPlatformRoleMappingConfiguration =
     {-
       roleMappings:
-        A list of mappingfgs from meshProjecRole identifiers to GCP role ids (e.g. roles/editor).
-        The replicator will use these
+        A list of mappings from meshProjecRole identifiers to GCP role ids (e.g. roles/editor).
+        The replicator uses these to derive IAM Role bindings for meshProject roles in GCP.
+
+        Operators can override these default role mappings in Landing Zones.
     -}
       { roleMappings : List { mapKey : Text, mapValue : Text } }
 ```
