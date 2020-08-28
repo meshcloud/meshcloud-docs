@@ -35,19 +35,91 @@ These tests also include end-to-end interaction with [meshPlatforms](meshcloud.p
 > Depending on the [Enterprise IdP](meshstack.identity-federation.md) and IAM configuration in your
 > meshStack implementation this setup may not be possible.
 
+### Configuration
+
 Sonar can be configured in the [meshStack configuration model](meshstack.configuration.md) under `monitor.sonar` as follows:
 
+<!--snippet:mesh.sonar#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
 ```dhall
-{
-  -- Credentials for a technical user in meshIdB
-  username = Text
-, password = Secret
- -- Identifiers for a meshCustomer
-  customer : Text
-, project : Text
--- The scan interval in seconds
-, scanInterval : Natural
--- The targets to scan (meshPlatform identifier and meshTenant `/access` URL)
-, targets : List { platformName : Text, url : Text }
-}
+{ scopes : List SonarScope }
 ```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+<!--snippet:mesh.sonar.scope-->
+
+The following configuration options are available at `mesh.sonar.scope`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let SonarScope =
+    {-
+        username:
+            The username of a technical user in meshIdB
+
+        password:
+            The password of a technical user in meshIdB
+
+        customer:
+            Identifier of a meshCustomer to test against
+
+        projects:
+            A list of projects - each project holds a projectName and a list of targets
+
+        projectName:
+            The identifier of a meshProject to test against
+
+        targets:
+            A list of targets to scan - each target holds a platformName and a url
+
+        platformName:
+            The identifier of a meshPlatform
+
+        url:
+            meshTenant `/access` URL
+    -}
+      { username : Text
+      , password : Secret.Type
+      , customer : Text
+      , projects :
+          List
+            { projectName : Text
+            , targets : List { platformName : Text, url : Text }
+            }
+      }
+```
+<!--Example-->
+```dhall
+let example =
+        { username = "username@example.com"
+        , password = Secret.fromEnv "PASSWORD"
+        , customer = "example-customer"
+        , projects =
+          [ { projectName = "p0"
+            , targets =
+              [ { platformName = "p0-platform0"
+                , url =
+                    "https//<meshfed-fqdn>/projects/<p0-identifier>/locations/<locationID>/platformInstances/<platform0-identifier>/access"
+                }
+              , { platformName = "p0-platform1"
+                , url =
+                    "https//<meshfed-fqdn>/projects/<p0-identifier>/locations/<locationID>/platformInstances/<platform1-identifier>/access"
+                }
+              ]
+            }
+          , { projectName = "p1"
+            , targets =
+              [ { platformName = "p1-platform0"
+                , url =
+                    "https//<meshfed-fqdn>/projects/<p1-identifier>/locations/<locationID>/platformInstances/<platform0-identifier>/access"
+                }
+              ]
+            }
+          ]
+        }
+      : SonarScope
+```
+<!--END_DOCUSAURUS_CODE_TABS-->

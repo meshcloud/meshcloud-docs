@@ -72,6 +72,15 @@ The following modifications are applied to metdata tag keys by meshstack before 
 In the example, a metadata tag named `costCenter` would be provided as a property with name `tagCostCenter`.
 See [metadata tags](./meshstack.tag-schema.md) for more information.
 
+> If you are planning on converting any of the template properties into GCP labels, please be aware of the limits and requirements
+> that GCP has [described in their docs](https://cloud.google.com/compute/docs/labeling-resources#restrictions).
+>
+> Key takeaways here:
+>
+> - A resource can have a maximum of 64 labels
+> - Keys and values can only contain lowercase letters, numeric characters, underscores and hyphens.
+> - Label keys must start with a lowercase letter
+
 ## meshRole to Platform Role Mapping
 
 The meshProject roles must be mapped to GCP specific roles. You are able to control this mapping with a Landing Zone setting. You can specifiy these mappings by adding role mappings and supplying a GCP Role. You can both use custom roles which look like `organizations/123123123123/roles/meshstack.project_developer` or predifined GCP roles like `roles/editor`.
