@@ -16,3 +16,7 @@ Please consult the [operator documentation](./meshstack.index.md) of the respect
 
 Disabled Landing Zones can't be assigned to projects anymore. If the Landing Zone has already been assigned to a project,
 this assignment will remain, but customer admins can no longer create new projects using this Landing Zone.
+
+## Configure Landing Zone tags
+
+Platform Operators can configure a custom Landing Zone [Tag Schema](./meshstack.tag-schema.md#tag-schemas). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
