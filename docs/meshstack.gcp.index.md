@@ -210,8 +210,8 @@ let GcpPlatformCoreConfiguration =
       allowHierarchicalFolderAssignment:
         Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
         projects can be assigned to sub folders of the defined resource manager folder in a landing zone.
-        If this config flag is disabled the replicator forces to create projects only directly under the resource manager folder.
-        Every project which is not directly attached to the resource manager folder will be then moved via gcp function to the right folder.
+        If this flag is disabled the replicator forces tenants directly under the resource manager folder.
+        Every tenant which is not directly attached to the resource manager folder will be moved there via gcp function.
     -}
       { platform : Text
       , domain : Text
