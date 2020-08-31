@@ -38,4 +38,4 @@ The connections are shown in the following matrix table:
 |   OpenShift   |                    -                    |                Project                |                User                |               YAML Templates                |
 |      AWS      |                    -                    |                Account                |              IAM Role              |      CF StackSets / Organization Units      |
 |     Azure     |                    -                    |             Subscription              |              AAD User              |        Blueprints / Management Groups        |
-|      GCP      |                    -                    |                Project                |              GCD User              |     Organization Policy / CDM Template      |
+|      GCP      |                    -                    |                Project                |              GCD User              |     Organization Policy / GDM Template      |
