@@ -34,28 +34,21 @@ In most organizations, other applications like Office 365 already consume user i
 > Please make sure that all users who need access to the Azure Portal are replicated into the AAD. meshcloud will issue
 > a [replication](./meshcloud.tenant.md) warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
 
-#### meshcloud AAD Tenant
+### Workload AAD Tenant
 
 Because meshcloud requires read-write permissions to manage user roles on Azure Subscriptions, we recommend creating a
-separate "meshcloud AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant" (AAD B2B). This way, users have a single cloud identity managed
-by your organization-wide policies while isolating "development" related Azure activies into its own AAD Tenant which has no
+separate "Workload AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant" (AAD B2B). This way, users have a single cloud identity managed
+by your organization-wide policies while isolating "workload" related Azure activies into its own AAD Tenant which has no
 way of affecting other applications using the home tenant like Office 356 etc.
 
-#### External User Id (euid)
+### External User Ids (euid)
 
 Using [externally-provisioned user identities](./meshstack.identity-federation.md#externally-provisioned-identities) requires your IdP to provide a user identifier suitable to locate user identities
 in the "home tenant". This external user id needs to be mapped to the `euid` user attribute in the [meshIdB](./meshstack.identity-federation.md).
 
-It is important that the provided euid's are <b>case-sensitive</b> and must match the user entries saved in the AAD against which the replication should happen! This is a limitation imposed by the search queries of Microsoft Graph API.
+It is important that the provided euid's are **case-sensitive** and must match the user entries saved in the AAD against which the replication should happen! This is a limitation imposed by the search queries of Microsoft Graph API.
 
 > meshcloud can support complex Azure AD setups involving user identity lookup rules and multiple home tenants. Please contact our experts for more details.
-
-### meshStack-provisioned Identities
-
-In the [meshStack-provisioned Identities](./meshstack.identity-federation.md#meshstack-provisioned-identities) setup meshStack provisions user identities itself under a virtual domain in a "meshcloud AAD Tenant". This AAD tenant is then configured for federated authentication against [meshIdB](./meshstack.identity-federation.md).
-
-This setup is useful for smaller organizations do not have existing AAD Tenants. We recommend large organizations use
-externally-provisioned Identities that help ensure users have a single cloud identity with Microsoft Azure only.
 
 ### Licensing Considerations
 
@@ -63,13 +56,13 @@ Users managed in the meshcloud AAD Tenant do not require AAD Premium Licenses.
 
 ## Subscription Provisioning
 
-To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions.
+To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. Operators can find the corresponding configuration options in the [Provisioning Configuration Reference](./meshstack.azure.config.md#provisioning-configuration).
 
 ### Enterprise Enrollment Account
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement, Microsoft Customer Agreement or a Microsoft Partner Agreement and want to provide a large number of subscriptions in a fully automated fashion.
 
-> Microsoft currently has limitation of a [maximum of 500 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](./meshcloud.platform-location.md). Please contact our experts for more details.
+> Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](./meshcloud.platform-location.md). Please contact our experts for more details.
 
 #### Setting up the Enrollment Account
 
@@ -93,10 +86,6 @@ dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
 
 After creating (or finding) a suitable EA Account, please note down the accounts object id as `EA_ACCOUNT_ID`.
 
-#### Authorizing the meshcloud Service Principal for EA
-
-To use EA for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
-
 #### Ensuring Retained Subscription Owners
 
 Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist. this Owner can also be the Azure [Blueprint Service Principal](#blueprint-configuration)
@@ -118,18 +107,18 @@ and removed from the subscription pool.
 
 ## Service Principal Setup
 
-meshstack in total needs up to three service principals, one for replicating meshProjects into the Azure platform, one if AAD should be used as an user lookup when users are added to a customer or project inside the meshfed panel, and one for gathering metering data for the billing subsystem.
+meshStack uses separate service principals for different tasks following the best practice of least privilege principle.
 
 ### Replicator
 
-In order to manage user roles and permissions, meshcloud requires a Service Principal on the meshcloud AAD Tenant.
-The Service Principal must be authorized in the scope of the meshcloud AAD Tenant.
+In order to manage user roles and permissions, meshcloud requires a Service Principal on the AAD Tenant containing your Azure Subscriptions and workloads.
+The Service Principal must be authorized in the scope of this AAD Tenant.
 
 #### AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **App registrations** create a new web app (call it e.g. `meshReplicator`).
 2. Add an client secret under **Certificates &amp; secrets** and write it down (it is the `SERVICE_PRINCIPAL_CLIENT_SECRET`).
-3. Add the following **application permissions** (not delegated permissions):
+3. Add the following **application permissions** (not delegated permissions) for the **Microsoft Graph API** (not Azure AD Graph API):
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable B2B User Invitation (see below)
@@ -142,7 +131,7 @@ The Service Principal must be authorized in the scope of the meshcloud AAD Tenan
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
-#### Subscription Level Permissions
+#### Azure RBAC Permissions
 
 Created subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
 
@@ -173,25 +162,22 @@ All permissions left are therefore granted only via the management group hierarc
 ```
 
 
-You must must grant the meshcloud Service Principal this level access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) that contain managed subscriptions in the meshcloud AAD Tenant.
+You must must grant the meshcloud Service Principal this level access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
 
-Before you can grant this access, you must have access to the root Management Group yourself. If you haven't already done so, please make sure your user is a `Global Administrator` on the AAD Tenant
-and has [elevated access to all management groups](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin).
+In Azure Portal, navigate to the "Management Groups" blade, then click on the "Details" link of the management group you want to give access to. Select "Access Control (IAM)" from the menu and create a Role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
 
-> In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
-
-Once you have elevated access, use the Azure Portal to Navigate to the "Management Groups"  blade, then click on the "Details" link of the Tenant Root Group. Select "Access Control (IAM)" from the menu and create a Role assignment that grants the [App created above](#meshcloud-service-principal) for the meshcloud Service Principal (i.e. `meshReplicator`) the tailored permission on this resource.
+> Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
 #### Privilege Escalation Prevention
 
-Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy rule to your subscriptions:
+Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy on a root management group level:
 
 ```json
 {
     "properties": {
         "mode": "all",
         "displayName": "meshcloud Privilege Escalation Prevention",
-        "description": "Prevent meshcloud SP from assigning itself new roles.",
+        "description": "Prevent replicator SPN from assigning itself new roles.",
         "policyRule": {
           "if": {
             "allOf": [
@@ -203,7 +189,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
                 "allOf": [
                   {
                     "field": "Microsoft.Authorization/roleAssignments/roleDefinitionId",
-                    "equals": "/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Authorization/roleDefinitions/<AZURE_SERVICE_PRINCIPAL_ROLE_ID>"
+                    "equals": "/subscriptions/*/providers/Microsoft.Authorization/roleDefinitions/*"
                   },
                   {
                     "field": "Microsoft.Authorization/roleAssignments/principalId",
@@ -214,12 +200,34 @@ Furthermore in order to prevent the replicator from assigning itself more permis
             ]
           },
           "then": {
-            "effect": "audit"
+            "effect": "deny"
           }
       }
     }
 }
 ```
+
+#### EA Account Permissions
+
+Wehn using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
+
+When using powershell, use the following command and substitue parameters as follows:
+
+- `<replicatorSpnApplicationId>` the Application Client Id of the Replicator SPN. In Azure Portal, this is the
+  "Application Id" of the  "Enterprise Application" but can also be retrieved via the "App Registration" blade as
+  "Application (Client) Id".
+- `<enrollmentAccountObjectId>` the object id of the Enrollment Account, retrieved e.g. via `Get-AzEnrollmentAccount`
+
+```powershell
+New-AzRoleAssignment -RoleDefinitionName Owner -ApplicationId <replicatorSpnApplicationId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
+```
+
+### Metering
+
+In order to read resource usages, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by meshStacks's metering service:
+
+- `Cost Management Reader`
+
 
 ### Identity Provider (IdP) Lookup
 
