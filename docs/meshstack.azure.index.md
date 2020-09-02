@@ -193,7 +193,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
                   },
                   {
                     "field": "Microsoft.Authorization/roleAssignments/principalId",
-                    "equals": "<AZURE_SERVICE_PRINCIPAL_ID>"
+                    "equals": "<SERVICE_PRINCIPAL_OBJECT_ID>"
                   },
                 ]
               }
