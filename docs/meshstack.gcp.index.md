@@ -79,7 +79,7 @@ Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/s
 The Service Account will be identified by an email address like
 
 ```text
-meshfed-service@meshstack-root.iam.gService Account.com
+meshfed-service@meshstack-root.iam.gserviceaccount.com
 ```
 
 #### Granting Resource Permissions
@@ -150,7 +150,7 @@ Enable Automated Consent in the G Admin Console
   - Scopes:
 
       ```text
-      https://www.googleapis.com/auth/admin.directory.user, https://www.googleapis.com/auth/cloud-platform, https://www.googleapis.com/auth/admin.directory.group
+      https://www.googleapis.com/auth/admin.directory.user, https://www.googleapis.com/auth/admin.directory.group
       ```
 
 ## Configuration Reference
