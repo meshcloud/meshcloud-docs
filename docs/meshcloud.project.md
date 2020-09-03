@@ -40,7 +40,7 @@ Depending on the configuration of your meshStack implementation, you may be able
 
 ## Access Control on a meshProject
 
-Before being able to assign a users or groups (meshcloud.customer.md#user-groups)) to a meshProject, the user or group must have been [invited to the meshCustomer](meshcloud.customer.md#invite-users-to-a-meshcustomer-team). By adding a group, all users of this group will be provided access to the meshProject. In the **Project Access** section of the project edit screen all users and groups of the project are listed and new ones can be added. When adding/changing or removing a user or a group, all users and members will be informed via email about this change of access rights they have.
+Before being able to assign a user or [user groups](meshcloud.customer.md#user-groups) to a meshProject, the user or group must have been [invited to the meshCustomer](meshcloud.customer.md#invite-users-to-a-meshcustomer-team). By adding a group, all users of this group will be provided access to the meshProject. In the **Project Access** section of the project edit screen all users and groups of the project are listed and new ones can be added. When adding/changing or removing a user or a group, all users and members will be informed via email about this change of access rights they have.
 While adding users or groups or updating roles on a project an expiration date can be set. All expired and soon expired roles will be listed under projects/expired access.
 Soon expired access (expiration date < 7 days) will be highlighted with **yellow** and expired access will be highlighted with **red**.
 
