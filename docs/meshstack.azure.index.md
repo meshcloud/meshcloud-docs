@@ -164,7 +164,7 @@ All permissions left are therefore granted only via the management group hierarc
 
 You must must grant the meshcloud Service Principal this level access to all [management groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
 
-In Azure Portal, navigate to the "Management Groups" blade, then click on the "Details" link of the management group you want to give access to. Select "Access Control (IAM)" from the menu and create a Role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
+In Azure Portal, navigate to the "Management Groups" blade, then click on the "Details" link of the management group you want to give access to. Select "Access Control (IAM)" from the menu and create a role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
