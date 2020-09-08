@@ -206,12 +206,19 @@ let GcpPlatformCoreConfiguration =
         The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
         We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of
         naming collisions.
+
+      allowHierarchicalFolderAssignment:
+        Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
+        projects can be assigned to sub folders of the defined resource manager folder in a landing zone.
+        If this config flag is disabled the replicator forces to create projects only directly under the resource manager folder.
+        Every project which is not directly attached to the resource manager folder will be then moved via gcp function to the right folder.
     -}
       { platform : Text
       , domain : Text
-      , customerId : Text
-      , billingAccountId : Text
-      , projectIdPattern : Text
+      , customer-id : Text
+      , billing-account-id : Text
+      , project-id-pattern : Text
+      , allow-hierarchical-folder-assignment : Bool
       }
 ```
 <!--Example-->
@@ -220,9 +227,10 @@ let example
     : GcpPlatformCoreConfiguration
     = { platform = "gcp.mylocation"
       , domain = "myorg.example.com"
-      , customerId = " Cxxxx123"
-      , billingAccountId = "123456-1234ABCD-1234FF"
-      , projectIdPattern = "%.15s-%.10s-%.3s"
+      , customer-id = " Cxxxx123"
+      , billing-account-id = "123456-1234ABCD-1234FF"
+      , project-id-pattern = "%.15s-%.10s-%.3s"
+      , allow-hierarchical-folder-assignment = True
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -269,16 +277,16 @@ let GcpPlatformCredentialConfiguration =
         base64 encoded credentials.json file for a GCP ServiceAccount. The replicator uses this Service Account
         to automate GCP API operations (IAM, ResourceManager etc.).
     -}
-      { impersonatedServiceUser : Text
-      , serviceAccountCredentialsB64 : Secret
+      { impersonated-service-user : Text
+      , service-account-credentials-b64 : Secret
       }
 ```
 <!--Example-->
 ```dhall
 let example
     : GcpPlatformCredentialConfiguration
-    = { impersonatedServiceUser = "meshfed-service@myorg.example.com"
-      , serviceAccountCredentialsB64 = Secret.Native "b123"
+    = { impersonated-service-user = "meshfed-service@myorg.example.com"
+      , service-account-credentials-b64 = Secret.Native "b123"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -306,13 +314,13 @@ let GcpPlatformRoleMappingConfiguration =
 
         Operators can override these default role mappings in Landing Zones.
     -}
-      { roleMappings : List { mapKey : Text, mapValue : Text } }
+      { role-mappings : List { mapKey : Text, mapValue : Text } }
 ```
 <!--Example-->
 ```dhall
 let example
     : GcpPlatformRoleMappingConfiguration
-    = { roleMappings =
+    = { role-mappings =
         [ { mapKey = "admin", mapValue = "roles/editor" }
         , { mapKey = "user"
           , mapValue = "organizations/123456/roles/custom-role"
