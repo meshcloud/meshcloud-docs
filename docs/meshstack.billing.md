@@ -185,7 +185,7 @@ let example
 
 Discount rules specify how a discount is computed.
 
-meshStack currently provides only a single discount rule. Future releases could provide additional discount rule options.
+meshStack currently provides two discount rules. Future releases could provide additional discount rule options.
 
 <!--snippet:mesh.kraken.productcatalog.discountrule#type-->
 
