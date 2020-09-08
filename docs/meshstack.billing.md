@@ -249,20 +249,20 @@ The following configuration options are available at `mesh.kraken.api.statements
 ```dhall
 let Statements =
     {-
-      relevantMetaKeys:
+      relevant-meta-keys:
         A list of metadata and tag keys that shall appear in chargeback statements as billing info.
         General payment information can be accessed via paymentName, paymentIdentifier, paymentExpirationDate
         and paymentAmount. Custom Tags can be referenced via their property name in the according tag JSON schema.
         Custom Tags are customer tags, project tags and payment tags.
     -}
-      { relevantMetaKeys : List Text }
+      { relevant-meta-keys : List Text }
 ```
 <!--Example-->
 ```dhall
 let example
-    -- these relevantMetaKeys reference all statically available payment information
+    -- these relevant-meta-keys reference all statically available payment information
     : Statements
-    = { relevantMetaKeys =
+    = { relevant-meta-keys =
         [ "paymentName"
         , "paymentIdentifier"
         , "paymentExpirationDate"
@@ -271,9 +271,9 @@ let example
       }
 
 let example2
-    -- these relevantMetaKeys reference tags that can be defined individually per meshImplementation
+    -- these relevant-meta-keys reference tags that can be defined individually per meshImplementation
     : Statements
-    = { relevantMetaKeys = [ "customTag1", "customTag2" ] }
+    = { relevant-meta-keys = [ "customTag1", "customTag2" ] }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 

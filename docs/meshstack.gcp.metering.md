@@ -36,18 +36,18 @@ let GcpPlatformKrakenConfiguration =
         The big query table name containing the GCP Cloud Billing BigQuery export.
         See https://cloud.google.com/billing/docs/how-to/export-data-bigquery
 
-      credentialsB64:
+      credentials-b64:
         base64 encoded credentials.json file for a GCP ServiceAccount. meshStack uses this Service Account
         to collect billing data from the BigQuery export table.
 
-      additionalFilter:
+      additional-filter:
         Additional big query predicates to append to meshStack's queries. This allows operators to restrict
         what type of data is imported, e.g. to only include data for a specific organization or folder path.
     -}
       { platform : Text
-      , bigqueryTable : Text
-      , credentialsB64 : Secret
-      , additionalFilter : Optional Text
+      , bigquery-table : Text
+      , credentials-b64 : Secret
+      , additional-filter : Optional Text
       }
 ```
 <!--Example-->
@@ -57,10 +57,10 @@ let exampleAllData
     =
       -- configures meshStack to import all available billing data
       { platform = "my.gcp"
-      , bigqueryTable =
+      , bigquery-table =
           "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
-      , credentialsB64 = Secret.Native "..."
-      , additionalFilter = None Text
+      , credentials-b64 = Secret.Native "..."
+      , additional-filter = None Text
       }
 
 let exampleOnlyFolder
@@ -69,10 +69,10 @@ let exampleOnlyFolder
       -- configures meshStack to only import billing data for projects that live in the GCP resource hierarchy
       -- under folder id '123' in the organization with id '123'.
       { platform = "my.gcp"
-      , bigqueryTable =
+      , bigquery-table =
           "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
-      , credentialsB64 = Secret.Native "..."
-      , additionalFilter = Some
+      , credentials-b64 = Secret.Native "..."
+      , additional-filter = Some
           "and STARTS_WITH(project.ancestry_numbers, '/123/345')"
       }
 ```
