@@ -327,7 +327,32 @@ The following configuration options are available at `mesh.kraken.productcatalog
 
 Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.project-metering.md#chargeback-statements).
 
-The attributes that shall be part of the billing info on the chargeback statements can be configured as follows.
+The attributes that shall be part of the billing info on the chargeback statements can be configured.
+
+### Available metadata keys
+
+The following metadata keys are available on every meshStack
+
+| Key                   | Description                                      |
+|-----------------------|:-------------------------------------------------|
+| tenantLandingZone     | Name of the Landing Zone used by the Tenant      |
+| last_modified         | Date when metadata was last modified             |
+| contactMail           | email address of the project owner               |
+| ownerUsername         | Username of the project owner                    |
+| ownerFirstName        | First name of the project owner                  |
+| ownerLastName         | Last name of the project owner                   |
+| tenant_local_id       | The id of the tenant as provided by the platform |
+| paymentName           | Name of the payment method                       |
+| paymentIdentifier     | Identifier of the payment method                 |
+| paymentExpirationDate | Expiration date of the payment method            |
+| paymentAmount         | Amount available for payment method              |
+
+### Available tag keys
+
+Custom tags can be referenced via their property name in the according tag JSON schema.
+Custom Tags are customer tags, project tags and payment tags.
+
+### Configuration example
 
 <!--snippet:mesh.kraken.api.statements-->
 
