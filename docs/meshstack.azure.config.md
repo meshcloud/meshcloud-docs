@@ -170,13 +170,13 @@ let example
 
 This configuration is optional. When configured, instructs the replicator to create AAD B2B guest invitations for
 users missing in the AAD tenant managed by this meshPlatform. This configuration is useful if you have one or more
-"workload" AAD Tenants for Azure subscriptions while having a central "home Tenant" for your organization's user
+"workload" AAD tenants for Azure Subscriptions while having a central "home tenant" for your organization's user
 identities that handles O365 and related services.
 
-Before users can access an AAD Tenant they've been invited to using Azure B2B, they need to go through Azure's
+Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
 ["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
 
-- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the Consent Experience in case the user's B2B invitation is pending acceptance.
+- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
 - meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
 
 > B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
