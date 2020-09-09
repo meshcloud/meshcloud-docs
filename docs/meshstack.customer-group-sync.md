@@ -24,7 +24,7 @@ let ConnectionConfiguration =
       url: The LDAP connection URL which would be of the form ldap://example.com:389
       base:
           The base from which searches should be performed, which would be of the form "dc=meshcloud,dc=io"
-      username: The username of the user who can connect to the LDAP source to perform searches
+      username: The username of a technical user who can connect to the LDAP source to perform searches
       password: The password of the user above
     -}
       { url : Text, base : Text, username : Text, password : Secret }
@@ -63,7 +63,8 @@ The LdapFilter mentioned above has the following form.
 {-
     attributes:
         A comma separated list of attributes that should be returned per LDAP entry.
-        For example, "cn, uniqueMember, description"
+        For example, "cn, uniqueMember, description". These attributes can later be
+        used to populate the value of a meshObject field.
     base: The base from which the query should be performed. For example, "ou=groups"
     filter: A filter that follows the LDAP search filter format. For example, "'(cn=mc*)'"
 -}
@@ -85,10 +86,10 @@ let TransformationConfiguration =
     {-
     mesh-object:
       The type of meshObject this configuration is about. Can be one of
-      MeshUser, MeshCustomerUserGroup or MeshCustomerGroupBinding
+      "MeshUser", "MeshCustomerUserGroup" or "MeshCustomerGroupBinding"
     fields:
       A list of configuration objects specifying which LDAP attribute gets mapped to which
-      mesh object attribute, and whether any transformations should be done on the attribute before
+      meshObject attribute, and whether any transformations should be done on the attribute before
       assigning it to the meshObject field.
     tags: Same as fields above, but for tags on the specified meshObject.
     -}
