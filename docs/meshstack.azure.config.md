@@ -189,7 +189,7 @@ Before users can access an AAD tenant they've been invited to using Azure B2B, t
 ```dhall
 let InviteB2BUserConfig =
     {-
-      send-azure-invitation-mail
+      send-azure-invitation-mail:
           When true, meshStack instructs Azure to send out Invitation mails to invited users.
           These mails allows users to redeem their invitation to the AAD tenant only using email and
           Azure Portal. This is useful if some of your users don't have access to meshPanel or you do not
