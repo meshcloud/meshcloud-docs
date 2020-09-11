@@ -39,16 +39,15 @@ The configuration related to the collection of data via LDAP is as follows.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-{-
-  pageSize: The size of a single page that will be returned as a result of an LDAP search
-  group/person:
-    a configuration of type LDAPFilter which will contain the information needed to search the LDAP source
-    for users and groups.
--}
-  let CollectorConfiguration =
-        { pageSize : Natural, group : LdapFilter, person : LdapFilter }
+let CollectorConfiguration =
+    {-
+      pageSize: The size of a single page that will be returned as a result of an LDAP search
+      group/person:
+        a configuration of type LDAPFilter which will contain the information needed to search the LDAP source
+        for users and groups.
+    -}
 
-  in  CollectorConfiguration
+      { pageSize : Natural, group : LdapFilter, person : LdapFilter }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -60,17 +59,16 @@ The LdapFilter mentioned above has the following form.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-{-
-    attributes:
-        A comma separated list of attributes that should be returned per LDAP entry.
-        For example, "cn, uniqueMember, description". These attributes can later be
-        used to populate the value of a meshObject field.
-    base: The base from which the query should be performed. For example, "ou=groups"
-    filter: A filter that follows the LDAP search filter format. For example, "'(cn=mc*)'"
--}
-  let LdapFilter = { attributes : Text, base : Text, filter : Text }
-
-  in  LdapFilter
+let LdapFilter =
+    {-
+        attributes:
+            A comma separated list of attributes that should be returned per LDAP entry.
+            For example, "cn, uniqueMember, description". These attributes can later be
+            used to populate the value of a meshObject field.
+        base: The base from which the query should be performed. For example, "ou=groups"
+        filter: A filter that follows the LDAP search filter format. For example, "'(cn=mc*)'"
+    -}
+      { attributes : Text, base : Text, filter : Text }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -106,26 +104,24 @@ transformations on the matched attribute, called the `RegexField`. The `RegexFie
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-{-
-    transformationType:
-       One of static or regex. Static transformation will simply take the LDAP attribute value.
-       The regex transformation will perform extra operations on the matched value.
-    field:
-       The meshObject field that should be assigned the result of this field mapping.
-       For example, "metadata.name"
-    attribute:
-       The LDAP attribute that should be processed. For example "cn"
-    postProcessor:
-       Any post processing function that should be run on the mapped value. Can be one of UPPERCASE or LOWERCASE
--}
-  let BaseField =
-        { transformationType : Text
-        , field : Text
-        , attribute : Text
-        , postProcessor : Optional Text
-        }
-
-  in  BaseField
+let BaseField =
+    {-
+        transformationType:
+           One of static or regex. Static transformation will simply take the LDAP attribute value.
+           The regex transformation will perform extra operations on the matched value.
+        field:
+           The meshObject field that should be assigned the result of this field mapping.
+           For example, "metadata.name"
+        attribute:
+           The LDAP attribute that should be processed. For example "cn"
+        postProcessor:
+           Any post processing function that should be run on the mapped value. Can be one of UPPERCASE or LOWERCASE
+    -}
+      { transformationType : Text
+      , field : Text
+      , attribute : Text
+      , postProcessor : Optional Text
+      }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -135,23 +131,21 @@ transformations on the matched attribute, called the `RegexField`. The `RegexFie
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-{-
-    rules:
-        A list of regex rules that the LDAP attributes will be tested against for a match. The matching is performed
-        sequentially until a match is found.
-    template:
-        An optional template where the extracted value should be inserted into. The format should follow the Java String.format
-        contract.
-    otherwise: A optional default value to be assigned if none of the rules match.
--}
-  let RegexField =
-          BaseField
-        ⩓ { rules : List RegexRule
-          , otherwise : Optional Text
-          , template : Optional Text
-          }
-
-  in  RegexField
+let RegexField =
+    {-
+        rules:
+            A list of regex rules that the LDAP attributes will be tested against for a match. The matching is performed
+            sequentially until a match is found.
+        template:
+            An optional template where the extracted value should be inserted into. The format should follow the Java String.format
+            contract.
+        otherwise: A optional default value to be assigned if none of the rules match.
+    -}
+        BaseField
+      ⩓ { rules : List RegexRule
+        , otherwise : Optional Text
+        , template : Optional Text
+        }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -163,16 +157,17 @@ The RegexRule mentioned above is as follows.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-{-
-    value:
-        This is an optional parameter. If it is defined, if the LDAP attribute matches the
-        regular expression, this value will be assigned as the value of the meshObject field.
-    regex:
-        The regular expression against which the LDAP attribute should be matched. If the value parameter
-        is not defined, the regular expression MUST contain a group and the first group will be assigned
-        as the value of the meshObject field.
--}
-  let RegexRule = { regex : Text, value : Optional Text } in RegexRule
+let RegexRule =
+    {-
+        value:
+            This is an optional parameter. If it is defined, if the LDAP attribute matches the
+            regular expression, this value will be assigned as the value of the meshObject field.
+        regex:
+            The regular expression against which the LDAP attribute should be matched. If the value parameter
+            is not defined, the regular expression MUST contain a group and the first group will be assigned
+            as the value of the meshObject field.
+    -}
+      { regex : Text, value : Optional Text }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
