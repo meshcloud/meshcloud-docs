@@ -168,13 +168,18 @@ let example
 
 ### B2B User Invitation
 
-You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
-the invitation notifications.
-
 This configuration is optional. When configured, instructs the replicator to create AAD B2B guest invitations for
-users missing in the AAD tenant managed by this meshPlatform.
+users missing in the AAD tenant managed by this meshPlatform. This configuration is useful if you have one or more
+"workload" AAD tenants for Azure Subscriptions while having a central "home tenant" for your organization's user
+identities that handles O365 and related services.
 
-> B2B Invitations require an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
+Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
+["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
+
+- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
+- meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
+
+> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
 
 <!--snippet:mesh.platform.azure.inviteB2BUserConfig#type-->
 
@@ -184,7 +189,7 @@ users missing in the AAD tenant managed by this meshPlatform.
 ```dhall
 let InviteB2BUserConfig =
     {-
-      sendAzureInvitationMail
+      send-azure-invitation-mail:
           When true, meshStack instructs Azure to send out Invitation mails to invited users.
           These mails allows users to redeem their invitation to the AAD tenant only using email and
           Azure Portal. This is useful if some of your users don't have access to meshPanel or you do not
@@ -193,7 +198,7 @@ let InviteB2BUserConfig =
           Note: meshStack always instructs Azure to send invitation mails for meshUsers that are flagged as guests,
           regardless of the configured value.
 
-      redirectUrl:
+      redirect-url:
           This is the URL that Azure's consent experience redirects users to after they accept their invitation.
           Operators should consider redirecting user to Azure Portal with the platform's AAD tenant pre-selected
           using an URL like "https://portal.azure.com/example.onmicrosoft.com".
