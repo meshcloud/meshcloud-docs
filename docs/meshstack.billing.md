@@ -202,6 +202,13 @@ let DiscountRule =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+##### Fixed Percentage Discount Rule
+
+The fixed percentage discount rules calculates the fee as a percentage of the total consumption.
+
+##### Tiered Discount Rule
+
+The tiered discount rule defines tiers of cloud resource consumption. For each tier a discount percentage is used to calculate the discount to be used.
 
 ### Configuration
 
