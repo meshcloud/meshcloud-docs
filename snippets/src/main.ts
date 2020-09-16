@@ -42,6 +42,13 @@ export async function updateSnippets(srcPath: string, repo: SnippetRepository, r
   }
 }
 
+function createSnippetCacheDir(cacheDir: string) {
+  if (!fs.existsSync(cacheDir)) {
+    console.log(`creating cache dir: ${cacheDir}`);
+    fs.mkdirSync(cacheDir, { recursive: true });
+  }
+}
+
 async function updateDocsSnippets(docsGlob: string, repo: SnippetRepository) {
   console.log(`Updating docs in ${docsGlob}`);
   const files = await glob(docsGlob);
@@ -72,6 +79,8 @@ async function main(): Promise<number> {
   const docsGlob = program['docsGlob'];
 
   const repo = new SnippetRepository(snipsPath);
+
+  createSnippetCacheDir(snipsPath);
 
   if (src) {
     const absoluteSrc = await path.resolve(src);
