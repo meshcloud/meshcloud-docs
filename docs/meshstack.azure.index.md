@@ -157,6 +157,9 @@ All permissions left are therefore granted only via the management group hierarc
 "Microsoft.Management/managementGroups/subscriptions/write",
 "Microsoft.Management/managementGroups/write",
 
+# Permissions for reading and writing tags
+"Microsoft.Resources/tags/write",
+
 # Permission we need to activate/register required Resource Providers
 "*/register/action"
 ```
