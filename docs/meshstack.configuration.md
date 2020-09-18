@@ -234,6 +234,53 @@ In order to use GCD as a lookup provider you need to provide these credentials:
 
 The GCD Service User needs read access to the [GCD Directory API](https://developers.google.com/admin-sdk/directory/v1/get-start/getting-started).
 
+### Motto of the Day
+
+Operators can configure an optional "motto of the day" to be displayed in meshPanel.
+This is useful to communicate important information such as newly available cloud plaforms or known issues to every user visiting meshPanel.
+
+Note that Platform Operators can also use [platform notifications](./administration.platforms.md#platform-notifications) as an alternative to target messages only at users that consume a specific cloud platform.
+
+<!--snippet:mesh.panel.environment.motd-->
+
+The following configuration options are available at `mesh.panel.environment.motd`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let MottoOfTheDay =
+    {-
+        message:
+            The "motto of the day" message you want to display. This can also include html tags.
+            The "motto of the day" message is shown on the home screen of meshPanel for anonymous as well
+            as authenticated users.
+
+        startTime:
+            The date and time after which to begin showing the message.
+            Must be a JavaScript Date.parse() compatible string.
+
+        endTime:
+            The date and time after which to stop showing the message.
+            Must be a JavaScript Date.parse() compatible string.
+    -}
+      { message : Text, startTime : Text, endTime : Text }
+```
+<!--Example-->
+```dhall
+let example
+    : Optional MottoOfTheDay
+    = Some
+        { message =
+            "The Likvid Bank Cloud Foundation Team whishes you a meshi <a href=\"https://en.wikipedia.org/wiki/Christmas\">Christmas</a>."
+        , startTime = "2019-12-23 00:00"
+        , endTime = "2019-12-27 00:00"
+        }
+
+let exampleNoMotto
+    : Optional MottoOfTheDay
+    = None MottoOfTheDay
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 ### Customizable Descriptions
 
 Depending on your meshStack implementation, it may be helpful for you to customize error descriptions to guide
