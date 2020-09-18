@@ -191,10 +191,6 @@ Furthermore in order to prevent the replicator from assigning itself more permis
               {
                 "allOf": [
                   {
-                    "field": "Microsoft.Authorization/roleAssignments/roleDefinitionId",
-                    "equals": "/subscriptions/*/providers/Microsoft.Authorization/roleDefinitions/*"
-                  },
-                  {
                     "field": "Microsoft.Authorization/roleAssignments/principalId",
                     "equals": "<SERVICE_PRINCIPAL_OBJECT_ID>"
                   },
