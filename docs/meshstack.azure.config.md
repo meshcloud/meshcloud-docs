@@ -20,6 +20,7 @@ let AzurePlatformConfiguration =
         , b2b-user-invitation : Optional InviteB2BUserConfig
         , provisioning : Provisioning
         , role-mappings : List RoleMapping
+        , tenant-tags : Optional TenantTags
         }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
