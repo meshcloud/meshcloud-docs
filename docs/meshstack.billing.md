@@ -331,7 +331,7 @@ The attributes that shall be part of the billing info on the chargeback statemen
 
 ### Available metadata keys
 
-The following metadata keys are available on every meshStack
+The following metadata keys are derived from meshStack metadata and therefore available on every meshStack implementation
 
 | Key                   | Description                                      |
 |-----------------------|:-------------------------------------------------|
@@ -349,8 +349,7 @@ The following metadata keys are available on every meshStack
 
 ### Available tag keys
 
-Custom tags can be referenced via their property name in the according tag JSON schema.
-Custom Tags are customer tags, project tags and payment tags.
+Custom tags can be referenced via their property name in the according [tag schema](meshstack.tag-schema.md#tag-schemas).
 
 ### Configuration example
 
