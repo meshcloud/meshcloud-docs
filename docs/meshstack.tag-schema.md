@@ -133,7 +133,7 @@ The following limitations apply:
 
 For more information about Azure Tags [see the Azure Docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#rest-api).
 
-### AWS Tags (support coming soon)
+### AWS Tags
 
 The following resources are tagged:
 
