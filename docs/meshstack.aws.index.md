@@ -120,6 +120,8 @@ The root account also needs a role for the mesh-service principal to assume. Thi
                     "organizations:ListOrganizationalUnitsForParent",
                     "organizations:CreateOrganizationalUnit",
                     "organizations:ListTagsForResource",
+                    "organizations:TagResource",
+                    "organizations:UntagResource",
                     "organizations:MoveAccount"
                   ],
                   "Resource": [
