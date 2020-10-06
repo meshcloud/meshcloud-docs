@@ -193,13 +193,17 @@ When you add users to your [meshCustomers](./meshcloud.customer.md) we currently
 
 #### Configure for Azure AAD
 
-In order to use this functionality, you must create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions as an **application permission**:
+In order to use this functionality, create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions:
 
-- `User.Read.All`
+| Permission    | Scope       |
+|---------------|-------------|
+| User.Read.All | Application |
 
-> You will also need to grant admin consent in AAD in order to activate the  `User.Read.All` permission.
 
-If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
+> Since `User.Read.All` is a Role permission, you will also need to grant admin consent in AAD on the assignment
+
+
+Afterwards, add the following to your meshStack config
 
 <!--snippet:mesh.meshfed.identity.azure.creds#type-->
 
@@ -278,10 +282,7 @@ let example
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-The Azure Service Principal must have at least the `User.Read.All` permission for the [list users web call](https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#permissions).
-
-
-#### Configure for Google Cloud Directory
+#### Configure Google Cloud Directory
 
 In order to use GCD as a lookup provider you need to provide these credentials:
 
