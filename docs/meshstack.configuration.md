@@ -132,9 +132,6 @@ When a user is invited to a customer there are several configurations in order t
 }
 ```
 
-
-
-
 ### Address Metadata
 
 meshStack can maintain company and billing address metadata for meshCustomers and meshProjects. This is useful if your
@@ -194,27 +191,97 @@ Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
 
 When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider and Google Cloud Directory (GCD). This makes it easier for people to invite additional users without remembering their full contact details.
 
-#### Configure Azure AAD
+#### Configure for Azure AAD
+
+In order to use this functionality, you must create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions as an **application permission**:
+
+- `User.Read.All`
+
+> You will also need to grant admin consent in AAD in order to activate the  `User.Read.All` permission.
 
 If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
 
-```dhall
-{ azure :
+<!--snippet:mesh.meshfed.identity.azure.creds#type-->
 
-  { {- Either friendly domain name or your tenants GUID -}
-    aadTenant : Text
-    {- Service Principal Client Id -}
-  , clientId : Text
-    {- Service Principal Client Secret -}
-  , clientSecret : Text
-  }
-}
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureCreds =
+    {-
+      Setting this configuration enables the use of an AAD as a user lookup source to allow
+      autocomplete of user information when adding new users to customers.
+
+        aad-tenant:
+            The active directory tenant. Its either a UID of the AAD or its domain
+            like devmeshcloud.onmicrosoft.com
+
+        client-id:
+            The client id of the service principal
+
+        client-secret:
+            The credentials of the service principal
+
+        user-lookup-strategy:
+            The lookupstrategy which is used in order to find the user. Use either
+            UserByUsernameLookupStrategy or UserByMailLookupStrategy. The UserByMailLookupStrategy
+            uses the users euid and uses it as an E-Mail address for AAD lookup. The
+            UserByUsernameLookupStrategy assumes the euid is an userPrincipalName for AAD lookup.
+    -}
+      { aad-tenant : Text
+      , client-id : Text
+      , client-secret : Secret.Type
+      , user-lookup-strategy : AzureLookupStrategy
+      }
 ```
+<!--Example-->
+```dhall
+let example
+    : AzureCreds
+    = { aad-tenant = "devmeshcloud.onmicrosoft.com"
+      , client-id = "f112f31-248a-4461-1269-0f13164acb95"
+      , client-secret = Secret.fromAnsible "client_secret"
+      , user-lookup-strategy =
+          AzureLookupStrategy.UserByMailLookupStrategy
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+<!--snippet:mesh.meshfed.identity.azure.guest#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureGuestDetection =
+    {-
+      When adding/inviting a new user to a customer a custom attribute property from the AAD data
+      can be used to determine if it is a guest user.
+      Attention: This check is only performed on the first attempt when a user is added/invited
+      to a customer. If this check is configured after some users where initially added to a
+      customer they are not detected as guest users anymore.
+
+        guest-property:
+            The AAD's custom attribute which is checked against the guest-value.
+
+        guest-value:
+            If the AAD custom attribute matches this value the user is considered to be a guest.
+    -}
+      { guest-property : Text, guest-value : Text }
+```
+<!--Example-->
+```dhall
+let example
+    : AzureGuestDetection
+    = { guest-property = "guest-property", guest-value = "is-guest" }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 
 The Azure Service Principal must have at least the `User.Read.All` permission for the [list users web call](https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#permissions).
 
 
-#### Configure Google Cloud Directory
+#### Configure for Google Cloud Directory
 
 In order to use GCD as a lookup provider you need to provide these credentials:
 

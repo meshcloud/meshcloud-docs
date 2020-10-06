@@ -227,16 +227,6 @@ In order to read resource usages, a metering principal is needed. It requires th
 
 - `Cost Management Reader`
 
-
-### Identity Provider (IdP) Lookup
-
-This principal is only required if the AAD is actually be used as source of user information when assigning users to meshCustomers or meshProjects inside the meshPanel. In order to use this functionality, create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions:
-
-- `User.Read.All`
-
-> Since `User.Read.All` is a Role permission, you will also need to grant admin consent in AAD on the assignment
-
-
 ## Blueprint Configuration
 
 The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
