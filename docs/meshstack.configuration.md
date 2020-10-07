@@ -191,7 +191,7 @@ Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
 
 When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider and Google Cloud Directory (GCD). This makes it easier for people to invite additional users without remembering their full contact details.
 
-#### Configure for Azure AAD
+#### Configure Azure AAD
 
 In order to use this functionality, create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions:
 
