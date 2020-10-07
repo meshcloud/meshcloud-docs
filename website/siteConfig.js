@@ -58,11 +58,17 @@ const siteConfig = {
       "Montserrat",
       "sans-serif"
     ],
+    // this needs to be before textFont, as docusaurus is variable string matching in a sequential order
+    textFontBold: [
+      "Roboto-Bold",
+      "-apple-system",
+      "system-ui"
+    ],
     textFont: [
       "Roboto",
       "-apple-system",
       "system-ui"
-    ]
+    ],
   },
 
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
@@ -87,16 +93,16 @@ const siteConfig = {
   // Add custom scripts here that would be placed in <script> tags
   scripts: [
     'https://buttons.github.io/buttons.js',
-    
+
     // add "copy code" buttons to code block
     // see https://gist.github.com/yangshun/55db997ed0f8f4e6527571fc3bee4675
     '/js/clipboard.min.js', // from https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js but we want to avoid 3rd party CDN
-    '/js/code-block-buttons.js', 
+    '/js/code-block-buttons.js',
   ],
 
   /* On page navigation for the current documentation page */
   onPageNav: 'separate',
-  
+
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
   docsSideNavCollapsible: true,

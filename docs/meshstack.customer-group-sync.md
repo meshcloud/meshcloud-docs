@@ -106,16 +106,19 @@ transformations on the matched attribute, called the `RegexField`. The `RegexFie
 ```dhall
 let BaseField =
     {-
-        transformationType:
-           One of static or regex. Static transformation will simply take the LDAP attribute value.
-           The regex transformation will perform extra operations on the matched value.
-        field:
-           The meshObject field that should be assigned the result of this field mapping.
-           For example, "metadata.name"
-        attribute:
-           The LDAP attribute that should be processed. For example "cn"
-        postProcessor:
-           Any post processing function that should be run on the mapped value. Can be one of UPPERCASE or LOWERCASE
+      transformationType:
+          One of "static" or "regex". Static transformation will simply take the LDAP attribute value.
+          The regex transformation will perform extra operations on the matched value.
+
+      field:
+          The meshObject field that should be assigned the result of this field mapping.
+          For example, "metadata.name"
+
+      attribute:
+          The LDAP attribute that should be processed. For example "cn"
+
+      postProcessor:
+          Any post processing function that should be run on the mapped value. Can be one of UPPERCASE or LOWERCASE
     -}
       { transformationType : Text
       , field : Text
@@ -133,13 +136,16 @@ let BaseField =
 ```dhall
 let RegexField =
     {-
-        rules:
-            A list of regex rules that the LDAP attributes will be tested against for a match. The matching is performed
-            sequentially until a match is found.
-        template:
-            An optional template where the extracted value should be inserted into. The format should follow the Java String.format
-            contract.
-        otherwise: A optional default value to be assigned if none of the rules match.
+      rules:
+          A list of regex rules that the LDAP attributes will be tested against for a match.
+          The matching is performed sequentially until a match is found.
+
+      template:
+          An optional template where the extracted value should be inserted into.
+          The format should follow the Java String.format contract.
+
+      otherwise:
+          An optional default value to be assigned if none of the rules match.
     -}
         BaseField
       ⩓ { rules : List RegexRule
@@ -159,13 +165,14 @@ The RegexRule mentioned above is as follows.
 ```dhall
 let RegexRule =
     {-
-        value:
-            This is an optional parameter. If it is defined, if the LDAP attribute matches the
-            regular expression, this value will be assigned as the value of the meshObject field.
-        regex:
-            The regular expression against which the LDAP attribute should be matched. If the value parameter
-            is not defined, the regular expression MUST contain a group and the first group will be assigned
-            as the value of the meshObject field.
+      value:
+          This is an optional parameter. If it is defined, if the LDAP attribute matches the
+          regular expression, this value will be assigned as the value of the meshObject field.
+
+      regex:
+          The regular expression against which the LDAP attribute should be matched. If the value parameter
+          is not defined, the regular expression MUST contain a group and the first group will be assigned
+          as the value of the meshObject field.
     -}
       { regex : Text, value : Optional Text }
 ```
