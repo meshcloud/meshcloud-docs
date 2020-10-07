@@ -32,7 +32,7 @@ their associated validation rules. These rules can describe for example if a tag
 
 > meshStack currently supports tag schemas on [meshCustomers](meshcloud.customer.md) and [meshProjects](meshcloud.project.md) only.
 
-For each supported entity, meshStack can maintain two separate separate tag-schemas: **unrestricted** and **restricted** tags.
+For each supported entity, meshStack can maintain two separate tag-schemas: **unrestricted** and **restricted** tags.
 
 ### Unrestricted Tags
 
@@ -40,8 +40,8 @@ Entity owners can edit tag values for **unrestricted tags** in self-service via 
 
 ### Restricted Tags
 
-Only [Partners](./administration.index.md) can edit tag values for **restricted tags**. This is useful if an organization
-needs to maintain metadata but doesn't want users to edit these values in self-service. For example, an organization can use restricted tags to implement a "segregation of duty" control to ensure that a partner
+Only [Partners](./administration.index.md) can edit tag values for **restricted tags** indirectly via authoritative external system.
+This is useful if an organization needs to maintain metadata but doesn't want users to edit these values in self-service. For example, an organization can use restricted tags to implement a "segregation of duty" control to ensure that a partner
 user confirmed a project's data classification.
 
 ## Configuring Tag Schemas
@@ -52,7 +52,7 @@ Operators define tag-schemas using JSON Schema. As described earlier on this pag
 cases like providing parameters to Landing Zones. To ensure compatibility with different interfaces, tags must be simple
 key-value pairs of strings only.
 
-The tag schema must therefore ensure all values are `string` values only. Operators that wish to represent numbers can
+The tag schema must therefore ensure all values are `string` values only. Operators who want to represent numbers can
 restrict the string value via an appropriate `pattern`.
 
 > Please be aware that meshStack currently supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
@@ -274,8 +274,8 @@ The following limitations apply:
 - Maximum number of tags on a single resource is 64.
 - Keys have a minimum length of 1 character and a maximum length of 63 characters, and cannot be empty.
 - Values can be empty, and have a maximum length of 63 characters.
-- Key pattern: `[a-z]([-a-z0-9]*[a-z0-9])?`
-- Value pattern: `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+- Key pattern: `[a-z]([_-a-z0-9]*[a-z0-9])?`
+- Value pattern: `([_-a-z0-9]*[a-z0-9])?`
 
 > **Note** The patterns are slightly different then the description in the GCP docs but where taken from the GCP Java SDK. We recommend no using underscores and stick to the pattern given in the SDK.
 
