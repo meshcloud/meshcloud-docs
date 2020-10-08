@@ -119,7 +119,7 @@ The Azure Role Definition is the RBAC ID of the Azure role you want to use. You 
 
 Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
-Please review the [meshStack Landing Zone Http Header interface](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+Please review the [HTTP header interface documentation](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
 In addition to the headers referenced above, meshStack provides the following Azure-specific HTTP headers:
 
