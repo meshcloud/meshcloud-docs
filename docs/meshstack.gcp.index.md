@@ -100,58 +100,22 @@ In order to associate created projects with a Billing Account, the replicator ne
 
 ## Cloud Identity Configuration
 
-### meshfed-service User
+### Authorizing the Service Account
 
-The Service Account created above needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
-Depending on your organization's setup of Google Cloud Identity, provisioning a technical user in the cloud directory
-may require one of the following two alternatives.
+In order to perform certain group related administrative tasks the previosly created service account needs an additional role from the Admin Console (G Suite). In order to add this role you need to get the `unique ID` of the Service Account first.
 
-1. Provisioning the user as a "cloud only" Account in the [Google Admin Console](https://admin.google.com/).
-2. Provisioning the user in an on-premises directory synced with the cloud directory
+Please follow the official [Google guide](https://cloud.google.com/identity/docs/how-to/setup#auth-no-dwd) in order to:
 
-> In any case, you will have to log in with the user once to accept Google's Terms of Service. If you provision the user
-> as a "cloud only" account but have federation enabled on your cloud directory, temporarily making the technical user
-> a ["Super Admin" disables SSO](https://support.google.com/a/answer/6341409?hl=en) and enables cloud only login.
+1. Find the `roleID` of the `Group Administrator` role in your Admin SDK.
+2. Use the [Role Assignments API](https://developers.google.com/admin-sdk/directory/v1/reference/roleAssignments/insert) and assign this role to the service account with help of its unique id. The HTTP POST payload looks like:
 
-
-We recommend calling this user `meshfed-service`. You may also want to consider provisioning it on a domain reserved for technical
-user accounts. The user will be identified by an email like:
-
-```text
-meshfed-service@dev.meshcloud.io
+```json
+{
+  "assignedTo": "SERVICE_ACCOUNT_UNIQUE_ID",
+  "roleID": "ROLE_ID",
+  "scopeType": "CUSTOMER"
+}
 ```
-
-You can reset the password of this user after completing the setup instructions. This helps ensure that only the
- `meshfed-service` Service Account is able to impersonate the technical user account.
-
-#### Assign Admin Roles
-
-Add the User to the following [admin roles](https://support.google.com/cloudidentity/answer/2405986?hl=en)
-
-- `User Management Admin`
-- `Groups Admin`
-
-#### Accept Google ToS
-
-The technical user needs to accept Google’s ToS after signing in as `meshfed-service@dev.meshcloud.io`.
-
-Open a private browser session and
-
-- sign in to the [admin console](https://admin.google.com/). Accept any ToS presented.
-- sign in to the [Google Cloud Console](https://console.cloud.google.com/). Accept the GCP ToS.
-
-### Enable Automated OAuth Consent
-
-Enable Automated Consent in the G Admin Console
-
-- Go to [Manage OAuth Clients](https://support.google.com/a/answer/162106?hl=en)
-- Add a new Authorized client with these details
-  - Client Name = `Client Id` of `meshfed-service` Service Account from Google Cloud Console (displayed under “Domain-wide Delegation” on the Service Account Details Page )
-  - Scopes:
-
-      ```text
-      https://www.googleapis.com/auth/admin.directory.user, https://www.googleapis.com/auth/admin.directory.group
-      ```
 
 ## Configuration Reference
 
