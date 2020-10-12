@@ -183,7 +183,7 @@ let RegexAttributeTransformation =
           The matching is performed sequentially until a match is found.
           A single rule has the following structure
           value:
-              This is an optional parameter. If it is defined, if the LDAP attribute matches the
+              This is an optional parameter. If it is defined and if the LDAP attribute matches the
               regular expression, this value will be assigned as the value of the meshObject field.
           regex:
               The regular expression against which the LDAP attribute should be matched. If the value parameter
