@@ -59,7 +59,8 @@ If you want to prevent a customer from creating new [meshProjects](meshcloud.pro
 
 ### Access managed Customer Accounts
 
-As a partner user you can assign yourself a role on managed managed customer accounts.
+As a partner user you can assign yourself a role on managed customer accounts. Please note that this only works
+if 'Customer Admin' assignment is allowed in the panel ([read more here](meshstack.configuration.md#customer-user-invitations))
 
 1. Go to **Administration &gt; Customers** and click on the **Users** icon on the managed customer account you want to edit.
 2. In the **Customers Users** view click on the button **Add Myself** in the top right corner.
