@@ -126,11 +126,12 @@ When a user is invited to a customer there are several configurations in order t
         GCP and Azure projects to directly replicate the users permission without
         requiring him to login into the panel first -}
         , setEmailAsEuid : Bool
-        {- If set to true, all possible ways of granting the Customer Admin role via 
+        {- If set to true, all possible ways of granting the Customer Admin role via
         the panel will be prohibited. This means that the Customer Admin role can only
         be assigned via the meshObject API. This is useful when an external system
         is the source of truth regarding Customer Admin role assignments. This value
-        is 'false' by default. -}
+        is 'false' by default. If someone uses the 'Add Myself' button in the partner
+        area, this person will be assigned as 'Customer Employee' instead. -}
         , restrictCustomerAdminRoleAssignment : Optional Bool
         }
       , revocation : Optional UserRevocation
