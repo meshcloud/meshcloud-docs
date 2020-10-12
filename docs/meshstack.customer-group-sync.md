@@ -17,7 +17,7 @@ The synchronization process is done in three parts.
 
 ### Collect
 
-In the Collect step, we connect to the LDAP server and fetch the LDAP entities. In order to do that,
+In the "Collect" step, we connect to the LDAP server and fetch the LDAP entities. In order to do that,
 the configuration needs to contain the information required to establish a connection with the LDAP server.
 The configuration model is as follows.
 
