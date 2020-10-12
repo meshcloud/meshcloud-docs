@@ -104,7 +104,7 @@ Azure-role assignments.
 
 The name of the generated subscriptions can be fully customized. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
 
-For example the default string pattern `%s.%s-%5$s` would generate the group name `customer.project-role`.
+For example the default string pattern `%s.%s-%4$s` would generate the group name `customer.project-role`.
 
 > Operators must be careful to ensure resulting group names are unique for project-role combinations. Groups should also not conflict with existing AAD groups.
 
@@ -113,5 +113,4 @@ The arguments available here are:
 1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
-4. argument: tenantNumber (numeric), a running number specific to each platform which can optionally be enabled
-5. argument: role name alias.
+4. argument: role name alias.
