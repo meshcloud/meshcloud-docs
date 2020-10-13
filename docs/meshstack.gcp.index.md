@@ -176,6 +176,10 @@ let GcpPlatformCoreConfiguration =
         projects can be assigned to sub folders of the defined resource manager folder in a landing zone.
         If this config flag is disabled the replicator forces to create projects only directly under the resource manager folder.
         Every project which is not directly attached to the resource manager folder will be then moved via gcp function to the right folder.
+
+      tenantTags:
+        Configures how to map tags coming from meshfed to project labels in GCP. For more information please look into
+        the TenantTags type documentation.
     -}
       { platform : Text
       , domain : Text
@@ -183,6 +187,7 @@ let GcpPlatformCoreConfiguration =
       , billing-account-id : Text
       , project-id-pattern : Text
       , allow-hierarchical-folder-assignment : Bool
+      , tenant-tags : Optional TenantTags
       }
 ```
 <!--Example-->
@@ -195,6 +200,14 @@ let example
       , billing-account-id = "123456-1234ABCD-1234FF"
       , project-id-pattern = "%.15s-%.10s-%.3s"
       , allow-hierarchical-folder-assignment = True
+      , tenant-tags = Some
+        { namespace-prefix = "meshstack_"
+        , tag-definitions =
+          [ { name = "cident"
+            , value-pattern = "prefix-\${customerIdentifier}"
+            }
+          ]
+        }
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -233,25 +246,17 @@ using the following options.
 ```dhall
 let GcpPlatformCredentialConfiguration =
     {-
-      impersonatedServiceUser:
-        The username of the service user to impersonate in Google Cloud Identity Directory. The replicator uses
-        this service user to automate directory operations (Google Admin SDK).
-
       serviceAccountCredentialsB64:
         base64 encoded credentials.json file for a GCP ServiceAccount. The replicator uses this Service Account
         to automate GCP API operations (IAM, ResourceManager etc.).
     -}
-      { impersonated-service-user : Text
-      , service-account-credentials-b64 : Secret
-      }
+      { service-account-credentials-b64 : Secret }
 ```
 <!--Example-->
 ```dhall
 let example
     : GcpPlatformCredentialConfiguration
-    = { impersonated-service-user = "meshfed-service@myorg.example.com"
-      , service-account-credentials-b64 = Secret.Native "b123"
-      }
+    = { service-account-credentials-b64 = Secret.Native "b123" }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
