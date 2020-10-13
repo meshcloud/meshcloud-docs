@@ -45,19 +45,17 @@ let AzurePlatformCoreConfiguration =
           1. meshCustomer identifier
           2. meshProject identifier
           3. meshProject ID (numeric)
-          4. tenantNumber (numeric), a running number specific to each platform which can be optionally enabled
 
         Operators must ensure the resulting subscription names are unique in the managed AAD Tenant.
 
-      groupNamePattern:
+      group-name-pattern:
         Configures the pattern that defines the desired name of AAD groups managed by meshStack.
         This Java String.format format string receiving the following arguments:
 
           1. meshCustomer identifier
           2. meshProject identifier
           3. meshProject ID (numeric)
-          4. tenantNumber (numeric), a running number specific to each platform which can be optionally enabled
-          5. role name suffix (configurable via Landing Zone)
+          4. role name suffix (configurable via Landing Zone)
 
         Operators must ensure the group names are unique in the managed AAD Tenant.
     -}
@@ -75,7 +73,7 @@ let example
       -- and group names like "customer.project-reader"
       { platform = "azure.mylocation"
       , subscription-name-pattern = Some "%s.%s"
-      , group-name-pattern = Some ".%s.%s-%5\$s"
+      , group-name-pattern = Some ".%s.%s-%4\$s"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
