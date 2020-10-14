@@ -30,7 +30,7 @@ Operators can model this metadata as **tags** using a [tag schema](#tag-schemas)
 [Configured tag-schemas](meshstack.tag-schema.md) describe the tags available on each meshModel entity and
 their associated validation rules. These rules can describe for example if a tag is required or optional.
 
-> meshStack currently supports tag schemas on [meshCustomers](meshcloud.customer.md) and [meshProjects](meshcloud.project.md) only.
+> meshStack currently supports tag schemas on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md) and [meshLandingZones](meshcloud.landing-zones.md).
 
 For each supported entity, meshStack can maintain two separate tag-schemas: **unrestricted** and **restricted** tags.
 
@@ -50,9 +50,9 @@ user confirmed a project's data classification.
 
 Operators define tag-schemas using JSON Schema. As described earlier on this page, meshStack uses metadata tags in a wide range of use
 cases like providing parameters to Landing Zones. To ensure compatibility with different interfaces, tags must be simple
-key-value pairs of strings only.
+key-value pairs of strings only. A list of strings is also allowed, e.g. `environment = ['qa', 'production']`.
 
-The tag schema must therefore ensure all values are `string` values only. Operators who want to represent numbers can
+The tag schema must therefore ensure all values are `string` or `string[]` values only. Operators who want to represent numbers can
 restrict the string value via an appropriate `pattern`.
 
 > Please be aware that meshStack currently supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
@@ -62,6 +62,7 @@ As an **example**, the following meshCustomer tag schema defines the following m
 - `costCenter`: a required string with exactly 4 digits
 - `customerOwner`: an optional string designating the responsible owner
 - `dataClassification`: a restricted option (designated by `restricted: true` on the property description)
+- `environment`: a list that indicates what types of staging environments are used in the meshCustomer. (this is a good example of an array of strings)
 
 > By convention, tag names must always use `camelCase` notation.
 
@@ -110,6 +111,45 @@ As an **example**, the following meshCustomer tag schema defines the following m
         }
       ],
       "default": "internal"
+    },
+    "environment": {
+      "$id": "/properties/environment",
+      "type": "array",
+      "title": "Environment",
+      "description": "The environment(s) the customer uses.",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "oneOf": [
+          {
+            "description": "Development",
+            "enum": [
+              "dev"
+            ]
+          },
+          {
+            "description": "Test",
+            "enum": [
+              "test"
+            ]
+          },
+          {
+            "description": "QA",
+            "enum": [
+              "qa"
+            ]
+          },
+          {
+            "description": "Production",
+            "enum": [
+              "prod"
+            ]
+          }
+        ]
+      },
+      "widget": "multiselect",
+      "default": ["dev"],
+      "restricted": true
     }
   },
   "required": [
@@ -126,6 +166,7 @@ Operators can configure tag schemas in the [meshStack configuration model](meshs
 {
   customerTagSchema = Some "./my-customer-tag-schema.json"
 , projectTagSchema = Some "./my-project-tag-schema.json"
+, landingZoneTagSchema = Some "./my-landing-zone-tag-schema.json"
 }
 ```
 
