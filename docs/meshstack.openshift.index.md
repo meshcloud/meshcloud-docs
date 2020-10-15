@@ -5,62 +5,29 @@ title: Integration
 
 meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.index.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
 
-meshStack supports project creation, configuration, user management and SSO for OpenShift.
+meshStack supports project creation, configuration and user management for OpenShift.
 
 ## Integration Overview
 
 To enable integration with OpenShift, operators deploy and configure the meshStack OpenShift Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` OpenShift. This makes OpenShift available to meshProjects like any other cloud platform in meshStack.
 
-meshStack automatically configures OpenShift Projects and Permissions to integrate SSO with [meshStack Identity Federation](./meshstack.identity-federation.md).
-
 ## Prerequisites
 
 ### OpenShift Versions
 
-meshStack currently supports OpenShift version 3.7 as either Open-Source (OKD) or OpenShift Enterprise variants.
+meshStack currently supports OpenShift version 3.9+ as either Open-Source (OKD) or OpenShift Enterprise variants.
 
 ### IdP Configuration
 
-In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as an [OpenID Identity Provider in OpenShift](https://docs.okd.io/latest/authentication/identity_providers/configuring-oidc-identity-provider.html) using the following settings:
-
-```yml
-identityProviders:
-  - name: meshfed_oidc
-    challenge: false
-    login: true
-    mappingMethod: claim
-    provider:
-      apiVersion: v1
-      kind: OpenIDIdentityProvider
-      clientID: meshfed-oidc
-      clientSecret: ignored
-      extraScopes:
-      - email
-      - profile
-      - skipIdentifierSelection
-      extraAuthorizeParameters:
-        include_granted_scopes: "true"
-      claims:
-        id:
-        - sub
-        preferredUsername:
-        - sub
-        name:
-        - preferred_username
-        email:
-        - email
-      urls:
-        authorize: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/auth?response_mode=query
-        token: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/token
-        userInfo: https://sso.example.meshcloud.io/auth/realms/meshfed/protocol/openid-connect/userinfo
-```
+The same external IdP as configured for meshStack must be used for OpenShift (see [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities)).
+meshStack will identify and assign users in OpenShift via their euid (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
 
 ### meshStack Service Accounts
 
 The meshStack OpenShift Modules use dedicated OpenShift ServiceAccounts to work with OpenShift APIs on behalf of meshStack.
 To create these credentials, create the following objects via `oc create -f <file>` as a Cluster Administrator.
 
-> You can also use `oc replace -f <file>` to update existing definitions.
+> After you initially created the service account once, you can use `oc replace -f <file>` to update existing definitions.
 
 The meshStack ServiceAccounts can be located in a dedicated namespace. In the following yaml files we use the `meshcloud` namespace for the ServiceAccounts.
 You can also define a different namespace if you prefer.
@@ -227,6 +194,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: meshfed-metering
+  namespace: meshcloud
   annotations:
     io.meshcloud/meshstack.metering-openshift.version: "1.0"
 ---
@@ -260,6 +228,48 @@ roleRef:
   kind: ClusterRole
   name: meshfed-metering
 ```
+
+#### Retrieve the secret
+
+In order to retrieve the secrets of the service accounts, please execute the following commands.
+
+```bash
+$ oc describe sa meshfed-service -n meshcloud
+Name:                meshfed-service
+Namespace:           meshcloud
+Labels:              <none>
+Annotations:         io.meshcloud/meshstack.replicator-openshift.version: 1.0
+Image pull secrets:  meshfed-service-dockercfg-kgvnj
+Mountable secrets:   meshfed-service-token-5vvls
+                     meshfed-service-dockercfg-kgvnj
+Tokens:              meshfed-service-token-5vvls
+                     meshfed-service-token-fmnd6
+                     meshfed-service-token-kbst7
+                     meshfed-service-token-n45k6
+Events:              <none>
+```
+
+Here you get a list of available tokens. Pick one of the tokens and use it in the following command.
+
+```bash
+$ oc describe secret meshfed-service-token-5vvls -n meshcloud
+Name:         meshfed-service-token-5vvls
+Namespace:    meshcloud
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name: meshfed-service
+              kubernetes.io/service-account.uid: bb537f6b-7a64-408b-9e47-933ac9d1aab4
+
+Type:  kubernetes.io/service-account-token
+
+Data
+====
+ca.crt:          5940 bytes
+namespace:       9 bytes
+service-ca.crt:  7153 bytes
+token:           eyJhbGciOiJ...
+```
+
+Use the token provided here in the meshStack OpenShift connector configuration. Do the same for the meshfed-metering service account.
 
 ### Custom meshProject Roles
 

@@ -100,58 +100,22 @@ In order to associate created projects with a Billing Account, the replicator ne
 
 ## Cloud Identity Configuration
 
-### meshfed-service User
+### Authorizing the Service Account
 
-The Service Account created above needs to impersonate a technical user to perform [delegated operations using the Admin SDK](https://developers.google.com/admin-sdk/directory/v1/guides/delegation).
-Depending on your organization's setup of Google Cloud Identity, provisioning a technical user in the cloud directory
-may require one of the following two alternatives.
+In order to perform certain group related administrative tasks the previosly created service account needs an additional role from the Admin Console (G Suite). In order to add this role you need to get the `unique ID` of the Service Account first.
 
-1. Provisioning the user as a "cloud only" Account in the [Google Admin Console](https://admin.google.com/).
-2. Provisioning the user in an on-premises directory synced with the cloud directory
+Please follow the official [Google guide](https://cloud.google.com/identity/docs/how-to/setup#auth-no-dwd) in order to:
 
-> In any case, you will have to log in with the user once to accept Google's Terms of Service. If you provision the user
-> as a "cloud only" account but have federation enabled on your cloud directory, temporarily making the technical user
-> a ["Super Admin" disables SSO](https://support.google.com/a/answer/6341409?hl=en) and enables cloud only login.
+1. Find the `roleID` of the `Group Administrator` role in your Admin SDK.
+2. Use the [Role Assignments API](https://developers.google.com/admin-sdk/directory/v1/reference/roleAssignments/insert) and assign this role to the service account with help of its unique id. The HTTP POST payload looks like:
 
-
-We recommend calling this user `meshfed-service`. You may also want to consider provisioning it on a domain reserved for technical
-user accounts. The user will be identified by an email like:
-
-```text
-meshfed-service@dev.meshcloud.io
+```json
+{
+  "assignedTo": "SERVICE_ACCOUNT_UNIQUE_ID",
+  "roleID": "ROLE_ID",
+  "scopeType": "CUSTOMER"
+}
 ```
-
-You can reset the password of this user after completing the setup instructions. This helps ensure that only the
- `meshfed-service` Service Account is able to impersonate the technical user account.
-
-#### Assign Admin Roles
-
-Add the User to the following [admin roles](https://support.google.com/cloudidentity/answer/2405986?hl=en)
-
-- `User Management Admin`
-- `Groups Admin`
-
-#### Accept Google ToS
-
-The technical user needs to accept Google’s ToS after signing in as `meshfed-service@dev.meshcloud.io`.
-
-Open a private browser session and
-
-- sign in to the [admin console](https://admin.google.com/). Accept any ToS presented.
-- sign in to the [Google Cloud Console](https://console.cloud.google.com/). Accept the GCP ToS.
-
-### Enable Automated OAuth Consent
-
-Enable Automated Consent in the G Admin Console
-
-- Go to [Manage OAuth Clients](https://support.google.com/a/answer/162106?hl=en)
-- Add a new Authorized client with these details
-  - Client Name = `Client Id` of `meshfed-service` Service Account from Google Cloud Console (displayed under “Domain-wide Delegation” on the Service Account Details Page )
-  - Scopes:
-
-      ```text
-      https://www.googleapis.com/auth/admin.directory.user, https://www.googleapis.com/auth/admin.directory.group
-      ```
 
 ## Configuration Reference
 
@@ -212,6 +176,10 @@ let GcpPlatformCoreConfiguration =
         projects can be assigned to sub folders of the defined resource manager folder in a landing zone.
         If this config flag is disabled the replicator forces to create projects only directly under the resource manager folder.
         Every project which is not directly attached to the resource manager folder will be then moved via gcp function to the right folder.
+
+      tenantTags:
+        Configures how to map tags coming from meshfed to project labels in GCP. For more information please look into
+        the TenantTags type documentation.
     -}
       { platform : Text
       , domain : Text
@@ -219,6 +187,7 @@ let GcpPlatformCoreConfiguration =
       , billing-account-id : Text
       , project-id-pattern : Text
       , allow-hierarchical-folder-assignment : Bool
+      , tenant-tags : Optional TenantTags
       }
 ```
 <!--Example-->
@@ -231,6 +200,14 @@ let example
       , billing-account-id = "123456-1234ABCD-1234FF"
       , project-id-pattern = "%.15s-%.10s-%.3s"
       , allow-hierarchical-folder-assignment = True
+      , tenant-tags = Some
+        { namespace-prefix = "meshstack_"
+        , tag-definitions =
+          [ { name = "cident"
+            , value-pattern = "prefix-\${customerIdentifier}"
+            }
+          ]
+        }
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -269,25 +246,17 @@ using the following options.
 ```dhall
 let GcpPlatformCredentialConfiguration =
     {-
-      impersonatedServiceUser:
-        The username of the service user to impersonate in Google Cloud Identity Directory. The replicator uses
-        this service user to automate directory operations (Google Admin SDK).
-
       serviceAccountCredentialsB64:
         base64 encoded credentials.json file for a GCP ServiceAccount. The replicator uses this Service Account
         to automate GCP API operations (IAM, ResourceManager etc.).
     -}
-      { impersonated-service-user : Text
-      , service-account-credentials-b64 : Secret
-      }
+      { service-account-credentials-b64 : Secret }
 ```
 <!--Example-->
 ```dhall
 let example
     : GcpPlatformCredentialConfiguration
-    = { impersonated-service-user = "meshfed-service@myorg.example.com"
-      , service-account-credentials-b64 = Secret.Native "b123"
-      }
+    = { service-account-credentials-b64 = Secret.Native "b123" }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
