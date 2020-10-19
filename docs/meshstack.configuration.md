@@ -355,6 +355,58 @@ let exampleNoMessage
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+### Customizable Payment Method Validation
+
+As every organization has its unique accounting and cost allocation processes, it is possible to alter
+several aspects of the payment method functionality. For payment methods that are of the type 'COST_CENTER', the configuration below provides customization for this type of payment method (configuration is stored under `panel.ui.costCenter`)
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+{
+    {- An alias for the definition 'cost center' that your organization might use. }
+    alias : Text
+
+    {- A custom RegEx pattern that validates the user's input. }
+  , validationPattern : Text
+
+    {- The error message that should be displayed when the user's input does not match the validationPattern. }
+  , validationErrorMsg : Text
+}
+```
+<!--Example-->
+```dhall
+{
+    alias = "ACME Center"
+  , validationPattern = "\\d{6}"
+  , validationErrorMsg = "You entered an invalid ACME Center number, this should be exactly six digits."
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+Additionally, there is the configuration for the payment methods of type 'COST_LIMITATION'. This can be found under `panel.ui.costLimitation`
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+{
+    {- Alias(es) for the list of payment method settings that are stored as key-value pairs. This is useful for
+       creating more human readable text values of certain payment method settings inside the meshPanel. }
+    aliases : List { mapKey : Text, mapValue : Text }
+}
+```
+<!--Example-->
+```dhall
+{
+    aliases =
+    [ { mapKey = "costCenter", mapValue = "ACME Cost Center" }
+    , { mapKey = "anotherValue", mapValue = "Some custom value" }
+    ]
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
 ### Customizable Descriptions
 
 Depending on your meshStack implementation, it may be helpful for you to customize error descriptions to guide
