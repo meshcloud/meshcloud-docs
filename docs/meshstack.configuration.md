@@ -357,8 +357,7 @@ let exampleNoMessage
 
 ### Customizable Payment Method Validation
 
-As every organization has its unique accounting and cost allocation processes, it is possible to alter
-several aspects of the payment method functionality. For payment methods that are of the type 'COST_CENTER', the configuration below provides customization for this type of payment method (configuration is stored under `panel.ui.costCenter`)
+As every organization has its unique accounting and cost allocation processes, it is possible to alter several aspects of the payment method functionality. For payment methods that are of the type 'COST_CENTER', the configuration below provides customization for this type of payment method (configuration is stored under `panel.ui.costCenter`)
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
