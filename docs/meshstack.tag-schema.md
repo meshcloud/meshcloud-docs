@@ -283,13 +283,21 @@ The following resources are tagged:
 
 The following limitations apply:
 
-- Maximum number of tags on a single resource is 15, you can work around this by combining multiple values into a single tag.
+- Maximum number of tags on a single resource is 50, you can work around this by combining multiple values into a single tag.
 - Tag names can have up to 512 characters
 - Tag values can have up to 256 characters
+- Tag names can not start with either `microsoft`, `azure`, `windows`
 - Tags are not case-sensitive
 - Tag keys can **not** contain any of: `<`, `>`, `%`, `&`, `/` or `?`
 
 For more information about Azure Tags [see the Azure Docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#rest-api).
+
+During replication non conform tag keys and values are possibly adapted to the platform limitations by:
+
+- If tag names are longer then 512 characters the remaining characters are discarded
+- If tag values are longer then 256 characters, the remaining characters are discarded
+- Illegal characters are replaced with a `_`
+- If a configuration would force a tag key to start with a forbidden prefix we signal an error and wont replicate this project
 
 ### AWS Tags
 
@@ -303,6 +311,12 @@ The following limitations apply:
 - Value length between 0 and 256. Pattern: `^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$`.
 
 For more information about AWS tags see the [API docs](https://docs.aws.amazon.com/organizations/latest/APIReference/API_TagResource.html) and the [general documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html).
+
+During replication non conform tag keys and values are possibly adapted to the platform limitations by:
+
+- If tag names are longer then 128 characters the remaining characters are discarded
+- If tag values are longer then 256 characters, the remaining characters are discarded
+- Illegal characters are replaced with a `_`
 
 ### GCP Tags
 
@@ -318,9 +332,14 @@ The following limitations apply:
 - Key pattern: `[a-z]([_-a-z0-9]*[a-z0-9])?`
 - Value pattern: `([_-a-z0-9]*[a-z0-9])?`
 
-> **Note** The patterns are slightly different then the description in the GCP docs but where taken from the GCP Java SDK. We recommend no using underscores and stick to the pattern given in the SDK.
-
 For more information about GCP Labels [see the GCP Docs](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
+
+During replication non conform tag keys and values are possibly adapted to the platform limitations by:
+
+- If tag names are longer then 64 characters the remaining characters are discarded
+- If tag values are longer then 64 characters, the remaining characters are discarded
+- Keys and values are forced to be lowercase
+- Illegal characters are replaced with a `_`
 
 ## Tags in Reports
 
