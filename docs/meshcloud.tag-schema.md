@@ -4,7 +4,7 @@ title: Metadata Tags
 ---
 
 Organizations can configure meshStack to collect, attach and distribute organization-specific metadata
-to objects in the [meshModel](meshcloud.index.md) like [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md) and [payment methods](./meshcloud.project-metering.md#payment-methods).
+to objects in the [meshModel](meshcloud.index.md) like [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md) and [payment methods](./meshcloud.payment-methods.md).
 
 This metadata can consist of arbitrary key-value pairs called **Tags**. meshStack Operators define available tags and their validation rules by [configuring tag-schemas](meshstack.tag-schema.md).
 

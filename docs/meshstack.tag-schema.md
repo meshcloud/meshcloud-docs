@@ -174,10 +174,10 @@ The schemas need to be available in the configuration repository.
 
 ### Payment Methods
 
-[Payment Methods](meshcloud.project-metering.md#payment-methods) can also provide metadata information. For example,
+[Payment Methods](meshcloud.payment-methods.md) can also provide metadata information. For example,
 the default "cost center" payment method provides the `costCenter` tag.
 
-Operators can also add additional metadata information to [Payment Methods](meshcloud.project-metering.md#payment-methods).
+Operators can also add additional metadata information to [Payment Methods](meshcloud.payment-methods.md).
 This is useful if your organization needs additional metadata like e.g. contract or budget numbers to chargeback cloud costs.
 
 > It's currently not possible to validate payment method metadata using a tag schema. This feature is only available to Payment Methods created via the [meshStack API](./meshstack.api.md).
@@ -191,7 +191,7 @@ meshStack makes metadata available to [Landing Zones](./meshcloud.landing-zones.
 
 > meshTenant metadata is part of a tenant's desired state. meshStack will therefore automatically reconcile any change to metadata with the actual tenant state.
 
-meshStack automatically derives [metadata tags](./meshcloud.tag-schema.md) for [meshTenants](./meshcloud.tenant.md) based on the metadata tags set on the [meshProject](./meshcloud.project.md), the [payment method](./meshcloud.project-metering.md#payment-methods) configured on the meshProject and
+meshStack automatically derives [metadata tags](./meshcloud.tag-schema.md) for [meshTenants](./meshcloud.tenant.md) based on the metadata tags set on the [meshProject](./meshcloud.project.md), the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
 the [meshCustomer](./meshcloud.customer.md) it belongs to.
 
 It's possible that these sources provide different values for the same tag key. For example, both the meshCustomer and
