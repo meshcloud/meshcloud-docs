@@ -66,4 +66,4 @@ It will also be part of the CSV export. General payment information like payment
 > Note that this billing information is applied when the chargeback statement is generated. This implies that e.g. the payment method that is active on the project at the
 point in time when the chargeback statement is generated will be used for all line items in the chargeback statement. This also applies to tags. As chargeback statements are
 always generated on the 6th of a month, it must be ensured that metadata (like payment method) that shall be used for a chargeback statement is still active until at least the
-6th day of the month after the reporting period. This must be considered when defining an expiration date of a [payment method](#payment-methods) (it should always be after the 6th of a month).
+6th day of the month after the reporting period. This must be considered when defining an expiration date of a [payment method](meshcloud.payment-methods.md) (it should always be after the 6th of a month).
