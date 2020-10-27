@@ -3,13 +3,11 @@ id: meshstack.payment-methods
 title: Payment Methods
 ---
 
-# Payment Methods
-
 ## Introduction
 
-Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process.  As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshCustomers are correctly charged and that this information makes its way back to the required systems. Payment methods therefor are the link between the cloud usage and the resulting cost in the context of a meshProject.
+Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process. As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshCustomers are correctly charged and that this information makes its way back to the required systems. Payment methods therefore are the link between the cloud usage and the resulting cost in the context of a meshProject.
 
-There are two types of payment methods:
+Payment methods are created **per** meshCustomer and come in two variants:
 
 1) A cost center payment method (indicated via `COST_CENTER`), meaning the costs made by the meshTenants in your meshProjects will be fully charged to the cost center of your organization.
 
@@ -47,7 +45,7 @@ As automation matters, there is also the possibility to create payment methods v
 
 ## The Payment Method Lifecycle: Assigning to Projects
 
-Now that the Partner Admin has created one or more payment methods for a meshCustomer, we are ready to link a payment method to one or more projects. 
+Now that the Partner Admin has created one or more payment methods for a meshCustomer, we are ready to link a payment method to one or more projects.
 
 First, check if the payment method is correctly created in the meshCustomer. You can do so by navigating to the meshCustomer Account area. In order to do that you need to have Customer Admin rights within the respective customer. On the left-hand side, there should be an item called 'Payment Methods' which you can navigate to. All payment methods that are created and assigned to your current meshCustomer are shown here.
 
@@ -55,7 +53,7 @@ The payment methods that are assigned can be used for both existing projects and
 
 ### Applying a payment method to an existing project
 
-In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the project you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. 
+In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the project you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. This makes sure that when the active payment method expires, it will activate the substitute payment method.
 
 ![Set Payment Method in Project Edit screen](assets/payment_methods/payment_method_selection_project_edit.png)
 
@@ -63,11 +61,11 @@ Select the Active Payment Method of choice, and optionally a Substitute Payment 
 
 ### Applying a payment method to a new project
 
-Create a new project at the top of the meshPanel. Follow the project creation flow until you enter the 'Billing Information' page. 
+Create a new project at the top of the meshPanel. Follow the project creation flow until you enter the 'Billing Information' page.
 
 ![Set Payment Method in Project Create screen](assets/payment_methods/payment_method_selection_project_create.png)
 
-As you can see, on this page you have the ability to assign a payment method to the project. Keep in mind that this is mandatory. If you want to specify a substitute payment method, you can do so after creating the project and following the steps above in '**Applying a payment method to an existing project'**. If your meshCustomer has no payment methods, you will be confronted with a warning that looks like this: 
+As you can see, on this page you have the ability to assign a payment method to the project. Keep in mind that this is mandatory. If you want to specify a substitute payment method, you can do so after creating the project and following the steps above in '**Applying a payment method to an existing project'**. If your meshCustomer has no payment methods, you will be confronted with a warning that looks like this:
 
 ![Missing Payment Method warning](assets/payment_methods/payment_method_missing_in_project_create.png)
 
@@ -83,11 +81,11 @@ An alternative way of providing metadata to payment methods is via the meshStack
 
 There are two possible ways to exporting the metadata of the payment methods, depending on the use case.
 
-### Applying metadata on tenants in cloud platforms
+### Applying Metadata on Tenants in Cloud Platforms
 
 One way of exporting the payment method data (on top of other metadata from meshCustomers and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.tag-schema.md#meshtenant-metadata) and decide what approach fits best.
 
-### Exporting financial data together with metadata
+### Exporting Financial Data and Metadata
 
 The other way of exporting metadata is via our [chargeback statements](meshcloud.project-metering.md#chargeback-statements). These chargeback statements are generated periodically and contain the financial data of one or more meshTenants (based on the Tenant Usage Reports). It is possible to export these chargeback statements via CSV and on top of that, provide one or more metadata values per CSV row. This is very helpful when parsing the CSV export in another tool for financial processing.
 
