@@ -33,7 +33,7 @@ The meshStack ServiceAccounts can be located in a dedicated namespace. In the fo
 You can also define a different namespace if you prefer.
 Before applying the yaml file, the namespace has to be created first via `oc create namespace meshcloud`.
 
-#### Tenant Management
+#### Replicator Service Account
 
 The tenant management component of meshStack requires the following ServiceAccount.
 
@@ -165,6 +165,7 @@ rules:
   verbs:
   - bind
   resourceNames:
+  # ATTENTION: Replace these roles with the actual ClusterRoles you want to map for meshProject roles
   - admin
   - edit
   - view
@@ -185,7 +186,7 @@ roleRef:
   name: meshfed-service
 ```
 
-#### Metering Service Account <a name="metering-sa"></a>
+#### Metering Service Account
 
 The metering component of meshStack requires the following ServiceAccount.
 
@@ -273,11 +274,14 @@ Use the token provided here in the meshStack OpenShift connector configuration. 
 
 ### Custom meshProject Roles
 
-If you want to use custom roles to be mapped to your meshProject roles (and not just the pre-defined `admin`, `edit` and `view` roles) you need to make sure to also list these roles in the clusterrole binding section for the meshfed-service principle. It is not allowed for the service-principle to bind roles granting more rights then itself has, so the right to bind these roles must be explicitly given.
+Kubernetes has built-in privilege escalation prevention, which means that it is not allowed for Service Accounts to bind roles granting more rights than the Service Account itself has. Operators can override this by explicitly granting a Service Account permission to create role bindings involving a named set of `ClusterRoles`.
 
-For example if you plan to use a role named `my-custom-role` please change the relevant section in the above document to:
+If you want to use custom roles to be mapped to your meshProject roles (and not just the pre-defined `admin`, `edit` and `view` roles) you need to make sure to also list these roles in the `ClusterRole` for the [Replicator Service Account](#replicator-service-account).
+
+For example if you plan to use custom roles named `my-custom-view` and `my-custom-edit` please change the relevant section in the `ClusterRole` definition to:
 
 ```yml
+# ...
 - apiGroups:
   - ""
   - rbac.authorization.k8s.io
@@ -287,8 +291,7 @@ For example if you plan to use a role named `my-custom-role` please change the r
   verbs:
   - bind
   resourceNames:
-  - admin
-  - edit
-  - view
-  - my-custom-role
+  - my-custom-view
+  - my-custom-edit
+# ...
 ```
