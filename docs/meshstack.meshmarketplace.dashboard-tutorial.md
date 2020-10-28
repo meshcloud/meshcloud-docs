@@ -72,7 +72,7 @@ To simplify the OAuth flow for the service brokers and to guarantee, that the se
 ```
 
 This URL is a template. The `redirect_uri` must be set by the Service Broker (to redirect to a specific URI containing the service instance id or similar). The random parameters nonce and state have to be generated and replaced by the service broker (see OpenID documentation for this.)
-For the OAuth flow, a token endpoint is required too. It is a static link and the request must be build as described in the OpenId documentation.
+For the OAuth flow, a token endpoint is required too. It is a static link and the request must be built as described in the OpenId documentation.
 
 ```json
 {
