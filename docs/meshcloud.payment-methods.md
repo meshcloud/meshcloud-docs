@@ -22,7 +22,7 @@ The first step in reaping the benefits of payment methods is creating them. A fe
 1. A payment method is **always** scoped to a single meshCustomer. This means it is not possible to create a global payment method that can be used for all meshCustomers. It is also not possible to re-use a single payment method across multiple meshCustomers.
 2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshCustomers. Make sure to use an identifier that will not collide in other meshCustomers.
 
-### Creating a payment method via the meshPanel
+### Creating a Payment Method via the meshPanel
 
 One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the 'Partner Admin' role. Navigate to the Admin area and follow these steps:
 
@@ -39,37 +39,37 @@ One way of creating payment methods is via the meshPanel. To do so, make sure th
 8. Additionally, you can enter custom settings to inject metadata into the payment method. This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
 9. Click 'Save' and your new payment method will be available to the meshCustomer it was created in!
 
-### Creating a payment method via the meshstack API
+### Creating a Payment Method via the meshstack API
 
 As automation matters, there is also the possibility to create payment methods via the meshstack API. To find the API documentation, open your meshstack and click on 'API' at the bottom of the meshPanel. A new page will open and on the left-hand side, you should see `meshPaymentMethod` listed under `meshObject Import`. Click on it and read the documentation to understand how you can create a payment method via the API.
 
-## The Payment Method Lifecycle: Assigning to Projects
+## The Payment Method Lifecycle: Assigning to meshProjects
 
-Now that the Partner Admin has created one or more payment methods for a meshCustomer, we are ready to link a payment method to one or more projects.
+Now that the Partner Admin has created one or more payment methods for a meshCustomer, we are ready to link a payment method to one or more meshProjects.
 
 First, check if the payment method is correctly created in the meshCustomer. You can do so by navigating to the meshCustomer Account area. In order to do that you need to have Customer Admin rights within the respective customer. On the left-hand side, there should be an item called 'Payment Methods' which you can navigate to. All payment methods that are created and assigned to your current meshCustomer are shown here.
 
-The payment methods that are assigned can be used for both existing projects and new projects.
+The payment methods that are assigned can be used for both existing meshProjects and new meshProjects.
 
-### Applying a payment method to an existing project
+### Applying a Payment Method to an existing meshProject
 
-In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the project you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. This makes sure that when the active payment method expires, it will activate the substitute payment method.
+In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the meshProject you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. This makes sure that when the active payment method expires, it will activate the substitute payment method.
 
 ![Set Payment Method in Project Edit screen](assets/payment_methods/payment_method_selection_project_edit.png)
 
-Select the Active Payment Method of choice, and optionally a Substitute Payment Method if that is desired. Save the project and the payment method(s) will be assigned to the project.
+Select the Active Payment Method of choice, and optionally a Substitute Payment Method if that is desired. Save the meshProject and the payment method(s) will be assigned to the meshProject.
 
-### Applying a payment method to a new project
+### Applying a Payment Method to a new meshProject
 
-Create a new project at the top of the meshPanel. Follow the project creation flow until you enter the 'Billing Information' page.
+Create a new meshProject at the top of the meshPanel. Follow the project creation flow until you enter the 'Billing Information' page.
 
 ![Set Payment Method in Project Create screen](assets/payment_methods/payment_method_selection_project_create.png)
 
-As you can see, on this page you have the ability to assign a payment method to the project. Keep in mind that this is mandatory. If you want to specify a substitute payment method, you can do so after creating the project and following the steps above in '**Applying a payment method to an existing project'**. If your meshCustomer has no payment methods, you will be confronted with a warning that looks like this:
+As you can see, on this page you have the ability to assign a payment method to the meshProject. Keep in mind that this is mandatory. If you want to specify a substitute payment method, you can do so after creating the meshProject and following the steps above in '**Applying a payment method to an existing meshProject'**. If your meshCustomer has no payment methods, you will be confronted with a warning that looks like this:
 
 ![Missing Payment Method warning](assets/payment_methods/payment_method_missing_in_project_create.png)
 
-After setting a payment method, you can continue the project creation flow and save the new project. You now have a new project with a payment method successfully assigned!
+After setting a payment method, you can continue the project creation flow and save the new meshProject. You now have a new meshProject with a payment method successfully assigned!
 
 ## The Payment Method Lifecycle: Enhance with Metadata
 
