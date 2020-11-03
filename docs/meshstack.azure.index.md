@@ -157,6 +157,9 @@ All permissions left are therefore granted only via the management group hierarc
 "Microsoft.Management/managementGroups/subscriptions/write",
 "Microsoft.Management/managementGroups/write",
 
+# Permissions for reading and writing tags
+"Microsoft.Resources/tags/write",
+
 # Permission we need to activate/register required Resource Providers
 "*/register/action"
 ```
@@ -187,10 +190,6 @@ Furthermore in order to prevent the replicator from assigning itself more permis
               },
               {
                 "allOf": [
-                  {
-                    "field": "Microsoft.Authorization/roleAssignments/roleDefinitionId",
-                    "equals": "/subscriptions/*/providers/Microsoft.Authorization/roleDefinitions/*"
-                  },
                   {
                     "field": "Microsoft.Authorization/roleAssignments/principalId",
                     "equals": "<SERVICE_PRINCIPAL_OBJECT_ID>"
@@ -227,16 +226,6 @@ New-AzRoleAssignment -RoleDefinitionName Owner -ApplicationId <replicatorSpnAppl
 In order to read resource usages, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by meshStacks's metering service:
 
 - `Cost Management Reader`
-
-
-### Identity Provider (IdP) Lookup
-
-This principal is only required if the AAD is actually be used as source of user information when assigning users to meshCustomers or meshProjects inside the meshPanel. In order to use this functionality, create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions:
-
-- `User.Read.All`
-
-> Since `User.Read.All` is a Role permission, you will also need to grant admin consent in AAD on the assignment
-
 
 ## Blueprint Configuration
 

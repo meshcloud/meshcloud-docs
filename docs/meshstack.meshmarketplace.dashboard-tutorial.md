@@ -31,7 +31,7 @@ The OSB API spec does not specify all necessary steps to achieve properly secure
 
 ### Permissions on Service Instance Level
 
-The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users, that are assigned to the project in the meshMarketplace where the service instance was created, shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property `permission_url`:
+The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users that are assigned to the project in the meshMarketplace where the service instance was created, or users in the projects this service instance [is shared with](marketplace.service-instances.md#share-service-instance), shall have access to its dashboard. Therefore the meshMarketplace provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property `permission_url`:
 
 ```json
 {
@@ -72,7 +72,7 @@ To simplify the OAuth flow for the service brokers and to guarantee, that the se
 ```
 
 This URL is a template. The `redirect_uri` must be set by the Service Broker (to redirect to a specific URI containing the service instance id or similar). The random parameters nonce and state have to be generated and replaced by the service broker (see OpenID documentation for this.)
-For the OAuth flow, a token endpoint is required too. It is a static link and the request must be build as described in the OpenId documentation.
+For the OAuth flow, a token endpoint is required too. It is a static link and the request must be built as described in the OpenId documentation.
 
 ```json
 {

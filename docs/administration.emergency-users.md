@@ -56,6 +56,9 @@ Even when no customer admin is available, users with partner admin/employee acce
 
 ### Adding emergency user as meshPartner
 
+Note: this only works when Customer Admin role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
+value ([read more here](meshstack.configuration.md#customer-user-invitations))
+
 In order to manage users for a specific meshProject, the partner user must add their own account to the respective meshCustomer as a customer admin:
 
 - Ensure that the meshPartner is selected from the meshCustomer dropdown

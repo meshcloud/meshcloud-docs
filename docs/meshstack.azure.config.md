@@ -16,10 +16,11 @@ For easier reference the following sections break down the configuration model i
 let AzurePlatformConfiguration =
         AzurePlatformCoreConfiguration
       ⩓ AzurePlatformBlueprintConfiguration
-      ⩓ { servicePrincipal : ServicePrincipal
-        , b2bUserInvitation : Optional InviteB2BUserConfig
+      ⩓ { service-principal : ServicePrincipal
+        , b2b-user-invitation : Optional InviteB2BUserConfig
         , provisioning : Provisioning
-        , roleMappings : List RoleMapping
+        , role-mappings : List RoleMapping
+        , tenant-tags : Optional TenantTags
         }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -44,25 +45,23 @@ let AzurePlatformCoreConfiguration =
           1. meshCustomer identifier
           2. meshProject identifier
           3. meshProject ID (numeric)
-          4. tenantNumber (numeric), a running number specific to each platform which can be optionally enabled
 
         Operators must ensure the resulting subscription names are unique in the managed AAD Tenant.
 
-      groupNamePattern:
+      group-name-pattern:
         Configures the pattern that defines the desired name of AAD groups managed by meshStack.
         This Java String.format format string receiving the following arguments:
 
           1. meshCustomer identifier
           2. meshProject identifier
           3. meshProject ID (numeric)
-          4. tenantNumber (numeric), a running number specific to each platform which can be optionally enabled
-          5. role name suffix (configurable via Landing Zone)
+          4. role name suffix (configurable via Landing Zone)
 
         Operators must ensure the group names are unique in the managed AAD Tenant.
     -}
       { platform : Text
-      , subscriptionNamePattern : Optional Text
-      , groupNamePattern : Optional Text
+      , subscription-name-pattern : Optional Text
+      , group-name-pattern : Optional Text
       }
 ```
 <!--Example-->
@@ -73,8 +72,8 @@ let example
       -- creates subscription names like "customer.project"
       -- and group names like "customer.project-reader"
       { platform = "azure.mylocation"
-      , subscriptionNamePattern = Some "%s.%s"
-      , groupNamePattern = Some ".%s.%s-%5\$s"
+      , subscription-name-pattern = Some "%s.%s"
+      , group-name-pattern = Some ".%s.%s-%4\$s"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -103,14 +102,15 @@ let AzurePlatformBlueprintConfiguration =
           possible that the Blueprint creates resources in other locations, this is merely the location where the
           Blueprint Assignment is managed.
     -}
-      { blueprintServicePrincipal : Text, blueprintLocation : Text }
+      { blueprint-service-principal : Text, blueprint-location : Text }
 ```
 <!--Example-->
 ```dhall
 let example
     : AzurePlatformBlueprintConfiguration
-    = { blueprintServicePrincipal = "2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20"
-      , blueprintLocation = "westeurope"
+    = { blueprint-service-principal =
+          "2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20"
+      , blueprint-location = "westeurope"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -147,32 +147,38 @@ let ServicePrincipal =
               A valid secret for accessing the SPN. In Azure Portal, this can be configured on the
               "App Registration" objecct.
     -}
-      { aadTenant : Text
-      , objectId : Text
-      , clientId : Text
-      , clientSecret : Secret
+      { aad-tenant : Text
+      , object-id : Text
+      , client-id : Text
+      , client-secret : Secret
       }
 ```
 <!--Example-->
 ```dhall
-let example =
-      { aadTenant = "example.onmicrosoft.com"
-      , objectId = "655985db-ca43-4b9f-b317-9dd3d0289c50"
-      , clientId = "2a51f406-27fd-4e40-8bd3-fe83ff934a47"
-      , clientSecret = Secret.Native "AZURE_CLIENT_SECRET"
+let example
+    : ServicePrincipal
+    = { aad-tenant = "example.onmicrosoft.com"
+      , object-id = "655985db-ca43-4b9f-b317-9dd3d0289c50"
+      , client-id = "2a51f406-27fd-4e40-8bd3-fe83ff934a47"
+      , client-secret = Secret.Native "AZURE_CLIENT_SECRET"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ### B2B User Invitation
 
-You can decide if you want Azure to send an automatic email notification about the invitation process to the user by setting `send-azure-invitation-mail` to `true`. Usually this is not needed as meshStack handles
-the invitation notifications.
-
 This configuration is optional. When configured, instructs the replicator to create AAD B2B guest invitations for
-users missing in the AAD tenant managed by this meshPlatform.
+users missing in the AAD tenant managed by this meshPlatform. This configuration is useful if you have one or more
+"workload" AAD tenants for Azure Subscriptions while having a central "home tenant" for your organization's user
+identities that handles O365 and related services.
 
-> B2B Invitations require an email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
+Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
+["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
+
+- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
+- meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
+
+> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
 
 <!--snippet:mesh.platform.azure.inviteB2BUserConfig#type-->
 
@@ -182,21 +188,30 @@ users missing in the AAD tenant managed by this meshPlatform.
 ```dhall
 let InviteB2BUserConfig =
     {-
-      redirectUrl:
-          URL used in the Azure invitation mail if send
+      send-azure-invitation-mail:
+          When true, meshStack instructs Azure to send out Invitation mails to invited users.
+          These mails allows users to redeem their invitation to the AAD tenant only using email and
+          Azure Portal. This is useful if some of your users don't have access to meshPanel or you do not
+          expect them to sign in to Azure Portal via meshPanel.
 
-      sendAzureInvitationMail
-          Flag if an Invitation mail by Azure should be send out
+          Note: meshStack always instructs Azure to send invitation mails for meshUsers that are flagged as guests,
+          regardless of the configured value.
+
+      redirect-url:
+          This is the URL that Azure's consent experience redirects users to after they accept their invitation.
+          Operators should consider redirecting user to Azure Portal with the platform's AAD tenant pre-selected
+          using an URL like "https://portal.azure.com/example.onmicrosoft.com".
     -}
-      { redirectUrl : Text, sendAzureInvitationMail : Bool }
+      { send-azure-invitation-mail : Bool, redirect-url : Text }
 ```
 <!--Example-->
 ```dhall
 let example
     : Optional InviteB2BUserConfig
     = Some
-        { redirectUrl = "https://portal.azure.com/#home"
-        , sendAzureInvitationMail = True
+        { redirect-url =
+            "https://portal.azure.com/example.onmicrosoft.com"
+        , send-azure-invitation-mail = True
         }
 
 let exampleNoB2bInvites
@@ -226,7 +241,7 @@ let SubscriptionOwner =
               assignment on managed subscriptions. This can be useful to satisfy Azure's constraint of at least
               one direct "Owner" role assignment per Subscription.
     -}
-      { subscriptionOwnerObjectIds : List Text }
+      { subscription-owner-object-ids : List Text }
 
 let EnterpriseEnrollment =
     -- Creating new Subscriptions under an Enterprise Agreement (EA) Enrollment Account.
@@ -245,13 +260,13 @@ let EnterpriseEnrollment =
                 of an error on Azure's EA API. This delay should be a bit higher then it usually takes to
                 create subscriptions. For big installations this is somewhere between 5-15 minutes.
           -}
-            { enrollmentAccountId : Text
-            , subscriptionOfferType : Text
-            , subscriptionCreationErrorCooldownSec : Natural
+            { enrollment-account-id : Text
+            , subscription-offer-type : Text
+            , subscription-creation-error-cooldown-sec : Natural
             }
 
       in    SubscriptionOwner
-          ⩓ { enterpriseEnrollment : EnterpriseEnrollmentConfig }
+          ⩓ { enterprise-enrollment : EnterpriseEnrollmentConfig }
 
 let PreProvisioned =
     -- Look up pre-provisioned Subscriptions in the AAD Tenant based on a prefix name.
@@ -262,9 +277,9 @@ let PreProvisioned =
                 The prefix that identifies unused subscriptions. Subscriptions will be renamed during meshStack's
                 project replication, at which point they should no longer carry this prefix.
           -}
-            { unusedSubscriptionNamePrefix : Text }
+            { unused-subscription-name-prefix : Text }
 
-      in  SubscriptionOwner ⩓ { preProvisioned : PreProvisionedConfig }
+      in  SubscriptionOwner ⩓ { pre-provisioned : PreProvisionedConfig }
 
 let Provisioning =
       < EnterpriseEnrollment : EnterpriseEnrollment
@@ -275,19 +290,19 @@ let Provisioning =
 ```dhall
 let exampleEnterpriseEnrollment =
       Provisioning.EnterpriseEnrollment
-        { subscriptionOwnerObjectIds =
+        { subscription-owner-object-ids =
           [ "390eaa30-67c3-4314-9368-33c76472e6f1" ]
-        , enterpriseEnrollment =
-          { enrollmentAccountId = "7eeec94c-96a5-4faa-a6d6-8999bbbfa194"
-          , subscriptionOfferType = "MS-AZR-0017P"
-          , subscriptionCreationErrorCooldownSec = 900
+        , enterprise-enrollment =
+          { enrollment-account-id = "7eeec94c-96a5-4faa-a6d6-8999bbbfa194"
+          , subscription-offer-type = "MS-AZR-0017P"
+          , subscription-creation-error-cooldown-sec = 900
           }
         }
 
 let examplePreProvisioned =
       Provisioning.PreProvisioned
-        { subscriptionOwnerObjectIds = [] : List Text
-        , preProvisioned.unusedSubscriptionNamePrefix = "unused-"
+        { subscription-owner-object-ids = [] : List Text
+        , pre-provisioned.unused-subscription-name-prefix = "unused-"
         }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

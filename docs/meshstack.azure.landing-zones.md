@@ -91,7 +91,10 @@ This flag allows you to use a User Assigned Managed Identity (UAMI) instead of t
 
 Currently we only recommend to use this flag if you want to create resources that require permissions outside of the meshcloud managed subscription. A good example is if you want to connect a meshcloud managed subscription to a central log workspace. In order to do this, you require permissions in both the meshcloud managed subscription and the subscription your central Log Workspace App resides in.
 
-**Please note**: meshcloud automatically handles permissions in the subscription the Blueprint is assigned to, but permissions outside of that cannot be handled and have to be setup by yourself.
+>**Please note**: meshStack can not handle permissions outside of the Subscriptions it manages. You need to make sure the Managed Identity has the correct permissions to access/create the resources your Blueprint requires. Additionally you must also give the replicator service principal the following permission on the target resource the Managed Identity lives in (e.g. the Subscription of the Managed Identitiy).
+>
+> ```Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action```
+>
 
 The following parameters are required:
 | Parameter              | Description                                                                                                                                                                                                                                                            |
@@ -119,7 +122,7 @@ The Azure Role Definition is the RBAC ID of the Azure role you want to use. You 
 
 Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
-Please review the [meshStack Landing Zone Http Header interface](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+Please review the [HTTP header interface documentation](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
 In addition to the headers referenced above, meshStack provides the following Azure-specific HTTP headers:
 
