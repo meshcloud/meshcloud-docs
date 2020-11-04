@@ -8,7 +8,7 @@ Here, you can find information on how to use meshcloud and an explanation of the
 
 ## Introduction
 
-Quite a bit of complexity in multi-cloud management and multi-cloud governance comes from the use of different and inconsistent terminology between cloud platforms. meshcloud rectifies this using a unified language describing organization and governance structures independent of individual cloud platform implementations. We call this language the **meshModel**. To resolve ambiguity we're prefixing entities in the meshModel using the `mesh` prefix.
+Quite a bit of complexity in multi-cloud management and multi-cloud governance comes from the use of different and inconsistent terminology between cloud platforms. meshcloud rectifies this using a unified language describing organization and governance structures independent of individual cloud platform implementations. We call this language the **meshModel**. Each individual object in this meshModel is called a **meshObject**. To resolve ambiguity we're prefixing entities in the meshModel using the `mesh` prefix.
 
 The figure and table below explain the relation of the most important concepts in the meshModel.
 
