@@ -3,7 +3,7 @@ id: meshcloud.policies
 title: meshPolicies
 ---
 
-### Introduction: what are meshPolicies?
+## Introduction: what are meshPolicies?
 
 A meshPolicy is a set of rule(s) between two [meshObjects](meshcloud.index.md#introduction) that are globally defined by your organization. Each rule describes what [tags](meshcloud.tag-schema.md) have to match on each meshObject, in order to comply with the meshPolicy. meshPolicies are enforced in various places when attaching meshObjects.
   
@@ -53,9 +53,9 @@ The purple arrows indicate a 'soft' violation, meaning that the change will actu
 
 Your organization is fully free to define policies across the entire meshStack. A few common use cases are:
 
-1) Enforcing that a meshProject is used for an environment that is also defined on its meshCustomer. 
+1) Enforcing that a meshProject is used for an environment that is also defined on its meshCustomer.
 
-Imagine a meshCustomer with `environment=[sandbox, test]`. If there is a meshPolicy in place between meshCustomers and meshProjects on the environment tag, users cannot create new meshProjects that use an environment that is **not** available on the meshCustomer, for example `environment=[prod]`.
+    Imagine a meshCustomer with `environment=[sandbox, test]`. If there is a meshPolicy in place between meshCustomers and meshProjects on the environment tag, users cannot create new meshProjects that use an environment that is **not** available on the meshCustomer, for example `environment=[prod]`.
 
 2) Enforcing that a meshProject only has meshCustomerUserGroups that are allowed access to highly confidential projects.
 
