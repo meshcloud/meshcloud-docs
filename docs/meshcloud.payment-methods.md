@@ -1,5 +1,5 @@
 ---
-id: meshstack.payment-methods
+id: meshcloud.payment-methods
 title: Payment Methods
 ---
 
@@ -9,6 +9,8 @@ Just like you pay for a new t-shirt online via your credit card, enterprises als
 
 Payment methods are created **per** meshCustomer and come in two variants:
 
+### Types of Payment Methods
+
 1) A cost center payment method (indicated via `COST_CENTER`), meaning the costs made by the meshTenants in your meshProjects will be fully charged to the cost center of your organization.
 
 2) A budget payment method (indicated via `COST_LIMITATION`), meaning costs made by the meshTenants in your meshProjects will be charged based on the monetary budget amount that is set on this payment method.
@@ -17,7 +19,7 @@ Payment methods are created **per** meshCustomer and come in two variants:
 
 ## The Payment Method Lifecycle: Creation
 
-The first step in reaping the benefits of payment methods is creating them. A few important things must be considered about payment methods before creating them
+The first step in reaping the benefits of payment methods is creating them. A few important things must be considered about payment methods before creating them:
 
 1. A payment method is **always** scoped to a single meshCustomer. This means it is not possible to create a global payment method that can be used for all meshCustomers. It is also not possible to re-use a single payment method across multiple meshCustomers.
 2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshCustomers. Make sure to use an identifier that will not collide in other meshCustomers.
@@ -33,15 +35,15 @@ One way of creating payment methods is via the meshPanel. To do so, make sure th
 
 3. Click on 'Create Payment Method' at the top right.
 4. Enter a name and identifier for the new payment method.
-5. Choose a type for the payment method. Read more here on what type to choose and what the individual differences are.
-6. (This is optional) Set a maximum amount of EUR on the payment method to indicate the remaining budget for this year.
+5. Choose a type for the payment method. Read more [here](#types-of-payment-methods) on what type to choose and what the individual differences are.
+6. (This is optional) Set a maximum amount of EUR on the payment method to indicate the remaining budget of this payment method.
 7. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
 8. Additionally, you can enter custom settings to inject metadata into the payment method. This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
 9. Click 'Save' and your new payment method will be available to the meshCustomer it was created in!
 
-### Creating a Payment Method via the meshstack API
+### Creating a Payment Method via the meshObject API
 
-As automation matters, there is also the possibility to create payment methods via the meshstack API. To find the API documentation, open your meshstack and click on 'API' at the bottom of the meshPanel. A new page will open and on the left-hand side, you should see `meshPaymentMethod` listed under `meshObject Import`. Click on it and read the documentation to understand how you can create a payment method via the API.
+As automation matters, there is also the possibility to create payment methods via the meshObject API. This is especially helpful when an external system already manages the data that is relevant for payment methods. To find the API documentation, open your meshstack and click on 'API' at the bottom of the meshPanel. A new page will open and on the left-hand side, you should see `meshPaymentMethod` listed under `meshObject Import`. Click on it and read the documentation to understand how you can create a payment method via the API.
 
 ## The Payment Method Lifecycle: Assigning to meshProjects
 
@@ -53,7 +55,7 @@ The payment methods that are assigned can be used for both existing meshProjects
 
 ### Applying a Payment Method to an existing meshProject
 
-In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the meshProject you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. This makes sure that when the active payment method expires, it will activate the substitute payment method.
+In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the meshProject you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshstack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the Active Payment method will be set to 'None' instead.
 
 ![Set Payment Method in Project Edit screen](assets/payment_methods/payment_method_selection_project_edit.png)
 
@@ -73,9 +75,9 @@ After setting a payment method, you can continue the project creation flow and s
 
 ## The Payment Method Lifecycle: Enhance with Metadata
 
-As it is difficult to handle large amounts of payment methods only via their names or identifiers, there is the possibility to provide metadata (in the form of key-value pairs) to the payment methods. This metadata can be provided when creating/editing the payment method in the meshPanel. This is already described in step 8 for '**Creating a payment method via the meshPanel**'.
+As it is difficult to handle large amounts of payment methods only via their names or identifiers, there is the possibility to provide metadata (in the form of key-value pairs) to the payment methods. This metadata can be provided when creating/editing the payment method in the meshPanel. This is already described in step 8 [here](#creating-a-payment-method-via-the-meshpanel).
 
-An alternative way of providing metadata to payment methods is via the meshStack API. The API docs will describe how to inject the metadata in payment methods.
+An alternative way of providing metadata to payment methods is via the meshObject API. The API docs will describe how to inject the metadata in payment methods.
 
 ## The Payment Method Lifecycle: Exporting Data for External Systems
 
