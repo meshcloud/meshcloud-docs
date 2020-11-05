@@ -28,7 +28,7 @@ We recommend using [externally provisioned identities](./meshstack.identity-fede
 
 Operators need to setup a GCP Organization to be used by meshStack. Please review the official GCP documentation on [creating and managing organizations](https://cloud.google.com/resource-manager/docs/creating-managing-organization).
 
-### meshfed-service IAM Role
+### Service Account Configuration
 
 meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the principle of least privilege.

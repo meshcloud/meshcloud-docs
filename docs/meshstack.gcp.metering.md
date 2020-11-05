@@ -16,6 +16,15 @@ roles/bigquery.jobUser
 roles/bigquery.dataViewer
 ```
 
+If you want to use the billing module of meshStack you also need another service principal, which is able to discover and list projects. We recommend to also create its own IAM role and assign it to the service account together with the following permissions:
+
+```text
+resourcemanager.folders.get
+resourcemanager.folders.list
+resourcemanager.projects.get
+resourcemanager.projects.list
+```
+
 ## Configuration Reference
 
 This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
