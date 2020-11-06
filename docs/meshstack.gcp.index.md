@@ -164,12 +164,19 @@ let GcpPlatformCoreConfiguration =
 
       projectIdPattern:
         A String.format format string receiving the following arguments:
-          1. customerIdentifier
-          2. projectIdentifier
+          1. meshCustomer identifier
+          2. meshProject identifier
           3. a random alphanumeric string suitable as a suffix
         The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
         We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of
         naming collisions.
+
+      groupNamePattern:
+        A String.format format string receiving the following arguments:
+          1. meshCustomer identifier
+          2. meshProject identifier
+          3. meshProject ID (numeric)
+          4. role name suffix (configurable via Landing Zone)
 
       allowHierarchicalFolderAssignment:
         Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
@@ -186,6 +193,7 @@ let GcpPlatformCoreConfiguration =
       , customer-id : Text
       , billing-account-id : Text
       , project-id-pattern : Text
+      , group-name-pattern : Text
       , allow-hierarchical-folder-assignment : Bool
       , tenant-tags : Optional TenantTags
       }
@@ -199,6 +207,7 @@ let example
       , customer-id = " Cxxxx123"
       , billing-account-id = "123456-1234ABCD-1234FF"
       , project-id-pattern = "%.15s-%.10s-%.3s"
+      , group-name-pattern = "%s.%s-%.4s"
       , allow-hierarchical-folder-assignment = True
       , tenant-tags = Some
         { namespace-prefix = "meshstack_"
