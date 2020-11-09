@@ -16,6 +16,15 @@ roles/bigquery.jobUser
 roles/bigquery.dataViewer
 ```
 
+To enable the billing module of meshStack a service principal, which is able to discover and list projects, needs to be defined. We recommend to also create its own IAM role and assign it to the service account together with the following permissions:
+
+```text
+resourcemanager.folders.get
+resourcemanager.folders.list
+resourcemanager.projects.get
+resourcemanager.projects.list
+```
+
 ## Configuration Reference
 
 This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
@@ -36,7 +45,7 @@ let GcpPlatformKrakenConfiguration =
         The big query table name containing the GCP Cloud Billing BigQuery export.
         See https://cloud.google.com/billing/docs/how-to/export-data-bigquery
 
-      credentials-b64:
+      service-account-credentials-b64:
         base64 encoded credentials.json file for a GCP ServiceAccount. meshStack uses this Service Account
         to collect billing data from the BigQuery export table.
 
@@ -46,7 +55,7 @@ let GcpPlatformKrakenConfiguration =
     -}
       { platform : Text
       , bigquery-table : Text
-      , credentials-b64 : Secret
+      , service-account-credentials-b64 : Secret
       , additional-filter : Optional Text
       }
 ```
@@ -59,7 +68,7 @@ let exampleAllData
       { platform = "my.gcp"
       , bigquery-table =
           "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
-      , credentials-b64 = Secret.Native "..."
+      , service-account-credentials-b64 = Secret.Native "..."
       , additional-filter = None Text
       }
 
@@ -67,11 +76,11 @@ let exampleOnlyFolder
     : GcpPlatformKrakenConfiguration
     =
       -- configures meshStack to only import billing data for projects that live in the GCP resource hierarchy
-      -- under folder id '123' in the organization with id '123'.
+      -- under folder id '345' in the organization with id '123'.
       { platform = "my.gcp"
       , bigquery-table =
           "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
-      , credentials-b64 = Secret.Native "..."
+      , service-account-credentials-b64 = Secret.Native "..."
       , additional-filter = Some
           "and STARTS_WITH(project.ancestry_numbers, '/123/345')"
       }
