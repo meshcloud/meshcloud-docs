@@ -3,20 +3,22 @@ id: meshstack.gcp.metering
 title: Metering
 ---
 
-meshStack imports metering data from [GCP Cloud Billing data BigQuery Export](https://cloud.google.com/billing/docs/how-to/export-data-bigquery)
+meshStack imports metering data from [GCP Cloud Billing data BigQuery Export](https://cloud.google.com/billing/docs/how-to/export-data-bigquery). Any data that was exported to the BigQuery dataset before the start of the month in which meshStack GCP metering was enabled will not be collected.
+
+meshStack also periodically collects the currently active projects in order to apply the per tenant fee.
 
 ## Service Account Configuration
 
-Once billing export has been setup as explained in the GCP documentation, meshStack should be configured with the credentials of a GCP service account that has permission to access the exported billing dataset. This service account must also have the permission to run jobs.
+Once billing export has been setup as explained in the GCP documentation linked above, meshStack should be configured with the credentials of a GCP service account that has permission to access the exported billing dataset. This service account must also have the permission to run jobs.
 
-Assign the service account the following roles [predefined roles](https://cloud.google.com/bigquery/docs/access-control):
+Assign the service account the following [predefined roles](https://cloud.google.com/bigquery/docs/access-control):
 
 ```text
 roles/bigquery.jobUser
 roles/bigquery.dataViewer
 ```
 
-To enable the billing module of meshStack a service principal, which is able to discover and list projects, needs to be defined. We recommend to also create its own IAM role and assign it to the service account together with the following permissions:
+To enable meshStack to periodically collect active projects, create an IAM role with the following permissions and assign it to the service account.
 
 ```text
 resourcemanager.folders.get
