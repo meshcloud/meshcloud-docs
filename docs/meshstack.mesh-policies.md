@@ -17,7 +17,7 @@ do not make sense. You can choose only possible meshObject combinations. Once yo
 for adding rules will appear where you can select the tag of selected meshObject. It is a global rule which will be
 applied everywhere. The created policy has been applied to every configuration which has selected meshObjects.
 
-### Working explanation
+### How it works
 
 Let's consider a scenario where you want to set a policy for the selection of a meshLandingZone. Therefore you configure
 a policy with a rule on the environment tags. Operator 'in' works like an intersection between the meshObjects. So if
