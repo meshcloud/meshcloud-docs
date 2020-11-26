@@ -56,6 +56,32 @@ reporting so that they can verify how each of their deployed cloud resources con
 meshStack includes a sophisticated private-cloud metering engine that allows operators to define their own product catalogs
 and create accurate metering data.
 
+## Supported Currencies
+
+In order to simplify multi-cloud governance, cloud foundation teams should prefer standardising on a single chargeback currency.
+However, Cloud Foundation teams sometimes encounter situations in which they need to process billing or chargeback in multiple
+currencies. For example GCP might charge your organization for cloud consumption in EUR while Azure charges consumption in USD.
+
+In case standardisation on a single currency is not possible, meshStack supports chargeback in multiple currencies. The
+following product funcitonalities fully support multi-currency scenarios:
+
+- **Private Cloud billing**: Operators can define products and usage rates in any currency.
+- **Public Cloud billing**: meshStack preserves the original currency when importing cost and consumption data from the cloud provider.
+- **meshMarketplace**: Service owners can define prices for their services using the OSB Catalog in any currency.
+- **Tenant Usage Reports**: Tenant usage reports support line items in multiple currencies and aggregates net amounts in each currency separately.
+- **Chargeback Statements**: Chargeback statements support multiple currencies and aggregate net amounts in each currency separately.
+- **Tenant Fees**: Operators can define tenant fees in any currency.
+- **Discounts**: Discounts support any currency. Discounts calculated from a source amount (e.g. percentage discounts) use the same currency as the source amount.
+
+The following product functionalitities do currently not support multi-currency scenarios:
+
+- **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and
+  meshMarketplace) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items
+  are in EUR. This can create confusion if the underlying Tenant Usage Report uses a different or multiple currencies.
+- **Payment Methods**: Amounts specified on payment methods are currently assumed to be in EUR.
+
+> meshcloud will revisse support for multi-currency billing and chargeback in these areas as part of the upcoming [Cost Management Roadmap Feature](https://www.meshcloud.io/product/).
+
 ## Defining a custom Product Catalog
 
 The following sections will introduce features of the meshStack product catalog.
