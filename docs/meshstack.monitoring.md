@@ -24,6 +24,63 @@ These email inboxes be configured in the [meshStack configuration model](meshsta
 }
 ```
 
+## Health endpoint
+
+meshStack configures a health endpoint which returns the current status and also the status of database connections. These information are available under path `/actuator/health`.
+
+Example:
+
+```json
+{
+    "status": "UP",
+    "components": {
+        "db": {
+            "status": "UP",
+            "details": {
+                "database": "MariaDB",
+                "result": 1,
+                "validationQuery": "SELECT 1"
+            }
+        }
+    }
+}
+```
+
+## Uptime
+
+meshStack configures an uptime endpoint to request the exact process instance uptime. This information is available under path `/actuator/metrics/process.uptime`.
+
+Example:
+
+```json
+{
+    "name": "process.uptime",
+    "description": "The uptime of the Java virtual machine",
+    "baseUnit": "seconds",
+    "measurements": [
+        {
+            "statistic": "VALUE",
+            "value": 2396.331
+        }
+    ],
+    "availableTags": []
+}
+```
+
+## Version
+
+meshStack configures a version endpoint to request the current version and commit-hash. This information is available under path `<meshPanel>/version`.
+
+Example:
+
+```json
+{
+    "package": "7.7.7",
+    "git": "123456789a",
+    "branch": "HEAD"
+}
+
+```
 
 ## Sonar
 
