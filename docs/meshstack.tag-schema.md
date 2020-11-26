@@ -263,11 +263,12 @@ let example =
 The tag definition configuration describes on a per platform basis how these tags are extracted and transformed into cloud platform tags.
 The following tags values can be used in such a tag definition configuration:
 
-| Tag Key                    | Description                                                                                                                                       |
-| -------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `${projectIdentfier}`      | The meshProject identifier                                                                                                                        |
-| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                             |
-| `${tagTagNameInCamelCase}` | These are the custom tags controlled by the customer when setting up the meshStack installation. Possible would be for example `${tagCostCenter}` |
+| Tag Key                    | Description                                                                                                                                                     |
+| -------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `${projectIdentfier}`      | The meshProject identifier                                                                                                                                      |
+| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                           |
+| `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied. |
+| `${tagTagNameInCamelCase}` | These are the custom tags controlled by the customer when setting up the meshStack installation. Possible would be for example `${tagCostCenter}`               |
 
 > Currently only one such placeholder can be used per tag value.
 
