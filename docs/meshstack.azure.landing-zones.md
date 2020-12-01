@@ -25,7 +25,7 @@ Operators can optionally define one or more [Blueprints](https://docs.microsoft.
 
 ### Blueprint Name
 
-The name of the Blueprint which should get assigned to the project. If left empty, meshProject replication will not create any Blueprint assignments.
+The name of the Blueprint which gets assigned to the tenant. If left empty, meshProject replication will not create any Blueprint assignments. Changing the name of the Blueprint will also change the resulting Blueprint Assignment name in Azure. If you change the name of a Blueprint e.g. to point to another Blueprint, this will result in two assignments. The old assignment is not automatically removed from the Subscription and must be removed manually.
 
 ### Blueprint Management Group
 
