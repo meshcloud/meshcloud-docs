@@ -30,9 +30,9 @@ Operators can model this metadata as **tags** using a [tag schema](#tag-schemas)
 [Configured tag-schemas](meshstack.tag-schema.md) describe the tags available on each meshModel entity and
 their associated validation rules. These rules can describe for example if a tag is required or optional.
 
-> meshStack currently supports tag schemas on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md) and [meshLandingZones](meshcloud.landing-zones.md).
+> meshStack currently supports tag schemas on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
 
-For each supported entity, meshStack can maintain two separate tag-schemas: **unrestricted** and **restricted** tags.
+For meshCustomer and meshProject tags, meshStack can maintain two separate tag-schemas: **unrestricted** and **restricted** tags. For meshLandingZones and meshPaymentMethods only **restricted** tags are supported.
 
 ### Unrestricted Tags
 
@@ -164,24 +164,22 @@ Operators can configure tag schemas in the [meshStack configuration model](meshs
 
 ```dhall
 {
-  customerTagSchema = Some "./my-customer-tag-schema.json"
-, projectTagSchema = Some "./my-project-tag-schema.json"
-, landingZoneTagSchema = Some "./my-landing-zone-tag-schema.json"
+  customer-tag-schema = Some "./my-customer-tag-schema.json"
+, project-tag-schema = Some "./my-project-tag-schema.json"
+, landing-zone-tag-schema = Some "./my-landing-zone-tag-schema.json"
+, payment-method-tag-schema = Some "./payment-method-tag-schema.json"
 }
 ```
 
 The schemas need to be available in the configuration repository.
 
-### Payment Methods
+### Tags on Payment Methods
 
-[Payment Methods](meshcloud.payment-methods.md) can also provide metadata information. For example,
+[Payment Methods](meshcloud.payment-methods.md) can also provide tag information. For example,
 the default "cost center" payment method provides the `costCenter` tag.
 
-Operators can also add additional metadata information to [Payment Methods](meshcloud.payment-methods.md).
+Operators can also add additional tags to [Payment Methods](meshcloud.payment-methods.md).
 This is useful if your organization needs additional metadata like e.g. contract or budget numbers to chargeback cloud costs.
-
-> It's currently not possible to validate payment method metadata using a tag schema. This feature is only available to Payment Methods created via the [meshStack API](./meshstack.api.md).
-
 
 ## Tags in Landing Zones
 
@@ -265,11 +263,12 @@ let example =
 The tag definition configuration describes on a per platform basis how these tags are extracted and transformed into cloud platform tags.
 The following tags values can be used in such a tag definition configuration:
 
-| Tag Key                    | Description                                                                                                                                       |
-| -------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `${projectIdentfier}`      | The meshProject identifier                                                                                                                        |
-| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                             |
-| `${tagTagNameInCamelCase}` | These are the custom tags controlled by the customer when setting up the meshStack installation. Possible would be for example `${tagCostCenter}` |
+| Tag Key                    | Description                                                                                                                                                     |
+| -------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `${projectIdentfier}`      | The meshProject identifier                                                                                                                                      |
+| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                           |
+| `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied. |
+| `${tagTagNameInCamelCase}` | These are the custom tags controlled by the customer when setting up the meshStack installation. Possible would be for example `${tagCostCenter}`               |
 
 > Currently only one such placeholder can be used per tag value.
 
