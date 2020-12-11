@@ -207,7 +207,7 @@ let example
       , customer-id = " Cxxxx123"
       , billing-account-id = "123456-1234ABCD-1234FF"
       , project-id-pattern = "%.15s-%.10s-%.3s"
-      , group-name-pattern = "%s.%s-%.4s"
+      , group-name-pattern = "%s.%s-%4\$s"
       , allow-hierarchical-folder-assignment = True
       , tenant-tags = Some
         { namespace-prefix = "meshstack_"
