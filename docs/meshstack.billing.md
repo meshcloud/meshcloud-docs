@@ -392,8 +392,13 @@ let Statements =
         General payment information can be accessed via paymentName, paymentIdentifier, paymentExpirationDate
         and paymentAmount. Custom Tags can be referenced via their property name in the according tag JSON schema.
         Custom Tags are customer tags, project tags and payment tags.
+
+      period-offset-days:
+        It is the offset of days after which chargeback statements are generated.
+        This time should always be set to a higher value than the finalizeReportsAfterDays
+        that are configured for kraken-worker, as only finalized reports are considered in chargeback statements.
     -}
-      { relevant-meta-keys : List Text }
+      { relevant-meta-keys : List Text, period-offset-days : Natural }
 ```
 <!--Example-->
 ```dhall
@@ -406,12 +411,15 @@ let example
         , "paymentExpirationDate"
         , "paymentAmount"
         ]
+      , period-offset-days = 10
       }
 
 let example2
     -- these relevant-meta-keys reference tags that can be defined individually per meshImplementation
     : Statements
-    = { relevant-meta-keys = [ "customTag1", "customTag2" ] }
+    = { relevant-meta-keys = [ "customTag1", "customTag2" ]
+      , period-offset-days = 10
+      }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
