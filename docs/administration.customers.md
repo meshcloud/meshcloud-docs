@@ -46,7 +46,7 @@ Partner users can update the status of meshCustomer accounts by clicking the `Ed
 
 #### Disabling Customer Accounts
 
-Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.tag-schema.md).
+Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
 Setting the meshCustomer account status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this customer:
 
@@ -97,7 +97,7 @@ Partners and Administrators can manage the quota, that limits the maximum number
 
 ### Edit Customer Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.tag-schema.md#tag-schemas) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
+Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.metadata-tags.md#tag-schemas) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
 
 ## Audit Customer Accounts
 

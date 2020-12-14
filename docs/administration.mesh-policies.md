@@ -1,13 +1,13 @@
 ---
-id: meshstack.mesh-policies
-title: Mesh Policies
+id: administration.mesh-policies
+title: meshPolicies
 ---
 
-meshPolicies can be set up between meshObjects, i.e., meshCustomer, meshProject, meshLandingZone and
-meshCustomerUserGroup. In the administration area, there is an option of 'Policies' in the 'Compliance' section of the
-navigation area. After clicking policies, you can view all policies in your meshStack instance.
+meshPolicies are described in detail [here](meshcloud.policies.md). They can be set up between meshObjects, i.e., meshCustomer, meshProject,
+meshLandingZone and meshUser/Group. In the administration area, there is an option of 'Policies' in the 'Compliance'
+section of the navigation area. After clicking policies, you can view all policies in your meshStack instance.
 
-## Create Policies
+## Create meshPolicies
 
 Policy creation is only possible for a user who has a partner admin role. There is a 'Create Policy' button top
 right on the policies screen. After clicking on it, there is a redirection to the screen of "Create Policy" where all
@@ -23,15 +23,15 @@ Let's consider a scenario where you want to set a policy for the selection of a 
 a policy with a rule on the environment tags. Operator 'in' works like an intersection between the meshObjects. So if
 you want to assign a landing zone with a "prod" tag to a project which has a "prod" tag, it is valid. It is possible to
 assign multiple rules to a policy. But at least one rule has to be configured. In order to map two meshObjects
-successfully one of the policies defined for a match need to be true. In order for a policy to return true, the rules
+successfully one of the policies defined for a match needs to be true. In order for a policy to return true, the rules
 have to be met.
 
-## Edit Policies
+## Edit meshPolicies
 
 In the policy item list, there is an edit policy button in the 'Actions' column which redirects to the Edit Policy
 screen where one can update the policy.
 
-## Delete policies
+## Delete meshPolicies
 
 In the policy item list, there is a "delete policy" button in the 'Actions' column. On clicking, it waits for 5 seconds
 to confirm the deletion. If one clicks within 5 seconds it will be deleted and redirected to the policy list screen

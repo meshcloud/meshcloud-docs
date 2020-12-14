@@ -1,17 +1,17 @@
 ---
-id: meshcloud.tag-schema
+id: meshcloud.metadata-tags
 title: Metadata Tags
 ---
 
 Organizations can configure meshStack to collect, attach and distribute organization-specific metadata
 to objects in the [meshModel](meshcloud.index.md) like [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md) and [payment methods](./meshcloud.payment-methods.md).
 
-This metadata can consist of arbitrary key-value pairs called **Tags**. meshStack Operators define available tags and their validation rules by [configuring tag-schemas](meshstack.tag-schema.md).
+This metadata can consist of arbitrary key-value pairs called **Tags**. meshStack Operators define available tags and their validation rules by [configuring tag-schemas](meshstack.metadata-tags.md).
 
 
 ## Integration in meshPanel
 
-meshPanel seamlessly integrates any tags that user can set in self-service on the relevant screens, e.g. the project create wizard and the project edit screen. From a users' point of view, there's no difference between properties defined in meshStack's meshModel or defined in a [tag-schema](meshstack.tag-schema.md).
+meshPanel seamlessly integrates any tags that user can set in self-service on the relevant screens, e.g. the project create wizard and the project edit screen. From a users' point of view, there's no difference between properties defined in meshStack's meshModel or defined in a [tag-schema](meshstack.metadata-tags.md).
 
 ## Tags restricted to Administrators
 

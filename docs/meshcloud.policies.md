@@ -5,8 +5,18 @@ title: meshPolicies
 
 ## Introduction: what are meshPolicies?
 
-A meshPolicy is a set of rule(s) between two [meshObjects](meshcloud.index.md#introduction) that are globally defined by your organization. Each rule describes what [tag](meshcloud.tag-schema.md) values have to be present on both meshObjects, in order to comply with the meshPolicy. meshPolicies are enforced in various places when attaching meshObjects.
-  
+A meshPolicy is a set of rule(s) between two [meshObjects](meshcloud.index.md#introduction) that are globally defined by your organization. Each rule describes what [tag](meshcloud.metadata-tags.md) values have to be present on both meshObjects, in order to comply with the meshPolicy. meshPolicies are enforced in various places when attaching meshObjects. How meshPolicies can be configured is described [here](administration.mesh-policies.md).
+
+### meshPolicies for meshUsers/Groups
+
+meshUsers and meshCustomerUserGroups are treated as one when it comes to meshPolicies. You can only define a policy for "meshUser/Group". Those policies will always apply to both meshObject types. It is not possible to define a policy that only matches meshUsers, but not meshCustomerUserGroups. The reason for that is, that you can assign both meshObject types (meshUsers and meshCustomerUserGroups) to meshCustomers and meshProjects. If you want to restrict this access to e.g. only allow access to production for certains users and groups, the policy always has to apply to both meshObject types. It wouldn't make sense to restrict only the assignment of groups, but you could still assign any user. Because of that, you can only select "meshUser/Group" as a policy subject in a meshPolicy.
+
+meshUsers exist on a global level and are not related to a specific meshCustomer. If you want to define a meshPolicy to only provide certain meshUsers/Groups access to a e.g. production projects, the following aspects have to be considered:
+
+1. If a user is globally defined to have access to any production project, you can add the production environment tag to that user, so this user gets access to all production projects in all meshCustomers.
+2. If you want to maintain per meshCustomer who has access to production projects, you have to use [meshCustomerUserGroups](./meshcloud.customer.md#user-groups) for that. It is not possible to assign a single meshUser certain tags within a certain meshCustomer.
+3. In order to provide easy access to "unrestricted" projects (e.g. those with environment "dev" and "qa") we provide [default tags](./meshstack.metadata-tags.md#tags-on-meshusers) for meshUsers. meshStack makes sure that these default tags are applied to all users.
+
 ### When am I impacted by meshPolicies?
 
 > If your organization has no policies defined at all, the information below is not relevant.
@@ -19,13 +29,13 @@ You may encounter policies in the meshPanel when doing any of the following acti
     2. Upon saving a new project, all policies between 'meshCustomer' and 'meshProject' are evaluated.
 2. Editing a project
     1. When adding a new location with a meshLandingZone all policies are evaluated between the 'meshProject' and the selected 'meshLandingZone'.
-    2. When adding a new meshCustomerUserGroup to a meshProject, all policies are evaluated between the 'meshProject' and the 'meshCustomerUserGroup'.
+    2. When adding a new meshUser or meshCustomerUserGroup to a meshProject, all policies are evaluated between the 'meshProject' and the 'meshUser/Group'.
     3. When changing a tag value (e.g. changing the environment) of a project, **all** policies related to the meshProject are evaluated as it impacts many meshObjects. The following meshObjects will be evaluated on to the project:
         - the meshCustomer the project lives in
         - all assigned meshLandingZones
         - all assigned meshUsers
         - all attached meshCustomerUserGroups
-3. Adding a meshCustomerUserGroup to a meshCustomer. All policies between 'meshCustomer' and 'meshCustomerUserGroup' are evaluated on the given 'meshCustomer' and 'meshCustomerUserGroup'.
+3. Adding a meshUser or meshCustomerUserGroup to a meshCustomer. All policies between 'meshCustomer' and 'meshUser/Group' are evaluated on the given 'meshCustomer' and 'meshUser/Group'.
 
 ### What happens when I violate a meshPolicy?
 
@@ -57,7 +67,7 @@ Your organization is fully free to define policies across the entire meshStack. 
 
     Imagine a meshCustomer with `environment=[sandbox, test]`. If there is a meshPolicy in place between meshCustomers and meshProjects on the environment tag, users cannot create new meshProjects that use an environment that is **not** available on the meshCustomer, for example `environment=[prod]`.
 
-2) Enforcing that a meshProject only has meshCustomerUserGroups that are allowed access to highly confidential projects.
+2) Enforcing that a meshProject only has meshUsers/Groups that are allowed access highly confidential projects or production projects.
 
 3) Enforcing that a meshProject only has meshLandingZones assigned to it that are meant for the environment of the meshProject.
 

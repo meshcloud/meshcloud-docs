@@ -43,7 +43,7 @@ The following parameter can be used in the Blueprint:
 | ~~costcenter~~     | ID of the CostCenter defined for this meshProject. (Deprecated. Please use tagCostCenter) |
 | projectIdentifier  | The project identifier                                                                    |
 | subscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
-| tagCostCenter      | Example for a  [metadata tags](./meshstack.tag-schema.md) named `costCenter`              |
+| tagCostCenter      | Example for a  [metadata tags](./meshstack.metadata-tags.md) named `costCenter`              |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags can also be used in the Blueprints.
 The following modifications are applied to metadata tag keys by meshstack before making them available as parameters:
@@ -52,7 +52,7 @@ The following modifications are applied to metadata tag keys by meshstack before
 - First letter of metadata tag key is capitalized
 
 In the example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
-See [metadata tags](./meshstack.tag-schema.md) for more information.
+See [metadata tags](./meshstack.metadata-tags.md) for more information.
 
 > If you are planning on converting any of the blueprint parameters into Azure tags, please be aware of the limits and requirements
 > that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
@@ -122,7 +122,7 @@ The Azure Role Definition is the RBAC ID of the Azure role you want to use. You 
 
 Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
-Please review the [HTTP header interface documentation](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+Please review the [HTTP header interface documentation](./meshstack.metadata-tags.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
 In addition to the headers referenced above, meshStack provides the following Azure-specific HTTP headers:
 

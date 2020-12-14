@@ -38,7 +38,7 @@ One way of creating payment methods is via the meshPanel. To do so, make sure th
 5. Choose a type for the payment method. Read more [here](#types-of-payment-methods) on what type to choose and what the individual differences are.
 6. (This is optional) Set a maximum amount of EUR on the payment method to indicate the remaining budget of this payment method.
 7. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
-8. Additionally, you can enter tags for the payment method, which are custom per meshImplementation (also see [Tag Schema](meshstack.tag-schema.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
+8. Additionally, you can enter tags for the payment method, which are custom per meshImplementation (also see [Tag Schema](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
 9. Click 'Save' and your new payment method will be available to the meshCustomer it was created in!
 
 ### Creating a Payment Method via the meshObject API
@@ -75,7 +75,7 @@ After setting a payment method, you can continue the project creation flow and s
 
 ## The Payment Method Lifecycle: Enhance with Metadata
 
-As it is difficult to handle large amounts of payment methods only via their names or identifiers, there is the possibility to provide tags (also see [Tag Schema](meshstack.tag-schema.md)) to the payment methods. This metadata can be provided when creating/editing the payment method in the meshPanel. This is already described in step 8 [here](#creating-a-payment-method-via-the-meshpanel).
+As it is difficult to handle large amounts of payment methods only via their names or identifiers, there is the possibility to provide tags (also see [Tag Schema](meshstack.metadata-tags.md)) to the payment methods. This metadata can be provided when creating/editing the payment method in the meshPanel. This is already described in step 8 [here](#creating-a-payment-method-via-the-meshpanel).
 
 An alternative way of providing metadata to payment methods is via the meshObject API. The API docs will describe how to inject tags in payment methods.
 
@@ -85,7 +85,7 @@ There are two possible ways to exporting the metadata of the payment methods, de
 
 ### Applying Metadata on Tenants in Cloud Platforms
 
-One way of exporting the payment method data (on top of other metadata from meshCustomers and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.tag-schema.md#meshtenant-metadata) and decide what approach fits best.
+One way of exporting the payment method data (on top of other metadata from meshCustomers and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.metadata-tags.md#meshtenant-metadata) and decide what approach fits best.
 
 ### Exporting Financial Data and Metadata
 

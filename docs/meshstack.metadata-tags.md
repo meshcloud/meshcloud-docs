@@ -1,9 +1,9 @@
 ---
-id: meshstack.tag-schema
+id: meshstack.metadata-tags
 title: Metadata Tags
 ---
 
-Operators can configure meshStack to collect, attach and distribute organization-specific metadata to [meshModel](meshcloud.index.md) objects using [metadata tags](./meshcloud.tag-schema.md).
+Operators can configure meshStack to collect, attach and distribute organization-specific metadata to [meshModel](meshcloud.index.md) objects using [metadata tags](./meshcloud.metadata-tags.md).
 
 ## Use Cases for Metadata Tags
 
@@ -27,7 +27,7 @@ Operators can model this metadata as **tags** using a [tag schema](#tag-schemas)
 
 ## Tag Schemas
 
-[Configured tag-schemas](meshstack.tag-schema.md) describe the tags available on each meshModel entity and
+[Configured tag-schemas](meshstack.metadata-tags.md) describe the tags available on each meshModel entity and
 their associated validation rules. These rules can describe for example if a tag is required or optional.
 
 > meshStack currently supports tag schemas on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
@@ -181,6 +181,43 @@ the default "cost center" payment method provides the `costCenter` tag.
 Operators can also add additional tags to [Payment Methods](meshcloud.payment-methods.md).
 This is useful if your organization needs additional metadata like e.g. contract or budget numbers to chargeback cloud costs.
 
+## Tags on meshUsers
+
+meshUsers are defined globally in meshStack and therefore their tags are identicial within all meshCustomers. As described in [meshPolicies](meshcloud.policies.md#meshpolicies-for-meshUsers/Groups) there are usecases where it makes sense to just apply a set of default tags to all meshUsers. I.e. you want to allow to assign all users to "dev" and "qa" projects, but not to "prod" projects.
+
+<!--snippet:mesh.web.user-->
+
+The following configuration options are available at `mesh.web.user`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let User =
+    {-
+          tags:
+            Default tags will be applied to every active user in meshStack on every startup of meshStack and
+            whenever a new user is added to a meshCustomer or imported via API
+    -}
+      { rolerequest : UserRolerequest
+      , revocation : Optional UserRevocation
+      , tags : List { mapKey : Text, mapValue : List Text }
+      }
+```
+<!--Example-->
+```dhall
+let example
+    : User
+    = { rolerequest =
+        { min-approval-count = Some 1
+        , enable-guest-user = Some True
+        , set-email-as-euid = True
+        , restrict-customer-admin-role-assignment = Some False
+        }
+      , revocation = None UserRevocation
+      , tags = [ { mapKey = "environment", mapValue = [ "dev", "qa" ] } ]
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 ## Tags in Landing Zones
 
 meshStack makes metadata available to [Landing Zones](./meshcloud.landing-zones.md), for example by providing it as parameters to an [Azure Blueprint](meshstack.azure.landing-zones.md). The Landing Zone documentation for each of meshStack's supported platforms describes how meshStack makes **meshTenant metadata** available.
@@ -189,7 +226,7 @@ meshStack makes metadata available to [Landing Zones](./meshcloud.landing-zones.
 
 > meshTenant metadata is part of a tenant's desired state. meshStack will therefore automatically reconcile any change to metadata with the actual tenant state.
 
-meshStack automatically derives [metadata tags](./meshcloud.tag-schema.md) for [meshTenants](./meshcloud.tenant.md) based on the metadata tags set on the [meshProject](./meshcloud.project.md), the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
+meshStack automatically derives [metadata tags](./meshcloud.metadata-tags.md) for [meshTenants](./meshcloud.tenant.md) based on the metadata tags set on the [meshProject](./meshcloud.project.md), the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
 the [meshCustomer](./meshcloud.customer.md) it belongs to.
 
 It's possible that these sources provide different values for the same tag key. For example, both the meshCustomer and
