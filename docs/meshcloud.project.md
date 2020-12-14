@@ -36,7 +36,7 @@ You can configure one or multiple [payment methods](meshcloud.payment-methods.md
 
 You also have the option of setting a substitute payment method on a project. This feature is enabled via a configuration in meshStack. A job that runs daily will check if the already assigned payment method is expired and if it is, will replace it with the substitute payment method. In that case, the substitute payment will be set to `None`.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional project [metadata tags](./meshcloud.tag-schema.md) here.
+Depending on the configuration of your meshStack implementation, you may be able to edit additional project [metadata tags](./meshcloud.metadata-tags.md) here.
 
 ## Access Control on a meshProject
 

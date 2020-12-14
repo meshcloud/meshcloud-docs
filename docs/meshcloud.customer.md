@@ -12,13 +12,13 @@ Organizations implementing meshStack can choose to offer self-service customer r
 the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.configuration.md#customer-registration).
 
 In any case, the meshCustomer creation process always involves collecting basic customer information like Name, identifier
-and any additional [metadata specific to your organization](meshstack.tag-schema.md#customer-tag-schema).
+and any additional [metadata specific to your organization](meshstack.metadata-tags.md#customer-tag-schema).
 
 ## Customer Settings
 
-General information of a meshCustomer (like its name) and [Customer Tags](meshstack.tag-schema.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
+General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.tag-schema.md) here.
+Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.metadata-tags.md) here.
 
 ## Invite users to a meshCustomer team
 

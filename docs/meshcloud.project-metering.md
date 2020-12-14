@@ -22,7 +22,7 @@ You can also define additional Billing Addresses, that can be used for your mesh
 External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](./meshstack.api.md).
 meshStack operators can also provide payment methods for a customer via "Admin Area -> Customers -> Payment Methods".
 
-[Metadata](./meshcloud.tag-schema.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
+[Metadata](./meshcloud.metadata-tags.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
 
 Payment Methods can have an expiration date set. Expired payment methods can not be assigned to meshProjects anymore (see [payment method handling on meshProjects](meshcloud.project.md#editing-payment-and-project-settings)).
 

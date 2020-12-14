@@ -30,7 +30,7 @@ For more information, click on 'View more' in the tenant list and in this screen
 
 ## Metadata Tags
 
-meshStack automatically derives [metadata tags](./meshcloud.tag-schema.md) for meshTenants based on the metadata tags set on the meshProject, the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
+meshStack automatically derives [metadata tags](./meshcloud.metadata-tags.md) for meshTenants based on the metadata tags set on the meshProject, the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
 the meshCustomer it belongs to.
 
 Any update to tenant metadata (e.g. a change in payment method) triggers a new meshTenant reconciliation cycle.
