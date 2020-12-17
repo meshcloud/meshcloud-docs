@@ -117,9 +117,17 @@ let example
 
 ## Service Principal Configuration
 
-This section configures the Service Principal (SPN) used by meshStack's replicator
-to automate project replication. The SPN needs to be configured in the same
+This section configures the Service Principal (SPP) used by meshStack's replicator
+to automate project replication. The SPP needs to be configured in the same
 AAD Tenant that is used to hold all subscriptions managed by this meshPlatform.
+
+**Caution**: Currently it is not possible to manage SPPs in the Azure Portal. As a result we strongly recommend to create the SPP via the API (e.g. via Terraform) or the Azure CLI. This is required in order to retrieve the necessary client secret that meshcloud needs. You can achieve this by running:
+
+```bash
+az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
+# Save the `password` result of this command; it can never be retrieved again!
+```
+
 
 <!--snippet:mesh.platform.azure.servicePrincipal#type-->
 
@@ -132,20 +140,21 @@ let ServicePrincipal =
       Configures an Azure Service Principal.
 
           aadTenant:
-              Domain name or Id of the AAD Tenant that holds the Service Principal.
+              Domain name or Id of the AAD Tenant that holds the Service Principal. Can be seen during SPP creation in the `tenant` field or
+              by running
+              `az ad sp list --all | jq -r '.[] | select(.appId == "${app-id-of-your-spp}") | .appOwnerTenantId'`
 
           objectId:
-              The Object Id of the Service Principal. In Azure Portal, this is the Object Id
-              of the "Enterprise Application".
+              The Azure API Object ID of the Service Principal. Can NOT be seen during AD App creation, but can be retrieved by running
+              `az ad sp list --all | jq -r '.[] | select(.appId == "${app-id-of-your-spp}") | .objectId'`
 
           clientId:
-              The Application Client Id. In Azure Portal, this is the Application Id of the
-              "Enterprise Application" but can also be retrieved via the "App Registration" object
-              as "Application (Client) Id".
+              The Application Id of your SPP. Can be seen during SPP creation in the `appId` field. Alternatively you can try to find it using
+              the `az ad app list -o table` command and searching through the results
 
           clientSecret:
-              A valid secret for accessing the SPN. In Azure Portal, this can be configured on the
-              "App Registration" objecct.
+              The password of the SPP. Can only be obtained during SPP creation in the `password` field. If you do not have the password
+              available anymore, you have to reset it using `az ad sp credential reset`
     -}
       { aad-tenant : Text
       , object-id : Text
