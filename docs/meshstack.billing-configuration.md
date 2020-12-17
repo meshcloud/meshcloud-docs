@@ -293,6 +293,24 @@ The following configuration options are available at `mesh.kraken.productcatalog
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+## Common Chargeable Resources
+
+This section describes the resources that do not strictly belong to a specific cloud platform, that can be defined in the catalog.
+Products referring to these resources can be defined for all or multiple cloud platforms.
+
+### meshTenant
+
+Represents a meshTenant. Currently only available for the Azure platform. Will be implemented soon for AWS and GCP platforms.
+
+```text
+id: mesh.tenant
+traits:
+  - landingZoneName
+  - platformType
+```
+
+You can define products based on this resource type to charge fees based on the Landing Zone that is in use by a meshTenant
+or to simply charge a fee on the meshTenant itself based on the platform type. Currently only AZURE platform type is supported.
 
 ## Chargeback
 
