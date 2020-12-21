@@ -300,7 +300,7 @@ Products referring to these resources can be defined for all or multiple cloud p
 
 ### meshTenant
 
-Represents a meshTenant. Currently only available for the Azure platform. Will be implemented soon for AWS and GCP platforms.
+Represents a meshTenant. Currently available for Azure, AWS and GCP platforms.
 
 ```text
 id: mesh.tenant
@@ -310,7 +310,7 @@ traits:
 ```
 
 You can define products based on this resource type to charge fees based on the Landing Zone that is in use by a meshTenant
-or to simply charge a fee on the meshTenant itself based on the platform type. Currently only AZURE platform type is supported.
+or to simply charge a fee on the meshTenant itself.
 
 ## Chargeback
 
