@@ -65,9 +65,10 @@ You will be prompted with a new page where you can enter a lot of information. W
 
 meshUsers are defined globally in meshStack and therefore their tags are identical within all meshCustomers. As described in [meshPolicies](meshcloud.policies.md#meshpolicies-for-meshUsers/Groups) there are use cases where it makes sense to just apply a set of default tags to all meshUsers. I.e. you want to allow to assign all users to "dev" and "qa" projects, but not to "prod" projects.
 
+The following configuration options are available at `mesh.web.user`:
+
 <!--snippet:mesh.web.user-->
 
-The following configuration options are available at `mesh.web.user`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
