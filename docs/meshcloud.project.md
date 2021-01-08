@@ -77,8 +77,6 @@ In the **Project Access** section you can click the `-` button in the row of a u
 
 If you would like to delete a project which is no longer used, go to your **Account** settings. Navigate to **Projects** and click the button with the trash icon.
 
-When you want to delete a meshProject it is not completely removed in the cloud platforms and in the database, only flagged for deletion.
-
 The deletion procedure depends on the variaty of meshTenants under the project:
 
 1. a project contains exclusively tenants where we don't support automatic deletion (AWS, GCP, Azure, Kubernetes,OpenShift)
@@ -94,11 +92,12 @@ The deletion procedure depends on the variaty of meshTenants under the project:
 - Openshift
 
  If the project contains tenants on which an operator will have to perform manual deletion actions in the respective platform, you can provide operators with a reason for the deletion. The reason field is currently limited to 255 characters. The reason for deletion will be shown to the operator when they perform the required deletion actions. Manual deletion performed by a partner user is necessary for above mentioned cloud tenants.
- After performing the resource deletion you have to confirm the deletion by entering the identifier of your project. The actual project deletion in the platforms will be done in the background and may take a while. Once you confirm the deletion, all users will be removed from the meshProject, and they will not be able to access the connected platform tenants or the related cloud resources anymore.
+ After performing the resource deletion you have to confirm the deletion by entering the identifier of your project. The actual project deletion in the platforms will be done in the background and may take a while. Once you confirm the deletion, all users will be removed immediately from the meshProject and the tenant in the respective platform. Therefore they will not be able to access the connected platform tenants or the related cloud resources anymore.
 
 If a meshProject contains meshTenants of the above mentioned cloud platform, a partner or platform operator will have to perform the deletion of those platform tenants manually in the respective platform.
 
-**2. OpenStack, Cloud Foundry and Marketplace meshTenants**: The system will perform a check to see if any resources exist in the tenants of the project being deleted. This check is currently implemented only for OpenStack and Cloud Foundry platforms. If resources do exist in any of those platform tenants, you will be informed about them. You have to manually delete those resources and any other resources in the scope of your project that may exist in other platform tenants where the resource check is not implemented. Once you have performed the manual resource deletion, you can confirm the project deletion by entering the identifier of your project. An asynchronous background job removes tenants from platforms regularly.
+
+**2. OpenStack, Cloud Foundry and Marketplace meshTenants**: The system will perform a check to see if any resources exist in the tenants of the project being deleted. This check is currently implemented only for OpenStack and Cloud Foundry platforms. If resources do exist in any of those platform tenants, you will be informed about them. You have to manually delete those resources and any other resources in the scope of your project that may exist in other platform tenants where the resource check is not implemented. Once you have performed the manual resource deletion, you can confirm the project deletion by entering the identifier of your project. An asynchronous background job removes tenants from platforms regularly. During which the access will also be removed from the meshProject and the meshTenant.
 
 **3. Combination of meshTenants**: If a projects contains a combination of tenants from 1. and 2. the tenants which dont require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.
 
