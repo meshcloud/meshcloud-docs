@@ -27,7 +27,7 @@ such metadata include:
 - Data Confidentiality Levels
 - Project Staging Environment, e.g. QA or production
 
-## Viewing and defining available tags 
+## Viewing and defining available tags
 
 > Note: doing the actions below will require the Partner Admin role.
 
@@ -36,7 +36,7 @@ To get started with managing tags in meshstack, navigate to the Tags page which 
 ![Tag List](assets/metadata_tags/admin_area_tags_list.png)
 
 This page will show you all tags that are currently active on supported meshObjects. If you would like to know more details about a tag, or create, edit, or delete a tag, you can do so by clicking on the large arrow ▶️ on the right for a meshObject.
-This next page will show you more details about a tag such as the title, description or data type of a tag. 
+This next page will show you more details about a tag such as the title, description or data type of a tag.
 
 ### Defining a new tag
 
@@ -48,7 +48,7 @@ You will be prompted with a new page where you can enter a lot of information. W
 > This can help you get an idea of how it will look when end-users fill in the tag value.
 
 - **Display Name**: This is the text that will be shown above the input field which the user reads. Note that is **not** the name of the tag itself.
-- **Name**: This is the actual name of the tag as it will be displayed in the green bubble. It is also the name that is used for uniquely identifying the tag and when exporting it or when [using it within a landing zone](#exposing-tags-via-landing-zones). This name cannot be changed later (at the moment). We recommend using a name that is similar or the same as the Display Name.
+- **Name**: This is the actual name of the tag as it will be displayed in the green bubble. It is also the name that is used for uniquely identifying the tag and when exporting it or when [using it within a landing zone](#exposing-tags-via-landing-zones). This name cannot be changed later (at the moment). We recommend using a name that is similar or the same as the Display Name. Keep in mind that the use of spaces is not allowed since the tag name is used for technical purposes.
 - **Description (optional)**: This is the description of the tag that will be displayed in small grey text above the tag input. It is useful for giving extra information to the user when the (display) name of the tag is not explanatory enough.
 - **Tag Type**: This is the data type of the tag and also decides what kind of input the user will see. It will depend what you will fill in here depending on your needs. You can see the actual input in the Tag Preview on the right if you are curious how it looks.
 - **Regular Expression (optional)**: This is only available for `e-mail` and `string` tag types and can be used to enforce that users enter a certain data format. Also make sure to mention this in the description to help users what to enter.
@@ -56,7 +56,7 @@ You will be prompted with a new page where you can enter a lot of information. W
 - **Mandatory**: If a tag is mandatory, it means the user cannot create a new meshObject without first filling in this tag value.
 - **Restricted**: If a tag is restricted, it means only Partner users can enter this tag value. The input will also not be shown to the end-user when creating a new meshObject. This is useful if an organization doesn't want users to edit these values in self-service. For example, an organization can use restricted tags to implement a "segregation of duty" control to ensure that a partner user confirmed a project's data classification.
 - **Replication**: (note: not supported for meshLandingZones) If a tag has replication enabled, it will be used to tag an actual tenant in the cloud platform.
-    - **Replication Tag Key**: Although we recommend using the exact same value as **Name** here, it possible to use a slightly different tag key when it is used for replication. Also, keep in mind that the tag key will be prefixed, depending on what is configured for [tenant tags](#tags-in-cloud-tenants).
+  - **Replication Tag Key**: Although we recommend using the exact same value as **Name** here, it possible to use a slightly different tag key when it is used for replication. Also, keep in mind that the tag key will be prefixed, depending on what is configured for [tenant tags](#tags-in-cloud-tenants).
 
 ## Tags on meshUsers
 
@@ -182,7 +182,7 @@ The following tags values can be used in such a tag definition configuration:
 | `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                           |
 | `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied.  |
 
-Depending on the platform some limitations apply for maximum tag length or legal characters. You can learn more about these restrictions on [our blog post](https://www.meshcloud.io/2020/09/29/tags-and-labels-on-cloud-platforms-cheat-sheet-2020/). 
+Depending on the platform some limitations apply for maximum tag length or legal characters. You can learn more about these restrictions on [our blog post](https://www.meshcloud.io/2020/09/29/tags-and-labels-on-cloud-platforms-cheat-sheet-2020/).
 To ensure that no replication fails because of these restrictions we automatically adapt the tags to ensure they comply with platform requirements. The following behavior happens for the cloud platforms:
 
 ### Azure Tags
