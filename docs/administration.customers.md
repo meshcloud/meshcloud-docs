@@ -19,7 +19,7 @@ With meshcloud you can easily create customer accounts.
 2. If not logged in, please login with your Partner account credentials.
 3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account selection on the top left.
 4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left.
-5. There is a button `+ Create Customer` on the top-right side of the toolbar. After clicking the button, a dialog box will open and prompt for entering the name and identifier of the new customers as well as the user who owns the customer. An additional owner may be added in the Account area - Access Control page.
+5. There is a button `+ Create Customer` on the top-right of the toolbar. After clicking the button, a dialog box will open and prompt for entering the name and identifier of the new customers as well as the user who owns the customer. An additional owner may be added in the Account area - Access Control page.
 
 > **Attention**: The identifiers can not be changed. Please choose them carefully.
 
