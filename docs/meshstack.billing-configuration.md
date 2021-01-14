@@ -362,8 +362,14 @@ let Statements =
         It is the offset of days after which chargeback statements are generated.
         This time should always be set to a higher value than the finalizeReportsAfterDays
         that are configured for kraken-worker, as only finalized reports are considered in chargeback statements.
+
+      first-period:
+        Chargeback statement periods will be created monthly starting from this date on (UTC datetime format: yyyy-MM-ddTHH:mm:ssZ)
     -}
-      { relevant-meta-keys : List Text, period-offset-days : Natural }
+      { relevant-meta-keys : List Text
+      , period-offset-days : Natural
+      , first-period : Text
+      }
 ```
 <!--Example-->
 ```dhall
@@ -376,14 +382,16 @@ let example
         , "paymentExpirationDate"
         , "paymentAmount"
         ]
-      , period-offset-days = 10
+      , period-offset-days = 5
+      , first-period = "2020-01-01T00:00:00Z"
       }
 
 let example2
     -- these relevant-meta-keys reference tags that can be defined individually per meshImplementation
     : Statements
     = { relevant-meta-keys = [ "customTag1", "customTag2" ]
-      , period-offset-days = 10
+      , period-offset-days = 5
+      , first-period = "2020-01-01T00:00:00Z"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

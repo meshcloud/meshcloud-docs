@@ -265,7 +265,7 @@ let AzureGuestDetection =
       When adding/inviting a new user to a customer a custom attribute property from the AAD data
       can be used to determine if it is a guest user.
       Attention: This check is only performed on the first attempt when a user is added/invited
-      to a customer. If this check is configured after some users where initially added to a
+      to a customer. If this check is configured after some users were initially added to a
       customer they are not detected as guest users anymore.
 
         guest-property:
