@@ -120,6 +120,81 @@ It should be considered for the future to also log the userId, to correlate log 
 
 All log file entries always start with an UTC datetime. This is followed by the log-level (DEBUG, INFO, WARN, ERROR, ...).
 
+### Log in Meshfed
+
+We've configured our Spring Boot Applications (meshfed, kraken and identityconnector) to support log level changing during runetime. To expose this functionality we're using actuator configuration
+to expose `/actuator/loggers` endpoint to request all available components with there current log level.
+
+For example:
+
+```JSON
+curl --location --request GET 'http://localhost:8080/actuator/loggers' \
+--header 'Authorization: Basic <username-password>'
+
+{
+    "levels": [
+        "OFF",
+        "ERROR",
+        "WARN",
+        "INFO",
+        "DEBUG",
+        "TRACE"
+    ],
+    "loggers": {
+        "ROOT": {
+            "configuredLevel": "INFO",
+            "effectiveLevel": "INFO"
+        },
+        "com": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "com.rabbitmq": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "com.rabbitmq.client": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "com.rabbitmq.client.Address": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "com.rabbitmq.client.impl": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "io": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "io.meshcloud": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        ...
+    }
+}
+
+```
+
+Based on this information we can change the log level for each component. For this we need to append the component name to the `/actuator/loggers` endpoint (e.g. `/actuator/loggers/com.rabbitmq`)
+and we need to add the additional information which log level.
+
+For example:
+
+```JSON
+curl --location --request POST 'http://localhost:8080/actuator/loggers/com.rabbitmq' \
+--header 'Authorization: Basic <username-password>' \
+--data-raw '{"configuredLevel": "WARN"}'
+```
+
+All actuator enpoints are secured with basic auth. Only with the basic auth token we can request the endpoints `/actuator/loggers` and `/actuator/loggers/<any-component>`. You can find the necessary credentials in vault under `meshcloud-<environment>/prometheus`
+or you can get the creds from the vm under path `/opt/meshfed-api`. To connect to the machine you can use the anssh.sh script in `deployments` repository.
+
+We've introduced an ansible script (`deployments/ansible/set_log_level.yml`) to change the log level for specific components. The log level can then be changed as follow: `ansible-playbook set_log_level.yml --extra-vars="destination=io.meshcloud log_level=debug"`.
+
 #### Log in Keycloak
 
 `<timestamp> <log-level> [<class-name>] (<thread-name>) <message>`
