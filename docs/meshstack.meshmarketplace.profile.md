@@ -143,7 +143,7 @@ Below is an example of a JSON schema which should give you an idea of what's pos
     "serviceType": {
       "type": "string",
       "title": "Service Type",
-      "description": "Describes the purpose of a service",
+      "description": "Describes where the services faces its endpoints",
       "oneOf": [
         { "description": "Internal", "enum": ["int"] },
         { "description": "External", "enum": ["ext"] }
@@ -153,6 +153,7 @@ Below is an example of a JSON schema which should give you an idea of what's pos
       "type": "string",
       "title": "External Registration Number",
       "description": "The external registration number which is required for externally facing services. The number should be exactly 5 digits. If not sure what number to pick, please go to help.example.com/external-registration-number.",
+      "pattern": "^[0-9]{5}$",
       "visibleIf": {
         "serviceType": ["ext"]
       }
@@ -167,3 +168,4 @@ Below is an example of a JSON schema which should give you an idea of what's pos
 - It is possible to conditionally hide certain properties, depending on the values of other properties. Given the example JSON schema, `externalRegistrationNumber` will only be visible when the `serviceType` value is equal to `ext`.
 - The control that is rendered is dependent on data of the schema property itself. If you want, you can override this behavior by filling the `widget` property. Read more on widgets [here](https://github.com/guillotinaweb/ngx-schema-form#widgets).
 - If the value of a certain JSON schema property is not clear from the surface, don't forget that you can use the `description` for extra contextual information such as Wiki links or contact information.
+- It is possible to enforce certain patterns. This can be done by providing a Regular Expression in the `pattern` property. `externalRegistrationNumber` demonstrates this by enforcing the use of exactly five digits (0-9) as a value.
