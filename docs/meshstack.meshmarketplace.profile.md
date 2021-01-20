@@ -58,6 +58,8 @@ by [meshStack metering](meshstack.billing.md). That means cost information provi
 
 Please review the [meshMarketplace Metering documentation](meshstack.meshmarketplace.metering.md) for more details.
 
+Also see [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md#cost-information-in-catalog) for details about how to charge your services usage-based.
+
 ### Sensitive Services
 
 Usually the meshMarketplace shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the `sensitive` metadata for the according service in the OSB catalog.

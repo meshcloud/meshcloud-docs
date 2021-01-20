@@ -293,6 +293,24 @@ The following configuration options are available at `mesh.kraken.productcatalog
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+## Common Chargeable Resources
+
+This section describes the resources that do not strictly belong to a specific cloud platform, that can be defined in the catalog.
+Products referring to these resources can be defined for all or multiple cloud platforms.
+
+### meshTenant
+
+Represents a meshTenant. Currently available for Azure, AWS and GCP platforms.
+
+```text
+id: mesh.tenant
+traits:
+  - landingZoneName
+  - platformType
+```
+
+You can define products based on this resource type to charge fees based on the Landing Zone that is in use by a meshTenant
+or to simply charge a fee on the meshTenant itself.
 
 ## Chargeback
 
@@ -344,8 +362,14 @@ let Statements =
         It is the offset of days after which chargeback statements are generated.
         This time should always be set to a higher value than the finalizeReportsAfterDays
         that are configured for kraken-worker, as only finalized reports are considered in chargeback statements.
+
+      first-period:
+        Chargeback statement periods will be created monthly starting from this date on (UTC datetime format: yyyy-MM-ddTHH:mm:ssZ)
     -}
-      { relevant-meta-keys : List Text, period-offset-days : Natural }
+      { relevant-meta-keys : List Text
+      , period-offset-days : Natural
+      , first-period : Text
+      }
 ```
 <!--Example-->
 ```dhall
@@ -358,14 +382,16 @@ let example
         , "paymentExpirationDate"
         , "paymentAmount"
         ]
-      , period-offset-days = 10
+      , period-offset-days = 5
+      , first-period = "2020-01-01T00:00:00Z"
       }
 
 let example2
     -- these relevant-meta-keys reference tags that can be defined individually per meshImplementation
     : Statements
     = { relevant-meta-keys = [ "customTag1", "customTag2" ]
-      , period-offset-days = 10
+      , period-offset-days = 5
+      , first-period = "2020-01-01T00:00:00Z"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
