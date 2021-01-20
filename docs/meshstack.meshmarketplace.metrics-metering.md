@@ -50,11 +50,9 @@ For implementation details of a periodic counter metrics endpoint, please have a
 
 ### Sampling Counters
 
-A sampling counter can be used to model a counter that reports a count along with a timestamp at which the count was observed. For example, at `2020-09-11T00:00:00.000Z` it was observed that the amount of outgoing traffic was at 105GB.  **The value of a sampling counter should monotonically increase over time. Any counter resets are not handled in meshStack. If you expect counter resets you can use a [Periodic Counter](#periodic-counters) instead.**
+A sampling counter can be used to model a counter that reports a count along with a timestamp at which the count was observed. For example, at `2020-09-11T00:00:00.000Z` it was observed that the amount of outgoing traffic was at 105GB. **The value of a sampling counter should monotonically increase over time and must be sent to meshStack in order. Any counter resets are not handled in meshStack. If you expect counter resets you can use a [Periodic Counter](#periodic-counters) instead.**
 
 In general you can always track sampling counter metrics as periodic counters. But sampling counters might be easier to implement on the service broker side. You don't have to keep track of periods by yourself. This is handled by meshStack for you.
-
-> Sampling Counters are already collected by meshStack, but not yet processed to Tenant Usage Reports. This will be supported soon. You can already provide these metrics, but they will only be considered in usage reports after this feature is available in meshStack.
 
 **Applicable usecases:**
 
@@ -379,7 +377,10 @@ This is because there is no logical way to merge the previously seen data and th
 
 ### Providing Sampling Counters
 
-A sampling counter can be used to model a counter that reports a count along with a timestamp at which the count was observed. For example, at `2020-09-11T00:00:00.000Z` it was observed that the amount of outgoing traffic was at 105GB.  **The value of a sampling counter should monotonically increase over time. Any counter resets are not handled in meshStack. If you expect counter resets you can use a [PeriodicCounter](#providing-periodic-counters) instead.**
+A sampling counter can be used to model a counter that reports a count along with a timestamp at which the count was observed. For example, at `2020-09-11T00:00:00.000Z` it was observed that the amount of outgoing traffic was at 105GB.
+
+**The value of a sampling counter should monotonically increase over time and must be sent to meshStack in order. Any counter resets are not handled in meshStack.
+If you expect counter resets you can use a [Periodic Counter](#periodic-counters) instead.**
 
 Applicable usecases
 
@@ -426,9 +427,10 @@ The `metrics/samplingCounters` endpoint should return a response as shown below.
 }
 ```
 
-When calculating the cost for a reporting period, we will subtract the counter value at the beginning of the reporting period from the value at the end of the reporting period and multiply by the cost per unit. **We recommend that you sample the counter daily or hourly so that we can build incremental usage reports based on the data that is sent.** The advantage of using a `SamplingCounter` over a `PeriodicCounter` is that all calculations happen in meshStack and you only need to keep track of the metric values and the timestamps at which the values were observed.
+When calculating the cost for a reporting period, we will subtract the counter value at the beginning of the reporting period from the value at the end of the reporting period and multiply by the cost per unit. **We recommend that you sample the counter daily but at most hourly so that we can build incremental usage reports based on the data that is sent.** The advantage of using a `SamplingCounter` over a `PeriodicCounter` is that all calculations happen in meshStack and you only need to keep track of the metric values and the timestamps at which the values were observed.
 
-Any data points that have the exact same observedAt timestamp will be overwritten with the new values and any data points with an observedAt timestamp which meshStack has not yet retrieved will be inserted in meshStack. With this overwriting functionality, you have the option of correcting the past month's data points until the usage reports for the past month are finalized.
+> For SamplingCounters meshStack does not support data points to be overwritten in case they have the exact same observedAt timestamp.
+> meshStack only accepts data points to be added in a timely ordered manner, so correcting or inserting intermediate counters is **not** supported.
 
 Taking the [example service definition](#example-service-definition) and the example response shown above, the cost calculation for the service instance with id `266fa866-a950-4b12-adff-c11fa4cf8fdc` will be as follows. (Assuming that today's date is 2020-10-13)
 
