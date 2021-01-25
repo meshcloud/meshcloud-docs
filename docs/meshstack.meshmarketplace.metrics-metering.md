@@ -21,8 +21,6 @@ meshStack supports 3 different types of metrics that can be provided by Service 
 
 A gauge is a metric that just delivers a value as it is available at a certain point in time. For example, at `2020-09-05T00:00:00.000Z` two running VMs were observed. Or at `2020-09-11T00:00:00.000Z` 100 GB storage capacity was being consumed.
 
-> Gauges are already collected by meshStack, but not yet processed to Tenant Usage Reports. This will be supported soon. You can already provide these metrics, but they will only be considered in usage reports after this feature is available in meshStack.
-
 **Applicable use-cases:**
 
 - Number of virtual machines used by a service instance: The service broker will report a timestamp along with the number of virtual machine instances that were running at that time.
