@@ -52,8 +52,6 @@ A sampling counter can be used to model a counter that reports a count along wit
 
 In general you can always track sampling counter metrics as periodic counters. But sampling counters might be easier to implement on the service broker side. You don't have to keep track of periods by yourself. This is handled by meshStack for you.
 
-> Sampling Counters are already collected by meshStack, but not yet processed to Tenant Usage Reports. This will be supported soon. You can already provide these metrics, but they will only be considered in usage reports after this feature is available in meshStack.
-
 **Applicable usecases:**
 
 - Number of API calls done in an API gateway service (assuming the service samples the count and reports a timestamp and the count at that timestamp)
