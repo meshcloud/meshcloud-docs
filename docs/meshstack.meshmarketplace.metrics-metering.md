@@ -21,8 +21,6 @@ meshStack supports 3 different types of metrics that can be provided by Service 
 
 A gauge is a metric that just delivers a value as it is available at a certain point in time. For example, at `2020-09-05T00:00:00.000Z` two running VMs were observed. Or at `2020-09-11T00:00:00.000Z` 100 GB storage capacity was being consumed.
 
-> Gauges are already collected by meshStack, but not yet processed to Tenant Usage Reports. This will be supported soon. You can already provide these metrics, but they will only be considered in usage reports after this feature is available in meshStack.
-
 **Applicable use-cases:**
 
 - Number of virtual machines used by a service instance: The service broker will report a timestamp along with the number of virtual machine instances that were running at that time.
@@ -53,8 +51,6 @@ For implementation details of a periodic counter metrics endpoint, please have a
 A sampling counter can be used to model a counter that reports a count along with a timestamp at which the count was observed. For example, at `2020-09-11T00:00:00.000Z` it was observed that the amount of outgoing traffic was at 105GB.  **The value of a sampling counter should monotonically increase over time. Any counter resets are not handled in meshStack. If you expect counter resets you can use a [Periodic Counter](#periodic-counters) instead.**
 
 In general you can always track sampling counter metrics as periodic counters. But sampling counters might be easier to implement on the service broker side. You don't have to keep track of periods by yourself. This is handled by meshStack for you.
-
-> Sampling Counters are already collected by meshStack, but not yet processed to Tenant Usage Reports. This will be supported soon. You can already provide these metrics, but they will only be considered in usage reports after this feature is available in meshStack.
 
 **Applicable usecases:**
 

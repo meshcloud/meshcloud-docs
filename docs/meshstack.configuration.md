@@ -99,7 +99,9 @@ Additional remarks and configuration links:
 
 ### Customer User Invitations
 
-When a user is invited to a customer there are several configurations in order to customize this invitation flow which are explained below.
+When a user is invited to a customer there are several configurations to customize this invitation flow which is explained below.
+
+Of importance is the setup of the new user EUID (external user-id) property. This value identifies the user against external systems during project replication. The EUID is updated for every log in of the user into meshPanel. However, to directly start replicating a newly invited user, without requiring the user to login at least once, several methods can be set up to fetch the EUID from an external identity provider.
 
 ```dhall
 { web :
@@ -111,21 +113,21 @@ When a user is invited to a customer there are several configurations in order t
         Setting it to 2 basically activates the 4-eye-principle for customer
         user role assignments. -}
         { minApprovalCount : Optional Natural
-        {- If set to true the user must accept it, when the role his role on
-        the customer is changed (downgrades of roles still work automatically
-        without user acceptance)  -}
-        , enforceUserRoleUpgradeAcceptanceRequired : Optional Bool
+
         {- If set to true the user must accept the role invitation by clicking
         on an email link, otherwise he automatically gets the role assigned. -}
         , userRoleInviteAcceptanceRequired : Optional Bool
+
         {- Enables to add users with E-Mails from outside the used directory.
         Depending on the cloud environment this is handled differently (in
         Azure these users are added as guest users in the AAD)  -}
         , enableGuestUser : Optional Bool
+
         {- If set to true the users E-Mail is assumed as EUID which allows
         GCP and Azure projects to directly replicate the users permission without
         requiring him to login into the panel first -}
         , setEmailAsEuid : Bool
+
         {- If set to true, all possible ways of granting the Customer Admin role via
         the panel will be prohibited. This means that the Customer Admin role can only
         be assigned via the meshObject API. This is useful when an external system
@@ -134,10 +136,209 @@ When a user is invited to a customer there are several configurations in order t
         area, this person will be assigned as 'Customer Employee' instead. -}
         , restrictCustomerAdminRoleAssignment : Optional Bool
         }
+
       , revocation : Optional UserRevocation
+      , identity-lookup : Optional IdentityLookup
       }
 }
 ```
+
+#### User Setup Steps
+
+In order to use Azure lookup functionality, you must create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions as an **application permission**:
+
+- `User.Read.All`
+
+> You will also need to grant admin consent in AAD in order to activate the  `User.Read.All` permission.
+
+If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
+
+<!--snippet:mesh.meshfed.identity.azure.creds#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureCreds =
+    {-
+      Setting this configuration enables the use of an AAD as a user lookup source to allow
+      autocomplete of user information when adding new users to customers.
+
+        aad-tenant:
+            The active directory tenant. Its either a UID of the AAD or its domain
+            like devmeshcloud.onmicrosoft.com
+
+        client-id:
+            The client id of the service principal
+
+        client-secret:
+            The credentials of the service principal
+
+        user-lookup-strategy:
+            The lookupstrategy which is used in order to find the user. Use either
+            UserByUsernameLookupStrategy or UserByMailLookupStrategy. The UserByMailLookupStrategy
+            uses the users euid and uses it as an E-Mail address for AAD lookup. The
+            UserByUsernameLookupStrategy assumes the euid is an userPrincipalName for AAD lookup.
+    -}
+      { aad-tenant : Text
+      , client-id : Text
+      , client-secret : Secret.Type
+      , user-lookup-strategy : AzureLookupStrategy
+      , guestLookup : Optional AzureGuestDetection
+      , euidSchemaExtentionUpdate : Optional AzureEuidExtensionSchema
+      , euidUserAttributeUpdate : Optional AzureEuidUserAttribute
+      }
+```
+<!--Example-->
+```dhall
+let example
+    : AzureCreds
+    = { aad-tenant = "devmeshcloud.onmicrosoft.com"
+      , client-id = "f112f31-248a-4461-1269-0f13164acb95"
+      , client-secret = Secret.fromAnsible "client_secret"
+      , user-lookup-strategy =
+          AzureLookupStrategy.UserByMailLookupStrategy
+      , guestLookup = None AzureGuestDetection
+      , euidSchemaExtentionUpdate = None AzureEuidExtensionSchema
+      , euidUserAttributeUpdate = None AzureEuidUserAttribute
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+If this initial config if present you can decide to setup the following optional user identity steps:
+
+<!--snippet:mesh.meshfed.identity.azure.guest#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+{-
+  When adding/inviting a new user to a customer a custom attribute property from the AAD data
+  can be used to determine if it is a guest user.
+  Attention: This check is only performed on the first attempt when a user is added/invited
+  to a customer. If this check is configured after some users were initially added to a
+  customer they are not detected as guest users.
+
+    guestProperty:
+        The AAD's custom attribute which is checked against the guestValue.
+
+    guestValue:
+        If the AAD custom attribute matches this value the user is considered to be a guest.
+-}
+  { guestProperty : Text, guestValue : Text }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+<!--snippet:mesh.meshfed.identity.azure.euid#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureEuidExtensionSchema =
+    {-
+      When adding/inviting a new user to a customer a custom attribute property from the users AAD
+      extension schema can be used to fill in his euid.
+
+      Attention: This check is only performed on the first attempt when a user is added/invited
+      to a customer. If this check is configured after some users were initially added to a
+      customer their euid's are not udpated anymore.
+
+        euidExtensionSchemaProperty:
+            The name of the extension schema property which is used as EUID value.
+    -}
+      { euidExtensionSchemaProperty : Text
+      , euidExtensionSchemaIdentifier : Text
+      }
+```
+<!--Example-->
+```dhall
+let example
+    : AzureEuidExtensionSchema
+    = { euidExtensionSchemaProperty = "euid-schema-property"
+      , euidExtensionSchemaIdentifier = "euid-schema-identfifier"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+In order to use Google Cloud Directory as a lookup provider you need to provide these credentials:
+
+<!--snippet:mesh.meshfed.identity.gcd.creds#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let GcdCreds =
+    {-
+      Setting this configuration enables the use of an GCD as a user lookup source to allow
+      autocomplete of user information when adding new users to customers.
+
+        domain:
+            The domain used for cloud identity directory-groups created and managed by meshStack.
+            meshStack maintains separate groups for each meshProject role on each managed GCP project.
+
+        customer-id:
+            The client id of the service principal
+
+        service-account-credentials-b64:
+            The credentials of the service principal
+    -}
+      { domain : Text
+      , customer-id : Text
+      , service-account-credentials-b64 : Secret.Type
+      }
+```
+<!--Example-->
+```dhall
+let example
+    : GcdCreds
+    = { domain = "example.com"
+      , customer-id = "customer-id"
+      , service-account-credentials-b64 =
+          Secret.fromAnsible "gcp_credentials"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+The GCD Service User needs read access to the [GCD Directory API](https://developers.google.com/admin-sdk/directory/v1/get-start/getting-started).
+
+If this initial config if present you can decide to setup the following optional user identity steps:
+
+<!--snippet:mesh.meshfed.identity.gcd.euid#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let GcdEuid =
+    {-
+      When adding/inviting a new user to a customer a custom attribute property from the users GCD
+      custom schema can be used to fill in his euid.
+
+      Attention: This check is only performed on the first attempt when a user is added/invited
+      to a customer. If this check is configured after some users were initially added to a
+      customer their euid's are not udpated anymore.
+
+        euidCustomSchema:
+            The name of the extension schema which contains the EUID value.
+
+        euidProperty:
+            The name of the custom schema property which is used as EUID value.
+    -}
+      { euidCustomSchema : Text, euidProperty : Text }
+```
+<!--Example-->
+```dhall
+let example
+    : GcdEuid
+    = { euidCustomSchema = "schema-containing-euid"
+      , euidProperty = "euid-property"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 
 ### Address Metadata
 
@@ -193,120 +394,6 @@ Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
   feedbackEmail : Optional Text
 }
 ```
-
-### User Identity Lookup
-
-When you add users to your [meshCustomers](./meshcloud.customer.md) we currently support live typeahead for users stored in an Azure AAD Identity Provider and Google Cloud Directory (GCD). This makes it easier for people to invite additional users without remembering their full contact details.
-
-#### Configure for Azure AAD
-
-In order to use this functionality, you must create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions as an **application permission**:
-
-- `User.Read.All`
-
-> You will also need to grant admin consent in AAD in order to activate the  `User.Read.All` permission.
-
-If you have an Azure AAD as an upstream IDP and want to use it for user lookup you must provide meshcloud with the following credentials:
-
-<!--snippet:mesh.meshfed.identity.azure.creds#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AzureCreds =
-    {-
-      Setting this configuration enables the use of an AAD as a user lookup source to allow
-      autocomplete of user information when adding new users to customers.
-
-        aad-tenant:
-            The active directory tenant. Its either a UID of the AAD or its domain
-            like devmeshcloud.onmicrosoft.com
-
-        client-id:
-            The client id of the service principal
-
-        client-secret:
-            The credentials of the service principal
-
-        user-lookup-strategy:
-            The lookupstrategy which is used in order to find the user. Use either
-            UserByUsernameLookupStrategy or UserByMailLookupStrategy. The UserByMailLookupStrategy
-            uses the users euid and uses it as an E-Mail address for AAD lookup. The
-            UserByUsernameLookupStrategy assumes the euid is an userPrincipalName for AAD lookup.
-    -}
-      { aad-tenant : Text
-      , client-id : Text
-      , client-secret : Secret.Type
-      , user-lookup-strategy : AzureLookupStrategy
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : AzureCreds
-    = { aad-tenant = "devmeshcloud.onmicrosoft.com"
-      , client-id = "f112f31-248a-4461-1269-0f13164acb95"
-      , client-secret = Secret.fromAnsible "client_secret"
-      , user-lookup-strategy =
-          AzureLookupStrategy.UserByMailLookupStrategy
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-<!--snippet:mesh.meshfed.identity.azure.guest#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AzureGuestDetection =
-    {-
-      When adding/inviting a new user to a customer a custom attribute property from the AAD data
-      can be used to determine if it is a guest user.
-      Attention: This check is only performed on the first attempt when a user is added/invited
-      to a customer. If this check is configured after some users were initially added to a
-      customer they are not detected as guest users anymore.
-
-        guest-property:
-            The AAD's custom attribute which is checked against the guest-value.
-
-        guest-value:
-            If the AAD custom attribute matches this value the user is considered to be a guest.
-    -}
-      { guest-property : Text, guest-value : Text }
-```
-<!--Example-->
-```dhall
-let example
-    : AzureGuestDetection
-    = { guest-property = "guest-property", guest-value = "is-guest" }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-
-The Azure Service Principal must have at least the `User.Read.All` permission for the [list users web call](https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#permissions).
-
-
-#### Configure for Google Cloud Directory
-
-In order to use GCD as a lookup provider you need to provide these credentials:
-
-```dhall
-{ gcd :
-  { {- GCD Domain, e.g. example.com  -}
-    domain : Text
-    {- GCD Service User primary email, e.g. meshfed-service@example.com -}
-  , serviceUser : Text
-    {- GCP Service Account ID , e.g. meshfed-service@meshstack-root.iam.gserviceaccount.com -}
-  , accountId : Text
-  {- GCP Service Account Private Key -}
-  , privateKey : Text
-  }
-}
-```
-
-The GCD Service User needs read access to the [GCD Directory API](https://developers.google.com/admin-sdk/directory/v1/get-start/getting-started).
 
 ### Message of the Day
 
