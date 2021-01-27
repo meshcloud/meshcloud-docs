@@ -123,7 +123,7 @@ The meshStack regularly checks expiring service bindings, notifies users about u
 
 The meshMarketplace supports JSON schema for custom parameters used for service instance creation and service binding. The support of JSON schema is part of the [OSB spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object).
 Delivering JSON schema information allows the meshMarketplace UI to assist users in crafting proper parameters by rendering a user interface based on the content of the JSON schema.
-meshstack uses an open-source library to achieve this result. If you want to learn more about how to render the JSON schema into a UI, including all the edge-case possibilities, you can take a look at the library [its GitHub repository](https://github.com/guillotinaweb/ngx-schema-form).
+meshstack uses an open-source library to achieve this result. If you want to learn more about how to render the JSON schema into a UI, including all the edge-case possibilities, you can take a look at the library's [GitHub repository](https://github.com/guillotinaweb/ngx-schema-form).
 Below is an example of a JSON schema which should give you an idea of what's possible and how.
 
 > Please be aware that the meshMarketplace UI currently only supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
