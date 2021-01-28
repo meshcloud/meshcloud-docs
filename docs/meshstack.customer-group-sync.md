@@ -374,7 +374,8 @@ let example
             }
           ]
         }
-      , groupBindingAttributesTransformations.roleName =
+      , groupBindingAttributesTransformations.roleName
+        =
           AttributeTransformation.Regex
             { attribute = "cn"
             , postProcessor = None PostProcessor

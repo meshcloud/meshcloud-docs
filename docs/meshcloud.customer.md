@@ -12,13 +12,13 @@ Organizations implementing meshStack can choose to offer self-service customer r
 the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.configuration.md#customer-registration).
 
 In any case, the meshCustomer creation process always involves collecting basic customer information like Name, identifier
-and any additional [metadata specific to your organization](meshstack.tag-schema.md#customer-tag-schema).
+and any additional [metadata specific to your organization](meshstack.metadata-tags.md#customer-tag-schema).
 
 ## Customer Settings
 
-General information of a meshCustomer (like its name) and [Customer Tags](meshstack.tag-schema.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
+General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.tag-schema.md) here.
+Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.metadata-tags.md) here.
 
 ## Invite users to a meshCustomer team
 
@@ -103,3 +103,22 @@ meshCustomer roles grant rights in meshStack only. In order to access cloud reso
 ## Remove assigned meshCustomer Roles
 
 If you would like to remove a user or group from your meshCustomer go to your "Account" settings and select "Customer Access". You can click the "trash" icon in the "Customer Access" section to remove the user or group from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the Pending Role Requests section. When removing someone from the meshCustomer, the user or group is automatically removed from all projects it had access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshCustomer was revoked.
+
+## Customer Deletion
+
+Before a meshCustomer may be deleted, a check is performed to verify the following:
+
+- all meshProjects in the meshCustomer have been deleted. This means, that they are not only [marked for deletion](meshcloud.project.md#delete-a-meshproject), but that they have [actually been deleted](administration.projects.md#delete-projects) in the platforms.
+- all published Service Brokers in the meshCustomer have been [deactivated](meshstack.meshmarketplace.development.md#deactivation-of-service-brokers)
+- the meshCustomer is not a meshPartner. Deletion of meshPartners is not supported.
+
+The deletion can be performed only by the Customer Owners! You can find the "Delete" button on the "General" screen in the Customer Area. You will be asked for confirmation and a deletion reason when you click the button.
+
+The following steps will be done during deletion:
+
+- all assigned users & groups as well as pending binding requests will be removed from the meshCustomer
+- all payment methods on the meshCustomer will be soft-deleted, so meshPartners can still get details like info on usage of these payment methods
+- all policy violations related to the deleted meshCustomer will be removed
+- a "deleted" event is written to the customer events, including a reason that was provided during deletion
+
+meshCustomers are soft-deleted, so meshPartners can still see deleted meshCustomers and their events in the Admin Area. Deleted meshCustomers and meshPaymentMethods will be highlighted by a "Deleted" label.

@@ -61,7 +61,7 @@ The properties of the provided configuration file will be expanded with properti
 | tagCostCenter               | ID of the CostCenter defined for this meshProject.                                 |
 | projectIdentifier           | The project identifier                                                             |
 | projectId                   | The ID of the GCP project associated with this meshProject                         |
-| tagCostCenter               | Example for a  [metadata tag](./meshstack.tag-schema.md) named `costCenter`        |
+| tagCostCenter               | Example for a  [metadata tag](./meshstack.metadata-tags.md) named `costCenter`        |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags are also provided to the template.
 The following modifications are applied to metdata tag keys by meshstack before making them available as properties:
@@ -70,7 +70,7 @@ The following modifications are applied to metdata tag keys by meshstack before 
 - First letter of metadata tag key is capitalized
 
 In the example, a metadata tag named `costCenter` would be provided as a property with name `tagCostCenter`.
-See [metadata tags](./meshstack.tag-schema.md) for more information.
+See [metadata tags](./meshstack.metadata-tags.md) for more information.
 
 > If you are planning on converting any of the template properties into GCP labels, please be aware of the limits and requirements
 > that GCP has [described in their docs](https://cloud.google.com/compute/docs/labeling-resources#restrictions).
@@ -93,7 +93,7 @@ If you specify a Cloud Function URL this function will get invoked during a proj
 
 Please make sure the GCP service user of the replicator is allowed to access this function.
 
-Please review the [meshStack Landing Zone Http Header interface](./meshstack.tag-schema.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+Please review the [meshStack Landing Zone Http Header interface](./meshstack.metadata-tags.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
 In addition to the headers referenced above, meshStack provides the following GCP-specific HTTP headers:
 

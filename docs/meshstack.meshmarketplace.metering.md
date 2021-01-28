@@ -63,6 +63,10 @@ meshStack interprets the `costs` property for each plan and automatically mainta
 
 The following sections detail how meshStack interprets OSB API plan [cost objects](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#cost-object) to create meshStack metering product catalog entries.
 
+### Metrics-based Metering
+
+See [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md) for details about how to charge your services usage-based. This could be relevant for you if you want to charge e.g. based on actual storage or memory used by the service. Further use-cases are mentioned in the linked chapter.
+
 ### Supported Unit Types
 
 [Cost objects](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#cost-object) in the OSB API specification support only a single `unit` field. However, service owners can specify multiple cost objects

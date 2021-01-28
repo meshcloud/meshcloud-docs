@@ -162,6 +162,15 @@ let GcpPlatformCoreConfiguration =
       billingAccountId:
         The id of the billing account to associate with all GCP projects managed by meshStack
 
+      projectNamePattern:
+        A String.format format string receiving the following arguments:
+          1. meshCustomer identifier
+          2. meshProject identifier
+        The result must be 4 to 30 characters.
+        Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
+        single-quote, double-quote, space, and exclamation point.
+        When length restrictions are applied, the abbreviation will be in the middle and marked by a single-quote
+
       projectIdPattern:
         A String.format format string receiving the following arguments:
           1. meshCustomer identifier
@@ -192,6 +201,7 @@ let GcpPlatformCoreConfiguration =
       , domain : Text
       , customer-id : Text
       , billing-account-id : Text
+      , project-name-pattern : Text
       , project-id-pattern : Text
       , group-name-pattern : Text
       , allow-hierarchical-folder-assignment : Bool
@@ -206,8 +216,9 @@ let example
       , domain = "myorg.example.com"
       , customer-id = " Cxxxx123"
       , billing-account-id = "123456-1234ABCD-1234FF"
+      , project-name-pattern = "%.14s %.15s"
       , project-id-pattern = "%.15s-%.10s-%.3s"
-      , group-name-pattern = "%s.%s-%.4s"
+      , group-name-pattern = "%s.%s-%4\$s"
       , allow-hierarchical-folder-assignment = True
       , tenant-tags = Some
         { namespace-prefix = "meshstack_"

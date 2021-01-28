@@ -15,11 +15,11 @@ When selecting **Customers** in the menu bar on the left you can see the list of
 
 With meshcloud you can easily create customer accounts.
 
-1. Login to the meshPanel with your partner credentials
+1. Login to the meshPanel with your partner credentials.
 2. If not logged in, please login with your Partner account credentials.
 3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account selection on the top left.
 4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left.
-5. On the top of the table enter the new managed customer's name and identifier. Then click on the `+` button. Your managed customer is created.
+5. There is a button `+ Create Customer` on the top-right of the toolbar. After clicking the button, a dialog box will open and prompt for entering the name and identifier of the new customers as well as the user who owns the customer. An additional owner may be added in the Account area - Access Control page.
 
 > **Attention**: The identifiers can not be changed. Please choose them carefully.
 
@@ -46,7 +46,7 @@ Partner users can update the status of meshCustomer accounts by clicking the `Ed
 
 #### Disabling Customer Accounts
 
-Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.tag-schema.md).
+Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
 Setting the meshCustomer account status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this customer:
 
@@ -97,7 +97,7 @@ Partners and Administrators can manage the quota, that limits the maximum number
 
 ### Edit Customer Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.tag-schema.md#tag-schemas) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
+Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.metadata-tags.md#tag-schemas) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
 
 ## Audit Customer Accounts
 

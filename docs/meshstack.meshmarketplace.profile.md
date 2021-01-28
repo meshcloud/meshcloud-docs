@@ -58,6 +58,8 @@ by [meshStack metering](meshstack.billing.md). That means cost information provi
 
 Please review the [meshMarketplace Metering documentation](meshstack.meshmarketplace.metering.md) for more details.
 
+Also see [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md#cost-information-in-catalog) for details about how to charge your services usage-based.
+
 ### Sensitive Services
 
 Usually the meshMarketplace shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the `sensitive` metadata for the according service in the OSB catalog.
@@ -119,8 +121,51 @@ The meshStack regularly checks expiring service bindings, notifies users about u
 
 ## Service Instance / Binding Parameters
 
-The meshMarketplace supports JSON schema for custom parameters used for service instance creation and service binding. You can find the description of the schema [in the OSB spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object).
-
-Delivering this schema information allows the meshMarketplace UI to assist users in crafting proper parameters.
+The meshMarketplace supports JSON schema for custom parameters used for service instance creation and service binding. The support of JSON schema is part of the [OSB spec](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md#schemas-object).
+Delivering JSON schema information allows the meshMarketplace UI to assist users in crafting proper parameters by rendering a user interface based on the content of the JSON schema.
+meshstack uses an open-source library to achieve this result. If you want to learn more about how to render the JSON schema into a UI, including all the edge-case possibilities, you can take a look at the library's [GitHub repository](https://github.com/guillotinaweb/ngx-schema-form).
+Below is an example of a JSON schema which should give you an idea of what's possible and how.
 
 > Please be aware that the meshMarketplace UI currently only supports version [draft-04](http://json-schema.org/draft-04/schema#) of the JSON schema specification.
+
+### Service Instance JSON Schema Example
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "securityContact": {
+      "type": "string",
+      "title": "Security Contact",
+      "description": "Who is the security responsible person for this service instance?",
+      "default": "person@example-company.com"
+    },
+    "serviceType": {
+      "type": "string",
+      "title": "Service Type",
+      "description": "Describes where the services faces its endpoints",
+      "oneOf": [
+        { "description": "Internal", "enum": ["int"] },
+        { "description": "External", "enum": ["ext"] }
+      ]
+    },
+    "externalRegistrationNumber": {
+      "type": "string",
+      "title": "External Registration Number",
+      "description": "The external registration number which is required for externally facing services. The number should be exactly 5 digits. If not sure what number to pick, please go to help.example.com/external-registration-number.",
+      "pattern": "^[0-9]{5}$",
+      "visibleIf": {
+        "serviceType": ["ext"]
+      }
+    }
+  }
+}
+```
+
+### Things to keep in mind
+
+- The order in which the JSON schema properties are shown is determined by the order of the properties within the JSON schema. Looking at the example, the ordering of UI inputs would be `securityContact`, `serviceType` and then `externalRegistrationNumber`.
+- It is possible to conditionally hide certain properties, depending on the values of other properties. Given the example JSON schema, `externalRegistrationNumber` will only be visible when the `serviceType` value is equal to `ext`.
+- The control that is rendered is dependent on data of the schema property itself. If you want, you can override this behavior by filling the `widget` property. Read more on widgets [here](https://github.com/guillotinaweb/ngx-schema-form#widgets).
+- If the value of a certain JSON schema property is not clear from the surface, don't forget that you can use the `description` for extra contextual information such as Wiki links or contact information.
+- It is possible to enforce certain patterns. This can be done by providing a Regular Expression in the `pattern` property. `externalRegistrationNumber` demonstrates this by enforcing the use of exactly five digits (0-9) as a value.
