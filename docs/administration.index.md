@@ -14,7 +14,7 @@ available to users of partner or admin accounts:
 - **meshAdmin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
   administrator/partner account.
 - **meshAdmin Employee**: Has full access to all administration functionality, but **cannot** manage meshPolicies, tag definitions or users of the administrator/partner account.
-- **Compliance Manager**: Has the same rights as a meshAdmin Employee, but can also manage meshPolicies and tag definitions.
+- **Compliance Manager**: Has the rights to manage meshPolicies and tag definitions.
 - **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
 - **Ops Support**: Not all Ops operations must be executed by Platform Operators. E.g. setting quotas is a task that can also be done by
