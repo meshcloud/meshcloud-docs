@@ -19,7 +19,9 @@ meshPanel seamlessly integrates any tags that can be set by allowing users to in
 
 ## Tags restricted to Administrators
 
-Administrators can configure tags so that only [Partner users](./administration.index.md) can edit them. These tags are called **restricted tags**. End-users cannot edit restricted tags in meshPanel, but they can view them at anytime.
+Administrators can configure tags so that only [Partner users](./administration.index.md) can edit them. These tags are called **restricted tags**. End-users cannot edit restricted tags in meshPanel, but they can view them at anytime. Partner users can view and edit restricted and unrestricted tags. 
+
+**Note**: In a previous version of meshStack partners were not able to edit unrestricted tags.
 
 The [administration documentation](./administration.index.md) provides further details on how partner users can edit restricted tags.
 
