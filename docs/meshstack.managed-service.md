@@ -31,9 +31,9 @@ meshcloud provides customers with comprehensive security and compliance document
 
 meshcloud releases new versions of meshStack on a continuous schedule. As you can see by reviewing our [release notes](/blog), this can happen multiple times per week. Our managed service ensures that your installation and configuration is up to date at all times when delivering new releases to your [staging](#staging-environment) and [production environments](#production-environment).
 
-### Artefact Delivery
+### Artifact Delivery
 
-meshcloud pushes artefacts for new releases to a customer-provided artefact store. This enables us to fulfill software admission/delivery and archival requirements you may have.
+meshcloud pushes artifacts for new releases to a customer-provided artifact store. This enables us to fulfill software admission/delivery and archival requirements you may have.
 
 Similarly, we deliver configuration and infrastructure as code for your installations to a customer-provided git repository.
 
