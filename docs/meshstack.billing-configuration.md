@@ -320,7 +320,7 @@ Each project in meshStack is associated with a Chargeback Account. meshStack per
 
 The attributes that shall be part of the billing info on the chargeback statements can be configured.
 
-You need to specify a wait-period after which the chargeback statements are finalized. This period exists to allow the public cloud platforms to get all their usage events into the calculation. For private cloud platforms the waiting period is usually a few hours up to a day, but for public cloud providers it is significantly longer. If you plan to use a public cloud provider, please choose the longest wait period for finalizing your chargeback statements. This ensures that all discounts and events of the month are included in the chargeback statement meshStack generates.
+You need to specify a wait-period after which the chargeback statements are finalized. This period exists to allow the public cloud platforms to get all their usage events into the calculation. For private cloud platforms the waiting period is usually a few hours up to a day, but for public cloud providers it can be significantly longer. If you plan to use a public cloud provider, please choose the longest wait period for finalizing your chargeback statements. This ensures that all discounts and events of the month are included in the chargeback statement meshStack generates.
 
 | Provider | Suggested Wait Period                                                                                                                                                               |
 | -------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
