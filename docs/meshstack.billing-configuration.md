@@ -295,7 +295,7 @@ The following configuration options are available at `mesh.kraken.productcatalog
 
 ## Common Chargeable Resources
 
-This section describes the resources that do not strictly belong to a specific cloud platform, that can be defined in the catalog.
+This section describes the resources that do not strictly belong to a specific cloud platform that can be defined in the catalog.
 Products referring to these resources can be defined for all or multiple cloud platforms.
 
 ### meshTenant
@@ -320,12 +320,20 @@ Each project in meshStack is associated with a Chargeback Account. meshStack per
 
 The attributes that shall be part of the billing info on the chargeback statements can be configured.
 
+You need to specify a wait-period after which the chargeback statements are finalized. This period exists to allow the public cloud platforms to get all their usage events into the calculation. For private cloud platforms the waiting period is usually a few hours up to a day, but for public cloud providers it can be significantly longer. If you plan to use a public cloud provider, please choose the longest wait period for finalizing your chargeback statements. This ensures that all discounts and events of the month are included in the chargeback statement meshStack generates.
+
+| Provider | Suggested Wait Period                                                                                                                                                               |
+| -------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GCP      | 5 Days                                                                                                                                                                              |
+| AWS      | 6 Days                                                                                                                                                                              |
+| Azure    | Depends on the customers Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
+
 ### Available metadata keys
 
 The following metadata keys are derived from meshStack metadata and therefore available on every meshStack implementation
 
 | Key                   | Description                                      |
-|-----------------------|:-------------------------------------------------|
+| --------------------- | :----------------------------------------------- |
 | tenantLandingZone     | Name of the Landing Zone used by the Tenant      |
 | last_modified         | Date when metadata was last modified             |
 | contactMail           | email address of the project owner               |
