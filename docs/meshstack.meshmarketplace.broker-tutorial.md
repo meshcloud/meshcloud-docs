@@ -5,14 +5,77 @@ title: "Tutorial: Implement a Broker"
 
 This tutorial will show you how to setup a service broker deploys services using CI/CD tools you already know.
 
-> More to follow here soon, however you can find the sample code with instructions on GitHub already at [meshcloud/unipipe-service-broker](https://github.com/meshcloud/unipipe-service-broker)
-
 ## Open Service broker
+
+The Open Service Broker API project allows independent software vendors, SaaS providers and developers to easily provide backing services to workloads running on cloud native platforms. The specification, which has been adopted by many platforms and thousands of service providers, describes a simple set of API endpoints which can be used to provision, gain access to and managing service offerings.
+
 - Open Service Broker is an implementation of the [Open Service Broker API](https://www.openservicebrokerapi.org/).
 - The Open Service Broker is designed in a modular way and multiple services can be hosted by one service broker.
 - On top of the Open Service Broker API, Service Broker provides additional features about Billing, Backup/Restore.
 - Services can be provisioned synchronously and/or asynchronously and the goal of this project is to provide a framework with which any service can easily be provisioned.
 
+## What is service broker?
+Service brokers manage the lifecycle of services, and platforms interact with service brokers to provision, get access to and manage the services they offer. The Open Service Broker API defines these interactions, and therefore allows software providers to offer their services to anyone, regardless of the technology or infrastructure those software providers wish to utilise.
+
+Each service broker built to the Open Service Broker API specification has the same intuitive set of lifecycle commands. These commands do useful things such as:
+
+- **Fetching the catalog of backing services that a service broker offers** 
+The catalog describes all of the services that can be provisioned through a service broker, and  each service is made up of plans. Plans typically represent the costs and benefits for a given variant of the service. Many services use plans to ‘T-Shirt size’ the service offering (such as “small”, “medium”, and “large”).
+- **Provisioning new service instances**
+A service instance is a provisioned instance of a service and plan as described in the service broker’s catalog.
+- **Connecting and disconnecting applications and containers from those service instances(Bind/Unbind)**
+Once a service instance is provisioned, you’ll want your application or container to start communicating with that instance. From a service broker’s perspective, this is called a service binding.
+- **Deprovisioning service instances**
+This action simply deletes all the resources created upon the initial provisioning of the service instance.
+
+
+# Developing your own service broker
+## Quickstarts
+[`osb-starter-pack`](https://github.com/pmorie/osb-starter-pack):
+A go project that lets you easily deploy and iterate on a new service broker.
+Uses the [`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib) and
+[`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client)
+projects.
+
+## Service Broker Libraries
+
+[`brokerapi`](https://github.com/pivotal-cf/brokerapi):
+A Go package for building Open Service Broker API Service Brokers.
+
+[Spring Cloud Open Service Broker](https://spring.io/projects/spring-cloud-open-service-broker):
+Spring Cloud Open Service Broker provides a framework based on Spring Boot that
+enables you to quickly create a service broker for your own managed service on
+platform that support the Open Service Broker API.
+
+[`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib):
+A go library that provides the REST API implementation for the OSB API. Users
+implement an interface that uses the types from the
+[`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client).
+
+[`Open Service Broker API for .NET`](https://github.com/AXOOM/OpenServiceBroker):
+.NET libraries for client and server implementations of the Open Service Broker API. The client library allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs. The server library implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
+
+[spring-cloud-app-broker](https://github.com/spring-cloud/spring-cloud-app-broker)
+Spring Cloud App Broker is a framework for building Spring Boot applications that implement the Open Service Broker API to dynamically deploy Cloud Foundry applications.
+
+[Cloud service broker](https://github.com/pivotal/cloud-service-broker/)
+This service broker uses Terraform to provision and bind services.
+
+## Other Libraries
+
+[`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client):
+This library is a golang client for communicating with service brokers,
+useful for Platform developers.
+
+## Example open service broker with git repo to store the information about instances and binding
+> We provide an [example implementation](https://github.com/meshcloud/unipipe-service-broker) of a Service broker, that can provide you some guidance for your own implementation. The documentation to develope your own service broker in Java can be found here [Open Service Broker API in Java](https://docs.spring.io/spring-cloud-open-service-broker/docs/3.2.0/reference/#introduction)
+
+## Testing your open service broker
+- [API swagger documentation](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/openservicebrokerapi/servicebroker/v2.16/openapi.yaml#/).
+- CLI that interacts with any Open Service Broker API [Eden](https://starkandwayne.com/blog/welcome-to-eden-a-cli-for-every-open-service-broker-api/).
+
+## OSBAPI Complaint Products
+- The community-driven catalog shows some of publicly available service brokers that have been built using the Open Service Broker API standard. [OSB API Compliant Service Brokers](https://www.openservicebrokerapi.org/compliant-service-brokers)
 
 ## Implementation Recommendations
 
@@ -26,4 +89,4 @@ This section has some implementation recommendations based on experience:
 - “The platform marketplace is the source of truth for service instances and bindings. Service brokers are expected to have successfully provisioned all the service instances and bindings that the marketplace knows about, and none that it doesn't.”
 - Consider supporting multiple service bindings per service instance, prefer to create separate credentials for each binding
 - Consider checking your service implementation using the official [checker tool (experimental)](https://github.com/openservicebrokerapi/osb-checker)
-- We also provide an [example implementation](https://github.com/meshcloud/unipipe-service-broker) of a Service broker, that can provide you some guidance for your own implementation
+
