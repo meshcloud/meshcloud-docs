@@ -31,6 +31,9 @@ This action simply deletes all the resources created upon the initial provisioni
 
 # Developing your own service broker
 ## Quickstarts
+### Example open service broker with git repo to store the information about instances and binding
+> We provide an [example implementation](https://github.com/meshcloud/unipipe-service-broker) of a Service broker, that can provide you some guidance for your own implementation. The documentation to develope your own service broker in Java can be found here [Open Service Broker API in Java](https://docs.spring.io/spring-cloud-open-service-broker/docs/3.2.0/reference/#introduction)
+
 [`osb-starter-pack`](https://github.com/pmorie/osb-starter-pack):
 A go project that lets you easily deploy and iterate on a new service broker.
 Uses the [`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib) and
@@ -67,8 +70,7 @@ This service broker uses Terraform to provision and bind services.
 This library is a golang client for communicating with service brokers,
 useful for Platform developers.
 
-## Example open service broker with git repo to store the information about instances and binding
-> We provide an [example implementation](https://github.com/meshcloud/unipipe-service-broker) of a Service broker, that can provide you some guidance for your own implementation. The documentation to develope your own service broker in Java can be found here [Open Service Broker API in Java](https://docs.spring.io/spring-cloud-open-service-broker/docs/3.2.0/reference/#introduction)
+
 
 ## Testing your open service broker
 - [API swagger documentation](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/openservicebrokerapi/servicebroker/v2.16/openapi.yaml#/).
