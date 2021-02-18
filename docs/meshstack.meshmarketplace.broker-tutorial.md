@@ -7,9 +7,8 @@ This tutorial will show you how to setup a service broker deploys services using
 
 ## Open Service broker
 
-The Open Service Broker API project allows independent software vendors, SaaS providers and developers to easily provide backing services to workloads running on cloud native platforms. The specification, which has been adopted by many platforms and thousands of service providers, describes a simple set of API endpoints which can be used to provision, gain access to and managing service offerings.
+The [Open Service Broker API](https://www.openservicebrokerapi.org/) project allows independent software vendors, SaaS providers and developers to easily provide backing services to workloads running on cloud native platforms. The specification, which has been adopted by many platforms and thousands of service providers, describes a simple set of API endpoints which can be used to provision, gain access to and managing service offerings.
 
-- Open Service Broker is an implementation of the [Open Service Broker API](https://www.openservicebrokerapi.org/).
 - The Open Service Broker is designed in a modular way and multiple services can be hosted by one service broker.
 - On top of the Open Service Broker API, Service Broker provides additional features about Billing, Backup/Restore.
 - Services can be provisioned synchronously and/or asynchronously and the goal of this project is to provide a framework with which any service can easily be provisioned.
