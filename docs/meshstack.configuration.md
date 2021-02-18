@@ -185,7 +185,7 @@ let AzureCreds =
       , client-secret : Secret.Type
       , user-lookup-strategy : AzureLookupStrategy
       , guestLookup : Optional AzureGuestDetection
-      , euidSchemaExtentionUpdate : Optional AzureEuidExtensionSchema
+      , euidSchemaExtensionUpdate : Optional AzureEuidExtensionSchema
       , euidUserAttributeUpdate : Optional AzureEuidUserAttribute
       }
 ```
@@ -199,7 +199,7 @@ let example
       , user-lookup-strategy =
           AzureLookupStrategy.UserByMailLookupStrategy
       , guestLookup = None AzureGuestDetection
-      , euidSchemaExtentionUpdate = None AzureEuidExtensionSchema
+      , euidSchemaExtensionUpdate = None AzureEuidExtensionSchema
       , euidUserAttributeUpdate = None AzureEuidUserAttribute
       }
 ```
@@ -556,7 +556,7 @@ The following configuration options are available at `mesh.meshfed.mail`:
             List of mappings to configure template messages
 
 -}
-  { enabled : Optional Bool
+  { enabled : Bool
   , username : Text
   , password : Secret
   , host : Text

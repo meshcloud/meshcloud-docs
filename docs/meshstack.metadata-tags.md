@@ -69,6 +69,7 @@ The following configuration options are available at `mesh.web.user`:
 
 <!--snippet:mesh.web.user-->
 
+The following configuration options are available at `mesh.web.user`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
@@ -88,10 +89,10 @@ let User =
 let example
     : User
     = { rolerequest =
-        { min-approval-count = Some 1
-        , enable-guest-user = Some True
+        { min-approval-count = 1
+        , enable-guest-user = True
         , set-email-as-euid = True
-        , restrict-customer-admin-role-assignment = Some False
+        , restrict-customer-admin-role-assignment = False
         }
       , revocation = None UserRevocation
       , tags = [ { mapKey = "environment", mapValue = [ "dev", "qa" ] } ]
@@ -152,6 +153,7 @@ Certain cloud platforms allow you to tag resources in order to help organize the
 
 <!--snippet:mesh.platform.tenantTags#type-->
 
+
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
@@ -169,7 +171,7 @@ let TenantTags =
       tag-definitions[].value-pattern:
         Define a pattern which is used to generate the tag value on the platform. Every platform might have different
         limitations about the tag values. For a list about the placeholder you can use please check the meshstack
-        documentation. Currently its not possible to use more than one identifier per valuePattern.
+        documentation. Currently its not possible to use more then one identifier per valuePattern.
     -}
       { namespace-prefix : Text
       , tag-definitions : List { name : Text, value-pattern : Text }
