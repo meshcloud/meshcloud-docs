@@ -45,6 +45,13 @@ Uses the [`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib) and
 [`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client)
 projects.
 
+### Open Service Broker Client App
+
+[`HPE`](https://github.com/reddypramod85/hpe-openservicebroker-clientapp): This project is a client platform for accessing services via the Open Service Broker API.
+
+[`Service Broker Dashboard`](https://github.com/evoila/osb-dashboard): This project is intended to be the fundamental implementation of Dashboard, which could be applied to any Service Broker.
+
+
 ## Service Broker Libraries
 
 [`brokerapi`](https://github.com/pivotal-cf/brokerapi):
