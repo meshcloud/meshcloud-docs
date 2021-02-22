@@ -33,6 +33,12 @@ This action simply deletes all the resources created upon the initial provisioni
 ### Example open service broker with git repo to store the information about instances and binding
 > We provide an [example implementation](https://github.com/meshcloud/unipipe-service-broker) of a Service broker, that can provide you some guidance for your own implementation. The documentation to develope your own service broker in Java can be found here [Open Service Broker API in Java](https://docs.spring.io/spring-cloud-open-service-broker/docs/3.2.0/reference/#introduction)
 
+[`Open Service Broker API" based on Spring Boot & Groovy`](https://github.com/swisscom/open-service-broker):It enables platforms such as Cloud Foundry & Kubernetes to provision and manage services.
+
+[`osb-service-broker-example`](https://github.com/evoila/osb-example) :
+An empty Cloud Foundry Service Broker missing concrete implementation of a distinct service.
+Supports deployment to OpenStack. Uses MongoDB Database for management. Configuration files and deployment scripts must be added. Concrete Service logic and binding logic has to be added.
+
 [`osb-starter-pack`](https://github.com/pmorie/osb-starter-pack):
 A go project that lets you easily deploy and iterate on a new service broker.
 Uses the [`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib) and
