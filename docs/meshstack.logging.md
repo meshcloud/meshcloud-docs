@@ -40,7 +40,7 @@ Changes (add, change, delete) to data are logged to provide traceability. Regard
 | Create/Edit/Delete Project, Add/Remove Location from Project                    | ProjectEvent table, mesh.log         |
 | Replication to cloud platform                                                   | According component log              |
 | Interactions with Service Brokers (create/update/delete instance & bindings)    | mesh.log, ServiceInstanceEvent table |
-| Register Customer, Edit Customer Master Data (Payment Info, Addresses)          | CustomerEvent table, mesh.log        |
+| Register Customer, Edit Customer Master Data (Payment Info)                     | CustomerEvent table, mesh.log        |
 | Invite/Remove/Update users in customer                                          | CustomerEvent table, mesh.log        |
 | Edit Project (Assign/Unassign users, edit user roles, edit billing information) | ProjectEvent table, mesh.log         |
 

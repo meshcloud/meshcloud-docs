@@ -9,7 +9,7 @@ meshProjects are multi-cloud enabled projects that allow teams to manage and sca
 
 ## Create a new meshProject
 
-Log on to the Meshpanel with your account credentials and press `Create`. Type in a name for your new project and press `Next`. Choose a payment method as well as your billing address and press `Next` again. In the last step, you can choose the locations from which you can obtain the cloud computing resources for your project. Press `Create Project` and you will see your new project listed in the Projects List.
+Log on to the Meshpanel with your account credentials and press `Create`. Type in a name for your new project and press `Next`. Choose a payment method and press `Next` again. In the last step, you can choose the locations from which you can obtain the cloud computing resources for your project. Press `Create Project` and you will see your new project listed in the Projects List.
 
 ## Manage meshProjects
 
@@ -32,7 +32,7 @@ When adding a [meshPlatform](meshcloud.platform-location.md) to a meshProject, m
 
 ### Editing Payment and Project Settings
 
-You can configure one or multiple [payment methods](meshcloud.payment-methods.md) and [billing addresses](meshcloud.project-metering.md#company-billing-addresses) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
+You can configure one or multiple [payment methods](meshcloud.payment-methods.md) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
 
 You also have the option of setting a substitute payment method on a project. This feature is enabled via a configuration in meshStack. A job that runs daily will check if the already assigned payment method is expired and if it is, will replace it with the substitute payment method. In that case, the substitute payment will be set to `None`.
 

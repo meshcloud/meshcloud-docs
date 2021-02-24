@@ -11,12 +11,6 @@ Project owners can get a detailed overview about when and how long your resource
 
 Project owners associate their project with payment information. This is used for the chargeback process.
 
-### Company & Billing Addresses
-
-You can configure company addresses for your meshCustomer as contact addresses. If this address shall also be used for billing, you are done when having configured a Customer Address.
-
-You can also define additional Billing Addresses, that can be used for your meshProjects. You can select from these configured addresses per meshProject.
-
 ### Payment Methods
 
 External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](./meshstack.api.md).
