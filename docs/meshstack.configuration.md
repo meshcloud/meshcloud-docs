@@ -339,6 +339,9 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+Operators have the option of disabling inviting users that are not listed in the identity provider. They can do so by setting
+the `deny-assigning-other-users` configuration option to `true`.
+
 ### Default Quotas
 
 meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
