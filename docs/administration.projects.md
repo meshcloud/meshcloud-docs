@@ -93,7 +93,6 @@ The following events are available:
 - **PROJECT_ROLE_REJECTED**: If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written when a role request is rejected.
 - **EDIT_PROJECT_TAGS**: If Project Tags are configured, this event is written every time a tag is edited by a customer admin.
 - **PARTNER_EDIT_PROJECT_TAGS**: If Project Tags are configured, this event is written every time a partner/admin edits the restricted project tags.
-- **ADDRESS_EDITED**: The billing address of the project was changed.
 - **QUOTA_EDITED**: Quota Settings for the project were changed.
 - **SERVICE_USER_CREATED**: A Service User was created for the project.
 - **SERVICE_USER_DELETED**: A Service User was deleted for the project.

@@ -339,38 +339,6 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-
-### Address Metadata
-
-meshStack can maintain company and billing address metadata for meshCustomers and meshProjects. This is useful if your
-meshStack implementation provides cloud services to 3rd parties or your cloud chargeback requires internal invoicing
-between different subsidiaries that cannot be covered using e.g. cost-center numbers.
-
-If you don't need address metadata, we recommend hiding it from end-users of meshStack by setting the `panel.environment.ui` configuration option:
-
-```dhall
-{
-  hideAddress : Optional Bool
-}
-```
-
-When enabling `hideAddress`, operators should also configure the `panel.environment.ui.register.defaultAddress` option:
-
-```dhall
-Optional {
-  street : Text
-, houseNumber : Text
-, zipCode : Text
-, city : Text
-, continent : Text
-, country : Text
-}
-```
-
-The configured address will be automatically used as a default billing address for all meshCustomers created using the
-self-service registration wizard.
-
-
 ### Default Quotas
 
 meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:

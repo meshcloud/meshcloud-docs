@@ -4,7 +4,7 @@ title:  meshCustomer
 ---
 
 A meshCustomer usually represents a product team or department in your organization. Self-service within a meshCustomer
-allows you to invite and manage team members, create [meshProjects](meshcloud.project.md) and maintain organizational metadata like billing-addresses and payment methods.
+allows you to invite and manage team members, create [meshProjects](meshcloud.project.md) and maintain organizational metadata like payment methods.
 
 ## Customer Creation
 
@@ -86,8 +86,6 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles) | &#10003; | &#10003; | |
 | [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups) | &#10003; | &#10003; | |
 | [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | &#10003; | |
-| [Company&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | &#10003; | |
-| [Billing&nbsp;Address](meshcloud.project-metering.md#company-billing-addresses) | &#10003; | &#10003; | |
 | [Payment&nbsp;Methods](meshcloud.payment-methods.md) | &#10003; | &#10003; | |
 | Domains | &#10003; | &#10003; | |
 | [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md) | &#10003; | &#10003; | |
