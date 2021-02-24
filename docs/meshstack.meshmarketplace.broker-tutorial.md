@@ -30,31 +30,31 @@ This action simply deletes all the resources created upon the initial provisioni
 
 # Implementing  your own service broker
 ## Quickstarts
-### Example open service broker with git repo to store the information about instances and binding
+### Example open service broker with git repository to store the information about instances and binding
 > We provide an [example implementation](https://github.com/meshcloud/unipipe-service-broker) of a Service broker, that can provide you some guidance for your own implementation. The documentation to develope your own service broker in Java can be found here [Open Service Broker API in Java](https://docs.spring.io/spring-cloud-open-service-broker/docs/3.2.0/reference/#introduction)
 
-[`Open Service Broker API" based on Spring Boot & Groovy`](https://github.com/swisscom/open-service-broker):It enables platforms such as Cloud Foundry & Kubernetes to provision and manage services.
+[Open Service Broker API" based on Spring Boot & Groovy](https://github.com/swisscom/open-service-broker):It enables platforms such as Cloud Foundry & Kubernetes to provision and manage services.
 
-[`osb-service-broker-example`](https://github.com/evoila/osb-example) :
+[osb-service-broker-example](https://github.com/evoila/osb-example) :
 An empty Cloud Foundry Service Broker missing concrete implementation of a distinct service.
 Supports deployment to OpenStack. Uses MongoDB Database for management. Configuration files and deployment scripts must be added. Concrete Service logic and binding logic has to be added.
 
-[`osb-starter-pack`](https://github.com/pmorie/osb-starter-pack):
+[osb-starter-pack](https://github.com/pmorie/osb-starter-pack):
 A go project that lets you easily deploy and iterate on a new service broker.
 Uses the [`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib) and
-[`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client)
+[go-open-service-broker-client](https://github.com/pmorie/go-open-service-broker-client)
 projects.
 
 ### Open Service Broker Client App
 
-[`HPE`](https://github.com/reddypramod85/hpe-openservicebroker-clientapp): This project is a client platform for accessing services via the Open Service Broker API.
+[HPE](https://github.com/reddypramod85/hpe-openservicebroker-clientapp): This project is a client platform for accessing services via the Open Service Broker API.
 
-[`Service Broker Dashboard`](https://github.com/evoila/osb-dashboard): This project is intended to be the fundamental implementation of Dashboard, which could be applied to any Service Broker.
+[Service Broker Dashboard](https://github.com/evoila/osb-dashboard): This project is intended to be the fundamental implementation of Dashboard, which could be applied to any Service Broker.
 
 
 ## Service Broker Libraries
 
-[`brokerapi`](https://github.com/pivotal-cf/brokerapi):
+[brokerapi](https://github.com/pivotal-cf/brokerapi):
 A Go package for building Open Service Broker API Service Brokers.
 
 [Spring Cloud Open Service Broker](https://spring.io/projects/spring-cloud-open-service-broker):
@@ -62,12 +62,12 @@ Spring Cloud Open Service Broker provides a framework based on Spring Boot that
 enables you to quickly create a service broker for your own managed service on
 platform that support the Open Service Broker API.
 
-[`osb-broker-lib`](https://github.com/pmorie/osb-broker-lib):
+[osb-broker-lib](https://github.com/pmorie/osb-broker-lib):
 A go library that provides the REST API implementation for the OSB API. Users
 implement an interface that uses the types from the
-[`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client).
+[go-open-service-broker-client](https://github.com/pmorie/go-open-service-broker-client).
 
-[`Open Service Broker API for .NET`](https://github.com/AXOOM/OpenServiceBroker):
+[Open Service Broker API for .NET](https://github.com/AXOOM/OpenServiceBroker):
 .NET libraries for client and server implementations of the Open Service Broker API. The client library allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs. The server library implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
 
 [spring-cloud-app-broker](https://github.com/spring-cloud/spring-cloud-app-broker)
@@ -76,12 +76,13 @@ Spring Cloud App Broker is a framework for building Spring Boot applications tha
 [Cloud service broker](https://github.com/pivotal/cloud-service-broker/)
 This service broker uses Terraform to provision and bind services.
 
+[Python package](https://pypi.org/project/openbrokerapi/): A Python package for building Service Brokers supporting API version 2.13+.
+
 ## Other Libraries
 
-[`go-open-service-broker-client`](https://github.com/pmorie/go-open-service-broker-client):
+[go-open-service-broker-client](https://github.com/pmorie/go-open-service-broker-client):
 This library is a golang client for communicating with service brokers,
 useful for Platform developers.
-
 
 
 ## Testing your open service broker
@@ -95,15 +96,24 @@ useful for Platform developers.
 ## OSBAPI Complaint Products
 - The community-driven catalog shows some of publicly available service brokers that have been built using the Open Service Broker API standard. [OSB API Compliant Service Brokers](https://www.openservicebrokerapi.org/compliant-service-brokers)
 
+## Service owner responsibility
+
+- [Open Service Broker API (2.16)](https://github.com/openservicebrokerapi/servicebroker/blob/v2.16/spec.md): specification document where service broker author can find detailed documentation on endpoints implementation and parameters information. 
+
+- Service broker authors should also be aware of all the possible scenarios to maintain the service broker and should provide extra endpoints to handle erroneous states of the service broker. Some example scenarios can be found [here](https://github.com/swisscom/open-service-broker) under admin actions section.
+
+
+
+
 ## Implementation Recommendations
 
 This section has some implementation recommendations based on experience:
 
-- Follow the specification closely
-- Use consistent Ids for services and plans, do not change them after announcing them from the catalog
-- Implement proper error handling for all operations, return the correct response codes
-- Properly implement synchronous/asynchronous operations
-- Deal with orphaned Service Instances
+- Follow the [Open Service Broker API (2.16)](https://github.com/openservicebrokerapi/servicebroker/blob/v2.16/spec.md) specification closely.
+- Use consistent Ids for services and plans, do not change them after announcing them from the catalog.
+- Implement proper error handling for all operations, return the correct response codes.
+- Properly implement synchronous/asynchronous operations.
+- Deal with orphaned Service Instances.
 - “The platform marketplace is the source of truth for service instances and bindings. Service brokers are expected to have successfully provisioned all the service instances and bindings that the marketplace knows about, and none that it doesn't.”
-- Consider supporting multiple service bindings per service instance, prefer to create separate credentials for each binding
-- Consider checking your service implementation using the official [checker tool (experimental)](https://github.com/openservicebrokerapi/osb-checker)
+- Consider supporting multiple service bindings per service instance, prefer to create separate credentials for each binding.
+- Consider checking your service implementation using the official [checker tool (experimental)](https://github.com/openservicebrokerapi/osb-checker).
