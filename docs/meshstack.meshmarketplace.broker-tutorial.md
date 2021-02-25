@@ -114,7 +114,7 @@ This section has some implementation recommendations based on experience:
 
 - Service broker authors should also be aware of all the possible scenarios to maintain the service broker and should provide extra endpoints to handle erroneous states of the service broker. Some example scenarios can be found [here](https://github.com/swisscom/open-service-broker) under admin actions section.
 
-## OSBAPI Complaint Products
+## OSBAPI Compliant Products
 
 - The community-driven catalog shows some of publicly available service brokers that have been built using the Open Service Broker API standard. [OSB API Compliant Service Brokers](https://www.openservicebrokerapi.org/compliant-service-brokers)
 
