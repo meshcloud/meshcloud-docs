@@ -34,6 +34,7 @@ const siteConfig = {
   headerLinks: [
     { doc: 'meshcloud.index', label: 'User Docs' },
     { doc: 'meshstack.index', label: 'Operator Docs' },
+    { href: '/api', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
     { page: 'help', label: 'Help' },
   ],
