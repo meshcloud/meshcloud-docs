@@ -93,7 +93,7 @@ useful for Platform developers.
 
 This section has some implementation recommendations based on experience:
 
-- Follow the [Open Service Broker API (2.16)](https://github.com/openservicebrokerapi/servicebroker/blob/v2.16/spec.md) specification closely.
+- Follow the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md) specification closely.
 - Use consistent Ids for services and plans, do not change them after announcing them from the catalog.
 - Implement proper error handling for all operations, return the correct response codes.
 - Properly implement synchronous/asynchronous operations.
