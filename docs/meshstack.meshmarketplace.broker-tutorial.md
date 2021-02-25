@@ -32,7 +32,7 @@ This action simply deletes all the resources created upon the initial provisioni
 
 To get started with existing projects.
 
-- We provide an example implementation of a [Service broker](https://github.com/meshcloud/unipipe-service-broker), that can provide you some guidance for your own implementation.Uses git repository for management. The documentation to develope your own service broker in java can be found here [Open Service Broker API in Java](https://docs.spring.io/spring-cloud-open-service-broker/docs/3.2.0/reference/#introduction). Experimental CI/CD pipelines to provision services using [`concourse-ci`](https://github.com/Meshcloud/example-osb-ci) &  [`github actions`](https://github.com/meshcloud/unipipe-osb-cicd-github-actions).
+- We provide an example implementation of a Service broker called [Unipipe Service Broker](https://github.com/meshcloud/unipipe-service-broker). It connects to a git repository that holds the catalog. The git repository is also used to store information about services instances and their bindings. Unipipe service broker relies on a CI/CD pipeline for managing service instances. Experimental CI/CD pipelines that integrate with Unipipe Service Broker using [`concourse-ci`](https://github.com/Meshcloud/example-osb-ci) &  [`github actions`](https://github.com/meshcloud/unipipe-osb-cicd-github-actions).
 
 - [Open Service Broker API based on Spring Boot & Groovy](https://github.com/swisscom/open-service-broker): It enables platforms such as Cloud Foundry & Kubernetes to provision and manage services.
 
