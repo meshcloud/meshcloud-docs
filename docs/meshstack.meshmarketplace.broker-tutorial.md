@@ -82,13 +82,6 @@ This service broker uses Terraform to provision and bind services.
 
 - [Python package](https://pypi.org/project/openbrokerapi/): A Python package for building Service Brokers supporting API version 2.13+.
 
-## Other Libraries
-
-[go-open-service-broker-client](https://github.com/pmorie/go-open-service-broker-client):
-This library is a golang client for communicating with service brokers,
-useful for Platform developers.
-
-
 ## Implementation Recommendations
 
 This section has some implementation recommendations based on experience:
@@ -119,6 +112,10 @@ This section has some implementation recommendations based on experience:
 - The community-driven catalog shows some of publicly available service brokers that have been built using the Open Service Broker API standard. [OSB API Compliant Service Brokers](https://www.openservicebrokerapi.org/compliant-service-brokers)
 
 ## Open Service Broker Client App
+
+- [go-open-service-broker-client](https://github.com/pmorie/go-open-service-broker-client):
+This library is a golang client for communicating with service brokers,
+useful for Platform developers.
 
 - [HPE](https://github.com/reddypramod85/hpe-openservicebroker-clientapp): This project is a client platform for accessing services via the Open Service Broker API.
 
