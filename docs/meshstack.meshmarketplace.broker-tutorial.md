@@ -14,11 +14,12 @@ The [Open Service Broker API](https://www.openservicebrokerapi.org/) project all
 - Services can be provisioned synchronously and/or asynchronously and the goal of this project is to provide a framework with which any service can easily be provisioned.
 
 ## What is service broker?
+
 Service brokers manage the lifecycle of services, and platforms interact with service brokers to provision, get access to and manage the services they offer. The Open Service Broker API defines these interactions, and therefore allows software providers to offer their services to anyone, regardless of the technology or infrastructure those software providers wish to utilise.
 
 Each service broker built to the Open Service Broker API specification has the same intuitive set of lifecycle commands. These commands do useful things such as:
 
-- **Fetching the catalog of backing services that a service broker offers** 
+- **Fetching the catalog of backing services that a service broker offers**
 The catalog describes all of the services that can be provisioned through a service broker, and  each service is made up of plans. Plans typically represent the costs and benefits for a given variant of the service. Many services use plans to ‘T-Shirt size’ the service offering (such as “small”, “medium”, and “large”).
 - **Provisioning new service instances**
 A service instance is a provisioned instance of a service and plan as described in the service broker’s catalog.
@@ -27,8 +28,6 @@ Once a service instance is provisioned, you’ll want your application or contai
 - **Deprovisioning service instances**
 This action simply deletes all the resources created upon the initial provisioning of the service instance.
 
-
-# Implementing  your own service broker
 ## Quickstarts
 
 To get started with existing projects.
@@ -52,12 +51,13 @@ projects.
 To help developers make there own service broker here are few libraries.
 
 ***Java***
+
 - [Spring Cloud Open Service Broker](https://spring.io/projects/spring-cloud-open-service-broker):
 Spring Cloud Open Service Broker provides a framework based on Spring Boot that
 enables you to quickly create a service broker for your own managed service on
 platform that support the Open Service Broker API.
 
-- [spring-cloud-app-broker](https://github.com/spring-cloud/spring-cloud-app-broker)
+- [spring-cloud-app-broker](https://github.com/spring-cloud/spring-cloud-app-broker):
 Spring Cloud App Broker is a framework for building Spring Boot applications that implement the Open Service Broker API to dynamically deploy Cloud Foundry applications.
 
 ***Go***
@@ -70,7 +70,7 @@ A go library that provides the REST API implementation for the OSB API. Users
 implement an interface that uses the types from the
 [go-open-service-broker-client](https://github.com/pmorie/go-open-service-broker-client).
 
-- [Cloud service broker](https://github.com/pivotal/cloud-service-broker/)
+- [Cloud service broker](https://github.com/pivotal/cloud-service-broker/):
 This service broker uses Terraform to provision and bind services.
 
 ***.NET***
@@ -79,6 +79,7 @@ This service broker uses Terraform to provision and bind services.
 .NET libraries for client and server implementations of the Open Service Broker API. The client library allows you to call Service Brokers that implement the API using idiomatic C# interfaces and type-safe DTOs. The server library implements the API for you using ASP.NET Core. You simply need to provide implementations for a few interfaces, shielded from the HTTP-related details.
 
 ***Python***
+
 - [Python package](https://pypi.org/project/openbrokerapi/): A Python package for building Service Brokers supporting API version 2.13+.
 
 ## Other Libraries
@@ -101,18 +102,20 @@ This section has some implementation recommendations based on experience:
 - Consider supporting multiple service bindings per service instance, prefer to create separate credentials for each binding.
 - Consider checking your service implementation using the official [checker tool (experimental)](https://github.com/openservicebrokerapi/osb-checker).
 
-## Testing your open service broker
+## Testing open service broker
+
 - [API swagger documentation](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/openservicebrokerapi/servicebroker/v2.16/openapi.yaml#/): The Open Service Broker API defines an HTTP(S) interface between Platforms and Service Brokers. This would help developers to make test cases for there endpoints.
 
 - CLI that interacts with any Open Service Broker API [eden](https://starkandwayne.com/blog/welcome-to-eden-a-cli-for-every-open-service-broker-api/). The eden CLI is useful for users of a service broker, and also for developers' own dev/test.
 
 ## Service owner responsibility
 
-- Define and manage the catalog. Service Broker authors are expected to be cautious when removing Service Offerings and Service Plans from their catalogs, as Platforms might have provisioned Service Instances of these Service Plans. For example, Platforms might restrict the actions that users can perform on existing Service Instances if the associated Service Offering or Service Plan is deleted. Consider your deprecation strategy. 
+- Define and manage the catalog. Service Broker authors are expected to be cautious when removing Service Offerings and Service Plans from their catalogs, as Platforms might have provisioned Service Instances of these Service Plans. For example, Platforms might restrict the actions that users can perform on existing Service Instances if the associated Service Offering or Service Plan is deleted. Consider your deprecation strategy.
 
 - Service broker authors should also be aware of all the possible scenarios to maintain the service broker and should provide extra endpoints to handle erroneous states of the service broker. Some example scenarios can be found [here](https://github.com/swisscom/open-service-broker) under admin actions section.
 
 ## OSBAPI Complaint Products
+
 - The community-driven catalog shows some of publicly available service brokers that have been built using the Open Service Broker API standard. [OSB API Compliant Service Brokers](https://www.openservicebrokerapi.org/compliant-service-brokers)
 
 ## Open Service Broker Client App
