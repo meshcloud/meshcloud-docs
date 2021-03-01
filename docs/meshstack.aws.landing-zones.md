@@ -9,7 +9,7 @@ You have two paths for provisionig AWS accounts. You can simply use CloudFormati
 
 ## Parameters
 
-Each Landing Zone has paremeters which control its behavior. The available parameters are described below.
+Each Landing Zone has parameters which control its behavior. The available parameters are described below.
 
 ### Target Organization Unit ID
 
