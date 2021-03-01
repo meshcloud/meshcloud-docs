@@ -13,7 +13,7 @@ Each Landing Zone has paremeters which control its behavior. The available param
 
 ### Target Organization Unit ID
 
-This parameter is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
+This parameter is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP (Service Control Policy) should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS location will be placed in it.
 
 You must provide the ID of the OU which can be found in the AWS Organizational Management panel. The IDs start with `ou-*`.
 
