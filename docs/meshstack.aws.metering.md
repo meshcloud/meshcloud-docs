@@ -25,13 +25,14 @@ The following parameters are required to configure meshStack to process the AWS 
 
 When processing the AWS Cost and Usage Report to generate the Usage Report in the meshPanel,
 
-* Only the line items with [line item type](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L)
-`DiscountedUsage`, `Fee`, `Usage` and `SavingsPlanCoveredUsage` are taken into the calculation.
-In other words, `Credit`, `Refund`, `RIFee`, `Tax` `SavingsPlanUpfrontFee`, `SavingsPlanRecurringFee` and `SavingsPlanNegation` are excluded.
+* You can configure which [line item types](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L) 
+should be considered in the calculations. You can also configure whether you want to consider discounts or not.
+We include the following columns in the calculations in order to come up with an amortized cost that should be charged to each account(the discount column is taken only if configured to consider discounts)
+    * If the line item type is RIFee, we take `reservation/UnusedAmortizedUpfrontFeeForBillingPeriod`, `reservation/UnusedRecurringFee` and `discounts/TotalDiscount` column
+    * If the line item type is `SavingsPlanRecurringFee` then we take the `discounts/TotalDiscount` column
+    * For other line item types, we take which ever is available from the columns `savingsPlan/SavingsPlanEffectiveCost`, `reservation/EffectiveCost` and  `lineItem/UnblendedCost` in that order plus the `discounts/TotalDiscount` column
 * Only the line items with [bill type](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html#b-B)
 `Anniversary` are taken into the calculation. In other words, line items with bill type `Purchase` and `Refund` are excluded.
-* For each line item, we take the [effective cost](https://docs.aws.amazon.com/cur/latest/userguide/reservation-columns.html#r-E)
-when available and [unblended cost](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-U) otherwise
 
 ## IAM User Configuration
 
