@@ -180,6 +180,19 @@ let AwsPlatformKrakenConfiguration =
               a large number of cost items.
           -}
           Natural
+      , apply-discounts :
+          {-
+              Whether the discounts contained in the AWS Cost and Usage Reports should be applied
+              when generating the tenant usage reports or not
+          -}
+          Bool
+      , reported-line-item-types :
+          {-
+               What line item types should be included in the report. See https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L
+               for a list of options. Note that if you remove items from this list, some manual cleanup is still needed to remove
+               the already collected data from the database.
+          -}
+          List Text
       }
 ```
 <!--Example-->
@@ -208,6 +221,9 @@ let example
       , max-bulk-insert-retries = 5
       , bulk-insert-retry-delay-millis = 5000
       , cost-item-read-page-size = 2000
+      , apply-discounts = False
+      , reported-line-item-types =
+        [ "DiscountedUsage", "Fee", "Usage", "SavingsPlanCoveredUsage" ]
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
