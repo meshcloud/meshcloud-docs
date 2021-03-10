@@ -55,7 +55,7 @@ The payment methods that are assigned can be used for both existing meshProjects
 
 ### Applying a Payment Method to an existing meshProject
 
-In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the meshProject you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshstack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the Active Payment method will be set to 'None' instead.
+In the Customer Account area, open 'Projects' on the left. Then click on the 'Edit project' button on the right for the meshProject you would like to add a payment method. In the 'Edit Project' screen, you'll see the selected payment methods on the right. As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshstack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the Active Payment method will stay the same instead.
 
 ![Set Payment Method in Project Edit screen](assets/payment_methods/payment_method_selection_project_edit.png)
 
