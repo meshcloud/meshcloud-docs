@@ -46,6 +46,7 @@ let GcpPlatformKrakenConfiguration =
       bigQueryTable:
         The big query table name containing the GCP Cloud Billing BigQuery export.
         See https://cloud.google.com/billing/docs/how-to/export-data-bigquery
+        Format must be: $project-id.$dataset-id.$table-id
 
       service-account-credentials-b64:
         base64 encoded credentials.json file for a GCP ServiceAccount. meshStack uses this Service Account

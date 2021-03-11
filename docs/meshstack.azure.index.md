@@ -68,7 +68,7 @@ meshcloud can automatically provision new subscriptions from an Enterprise Enrol
 
 We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
 
-> EA Administrators must be careful to chose an EA Account Owner that's homed in the meshcloud AAD Tenant!
+> EA Administrators must be careful to choose an EA Account Owner that is placed in the meshcloud AAD Tenant!
 
 Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
 If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
@@ -86,12 +86,60 @@ dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
 
 After creating (or finding) a suitable EA Account, please note down the accounts object id as `EA_ACCOUNT_ID`.
 
+For setting up the replicator configuration you also need the scope of the enrollment account. Microsoft states this is the ID, however their documentation is unconlusive about this. The recommend to use a REST call to [get the Enrollment Account ID/Scope](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to):
+
+```bash
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
+```
+
+the response is:
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/1234567",
+      "name": "1234567",
+      "properties": {
+        "accountStatus": "Unknown",
+        "accountType": "Enterprise",
+        "agreementType": "EnterpriseAgreement",
+        "soldTo": {
+          "companyName": "Contoso",
+          "country": "US "
+        },
+        "billingProfiles": {
+          "hasMoreResults": false
+        },
+        "displayName": "Contoso",
+        "enrollmentAccounts": [
+          {
+            "id": "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321",
+            "name": "7654321",
+            "type": "Microsoft.Billing/enrollmentAccounts",
+            "properties": {
+              "accountName": "Contoso",
+              "accountOwnerEmail": "kenny@contoso.onmicrosoft.com",
+              "costCenter": "Test",
+              "isDevTest": false
+            }
+          }
+        ],
+        "hasReadAccess": false
+      },
+      "type": "Microsoft.Billing/billingAccounts"
+    }
+  ]
+}
+```
+
+The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note this ID down as it needs to be used as the `enrollmentAccountId` in the [DHALL provisioning configuration](meshstack.azure.config.md#provisioning-configuration).
+
 #### Ensuring Retained Subscription Owners
 
-Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist. this Owner can also be the Azure [Blueprint Service Principal](#blueprint-configuration)
+Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist. This owner can also be the Azure [Blueprint Service Principal](#blueprint-configuration)
 
-In contrast to other provisioning methods, EA provisioning will not retain a default
-"Classic Administrator" role assignment on the subscription from the billing account owner. Operators should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. This owner can also be an empty AAD group or Service Principal.
+In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Operators should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. This owner can also be an empty AAD group or Service Principal.
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
@@ -208,7 +256,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 
 #### EA Account Permissions
 
-When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/grant-access-to-create-subscription).
+When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/grant-access-to-create-subscription).
 
 When using powershell, use the following command and substitue parameters as follows:
 

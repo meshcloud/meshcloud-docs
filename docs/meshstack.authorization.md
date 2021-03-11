@@ -67,22 +67,16 @@ The following configuration options are available at `mesh.meshfed.web.project`:
 ```dhall
 let ProjectRoleConfiguration =
     {-
-        initialRole:
-            Designates the default role that will be pre-selected for new role requests in meshPanel.
-
         roles:
             The list of roles available on meshProjects. Each role has a display name and an
             identifier used to reference the role in configuration (e.g. in Landing Zones).
     -}
-      { initial-role : Optional Text
-      , roles : Optional (List ProjectRole)
-      }
+      { roles : List ProjectRole }
 ```
 <!--Example-->
 ```dhall
 let example =
-        { initial-role = Some "user"
-        , roles = Some
+        { roles =
           [ { name = "Project-Admin", identifier = "admin" }
           , { name = "Project-User", identifier = "user" }
           , { name = "Project-Reader", identifier = "reader" }

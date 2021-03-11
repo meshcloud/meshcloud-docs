@@ -25,13 +25,14 @@ The following parameters are required to configure meshStack to process the AWS 
 
 When processing the AWS Cost and Usage Report to generate the Usage Report in the meshPanel,
 
-* Only the line items with [line item type](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L)
-`DiscountedUsage`, `Fee`, `Usage` and `SavingsPlanCoveredUsage` are taken into the calculation.
-In other words, `Credit`, `Refund`, `RIFee`, `Tax` `SavingsPlanUpfrontFee`, `SavingsPlanRecurringFee` and `SavingsPlanNegation` are excluded.
+* You can configure which [line item types](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L)
+should be considered in the calculations. You can also configure whether you want to consider discounts or not.
+We include the following columns in the calculations in order to come up with an amortized cost that should be charged to each account(the discount column is taken only if configured to consider discounts).
+    1. If the line item type is RIFee, we take `reservation/UnusedAmortizedUpfrontFeeForBillingPeriod`, `reservation/UnusedRecurringFee` and `discounts/TotalDiscount` column
+    2. If the line item type is `SavingsPlanRecurringFee` then we take the `discounts/TotalDiscount` column
+    3. For other line item types, we take which ever is available from the columns `savingsPlan/SavingsPlanEffectiveCost`, `reservation/EffectiveCost` and  `lineItem/UnblendedCost` in that order plus the `discounts/TotalDiscount` column
 * Only the line items with [bill type](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html#b-B)
 `Anniversary` are taken into the calculation. In other words, line items with bill type `Purchase` and `Refund` are excluded.
-* For each line item, we take the [effective cost](https://docs.aws.amazon.com/cur/latest/userguide/reservation-columns.html#r-E)
-when available and [unblended cost](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-U) otherwise
 
 ## IAM User Configuration
 
@@ -180,6 +181,19 @@ let AwsPlatformKrakenConfiguration =
               a large number of cost items.
           -}
           Natural
+      , apply-discounts :
+          {-
+              Whether the discounts contained in the AWS Cost and Usage Reports should be applied
+              when generating the tenant usage reports or not
+          -}
+          Bool
+      , reported-line-item-types :
+          {-
+               What line item types should be included in the report. See https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L
+               for a list of options. Note that if you remove items from this list, some manual cleanup is still needed to remove
+               the already collected data from the database.
+          -}
+          List Text
       }
 ```
 <!--Example-->
@@ -208,6 +222,9 @@ let example
       , max-bulk-insert-retries = 5
       , bulk-insert-retry-delay-millis = 5000
       , cost-item-read-page-size = 2000
+      , apply-discounts = False
+      , reported-line-item-types =
+        [ "DiscountedUsage", "Fee", "Usage", "SavingsPlanCoveredUsage" ]
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

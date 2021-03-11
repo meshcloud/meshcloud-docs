@@ -60,8 +60,8 @@ let AzurePlatformCoreConfiguration =
         Operators must ensure the group names are unique in the managed AAD Tenant.
     -}
       { platform : Text
-      , subscription-name-pattern : Optional Text
-      , group-name-pattern : Optional Text
+      , subscription-name-pattern : Text
+      , group-name-pattern : Text
       }
 ```
 <!--Example-->
@@ -72,8 +72,8 @@ let example
       -- creates subscription names like "customer.project"
       -- and group names like "customer.project-reader"
       { platform = "azure.mylocation"
-      , subscription-name-pattern = Some "%s.%s"
-      , group-name-pattern = Some ".%s.%s-%4\$s"
+      , subscription-name-pattern = "%s.%s"
+      , group-name-pattern = ".%s.%s-%4\$s"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -140,21 +140,20 @@ let ServicePrincipal =
       Configures an Azure Service Principal.
 
           aadTenant:
-              Domain name or Id of the AAD Tenant that holds the Service Principal. Can be seen during SPP creation in the `tenant` field or
-              by running
-              `az ad sp list --all | jq -r '.[] | select(.appId == "${app-id-of-your-spp}") | .appOwnerTenantId'`
+              Domain name or Id of the AAD Tenant that holds the Service Principal.
 
           objectId:
-              The Azure API Object ID of the Service Principal. Can NOT be seen during AD App creation, but can be retrieved by running
-              `az ad sp list --all | jq -r '.[] | select(.appId == "${app-id-of-your-spp}") | .objectId'`
+              The Object Id of the Service Principal. In Azure Portal, this is the Object Id
+              of the "Enterprise Application".
 
           clientId:
-              The Application Id of your SPP. Can be seen during SPP creation in the `appId` field. Alternatively you can try to find it using
-              the `az ad app list -o table` command and searching through the results
+              The Application Client Id. In Azure Portal, this is the Application Id of the
+              "Enterprise Application" but can also be retrieved via the "App Registration" object
+              as "Application (Client) Id".
 
           clientSecret:
-              The password of the SPP. Can only be obtained during SPP creation in the `password` field. If you do not have the password
-              available anymore, you have to reset it using `az ad sp credential reset`
+              A valid secret for accessing the SPN. In Azure Portal, this can be configured on the
+              "App Registration" objecct.
     -}
       { aad-tenant : Text
       , object-id : Text
@@ -258,11 +257,13 @@ let EnterpriseEnrollment =
       let EnterpriseEnrollmentConfig =
           {-
             enrollmentAccountId:
-                Object Id of the EA Enrollment Account.
+                Id of the EA Enrollment Account used for the Subscription creation. Should look like this:
+                /providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321
+                See: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to
 
             subscriptionOfferType:
                 The Microsoft Subscription offer type to use when creating subscriptions.
-                Common values are "MS-AZR-0017P" for standard and "MS-AZR-0148P" for Dev/Test subscriptions.
+                Common values are "Production" for standard and "DevTest" for Dev/Test subscriptions.
 
             subscriptionCreationErrorCooldownSec:
                 There is a safety mechanism to avoid duplicate Subscription creation in case
@@ -302,8 +303,8 @@ let exampleEnterpriseEnrollment =
         { subscription-owner-object-ids =
           [ "390eaa30-67c3-4314-9368-33c76472e6f1" ]
         , enterprise-enrollment =
-          { enrollment-account-id = "7eeec94c-96a5-4faa-a6d6-8999bbbfa194"
-          , subscription-offer-type = "MS-AZR-0017P"
+          { enrollment-account-id = "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321"
+          , subscription-offer-type = "Production"
           , subscription-creation-error-cooldown-sec = 900
           }
         }
