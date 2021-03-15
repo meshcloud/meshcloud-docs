@@ -18,7 +18,7 @@ meshStack automatically configures AWS IAM in all managed accounts to integrate 
 meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS "root" account acting as the parent of all accounts managed by meshStack. The complete account setup contains three dedicated accounts:
 
 * meshcloud Account - Here lives the `meshfed-service` user.
-* Org Root Account - All accounts created by meshstack are living "under" this account and its Organization Units. `meshfed-service` needs to assume a role in this account.
+* Org Root Account - All accounts created by meshStack are living "under" this account and its Organization Units. `meshfed-service` needs to assume a role in this account.
 * Automation Account - This account is usually used to host certain CloudFormation templates, provide an Account Vending Machine and is needed to properly setup Landing Zones.
 
 
@@ -33,7 +33,7 @@ When configuring these roles, operators must take care to correctly guard agains
 ### AWS Root Account Setup
 
 > Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
-> a working AWS integration using meshstack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
+> a working AWS integration using meshStack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
 > We advise operators to determine the specific needs and requirements for their usage of AWS and implement more restrictive
 > roles and policies.
 
@@ -173,7 +173,7 @@ Operators need to securely inject the generated credentials and `PrivilegedExter
 
 ### meshStack Account Setup
 
-The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshstack. To create these credentials, create a user in IAM with these specifications:
+The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
 
 * User name: `meshfed-service`
 * AWS access type: Programmatic access - with an access key
@@ -351,7 +351,7 @@ You can use the following template inside the automation account to perform the 
 
 ### Account Access
 
-The following operations are performed via meshstack in the deployed AWS accounts:
+The following operations are performed via meshStack in the deployed AWS accounts:
 
 * Verifying SAML IDP integrity/update
 * Account Alias Setup
@@ -450,7 +450,7 @@ Accounts in AWS get an alias assigned. This alias is fully customizable. A `prin
 
 For example a string pattern `%s.%s` would generate: `customer.project`. Which is also the default.
 
-> The account alias must be unique across all of AWS. Operators should thererfore consider using a company-specific prefix together with a combination of meshCustomer and meshProject identifier.
+> The account alias must be unique across all of AWS. Operators should therefore consider using a company-specific prefix together with a combination of meshCustomer and meshProject identifier.
 
 The following arguments are provided:
 
@@ -458,7 +458,7 @@ The following arguments are provided:
 2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
 3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
 
-You can decide if you want to enforce the account allias by using the `enforceAccountAlias` flag. If you want to keep any existing account alias (which might not fit into the defined pattern), set this flag to `false`.
+You can decide if you want to enforce the account alias by using the `enforceAccountAlias` flag. If you want to keep any existing account alias (which might not fit into the defined pattern), set this flag to `false`.
 
 ### Identifier Configuration
 
