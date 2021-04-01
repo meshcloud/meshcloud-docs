@@ -1,6 +1,6 @@
 ---
 id: administration.users
-title: Administrate Users
+title: meshUsers
 ---
 
 To manage users of your customers go to the **Users** section of the **Administration** area.
