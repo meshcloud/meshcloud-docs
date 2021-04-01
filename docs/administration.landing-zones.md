@@ -20,3 +20,14 @@ this assignment will remain, but customer admins can no longer create new projec
 ## Configure Landing Zone tags
 
 Platform Operators can configure a custom Landing Zone [Tag Schema](./meshstack.metadata-tags.md#tag-schemas). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
+
+## Defining Quotas
+
+Limiting access to private cloud platforms is an important tool to keep control over the load on your platform and providing a fair share of resources to your customers. Therefore private cloud platforms provide quotas to achieve this limitation. Defining these quotas is supported by meshStack per meshLandingZone. This provides maximum flexibility to Platform Operators to define quotas for their customers. meshPlatforms that support quota management will provide an according section when editing landing zones.
+
+![Landing Zone Quota](assets/tenants/landing-zone-quota.png)
+
+> Quotas that can be managed here currently have to be defined by meshcloud. They are defined per meshPlatform. A self-service screen will be available soon.
+> Currently Quota Management is only supported for OpenShift platforms. More private cloud platforms will follow.
+
+Quotas defined here will be applied as default quotas to newly created meshTenants. That way you can provide direct access to your customers with a limited scope. If customers require a higher quota, they can create a [Tenant Quota Request](./meshcloud.tenant-quota.md), which has to be [approved](./administration.tenants.md#tenant-quota-requests) by a Platform Operator.

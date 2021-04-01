@@ -1,6 +1,6 @@
 ---
 id: administration.projects
-title: Administrate Projects
+title: meshProjects
 ---
 
 ## Manage Projects

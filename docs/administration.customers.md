@@ -1,6 +1,6 @@
 ---
 id: administration.customers
-title: Administrate Customers
+title: meshCustomers
 ---
 
 With a Partner Account you can easily manage multiple customer accounts with the meshcloud Portal. The meshcloud administration area is the

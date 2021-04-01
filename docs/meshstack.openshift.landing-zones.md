@@ -7,7 +7,9 @@ By defining a Landing Zone for OpenShift certain configurations can be enforced 
 
 ## Resource Quota
 
-With OpenShift [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html) the number of resources inside a namespace (meshProject) can be limited. In order to setup such a quota limit write, or drag and drop, your OpenShift ResourceQuota file into the respective field when creating a Landing Zone.
+With OpenShift [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html) the number of resources inside a namespace (meshProject) can be limited.
+
+These quotas can be defined on an OpenShift Landing Zone via the [Quota Management](./administration.landing-zones.md#defining-quotas).
 
 ## Templates
 
