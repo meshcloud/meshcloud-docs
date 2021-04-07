@@ -23,7 +23,3 @@ meshcloud allows creation of [Service Users](meshcloud.service-user.md) for Open
 ## Quota Management
 
 Partners can enforce detailed per-project quotas for OpenStack via meshcloud.
-
-## Federated Idp
-
-meshIdB is not required for the integration anymore. You can directly integrate your company-wide IdP to OpenStack. meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack.

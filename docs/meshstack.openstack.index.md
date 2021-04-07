@@ -48,3 +48,8 @@ Project Users get the following OpenStack roles:
 The actual access rights associated with these roles are managed by the OpenStack instance and are not part of meshStack.
 
 More details about the User Federation with OpenStack can be found [here](meshstack.openstack.index.md).
+
+## Federated Idp
+
+meshIdB is not required for the integration anymore. You can directly integrate your company-wide IdP to OpenStack. meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack.
+Users which are not existing yet will be created in OpenStack and assigned to the specific groups. We create for each project an own group.
