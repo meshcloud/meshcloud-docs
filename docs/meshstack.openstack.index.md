@@ -51,5 +51,6 @@ More details about the User Federation with OpenStack can be found [here](meshst
 
 ## Federated Idp
 
-meshIdB is not required for the integration anymore. You can directly integrate your company-wide IdP to OpenStack. meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack.
-Users which are not existing yet will be created in OpenStack and assigned to the specific groups. We create for each project an own group.
+meshIdB is not required for the integration anymore. You can directly integrate your company-wide IdP to OpenStack. To do this its necessary to enable the federatedIdp within the OpenStack plaform configuration in meshfed. Besides that the Idp needs to be fully integrated within OpenStack. This means users should have access to OpenStack independent of the panel login. During the automated replication meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack. Every new created User in OpenStack will be assigned to the MeshUsers domain to prevent the creation of one user multiple times. If the user still exists in OpenStack then the automatisation will pick this user to assign him to the specific groups. We create for each project an own group.
+
+If the federatedIdp was enabled then only the cli access screen will be available within the panel. All other OpenStack related screens are disabled.
