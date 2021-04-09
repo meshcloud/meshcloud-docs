@@ -53,4 +53,31 @@ More details about the User Federation with OpenStack can be found [here](meshst
 
 meshIdB is not required for the integration anymore. You can directly integrate your company-wide IdP to OpenStack. To do this its necessary to enable the federatedIdp within the OpenStack plaform configuration in meshfed. Besides that the Idp needs to be fully integrated within OpenStack. This means users should have access to OpenStack independent of the panel login. During the automated replication meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack. Every new created User in OpenStack will be assigned to the MeshUsers domain to prevent the creation of one user multiple times. If the user still exists in OpenStack then the automatisation will pick this user to assign him to the specific groups. We create for each project an own group.
 
+To enabled the federatedIdp its necessary to set the property 'federated-idp-enabled' to True within the dhall configuration.
+For example:
+
+```dhall
+...
+let platformConfig =
+      Platform.OpenStack::{
+      , platform = "osussuri.eu-de-central"
+      , endpoint =
+          "https://os-ussuri.germanywestcentral.cloudapp.azure.com:5000/v3"
+      , username = "admin"
+      , password = Secret.fromEnv "OS_USSURI_PASSWORD"
+      , domain = "Default"
+      , project = "admin"
+      , use-domains = True
+      , system-user-domain = "default"
+      , default-added-roles = [ "_member_", "heat_stack_owner", "creator" ]
+      , default-added-system-users = [] : List Text
+      , idp-provider = "aad"
+      , idp-protocol = "openid"
+      , federated-idp-enabled = True
+      }
+...
+```
+
 If the federatedIdp was enabled then only the cli access screen will be available within the panel. All other OpenStack related screens are disabled.
+
+**Note:** This mode is an alternative to the previously described meshIDB integration. And it will be the superior integration in future. The old one will be removed in future.
