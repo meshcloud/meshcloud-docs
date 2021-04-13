@@ -95,3 +95,28 @@ let exampleOnlyFolder
 The data is collected incrementally from the exported billing data by filtering by the `export_time` attribute.
 Any entries with `cost_type` `tax` are ignored in the metering process.
 The monthly totals are calculated by aggregating by the `invoice.month` attribute.
+
+## Configuring Seller Information
+
+If you would like to see the GCP costs attributed to a seller in the [chargeback statments](./meshcloud.project-metering.md#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Gcp`. An example is shown below.
+
+```json
+{
+    "resourceType": "sellerInfo",
+    "displayName": "GCP Seller Info",
+    "scope": {
+        "platformType": "Gcp",
+        "location": null,
+        "platformInstance": null,
+        "localProjectId": null
+    },
+    "usageTypes": [],
+    "description": "",
+    "sellerId": "GCP",
+    "sellerProductGroup": null,
+    "@metadata": {
+        "@collection": "Products",
+        "Raven-Java-Type": "io.meshcloud.kraken.core.metering.Product"
+    }
+}
+```

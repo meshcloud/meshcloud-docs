@@ -228,3 +228,28 @@ let example
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+## Configuring Seller Information
+
+If you would like to see the AWS costs attributed to a seller in the [chargeback statments](./meshcloud.project-metering.md#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Aws` . An example is shown below.
+
+```json
+{
+    "resourceType": "sellerInfo",
+    "displayName": "AWS Seller Info",
+    "scope": {
+        "platformType": "Aws",
+        "location": null,
+        "platformInstance": null,
+        "localProjectId": null
+    },
+    "usageTypes": [],
+    "description": "",
+    "sellerId": "AWS",
+    "sellerProductGroup": null,
+    "@metadata": {
+        "@collection": "Products",
+        "Raven-Java-Type": "io.meshcloud.kraken.core.metering.Product"
+    }
+}
+```
