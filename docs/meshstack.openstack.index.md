@@ -37,7 +37,7 @@ If the KToken expires, the OIDC/Keystone Token Exchange (steps 6-8) must be exec
 
 ## Authentication & Authorization
 
-## meshIdP
+### meshIdP
 
 As OpenStack has to scope authorization to a specific project, the token from the meshIdB is also scoped to a specific project in the request. The project information can then be read from the **MC_PROJECTS** claim in the token provided by the meshIdB. OpenStack maps this attribute to a local Group associated with the project, that contains the previously mentioned roles.
 
@@ -51,7 +51,7 @@ The actual access rights associated with these roles are managed by the OpenStac
 
 More details about the User Federation with OpenStack can be found [here](meshstack.openstack.index.md).
 
-## Enterprise IdP
+### Enterprise IdP
 
 You can directly integrate your company-wide IdP to OpenStack. This simplifies the integration with meshStack compared to the meshIdB integration that is explained above. Using the company-wide IdP must be enabled in meshStack for each affected OpenStack platform.
 
@@ -75,6 +75,8 @@ In OpenStack you have to configure the company-wide IdP as described here [Feder
 
 During replication, meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack. Users will be assigned to the according groups (per meshProject) meshStack creates in OpenStack. If meshStack is about to assign a user that does not exist in OpenStack yet, meshStack will create this user with the according federatedIdP attributes and create the user in `MeshUsers` domain. That way once the user logs in via the IdP, he will be mapped to the user created by meshStack. If the user already exists in OpenStack during replication, meshStack will pick up this user to assign him to the according groups.
 
-**Note** If federatedIdp is enabled, only the cli access screen will be available within the panel. All other OpenStack related screens are disabled, as personalized access from meshPanel to OpenStack is not possible with this integration approach at the moment.
+> If federatedIdp is enabled, only the cli access screen will be available within the panel. All other OpenStack related screens are disabled, as personalized access from meshPanel to OpenStack is not possible with this integration approach at the moment.
 
-**Note:** This mode is an alternative to the previously described meshIdB integration. And it will be the superior integration in future. The old one will be removed in future.
+<!-- This comment is only necessary to separate the two blockquotes. See https://stackoverflow.com/questions/12979577/how-can-i-write-two-separate-blockquotes-in-sequence-using-markdown -->
+
+> This mode is an alternative to the previously described meshIdB integration. And it will be the superior integration in future. The old one will be removed in future.
