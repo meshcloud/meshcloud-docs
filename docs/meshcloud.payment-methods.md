@@ -7,13 +7,7 @@ title: Payment Methods
 
 Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process. As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshCustomers are correctly charged and that this information makes its way back to the required systems. Payment methods therefore are the link between the cloud usage and the resulting cost in the context of a meshProject.
 
-Payment methods are created **per** meshCustomer and come in two variants:
-
-### Types of Payment Methods
-
-1) A cost center payment method (indicated via `COST_CENTER`), meaning the costs made by the meshTenants in your meshProjects will be fully charged to the cost center of your organization.
-
-2) A budget payment method (indicated via `COST_LIMITATION`), meaning costs made by the meshTenants in your meshProjects will be charged based on the monetary budget amount that is set on this payment method.
+Payment methods are created **per** meshCustomer and can be enhanced with [metadata tags](meshcloud.metadata-tags.md) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgetting purposes.
 
 ![Payment Methods Lifecycle](assets/payment_methods/payment_method_overall_lifecycle.png)
 
