@@ -119,7 +119,7 @@ let example
 
 This section configures the Service Principal (SPP) used by meshStack's replicator
 to automate project replication. The SPP needs to be configured in the same
-AAD Tenant that is used to hold all subscriptions managed by this meshPlatform.
+AAD Tenant that is used to hold all Subscriptions managed by this meshPlatform.
 
 **Caution**: Currently it is not possible to manage SPPs in the Azure Portal. As a result we strongly recommend to create the SPP via the API (e.g. via Terraform) or the Azure CLI. This is required in order to retrieve the necessary client secret that meshcloud needs. You can achieve this by running:
 
@@ -230,9 +230,11 @@ let exampleNoB2bInvites
 
 ## Provisioning Configuration
 
-meshStack allows operators to control how the replicator provisions subscriptions for meshProjects. meshStack supports automated provisioning from an existing Enterprise Agreement (EA) Enrollment Account or consuming pre-provisioned subscriptions created from other sources.
+meshStack allows operators to control how the replicator provisions Subscriptions for meshProjects. meshStack supports automated provisioning from an existing Enterprise Agreement (EA) Enrollment Account or consuming pre-provisioned Subscriptions created from other sources.
 
-Pre-provisioned subscriptions are useful when no EA is available and operators want to consume CSP or Pay-as-you-go Subscriptions instead.
+Pre-provisioned Subscriptions are useful when no EA is available and operators want to consume CSP or Pay-as-you-go Subscriptions instead.
+
+> **Important**: It is not supported to re-use Subscriptions for multiple meshProjects (for example when you marked a meshProject for deletion but did not properly delete the Subscription in Azure but and instead re-use them for pre-provisioning). If you do this, the metering system will assign the Subscription to the wrong meshProject for billing calculation. Double billed resources will be the consequence.
 
 <!--snippet:mesh.platform.azure.provisioning#type-->
 

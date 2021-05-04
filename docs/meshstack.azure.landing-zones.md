@@ -3,7 +3,7 @@ id: meshstack.azure.landing-zones
 title: Landing Zones
 ---
 
-In Azure, a [Landing Zone](./meshcloud.landing-zones.md) is defined via a management group the subscription for the project will be assigned to. Policies can be applied to these management groups. Optionally a blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the resources and policies created by the blueprint.
+In Azure, a [Landing Zone](./meshcloud.landing-zones.md) is defined via a Management Group the Subscription for the project will be assigned to. Policies can be applied to these Management Groups. Optionally a Blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the Subscription and additional specific policies can be defined. A Blueprint can be configured to decline users to change or delete the resources and policies created by the Blueprint.
 
 Operators can define and configure [Landing Zone](./meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
 
@@ -28,7 +28,7 @@ The name of the Blueprint which gets assigned to the tenant. If left empty, mesh
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
-Operators must ensure to create these management groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
+Operators must ensure to create these Management Groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
 
 ### Available Blueprint Parameters
 
@@ -39,7 +39,7 @@ The following parameter can be used in the Blueprint:
 | customerIdentifier | Customer Identifier                                                                       |
 | ~~costcenter~~     | ID of the CostCenter defined for this meshProject. (Deprecated. Please use tagCostCenter) |
 | projectIdentifier  | The project identifier                                                                    |
-| subscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
+| SubscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
 | tagCostCenter      | Example for a  [metadata tags](./meshstack.metadata-tags.md) named `costCenter`              |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags can also be used in the Blueprints.
@@ -51,7 +51,7 @@ The following modifications are applied to metadata tag keys by meshstack before
 In the example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 See [metadata tags](./meshstack.metadata-tags.md) for more information.
 
-> If you are planning on converting any of the blueprint parameters into Azure tags, please be aware of the limits and requirements
+> If you are planning on converting any of the Blueprint parameters into Azure tags, please be aware of the limits and requirements
 > that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
 >
 > Key takeaways here:
@@ -84,9 +84,9 @@ Please refer to the [Azure Configuration Reference](./meshstack.azure.index.md#c
 
 #### Use User Assigned Managed Identity (UAMI)
 
-This flag allows you to use a User Assigned Managed Identity (UAMI) instead of the standard System Assigned Managed Identity (SAMI) during the assignment of your blueprint. For more details on their differences, refer to the [Azure Documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)).
+This flag allows you to use a User Assigned Managed Identity (UAMI) instead of the standard System Assigned Managed Identity (SAMI) during the assignment of your Blueprint. For more details on their differences, refer to the [Azure Documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)).
 
-Currently we only recommend to use this flag if you want to create resources that require permissions outside of the meshcloud managed subscription. A good example is if you want to connect a meshcloud managed subscription to a central log workspace. In order to do this, you require permissions in both the meshcloud managed subscription and the subscription your central Log Workspace App resides in.
+Currently we only recommend to use this flag if you want to create resources that require permissions outside of the meshcloud managed Subscription. A good example is if you want to connect a meshcloud managed Subscription to a central log workspace. In order to do this, you require permissions in both the meshcloud managed Subscription and the Subscription your central Log Workspace App resides in.
 
 >**Please note**: meshStack can not handle permissions outside of the Subscriptions it manages. You need to make sure the Managed Identity has the correct permissions to access/create the resources your Blueprint requires. Additionally you must also give the replicator service principal the following permission on the target resource the Managed Identity lives in (e.g. the Subscription of the Managed Identitiy).
 >
@@ -117,7 +117,7 @@ The Azure Role Definition is the RBAC ID of the Azure role you want to use. You 
 
 ## Azure Function Invocation
 
-Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
+Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the Subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
 Please review the [HTTP header interface documentation](./meshstack.metadata-tags.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
