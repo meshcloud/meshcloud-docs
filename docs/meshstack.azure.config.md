@@ -265,6 +265,9 @@ let EnterpriseEnrollment =
                 The Microsoft Subscription offer type to use when creating subscriptions.
                 Common values are "Production" for standard and "DevTest" for Dev/Test subscriptions.
 
+            useLegacySubscriptionEnrollment:
+                Uses the old Subscription enrollment API in its preview version. The new API is currently experimental.
+
             subscriptionCreationErrorCooldownSec:
                 There is a safety mechanism to avoid duplicate Subscription creation in case
                 of an error on Azure's EA API. This delay should be a bit higher then it usually takes to
@@ -272,6 +275,7 @@ let EnterpriseEnrollment =
           -}
             { enrollment-account-id : Text
             , subscription-offer-type : Text
+            , useLegacySubscriptionEnrollment : Bool
             , subscription-creation-error-cooldown-sec : Natural
             }
 
@@ -303,8 +307,10 @@ let exampleEnterpriseEnrollment =
         { subscription-owner-object-ids =
           [ "390eaa30-67c3-4314-9368-33c76472e6f1" ]
         , enterprise-enrollment =
-          { enrollment-account-id = "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321"
-          , subscription-offer-type = "Production"
+          { enrollment-account-id =
+              "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321"
+          , subscription-offer-type = "MS-AZR-0017P"
+          , useLegacySubscriptionEnrollment = False
           , subscription-creation-error-cooldown-sec = 900
           }
         }

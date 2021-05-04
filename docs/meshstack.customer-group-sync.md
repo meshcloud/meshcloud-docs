@@ -67,6 +67,9 @@ Additionally, using the pageSize configuration parameter, specify the number of 
 ```dhall
 let LdapFilter =
     {-
+      collectionType:
+          The type of the entity which is collected. Can either be PERSON or GROUP.
+
       attributes:
           A comma separated list of attributes that should be returned per LDAP entry.
           These attributes can later be used to populate the value of a meshObject field.
@@ -77,37 +80,40 @@ let LdapFilter =
       filter:
           A filter that follows the LDAP search filter format.
     -}
-      { attributes : Text, base : Text, filter : Text }
+      { collectionType : CollectionType
+      , attributes : Text
+      , base : Text
+      , filter : Text
+      }
 
 let CollectorConfiguration =
     {-
       pageSize:
           The size of a single page that will be returned as a result of an LDAP search
 
-      group:
-          LdapFilter which will contain the information needed to search the LDAP source for groups.
-
-      user:
-          LdapFilter which will contain the information needed to search the LDAP source for users.
+      sources:
+          A list of LdapFilter which will contain the information needed to search the LDAP source for groups or persons.
     -}
-
-      { pageSize : Natural, group : LdapFilter, user : LdapFilter }
+      { pageSize : Natural, sources : List LdapFilter }
 ```
 <!--Example-->
 ```dhall
 let example
     : CollectorConfiguration
     = { pageSize = 100
-      , group =
-        { attributes = "cn, uniqueMember, description"
-        , base = "ou=groups"
-        , filter = "'(cn=*)'"
-        }
-      , user =
-        { attributes = "entryDN, uid, sn, givenName, mail"
-        , base = "ou=people"
-        , filter = "'(uid=*)'"
-        }
+      , sources =
+            [ { collectionType = CollectionType.GROUP
+              , attributes = "cn, uniqueMember, description"
+              , base = "ou=groups"
+              , filter = "(cn=*)"
+              }
+            , { collectionType = CollectionType.PERSON
+              , attributes = "entryDN, uid, sn, givenName, mail"
+              , base = "ou=people"
+              , filter = "(uid=*)"
+              }
+            ]
+          : List LdapFilter
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -413,14 +419,27 @@ let TransportConfiguration =
       chunkSize:
           The number of meshObjects to synchronize in a single API request.
           For typical meshStack implementations this should be between 10 and 100 objects.
+
+      dryRunOnly:
+          If set to true, no real request against the API is made but the API payload will
+          be logged instead for debugging purposes as INFO loglevel.
+
+      httpTimeoutSec:
+          Timeout in seconds for the HTTP requests send to the meshObject API.
     -}
-      { apiUser : ApiUser, chunkSize : Natural }
+      { apiUser : ApiUser
+      , chunkSize : Natural
+      , dryRunOnly : Bool
+      , httpTimeoutSec : Natural
+      }
 ```
 <!--Example-->
 ```dhall
 let example
     : TransportConfiguration
     = { chunkSize = 100
+      , httpTimeoutSec = 300
+      , dryRunOnly = False
       , apiUser =
         { username = "identityconnectorapi"
         , password =
