@@ -3,10 +3,7 @@ id: meshstack.azure.landing-zones
 title: Landing Zones
 ---
 
-In Azure, a [Landing Zone](./meshcloud.landing-zones.md) is defined via a management group the subscription for the project will be assigned to. Policies can be applied
-to these management groups. Optionally a blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the
-subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the
-resources and policies created by the blueprint.
+In Azure, a [Landing Zone](./meshcloud.landing-zones.md) is defined via a management group the subscription for the project will be assigned to. Policies can be applied to these management groups. Optionally a blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the subscription and additional specific policies can be defined. A blueprint can be configured to decline users to change or delete the resources and policies created by the blueprint.
 
 Operators can define and configure [Landing Zone](./meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
 
@@ -14,7 +11,7 @@ The next section describe the individual building blocks that platform operators
 
 ## Management Group Assignment
 
-All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://azure.microsoft.com/en-us/features/management-groups/). The Management Group can be configured by an platform operator through the Azure portal or using infrastructure as code.
+All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://azure.microsoft.com/en-us/features/management-groups/). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
 
 > Management Groups used in different Azure [Landing Zones](./meshcloud.landing-zones.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
 
