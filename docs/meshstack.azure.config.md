@@ -46,7 +46,7 @@ let AzurePlatformCoreConfiguration =
           2. meshProject identifier
           3. meshProject ID (numeric)
 
-        Operators must ensure the resulting subscription names are unique in the managed AAD Tenant.
+        Operators must ensure the resulting Subscription names are unique in the managed AAD Tenant.
 
       group-name-pattern:
         Configures the pattern that defines the desired name of AAD groups managed by meshStack.
@@ -92,7 +92,7 @@ let AzurePlatformBlueprintConfiguration =
         blueprintServicePrincipal:
           Object Id of the Enterprise Application belonging to the Microsoft Application "Azure Blueprints" with Application Id
           f71766dc-90d9-4b7d-bd9d-4499c4331c3f in the managed AAD Tenant. meshStack will grant the necessary permissions on
-          managed subscriptions to this SPN so that it can create System Assigned Managed Identities (SAMI) for Blueprint execution.
+          managed Subscriptions to this SPN so that it can create System Assigned Managed Identities (SAMI) for Blueprint execution.
 
           Note: Operators can also explicitly configure an UAMI to be used instead of a SAMI in Azure Landing Zone definitions.
           If an UAMI is not explicitly configured, meshStack will default to using the SAMI.
@@ -247,7 +247,7 @@ let SubscriptionOwner =
       This configuration is available on all provisioning types.
 
           subscriptionOwnerObjectIds:
-              One or more principals Object Ids (e.g. Groups, SPNs) that meshStack will ensure have an "Owner" role
+              One or more principals Object Ids (e.g. groups, SPNs) that meshStack will ensure have an "Owner" role
               assignment on managed subscriptions. This can be useful to satisfy Azure's constraint of at least
               one direct "Owner" role assignment per Subscription.
     -}
