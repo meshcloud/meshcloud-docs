@@ -137,9 +137,11 @@ Enter the URL of your Azure Function here. This is typically a value like `https
 To securely call an Azure Function, meshStack uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only).
 
 This means that behind the scenes meshStack is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call.
-In order for meshStack to fetch the right token, it needs to know the unique ID of the Azure Enterprise Application your function belongs to.
 
-You can obtain this ID by navigating to your Azure Function App  -> `Settings` -> `Authentication / Authorization` -> `App Service Authentication` -> `Azure Active Directory (Management Mode: Advanced)` -> field `Client ID`. Enter this value into the "Azure Function Scope" parameter.
+In order for meshStack to fetch the right token, it needs to know the unique ID of the Azure Enterprise Application your function belongs to. You can obtain this ID by navigating to your Azure Function App, click on your Cloud Function and then select `Authentication` (you need to upgrade from the 'Classic Authentication Experience' to the latest version in order to get the `Client ID`). In the new view you can directly see the `App (client) ID` which is the ID required for the Landing Zone "Azure Function Scope" parameter.
+
+![Retrieval of the App (client) ID.](assets/azure_function/cloud-function-scope.png)
+
 
 ### Required Platform Configuration
 
