@@ -13,7 +13,7 @@ Operators can configure meshStack to collect, attach and distribute organization
 meshStack often acts as an organization's central registry of cloud environments and services. It therefore needs to cover
 a wide range of use cases for orchestrating organizational processes across multiple clouds, including;
 
-- centralized management and configuration of [cloud platforms](./meshcloud.platform-location.md)
+- centralized management and configuration of [cloud platforms](./meshcloud.platforms.md)
 - life-cycle management for [cloud tenants](meshcloud.tenant.md) and [security policy automation](./meshcloud.landing-zones.md)
 - centralized Identity and Access Management (IAM) via [multi-cloud identity federation](meshstack.identity-federation.md)
 - unified [chargeback process](./meshcloud.project-metering.md) across all cloud platforms and services

@@ -37,7 +37,7 @@ Changes (add, change, delete) to data are logged to provide traceability. Regard
 | Event (What?)                                                                   | Log-File / DB-Table (Where)          |
 | ------------------------------------------------------------------------------- | ------------------------------------ |
 | Authentication ((invalid) Logins, Logout, Timeout of session, …)                | Keycloak Events table, events.log    |
-| Create/Edit/Delete Project, Add/Remove Location from Project                    | ProjectEvent table, mesh.log         |
+| Create/Edit/Delete Project, Add/Remove Tenant from Project                      | ProjectEvent table, mesh.log         |
 | Replication to cloud platform                                                   | According component log              |
 | Interactions with Service Brokers (create/update/delete instance & bindings)    | mesh.log, ServiceInstanceEvent table |
 | Register Customer, Edit Customer Master Data (Payment Info)                     | CustomerEvent table, mesh.log        |
@@ -148,7 +148,7 @@ Example Admin Event:
 
 Example:
 
-`2018-10-23 10:36:49.771  INFO 47534 --- [ask-scheduler-8] d.c.web.project.ProjectDeletionService   : 0 project(s) have been deleted in the locations`
+`2018-10-23 10:36:49.771  INFO 47534 --- [ask-scheduler-8] d.c.web.project.ProjectDeletionService   : 0 project(s) have been deleted in the platforms`
 
 ## Retention Times
 

@@ -82,10 +82,9 @@ The following events are available:
 - **PROJECT_DELETED**: A meshProject was deleted by a customer admin.
 - **PROJECT_DELETION_CONFIRMED**: A partner or platform operator confirmed a meshProject deletion that required manual deletion of platform tenants.
 - **PROJECT_DELETION_DECLINED**: A partner or platform operator declined a meshProject deletion that required manual deletion of platform tenants.
-- **PROJECT_DELETED_IN_ALL_LOCATIONS**: Tenants of a meshProject are deleted asynchronously after the user deleted the project. When this deletion is successful, this event is written.
-- **LOCATIONS_ADDED**: One or more locations were added to a project.
-- **LOCATION_REMOVED**: One or more locations were removed from a project.
-- **PLATFORM_MAPPINGS_UPDATED**: A tenant was created for the meshProject. meshStack stores a mapping between the meshProject and the cloud tenant (the representation of a meshProject in a cloud platform).
+- **ALL_PROJECT_TENANTS_DELETED**: Tenants of a meshProject are deleted asynchronously after the user deleted the project. When this deletion is successful, this event is written.
+- **TENANT_ADDED**: One tenant was added to a project.
+- **TENANT_REMOVED**: One tenant was removed from a project.
 - **USER_ASSIGNED**: A user was assigned to the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.
 - **USER_UNASSIGNED**: A user was removed from the project.
 - **PROJECT_ROLE_CHANGED**: The user role was changed on the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.

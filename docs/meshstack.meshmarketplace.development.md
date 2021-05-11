@@ -13,7 +13,7 @@ You can find the **Marketplace Development** in your meshCustomer Account Area. 
 
 ### Register your Service Broker
 
-Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshCustomer will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace development from the first steps on. A new Marketplace Location for your Customer will be available for your [projects](meshcloud.project.md#add-remove-locations-from-a-meshproject) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
+Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshCustomer will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace development from the first steps on. A new Marketplace Platform for your Customer will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
 
 You can register your service broker via the **Register Service Broker** button. The following information must be provided for this:
 
@@ -38,7 +38,7 @@ As soon as your Service Broker is production-ready, you can publish it to the pu
 
 To publish your Service Broker, click the **Publish Service Broker** button for the according Service Broker.
 
-You can choose which public Marketplace you want to publish your Service Broker to. In most cases a Marketplace is available for every [Location](meshstack.platform-location.md) that is configured in your meshStack installation. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
+You can choose which public Marketplace you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
 
 Location-based Service Brokers should be running independently from each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
 

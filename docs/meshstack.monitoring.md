@@ -86,7 +86,7 @@ Example:
 
 meshStack includes a component called **Sonar** that runs live smoke tests in your meshStack implementation.
 These smoke test simulate real end-to-end user interactions with meshStack via the external API.
-These tests also include end-to-end interaction with [meshPlatforms](meshcloud.platform-location.md) like tenant replication.
+These tests also include end-to-end interaction with [meshPlatforms](meshcloud.platforms.md) like tenant replication.
 
 > Setting up Sonar requires a [meshCustomer](meshcloud.customer.md) and [meshProject](meshcloud.project.md) as well as a technical user in meshIdB.
 > Depending on the [Enterprise IdP](meshstack.identity-federation.md) and IAM configuration in your

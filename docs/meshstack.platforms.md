@@ -1,9 +1,9 @@
 ---
-id: meshstack.platform-location
-title: Platforms & Locations
+id: meshstack.platforms
+title: meshPlatforms
 ---
 
-meshStack operators can configure the [Platforms & Locations](meshcloud.platform-location.md) available to
+meshStack operators can configure the Platforms available to
 users. See the Platforms section in the sidebar for details on the platforms supported by meshstack.
 
 ## Restricting Access
@@ -12,14 +12,14 @@ meshStack provides simple and effective means to implement access policies, for 
 
 ### Customer-level
 
-Operators can restrict the [Customer](meshcloud.customer.md) accounts that are allowed to access a particular [Platform Instance inside any Location](meshcloud.platform-location.md). The UI for maintaining the restricted access is described [here](administration.platforms.md#restrict-meshPlatforms).
+Operators can restrict the [Customer](meshcloud.customer.md) accounts that are allowed to access a particular [Platform Instance](meshcloud.platforms.md). The UI for maintaining the restricted access is described [here](administration.platforms.md#restrict-meshPlatforms).
 
 This feature can be used for example to restrict access to a public cloud provider only to customer accounts that passed a certain data-protection clearance process.
 
 ### Project-level
 
-Customers can create [meshProjects](meshcloud.project.md) that use the Locations available to their Customer account.
-Configuring the locations available to a project is typically restricted to users with the [Customer Admin Role](meshcloud.customer.md#assign-meshCustomer-roles), providing a further level of possible delegation.
+Customers can create [meshProjects](meshcloud.project.md) that use the meshPlatforms available to their Customer account.
+Configuring the meshPlatforms available to a project is restricted to users with the [Customer Admin and Owner Role](meshcloud.customer.md#assign-meshCustomer-roles), providing a further level of possible delegation.
 
 ## Deprovisioning / Deleting Projects
 
