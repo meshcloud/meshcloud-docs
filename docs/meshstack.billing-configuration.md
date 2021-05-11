@@ -40,7 +40,7 @@ The following sections will introduce features of the meshStack product catalog.
 Every cloud resource has a scope in meshcloud, defined by the meshTenant in belongs to.
 ScopeSelectors are hierarchical selectors that allow Product Catalog entries to specify the resource scopes they apply to. ScopeSelectors can target all platforms of a certain platform type, a specific meshPlatform or an individual meshTenant.
 
-Using ScopeSelectors, Operators can for example define different prices for platforms running in different locations.
+Using ScopeSelectors, Operators can for example define different prices for platforms running in different locations or platforms.
 
 <!--snippet:mesh.kraken.productcatalog.scopeselector#type-->
 

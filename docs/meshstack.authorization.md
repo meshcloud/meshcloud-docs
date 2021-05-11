@@ -43,7 +43,7 @@ Users with the right permissions can assign meshCustomer roles in self-service w
 
 ### meshProject Roles
 
-[meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platform-location.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
+[meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platforms.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
 
 Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshCustomer that is the owner of that meshProject. Revocation of this meshCustomer role binding causes revocation of all associated meshProject role bindings.
 
@@ -51,7 +51,7 @@ Users with the right permissions can [assign meshProject roles](meshcloud.projec
 
 ### Available meshProject Roles
 
-Operators globally configure the names and identifiers of meshProject roles available in their meshStack implementation. The individual [meshPlatform](meshcloud.platform-location.md) and [Landing Zone](meshcloud.landing-zones.md) configuration determines how these meshProject roles are mapped to cloud roles/permissions for an individual meshTenant.
+Operators globally configure the names and identifiers of meshProject roles available in their meshStack implementation. The individual [meshPlatform](meshcloud.platforms.md) and [Landing Zone](meshcloud.landing-zones.md) configuration determines how these meshProject roles are mapped to cloud roles/permissions for an individual meshTenant.
 
 The default configuration of meshStack ships with these roles and intended use.
 

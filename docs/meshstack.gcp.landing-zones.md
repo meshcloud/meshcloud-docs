@@ -6,7 +6,7 @@ title: Landing Zones
 In GCP, a [Landing Zone](./meshcloud.landing-zones.md) is defined via folder the project will be assigned to. Policies can be applied
 to these folders.
 
-The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have an GCP location a Landing Zone must be selected by the user. By choosing a landing zone, platform specific configuration can be set (in this case for GCP). The options for GCP are:
+The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Administration` section. If a project is selected to have a GCP tenant a Landing Zone must be selected by the user. By choosing a landing zone, platform specific configuration can be set (in this case for GCP). The options for GCP are:
 
 ## Resource Manager Folder Id
 

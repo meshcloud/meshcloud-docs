@@ -28,7 +28,7 @@ You may encounter policies in the meshPanel when doing any of the following acti
     1. When adding a meshPlatform with a meshLandingZone to a new project, all policies are evaluated between a 'meshProject' and a 'meshLandingZone'
     2. Upon saving a new project, all policies between 'meshCustomer' and 'meshProject' are evaluated.
 2. Editing a project
-    1. When adding a new location with a meshLandingZone all policies are evaluated between the 'meshProject' and the selected 'meshLandingZone'.
+    1. When adding a new meshTenant with a meshLandingZone all policies are evaluated between the 'meshProject' and the selected 'meshLandingZone'.
     2. When adding a new meshUser or meshCustomerUserGroup to a meshProject, all policies are evaluated between the 'meshProject' and the 'meshUser/Group'.
     3. When changing a tag value (e.g. changing the environment) of a project, **all** policies related to the meshProject are evaluated as it impacts many meshObjects. The following meshObjects will be evaluated on to the project:
         - the meshCustomer the project lives in

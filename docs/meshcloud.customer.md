@@ -73,7 +73,7 @@ The following table provides details about the functionality available to the di
 | [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Project&nbsp;Locations](meshcloud.project.md#add-remove-locations-from-a-meshproject) | &#10003; | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign&nbsp;Customer&nbsp;Owner | &#10003; | | |

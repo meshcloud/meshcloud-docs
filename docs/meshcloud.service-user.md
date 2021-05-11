@@ -16,8 +16,8 @@ The user who created the Service User is also responsible for the secure usage o
 The following steps describe how to create a Service User:
 
 1. Navigate to the meshPanel and login with your personal credentials.
-2. On the Welcome Dashboard, please select the Project & Location in which you want to use your Service User.
-3. After selecting Project & Location, go to **Tools &gt; Service Users** in the menu bar on the left.
+2. On the Welcome Dashboard, please select the Project & Platform in which you want to use your Service User.
+3. After selecting Project & Platform, go to **Tools &gt; Service Users** in the menu bar on the left.
 4. On the form enter a description for the Service User, e.g. _PaaS Backup Service User._
 5. Click on the **+** button to add the Service User. An automated download will start and provide you with the Service User credentials.
 6. Note down the password, as it will not be visible and/or recoverable later. In case you lost the credentials you need to delete the existing Service User and create a new one.
