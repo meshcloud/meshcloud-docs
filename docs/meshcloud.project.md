@@ -28,7 +28,7 @@ The edit screen of a project shows the list of all active [meshTenants](./meshcl
 
 When adding a [meshPlatform](meshcloud.platforms.md) to a meshProject, meshStack creates a representation of the meshProject for that meshPlatform. This representation is called a [meshTenant](meshcloud.tenant.md) and is an isolated cloud environment e.g. an AWS Account, Azure Subscription or Cloud Foundry Space.
 
-[meshPlatforms](meshcloud.platforms.md) can also be removed from the project with some limitations. All resources in the [meshTenant](meshcloud.tenant.md) (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a meshPlatform. For a single meshTenant removal on a project, the same rules apply that are desibed in [Project Deletion](#delete-a-meshproject)
+[meshPlatforms](meshcloud.platforms.md) can also be removed from the project with some limitations. All resources in the [meshTenant](meshcloud.tenant.md) (i.e. OpenStack instances, Cloud Foundry Apps, etc.) have to be deleted manually before removing a meshPlatform. For a single meshTenant removal on a project, the same rules apply that are described in [Project Deletion](#delete-a-meshproject)
 
 ### Editing Payment and Project Settings
 
