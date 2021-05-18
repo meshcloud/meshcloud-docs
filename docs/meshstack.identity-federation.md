@@ -115,6 +115,7 @@ You can also use the plain Azure Active Directory to setup IDP authentication. I
 1. Create a new App registration in AAD. You can choose a display name like `meshcloud SSO`. Define the redirect URI that will be provided by meshcloud. It is individual per meshcloud installation.
 2. Provide "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, to meshcloud.
 3. Create a client secret via "Manage -> Certficates & Secrets". This secret must also be provided to meshcloud.
+4. After the secret is configured in the identity broker by meshcloud, an Azure admin needs to provide Admin Consent for the `User.ReadAll` permission of the app registration via Azure Portal.
 
 ### Google Cloud Directory (GCD)
 
