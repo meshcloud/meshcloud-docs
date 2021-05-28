@@ -22,17 +22,18 @@ In contrast to the official GCP documentation you **must leave out** the imports
 
 ```yaml
 resources:
-- name: enable_api
-  type: gs://likvid-gdm-templates/single_vm2/enable_api.jinja
-- name: vm_template
-  type: gs://likvid-gdm-templates/single_vm2/vm_template.py
-  properties:
-    zone: europe-west1-b
+  - name: enable_api
+    type: gs://likvid-gdm-templates/single_vm2/enable_api.jinja
+  - name: vm_template
+    type: gs://likvid-gdm-templates/single_vm2/vm_template.py
+    properties:
+      zone: europe-west1-b
 ```
 
 > The maximum filesize currently is 1MB please [contact us](mailto:support@meshcloud.io) if you need support for bigger template configurations.
 
-The replicator needs to assign the project service accounts read access to the bucket so the templates can be fetched. Its therefore necessairy to give the meshfed service account the following permissions on the storage bucket:
+GCP uses a built-in service account called [Google APIs Service Agent](https://cloud.google.com/iam/docs/service-accounts#google-managed) to execute GDM templates.
+This service account needs to have permission to access the bucket storing the GDM template. It's therefore necessairy to give the meshfed service account the following permissions on the storage bucket:
 
 ```text
 storage.buckets.setIamPolicy
@@ -43,7 +44,9 @@ storage.buckets.list
 storage.buckets.get
 ```
 
-We suggest to create a custom role containing this conditions. The replicator then assignes read access for the projects service accounts which have the form of `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
+We suggest to create a custom role containing these permissions.
+
+As part of replication, meshStack will grant this permission to the "Google APIs Service Agent" service account. Reviewing the IAM permission of the bucket, operators will thus notice additional assignments of the `roles/storage.objectViewer` role to service accounts of the form `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
 
 The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_IDENTIFIER>` cut to a maximum length of 63 chars.
 
@@ -55,13 +58,13 @@ Please note that you probably want to enable all the necessary APIs on the GCP p
 
 The properties of the provided configuration file will be expanded with properties from meshcloud and these can be used inside the template itself. The following properties are provided:
 
-| Template Property           | Description                                                                        |
-| --------------------------- | :--------------------------------------------------------------------------------- |
-| customerIdentifier          | Customer Identifier                                                                |
-| tagCostCenter               | ID of the CostCenter defined for this meshProject.                                 |
-| projectIdentifier           | The project identifier                                                             |
-| projectId                   | The ID of the GCP project associated with this meshProject                         |
-| tagCostCenter               | Example for a  [metadata tag](./meshstack.metadata-tags.md) named `costCenter`        |
+| Template Property  | Description                                                                   |
+| ------------------ | :---------------------------------------------------------------------------- |
+| customerIdentifier | Customer Identifier                                                           |
+| tagCostCenter      | ID of the CostCenter defined for this meshProject.                            |
+| projectIdentifier  | The project identifier                                                        |
+| projectId          | The ID of the GCP project associated with this meshProject                    |
+| tagCostCenter      | Example for a [metadata tag](./meshstack.metadata-tags.md) named `costCenter` |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags are also provided to the template.
 The following modifications are applied to metdata tag keys by meshstack before making them available as properties:
@@ -97,6 +100,6 @@ Please review the [meshStack Landing Zone Http Header interface](./meshstack.met
 
 In addition to the headers referenced above, meshStack provides the following GCP-specific HTTP headers:
 
-| HTTP Header Name           | Description                                                |
-| -------------------------- | :--------------------------------------------------------- |
-| x-mesh-project-id          | The ID of the GCP project associated with this meshProject |
+| HTTP Header Name  | Description                                                |
+| ----------------- | :--------------------------------------------------------- |
+| x-mesh-project-id | The ID of the GCP project associated with this meshProject |
