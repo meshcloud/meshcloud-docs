@@ -215,24 +215,25 @@ If this initial config if present you can decide to setup the following optional
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-{-
-  When adding/inviting a new user to a customer a custom attribute property from the AAD data
-  can be used to determine if it is a guest user.
-  Attention: This check is only performed on the first attempt when a user is added/invited
-  to a customer. If this check is configured after some users were initially added to a
-  customer they are not detected as guest users.
+let AzureGuestDetection =
+    {-
+      When adding/inviting a new user to a customer a custom attribute property from the AAD data
+      can be used to determine if it is a guest user.
+      Attention: This check is only performed on the first attempt when a user is added/invited
+      to a customer. If this check is configured after some users were initially added to a
+      customer they are not detected as guest users.
 
-    guestProperty:
-        The AAD's custom attribute which is checked against the guestValue.
+        guestProperty:
+            The AAD's custom attribute which is checked against the guestValue.
 
-    guestValue:
-        If the AAD custom attribute matches this value the user is considered to be a guest.
--}
-  { guestProperty : Text, guestValue : Text }
+        guestValue:
+            If the AAD custom attribute matches this value the user is considered to be a guest.
+    -}
+      { guestProperty : Text, guestValue : Text }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-<!--snippet:mesh.meshfed.identity.azure.euid#type-->
+<!--snippet:mesh.meshfed.identity.azure.euid-extension-schema#type-->
 
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -245,21 +246,16 @@ let AzureEuidExtensionSchema =
 
       Attention: This check is only performed on the first attempt when a user is added/invited
       to a customer. If this check is configured after some users were initially added to a
-      customer their euid's are not udpated anymore.
+      customer their euid's are not udpated.
 
         euidExtensionSchemaProperty:
             The name of the extension schema property which is used as EUID value.
+        euidExtensionSchemaIdentifier:
+            The identifier of the custom schema which should be used to extract the value out of. E.g: extkvbmkofy_mySchema
+            See: https://docs.microsoft.com/en-us/graph/api/schemaextension-post-schemaextensions
     -}
       { euidExtensionSchemaProperty : Text
       , euidExtensionSchemaIdentifier : Text
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : AzureEuidExtensionSchema
-    = { euidExtensionSchemaProperty = "euid-schema-property"
-      , euidExtensionSchemaIdentifier = "euid-schema-identfifier"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
