@@ -205,7 +205,7 @@ let GcpPlatformCoreConfiguration =
       , project-id-pattern : Text
       , group-name-pattern : Text
       , allow-hierarchical-folder-assignment : Bool
-      , tenant-tags : Optional TenantTags
+      , tenant-tags : TenantTags
       }
 ```
 <!--Example-->
@@ -220,7 +220,7 @@ let example
       , project-id-pattern = "%.15s-%.10s-%.3s"
       , group-name-pattern = "%s.%s-%4\$s"
       , allow-hierarchical-folder-assignment = True
-      , tenant-tags = Some
+      , tenant-tags =
         { namespace-prefix = "meshstack_"
         , tag-definitions =
           [ { name = "cident"
