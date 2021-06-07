@@ -159,6 +159,12 @@ The following full example of a service definition in a Service Broker Catalog l
 
 ## Metric Endpoints
 
+> You have to make sure that the metric endpoints are available reliably. When Tenant Usage Reports are
+> finalized, metrics that haven't been received until that point in time for the previous month won't be
+> considered in the Usage Reports and Chargeback Statements. Finalization of Usage Reports usually happens
+> four days after the end of the month. Please contact your Cloud Foundation team to find out how this offset
+> is configured in your meshStack.
+
 ### Authentication
 
 All metrics endpoints must authenticate the caller via basic authentication, using the same credentials that were provided when [registering the service broker](meshstack.meshmarketplace.development.md).
