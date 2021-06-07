@@ -67,6 +67,12 @@ The following sections detail how meshStack interprets OSB API plan [cost object
 
 See [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md) for details about how to charge your services usage-based. This could be relevant for you if you want to charge e.g. based on actual storage or memory used by the service. Further use-cases are mentioned in the linked chapter.
 
+> You have to make sure that the metric endpoints are available reliably. When Tenant Usage Reports are
+> finalized, metrics that haven't been received until that point in time for the previous month won't be
+> considered in the Usage Reports and Chargeback Statements. Finalization of Usage Reports usually happens
+> four days after the end of the month. Please contact your Cloud Foundation team to find out how this offset
+> is configured in your meshStack.
+
 ### Supported Unit Types
 
 [Cost objects](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#cost-object) in the OSB API specification support only a single `unit` field. However, service owners can specify multiple cost objects
