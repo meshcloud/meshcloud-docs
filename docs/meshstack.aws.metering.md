@@ -188,9 +188,7 @@ We include the following columns in the calculations in order to come up with an
 * Only the line items with [bill type](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html#b-B)
 `Anniversary` are taken into the calculation. In other words, line items with bill type `Purchase` and `Refund` are excluded.
 
-### IAM User Configuration
-
-#### Policies
+### IAM User Configuration (Cost & Usage Report)
 
 In order for meshStack to process AWS Cost and Usage Reports, following policies are required:
 
@@ -245,8 +243,6 @@ In order for meshStack to process AWS Cost and Usage Reports, following policies
 }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
-
-#### Role
 
 The 3 policies in the previous section should be attached to this role.
 
