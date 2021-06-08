@@ -171,7 +171,7 @@ An AWS Cost and Usage Report should be created as specified in the [documentatio
 
 The following parameters are required to configure meshStack to process the AWS Cost and Usage Reports [[More Details](#configuration-reference)]:
 
-* AWS credentials that can access the S3 bucket where the reports are written
+* AWS credentials that can access the S3 bucket where the reports are written to
 * The name of the S3 bucket where the report is written
 * The region of the S3 bucket
 * The name of the report
