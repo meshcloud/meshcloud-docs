@@ -165,7 +165,7 @@ An AWS Cost and Usage Report should be created as specified in the [documentatio
 * gzip compression
 * txt/csv file format
 * Should include resource ids
-* Versioning should be setup to overwrite existing report
+* Versioning should be setup to overwrite existing reports
 
 **Note**: If an S3 bucket is not already set up, it should be created as specified in [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/cur-s3.html)
 
