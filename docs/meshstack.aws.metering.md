@@ -169,7 +169,7 @@ An AWS Cost and Usage Report should be created as specified in the [documentatio
 
 **Note**: If an S3 bucket is not already set up, it should be created as specified in [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/cur-s3.html)
 
-The following parameters are required to configure meshStack to process the AWS Cost and Usage Reports [[More Details](#configuration-reference)]
+The following parameters are required to configure meshStack to process the AWS Cost and Usage Reports [[More Details](#configuration-reference)]:
 
 * AWS credentials that can access the S3 bucket where the reports are written
 * The name of the S3 bucket where the report is written
