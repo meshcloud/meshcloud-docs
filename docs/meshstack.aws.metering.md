@@ -157,7 +157,7 @@ If you would like to see the AWS costs attributed to a seller in the [chargeback
 
 ## AWS Cost & Usage Report based approach (Deprecated)
 
-meshStack imports metering data from [AWS Cost and Usage Reports](https://aws.amazon.com/aws-cost-management/aws-cost-and-usage-reporting/)
+meshStack imports metering data from [AWS Cost and Usage Reports](https://aws.amazon.com/aws-cost-management/aws-cost-and-usage-reporting/).
 
 An AWS Cost and Usage Report should be created as specified in the [documentation](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html) with the following properties
 
