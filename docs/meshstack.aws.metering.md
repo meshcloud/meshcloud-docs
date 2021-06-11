@@ -72,8 +72,8 @@ In order for meshStack to generate Usage Reports, following policies are require
 
 meshStack uses the `amortized cost` from the AWS Cost Explorer to generate the tenant usage reports. If any of your
 meshCustomers pay upfront to purchase reserved instances or savings plans, they would be charged twice when we use
-the amortized cost. To prevent this from happening, meshStack collects the information about reserved instances and adds a discount
-which is equal to the `amortized upfront cost` of the meshCustomer specific reserved instance or savings plan.
+the amortized cost. To prevent this from happening, meshStack collects the information about reserved instances and savings plans,
+via the cost explorer API and adds a discount which is equal to the `amortized upfront cost` to the relevant tenant usage report.
 
 ## Configuration Reference
 
