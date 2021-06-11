@@ -6,6 +6,8 @@ meshStack imports metering data from [AWS Cost Explorer](https://aws.amazon.com/
 It is recommended to have a daily report update interval in order to keep the costs of calling the API low. This can be
 configured via the `awsStateCollectionInterval` property.
 
+The `amortized cost` is used when generating the tenant usage reports.
+
 ## IAM User Configuration
 
 ### Policies
@@ -28,9 +30,7 @@ In order for meshStack to generate Usage Reports, following policies are require
             "Action": [
                 "ce:GetSavingsPlansUtilizationDetails",
                 "ce:GetSavingsPlansUtilization",
-                "ce:GetSavingsPlansCoverage",
                 "ce:GetReservationUtilization",
-                "ce:GetReservationCoverage",
                 "ce:GetDimensionValues",
                 "ce:GetCostAndUsage"
             ],
@@ -67,6 +67,14 @@ In order for meshStack to generate Usage Reports, following policies are require
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+
+## Reserved Instances
+
+meshStack uses the `amortized cost` from the AWS Cost Explorer to generate the tenant usage reports. If any of your
+meshCustomers pay upfront to purchase reserved instances, they would be charged twice when we use the amortized cost.
+To prevent this from happening, meshStack collects the information about reserved instances and adds a discount
+which is equal to the `amortized upfront cost` of the meshCustomer specific reserved instance.
+
 ## Configuration Reference
 
 This section describes the configuration of a AWS Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
@@ -100,7 +108,7 @@ let AwsPlatformKrakenConfiguration =
           Optional Text
       , data-source :
           {-
-          Currently both AWS Cost and Usage Reports and AWS Cost Explorer are supported.
+          Currently both AWS Cost and Uasge Reports and AWS Cost Explorer are supported.
           But AWS Cost and Usage Reports are planned to be deprecated
           -}
           ./DataSource.dhall
@@ -122,9 +130,14 @@ let example
           "abcd1234-12ab-12ab-12ab-abcdef123456"
       , data-source =
           DataSource.CostExplorer
-            { cost-explorer.filter
-              = {- Filter type of NONE and EXCLUDE_TAX are supported. -}
-                (./CostExplorer.dhall).FilterType.NONE
+            { cost-explorer =
+              { filter =
+                  {- Filter type of NONE and EXCLUDE_TAX are supported. -}
+                  (./CostExplorer.dhall).FilterType.NONE
+              , reservedInstanceFairChargeback =
+                  {-Enable fair chargeback for meshCustomer purchased RIs-}
+                  True
+              }
             }
       }
 ```
