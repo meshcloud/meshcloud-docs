@@ -83,7 +83,7 @@ The deletion procedure depends on the variaty of meshTenants under the project:
 2. a project contains exclusively OpenStack, Cloud Foundry and Marketplace meshTenants
 3. a project contains a project containing a combination of 1. and 2.
 
-**1. No automatic deletion**: Following platform doesn't support automatic deletion:
+**1. No automatic deletion**: Following platforms don't support automatic deletion:
 
 - AWS
 - GCP
