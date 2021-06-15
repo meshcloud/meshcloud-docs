@@ -10,6 +10,8 @@ AWS Accounts, Azure Subscriptions or Cloud Foundry Spaces.
 [meshCustomers](./meshcloud.customer.md) don't manually create or manage meshTenants. Instead, meshTenants are always automatically managed through
 a [meshProject](./meshcloud.project.md).
 
+Some operational limitations around tenants are described [here](meshstack.tenants.md).
+
 ## Replication and Reconciliation
 
 meshStack combines the meshProject configuration (managed in self-service by the [meshCustomer](./meshcloud.customer.md) admins), the [Landing Zone](./meshcloud.landing-zones.md) and [meshPlatform](./meshcloud.platforms.md) configuration (managed by the operator) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](./meshcloud.tenant-quota.md) to your meshTenant.
