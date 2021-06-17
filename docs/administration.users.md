@@ -16,8 +16,13 @@ To search for a user, please follow these steps:
 If you also want to delete a user follow these additional steps:
 
 1. Click the trash icon.
-2. In the confirmation dialog,  enter the username or email address of the user you want to delete. This avoids deleting users accidentially.
-3. Click **"Confirm Deletion"** to finally delete the user. The user will be removed from all projects and customers he is assigned to automatically. The user will only be flagged as deleted and everything but his username will be pseudonomized via a SHA-256 hash (mandatory for privacy compliance by the EU GDPR). Future audits of this user's actions will thus still be possible.
+2. In the confirmation dialog,  enter the username or email address of the user you want to delete. This avoids deleting users accidentally.
+3. Click **"Confirm Deletion"** to finally delete the user.
+
+After you completed the deletion, these users  will be removed from all projects and customers they're assigned to automatically.
+
+Deleted users will only be flagged as deleted. Everything except their username will be pseudonomized via a SHA-256 hash (mandatory for privacy compliance by the EU GDPR).
+Future audits of these users' actions will thus still be possible. Furthermore, you can reuse the usernames of deleted users. This enables you to invite users with usernames that once belonged to deleted users or reinvite them with the same username once they've been deleted.
 
 ## Download User information
 
