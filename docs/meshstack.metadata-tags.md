@@ -8,7 +8,7 @@ Operators can configure meshStack to collect, attach and distribute organization
 ## Use Cases for Tags
 
 > meshStack currently supports tags on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
-> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [meshCustomerUserGroups](meshstack.customer-group-sync.md) are freely taggable via the meshstack API.
+> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [meshCustomerUserGroups](meshstack.customer-group-sync.md) are freely taggable via the meshStack API.
 
 meshStack often acts as an organization's central registry of cloud environments and services. It therefore needs to cover
 a wide range of use cases for orchestrating organizational processes across multiple clouds, including;
@@ -31,12 +31,12 @@ such metadata include:
 
 > Note: doing the actions below will require the Partner Admin role.
 
-To get started with managing tags in meshstack, navigate to the Tags page which is available in the Administration area:
+To get started with managing tags in meshStack, navigate to the Tags page which is available in the Administration area:
 
 ![Tag List](assets/metadata_tags/admin_area_tags_list.png)
 
 This page will show you all tags that are currently active on supported meshObjects. If you would like to know more details about a tag, or create, edit, or delete a tag, you can do so by clicking on the large arrow ▶️ on the right for a meshObject.
-This next page will show you more details about a tag such as the title, description or data type of a tag.
+This next page will show you more details about a tag such as the title, description or data type of the tag.
 
 ### Defining a new tag
 
@@ -59,7 +59,7 @@ You will be prompted with a new page where you can enter a lot of information. W
 > Note: replication is not supported for meshLandingZones
 
 - **Replication**:  If a tag has replication enabled, it will be used to tag an actual tenant in the cloud platform.
-  - **Replication Tag Key**: Although we recommend using the exact same value as **Name** here, it possible to use a slightly different tag key when it is used for replication. Also, keep in mind that the tag key will be prefixed, depending on what is configured for [tenant tags](#tags-in-cloud-tenants). When a tag key or value does not meet the cloud platforms' requirements, it will automatically be [sanitized](#tag-sanitization)
+  - **Replication Tag Key**: Although we recommend using the exact same value as **Name** here, it's possible to use a slightly different tag key when it is used for replication. Also, keep in mind that the tag key will be prefixed, depending on what is configured for [tenant tags](#tags-in-cloud-tenants). When a tag key or value does not meet the cloud platforms' requirements, it will automatically be [sanitized](#tag-sanitization)
 
 ## Tags on meshUsers
 

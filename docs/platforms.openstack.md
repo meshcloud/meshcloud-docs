@@ -8,7 +8,7 @@ You can manage OpenStack resources via the meshPanel or the OpenStack CLI. IaaS 
 ## Supported Services
 
 The meshPanel contains a convenient user interface for the most common OpenStack services. The panel talks directly
-to the OpenStack API, which thus needs to allow CORS. The following services are supported from the panel:
+to the OpenStack API, which thus needs to allow CORS. The following services are supported by the panel:
 
 - Nova
 - Neutron
