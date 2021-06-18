@@ -32,7 +32,7 @@ Service bindings can come with an expiration in which case they will be deleted 
 
 The **marketplace** of a platform lists all service brokers available to you and allows you to inform yourself about available plans and request service instances to be used in your application.
 
-Usually, you do not need to care where and how a service instance is deployed as long as its accessible via networks your deployment can connect to. For a more detailed classification of service provisioning models read [this blogpost](https://www.meshcloud.io/en/2018/08/30/platform-services-model-classification/).
+Usually, you do not need to care where and how a service instance is deployed as long as it's accessible via networks your deployment can connect to. For a more detailed classification of service provisioning models read [this blogpost](https://www.meshcloud.io/en/2018/08/30/platform-services-model-classification/).
 
 ## Developing Services
 
