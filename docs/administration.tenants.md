@@ -9,11 +9,11 @@ You can find a description of meshTenants [here](./meshcloud.tenant.md).
 
 You can see the full list of meshTenants with their replication status in the Administration area. Click on `Tenants` below the `Platforms` header. The list contains all tenants and their status, which is either:
 
-- Replication successful
-- Replication in progress
-- Replication failed
+- successful
+- in progress
+- failed
 
-Additionally, the list can be filtered on customer, project, location, platform and tenant status.
+Additionally, the list can be filtered on customer, project, location, platform, landing zone and replication status.
 
 For more information, click on 'View more' in the tenant list and in this screen additional information is available. You can especially see detailed information about what happened during tenant replication to the cloud platform. You can see which steps have been executed and if errors or warnings occurred, you will also see them here.
 
