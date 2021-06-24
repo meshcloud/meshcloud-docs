@@ -92,7 +92,7 @@ To associate costs with the different metrics, costs defined in the [OSB Profile
 ```
 
 - **unit**: Technical name of the metric that will be provided via the [Metrics Endpoint](#metric-endpoints).
-- **metricType**: [Type](#metric-types) of this metric (one of `gauge`, `periodicCounter`, `samplingCounter`)
+- **metricType**: [Type](#metric-types) of this metric (one of `gauge`, `periodic_counter`, `sampling_counter`)
 - **description**: The description should fully describe the metric and the cost involved and will be shown to the user in meshPanel as one cost block of the service plan.
 
 ### Example Service Definition
