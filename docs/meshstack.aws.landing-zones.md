@@ -21,7 +21,7 @@ You can also use a root account under which the accounts will be placed when the
 
 ### AccessStack Template URL
 
-This StackSet will be created in every new AWS account. It usually contains simple bootstraping resources e.g. like required roles and drops the rights of the admin access which is pre-assigned to each new account by AWS (the `OrganizationAccountAccessRole`).
+This StackSet will be created in every new AWS account. It usually contains simple bootstrapping resources such as required roles.
 
 ### StackSet ARN
 
@@ -135,6 +135,8 @@ The following parameters can be used in the Lambda function and are provided as 
 
 In addition, any payment settings, project tags or customer tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
+
+If you would like to downgrade the permissions that meshStack recieved in the newly provisioned account, you can do that inside the same Lambda. See the [integration](./meshstack.aws.index.html) section for an example.
 
 ## Account Vending Machines
 
