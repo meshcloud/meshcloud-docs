@@ -136,7 +136,7 @@ The following parameters can be used in the Lambda function and are provided as 
 In addition, any payment settings, project tags or customer tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
-If you would like to downgrade the permissions that meshStack recieved in the newly provisioned account, you can do that inside the same Lambda. See the [integration](./meshstack.aws.index.html) section for an example.
+If you would like to downgrade the permissions that meshStack recieved in the newly provisioned account, you can do that inside the same Lambda. See the [Downgrading meshCloud Access](./meshstack.aws.index.md#downgrading-meshcloud-access) section for an example.
 
 ## Account Vending Machines
 
