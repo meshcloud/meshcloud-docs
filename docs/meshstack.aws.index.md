@@ -17,7 +17,7 @@ meshStack automatically configures AWS IAM in all managed accounts to integrate 
 
 meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
-* meshCloud Account - `meshfed-service-user` should be created in this account. We have a dedicated account for this user so that meshCloud can easily roll the credentials of the user when needed.
+* meshCloud Account - `meshfed-service-user` should be created in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
 * Management Account - All accounts created by meshStack reside "under" this account and its Organization Units. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.
 * Automation Account - This account is usually used to host certain CloudFormation templates, provide an Account Vending Machine and is needed to properly setup Landing Zones.
 
@@ -31,7 +31,7 @@ When configuring these roles, operators must take care to correctly guard agains
 
 > Note that we have developed [terraform](https://www.terraform.io/) modules to automate setting up the three accounts mentioned above. This is the preferred way to set up the accounts. Alternatively, you can manually create the following resources in the respective accounts to integrate your AWS platform.
 
-### meshCloud Account Setup
+### meshcloud Account Setup
 
 The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
 
@@ -171,7 +171,7 @@ The following policy and trust relationship should be attached to the role so th
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "AutomationPolicy",
             "Effect": "Allow",
             "Action": [
                 "lambda:InvokeFunction",
@@ -217,7 +217,7 @@ In order to roll out CloudFormation Stack Instances in the newly provisioned acc
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "AllowAssumeCloudFormationExecutionOnAllAccounts",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
             "Resource": "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
@@ -354,7 +354,7 @@ Please find the full `Aws.dhall` [configuration options](./meshstack.configurati
   }
 ```
 
-## Downgrading meshCloud Access
+## Downgrading meshcloud Access
 
 > This part is not automated via terraform templates. This is because you may choose to set up roles with different naming conventions and permissions, or to deploy CloudFormation stacks or a Lambda that has additional functionality. This section also serves as an example on how you can use a meshLandingZone to bootstrap the newly created AWS account.
 
@@ -552,7 +552,7 @@ Create the `PermissionDowngradeLambdaAdministrationRole` with the following poli
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "AllowAssumePermissionDowngradeLambdaOnAllAccounts",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
             "Resource": "arn:aws:iam::*:role/PermissionDowngradeLambdaExecutionRole"
