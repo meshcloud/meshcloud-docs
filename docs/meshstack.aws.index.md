@@ -29,7 +29,7 @@ When configuring these roles, operators must take care to correctly guard agains
 
 ## Platform Instance Configuration
 
-> Note that we have developed [terraform](https://www.terraform.io/) modules to automate setting up the three accounts mentioned above. This is the preferred way to set up the accounts. You can optionally create the following resources manually in the respective accounts to integrate your AWS platform.
+> Note that we have developed [terraform](https://www.terraform.io/) modules to automate setting up the three accounts mentioned above. This is the preferred way to set up the accounts. Alternatively, you can manually create the following resources in the respective accounts to integrate your AWS platform.
 
 ### meshCloud Account Setup
 
