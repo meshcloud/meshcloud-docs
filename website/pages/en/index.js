@@ -122,7 +122,7 @@ class Index extends React.Component {
                   },
                   {
                     content:
-                    `Multi-cloud management teams use meshcloud to provide [managed cloud envirornments](${docUrl('administration.landing-zones.html', language)}) to internal [customers](${docUrl('administration.customers.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
+                    `Multi-cloud management teams use meshcloud to provide [managed cloud environments](${docUrl('administration.landing-zones.html', language)}) to internal [customers](${docUrl('administration.customers.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
                     They set the standards for cloud usage and ensure that teams can move to the cloud quickly and safely while [staying in control](${docUrl('administration.analytics.html', language)}).
                     `,
                     image: `${imgUrl('persona_governance.png')}`,
