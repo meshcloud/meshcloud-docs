@@ -1,12 +1,7 @@
 ---
-id: meshstack.aws.aad-as-idp-for-aws
-title: AAD as IdP for AWS
+id: meshstack.aws.aad-as-idp
+title: AAD as Identity Provider
 ---
-
-## AAD as IdP for AWS
-
-### Part 1: Azure
-
 ### Configure AAD as IdP for AWS SSO
 
 You can trigger everything that is needed for using AAD as an IdP for AWS SSO from within Azure.
@@ -20,8 +15,6 @@ Choose `AWS Single Sign-on` as the enterprise registration type
 Follow the steps in AAD under Getting Started (Pick SAML for the single sign on.)
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_02.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_02.png)
-
-### Part 2: AWS
 
 ### Configure AWS for AAD integration
 
@@ -42,7 +35,7 @@ Select `External identity provider`
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_06.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_06.png)
 
-### Part 3: Metadata
+### Metadata
 
 Download `AWS SSO SAML metadata` and then you should upload it into `Single sing-on` page on Azure with the `Upload metadata file` button. Also check the following image to download `IdP SAML metadata` file from Azure, you can find it in the same page as `Federation Metadata XML`
 
@@ -52,7 +45,7 @@ Download `AWS SSO SAML metadata` and then you should upload it into `Single sing
 
 After downloading the `Federation Metadata XML` from Azure you have to upload this file into your AWS SSO Identity Source under `IdP SAML metadata`
 
-## Part 4: Provisioning
+## Provisioning
 
 Before the automatic provisioning is enabled, you can click `enable automatic provisioning` on Azure to get the Tenant URL and Access Token to configure SCIM for provisioning on AAD side.
 
