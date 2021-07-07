@@ -3,7 +3,7 @@ id: meshstack.aws.aad-as-idp-for-aws
 title: AAD as IdP for AWS
 ---
 
-# AAD as IdP for AWS
+## AAD as IdP for AWS
 
 ### Part 1: Azure
 
@@ -23,7 +23,7 @@ Follow the steps in AAD under Getting Started (Pick SAML for the single sign on.
 
 ### Part 2: AWS
 
-### **Configure AWS for AAD integration**
+### Configure AWS for AAD integration
 
 Choose`AWS Single Sign-on`
 
