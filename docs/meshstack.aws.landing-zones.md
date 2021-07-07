@@ -7,6 +7,8 @@ AWS Landing Zones use Cloud Formation templates to orchestrate configuration of 
 
 You have two paths for provisionig AWS accounts. You can simply use CloudFormation StackSets in order to bootstrap your account or you can use an existing, "external" (in the sense of not controlled via meshstack) Account Vending Machine (AVM). Decide for a bootstrap path and configure the Landing Zone accordingly.
 
+Furthermore, there is the option to integrate accounts created by meshStack with AWS Control Tower.
+
 ## Parameters
 
 Each Landing Zone has parameters which control its behavior. The available parameters are described below.
@@ -136,7 +138,30 @@ The following parameters can be used in the Lambda function and are provided as 
 In addition, any payment settings, project tags or customer tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
-If you would like to downgrade the permissions that meshStack recieved in the newly provisioned account, you can do that inside the same Lambda. See the [Downgrading meshCloud Access](./meshstack.aws.index.md#downgrading-meshcloud-access) section for an example.
+If you would like to downgrade the permissions that meshStack received in the newly provisioned account, you can do that inside the same Lambda. See the [Downgrading meshCloud Access](./meshstack.aws.index.md#downgrading-meshcloud-access) section for an example.
+
+### Account Factory Product Id
+
+For an [AWS Control Tower integration with meshStack](#aws-control-tower-integration) this parameter needs to be set to the Id of the Account Factory Product from AWS Service Catalog.
+For other cases, this parameter must be omitted.
+
+## AWS Control Tower integration
+
+In order to manage created accounts with AWS Control Tower, these need to be "enrolled". AWS Control Tower utilizes an Account Factory, to provide new accounts or enroll other accounts with it.
+AWS Control Tower will create an Account Factory Product in AWS Service Catalog, that will be invoked to enroll accounts.
+meshStack can be enabled to trigger the Account Factory via AWS Service Catalog.
+The correct Id of the Account Factory Product needs to be specified in the Landing Zone configuration. meshStack will create the accounts as usual and in a later step will enroll them via the Account Factory with AWS Control Tower.
+
+> In order to enroll created accounts with AWS Control Tower, the [Target Organization Unit ID](#target-organization-unit-id) must belong to a OU that is already enrolled.
+
+Following prerequisites must be fulfilled for the enrollment to work:
+
+- Configured AWS Control Tower
+- AWS Service Catalog needs to have an AWS Control Tower Account Factory Portfolio
+- The portfolio needs to contain an AWS Control Tower Account Factory Product
+- The AWS Control Tower Account Factory Product needs to have at least one active Provisioned Artifact (active version)
+- There needs to be a launch path with permissions to invoke the AWS Account Factory Product for meshStack access
+- all of [AWS prerequisites](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html)
 
 ## Account Vending Machines
 
