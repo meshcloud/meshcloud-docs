@@ -15,12 +15,11 @@ This makes AWS available to meshProjects like any other cloud platform in meshSt
 
 meshStack automatically configures AWS IAM in all managed accounts to integrate SSO with [meshStack Identity Federation](./meshstack.identity-federation.md).
 
-meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS "root" account acting as the parent of all accounts managed by meshStack. The complete account setup contains three dedicated accounts:
+meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
-* meshcloud Account - Here lives the `meshfed-service` user.
-* Org Root Account - All accounts created by meshStack are living "under" this account and its Organization Units. `meshfed-service` needs to assume a role in this account.
+* meshCloud Account - `meshfed-service-user` should be created in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
+* Management Account - All accounts created by meshStack reside "under" this account and its Organization Units. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.
 * Automation Account - This account is usually used to host certain CloudFormation templates, provide an Account Vending Machine and is needed to properly setup Landing Zones.
-
 
 ### IAM Roles and Service Control Policies
 
@@ -30,380 +29,219 @@ When configuring these roles, operators must take care to correctly guard agains
 
 ## Platform Instance Configuration
 
-### AWS Root Account Setup
+> Note that we have developed [terraform](https://www.terraform.io/) modules to automate setting up the three accounts mentioned above. This is the preferred way to set up the accounts. Alternatively, you can manually create the following resources in the respective accounts to integrate your AWS platform.
+
+### meshcloud Account Setup
+
+The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
+
+* User name: `meshfed-service-user`
+* AWS access type: Programmatic access - with an access key
+
+This user should have the following policy attached to assume the respective roles in the management account and in the automation account. Replace the MANAGEMENT_ACCOUNT_ID, AUTOMATION_ACCOUNT_ID and EXTERNAL_ID placeholders accordingly.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::<<MANAGEMENT_ACCOUNT_ID>>:role/MeshfedServiceRole",
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "<<EXTERNAL_ID>>"
+                }
+            }
+        },
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::<<AUTOMATION_ACCOUNT_ID>>:role/MeshfedAutomationRole",
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "<<EXTERNAL_ID>>"
+                }
+            }
+        }
+    ]
+}
+```
+
+Operators should generate a unique and random value for `EXTERNAL_ID`, e.g. a GUID. meshStack AWS Connector will supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases the security of member accounts in your organization.
+
+Operators need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
+
+### AWS Management Account Setup
 
 > Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
 > a working AWS integration using meshStack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
 > We advise operators to determine the specific needs and requirements for their usage of AWS and implement more restrictive
 > roles and policies.
 
-This account needs the `MeshfedServiceRole`. The `meshfed-service` user needs to assume it.
-
-The root account also needs a role for the mesh-service principal to assume. This role is created by this CloudFormation template:
+This `MeshfedServiceRole` should be created in the management account with the following policy attached.
 
 ```json
 {
-  "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "meshfed-service Role Setup",
-  "Parameters": {
-    "MeshcloudAccountId": {
-      "Type": "String",
-      "Description": "The ID of the meshCloud AWS Account"
-    },
-    "PrivilegedExternalId": {
-      "Type": "String",
-      "Description": "Privileged external ID for the meshfed-service to use"
-    }
-  },
-  "Resources": {
-    "MeshfedServiceRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "RoleName": "MeshfedServiceRole",
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:iam::",
-                      {
-                        "Ref": "MeshcloudAccountId"
-                      },
-                      ":user/meshfed-service"
-                    ]
-                  ]
-                }
-              },
-              "Action": "sts:AssumeRole",
-              "Condition": {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "StsAccessMemberAccount",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
+            "Condition": {
                 "StringEquals": {
-                  "sts:ExternalId": {
-                    "Ref": "PrivilegedExternalId"
-                  }
+                    "sts:ExternalId": "<<EXTERNAL_ID>>"
                 }
-              }
             }
-          ]
         },
-        "Path": "/",
-        "Policies": [
-          {
-            "PolicyName": "MeshfedServicePolicy",
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Sid": "StsAccessMemberAccount",
-                  "Effect": "Allow",
-                  "Action": "sts:AssumeRole",
-                  "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
-                  "Condition": {
-                    "StringEquals": {
-                      "sts:ExternalId": {
-                        "Ref": "PrivilegedExternalId"
-                      }
-                    }
-                  }
-                },
-                {
-                  "Sid": "OrgManagementAccess1",
-                  "Effect": "Allow",
-                  "Action": [
-                    "organizations:DescribeOrganizationalUnit",
-                    "organizations:DescribeAccount",
-                    "organizations:ListParents",
-                    "organizations:ListOrganizationalUnitsForParent",
-                    "organizations:CreateOrganizationalUnit",
-                    "organizations:ListTagsForResource",
-                    "organizations:TagResource",
-                    "organizations:UntagResource",
-                    "organizations:MoveAccount"
-                  ],
-                  "Resource": [
-                    "arn:aws:organizations::*:account/o-*/*",
-                    "arn:aws:organizations::*:ou/o-*/ou-*",
-                    {
-                      "Fn::Join": [
-                        "",
-                        [
-                          "arn:aws:organizations::",
-                          {
-                            "Ref": "AWS::AccountId"
-                          },
-                          ":root/o-*/r-*"
-                        ]
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "Sid": "OrgManagementAccess2",
-                  "Effect": "Allow",
-                  "Action": [
-                    "organizations:ListRoots",
-                    "organizations:ListAccounts",
-                    "organizations:CreateAccount",
-                    "organizations:DescribeCreateAccountStatus"
-                  ],
-                  "Resource": "*"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    }
-  }
+        {
+            "Sid": "OrgManagementAccess1",
+            "Effect": "Allow",
+            "Action": [
+                "organizations:UntagResource",
+                "organizations:TagResource",
+                "organizations:MoveAccount",
+                "organizations:ListTagsForResource",
+                "organizations:ListParents",
+                "organizations:ListOrganizationalUnitsForParent",
+                "organizations:DescribeOrganizationalUnit",
+                "organizations:DescribeAccount",
+                "organizations:CreateOrganizationalUnit"
+            ],
+            "Resource": [
+                "arn:aws:organizations::<<MANGEMENT_ACCOUNT_ID>>:root/o-*/r-*",
+                "arn:aws:organizations::*:ou/o-*/ou-*",
+                "arn:aws:organizations::*:account/o-*/*"
+            ]
+        },
+        {
+            "Sid": "OrgManagementAccess2",
+            "Effect": "Allow",
+            "Action": [
+                "organizations:ListRoots",
+                "organizations:ListAccounts",
+                "organizations:DescribeCreateAccountStatus",
+                "organizations:CreateAccount"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
 ```
 
-Operators should generate a unique and random value for `PrivilegedExternalId`, e.g. a GUID. meshStack AWS Connector is architected
-to supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only
-when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases
-the security of member accounts in your organization.
-
-Operators need to securely inject the generated credentials and `PrivilegedExternalId` into the configuration of the AWS Connector.
-
-`MeshcloudAccountId` is the ID of the dedicated meshcloud AWS account where the `meshfed-service` users lives.
-
-### meshStack Account Setup
-
-The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
-
-* User name: `meshfed-service`
-* AWS access type: Programmatic access - with an access key
-
-You can use this template for setup the account:
+The following trust relationship needs to be attached to the MeshfedServiceRole so that the meshfed-service-user can assume the role.
 
 ```json
 {
-  "AWSTemplateFormatVersion": "2010-09-09",
-  "Parameters": {
-    "RootAccountId": {
-      "Type": "String",
-      "Default": "<INSERT_ROOT_ACC_ID>",
-      "Description": "The ID of the Root Org Account"
-    }
-  },
-  "Resources": {
-    "MeshstackAccountAccessRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "RoleName": "MeshstackAccountAccessRole",
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:iam::",
-                      {
-                        "Ref": "RootAccountId"
-                      },
-                      ":root"
-                    ]
-                  ]
-                }
-              },
-              "Action": "sts:AssumeRole"
-            }
-          ]
-        },
-        "Path": "/",
-        "ManagedPolicyArns": [
-          "arn:aws:iam::aws:policy/AdministratorAccess"
-        ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<<MESHCLOUD_ACCOUNT_ID>>:user/meshfed-service-user"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<<EXTERNAL_ID>>"
+        }
       }
     }
-  }
+  ]
 }
 ```
+
+Replace `MESHCLOUD_ACCOUNT_ID` with the dedicated meshcloud AWS account id where the `meshfed-service-user` lives. Replace `EXTERNAL_ID` accordingly as well.
 
 ### Automation Account Setup
 
-The automation account, containing all components for AWS account provisioning should have a `MeshfedAutomationRole` which is also assumed by the `mesfed-service` user in order to execute certain CloudFormation setup steps.
+The automation account should contain a `MeshfedAutomationRole`.
 
-This account needs the `MeshfedAutomationRole`. The `meshfed-service` user needs to assume it.
+The following policy and trust relationship should be attached to the role so that `meshfed-service-user` can assume it in order to roll out CloudFormation stack instances in the newly provisioned accounts or to invoke a Lambda that would trigger account bootstrapping.
 
-You can use the following template inside the automation account to perform the necessairy role setup:
-
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Policy-->
 ```json
 {
-  "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "meshfed-automation Role Setup",
-  "Parameters": {
-    "MeshcloudAccountId": {
-      "Type": "String",
-      "Description": "The ID of the meshCloud AWS Account"
-    },
-    "PrivilegedExternalId": {
-      "Type": "String",
-      "Description": "Privileged external ID for the meshfed-service to use"
-    }
-  },
-  "Resources": {
-    "MeshfedAutomationRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "RoleName": "MeshfedAutomationRole",
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:iam::",
-                      {
-                        "Ref": "MeshcloudAccountId"
-                      },
-                      ":user/meshfed-service"
-                    ]
-                  ]
-                }
-              },
-              "Action": "sts:AssumeRole",
-              "Condition": {
-                "StringEquals": {
-                  "sts:ExternalId": {
-                    "Ref": "PrivilegedExternalId"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "Path": "/",
-        "Policies": [
-          {
-            "PolicyName": "MeshfedAutomationPolicy",
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Sid": "VisualEditor0",
-                  "Effect": "Allow",
-                  "Action": [
-                    "cloudformation:UpdateStackInstances",
-                    "cloudformation:DescribeStackSet",
-                    "cloudformation:ListStackInstances",
-                    "cloudformation:CreateStackInstances",
-                    "cloudformation:UpdateStackInstances"
-                  ],
-                  "Resource": "*"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "AWSCloudFormationStackSetAdministrationRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "RoleName": "AWSCloudFormationStackSetAdministrationRole",
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "cloudformation.amazonaws.com"
-              },
-              "Action": "sts:AssumeRole"
-            }
-          ]
-        },
-        "Path": "/",
-        "Policies": [
-          {
-            "PolicyName": "AssumeRole-AWSCloudFormationStackSetExecutionRole",
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Sid": "VisualEditor0",
-                  "Effect": "Allow",
-                  "Action": "sts:AssumeRole",
-                  "Resource": "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-### Account Access
-
-The following operations are performed via meshStack in the deployed AWS accounts:
-
-* Verifying SAML IDP integrity/update
-* Account Alias Setup
-
-The default access to AWS accounts is done via a assumed role to `MeshstackAccountAccessRole`. This role should have the following minimal policy attached:
-
-```json
-{
-  "ManagedPolicyName": "MeshcloudMinimalServicePolicy",
-  "Description": "Minimal Access for meshstack Automation Service",
-  "Roles": [
-    "MeshstackAccountAccessRole"
-  ],
-  "PolicyDocument": {
     "Version": "2012-10-17",
     "Statement": [
-      {
-        "Effect": "Allow",
-        "Action": [
-          "iam:CreateSAMLProvider",
-          "iam:GetSAMLProvider",
-          "iam:UpdateSAMLProvider",
-          "iam:DeleteSAMLProvider",
-          "iam:ListSAMLProviders"
-        ],
-        "Resource": [
-          "arn:aws:iam::<ACCOUNT_ID>:saml-provider/*",
-          "arn:aws:cloudformation:*:<ACCOUNT_ID>:stack/meshstack-cf-access*"
-        ]
-      },
-      {
-        "Effect": "Allow",
-        "Action": [
-          "iam:ListAttachedRolePolicies",
-          "iam:CreateAccountAlias",
-          "iam:ListAccountAliases",
-          "iam:DeleteAccountAlias",
-          "iam:GetRole",
-          "iam:CreateRole",
-          "iam:AttachRolePolicy",
-          "iam:UpdateAssumeRolePolicy"
-        ],
-        "Resource": "*"
-      }
+        {
+            "Sid": "AutomationPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction",
+                "cloudformation:UpdateStackInstances",
+                "cloudformation:ListStackInstances",
+                "cloudformation:DescribeStackSet",
+                "cloudformation:CreateStackInstances"
+            ],
+            "Resource": "*"
+        }
     ]
-  }
 }
 ```
+<!--Trust relationship-->
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+         "AWS": "arn:aws:iam::<<MESHCLOUD_ACCOUNT_ID>>:user/meshfed-service-user"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<<EXTERNAL_ID>>"
+        }
+      }
+    }
+  ]
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
-Where `<ACCOUNT_ID>` is the current account id. Usually this service policy is rolled out via an Access Stack by an AWS [meshLandingZone](meshcloud.landing-zones.md). You can insert the current account id via the AWS template.
+In order to roll out CloudFormation Stack Instances in the newly provisioned accounts, create the `AWSCloudFormationStackSetAdministrationRole` as specified in the [documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html) and attach the following policy and trust relationship.
 
-> Depending of your mode of operation (usage of external Account Vending Machine) these "minimal rights" can be adapted and further restricted. Please [contact us](https://support.meshcloud.io) for more details on reducing these rights.
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Policy-->
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowAssumeCloudFormationExecutionOnAllAccounts",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+        }
+    ]
+}
+```
+<!--Trust relationship-->
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudformation.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### AWS Role Mapping
 
@@ -515,3 +353,338 @@ Please find the full `Aws.dhall` [configuration options](./meshstack.configurati
   , enforceAccountAlias : Bool
   }
 ```
+
+## Downgrading meshcloud Access
+
+> This part is not automated via terraform templates. This is because you may choose to set up roles with different naming conventions and permissions, or to deploy CloudFormation stacks or a Lambda that has additional functionality. This section also serves as an example on how you can use a meshLandingZone to bootstrap the newly created AWS account.
+
+meshStack uses `MeshstackAccountAccessRole` within the newly provisioned accounts to perform tasks such as
+
+* Setting up SAML IDP
+* Account Alias Setup
+* Deploy Access Stack
+
+This role will have administration rights on the new account right after account creation. For security reasons, it is recommended that you downgrade these permissions using the Lambda invocation functionality provided in the meshLandingZone. You can do this by setting up a meshLandingZone as follows.
+
+### Create the Access Stack
+
+Create a meshLandingZone with the following Access Stack configured. This will create the `AWSCloudFormationStackSetExecutionRole` in the newly provisioned account. This role has the [minimum permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html#stacksets-prereqs-advanced-perms) for StackSets to work plus IAM permissions. The IAM permissions are needed because the StackSet we deploy later on will need to perform some IAM operations.
+
+```json
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "AutomationAccountId": {
+      "Type": "String",
+      "Default": "888163887028",
+      "Description": "The ID of the Automation Account"
+    }
+  },
+  "Resources": {
+    "AWSCloudFormationStackSetExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "AWSCloudFormationStackSetExecutionRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:iam::",
+                      {
+                        "Ref": "AutomationAccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "MinimumCloudFormationPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "cloudformation:*",
+                    "s3:*",
+                    "sns:*"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "StackSetExecutionPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "iam:*"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### Create the StackSet
+
+Create a StackSet in the automation account via the AWS console using the following template and set the StackSet ARN in the meshLandingZone to the ARN of the newly created StackSet.
+
+The StackSet defines two roles. One is the `OrganizationAccountAccessRole` which has admin privileges. This role trusts the management account and can be used to login to the new account with admin privileges if you require that. The other role is the `PermissionDowngradeLambdaExecutionRole` which will be assumed by the Lambda to downgrade the permissions of the `MeshstackAccountAccessRole`.
+
+```json
+{
+  "Parameters": {
+    "ManagementAccountId": {
+      "Type": "String",
+      "Default": "122242464812",
+      "Description": "The ID of the Management Account"
+    },
+    "AutomationAccountId": {
+      "Type": "String",
+      "Default": "888163887028",
+      "Description": "The ID of the Automation Account"
+    }
+  },
+  "Resources": {
+    "OrganizationAccountAccessRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "OrganizationAccountAccessRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:iam::",
+                      {
+                        "Ref": "ManagementAccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Path": "/",
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/AdministratorAccess"
+        ]
+      }
+    },
+    "PermissionDowngradeLambdaExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "PermissionDowngradeLambdaExecutionRole",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:iam::",
+                      {
+                        "Ref": "AutomationAccountId"
+                      },
+                      ":role/PermissionDowngradeLambdaAdministrationRole"
+                    ]
+                  ]
+                }
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Path": "/",
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/IAMFullAccess"
+        ]
+      }
+    }
+  }
+}
+```
+
+### Create the Lambda
+
+Create the `PermissionDowngradeLambdaAdministrationRole` with the following policy and trust relationship in the automation account. Additionally attach the `AWSLambdaBasicExecutionRole` managed policy so that the Lambda can log to CloudWatch.
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Policy-->
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowAssumePermissionDowngradeLambdaOnAllAccounts",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::*:role/PermissionDowngradeLambdaExecutionRole"
+        }
+    ]
+}
+```
+<!--Trust relationship-->
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+Create the Lambda that will downgrade the permissions. Set the Execution role of the Lambda to `PermissionDowngradeLambdaAdministrationRole`.
+
+```python
+import json
+import logging
+import boto3
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def main(event, context):
+    logger.debug("Recieved event "+ json.dumps(event))
+
+    accessRoleName = 'MeshstackAccountAccessRole'
+    # the policy to remove
+    adminAccessPolicy = 'AdministratorAccess'
+    # the name of the new policy to add
+    minimumMeshAccessPolicy = 'MeshstackAccountAccessPolicy'
+
+    accountId = event["AccountId"]
+
+    sts = boto3.client('sts')
+    assumed_role_object = sts.assume_role(
+        RoleArn = "arn:aws:iam::"+accountId+":role/PermissionDowngradeLambdaExecutionRole",
+        RoleSessionName = "DowngradePermissionsSession"
+    )
+    logger.debug("Successfully assumed role in child account.")
+
+    credentials = assumed_role_object['Credentials']
+    accessKey = credentials['AccessKeyId']
+    secretKey = credentials['SecretAccessKey']
+    sessionToken = credentials['SessionToken']
+
+    iam = boto3.client(
+        'iam',
+         aws_access_key_id = accessKey,
+         aws_secret_access_key = secretKey,
+         aws_session_token = sessionToken
+    )
+
+    response = iam.list_role_policies(RoleName = accessRoleName)
+
+    logger.debug("Response from list role policies" + json.dumps(response))
+
+    if minimumMeshAccessPolicy not in response['PolicyNames']:
+        policy = """{
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Action": [
+                      "iam:CreateSAMLProvider",
+                      "iam:GetSAMLProvider",
+                      "iam:UpdateSAMLProvider",
+                      "iam:DeleteSAMLProvider",
+                      "iam:ListSAMLProviders"
+                    ],
+                    "Resource": [
+                      "arn:aws:iam::%s:saml-provider/*",
+                      "arn:aws:cloudformation:*:%s:stack/meshstack-cf-access*"
+                    ]
+                  },
+                  {
+                    "Effect": "Allow",
+                    "Action": [
+                      "iam:ListAttachedRolePolicies",
+                      "iam:CreateAccountAlias",
+                      "iam:ListAccountAliases",
+                      "iam:DeleteAccountAlias",
+                      "iam:GetRole",
+                      "iam:CreateRole",
+                      "iam:AttachRolePolicy",
+                      "iam:UpdateAssumeRolePolicy"
+                    ],
+                    "Resource": "*"
+                  },
+                  {
+                    "Effect": "Allow",
+                    "Action": [
+                      "cloudformation:DescribeStacks"
+                    ],
+                    "Resource": "*"
+                  }
+                ]
+            }
+            """ % (accountId, accountId)
+        logger.debug("Putting policy "+ policy)
+        iam.put_role_policy(
+            RoleName = accessRoleName,
+            PolicyName = minimumMeshAccessPolicy,
+            PolicyDocument = policy
+        )
+        logger.info("Created minimum access policy")
+
+
+    if adminAccessPolicy in response['PolicyNames']:
+        iam.delete_role_policy(
+            RoleName = accessRoleName,
+            PolicyName = adminAccessPolicy
+        )
+        logger.info("Removed admin access policy")
+
+    return {
+        'statusCode': 200,
+        'body': 'Successfully downgraded'
+    }
+```
+
+This Lambda will be invoked during account provisioning and downgrades the `MeshstackAccountAccessRole`.
+
+> Depending of your mode of operation (usage of external Account Vending Machine) these "minimal rights" can be adapted and further restricted. Please [contact us](https://support.meshcloud.io) for more details on reducing these rights.
