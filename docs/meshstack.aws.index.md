@@ -308,6 +308,7 @@ project_identifier_length: 30
 ```
 
 ### AWS Control Tower Integration
+
 A `PlatformInstance` can be configured to integrate with an existing AWS Control Tower setup.
 In order to manage accounts created by meshStack with AWS Control Tower, these need to be "enrolled".
 AWS Control Tower utilizes an Account Factory, to provide new accounts or enroll other accounts with it.
@@ -316,18 +317,27 @@ meshStack can be enabled to trigger the Account Factory via AWS Service Catalog.
 The correct Id of the Account Factory Product needs to be specified in the enrollment configuration besides the management account Id.
 meshStack will create new accounts as usual and in a later step will enroll them via the Account Factory with AWS Control Tower.
 
+The enrollment configuration looks like this:
+
+```dhall
+{ management-account-id : Text
+, account-factory-product-id : Text
+}
+```
+
 Following prerequisites must be fulfilled for the enrollment to work:
 
-- Configured AWS Control Tower
-- AWS Service Catalog needs to have an AWS Control Tower Account Factory Portfolio
-- The portfolio needs to contain an AWS Control Tower Account Factory Product
-- The AWS Control Tower Account Factory Product needs to have at least one active Provisioned Artifact (active version)
-- There needs to be a launch path with permissions to invoke the AWS Account Factory Product for meshStack access
-- All [AWS prerequisites](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html) for enrolling accounts
+* Configured AWS Control Tower
+* AWS Service Catalog needs to have an AWS Control Tower Account Factory Portfolio
+* The portfolio needs to contain an AWS Control Tower Account Factory Product
+* The AWS Control Tower Account Factory Product needs to have at least one active Provisioned Artifact (active version)
+* There needs to be a launch path with permissions to invoke the AWS Account Factory Product for meshStack access
+* All [AWS prerequisites](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html) for enrolling accounts
 
 > In order to enroll created accounts with AWS Control Tower, **a Landing Zone must be configured**. The `Target Organization Unit Id` from the Landing Zone
 > configuration must belong to a OU that is already enrolled with AWS Control Tower.
 > Refer to [Landing Zone Configuration](./meshstack.aws.landing-zones.md#target-organization-unit-id) for more information.
+
 
 ## Configuration Reference
 
