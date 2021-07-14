@@ -720,4 +720,4 @@ def main(event, context):
 
 This Lambda will be invoked during account provisioning and downgrades the `MeshstackAccountAccessRole`.
 
-> Depending of your mode of operation (usage of external Account Vending Machine) these "minimal rights" can be adapted and further restricted. Please [contact us](https://support.meshcloud.io) for more details on reducing these rights.
+> Depending of your mode of operation (usage of external Account Vending Machine or configuration of AWS Control Tower enrollment) these "minimal rights" can be adapted and further restricted. Please [contact us](https://support.meshcloud.io) for more details on reducing these rights.
