@@ -137,6 +137,9 @@ let example
               , reservedInstanceFairChargeback =
                   {-Enable fair chargeback for meshCustomer purchased RIs-}
                   True
+              , savingsPlanFairChargeback =
+                  {-Enable fair chargeback for meshCustomer purchased SPs-}
+                  True
               }
             }
       }
