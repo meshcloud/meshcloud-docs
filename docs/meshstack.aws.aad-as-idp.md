@@ -8,7 +8,7 @@ You can trigger everything that is needed for using AAD as an IdP for AWS SSO fr
 
 ### Create an Enterprise Registration
 
-Choose `AWS Single Sign-on` as the enterprise registration type
+Search for `aws` and choose `AWS Single Sign-on` as the enterprise registration type
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_01.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_01.png)
 
@@ -18,7 +18,7 @@ Follow the steps in AAD under Getting Started (Pick SAML for the single sign on.
 
 ### Configure AWS for AAD integration
 
-Choose`AWS Single Sign-on`
+Choose `AWS Single Sign-on`
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_03.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_03.png)
 
@@ -37,9 +37,11 @@ Select `External identity provider`
 
 ### Metadata
 
-Download `AWS SSO SAML metadata` and then you should upload it into `Single sing-on` page on Azure with the `Upload metadata file` button. Also check the following image to download `IdP SAML metadata` file from Azure, you can find it in the same page as `Federation Metadata XML`
+Download `AWS SSO SAML metadata` from AWS and then you should upload it into `Single sing-on` page on Azure with the `Upload metadata file` button.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_07.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_07.png)
+
+Also check the following image to download `IdP SAML metadata` file from Azure, you can find it in the same page as `Federation Metadata XML`
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_08.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_08.png)
 
