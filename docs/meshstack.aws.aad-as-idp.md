@@ -2,7 +2,7 @@
 id: meshstack.aws.aad-as-idp
 title: AAD as Identity Provider
 ---
-### Configure AAD as IdP for AWS SSO
+## Configure AAD as IdP for AWS SSO
 
 You can trigger everything that is needed for using AAD as an IdP for AWS SSO from within Azure.
 
