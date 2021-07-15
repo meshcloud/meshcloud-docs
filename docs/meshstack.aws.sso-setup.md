@@ -1,33 +1,34 @@
 ---
-id: meshstack.aws.aad-as-idp
-title: AAD as Identity Provider
+id: meshstack.aws.sso-setup
+title: SSO Setup
 ---
-## Configure AAD as IdP for AWS SSO
-
-You can trigger everything that is needed for using AAD as an IdP for AWS SSO from within Azure.
+This section describes how to set up AWS SSO with Azure Active Directory.
 
 ### Create an Enterprise Registration
 
-Search for `aws` and choose `AWS Single Sign-on` as the enterprise registration type
+Search for `aws` on Azure and choose `AWS Single Sign-on` as the enterprise registration type
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_01.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_01.png)
 
-Follow the steps in AAD under Getting Started (Pick SAML for the single sign on.)
+Follow the steps in AAD under Getting Started (Pick SAML for the single sign on)
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_02.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_02.png)
 
 ### Configure AWS for AAD integration
 
-Choose `AWS Single Sign-on`
+Switch to AWS Console and search for `sso`, now choose `AWS Single Sign-on`
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_03.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_03.png)
 
+Now choose `Enable AWS SSO`
+
+![assets/aad_as_idp_for_aws/aws_enable_sso.png](assets/aad_as_idp_for_aws/aws_enable_sso.png)
 
 Configure the identity source by clicking on `Choose your identity source`
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_04.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_04.png)
 
-We have to change the `Identity source`
+Now choose `change` on `Identity source`
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_05.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_05.png)
 
@@ -47,15 +48,13 @@ Also check the following image to download `IdP SAML metadata` file from Azure, 
 
 After downloading the `Federation Metadata XML` from Azure you have to upload this file into your AWS SSO Identity Source under `IdP SAML metadata`
 
-## Provisioning
+### Provisioning
 
 Before the automatic provisioning is enabled, you can click `enable automatic provisioning` on Azure to get the Tenant URL and Access Token to configure SCIM for provisioning on AAD side.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_09.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_09.png)
 
-### euid not usable
-
-In AWS SSO lookup of users is only possible via userName, not via email (see [https://docs.aws.amazon.com/singlesignon/latest/developerguide/listusers.html](https://docs.aws.amazon.com/singlesignon/latest/developerguide/listusers.html)). Sadly we can't set userName in AWS SSO to the user's email address as this mapping cannot be changed for the automatic SCIM provisioning in AAD.
+The `userName` must be set to what is configured as an `euid` in meshStack
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_10.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_10.png)
 
