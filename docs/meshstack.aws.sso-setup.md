@@ -60,7 +60,7 @@ The `userName` must be set to what is configured as an `euid` in meshStack
 
 ![assets/aws_sso_setup/azure_mappings.png](assets/aws_sso_setup/azure_mappings.png)
 
-You can also disable the Group sync here, as usually only groups managed by meshStack will be used and they will be created by meshStack anyway.
+Disable the Group sync here, as usually only groups managed by meshStack will be used and they will be created by meshStack anyway.
 
 When clicking on the directory users mapping, you will see, that the userPrincipalName to userName mapping cannot be deleted.
 
