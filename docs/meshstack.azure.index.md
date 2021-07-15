@@ -11,7 +11,7 @@ using [Landing Zones](./meshcloud.landing-zones.md).
 To enable integration with Azure, operators need to deploy and configure the meshStack Azure Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.Azure`. This makes Azure available to meshProjects like any other cloud platform in meshStack.
 
 Azure relies on Azure Active Directoy (AAD) for authentication and authorization. meshcloud can seamlessly integrate with common
-AAD setups like [Azure Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/). meshcloud helps you implement Azure in line with [Governance best-practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/governance-disciplines) by integrating [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) and Management Groups using [Landing Zones](#landing-zones)
+setups like [Azure Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/). meshcloud helps you implement Azure in line with [Governance best-practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/governance-disciplines) by integrating [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) and Management Groups using [Landing Zones](#landing-zones)
 
 In order to plan and execute a successful integration of Azure using meshcloud, organizations need to consider the following parts described in the sections below.
 
@@ -239,7 +239,7 @@ The following additional information to the required REST call parameters mentio
 | Name                                   | Description                                      |
 | -------------------------------------- | ------------------------------------------------ |
 | `billingRoleAssignmentName` in the URL | **Must** be a random UUID you can freely choose. |
-| `properties.principalTenantId`         | The `aad-tenant` value from above.               |
+| `properties.principalTenantId`         | The `aadtenant` value from above.               |
 | `properties.principalId`               | The `objectId` from above.                       |
 
 The complete set of Azure documentation to complete this task can be found here:

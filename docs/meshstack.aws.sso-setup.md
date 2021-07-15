@@ -38,7 +38,7 @@ Select `External identity provider`
 
 ### Metadata
 
-Download `AWS SSO SAML metadata` from AWS and then you should upload it into `Single sing-on` page on Azure with the `Upload metadata file` button.
+Download `AWS SSO SAML metadata` from AWS and then you should upload it into `Single Sign-On` page on Azure with the `Upload metadata file` button.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_07.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_07.png)
 
@@ -60,13 +60,11 @@ The `userName` must be set to what is configured as an `euid` in meshStack
 
 You can also disable the Group sync here, as usually only groups managed by meshStack will be used and they will be created by meshStack anyway.
 
-When clicking on the directory users mapping, you will see, that the userprincipalname to userName mapping cannot be deleted.
+When clicking on the directory users mapping, you will see, that the userPrincipalName to userName mapping cannot be deleted.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png)
 
-It would be possible if only meshStack is used for SCIM auto provisioning of users, because for this auto-provisioning we can decide which value to set as userName and we'd use the euid.
 
-In AWS SSO it would also be possible to set username in SAML claims to `user.mail`, so login via AWS SSO would work.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_12.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_12.png)
 
