@@ -66,7 +66,6 @@ When clicking on the directory users mapping, you will see, that the userPrincip
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png)
 
 
-In AWS SSO it would also be possible to set username in SAML claims to `user.mail`, so login via AWS SSO would work.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_12.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_12.png)
 
