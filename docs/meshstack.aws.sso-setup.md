@@ -2,6 +2,8 @@
 id: meshstack.aws.sso-setup
 title: SSO Setup
 ---
+## Configure AAD as IdP for AWS SSO
+
 This section describes how to set up AWS SSO with Azure Active Directory.
 
 ### Create an Enterprise Registration
