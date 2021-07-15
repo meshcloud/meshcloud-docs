@@ -65,7 +65,6 @@ When clicking on the directory users mapping, you will see, that the userPrincip
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png)
 
-It would be possible if only meshStack is used for SCIM auto provisioning of users, because for this auto-provisioning we can decide which value to set as userName and we'd use the euid.
 
 In AWS SSO it would also be possible to set username in SAML claims to `user.mail`, so login via AWS SSO would work.
 
