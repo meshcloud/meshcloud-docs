@@ -37,7 +37,7 @@ Select `External identity provider`
 
 ### Metadata
 
-Download `AWS SSO SAML metadata` from AWS and then you should upload it into `Single sing-on` page on Azure with the `Upload metadata file` button.
+Download `AWS SSO SAML metadata` from AWS and then you should upload it into `Single Sign-On` page on Azure with the `Upload metadata file` button.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_07.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_07.png)
 
