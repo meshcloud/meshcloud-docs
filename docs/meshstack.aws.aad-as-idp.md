@@ -61,7 +61,7 @@ In AWS SSO lookup of users is only possible via userName, not via email (see [ht
 
 You can also disable the Group sync here, as usually only groups managed by meshStack will be used and they will be created by meshStack anyway.
 
-When clicking on the directory users mapping, you will see, that the userprincipalname to userName mapping cannot be deleted.
+When clicking on the directory users mapping, you will see, that the userPrincipalName to userName mapping cannot be deleted.
 
 ![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png](assets/aad_as_idp_for_aws/aad_as_idp_for_aws_11.png)
 
