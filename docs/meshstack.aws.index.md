@@ -325,7 +325,7 @@ The enrollment configuration looks like this:
 }
 ```
 
-Following prerequisites must be fulfilled for the enrollment to work:
+The following prerequisites must be fulfilled for the enrollment to work:
 
 * Configured AWS Control Tower
 * AWS Service Catalog needs to have an AWS Control Tower Account Factory Portfolio
