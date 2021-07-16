@@ -317,13 +317,30 @@ meshStack can be enabled to trigger the Account Factory via AWS Service Catalog.
 The correct Id of the Account Factory Product needs to be specified in the enrollment configuration besides the management account Id.
 meshStack will create new accounts as usual and in a later step will enroll them via the Account Factory with AWS Control Tower.
 
-The enrollment configuration looks like this:
+<!--snippet:mesh.platforms.aws.enrollment-configuration-->
 
+The following configuration options are available at `mesh.platforms.aws.enrollment-configuration`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
 ```dhall
-{ management-account-id : Text
-, account-factory-product-id : Text
-}
+let EnrollmentConfiguration =
+      { management-account-id :
+          {- The account Id of the management account configured for the platform instance. -}
+          Text
+      , account-factory-product-id :
+          {- The product Id of the AWS Account Factory Product in AWS Service Catalog, that should be used for enrollment. -}
+          Text
+      }
 ```
+<!--Example-->
+```dhall
+let example
+    : EnrollmentConfiguration
+    = { management-account-id : "123456789012"
+      , account-factory-product-id : "prod-a1b2c3d4e5"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 The following prerequisites must be fulfilled for the enrollment to work:
 
