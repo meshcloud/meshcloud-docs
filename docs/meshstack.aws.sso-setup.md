@@ -8,7 +8,7 @@ This section describes how to set up AWS SSO with Azure Active Directory.
 
 ### Create an Enterprise Registration
 
-Search for `aws` on Azure and choose `AWS Single Sign-on` as the enterprise registration type
+Go to `Enterprise applications` on Azure, click on `New application` and search for `aws` and choose `AWS Single Sign-on`
 
 ![assets/aws_sso_setup/azure_create_enterprise_registration.png](assets/aws_sso_setup/azure_create_enterprise_registration.png)
 
@@ -67,13 +67,12 @@ When clicking on the directory users mapping, you will see, that the userPrincip
 ![assets/aws_sso_setup/azure_username_mapping.png](assets/aws_sso_setup/azure_username_mapping.png)
 
 
+![assets/aws_sso_setup/azure_manage_claim.png](assets/aws_sso_setup/azure_manage_claim.png)
 
-![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_12.png](assets/aws_sso_setup/azure_mange_claim.png)
+These users will be replicated with Provisioning Settings.
 
-These users will be replicated with Provisioning Settings. You should also configure that so you can see your Users in your AWS SSO directory.
-
-![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_13.png](assets/aws_sso_setup/azure_replication.png)
+![assets/aws_sso_setup/azure_replication.png](assets/aws_sso_setup/azure_replication.png)
 
 Once you configure that Provisioning, you should click that `Start provisioning` button and it will replicate your Users and Groups into the AWS SSO. After this point this service will replicate the users every 40 minutes however you can always use `Provision on demand` or `Restart provisioning` buttons to run that replication.
 
-![assets/aad_as_idp_for_aws/aad_as_idp_for_aws_14.png](assets/aws_sso_setup/aad_as_idp_for_aws_14.png)
+![assets/aws_sso_setup/aws_users.png](assets/aws_sso_setup/aws_users.png)
