@@ -52,7 +52,7 @@ After downloading the `Federation Metadata XML` from Azure you have to upload th
 
 ### Provisioning
 
-Before the automatic provisioning is enabled, you can click `enable automatic provisioning` on Azure to get the Tenant URL and Access Token to configure SCIM for provisioning on AAD side.
+Before the automatic provisioning is enabled, you can click `enable automatic provisioning` on AWS to get the Tenant URL and Access Token to configure SCIM for provisioning on AAD side.
 
 ![assets/aws_sso_setup/azure_tenant_url_secret_token.png](assets/aws_sso_setup/azure_tenant_url_secret_token.png)
 
