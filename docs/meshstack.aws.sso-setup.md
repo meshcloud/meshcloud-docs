@@ -66,9 +66,6 @@ When clicking on the directory users mapping, you will see, that the userPrincip
 
 ![assets/aws_sso_setup/azure_username_mapping.png](assets/aws_sso_setup/azure_username_mapping.png)
 
-
-![assets/aws_sso_setup/azure_manage_claim.png](assets/aws_sso_setup/azure_manage_claim.png)
-
 These users will be replicated with Provisioning Settings.
 
 ![assets/aws_sso_setup/azure_replication.png](assets/aws_sso_setup/azure_replication.png)
