@@ -348,7 +348,7 @@ The following metadata keys are derived from meshStack metadata and therefore av
 
 ### Available tag keys
 
-Custom tags can be referenced via their property name in the according [tag schema](meshstack.metadata-tags.md#tag-schemas).
+Custom tags can be referenced via their property name in the according [meshTag](meshstack.metadata-tags.md).
 
 ### Configuration example
 

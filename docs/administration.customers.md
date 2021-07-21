@@ -97,7 +97,7 @@ Partners and Administrators can manage the quota, that limits the maximum number
 
 ### Edit Customer Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.metadata-tags.md#tag-schemas) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
+Partner users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
 
 ## Audit Customer Accounts
 
