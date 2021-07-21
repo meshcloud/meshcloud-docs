@@ -158,6 +158,11 @@ The following trust relationship needs to be attached to the MeshfedServiceRole 
 
 Replace `MESHCLOUD_ACCOUNT_ID` with the dedicated meshcloud AWS account id where the `meshfed-service-user` lives. Replace `EXTERNAL_ID` accordingly as well.
 
+> For Enrollment with AWS Control Tower, the `MeshfedServiceRole` needs to have extra permissions to invoke the Account Factory.
+> This can be done by attaching an AWS managed policy named `AWSServiceCatalogEndUserFullAccess` to it.
+> More information on that can be found at this [AWS Guide](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/controlling_access.html#permissions-end-users-console).
+> To make use of these permissions, there must be an available launch path defined in AWS Service Catalog, as stated also in the [prerequisites](#aws-control-tower-integration).
+
 ### Automation Account Setup
 
 The automation account should contain a `MeshfedAutomationRole`.
@@ -344,6 +349,7 @@ let example
 
 The following prerequisites must be fulfilled for the enrollment to work:
 
+* `AWSServiceCatalogEndUserFullAccess` policy or respective permissions need to be attached to `MeshfedServiceRole` (see [AWS Management Account Setup](#aws-management-account-setup))
 * Configured AWS Control Tower
 * AWS Service Catalog needs to have an AWS Control Tower Account Factory Portfolio
 * The portfolio needs to contain an AWS Control Tower Account Factory Product
