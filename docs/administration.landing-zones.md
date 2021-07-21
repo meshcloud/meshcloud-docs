@@ -19,7 +19,7 @@ this assignment will remain, but customer admins can no longer create new projec
 
 ## Configure Landing Zone tags
 
-Platform Operators can configure a custom Landing Zone [Tag Schema](./meshstack.metadata-tags.md#tag-schemas). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
+Platform Operators can configure a custom Landing Zone [meshTag](./meshstack.metadata-tags.md). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
 
 ## Defining Quotas
 

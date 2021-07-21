@@ -7,7 +7,7 @@ title: meshProjects
 
 ### Edit Customer Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted tag schemas](meshstack.metadata-tags.md#tag-schemas) for managed **meshProjects**.
+Partner users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshProjects**.
 
 1. Login to the meshPanel with your administrator credentials.
 2. Navigate to the **Administration** via the settings button on the top right.

@@ -32,7 +32,7 @@ One way of creating payment methods is via the meshPanel. To do so, make sure th
 5. Choose a type for the payment method. Read more [here](#types-of-payment-methods) on what type to choose and what the individual differences are.
 6. (This is optional) Set a maximum amount of EUR on the payment method to indicate the remaining budget of this payment method.
 7. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
-8. Additionally, you can enter tags for the payment method, which are custom per meshImplementation (also see [Tag Schema](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
+8. Additionally, you can enter tags for the payment method, which are custom per meshImplementation (also see [meshTag](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
 9. Click 'Save' and your new payment method will be available to the meshCustomer it was created in!
 
 ### Creating a Payment Method via the meshObject API
