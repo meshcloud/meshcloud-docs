@@ -190,13 +190,18 @@ let example =
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The tag definition configuration describes on a per platform basis how these tags are extracted and transformed into cloud platform tags.
-The following tags values can be used in such a tag definition configuration:
+The following tag values can be used in such a tag definition configuration:
 
 | Tag Key                    | Description                                                                                                                                                     |
 | -------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `${projectIdentfier}`      | The meshProject identifier                                                                                                                                      |
 | `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                           |
+| `${projectName}`           | The meshProject display name                                                                                                                                    |
+| `${customerName}`          | The meshProject's customer name                                                                                                                                 |
 | `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied.  |
+| `${paymentIdentifier}`     | The identifier of the payment method that is assigned to the meshProject                                                                                        |
+| `${paymentName}`           | The display name of the payment method that is assigned to the meshProject                                                                                      |
+| `${paymentExpirationDate}` | The expiration date of the payment method that is assigned to the meshProject. It contains `none` if no expiration date is set for the payment method.          |
 
 ### Tag sanitization
 
