@@ -298,6 +298,8 @@ let AwsSso =
           the groups that are managed by meshStack.
       sso-access-token:
         The AWS SSO Access Token that was generated via the Automatic provisioning config in AWS SSO.
+      sign-in-url:
+        The AWS SSO Sign Url, that must be used by end-users to log in via AWS SSO to AWS Management Console.
       role-mappings:
         Defines the mapping of a meshProject role to an AWS SSO PermissionSet. The mapKey is the identifier of
         meshProject role. The aws-role-name will be used in the group name. The permission-set-arns will be
@@ -306,7 +308,8 @@ let AwsSso =
       { scim-endpoint : Text
       , arn : Text
       , group-name-pattern : Text
-      , sso-access-token : Text
+      , sso-access-token : Secret.Type
+      , sign-in-url : Text
       , role-mappings :
           List
             { mapKey : Text
@@ -323,7 +326,8 @@ let example
           "https://scim.eu-central-1.amazonaws.com/xxxxx-xxxx-xxxx-xxxx/scim/v2/"
       , arn = "arn:aws:sso:::instance/ssoins-123456789"
       , group-name-pattern = "%s.%s.%4\$s"
-      , sso-access-token = "abc"
+      , sso-access-token = Secret.fromEnv "AWS_SSO_ACCESS_TOKEN"
+      , sign-in-url = "https://meshcloud-dev.awsapps.com/start"
       , role-mappings =
         [ { mapKey = "admin"
           , mapValue =
@@ -512,8 +516,8 @@ let EnrollmentConfiguration =
 ```dhall
 let example
     : EnrollmentConfiguration
-    = { management-account-id : "123456789012"
-      , account-factory-product-id : "prod-a1b2c3d4e5"
+    = { management-account-id = "123456789012"
+      , account-factory-product-id = "prod-a1b2c3d4e5"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
