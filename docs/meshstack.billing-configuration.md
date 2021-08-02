@@ -179,6 +179,28 @@ let DiscountRule =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+
+A discount rule contains a discount scope that specifies which usage report line items are eligible for the discount.
+The line items for the report are first filtered by this discount scope before calculating the sum and applying the discount.
+
+<!--snippet:mesh.kraken.productcatalog.discountscope#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let DiscountScope =
+    {-
+       Specify the regular expressions for sellerId, product display name and usage type display name
+       that should be matched when filtering usage report line items for applying a discount.
+    -}
+      { productSellerIdRegex : Optional Text
+      , productDisplayNameRegex : Optional Text
+      , usageTypeDisplayNameRegex : Optional Text
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 ##### Fixed Percentage Discount Rule
 
 The fixed percentage discount rules calculates the fee as a percentage of the total consumption.
