@@ -1,41 +1,11 @@
 ---
-id: meshstack.configuration
-title: Configuration
+id: meshstack.onboarding
+title: Onboarding
 ---
 
-meshcloud will typically operate your meshStack installation as a [managed service](./meshstack.managed-service.md) for you. As a managed service, all configuration and validation is done by meshcloud. Nonetheless, we make references to configuration options in the documentation so that operators get a better understanding of meshStack's capabilities. The configuration references also simplify examples and communicate the exact parameters that may need to be supplied by platform operators (e.g. Service Principal credentials).
+meshStack enables self-service onboarding for your internal customers. Operators can use the following options to customise the experience.
 
-meshcloud configures your meshStack installation using a [dhall](https://dhall-lang.org/) configuration model. As part of meshcloud's managed service, customers get access to their configuration in a git repository. This is also useful to communicate configuration options and track changes.
-
-The configuration documentation will occasionally also make references to [YAML](https://en.wikipedia.org/wiki/YAML) configuration options. These will be replaced with `dhall` models in the next releases. Dhall models can generate YAML configuration files dynamically, but provide superior features in terms of flexibility and validation.
-
-## Global Configuration Options
-
-### Identifiers
-
-Objects in meshcloud can have three kinds of properties used to refer to them.
-
-- **ID**: An immutable id, unique in space and time, e.g. `123`.
-- **Identifier**: An immutable id, unique in space. Drawn from a reduced character set, e.g. `my-project`.
-- **Name/Display Name**: A mutable display string to be used for display purposes e.g. `My Project`
-
-meshStack can restrict legal identifiers for [meshCustomers](./meshcloud.customer.md) and [meshProjects](./meshcloud.project.md). This is useful to ensure projects can be identifiers are compatible with all connected cloud platforms and don't require additional name mangling to comply with cloud specific naming rules. You can configure these options in `meshfed.web.restriction` as follows:
-
-```dhall
-{ customerIdentifierLength :
-    Optional Natural
-, projectIdentifierLength :
-    Optional Natural
-, projectIdentifierPrefix :
-    Optional Text
-, projectNamePrefix :
-    Optional Text
-, envIdentifier :
-    Optional Text
-}
-```
-
-### Customer Registration
+## Customer Registration
 
 Multiple options are available to control how [meshCustomers](./meshcloud.customer.md) can sign up to meshStack in
 self-service. meshStack can be configured to suit your organization's unique demands for sign up.
@@ -97,7 +67,20 @@ Additional remarks and configuration links:
 - `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
 
 
-### Customer User Invitations
+### Default Quotas
+
+meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
+
+```dhall
+{ {- the number of allowed meshProjects per meshCustomer -}
+  meshProjects : Natural
+}
+```
+
+The default only applies to newly registered [meshCustomers](./meshcloud.customer.md). [meshPartners](./administration.index.md) can change the individual quotas for managed meshCustomers at any time using the [administration area](administration.customers.md#customer-quota-management).
+
+
+## Customer User Invitations
 
 When a user is invited to a customer there are several configurations to customize this invitation flow which is explained below.
 
@@ -143,7 +126,7 @@ Of importance is the setup of the new user EUID (external user-id) property. Thi
 }
 ```
 
-#### User Setup Steps
+### User Setup Steps
 
 In order to use Azure lookup functionality, you must create a new principal (described in **Replicator** &rarr; **AAD Level Permissions** step 1 and 2) and assign the following required permissions as an **application permission**:
 
@@ -339,236 +322,3 @@ let example
 
 Operators have the option of disabling inviting users that are not listed in the identity provider. They can do so by setting
 the `deny-assigning-other-users` configuration option to `true`.
-
-### Default Quotas
-
-meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
-
-```dhall
-{ {- the number of allowed meshProjects per meshCustomer -}
-  meshProjects : Natural
-}
-```
-
-The default only applies to newly registered [meshCustomers](./meshcloud.customer.md). [meshPartners](./administration.index.md) can change the individual quotas for managed meshCustomers at any time using the [administration area](administration.customers.md#customer-quota-management).
-
-### Feedback Mailbox
-
-Users have the option to quickly submit feedback via the meshPanel's "thumbs up/down" button in the navbar.
-Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
-
-```dhall
-{
-  {- e.g. "feedback@example.com" -}
-  feedbackEmail : Optional Text
-}
-```
-
-### Message of the Day
-
-Operators can configure an optional "message of the day" to be displayed in meshPanel.
-This is useful to communicate important information such as newly available cloud platforms or known issues to every user visiting meshPanel.
-
-Note that Platform Operators can also use [platform notifications](./administration.platforms.md#platform-notifications) as an alternative to target messages only at users that consume a specific cloud platform.
-
-<!--snippet:mesh.panel.environment.motd-->
-
-The following configuration options are available at `mesh.panel.environment.motd`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let MessageOfTheDay =
-    {-
-        message:
-            The "message of the day" message you want to display. This can also include html tags.
-            The "message of the day" message is shown on the home screen of meshPanel for anonymous as well
-            as authenticated users.
-
-        startTime:
-            The date and time after which to begin showing the message.
-            Must be a JavaScript Date.parse() compatible string.
-
-        endTime:
-            The date and time after which to stop showing the message.
-            Must be a JavaScript Date.parse() compatible string.
-    -}
-      { message : Text, startTime : Text, endTime : Text }
-```
-<!--Example-->
-```dhall
-let example
-    : Optional MessageOfTheDay
-    = Some
-        { message =
-            "The Likvid Bank Cloud Foundation Team wishes you a meshi <a href=\"https://en.wikipedia.org/wiki/Christmas\">Christmas</a>."
-        , startTime = "2019-12-23 00:00"
-        , endTime = "2019-12-27 00:00"
-        }
-
-let exampleNoMessage
-    : Optional MessageOfTheDay
-    = None MessageOfTheDay
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-### Customizable Payment Method Validation
-
-As every organization has its unique accounting and cost allocation processes, it is possible to alter several aspects of the payment method functionality. For payment methods that are of the type 'COST_CENTER', the configuration below provides customization for this type of payment method (configuration is stored under `panel.ui.costCenter`)
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-{
-    {- An alias for the definition 'cost center' that your organization might use. }
-    alias : Text
-
-    {- A custom RegEx pattern that validates the user's input. }
-  , validationPattern : Text
-
-    {- The error message that should be displayed when the user's input does not match the validationPattern. }
-  , validationErrorMsg : Text
-}
-```
-<!--Example-->
-```dhall
-{
-    alias = "ACME Center"
-  , validationPattern = "\\d{6}"
-  , validationErrorMsg = "You entered an invalid ACME Center number, this should be exactly six digits."
-}
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-Additionally, there is the configuration for the payment methods of type 'COST_LIMITATION'. This can be found under `panel.ui.costLimitation`
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-{
-    {- Alias(es) for the list of payment method settings that are stored as key-value pairs. This is useful for
-       creating more human readable text values of certain payment method settings inside the meshPanel. }
-    aliases : List { mapKey : Text, mapValue : Text }
-}
-```
-<!--Example-->
-```dhall
-{
-    aliases =
-    [ { mapKey = "costCenter", mapValue = "ACME Cost Center" }
-    , { mapKey = "anotherValue", mapValue = "Some custom value" }
-    ]
-}
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-
-### Customizable Descriptions
-
-Depending on your meshStack implementation, it may be helpful for you to customize error descriptions to guide
-end-users towards resolving common problems in self-service. meshStack therefore provides the following configuration
-options in `panel.ui`.
-
-> Note: You can use sanitized HTML in all of these settings. This is useful to create links and apply minimal formatting.
-
-```dhall
-{
-    {- Generic error message displayed when meshPanel can't connect to backend services. Configure this if users need to e.g. use a certain VPN or browser with CAs pre-installed.-}
-    connectivityError : Text
-    {- Displayed when users are required to sign in before registering in self-service. Configure this to explain users which IDP/Credential they need to provide -}
-  , idpRegister : Optional Text
-
-    {- Displayed when users are required to sign in before accepting an invite. Configure this to explain users which IDP/Credential they need to provide -}
-  , idpAcceptCustomerUserRoleRequest : Optional Text
-    {- Displayed in when users provide a cost center that's already used by another meshStack customer. Configure this e.g. to encourage users to register only one meshCustomer per cost center. -}
-  , duplicateCostCenter : Optional Text
-    {- Display a configurable confidentiality label in the meshPanel navbar, e.g. "internal" or "secret". -}
-  , confidentialityLevel : Optional Text
-    {- Display a notification that users accept platform ToS when they create a meshProject. Configure this if you need to inform end-users about custom ToS that apply to cloud platforms available in your meshStack implementation.. -}
-  , platformTermsNote : Optional Text
-}
-```
-
-### Email Server
-
-For all email based communication (e.g. for [customer registration](#customer-registration) or [customer user invitations](#customer-user-invitations)) meshStack will use the configured SMTP server.
-
-<!--snippet:mesh.meshfed.mail-->
-
-The following configuration options are available at `mesh.meshfed.mail`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-{-
-    The configured smtp mail server is used by meshfed to
-    send out notifications.
-
-    enabled:
-        If True, meshfed will send out mails.
-
-    username:
-        Username meshfed uses to log in at SMTP server.
-
-    password:
-        Password meshfed uses to log in at SMTP server.
-
-    host:
-        SMTP server address that meshfed connects to.
-
-    port:
-        The port that the SMTP server listens on.
-
-    sender:
-        address:
-            Address that is shown as "sender"
-        reply-to:
-            Address that is shown as "replyTo"
-
-    smtp:
-        ssl:
-            If True, enables SSL encryption (must be supported by SMTP server)
-
-        starttls:
-            If True, enables STARTTLS encryption (must be supported by SMTP server)
-
-        auth:
-            If True, enables authentication (must be supported by SMTP server)
-
-    theme:
-        show-social:
-            If True, adds configured social icons to email messages
-
-        logo:
-            href:
-                Location of the logo file
-
-            url:
-                Url that the image links to
-
-        bg-color:
-            Color hex code for background
-
-        div-color:
-            Color hex code for div-containers
-
-        messages:
-            List of mappings to configure template messages
-
--}
-  { enabled : Bool
-  , username : Text
-  , password : Secret
-  , host : Text
-  , port : Natural
-  , sender : { address : Text, reply-to : Optional Text }
-  , smtp :
-      { ssl : { enable : Bool }, starttls : { enable : Bool }, auth : Bool }
-  , theme :
-      { show-social : Bool
-      , logo : { href : Text, url : Text }
-      , bg-color : Text
-      , div-color : Text
-      }
-  , messages : List { mapKey : Text, mapValue : Text }
-  }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
