@@ -82,7 +82,7 @@ meshCustomers pay upfront to purchase reserved instances or savings plans, they 
 
 ## Configuration Reference
 
-This section describes the configuration of a AWS Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
+This section describes the configuration of a AWS Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
 at `mesh.platforms` for AWS metering.
 
 <!--snippet:mesh.platforms.aws.kraken#type-->

@@ -32,7 +32,7 @@ When using externally provisioned user identities, IdPs must also provide a stab
 > meshStack cannot provision permissions for user identities missing on the cloud platform. Failure to replicate permissions for externally provisioned user identities will be logged as replication warnings.
 
 In this mode, identity federation does not involve the meshIdB. Platform Operators have to setup identity sync and federated authentication between the cloud platform and on-premise IdPs themselves.
- 
+
 ## Concerns for High Availability
 
 meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](./meshcloud.project.md) are temporarily unavailable in this case.

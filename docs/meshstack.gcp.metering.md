@@ -29,7 +29,7 @@ resourcemanager.projects.list
 
 ## Configuration Reference
 
-This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
+This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
 at `mesh.platforms` for GCP metering.
 
 <!--snippet:mesh.platforms.gcp.kraken#type-->
