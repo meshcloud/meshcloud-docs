@@ -110,7 +110,7 @@ For example the default string pattern `%s.%s-%4$s` would generate the group nam
 
 The arguments available here are:
 
-1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
-2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
-3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
+1. argument: meshCustomer [identifier](./meshstack.identifiers.md)
+2. argument: meshProject [identifier](./meshstack.identifiers.md)
+3. argument: meshProject [ID (numeric)](./meshstack.identifiers.md)
 4. argument: role name alias.

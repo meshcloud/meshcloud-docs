@@ -9,7 +9,7 @@ allows you to invite and manage team members, create [meshProjects](meshcloud.pr
 ## Customer Creation
 
 Organizations implementing meshStack can choose to offer self-service customer registration via meshPanel or externalize
-the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.configuration.md#customer-registration).
+the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.onboarding.md#customer-registration).
 
 In any case, the meshCustomer creation process always involves collecting basic customer information like Name, identifier
 and any additional [metadata specific to your organization](meshstack.metadata-tags.md#customer-tag-schema).
