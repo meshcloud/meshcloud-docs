@@ -20,7 +20,7 @@ from a product owner perspective.
 ## Configuration
 
 meshcloud can assist in selecting the right integration and configuration options for your unique requirements.
-All [configuration](./meshstack.configuration.md) for your installation is managed in a git repository and thus readily
+All [configuration](./meshstack.index.md#configuration) for your installation is managed in a git repository and thus readily
 available for audit and review.
 
 ### Compliance
