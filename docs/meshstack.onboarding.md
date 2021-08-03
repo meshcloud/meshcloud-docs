@@ -158,10 +158,11 @@ let AzureCreds =
             The credentials of the service principal
 
         user-lookup-strategy:
-            The lookupstrategy which is used in order to find the user. Use either
-            UserByUsernameLookupStrategy or UserByMailLookupStrategy. The UserByMailLookupStrategy
-            uses the users euid and uses it as an E-Mail address for AAD lookup. The
-            UserByUsernameLookupStrategy assumes the euid is an userPrincipalName for AAD lookup.
+            The lookup strategy which is used in order to find the user. Use either
+            UserByUsernameLookupStrategy or UserByMailLookupStrategy.
+            The UserByMailLookupStrategy compares the meshUser's euid to the 'mail' attribute on the AAD User.
+            The UserByUsernameLookupStrategy compares the meshUser's euid to the 'userPrincipalName' attribute on the AAD User.
+            Both strategies use case insensitive comparison.
     -}
       { aad-tenant : Text
       , client-id : Text
