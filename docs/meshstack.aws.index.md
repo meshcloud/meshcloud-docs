@@ -475,9 +475,9 @@ For example a string pattern `%s.%s` would generate: `customer.project`. Which i
 
 The following arguments are provided:
 
-1. argument: meshCustomer [identifier](./meshstack.configuration.md#identifiers)
-2. argument: meshProject [identifier](./meshstack.configuration.md#identifiers)
-3. argument: meshProject [ID (numeric)](./meshstack.configuration.md#identifiers)
+1. argument: meshCustomer [identifier](./meshstack.identifiers.md)
+2. argument: meshProject [identifier](./meshstack.identifiers.md)
+3. argument: meshProject [ID (numeric)](./meshstack.identifiers.md)
 
 You can decide if you want to enforce the account alias by using the `enforceAccountAlias` flag. If you want to keep any existing account alias (which might not fit into the defined pattern), set this flag to `false`.
 
@@ -542,7 +542,7 @@ The following prerequisites must be fulfilled for the enrollment to work:
 
 ## Configuration Reference
 
-Please find the full `Aws.dhall` [configuration options](./meshstack.configuration.md) below:
+Please find the full `Aws.dhall` configuration options below:
 
 ```dhall
   λ(Secret : Type)
