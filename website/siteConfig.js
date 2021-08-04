@@ -94,11 +94,18 @@ const siteConfig = {
   // Add custom scripts here that would be placed in <script> tags
   scripts: [
     'https://buttons.github.io/buttons.js',
-
     // add "copy code" buttons to code block
     // see https://gist.github.com/yangshun/55db997ed0f8f4e6527571fc3bee4675
     '/js/clipboard.min.js', // from https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js but we want to avoid 3rd party CDN
     '/js/code-block-buttons.js',
+
+    // add mermaid.js for diagrams
+    // unfortunately it's not easy to make mermaid work during static site generation on docusaurus v1, so we will
+    // include it as a runtime dependency for now. The benefits of having diagrams outweight the downsides of an 
+    // additional dependency. References
+    // - https://github.com/facebook/docusaurus/issues/1258
+    // - https://github.com/mermaid-js/mermaid/issues/485
+    'https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.11.2/mermaid.min.js',
   ],
 
   /* On page navigation for the current documentation page */
@@ -126,7 +133,13 @@ const siteConfig = {
   algolia: {
     apiKey: process.env.DOCSEARCH_APIKEY,
     indexName: process.env.DOCSEARCH_INDEXNAME
-  }
+  },
+
+  markdownPlugins: [ (md) => {
+    md.renderer.rules.fence_custom.mermaid = (tokens, idx, options, env, instance) => {
+        return `<div class="mermaid">${tokens[idx].content}</div>`;
+    };
+}],
 };
 
 module.exports = siteConfig;
