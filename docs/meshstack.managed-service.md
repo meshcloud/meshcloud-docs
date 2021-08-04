@@ -3,7 +3,7 @@ id: meshstack.managed-service
 title: Managed Service
 ---
 
-meshcloud will typically operate your meshStack installation as a managed service for you.
+meshcloud will operate your meshStack installation as a managed service for you.
 
 > Our managed service is always subject to an individual customer agreement. This document provides a high-level overview
 > of the typical components of this service.
