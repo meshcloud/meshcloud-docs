@@ -13,6 +13,8 @@ These quotas can be defined on an OpenShift Landing Zone via the [Quota Manageme
 
 ## Templates
 
+> Templates are currently not supported for Openshift 4 Landing Zones.
+
 Templates can also be synchronized automatically with OpenShift if they are put into a Landing Zone and assigned to a meshProject. This is similar to the ResourceQuotas handling. This template then shows up in the web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
 
 It is possible to automatically instance this template inside a project via meshStacks project replication procedure. However doing so requires currently that the service principal, created with the rights above, gets all the additional rights required to instance the template. Like for example creating Pods. This might be not desirable and because of this this function is disabled by default. To enable automatic Template instancing set the flag `enableTemplateInstancing` to true:
