@@ -94,6 +94,26 @@ let example2 =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+
+#### Usage Types and Units
+
+When configuring a product for private cloud billing, operators need to choose the cloud resource type to target and how the metering engine
+should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
+Traits are a properties of a cloud resource like CPU or RAM. Operators can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
+
+meshMetering supports flexible rules for creating usages, like
+
+- **time**: charge consumption based on the usage of a resource over a time period
+- **quantity**: charge consumption based on a quantity
+- **time-quantity**: charge consumption based on the product of time and quantity
+
+Quantities are represented with prefixable units according to UCUM standard inside meshMetering.
+For example, one kilo byte would be represented as `1 kB` or one kibi-byte as `1 kiBy`.
+When building a product catalog, operators can define rates to define prices for usages.
+It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
+trait is measured in "MB", operators can define a price in "GB". meshMetering will automatically apply
+the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules.
+
 ### Discounts
 
 Discounts allow Operators to add or deduct charges to Tenant Usage Reports. A common use case for Platform Operators is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
