@@ -16,7 +16,6 @@ To enable integration with OpenShift, operators deploy and configure the meshSta
 ### OpenShift Versions
 
 meshStack currently supports OpenShift version 3.9+ as either Open-Source (OKD) or OpenShift Enterprise variants.
-The Openshift 4 integration currently does not support templates, so Landing Zones on Openshift 4 cannot make use of templates.
 
 ### IdP Configuration
 
