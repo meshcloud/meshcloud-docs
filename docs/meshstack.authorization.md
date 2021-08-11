@@ -88,7 +88,7 @@ let example =
 
 ### Role Request Approval
 
-In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.configuration.md) under `meshfed.web.user.rolerequest` as follows:
+In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest` as follows:
 
 ```dhall
 { minApprovalCount = Some 2
@@ -111,7 +111,7 @@ When any customer admin declines the role request, the role request is immediate
 
 > Note: When a customer has less customer admins than the requested `minApprovalCount`, role requests will get automatically approved when all customer admins have registered an approval. The meshPanel can be configured to display a warning in this case.
 
-Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so configure the [meshStack configuration model](meshstack.configuration.md) under `panel.mesh.dashboardNotification`:
+Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the customer. To do so configure the [meshStack configuration model](meshstack.index.md#configuration) under `panel.mesh.dashboardNotification`:
 
 ```dhall
 { show4EyePrincipleWarning = Some True }

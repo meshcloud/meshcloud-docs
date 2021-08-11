@@ -82,7 +82,7 @@ meshCustomers pay upfront to purchase reserved instances or savings plans, they 
 
 ## Configuration Reference
 
-This section describes the configuration of a AWS Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
+This section describes the configuration of a AWS Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
 at `mesh.platforms` for AWS metering.
 
 <!--snippet:mesh.platforms.aws.kraken#type-->
@@ -113,7 +113,7 @@ let AwsPlatformKrakenConfiguration =
           Optional Text
       , data-source :
           {-
-          Currently both AWS Cost and Usage Reports and AWS Cost Explorer are supported.
+          Currently both AWS Cost and Uasge Reports and AWS Cost Explorer are supported.
           But AWS Cost and Usage Reports are planned to be deprecated
           -}
           ./DataSource.dhall
