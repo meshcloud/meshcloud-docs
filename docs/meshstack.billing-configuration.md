@@ -107,12 +107,28 @@ meshMetering supports flexible rules for creating usages, like
 - **quantity**: charge consumption based on a quantity
 - **time-quantity**: charge consumption based on the product of time and quantity
 
-Quantities are represented with prefixable units according to UCUM standard inside meshMetering.
-For example, one kilo byte would be represented as `1 kB` or one kibi-byte as `1 kiBy`.
+Quantities are represented with prefixable units according to the [UCUM standard](https://ucum.org/ucum.html) inside meshMetering.
+Specifically, meshMetering uses the UCUM "print" formatting where units need to be human readable (e.g. in usage reports).
+In configuration (e.g. when defining a product catalog entry), meshMetering uses the UCUM "case-sensitive" representations.
+This can lead to small differences when describing units. For example, one kilo-byte would be represented as
+
+- `1 kB` in a usage report
+- `1 kBy` in a product catalog entry
+
 When building a product catalog, operators can define rates to define prices for usages.
 It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
 trait is measured in "MB", operators can define a price in "GB". meshMetering will automatically apply
-the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules.
+the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules. meshMetering supports the following prefixes, with examples described in bytes
+according to UCUM "case-sensitive" representation.
+
+| Metric Prefix | Example | Binary Prefix | Example |
+| ------------- | ------- | ------------- | ------- |
+| kilo (10^3)   | 1 kBy   | kibi (1024^1) | 1 KiBy  |
+| mega (10^6)   | 1 MBy   | mebi (1024^2) | 1 MiBy  |
+| giga (10^9)   | 1 GBy   | gibi (1024^3) | 1 GiBy  |
+| terra (10^12) | 1 TBy   | tebi (1024^4) | 1 TiBy  |
+| peta (10^15)  | 1 PBy   | pebi (1024^5) | 1 PiBy  |
+
 
 ### Discounts
 
