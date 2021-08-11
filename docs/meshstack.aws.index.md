@@ -320,7 +320,6 @@ let AwsSso =
             }
       }
 ```
-
 <!--Example-->
 ```dhall
 let example
@@ -585,6 +584,11 @@ Please find the full `Aws.dhall` configuration options below:
   -}
   , enforceAccountAlias : Bool
   , enrollment-configuration : Optional EnrollmentConfiguration
+  {-
+    Specify if the role which is created by default in the newly provisioned account, which is assumed by meshStack to perform
+    its tasks, should be downgraded automatically to the minimum required permissions. This is true by default.
+  -}
+  , self-downgrade-access-role : Bool
   }
 ```
 
