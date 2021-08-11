@@ -2,21 +2,8 @@
 id: meshstack.aws.sso-setup
 title: SSO Setup
 ---
-## Configure AAD as IdP for AWS SSO
 
-This section describes how to set up AWS SSO with Azure Active Directory.
-
-### Create an Enterprise Registration
-
-Go to `Enterprise applications` on Azure, click on `New application` and search for `aws` and choose `AWS Single Sign-on`
-
-![assets/aws_sso_setup/azure_create_enterprise_registration.png](assets/aws_sso_setup/azure_create_enterprise_registration.png)
-
-Follow the steps in AAD under Getting Started (Pick SAML for the single sign on)
-
-![assets/aws_sso_setup/aad_getting_started.png](assets/aws_sso_setup/aad_getting_started.png)
-
-### Configure AWS for AAD integration
+## Enable AWS SSO
 
 Switch to AWS Console and search for `sso`, now choose `AWS Single Sign-on`
 
@@ -25,6 +12,8 @@ Switch to AWS Console and search for `sso`, now choose `AWS Single Sign-on`
 Now choose `Enable AWS SSO`
 
 ![assets/aws_sso_setup/aws_enable_sso.png](assets/aws_sso_setup/aws_enable_sso.png)
+
+## Configure an External IdP
 
 Configure the identity source by clicking on `Choose your identity source`
 
@@ -37,6 +26,34 @@ Now choose `change` on `Identity source`
 Select `External identity provider`
 
 ![assets/aws_sso_setup/aws_set_identity_source_external.png](assets/aws_sso_setup/aws_set_identity_source_external.png)
+
+## Create AWS SSO Permission Sets
+
+In order to assign groups created by meshStack to a certain Permission Set on an AWS account, you have to create according Permission Sets in AWS SSO.
+
+![assets/aws_sso_setup/permission_sets.png](assets/aws_sso_setup/permission_sets.png)
+
+By default three project roles are available in meshStack: Project Admin, Project User, Project Reader. If you don't have
+specific PermissionSets in mind yet, a good starting point is to provide the following defaults for the three roles. When creating
+a new Permission Set you can select "Use an existing job function policy" and then select the following job function policies:
+
+- AdministratorAccess
+- PowerUserAccess
+- ViewOnlyAccess
+
+## Configure AAD as IdP for AWS SSO
+
+This section describes how to set up AWS SSO with Azure Active Directory.
+
+### Create an Enterprise Registration in AAD
+
+Go to `Enterprise applications` on Azure, click on `New application` and search for `aws` and choose `AWS Single Sign-on`
+
+![assets/aws_sso_setup/azure_create_enterprise_registration.png](assets/aws_sso_setup/azure_create_enterprise_registration.png)
+
+Follow the steps in AAD under Getting Started (Pick SAML for the single sign on)
+
+![assets/aws_sso_setup/aad_getting_started.png](assets/aws_sso_setup/aad_getting_started.png)
 
 ### Metadata
 
@@ -56,7 +73,7 @@ Before the automatic provisioning is enabled, you can click `enable automatic pr
 
 ![assets/aws_sso_setup/azure_tenant_url_secret_token.png](assets/aws_sso_setup/azure_tenant_url_secret_token.png)
 
-The `userName` must be set to what is configured as an `euid` in meshStack
+> An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
 
 ![assets/aws_sso_setup/azure_mappings.png](assets/aws_sso_setup/azure_mappings.png)
 

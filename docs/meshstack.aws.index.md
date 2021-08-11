@@ -270,6 +270,8 @@ Currently meshStack supports 2 different ways of integrating AWS IAM with meshSt
 
 The integration with AWS SSO basically works like this: AuthN is done via the company's IdP. Additionally users will be synced via AWS SSO Automated Provisioning (SCIM) to AWS SSO. meshStack takes care of AuthZ. That means meshStack will create groups for every project role on a meshTenant in AWS SSO. meshStack will assign the according users to these groups. As a last step, meshStack assigns the created groups to the according AWS account with configured PermissionSets.
 
+Details about what needs to be configured inside AWS SSO can be found [here](meshstack.aws.sso-setup.md).
+
 > An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
 
 <!--snippet:mesh.platforms.aws.iam-configuration.aws-sso-->
@@ -318,6 +320,7 @@ let AwsSso =
             }
       }
 ```
+
 <!--Example-->
 ```dhall
 let example

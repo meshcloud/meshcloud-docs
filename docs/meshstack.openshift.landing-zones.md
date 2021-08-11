@@ -13,15 +13,15 @@ These quotas can be defined on an OpenShift Landing Zone via the [Quota Manageme
 
 ## Templates
 
-Templates can also be synchronized automatically with OpenShift if they are put into a Landing Zone and assigned to a meshProject. This is similar to the ResourceQuotas handling. This template then shows up in the web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
+Templates can be used to deploy some resources to projects that are provisioned via meshStack. Templates will be synchronized automatically with OpenShift when they are put into a Landing Zone and meshTenants are using this Landing Zone. This template shows up in the OpenShift web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
 
-It is possible to automatically instance this template inside a project via meshStacks project replication procedure. However doing so requires currently that the service principal, created with the rights above, gets all the additional rights required to instance the template. Like for example creating Pods. This might be not desirable and because of this this function is disabled by default. To enable automatic Template instancing set the flag `enableTemplateInstancing` to true:
+It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like for example creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the platform config:
 
 ```yml
 replicator-openshift:
   platforms:
     - platform: okd.eu-de-central
-      enableTemplateInstancing: true
+      enable-template-instantiation: true
 ```
 
 ## Default Labels
