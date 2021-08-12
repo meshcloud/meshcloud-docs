@@ -11,7 +11,7 @@ allows you to invite and manage team members, create [meshProjects](meshcloud.pr
 Organizations implementing meshStack can choose to offer self-service customer registration via meshPanel or externalize
 the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.onboarding.md#customer-registration).
 
-In any case, the meshCustomer creation process always involves collecting basic customer information like Name, identifier
+In any case, the meshCustomer creation process always involves collecting basic customer information like name, identifier
 and any additional [metadata specific to your organization](meshstack.metadata-tags.md#customer-tag-schema).
 
 ## Customer Settings
@@ -76,16 +76,17 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign&nbsp;Customer&nbsp;Owner | &#10003; | | |
 | &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject) | &#10003; | &#10003; | |
 | [Customer&nbsp;Users](meshcloud.customer.md) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.customer.md#invite-users-to-a-meshcustomer-team) | &#10003; | &#10003; | |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Customer&nbsp;Owner](meshcloud.customer.md#assign-meshcustomer-roles) | &#10003; | | |
 | &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.customer.md#assign-meshcustomer-roles) | &#10003; | &#10003; | |
 | &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles) | &#10003; | &#10003; | |
 | [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups) | &#10003; | &#10003; | |
 | [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | &#10003; | |
+| [Delete&nbsp;Customer](meshcloud.customer.md#customer-deletion) | &#10003; | | |
 | [Payment&nbsp;Methods](meshcloud.payment-methods.md) | &#10003; | &#10003; | |
 | Domains | &#10003; | &#10003; | |
 | [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md) | &#10003; | &#10003; | |
