@@ -134,7 +134,7 @@ Enter the URL of your Azure Function here. This is typically a value like `https
 
 ### Azure Function Scope
 
-To securely call an Azure Function, meshStack uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature (available to Azure Premium Functions only).
+To securely call an Azure Function, meshStack uses Microsoft's [App Authentication](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to) feature.
 
 This means that behind the scenes meshStack is fetching a JWT token uniquely scoped to your function and passes it during the Azure Function call.
 
@@ -146,6 +146,8 @@ In order for meshStack to fetch the right token, it needs to know the unique ID 
 ### Required Platform Configuration
 
 In order to make an Azure Function only accessible via the replicator's Service Principal, follow these steps:
+
+> If these steps are automated via Terraform you end up with a non working Azure Function. Until Terraform solves this problem, please perform the setup steps manually in the Azure panel.
 
 1. Create a SAMI or UAMI for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
 
