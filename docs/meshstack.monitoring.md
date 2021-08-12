@@ -16,7 +16,7 @@ Scraping is secured using HTTPS Basic auth. The credentials are managed as part 
 
 meshStack comes with pre-configured alerting rules. These alerts are typically only addressed to our [managed service](meshstack.managed-service.md) team, but can also be sent to additional alert inboxes if required.
 
-These email inboxes be configured in the [meshStack configuration model](meshstack.configuration.md) under `monitor` as follows:
+These email inboxes be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `monitor` as follows:
 
 ```dhall
 {
@@ -94,7 +94,7 @@ These tests also include end-to-end interaction with [meshPlatforms](meshcloud.p
 
 ### Configuration
 
-Sonar can be configured in the [meshStack configuration model](meshstack.configuration.md) under `monitor.sonar` as follows:
+Sonar can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `monitor.sonar` as follows:
 
 <!--snippet:mesh.sonar#type-->
 

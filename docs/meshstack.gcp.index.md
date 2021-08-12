@@ -119,7 +119,7 @@ Please follow the official [Google guide](https://cloud.google.com/identity/docs
 
 ## Configuration Reference
 
-This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.configuration.md)
+This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
 at `mesh.platforms`.
 
 For easier reference the following sections break down the configuration model in multiple parts. The union of these
