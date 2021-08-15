@@ -592,7 +592,7 @@ Please find the full `Aws.dhall` configuration options below:
   }
 ```
 
-## Downgrading meshcloud Access
+## Using Automations
 
 > This part is not automated via terraform templates. This is because you may choose to set up roles with different naming conventions and permissions, or to deploy CloudFormation stacks or a Lambda that has additional functionality. This section also serves as an example on how you can use a meshLandingZone to bootstrap the newly created AWS account.
 
@@ -614,7 +614,7 @@ Create a meshLandingZone with the following Access Stack configured. This will c
   "Parameters": {
     "AutomationAccountId": {
       "Type": "String",
-      "Default": "888163887028",
+      "Default": "987654321321",
       "Description": "The ID of the Automation Account"
     }
   },
@@ -666,7 +666,7 @@ Create a meshLandingZone with the following Access Stack configured. This will c
             }
           },
           {
-            "PolicyName": "StackSetExecutionPolicy",
+            "PolicyName": "AllowStackSetsToCreateIAMResources",
             "PolicyDocument": {
               "Version": "2012-10-17",
               "Statement": [
@@ -691,19 +691,21 @@ Create a meshLandingZone with the following Access Stack configured. This will c
 
 Create a StackSet in the automation account via the AWS console using the following template and set the StackSet ARN in the meshLandingZone to the ARN of the newly created StackSet.
 
-The StackSet defines two roles. One is the `OrganizationAccountAccessRole` which has admin privileges. This role trusts the management account and can be used to login to the new account with admin privileges if you require that. The other role is the `PermissionDowngradeLambdaExecutionRole` which will be assumed by the Lambda to downgrade the permissions of the `MeshstackAccountAccessRole`.
+This StackSet example defines two roles. One is the `OrganizationAccountAccessRole` which has admin privileges. This role trusts the management account and can be used to login to the new account with admin privileges if you require that. The other role is the `CrossAccountLambdaExecutionRole` which will be assumed by the Automation Account's Lambda function to perform its tasks.
+
+> Update Default parameters with the correct values.
 
 ```json
 {
   "Parameters": {
     "ManagementAccountId": {
       "Type": "String",
-      "Default": "122242464812",
+      "Default": "123456789123",
       "Description": "The ID of the Management Account"
     },
     "AutomationAccountId": {
       "Type": "String",
-      "Default": "888163887028",
+      "Default": "987654321321",
       "Description": "The ID of the Automation Account"
     }
   },
@@ -741,10 +743,10 @@ The StackSet defines two roles. One is the `OrganizationAccountAccessRole` which
         ]
       }
     },
-    "PermissionDowngradeLambdaExecutionRole": {
+    "CrossAccountLambdaExecutionRole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
-        "RoleName": "PermissionDowngradeLambdaExecutionRole",
+        "RoleName": "CrossAccountLambdaExecutionRole",
         "AssumeRolePolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
@@ -759,7 +761,7 @@ The StackSet defines two roles. One is the `OrganizationAccountAccessRole` which
                       {
                         "Ref": "AutomationAccountId"
                       },
-                      ":role/PermissionDowngradeLambdaAdministrationRole"
+                      ":role/AutomationAccountLambdaServiceRole"
                     ]
                   ]
                 }
@@ -770,7 +772,7 @@ The StackSet defines two roles. One is the `OrganizationAccountAccessRole` which
         },
         "Path": "/",
         "ManagedPolicyArns": [
-          "arn:aws:iam::aws:policy/IAMFullAccess"
+          "arn:aws:iam::aws:policy/IAMReadOnlyAccess"
         ]
       }
     }
@@ -780,7 +782,7 @@ The StackSet defines two roles. One is the `OrganizationAccountAccessRole` which
 
 ### Create the Lambda
 
-Create the `PermissionDowngradeLambdaAdministrationRole` with the following policy and trust relationship in the automation account. Additionally attach the `AWSLambdaBasicExecutionRole` managed policy so that the Lambda can log to CloudWatch.
+Create the `AutomationAccountLambdaServiceRole` with the following policy and trust relationship in the automation account. Additionally attach the `AWSLambdaBasicExecutionRole` managed policy so that the Lambda can log to CloudWatch.
 
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -790,10 +792,10 @@ Create the `PermissionDowngradeLambdaAdministrationRole` with the following poli
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "AllowAssumePermissionDowngradeLambdaOnAllAccounts",
+            "Sid": "AllowAssumeRoleForCrossAccountAccess",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::*:role/PermissionDowngradeLambdaExecutionRole"
+            "Resource": "arn:aws:iam::*:role/CrossAccountLambdaExecutionRole"
         }
     ]
 }
@@ -815,114 +817,85 @@ Create the `PermissionDowngradeLambdaAdministrationRole` with the following poli
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-Create the Lambda that will downgrade the permissions. Set the Execution role of the Lambda to `PermissionDowngradeLambdaAdministrationRole`.
+Create the Lambda function that will run the automation. Set the Execution Role of the Lambda to `AutomationAccountLambdaServiceRole`.
 
 ```python
 import json
 import logging
 import boto3
 
+import http.client
+
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
-def main(event, context):
-    logger.debug("Recieved event "+ json.dumps(event))
 
-    accessRoleName = 'MeshstackAccountAccessRole'
-    # the policy to remove
-    adminAccessPolicy = 'AdministratorAccess'
-    # the name of the new policy to add
-    minimumMeshAccessPolicy = 'MeshstackAccountAccessPolicy'
+def lambda_handler(event, context):
+    logger.debug("Recieved event " + json.dumps(event))
+#  E.g EVENT FORMAT:
+# {
+#     "tagEnvironment": "Test",
+#     "tagConfidentiality": "Public",
+#     "tagYOUR_REPLICATED_TAG": "VALUE",
+#     "ProductName": "CUSTOMER_NAME (meshcloud)",
+#     "ContactEmail": "CONTACT_EMAIL (admin@meshcloud.io)",
+#     "Stage": "PROJECT_NAME (test-aws-integration)",
+#     "AccountName": "CUSTOMER_NAME.PRODUCT_NAME (meshcloud.test-aws-integration)",
+#     "AccountEmail": "AWS_ROOT_ACCOUNT_EMAIL (awsexample+meshcloud.test-aws-integration@meshcloud.io)",
+#     "AccountId": "NEW_ACCOUNT_ID (001228688548)",
+#     "AccountArn": "NEW_ACCOUNT_ARN (arn:aws:organizations::122242404000:account/o-9y4kda3oxr/001228688548)"
+# }
 
+# E.g HTTP REQUEST TO ANOTHER WEBSITE
+    connection = http.client.HTTPSConnection("httpbin.org")
+    headers = {
+        "Meshcloud-Replicated-Environment-Tag": event['tagEnvironment'],
+        "Meshcloud-Account-Id": event['AccountId'],
+        "Meshcloud-Customer-Name": event['ProductName'],
+        "Meshcloud-Project-Name": event['Stage'],
+        'Content-type': 'application/json',
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+    }
+    body = json.dumps({"Hello": "World!"})
+    connection.request('GET', "/anything", body, headers)
+    response = connection.getresponse()
+    print(response.read().decode())
+
+# ASSUME CROSS ACCOUNT ACCESS ROLE FROM NEW ACCOUNT
+# You can assume the role that you have created with StackSet template and execute custom automations on your new account.
     accountId = event["AccountId"]
-
     sts = boto3.client('sts')
     assumed_role_object = sts.assume_role(
-        RoleArn = "arn:aws:iam::"+accountId+":role/PermissionDowngradeLambdaExecutionRole",
-        RoleSessionName = "DowngradePermissionsSession"
+        RoleArn="arn:aws:iam::"+accountId+":role/CrossAccountLambdaExecutionRole",
+        RoleSessionName="LambdaSession"
     )
-    logger.debug("Successfully assumed role in child account.")
+
+    logger.debug("Successfully assumed role in the new account.")
 
     credentials = assumed_role_object['Credentials']
     accessKey = credentials['AccessKeyId']
     secretKey = credentials['SecretAccessKey']
     sessionToken = credentials['SessionToken']
 
+# E.g Print all IAM Roles from the new Account
     iam = boto3.client(
         'iam',
-         aws_access_key_id = accessKey,
-         aws_secret_access_key = secretKey,
-         aws_session_token = sessionToken
+        aws_access_key_id=accessKey,
+        aws_secret_access_key=secretKey,
+        aws_session_token=sessionToken
     )
 
-    response = iam.list_role_policies(RoleName = accessRoleName)
-
-    logger.debug("Response from list role policies" + json.dumps(response))
-
-    if minimumMeshAccessPolicy not in response['PolicyNames']:
-        policy = """{
-                "Version": "2012-10-17",
-                "Statement": [
-                  {
-                    "Effect": "Allow",
-                    "Action": [
-                      "iam:CreateSAMLProvider",
-                      "iam:GetSAMLProvider",
-                      "iam:UpdateSAMLProvider",
-                      "iam:DeleteSAMLProvider",
-                      "iam:ListSAMLProviders"
-                    ],
-                    "Resource": [
-                      "arn:aws:iam::%s:saml-provider/*",
-                      "arn:aws:cloudformation:*:%s:stack/meshstack-cf-access*"
-                    ]
-                  },
-                  {
-                    "Effect": "Allow",
-                    "Action": [
-                      "iam:ListAttachedRolePolicies",
-                      "iam:CreateAccountAlias",
-                      "iam:ListAccountAliases",
-                      "iam:DeleteAccountAlias",
-                      "iam:GetRole",
-                      "iam:CreateRole",
-                      "iam:AttachRolePolicy",
-                      "iam:UpdateAssumeRolePolicy"
-                    ],
-                    "Resource": "*"
-                  },
-                  {
-                    "Effect": "Allow",
-                    "Action": [
-                      "cloudformation:DescribeStacks"
-                    ],
-                    "Resource": "*"
-                  }
-                ]
-            }
-            """ % (accountId, accountId)
-        logger.debug("Putting policy "+ policy)
-        iam.put_role_policy(
-            RoleName = accessRoleName,
-            PolicyName = minimumMeshAccessPolicy,
-            PolicyDocument = policy
-        )
-        logger.info("Created minimum access policy")
-
-
-    if adminAccessPolicy in response['PolicyNames']:
-        iam.delete_role_policy(
-            RoleName = accessRoleName,
-            PolicyName = adminAccessPolicy
-        )
-        logger.info("Removed admin access policy")
+    logger.debug("Print all roles from the new acccount:")
+    response = iam.list_roles()
+    for role in response['Roles']:
+        logger.debug(role['RoleName'])
 
     return {
         'statusCode': 200,
-        'body': 'Successfully downgraded'
+        'body': 'Successfull!'
     }
 ```
 
-This Lambda will be invoked during account provisioning and downgrades the `MeshstackAccountAccessRole`.
+This Lambda will be invoked during account provisioning and execute the automation.
 
 > Depending of your mode of operation (usage of external Account Vending Machine or configuration of AWS Control Tower enrollment) these "minimal rights" can be adapted and further restricted. Please [contact us](mailto:support@meshcloud.io) for more details on reducing these rights.
