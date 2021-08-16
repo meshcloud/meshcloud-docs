@@ -244,7 +244,7 @@ This StackSet example defines two roles. One is the `OrganizationAccountAccessRo
 
 After creating the StackSet, configure the StackSet section in the meshLandingZone with the ARN.
 
-> Update Default parameters with the correct values.
+> Update the following Default parameters with the correct values.
 
 ```json
 {
@@ -443,7 +443,7 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': 'Successfull!'
+        'body': 'Success'
     }
 ```
 
