@@ -30,3 +30,11 @@ when a new meshPlatform shall be integrated, but initially only be visible to a 
 
 To restrict the meshPlatform, go to the meshPlatform edit screen and search for the customers the platform shall be restricted to.
 Add these customers via the *+* button.
+
+## Manage Quota Definitions
+
+In order to provide quotas to meshTenants, the available quotas have to be defined first. A `Quota Key` that must match the quota key in the platform, can be defined. Additionally a speaking name for the Quota that is shown in meshPanel as well as a description and a unit can be defined. Min and Max values can also be set to restrict the quotas to a certain maximum or minimum. An [Auto Approval Threshold](meshcloud.tenant-quota.md#auto-approval-of-tenant-quota-requests) can also be defined. It can be set to 0, if no auto-approval of quota requests shall be applied.
+
+> Currently only OpenShift is supported for Quota Management
+
+![Manage Platform Quota Definitions](assets/tenants/platform-quota-definitions.png)
