@@ -592,17 +592,9 @@ Please find the full `Aws.dhall` configuration options below:
   }
 ```
 
-## Using Automations
+## Bootstrapping the Account
 
-> This part is not automated via terraform templates. This is because you may choose to set up roles with different naming conventions and permissions, or to deploy CloudFormation stacks or a Lambda that has additional functionality. This section also serves as an example on how you can use a meshLandingZone to bootstrap the newly created AWS account.
-
-meshStack uses `MeshstackAccountAccessRole` within the newly provisioned accounts to perform tasks such as
-
-* Setting up SAML IDP
-* Account Alias Setup
-* Deploy Access Stack
-
-This role will have administration rights on the new account right after account creation. For security reasons, it is recommended that you downgrade these permissions using the Lambda invocation functionality provided in the meshLandingZone. You can do this by setting up a meshLandingZone as follows.
+This section serves as an example on how you can use a meshLandingZone to bootstrap the newly created AWS account.
 
 ### Create the Access Stack
 
@@ -692,6 +684,8 @@ Create a meshLandingZone with the following Access Stack configured. This will c
 Create a StackSet in the automation account via the AWS console using the following template and set the StackSet ARN in the meshLandingZone to the ARN of the newly created StackSet.
 
 This StackSet example defines two roles. One is the `OrganizationAccountAccessRole` which has admin privileges. This role trusts the management account and can be used to login to the new account with admin privileges if you require that. The other role is the `CrossAccountLambdaExecutionRole` which will be assumed by the Automation Account's Lambda function to perform its tasks.
+
+After creating the StackSet, configure the StackSet section in the meshLandingZone with the ARN.
 
 > Update Default parameters with the correct values.
 
@@ -896,6 +890,6 @@ def lambda_handler(event, context):
     }
 ```
 
+Configure the Lambda ARN in the meshLandingZone with the ARN of the above created Lambda.
 This Lambda will be invoked during account provisioning and execute the automation.
 
-> Depending of your mode of operation (usage of external Account Vending Machine or configuration of AWS Control Tower enrollment) these "minimal rights" can be adapted and further restricted. Please [contact us](mailto:support@meshcloud.io) for more details on reducing these rights.
