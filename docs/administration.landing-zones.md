@@ -27,7 +27,7 @@ Limiting access to private cloud platforms is an important tool to keep control 
 
 ![Landing Zone Quota](assets/tenants/landing-zone-quota.png)
 
-> Quotas that can be managed here currently have to be defined by meshcloud. They are defined per meshPlatform. A self-service screen will be available soon.
+> Available quotas can be managed via the [Platform Quota Definition Screen](administration.platforms.md#manage-quota-definitions) that is available for each platform.
 > Currently Quota Management is only supported for OpenShift platforms. More private cloud platforms will follow.
 
 Quotas defined here will be applied as default quotas to newly created meshTenants. That way you can provide direct access to your customers with a limited scope. If customers require a higher quota, they can create a [Tenant Quota Request](./meshcloud.tenant-quota.md), which has to be [approved](./administration.tenants.md#tenant-quota-requests) by a Platform Operator.
