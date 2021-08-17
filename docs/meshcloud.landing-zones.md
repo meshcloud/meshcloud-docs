@@ -12,8 +12,7 @@ and authorization are consistently enforced across all cloud tenants. Other comm
 region restrictions to ensure compliance regarding data processing restrictions.
 
 Another use-case is defining default quotas in private cloud environments that are directly applied to your [meshTenant](./meshcloud.tenant.md) after creation.
-This allows your operators to provide you direct access with a limited scope. When you require a higher quota, you can create a [quota request](./meshcloud.tenant-quota.md), which must be
-approved by a platform operator.
+This allows your operators to provide you direct access with a limited scope. When you require a higher quota, you can create a [quota request](./meshcloud.tenant-quota.md), which must be [approved](meshcloud.tenant-quota.md#approval-of-tenant-quota-requests) by a platform operator.
 
 Operators can provide multiple Landing Zones per meshPlatform. This allows e.g. different setups
 for a Dev, QA and Production stage. Landing zones can also consume project meta-data like cost-center or similar attributes
@@ -21,7 +20,6 @@ and use it.
 
 > Only your Platform Operators can configure Landing Zones and control their content. Your operations team
 > can provide details how Landing Zones are used in your meshcloud installation.
-
 
 ## Using Landing Zones
 

@@ -28,9 +28,11 @@ let PodResourceTraits =
     {-
       milliCpu:
         Configured total CPU limit of all containers in this Pod, in milli CPU (1/1000 of a CPU).
+        The primitive usage quantity unit in product catalog entries is 'mCPU', e.g. '2500 mCPU'.
 
       ramMb:
         Configured total RAM limit of all containers in this Pod, in MiB.
+        The primitive usage quantity unit in product catalog entries is 'MiBy', e.g. '1024 MiBy'.
 
       status:
         Status phase of this pod. See https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
