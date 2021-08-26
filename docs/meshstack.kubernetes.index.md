@@ -160,6 +160,7 @@ rules:
   - ""
   resources:
   - pods
+  - persistentvolumeclaims
   verbs:
   - get
   - list
