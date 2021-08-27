@@ -70,15 +70,17 @@ In order for meshStack to generate Usage Reports, following policies are require
 
 ## Reserved Instances & Savings Plans
 
-meshStack collects the information about reserved instances and savings plans via the cost explorer API.
+This section applies only if your meshCustomers buy reserved instances and savings plans which give priority to their 
+AWS tenants. If this is the case you can enable `reservedInstanceFairChargeback` and `savingsPlanFairChargeback` feature
+flags to achieve the following.
 
 If your meshCustomers make payments directly to purchase AWS Reserved Instances and Savings Plans, those upfront payments
 will be shown as a line item in the tenant usage report for the month on which the Reserved Instance or Savings Plan starts.
 
-Since meshStack uses the `amortized cost` from the AWS Cost Explorer to generate the tenant usage reports, if any of your
-meshCustomers pay upfront to purchase reserved instances or savings plans, they would be charged twice: once via the initial
- upfront payment mentioned above and again via amortized usage cost. To prevent this from happening,
- meshStack adds a discount which is equal to the `amortized upfront cost` to the relevant tenant usage report.
+meshStack also adds a discount which is equal to the `amortized upfront cost` to the relevant tenant usage report.
+This line item will be added to the report every month until the end of the Reserved Instances or Savings Plan period.
+ 
+To achieve this, meshStack collects the information about reserved instances and savings plans via the cost explorer API.
 
 ## Configuration Reference
 
