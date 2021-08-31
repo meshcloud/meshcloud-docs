@@ -537,7 +537,7 @@ The following prerequisites must be fulfilled for the enrollment to work:
 4. The portfolio needs to contain an AWS Control Tower Account Factory Product
 5. The AWS Control Tower Account Factory Product needs to have at least one active Provisioned Artifact (active version)
 6. There needs to be a launch path with permissions to invoke the AWS Account Factory Product for meshStack access
-7. `MeshfedServiceRole` requires the attached policies `AWSServiceCatalogEndUserFullAccess` and `AWSServiceCatalogAdminReadOnlyAccess` and in addition some extra permissions. These are also described in the [Aws Docs](https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html). We recommend attaching another custom policy to the `MeshfedServiceRole` that contains the following permissions:
+7. `MeshfedServiceRole` requires the attached policies `AWSServiceCatalogEndUserFullAccess` and `AWSServiceCatalogAdminReadOnlyAccess` and in addition some extra permissions. These are also described in the [AWS Docs](https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html). We recommend attaching another custom policy to the `MeshfedServiceRole` that contains the following permissions:
 
 ```json
 {
