@@ -19,7 +19,7 @@ You must provide the ID of the OU which can be found in the AWS Organizational M
 
 You can also use a root account under which the accounts will be placed when they are created. Root IDs start with `r-*`.
 
-### Subject to Enrollment
+### Account Enrollment
 
 This parameter defines whether created AWS accounts of this Landing Zone are enrolled with AWS Control Tower or not. In order to successfully enroll accounts, an already enrolled [Target Organization Unit ID](#target-organization-unit-id) has to be defined. The enrollment also requires a global enrollment configuration set for the AWS platform, as specified in [AWS Control Tower Integration](./meshstack.aws.index.md#aws-control-tower-integration)
 
