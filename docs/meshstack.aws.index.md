@@ -591,6 +591,68 @@ The following prerequisites must be fulfilled for the enrollment to work:
 > account to perform AWS Control Tower execution steps. You have to make sure that there is no Service Control Policy (SCP)
 > enabled in AWS Organizations that prevents that.
 
+
+### Minimum Access Rights on Provisioned Accounts
+
+When provisioning a new account, a default role with administration privileges will be created in the new account. This role is by default named [OrganizationAccountAccessRole](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+but the name can be configured via meshStack. The MeshfedServiceRole will assume this newly created role in the provisioned account to perform tasks such as setting the account alias or setting up the user roles. meshStack has the capability to self downgrade this role's permissions to a minimum. This can be configured via the `self-downgrade-access-role` configuration flag.
+The downgraded role will have the following final policy attached (Note that the `accountId` and `accessRole` placeholders need to be populated with the value of the current account id and the configured access role name).
+
+```json
+{
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "iam:CreateSAMLProvider",
+            "iam:GetSAMLProvider",
+            "iam:UpdateSAMLProvider",
+            "iam:DeleteSAMLProvider",
+            "iam:ListSAMLProviders"
+          ],
+          "Resource": [
+            "arn:aws:iam::{accountId}:saml-provider/*",
+            "arn:aws:cloudformation:*:{accountId}:stack/meshstack-cf-access*"
+          ]
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "iam:ListAttachedRolePolicies",
+            "iam:CreateAccountAlias",
+            "iam:ListAccountAliases",
+            "iam:DeleteAccountAlias",
+            "iam:GetRole",
+            "iam:CreateRole",
+            "iam:AttachRolePolicy",
+            "iam:UpdateAssumeRolePolicy"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "cloudformation:DescribeStacks"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "iam:DetachRolePolicy",
+            "iam:DeleteRolePolicy",
+            "iam:PutRolePolicy",
+            "iam:ListRolePolicies"
+          ],
+          "Resource": "arn:aws:iam::{accountId}:role/{accessRole}"
+        }
+      ]
+    }
+```
+
+Note that meshStack will continue to maintain this role in the future depending on new features added to the product. Any newly added permissions will be notified via the product release notes.
+
 ## Configuration Reference
 
 Please find the full `Aws.dhall` configuration options below:
