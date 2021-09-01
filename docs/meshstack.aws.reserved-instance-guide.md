@@ -27,7 +27,7 @@ Since the Cloud Foundation Team has a good overview of the resource usage across
 
 In this approach, the teams themselves (or meshCustomers in meshcloud terminology) pay the Cloud Foundation team upfront, and the Cloud Foundation team buys Reserved Instances and Savings Plans under the meshCustomers' tenants.
 
-There might be meshCustomers/meshProjects that can estimate their own workload and would prefer to have Reserved Instances or Savings Plans that give them priority. This ensures them the benefit of the RI or SP rather than having to share with other tenants and only have a chance of benefiting. Maybe a certain team (meshCustomer) has leftover budget from the current budgeting period and would like to purchase RIs or SPs with that.
+There might be meshCustomers/meshProjects that can estimate their own workload and would prefer to have Reserved Instances or Savings Plans that give them priority. This ensures them the benefit of the RI or SP rather than having to share with other tenants and only have a chance of benefiting. Or a certain team (meshCustomer) has leftover budget from the current budgeting period and would like to purchase RIs or SPs with that.
 
 In this situation, the payment to the Cloud Foundation team happens at the time of purchase, and such tenants should not be charged for the usage of the RI and SP via the amortized cost, because they have already pre-paid. (Note that the upfront fee component is only available in All Upfront and Partial Upfront RIs & SPs. It doesn't apply for No Upfront ones.)
 
