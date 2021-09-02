@@ -65,37 +65,25 @@ You will be prompted with a new page where you can enter a lot of information. W
 
 meshUsers are defined globally in meshStack and therefore their tags are identical within all meshCustomers. As described in [meshPolicies](meshcloud.policies.md#meshpolicies-for-meshUsers/Groups) there are use cases where it makes sense to just apply a set of default tags to all meshUsers. I.e. you want to allow to assign all users to "dev" and "qa" projects, but not to "prod" projects.
 
-The following configuration options are available at `mesh.web.user`:
-
 <!--snippet:mesh.web.user-->
 
 The following configuration options are available at `mesh.web.user`:
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
 ```dhall
-let User =
+let UserTagsConfig =
     {-
           tags:
             Default tags will be applied to every active user in meshStack on every startup of meshStack and
             whenever a new user is added to a meshCustomer or imported via API
     -}
-      { rolerequest : UserRolerequest
-      , revocation : Optional UserRevocation
-      , tags : List { mapKey : Text, mapValue : List Text }
-      }
+      { tags : List { mapKey : Text, mapValue : List Text } }
 ```
 <!--Example-->
 ```dhall
 let example
-    : User
-    = { rolerequest =
-        { min-approval-count = 1
-        , enable-guest-user = True
-        , set-email-as-euid = True
-        , restrict-customer-admin-role-assignment = False
-        }
-      , revocation = None UserRevocation
-      , tags = [ { mapKey = "environment", mapValue = [ "dev", "qa" ] } ]
+    : UserTagsConfig
+    = { tags = [ { mapKey = "environment", mapValue = [ "dev", "qa" ] } ]
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

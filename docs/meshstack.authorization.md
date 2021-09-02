@@ -88,13 +88,7 @@ let example =
 
 ### Role Request Approval
 
-In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest` as follows:
-
-```dhall
-{ minApprovalCount = Some 2
-, enforceUserAcceptanceRequired = Some True
-}
-```
+In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest`. See the [role request configuration reference](meshstack.onboarding.md#customer-user-invitations) for details.
 
 If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to customer administrators who then can accept or decline such a request.
 
@@ -117,7 +111,8 @@ Its recommended to configure a warning to be shown to the user if this happens s
 { show4EyePrincipleWarning = Some True }
 ```
 
-It's currently not possible to configure required approval for removal of role bindings.
+It's not possible to configure required approval for removal of role bindings. Removal of role bindings
+do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 
