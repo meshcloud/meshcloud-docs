@@ -180,6 +180,6 @@ In order to make an Azure Function only accessible via the replicator's Service 
 
     ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
 
-5. _Optional_ In case you see an authorization error when the replicator wants to invoke the function try to set `"accessTokenAcceptedVersion" : "2" in the app registration manifests of the replicator service principal and the app registration manifest of the Azure Function.
+5. _Optional_ In case you see an authorization error when the replicator wants to invoke the function try to set `"accessTokenAcceptedVersion" : "2"` in the app registration manifests of the replicator service principal and the app registration manifest of the Azure Function.
 
 After these steps, the meshStack replicator should be able to fetch a token scoped to this Application Role so it can invoke the Azure Function using App Authentication.
