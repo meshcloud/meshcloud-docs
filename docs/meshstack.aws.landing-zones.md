@@ -5,7 +5,7 @@ title: Landing Zones
 
 AWS Landing Zones use Cloud Formation templates to orchestrate configuration of managed AWS accounts. In the following section the options for this Landing Zone are described.
 
-You have two paths for provisionig AWS accounts. You can simply use CloudFormation StackSets in order to bootstrap your account or you can use an existing, "external" (in the sense of not controlled via meshstack) Account Vending Machine (AVM). Decide for a bootstrap path and configure the Landing Zone accordingly.
+You have two paths for provisioning AWS accounts. You can simply use CloudFormation StackSets in order to bootstrap your account or you can use an existing, "external" (in the sense of not controlled via meshstack) Account Vending Machine (AVM). Decide for a bootstrap path and configure the Landing Zone accordingly.
 
 ## Parameters
 
@@ -18,6 +18,10 @@ This parameter is optional. If it is set all meshProjects placed under this Land
 You must provide the ID of the OU which can be found in the AWS Organizational Management panel. The IDs start with `ou-*`.
 
 You can also use a root account under which the accounts will be placed when they are created. Root IDs start with `r-*`.
+
+### Account Enrollment
+
+This parameter defines whether created AWS accounts of this Landing Zone are enrolled with AWS Control Tower or not. In order to successfully enroll accounts, an already enrolled [Target Organization Unit ID](#target-organization-unit-id) has to be defined. The enrollment also requires a global enrollment configuration set for the AWS platform, as specified in [AWS Control Tower Integration](./meshstack.aws.index.md#aws-control-tower-integration)
 
 ### AccessStack Template URL
 
