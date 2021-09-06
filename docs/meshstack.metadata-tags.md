@@ -27,18 +27,18 @@ such metadata include:
 - Data Confidentiality Levels
 - Project Staging Environment, e.g. QA or production
 
-## Viewing and defining available tags
+## How to view and define available tags
 
 > Note: doing the actions below will require the Partner Admin role.
 
-To get started with managing tags in meshStack, navigate to the Tags page which is available in the Administration area:
+Navigate to the Tags page which is available in the Administration area:
 
 ![Tag List](assets/metadata_tags/admin_area_tags_list.png)
 
 This page will show you all tags that are currently active on supported meshObjects. If you would like to know more details about a tag, or create, edit, or delete a tag, you can do so by clicking on the large arrow ▶️ on the right for a meshObject.
 This next page will show you more details about a tag such as the title, description or data type of the tag.
 
-### Defining a new tag
+### How to define a new tag
 
 You can define a new tag by clicking '+ Create' when you navigate to one of the specific meshObject pages.
 
