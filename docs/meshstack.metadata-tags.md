@@ -36,7 +36,14 @@ Navigate to the Tags page which is available in the Administration area:
 ![Tag List](assets/metadata_tags/admin_area_tags_list.png)
 
 This page will show you all tags that are currently active on supported meshObjects. If you would like to know more details about a tag, or create, edit, or delete a tag, you can do so by clicking on the large arrow ▶️ on the right for a meshObject.
-This next page will show you more details about a tag such as the title, description or data type of the tag.
+This next page will show you more details about a tag such as the title, description or data type of the tag and allow you to modify existing and define new tags.
+
+### How to modify an existing tag
+
+Click on the edit button for the tag you want to modify.
+
+![Tag Edit](assets/metadata_tags/edit_button.png)
+
 
 ### How to define a new tag
 
