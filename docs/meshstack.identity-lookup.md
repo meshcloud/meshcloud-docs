@@ -99,6 +99,7 @@ let AzureCreds =
       , euidSchemaExtensionUpdate : Optional AzureEuidExtensionSchema
       , euidUserAttributeUpdate : Optional AzureEuidUserAttribute
       , usernameAttributeUpdate : Optional AzureUsernameAttributeUpdate
+      , emailAttributeUpdate : Optional AzureEmailAttributeUpdate
       }
 
 let AzureIdentity = { azure : AzureCreds }
@@ -114,6 +115,7 @@ let example
       , euidSchemaExtensionUpdate = None AzureEuidExtensionSchema
       , euidUserAttributeUpdate = None AzureEuidUserAttribute
       , usernameAttributeUpdate = None AzureUsernameAttributeUpdate
+      , emailAttributeUpdate = None AzureEmailAttributeUpdate
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -166,7 +168,34 @@ let exampleWithSchmaExtension
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a non-standard attribute as
+To use a non-standard attribute as euid
+
+<!--snippet:mesh.meshfed.identitylookup.azure.euid-user-attribute#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureEuidUserAttribute =
+    {-
+      When adding/inviting a new user to a customer a (custom) attribute property from the users AAD
+      schema can be used to fill in his euid. For a list of user attributes for the AAD user object
+      see:
+
+      https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#json-representation
+
+      Attention: This check is only performed on the first attempt when a user is added/invited
+      to a customer. If this check is configured after some users were initially added to a
+      customer their euid's are not udpated.
+
+        userAttributeName:
+            The AAD's user (custom) attribute.
+    -}
+      { userAttributeName : Text }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+To use a non-standard attribute from the AAD extension schema as euid
 
 <!--snippet:mesh.meshfed.identitylookup.azure.euid-extension-schema#type-->
 
@@ -203,6 +232,56 @@ let example
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+To use a non-standard attribute as the meshUsers' username (Note that this cannot be used together with AzureEmailAttributeUpdate)
+
+<!--snippet:mesh.meshfed.identitylookup.azure.username-property-update#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureUsernameAttributeUpdate =
+    {-
+      When adding/inviting a new user to a customer a custom attribute property from the users AAD
+      extension schema can be used to fill in his username.
+
+      Cannot be used together with an AzureEmailAttributeUpdate.
+
+        propertyToUse:
+            The name of the user property which is used as the username value. E.g. 'mailNickname'.
+        formatString:
+            A printf() compatible string to replace/modify the found property with. For example to add a prefix to
+            the property value set it to 'myprefix-%s'
+    -}
+      { propertyToUse : Text, formatString : Optional Text }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+To use a non-standard attribute as the meshUsers' email (Note that this cannot be used together with AzureUsernameAttributeUpdate)
+
+<!--snippet:mesh.meshfed.identitylookup.azure.email-property-update#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let AzureEmailAttributeUpdate =
+    {-
+      When adding/inviting a new user to a customer a custom attribute property from the users AAD
+      extension schema can be used to fill in his email.
+
+      Cannot be used together with an AzureUsernameAttributeUpdate.
+
+        propertyToUse:
+            The name of the user property which is used as the email value. E.g. 'userPrincipalName'.
+
+    -}
+      { propertyToUse : Text }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+> As mentioned above, both AzureEmailAttributeUpdate and AzureUsernameAttributeUpdate cannot be used at the same time. This is because  meshStack requires either the standard username (which is the userPrincipalName), or the standard email to be used as the user's username or email to uniquely identify a user already in meshStack and coming from AAD lookup.
 
 ### Google Cloud Identity
 
