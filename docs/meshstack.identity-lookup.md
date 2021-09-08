@@ -269,7 +269,7 @@ let example
     : AzureUsernameAttributeUpdate
     =
       {- To use the email as the meshUser's username -}
-      { propertyToUse = "mail" }
+      { propertyToUse = "mail", formatString = None Text }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
