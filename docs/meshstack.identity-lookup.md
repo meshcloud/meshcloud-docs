@@ -168,7 +168,7 @@ let exampleWithSchmaExtension
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a non-standard attribute as euid
+To use an AAD attribute as euid
 
 <!--snippet:mesh.meshfed.identitylookup.azure.euid-user-attribute#type-->
 
@@ -193,9 +193,15 @@ let AzureEuidUserAttribute =
     -}
       { userAttributeName : Text }
 ```
+<!--Example-->
+```dhall
+let example
+    : AzureEuidUserAttribute
+    = { userAttributeName = "mailNickname" }
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a non-standard attribute from the AAD extension schema as euid
+To use an attribute from the AAD extension schema as euid
 
 <!--snippet:mesh.meshfed.identitylookup.azure.euid-extension-schema#type-->
 
@@ -233,7 +239,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a non-standard attribute as the meshUsers' username (Note that this cannot be used together with AzureEmailAttributeUpdate)
+To use an AAD attribute other than userPrincipalName attribute, which is the default, as the meshUsers' username (Note that this cannot be used together with AzureEmailAttributeUpdate)
 
 <!--snippet:mesh.meshfed.identitylookup.azure.username-property-update#type-->
 
@@ -250,15 +256,24 @@ let AzureUsernameAttributeUpdate =
 
         propertyToUse:
             The name of the user property which is used as the username value. E.g. 'mailNickname'.
+
         formatString:
-            A printf() compatible string to replace/modify the found property with. For example to add a prefix to
+            A Java String#format compatible string to replace/modify the found property with. For example to add a prefix to
             the property value set it to 'myprefix-%s'
     -}
       { propertyToUse : Text, formatString : Optional Text }
 ```
+<!--Example-->
+```dhall
+let example
+    : AzureUsernameAttributeUpdate
+    =
+      {- To use the email as the meshUser's username -}
+      { propertyToUse = "mail" }
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a non-standard attribute as the meshUsers' email (Note that this cannot be used together with AzureUsernameAttributeUpdate)
+To use an AAD attribute, other than the  "mail" attribute which is the default, as the meshUsers' email (Note that this cannot be used together with AzureUsernameAttributeUpdate)
 
 <!--snippet:mesh.meshfed.identitylookup.azure.email-property-update#type-->
 
@@ -278,6 +293,13 @@ let AzureEmailAttributeUpdate =
 
     -}
       { propertyToUse : Text }
+```
+<!--Example-->
+```dhall
+let example
+    : AzureEmailAttributeUpdate
+    = {- If the userPrincipalName is a secondary email that you want to set as meshUser's email -}
+      { propertyToUse = "userPrincipalName" }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
