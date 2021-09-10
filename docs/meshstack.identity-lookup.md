@@ -40,7 +40,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-Operators have the option of disabling inviting users that are not listed in the identity provider. They can do so by setting the `deny-assigning-other-users` configuration option to `true`.
+Operators have the option of disabling the invitation of users that are not listed in the identity provider. They can do so by setting the `deny-assigning-other-users` configuration option to `true`.
 
 If you have Identity Lookup configured, the panel user search functionality will lookup users from two sources: the meshStack database, and the enterprise directory. In order to identify the same user coming from the two sources as the same user, meshStack uses the username or the email. In other words, if a user looked up from the enterprise directory has the same username or the same email as a user from meshStack database, meshStack will treat that user to be the same and will not consider them as two different users in the Identity Lookup.
 
