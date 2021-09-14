@@ -104,7 +104,7 @@ let UserRoleRequest =
           When the role request is for a new meshUser, set the email address (either entered by the inviting
           person or retrieved from identity lookup) as the new meshUser's euid.
 
-          The effect of this setting may be overriden, as IdentityLookup configuration takes precendence over
+          The effect of this setting may be overridden, as IdentityLookup configuration takes precedence over
           this.
 
         restrict-customer-admin-role-assignment:
@@ -114,7 +114,7 @@ let UserRoleRequest =
           Customer Admin role assignments.
 
           Also, partner users using the "add myself" functionality in the admin area will be restricted to granting
-          thesmelves 'Customer Employee' roles instead of 'Customer Admin'.
+          themselves 'Customer Employee' roles instead of 'Customer Admin'.
     -}
       { min-approval-count : Natural
       , set-email-as-euid : Bool
