@@ -99,6 +99,8 @@ If the `minApprovalCount` option is set to 2 or higher upon adding a project rol
 
 New project role requests must be approved before the binding is created. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for an access request. This ensures that a _different_ customer admin must register the 2nd approval before the binding is created.
 
+> Note: if you make a role request on behalf of another customer admin, that user (or another customer admin) still has to approve or reject this request. This is intentional behavior to make users aware of any role changes done on their behalf.
+
 Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests. In case of a customer user group, all users of the group are informed.
 
 When any customer admin declines the role request, the role request is immediately cancelled.
