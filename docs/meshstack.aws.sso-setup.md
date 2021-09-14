@@ -37,7 +37,7 @@ This section describes how to set up AWS SSO with Azure Active Directory. Make s
 
 Go to `Enterprise applications` on Azure, click on `New application` and search for `aws` and choose `AWS Single Sign-on`
 
-![assets/aws_sso_setup/azure_create_enterprise_registration.png](assets/aws_sso_setup/azure_create_enterprise_registration.png)
+![assets/aws_sso_setup/azure_create_enterprise_application.png](assets/aws_sso_setup/azure_create_enterprise_application.png)
 
 Follow the steps in AAD under Getting Started. Mandatory are only the first 3 steps. Conditional Access and Self service are optional.
 
@@ -55,29 +55,25 @@ Pick SAML as the SSO method. Use the `AWS SSO SAML metadata` you downloaded befo
 
 Click Save in the "Basic SAML Configuration" dialog. You may need to reload the page now, as Azure may still show "Required" for the Reply URL, but that is just a display issue in Azure.
 
-Next you have to download the SAML `Certificate (Base64)`.
+Next you have to download the SAML `Federation Metadata XML`.
 
 ![assets/aws_sso_setup/azure_download_certificate.png](assets/aws_sso_setup/azure_download_certificate.png)
 
-You also need to get the Configuration Urls to set up AAD as an IdP in AWS SSO.
-
-![assets/aws_sso_setup/azure_configuration_urls.png](assets/aws_sso_setup/azure_configuration_urls.png)
-
-Now go back to AWS SSO tab you left open at the beginning or simply open it again by clicking `Change` for the Identity Source again. The metadata we used to configure AAD are still the same.
-
-You now have to select `If you have a metadata file, you can upload it now instead` in the `Identity provider metadata` section. Using the metadata file does not work, as the formats of the XML files seem to be incompatible between AAD and AWS SSO. But you can now simply enter the Urls you retriueved before from Azure and upload the certificate. Use the Azure `Login URL` as the AWS `IdP sign-in URL` and `Azure AD Identifier` as the `IdP Issuer URL`.
+After downloading the `Federation Metadata XML` file from Azure you must upload it into your `AWS SSO Identity Source` as `IdP SAML metadata`. This configuration can also be set manually to do that use the Azure `Login URL` as the AWS `IdP sign-in URL` and `Azure AD Identifier` as the `IdP Issuer URL`.
 
 #### 3. Provisioning
 
-You can `enable automatic provisioning` on AWS to get the Tenant URL and Access Token to configure SCIM for provisioning on AAD side. You have to set the Provisioning Mode to `Automatic` and enter the tenant URL and the token you got fromn AWS SSO.
+Automatic provisioning can be set via `SCIM`. Select `enable automatic provisioning` on AWS SSO service to get the `Tenant URL` and `Access Token` to configure SCIM on Azure AD Enterprise Application from `AWS Single Sign-on | Provisioning` tab. These secrets must be also shared with meshcloud Operator to configure the replicator service.
 
 ![assets/aws_sso_setup/azure_tenant_url_secret_token.png](assets/aws_sso_setup/azure_tenant_url_secret_token.png)
 
-> An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName. Additionally all users that are about to be synced must have a first and a lastName set as these fields are mandatory in AWS SSO.
-
+> An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. Azure AD attributes can be mapped to AWS SSO service with `Mappings` configuration.
 ![assets/aws_sso_setup/azure_mappings.png](assets/aws_sso_setup/azure_mappings.png)
 
-Disable the Group sync in Azure by clicking on the "Provision Azure Active Directy Groups" mapping and disable it in the details screen. Usually only groups managed by meshStack will be used and they will be created by meshStack anyway. SO no group sync is required from AAD to AWS SSO.
+Disable the Group sync in Azure by clicking on the "Provision Azure Active Directy Groups" mapping and disable it in the details screen. Usually only groups managed by meshStack will be used and also they will be created by meshStack.
+
+When `Provision Azure Active Directory Users` button is clicked, the following page shows userPrincipalName to userName mapping cannot be deleted because it is mandatory attribute and it has to be synchronized however any `Azure Active Directory Attribute` can be mapped to `userName`.
+![assets/aws_sso_setup/azure_sso_attiribute_mapping.png](assets/aws_sso_setup/azure_sso_attiribute_mapping.png)
 
 > In the `Settings` section of the `Provisioning` you could define the scope of users. You could switch to using not only users assigned to the Enterprise Application, but all users of the directory. The problem with this provisioning approach is that SSO login via SAML won't be possible, because only users assigned to the enterprise application are allowed to log in via SAML.
 
@@ -100,3 +96,5 @@ a new Permission Set you can select "Use an existing job function policy" and th
 - AdministratorAccess
 - PowerUserAccess
 - ViewOnlyAccess
+
+These `permission set` ARNs will be used by replicator as default policies. Customers can modify their policies later without affecting ARN to decide which policies they want to assign their users.
