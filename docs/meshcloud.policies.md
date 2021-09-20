@@ -49,7 +49,7 @@ The project that is being created called 'my-example-project-prod' wants environ
 
 ### Are there any other places where policies are enforced?
 
-Besides end-users being impacted at the places above, there are also other places where policy violations could be caused. The diagram below describes all possible relationships between meshObjects and the behavior that is expected, depending on the direction of the change.
+Besides end-users being impacted at the places above, there are also other places where policy violations could be caused. The diagram below describes all possible relationships between meshObjects and the behavior that is expected, depending on who is doing the change.
 
 ![Policy Relationships](assets/mesh_policies/policy_relationships.png)
 
@@ -72,3 +72,21 @@ Your organization is fully free to define policies across the entire meshStack. 
 3) Enforcing that a meshProject only has meshLandingZones assigned to it that are meant for the environment of the meshProject.
 
 4) Enforcing that a meshProject only has meshLandingZones assigned to it that are meant for the given business unit of the meshProject.
+
+### How are meshPolicies evaluated
+
+As mentioned before, meshPolicies are built on top of meshStack's [tagging](./meshcloud.metadata-tags.md) system. This is done by evaluating two meshObjects on their tags. There is no "direction" in a meshPolicy: the meshObjects are evaluated bi-directionally. It does not matter if you have a meshPolicy for "meshCustomer & meshProject" or "meshProject & meshCustomer", the policy evaluation is equal.
+If a policy is defined, the two meshObjects' tags will be evaluated on a so-called set intersection. This means that for either tags, at least one value must be present on both sides for a successful evaluation. If neither side have the given tag, the policy is also successful.
+To make this more clear, the table below describes certain conditions and their behavior when policies are applied on tags.
+
+In this example, we're looking at a meshPolicy between a meshProject's `environment` tag, and a meshCustomer's `environment` tag with the following allowed values: `dev`, `qa`, and `prod`.
+
+| meshProject  | meshCustomer | Result | Explanation |
+| ------------ | ------------ | ------ | ----------- |
+| `prod`       | `prod`       | ✓      | Both tags contain the value `prod` |
+| `prod`       | `dev`, `qa`  | ✖      | There is no overlapping value |
+| < empty >    | `dev`        | ✖      | There is no overlapping value, the meshProject has no tag values at all |
+| < empty >    | < empty >    | ✓      | Both tags have no values, which equates to a successful evaluation |
+| `prod`, `qa` | `qa`, `dev`  | ✓      | Both tags contain at least one matching value: `qa` |
+
+Keep in mind that some tags might be so-called "single-select" or "multi-select" values. For policy evaluations, all tags are treated as arrays: no matter if there are no values, a single value, or multiple values. This means you can also create a meshPolicy that evaluates a single-select value against a multi-select value.

@@ -3,17 +3,15 @@ id: administration.index
 title: Overview
 ---
 
-meshcloud Partners have access to a so called **meshAdmin** account. This account type enables to manage multiple child-customer accounts
-(so called **managed customers**) within the meshcloud platform. Therefore, With this functionality the **meshAdmin** account is needed to enable
-customer management. A **meshAdmin** account can only be activated by a **meshcloud Operator**.
+Partners Users have access to the so called **Administration Area**. The administration area enables partner users to manage their child [meshCustomer](./meshcloud.customer.md) accounts within the meshcloud platform.
+Assigning Partner Users can only be done by a **meshcloud operator** or Partner Admins.
 
-Different groups of people may need access to the different administration functionality. Therefore the following administrative roles are currently
-available to users of partner or admin accounts:
+Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
+available to users of the administration area:
 
-- **meshcloud Operator**: Is the super admin and operator of the whole meshcloud platform. He can also create **meshAdmin** accounts.
-- **meshAdmin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
+- **Partner Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
   administrator/partner account.
-- **meshAdmin Employee**: Has full access to all administration functionality, but **cannot** manage meshPolicies, tag definitions or users of the administrator/partner account.
+- **Partner Employee**: Has full access to all administration functionality, but **cannot** manage meshPolicies, tag definitions or users of the administrator/partner account.
 - **Compliance Manager**: Has the rights to manage meshPolicies and tag definitions.
 - **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
@@ -35,8 +33,8 @@ per meshcloud installation.
 | &nbsp;&nbsp;&nbsp;&nbsp;[Manage&nbsp;Quota](administration.projects.md#managing-project-quotas)                           |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;project&nbsp;tags                                                                       |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;[History](administration.projects.md#project-history)                                             |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |
-| &nbsp;&nbsp;Customer&nbsp;User&nbsp;List                                                                                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.customers.md#providing-access-to-the-managed-customer-account) |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
+| &nbsp;&nbsp;[List&nbsp;Customer&nbsp;Users](administration.customers.md#access-managed-customer-accounts)                                                                             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.customers.md#access-managed-customer-accounts) |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](administration.customers.md#send-messages-to-customer-users)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;role&nbsp;requests                                                                   |       &#10003;       |       &#10003;       |                   |  &#10003;   |            |      &#10003;      |                    |
 | &nbsp;&nbsp;[Project&nbsp;Export](administration.projects.md#project-export)                                              |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |
@@ -46,8 +44,8 @@ per meshcloud installation.
 | &nbsp;&nbsp; Manage [meshPolicies](administration.mesh-policies.md)                                                       |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |
 | &nbsp;&nbsp; List [Tags](meshstack.metadata-tags.md)                                                                      |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |
 | &nbsp;&nbsp; Manage [Tags](meshstack.metadata-tags.md)                                                                    |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |
-| Projects                                                                                                                  |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |
-| &nbsp;&nbsp;[Deleted&nbsp;Projects](administration.projects.md#deleted-projects)                                          |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |
+| Project Management                                                                                                        |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |
+| &nbsp;&nbsp;[Deleted&nbsp;Projects](administration.projects.md#delete-projects)                                           |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;[History](administration.projects.md#project-history)                                             |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |
 | &nbsp;&nbsp;[Chargeback&nbsp;Statements](administration.usage.md)                                                         |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
 | [Platforms](administration.platforms.md)                                                                                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |
