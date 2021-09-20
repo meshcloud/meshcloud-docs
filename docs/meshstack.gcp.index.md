@@ -185,7 +185,6 @@ let GcpPlatformCoreConfiguration =
           1. meshCustomer identifier
           2. meshProject identifier
           3. meshProject ID (numeric)
-          4. role name suffix (configurable via Landing Zone)
 
       allowHierarchicalFolderAssignment:
         Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
