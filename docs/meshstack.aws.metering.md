@@ -19,7 +19,7 @@ In order for meshStack to generate Usage Reports, following policies are require
 3. **Assume Role Policy**: This policy allows Metering IAM user to assume the IAM Role `MeteringRole`
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bucket Access Policy-->
+<!--Cost Explorer Access Policy-->
 ```json
 {
     "Version": "2012-10-17",
@@ -113,7 +113,9 @@ let AwsPlatformKrakenConfiguration =
       , organization-root-account-external-id :
           {- The external ID passed to "sts:AssumeRole" when used in privileged context -}
           Optional Text
-      , filter : FilterType
+      , filter :
+          {- Filter type of NONE and EXCLUDE_TAX are supported. -}
+          FilterType
       , reservedInstanceFairChargeback : Bool
       , savingsPlanFairChargeback : Bool
       }
@@ -132,9 +134,7 @@ let example
           "arn:aws:iam::123456789123:role/MeteringRole"
       , organization-root-account-external-id = Some
           "abcd1234-12ab-12ab-12ab-abcdef123456"
-      , filter =
-          {- Filter type of NONE and EXCLUDE_TAX are supported. -}
-          FilterType.NONE
+      , filter = FilterType.NONE
       , reservedInstanceFairChargeback =
           {-Enable fair chargeback for meshCustomer purchased RIs-}
           True
