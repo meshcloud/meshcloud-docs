@@ -113,12 +113,9 @@ let AwsPlatformKrakenConfiguration =
       , organization-root-account-external-id :
           {- The external ID passed to "sts:AssumeRole" when used in privileged context -}
           Optional Text
-      , data-source :
-          {-
-          Currently both AWS Cost and Usage Reports and AWS Cost Explorer are supported.
-          But AWS Cost and Usage Reports are planned to be deprecated
-          -}
-          ./DataSource.dhall
+      , filter : FilterType
+      , reservedInstanceFairChargeback : Bool
+      , savingsPlanFairChargeback : Bool
       }
 ```
 <!--Example-->
@@ -135,20 +132,15 @@ let example
           "arn:aws:iam::123456789123:role/MeteringRole"
       , organization-root-account-external-id = Some
           "abcd1234-12ab-12ab-12ab-abcdef123456"
-      , data-source =
-          DataSource.CostExplorer
-            { cost-explorer =
-              { filter =
-                  {- Filter type of NONE and EXCLUDE_TAX are supported. -}
-                  (./CostExplorer.dhall).FilterType.NONE
-              , reservedInstanceFairChargeback =
-                  {-Enable fair chargeback for meshCustomer purchased RIs-}
-                  True
-              , savingsPlanFairChargeback =
-                  {-Enable fair chargeback for meshCustomer purchased SPs-}
-                  True
-              }
-            }
+      , filter =
+          {- Filter type of NONE and EXCLUDE_TAX are supported. -}
+          FilterType.NONE
+      , reservedInstanceFairChargeback =
+          {-Enable fair chargeback for meshCustomer purchased RIs-}
+          True
+      , savingsPlanFairChargeback =
+          {-Enable fair chargeback for meshCustomer purchased SPs-}
+          True
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
