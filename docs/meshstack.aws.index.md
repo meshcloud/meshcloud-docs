@@ -651,7 +651,11 @@ The downgraded role will have the following final policy attached (Note that the
     }
 ```
 
-Note that meshStack will continue to maintain this role in the future depending on new features added to the product. Any newly added permissions will be notified via the product release notes.
+As you can see, meshStack has the permissions to upgrade this role if needed. This is to ensure that any new features added to the product will have the required permissions. Any newly added permissions will be notified via the product release notes.
+
+If you prefer that meshStack does not have the capability to upgrade its own role, you can choose to implement your own role downgrade mechanism, for example via a Lambda call, which is also supported by meshLandingZones. In this case the role auto downgrade feature can be disabled.
+
+If you would like to audit the actions taken by this role, you can enable AWS CloudTrail on all the accounts provisioned by meshStack by using an AWS CloudFormation StackSet, which is also supported by meshLandingZones.
 
 ## Configuration Reference
 
