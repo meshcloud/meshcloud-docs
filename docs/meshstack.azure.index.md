@@ -109,7 +109,10 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Resources/tags/write",
 
 # Permission we need to activate/register required Resource Providers
-"*/register/action"
+"*/register/action",
+
+# Rename pre-provisioned subscriptions, not required for Enterprise Enrollment
+"Microsoft.Subscription/rename/action"
 ```
 
 You must must grant the meshcloud Service Principal this level access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
