@@ -12,9 +12,10 @@ The `amortized cost` is used when generating the tenant usage reports.
 
 ### Policies
 
-In order for meshStack to generate Usage Reports, following policies are required:
+For the purpose of metering, meshStack requires the AWS Access Key and Secret Key of a user created in the `meshcloud` AWS account.
+A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
-1. **Cost Explorer Read Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a fair Chargeback process for those.
+1. **Cost Explorer Read Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a cash-flow based Chargeback process for those.  See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
 2. **Organization Access Policy**: This policy allows the Metering IAM user to list all accounts in the organization
 3. **Assume Role Policy**: This policy allows Metering IAM user to assume the IAM Role `MeteringRole`
 
