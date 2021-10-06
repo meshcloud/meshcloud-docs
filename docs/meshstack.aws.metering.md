@@ -10,17 +10,34 @@ The `amortized cost` is used when generating the tenant usage reports.
 
 ## IAM User Configuration
 
+```mermaid
+graph LR;
+    subgraph Organization Account
+        meshfedServiceRole["MeshfedServiceRole"];
+        costExplorerServiceRole["MeshCostExplorerServiceRole"];
+    end
+    subgraph meshcloud Account
+        replicatorUser["ReplicatorUser & AccessKey"];
+        costExplorerUser["CostExplorerUser & AccessKey"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedServiceRole;
+    costExplorerUser--Trusted Entity with External-id-->costExplorerServiceRole;
+    subgraph Automation Account
+        meshfedAutomationRole["MeshfedAutomationRole"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedAutomationRole
+```
+
 ### Policies
 
 For the purpose of metering, meshStack requires the AWS Access Key and Secret Key of a user created in the `meshcloud` AWS account.
 A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
-1. **Cost Explorer Read Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
-2. **Organization Access Policy**: This policy allows the Metering IAM user to list all accounts in the organization
-3. **Assume Role Policy**: This policy allows Metering IAM user to assume the IAM Role `MeteringRole`
+1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+2. **CostExplorerUser's Assume Role Policy**: This policy allows CostExplorerUser IAM user to assume the IAM Role `MeshCostExplorerServiceRole`
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Cost Explorer Access Policy-->
+<!--Organization Account MeshCostExplorerServiceRole's Access Policy-->
 ```json
 {
     "Version": "2012-10-17",
@@ -31,39 +48,38 @@ A role  should be created in the AWS `management account` which has the followin
             "Action": [
                 "ce:GetSavingsPlansUtilizationDetails",
                 "ce:GetSavingsPlansUtilization",
+                "ce:GetSavingsPlansCoverage",
                 "ce:GetReservationUtilization",
+                "ce:GetReservationCoverage",
                 "ce:GetDimensionValues",
-                "ce:GetCostAndUsage"
+                "ce:GetCostAndUsage",
+                "organizations:ListAccounts"
             ],
             "Resource": "*"
         }
     ]
 }
 ```
-<!--Organization Access Policy-->
+
+<!--Meshcloud Account CostExplorerUser's Assume Role Policy-->
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "organizations:ListAccounts",
-            "Resource": "*"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<<ORGANIZATION_ACCOUNT_ID>>:role/MeshCostExplorerServiceRole"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<<EXTERNAL_ID>>"
         }
-    ]
-}
-```
-<!--Assume Role Policy-->
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::123456789123:role/MeteringRole"
-        }
-    ]
+      }
+    }
+  ]
 }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
