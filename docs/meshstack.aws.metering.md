@@ -10,16 +10,34 @@ The `amortized cost` is used when generating the tenant usage reports.
 
 ## IAM User Configuration
 
+```mermaid
+graph LR;
+    subgraph Organization Account
+        meshfedServiceRole["MeshfedServiceRole"];
+        costExplorerServiceRole["MeshCostExplorerServiceRole"];
+    end
+    subgraph meshcloud Account
+        replicatorUser["ReplicatorUser & AccessKey"];
+        costExplorerUser["CostExplorerUser & AccessKey"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedServiceRole;
+    costExplorerUser--Trusted Entity with External-id-->costExplorerServiceRole;
+    subgraph Automation Account
+        meshfedAutomationRole["MeshfedAutomationRole"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedAutomationRole
+```
+
 ### Policies
 
-In order for meshStack to generate Usage Reports, following policies are required:
+For the purpose of metering, meshStack requires the AWS Access Key and Secret Key of a user created in the `meshcloud` AWS account.
+A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
-1. **Cost Explorer Read Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a fair Chargeback process for those.
-2. **Organization Access Policy**: This policy allows the Metering IAM user to list all accounts in the organization
-3. **Assume Role Policy**: This policy allows Metering IAM user to assume the IAM Role `MeteringRole`
+1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+2. **CostExplorerUser's Assume Role Policy**: This policy allows CostExplorerUser IAM user to assume the IAM Role `MeshCostExplorerServiceRole`
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bucket Access Policy-->
+<!--Organization Account MeshCostExplorerServiceRole's Access Policy-->
 ```json
 {
     "Version": "2012-10-17",
@@ -30,39 +48,38 @@ In order for meshStack to generate Usage Reports, following policies are require
             "Action": [
                 "ce:GetSavingsPlansUtilizationDetails",
                 "ce:GetSavingsPlansUtilization",
+                "ce:GetSavingsPlansCoverage",
                 "ce:GetReservationUtilization",
+                "ce:GetReservationCoverage",
                 "ce:GetDimensionValues",
-                "ce:GetCostAndUsage"
+                "ce:GetCostAndUsage",
+                "organizations:ListAccounts"
             ],
             "Resource": "*"
         }
     ]
 }
 ```
-<!--Organization Access Policy-->
+
+<!--Meshcloud Account CostExplorerUser's Assume Role Policy-->
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "organizations:ListAccounts",
-            "Resource": "*"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<<ORGANIZATION_ACCOUNT_ID>>:role/MeshCostExplorerServiceRole"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<<EXTERNAL_ID>>"
         }
-    ]
-}
-```
-<!--Assume Role Policy-->
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::123456789123:role/MeteringRole"
-        }
-    ]
+      }
+    }
+  ]
 }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -113,12 +130,15 @@ let AwsPlatformKrakenConfiguration =
       , organization-root-account-external-id :
           {- The external ID passed to "sts:AssumeRole" when used in privileged context -}
           Optional Text
-      , data-source :
-          {-
-          Currently both AWS Cost and Usage Reports and AWS Cost Explorer are supported.
-          But AWS Cost and Usage Reports are planned to be deprecated
-          -}
-          ./DataSource.dhall
+      , filter :
+          {- Filter type of NONE and EXCLUDE_TAX are supported. -}
+          FilterType
+      , reservedInstanceFairChargeback :
+          {-Enable fair chargeback for meshCustomer purchased RIs-}
+          Bool
+      , savingsPlanFairChargeback :
+          {-Enable fair chargeback for meshCustomer purchased SPs-}
+          Bool
       }
 ```
 <!--Example-->
@@ -135,20 +155,9 @@ let example
           "arn:aws:iam::123456789123:role/MeteringRole"
       , organization-root-account-external-id = Some
           "abcd1234-12ab-12ab-12ab-abcdef123456"
-      , data-source =
-          DataSource.CostExplorer
-            { cost-explorer =
-              { filter =
-                  {- Filter type of NONE and EXCLUDE_TAX are supported. -}
-                  (./CostExplorer.dhall).FilterType.NONE
-              , reservedInstanceFairChargeback =
-                  {-Enable fair chargeback for meshCustomer purchased RIs-}
-                  True
-              , savingsPlanFairChargeback =
-                  {-Enable fair chargeback for meshCustomer purchased SPs-}
-                  True
-              }
-            }
+      , filter = FilterType.NONE
+      , reservedInstanceFairChargeback = True
+      , savingsPlanFairChargeback = True
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -176,153 +185,4 @@ If you would like to see the AWS costs attributed to a seller in the [chargeback
         "Raven-Java-Type": "io.meshcloud.kraken.core.metering.Product"
     }
 }
-```
-
-## AWS Cost & Usage Report based approach (Deprecated)
-
-meshStack imports metering data from [AWS Cost and Usage Reports](https://aws.amazon.com/aws-cost-management/aws-cost-and-usage-reporting/).
-
-An AWS Cost and Usage Report should be created as specified in the [documentation](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html) with the following properties:
-
-* Daily time granularity
-* gzip compression
-* txt/csv file format
-* Should include resource ids
-* Versioning should be setup to overwrite existing reports
-
-**Note**: If an S3 bucket is not already set up, it should be created as specified in [AWS documentation](https://docs.aws.amazon.com/cur/latest/userguide/cur-s3.html)
-
-The following parameters are required to configure meshStack to process the AWS Cost and Usage Reports [[More Details](#configuration-reference)]:
-
-* AWS credentials that can access the S3 bucket where the reports are written to
-* The name of the S3 bucket where the report is written
-* The region of the S3 bucket
-* The name of the report
-* The "Report path prefix" configured when creating the report
-
-When processing the AWS Cost and Usage Report to generate the Usage Report in the meshPanel,
-
-* You can configure which [line item types](https://docs.aws.amazon.com/cur/latest/userguide/Lineitem-columns.html#l-L)
-should be considered in the calculations. You can also configure whether you want to consider discounts or not.
-We include the following columns in the calculations in order to come up with an amortized cost that should be charged to each account(the discount column is taken only if configured to consider discounts).
-    1. If the line item type is RIFee, we take `reservation/UnusedAmortizedUpfrontFeeForBillingPeriod`, `reservation/UnusedRecurringFee` and `discounts/TotalDiscount` column
-    2. If the line item type is `SavingsPlanRecurringFee` then we take the `discounts/TotalDiscount` column
-    3. For other line item types, we take which ever is available from the columns `savingsPlan/SavingsPlanEffectiveCost`, `reservation/EffectiveCost` and  `lineItem/UnblendedCost` in that order plus the `discounts/TotalDiscount` column
-* Only the line items with [bill type](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html#b-B)
-`Anniversary` are taken into the calculation. In other words, line items with bill type `Purchase` and `Refund` are excluded.
-
-### IAM User Configuration (Cost & Usage Report)
-
-In order for meshStack to process AWS Cost and Usage Reports, following policies are required:
-
-1. **Bucket Access Policy**: This policy allows the Metering IAM user to fetch AWS cost and usage reports
-2. **Organization Access Policy**: This policy allows the Metering IAM user to list all accounts in the organization
-3. **Assume Role Policy**: This policy allows Metering IAM user to assume the IAM Role `MeteringRole`
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Bucket Access Policy-->
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:ListBucket"
-            ],
-            "Resource": [
-                "arn:aws:s3:::my-cur-bucket-name",
-                "arn:aws:s3:::my-cur-bucket-name/*"
-            ]
-        }
-    ]
-}
-```
-<!--Organization Access Policy-->
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "organizations:ListAccounts",
-            "Resource": "*"
-        }
-    ]
-}
-```
-<!--Assume Role Policy-->
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::123456789123:role/MeteringRole"
-        }
-    ]
-}
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-The 3 policies in the previous section should be attached to this role.
-
-In order for the Metering IAM user to assume this role, following trust policy is required:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::123456789123:user/Metering"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {}
-    }
-  ]
-}
-```
-
-### Configuration Example
-
-```dhall
- let example
-  : AwsPlatformKrakenConfiguration
-  = { platform = "aws.aws-location"
-    , region = "eu-central-1"
-    , meshfed-service-user =
-      { access-key = Secret.Native "AWS_ACCESS_KEY_KRAKEN"
-      , secret-key = Secret.Native "AWS_SECRET_KEY_KRAKEN"
-      }
-    , organization-root-account-role =
-        "arn:aws:iam::123456789123:role/MeteringRole"
-    , organization-root-account-external-id = Some
-        "abcd1234-12ab-12ab-12ab-abcdef123456"
-    , data-source =
-        DataSource.CostAndUsageReport
-          { cost-and-usage-report =
-            { name = "my-cur-name"
-            , bucket-name = "my-cur-bucket-name"
-            , bucket-region = "eu-central-1"
-            , report-key-prefix = "/my-cur-prefix"
-            , cost-item-write-batch-size = 10000
-            , max-report-file-processing-retries = 5
-            , report-file-process-retry-delay-millis = 120000
-            , max-bulk-insert-retries = 5
-            , bulk-insert-retry-delay-millis = 5000
-            , cost-item-read-page-size = 2000
-            , apply-discounts = False
-            , reported-line-item-types =
-              [ "DiscountedUsage"
-              , "Fee"
-              , "Usage"
-              , "SavingsPlanCoveredUsage"
-              ]
-            }
-          }
-    }
 ```

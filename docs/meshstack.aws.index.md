@@ -17,9 +17,27 @@ meshStack automatically configures AWS IAM in all managed accounts to integrate 
 
 meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
-* meshCloud Account - `meshfed-service-user` should be created in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
+* meshcloud Account - `meshfed-service-user` (Replicator User) should be created in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
 * Management Account - All accounts created by meshStack reside "under" this account and its Organization Units. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.
 * Automation Account - This account is usually used to host certain CloudFormation templates, provide an Account Vending Machine and is needed to properly setup Landing Zones.
+
+```mermaid
+graph LR;
+    subgraph Organization Account
+        meshfedServiceRole["MeshfedServiceRole"];
+        costExplorerServiceRole["MeshCostExplorerServiceRole"];
+    end
+    subgraph meshcloud Account
+        replicatorUser["ReplicatorUser & AccessKey"];
+        costExplorerUser["CostExplorerUser & AccessKey"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedServiceRole;
+    costExplorerUser--Trusted Entity with External-id-->costExplorerServiceRole;
+    subgraph Automation Account
+        meshfedAutomationRole["MeshfedAutomationRole"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedAutomationRole
+```
 
 ### IAM Roles and Service Control Policies
 
@@ -91,12 +109,7 @@ This `MeshfedServiceRole` should be created in the management account with the f
             "Sid": "StsAccessMemberAccount",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole",
-            "Condition": {
-                "StringEquals": {
-                    "sts:ExternalId": "<<EXTERNAL_ID>>"
-                }
-            }
+            "Resource": "arn:aws:iam::*:role/MeshstackAccountAccessRole"
         },
         {
             "Sid": "OrgManagementAccess1",
@@ -113,7 +126,7 @@ This `MeshfedServiceRole` should be created in the management account with the f
                 "organizations:CreateOrganizationalUnit"
             ],
             "Resource": [
-                "arn:aws:organizations::<<MANGEMENT_ACCOUNT_ID>>:root/o-*/r-*",
+                "arn:aws:organizations::<<MANAGEMENT_ACCOUNT_ID>>:root/o-*/r-*",
                 "arn:aws:organizations::*:ou/o-*/ou-*",
                 "arn:aws:organizations::*:account/o-*/*"
             ]
@@ -651,7 +664,11 @@ The downgraded role will have the following final policy attached (Note that the
     }
 ```
 
-Note that meshStack will continue to maintain this role in the future depending on new features added to the product. Any newly added permissions will be notified via the product release notes.
+As you can see, meshStack has the permissions to upgrade this role if needed. This is to ensure that any new features added to the product will have the required permissions. Any newly added permissions will be notified via the product release notes.
+
+If you prefer that meshStack does not have the capability to upgrade its own role, you can choose to implement your own role downgrade mechanism, for example via a Lambda call, which is also supported by meshLandingZones. In this case the role auto downgrade feature can be disabled.
+
+If you would like to audit the actions taken by this role, you can enable AWS CloudTrail on all the accounts provisioned by meshStack by using an AWS CloudFormation StackSet, which is also supported by meshLandingZones. With the auditing enabled, it will always be possible to identify at which point in time meshStack added additional rights to its role. It will help to easily identify that meshStack was only able to do certain actions given the rights assigned at a certain point in time.
 
 ## Configuration Reference
 
