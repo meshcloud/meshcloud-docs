@@ -12,8 +12,9 @@ without additional effort. That way we can model the complete lifecycle of users
 
 ## Provisioning with SCIM
 
-SCIM clients need to address users and groups in order to manage the creation, updates and deletion. Because they cannot know
-user or group identifiers in advance they will attempt to find a user or group by a unique attribute:
+SCIM clients are the source for users and groups. They need to address users and groups in order to manage the creation,
+updates and deletion. Because they cannot know user or group identifiers in advance they will attempt to find a user or
+group by a unique attribute:
 for users it selects the `userName`, for groups it uses the `displayName`. As a result these fields need to be unique.
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
@@ -75,11 +76,11 @@ PATCH .../api/scim/v2/Groups/d90c1657-63b1-44be-8cdc-e3a8ffc5a7d1
 The SCIM standard introduces comprehensive functionality to work with user and group resources.
 The implementation of meshStack's SCIM API does not support all features of SCIM. Here is a list of current limitations:
 
-- Deletion of users is not supported.
-- Filtering options are reduced:
+- Deletion of users is not supported. Users can be removed as members of groups, but cannot be deleted from meshStack completely.
+- Filtering options to search resources are reduced:
   - For users: only simple equals filters on *one* of the following fields: `id`, `userName`, `externalId`
   - For groups: only simple equals filters on *one* of the following fields: `id`, `displayName`
-- The parameter for excluded attributes is limited:
+- The parameter for excluded attributes in the search endpoints is limited:
   - For users to: `name`, `userName`, `emails`
   - For groups to: `members`, `displayName`
   
