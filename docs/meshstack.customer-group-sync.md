@@ -444,7 +444,10 @@ let example
         { username = "identityconnectorapi"
         , password =
             Secret.Native "EXTERNAL_IDENTITYCONNECTOR_MESH_API_PASSWORD"
-        , authorities = [ Authority.EXTERNAL_MESH_OBJECT_IMPORT ]
+        , authorities =
+          [ Authority.EXTERNAL_MESH_OBJECT_IMPORT
+          , Authority.CUSTOMEROWNER_ASSIGN
+          ]
         }
       }
 ```

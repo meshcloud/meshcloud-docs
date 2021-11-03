@@ -159,25 +159,25 @@ let TenantTags =
         Using a prefix to identify this enables the customer to use own tags on resources which are not touched
         by meshstack.
 
-      tag-definitions[].name:
+      tag-mappers[].key:
         The name of the tag on the target platform. Every platform might have different limitations about the
         tag names.
 
-      tag-definitions[].value-pattern:
+      tag-mappers[].value-pattern:
         Define a pattern which is used to generate the tag value on the platform. Every platform might have different
         limitations about the tag values. For a list about the placeholder you can use please check the meshstack
         documentation. Currently its not possible to use more then one identifier per valuePattern.
     -}
       { namespace-prefix : Text
-      , tag-definitions : List { name : Text, value-pattern : Text }
+      , tag-mappers : List { key : Text, value-pattern : Text }
       }
 ```
 <!--Example-->
 ```dhall
 let example =
         { namespace-prefix = "meshstack_"
-        , tag-definitions =
-          [ { name = "cident", value-pattern = "prefix-\${customerIdentifier}" }
+        , tag-mappers =
+          [ { key = "cident", value-pattern = "prefix-\${customerIdentifier}" }
           ]
         }
       : TenantTags

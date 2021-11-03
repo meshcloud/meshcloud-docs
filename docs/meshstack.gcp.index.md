@@ -185,6 +185,7 @@ let GcpPlatformCoreConfiguration =
           1. meshCustomer identifier
           2. meshProject identifier
           3. meshProject ID (numeric)
+          4. role name suffix (configurable via Landing Zone)
 
       allowHierarchicalFolderAssignment:
         Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
@@ -221,8 +222,8 @@ let example
       , allow-hierarchical-folder-assignment = True
       , tenant-tags =
         { namespace-prefix = "meshstack_"
-        , tag-definitions =
-          [ { name = "cident"
+        , tag-mappers =
+          [ { key = "cident"
             , value-pattern = "prefix-\${customerIdentifier}"
             }
           ]

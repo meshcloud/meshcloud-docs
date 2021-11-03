@@ -1,6 +1,6 @@
 ---
 id: meshstack.azure.index
-title: Integration Guide
+title: Integration
 ---
 
 meshcloud can automatically provision Azure Subscriptions as Tenants for [meshProjects](./meshcloud.project.md) and configure them according to your organiziations policies

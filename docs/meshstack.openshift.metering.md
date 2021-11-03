@@ -37,18 +37,13 @@ let PodResourceTraits =
       status:
         Status phase of this pod. See https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
     -}
-    { milliCpu: Integer
-      , ramMb: Integer
-      , status: Text
-    }
+      { milliCpu : Integer, ramMb : Integer, status : Text }
 ```
 <!--Example-->
 ```dhall
-let example : PodResourceTraits =
-    { milliCpu = +2500
-      , ramMb = +1024
-      , status = "Running"
-    }
+let example
+    : PodResourceTraits
+    = { milliCpu = +2500, ramMb = +1024, status = "Running" }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -70,17 +65,12 @@ let PersistentVolumeClaimResourceTraits =
       storageMb:
         Total Capacity of the Volume, in MiB.
     -}
-    { status: Text
-      , storageClassName: Text
-      , storageMb: Integer
-    }
+      { status : Text, storageClassName : Text, storageMb : Integer }
 ```
 <!--Example-->
 ```dhall
-let example : PersistentVolumeClaimResourceTraits =
-    { status = "Bound"
-      , storageClassName = "slow"
-      , storageMb = +5120
-    }
+let example
+    : PersistentVolumeClaimResourceTraits
+    = { status = "Bound", storageClassName = "slow", storageMb = +5120 }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
