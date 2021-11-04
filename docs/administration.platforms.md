@@ -33,7 +33,10 @@ Add these customers via the *+* button.
 
 ## Manage Quota Definitions
 
-In order to provide quotas to meshTenants, the available quotas have to be defined first. A `Quota Key` that must match the quota key in the platform, can be defined. Additionally a speaking name for the Quota that is shown in meshPanel as well as a description and a unit can be defined. Min and Max values can also be set to restrict the quotas to a certain maximum or minimum. An [Auto Approval Threshold](meshcloud.tenant-quota.md#auto-approval-of-tenant-quota-requests) can also be defined. It can be set to 0, if no auto-approval of quota requests shall be applied.
+In order to provide quotas to meshTenants, the available quotas have to be defined first. A `Quota Key` that must match the quota key in the platform, can be defined. Additionally a speaking name for the Quota that is shown in meshPanel as well as a description and a unit can be defined. Min and Max values can also be set to restrict the quotas to a certain maximum or minimum. An [Auto Approval Threshold](meshcloud.tenant-quota.md#auto-approval-of-tenant-quota-requests) can also be defined. It can be set to 0, if no auto-approval of quota requests shall be applied. 
+
+**Removing Quotas**
+If you want to remove quotas from a platform just click the "-" button on the right side of the table. If removed in the Platform Quota Definition the quotas will be removed from the Landing Zones and tenants under the platform as well. The removal of the quotas from the meshTenants will happen during the next replication precedure.
 
 > Currently only OpenShift is supported for Quota Management
 
