@@ -77,6 +77,7 @@ The SCIM standard introduces comprehensive functionality to work with user and g
 The implementation of meshStack's SCIM API does not support all features of SCIM. Here is a list of current limitations:
 
 - Deletion of users is not supported. Users can be removed as members of groups, but cannot be deleted from meshStack completely.
+- SCIM endpoints on `/ResourceTypes` and `/Schemas` are not supported
 - Filtering options to search resources are reduced:
   - For users: only simple equals filters on *one* of the following fields: `id`, `userName`, `externalId`
   - For groups: only simple equals filters on *one* of the following fields: `id`, `displayName`
@@ -98,6 +99,8 @@ The following guide shows how an AAD can be configured to enable SCIM user and g
 to connect to meshStack you will need a Basic Authentication user with permissions to access the SCIM Api. Please refer
 to the "Authentication" section within the API Docs for the credentials configuration.
 
+### General Setup Steps
+
 To set up the provisioning on AAD side, have a look at [Microsoft's guideline](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal) and please follow these steps:
 
 1. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning.
@@ -110,4 +113,18 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
    2. Sync all users and groups from your AAD.
 4. Limit the scope of users and groups. This is a very important step to make sure that not all users and groups from your directory are synced. Go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters that apply filter rules to whitelist the users / groups to provision. Make sure to have a look at the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
 5. Disable user deletion. This step is required, because meshStack does not yet support user deletion. Go to "Provisioning" -> "Mappings" and then choose the settings for users. Untick the checkbox for "Deletion".
-6. Start the provisioning process and regularly monitor the provisioning logs.
+6. In the Mapping for Users make sure that you have the mappings configured exactly as described in the [user mappings table](#user-mappings-table).
+7. Start the provisioning process and regularly monitor the provisioning logs.
+
+### User Mappings Table
+
+| AAD Attribute                                                 | SCIM app attribute (meshStack)             |
+|---------------------------------------------------------------|--------------------------------------------|
+| userPrincipalName                                             | userName                                   |
+| Switch([IsSoftDeleted], , "False", "True", "True", "False")   | active                                     |
+| displayName                                                   | displayName                                |
+| mail                                                          | emails[type eq "work"].value               |
+| givenName                                                     | name.givenName                             |
+| surname                                                       | name.familyName                            |
+| Join(" ", [givenName], [surname])                             | name.formatted                             |
+| mailNickname                                                  | externalId                                 |
