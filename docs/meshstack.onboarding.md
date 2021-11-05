@@ -45,17 +45,16 @@ let example =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+### Additional Approval Flows
+
 Additional configuration options control backend behavior in `meshfed.web.register` as follows:
 
 ```dhall
 
-{ {- Configure an additional BCC email to receive registration related email notifications (e.g. a group inbox) -}
-  bccEmail: Optional Text
-  {- Allow sign up only if valid payment information was provided during registration  -}
+{ {- Allow sign up only if valid payment information was provided during registration  -}
 , requirePayment : Optional Bool
-  {- Allow generation of invite links (see below) -}
-, allowPartnerInviteLinks : Optional Bool
-  {- Require manual approval of new meshCustomer accounts by a partner before they can use cloud resources -}
+  {- Require manual approval of new meshCustomer accounts by a partner before they can use cloud resources.
+     This is useful when you do not (yet) want your customers to onboard in self-service. -}
 , approvalRequired : Optional Bool
 }
 ```
@@ -63,9 +62,6 @@ Additional configuration options control backend behavior in `meshfed.web.regist
 Additional remarks and configuration links:
 
 - `requirePayment` must be consistently configured between `panel` and `meshfed` configuration settings. The configuration model validates this.
-- `allowPartnerInviteLinks` enables the use of [invite links](administration.customers.md#invite-customer-via-link)
-- `approvalRequired` configures manual [customer approval](./administration.customers.md#approve-customer) through a partner
-
 
 ### Default Quotas
 
