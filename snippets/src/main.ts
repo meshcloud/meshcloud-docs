@@ -5,6 +5,7 @@ import * as path from 'path';
 import * as process from 'process';
 
 import { snippets } from './extract';
+import { sanityCheck } from './sanity-check';
 import { SnippetRepository } from './SnippetRepository';
 import { SnippetsRenderer } from './SnippetsRenderer';
 import { update } from './update';
@@ -34,10 +35,12 @@ async function buildSnippetCache(srcGlob: string, repo: SnippetRepository) {
 export async function updateSnippets(srcPath: string, repo: SnippetRepository, renderer: SnippetsRenderer) {
   const content = await fs.promises.readFile(srcPath, 'utf8');
 
+  sanityCheck(content);
+
   const updatedContent = await update(content, repo, renderer);
 
   if (updatedContent !== content) {
-    console.log(`- updating snippet referenes in: ${srcPath}`);
+    console.log(`- updating snippet references in: ${srcPath}`);
     await fs.promises.writeFile(srcPath, updatedContent, 'utf8');
   }
 }
@@ -83,14 +86,14 @@ async function main(): Promise<number> {
   createSnippetCacheDir(snipsPath);
 
   if (src) {
-    const absoluteSrc = await path.resolve(src);
-    const absoluteSrcGlob = await path.join(absoluteSrc, srcGlob);
+    const absoluteSrc = path.resolve(src);
+    const absoluteSrcGlob = path.join(absoluteSrc, srcGlob);
     await buildSnippetCache(absoluteSrcGlob, repo);
   }
 
   if (docs) {
-    const absoluteDocs = await path.resolve(docs);
-    const absoluteDocsGlob = await path.join(absoluteDocs, docsGlob);
+    const absoluteDocs = path.resolve(docs);
+    const absoluteDocsGlob = path.join(absoluteDocs, docsGlob);
     await updateDocsSnippets(absoluteDocsGlob, repo);
   }
 
