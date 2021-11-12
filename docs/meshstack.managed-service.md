@@ -49,22 +49,17 @@ Instead, customers need to provide a manual approval or gating process before up
 
 ### Versioning
 
-All meshStack releases have a version number based on the schema `$year.$version.$patch`:
+All meshStack releases have a version number based on the schema `$major.$minor.$patch`:
 
-- `$year` is a number that indicates the year of the feature release.
-- `$version` is a number that increments with every **feature release**. Feature releases can contain new functionality and introduce non-backwards compatible changes.
+- `$major` is a number that increments with every **major release** or a **breaking change**. These type of releases not done frequently but they might happen every once in a while.
+- `$minor` is a number that increments with every **feature release**. Feature releases can contain new functionality and introduce non-backwards compatible changes.
 - `$patch` is a number that increments with every **patch release**. Patch releases provide fixes or minor improvements for existing functionality. Patch releases always refer to a particular feature release (i.e. they are backwards compatible to that release – except, potentially, for bug fixing) and do not introduce new functionality.
 
 All releases contain [release notes](/blog) describing the changes to the product in the respective release.
 
-> Note: meshStack used a [semantic versioning](https://semver.org/) scheme up until version 7.14.
-> However, meshStack is made up of many different components that can change independently. meshcloud therefore adopted
-> a simplified versioning scheme for meshStack while simultaneously introducing semantic versioning for individual meshStack components
-> like our APIs.
-
 #### Versioning Example
 
-`2020.7.0` indicates the 7th **feature release** of meshStack released in 2020. This release may be followed by a **patch release** `2020.7.1`, which indicates the 1st patch release for the `2020.7` feature release. Note that a patch release usually has a release date later than subsequent feature releases. However, this does not change the `$year.$version` portion of the version number as it always refers to the original feature release.
+`7.90.0` indicates the 7th **major release** of meshStack released, with the 90th **minor** release. This release may be followed by a **patch release** `7.90.1`, which indicates the 1st patch release for the `7.90` minor release. Note that a patch release usually has a release date later than subsequent minor or major releases. However, this does not change the `$major.$minor` portion of the version number as it always refers to the original major/minor release.
 
 #### Supported Versions
 
