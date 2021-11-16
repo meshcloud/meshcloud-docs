@@ -113,7 +113,7 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
    2. Sync all users and groups from your AAD.
 4. Limit the scope of users and groups. This is a very important step to make sure that not all users and groups from your directory are synced. Go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters that apply filter rules to whitelist the users / groups to provision. Make sure to have a look at the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
 5. Disable user deletion. This step is required, because meshStack does not yet support user deletion. Go to "Provisioning" -> "Mappings" and then choose the settings for users. Untick the checkbox for "Deletion".
-6. In the Mapping for Users make sure that you have the mappings configured exactly as described in the [user mappings table](#user-mappings-table).
+6. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table). Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
 7. Start the provisioning process and regularly monitor the provisioning logs.
 
 ### User Mappings Table
@@ -127,4 +127,4 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 | givenName                                                     | name.givenName                             |
 | surname                                                       | name.familyName                            |
 | Join(" ", [givenName], [surname])                             | name.formatted                             |
-| mailNickname                                                  | externalId                                 |
+| Attribute which is used as euid in your meshStack             | externalId                                 |
