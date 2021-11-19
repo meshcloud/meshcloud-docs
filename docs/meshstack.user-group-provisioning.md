@@ -99,13 +99,13 @@ Assignment of global groups to meshCustomers and meshProjects within the meshPan
 
 The following guide shows how an AAD can be configured to enable SCIM user and group provisioning to meshStack. In order
 to connect to meshStack you will need a Basic Authentication user with permissions to access the SCIM Api. Please refer
-to the "Authentication" section within the API Docs for the credentials configuration.
+to the [Authentication](https://docs.meshcloud.io/api/#authentication) section within the API Docs for the credentials configuration.
 
 ### General Setup Steps
 
 To set up the provisioning on AAD side, have a look at [Microsoft's guideline](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal) and please follow these steps:
 
-1. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning.
+1. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning. A step-by-step guide is available [here](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started).
 2. In the EA set up the meshStack endpoint as target API:
    1. Go to the "Provisioning" section and then to "Admin Credentials"-
    2. Use your meshStack's URL as endpoint: `<meshStack>/api/scim/v2/`.
@@ -114,8 +114,11 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
    1. Sync only users and groups that are assigned to your EA.
    2. Sync all users and groups from your AAD.
 4. Limit the scope of users and groups. This is a very important step to make sure that not all users and groups from your directory are synced. Go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters that apply filter rules to whitelist the users / groups to provision. Make sure to have a look at the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
+    - Add filter rules by navigating to the `Attribute Mapping`, then go to `Source Object Scope` and select `Add scoping filter`. This applies for both groups and users.
+    ![assets/aad_provisioning_scim/scim_source_object_scope.png](assets/aad_provisioning_scim/scim_source_object_scope.png)
+
 5. Disable user deletion. This step is required, because meshStack does not yet support user deletion. Go to "Provisioning" -> "Mappings" and then choose the settings for users. Untick the checkbox for "Deletion".
-6. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table). Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
+6. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table) and remove all other mappings. Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
 7. Start the provisioning process and regularly monitor the provisioning logs.
 
 ### User Mappings Table
