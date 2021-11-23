@@ -165,9 +165,9 @@ let example
 
 ## Reviewing Metering Data
 
-Metering & Usage information for Serivce Owners is available for your Service Brokers from the "Marketplace Development" area in your customer Account.
+Metering & Usage information for Service Owners is available for your Service Brokers from the "Marketplace" tab in your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer).
 
-You see a list of all plans  of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per Marketplace you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
+You see a list of all plans of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per Marketplace you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
 
 The screen provides you with information about:
 

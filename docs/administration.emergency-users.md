@@ -19,8 +19,8 @@ If a user with [customer admin](meshcloud.customer.md) access is available, mesh
 First, the user requiring emergency access must be invited to the meshCustomer
 
 - Ensure that the correct meshCustomer is selected
-- Open "Account" from the settings menu in the top right
-- Navigate to "Users" and create an invitation
+- Open the "Access Control" tab in the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) and open the "Current Access" tab. 
+- At the bottom of the screen, type in the name or e-mail of the new user and invite them with the desired role.
   
 You can also grant customer admin rights to the newly invited user, i.e. if the emergency user needs to modify other user permissions. In this case, the new user can perform the following steps themselves.
 
@@ -28,9 +28,9 @@ You can also grant customer admin rights to the newly invited user, i.e. if the 
 
 The user can then be assigned to meshProjects belonging to the meshCustomer:
 
-- Open "Account" from the settings menu in the top right
-- Navigate to "Projects" and select "Edit Project" from the actions column for the correct project
-- Add user to desired project role
+- In the project overview in the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer), open the designated project by clicking on its name.
+- Navigate to the "Access Control" tab and open the "Current Access" tab.
+- Add the user with the desired project role.
 
 Since emergency access should only be temporary, it's strongly advised to assign the user a role with a [set expiration date](./meshcloud.project.md#expiry-of-a-user-assignment) which will ensure that the user is automatically removed from the meshProject after the specified date.
 
@@ -47,8 +47,8 @@ User project role assignments can be configured to require consent from multiple
 
 When emergency access is no longer required the following steps will revert performed  changes:
 
-- Remove user from meshProject via Account → Projects → Edit Project (performed automatically if expiration date was set)
-- Remove user from meshCustomer via Account → Users
+- Remove user from meshProject by opening the project again and navigating to "Access Control" → "Current Access" (performed automatically if expiration date was set)
+- Remove user from meshCustomer via the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer): go to "Access Control" → "Current Access".
 
 ## Access with meshPartner
 
@@ -71,7 +71,7 @@ Afterwards they may proceed to manage users for this meshCustomer as a customer 
 ### Removing emergency user as meshPartner
 
 Since the meshPartner user is now a customer admin the procedure is the same as outlined in the previous section.
-However, to revert the temporary customer admin role assignment, another customer admin must remove the partner user from the customer via Account → Users.
+However, to revert the temporary customer admin role assignment, another customer admin must remove the partner user from the customer via "Access Control" → "Current Access".
 
 ## Access Through Service Users
 

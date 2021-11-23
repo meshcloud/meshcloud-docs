@@ -14,15 +14,22 @@ the process to some existing ITSM or process automation system. Operators can re
 In any case, the meshCustomer creation process always involves collecting basic customer information like name, identifier
 and any additional [metadata specific to your organization](meshstack.metadata-tags.md#customer-tag-schema).
 
-## Customer Settings
+## Managing your meshCustomer
 
-General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
+Every aspect of your meshCustomer can be managed in the so-called [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). This customer control plane looks like the screenshot below.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.metadata-tags.md) here.
+![Customer Control Plane User Interface](assets/customer-control-plane.png)
+
+General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited under the "Settings" tab.
+The customer identifier is also shown here, but it can never be changed,
+as it is used as an immutable identifier of the meshCustomer for its
+representation in the different cloud platforms. You are however able to change the display name of the meshCustomer.
+
+If configured by your Cloud Foundation team, you may also be able to edit additional customer [metadata tags](./meshcloud.metadata-tags.md) in the Settings Tab.
 
 ## Invite users to a meshCustomer team
 
-If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings.
+If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Access Control" tab.
 You can access them by pressing the settings icon on the top right of the meshPanel.
 From here, navigate to "Access Control". Here you can invite users or groups to the meshCustomer.
 You can search for users via first & last name, email and username. The users that can be found via
@@ -43,7 +50,7 @@ If 4 eyes-principle is active, the user or group will not be assigned directly t
 
 For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshCustomer. User groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-anagement-on-a-meshproject) in the same way as for usual users.
 
-You can view user groups within your customer account by going to the **Groups** section in the **Account** area.
+You can view user groups within your customer account by going to the **Groups** section in the **Access Control** tab.
 Currently, creating a group is only supported via [meshObject API](meshstack.api.md).
 
 ## Assign meshCustomer Roles
@@ -101,7 +108,7 @@ meshCustomer roles grant rights in meshStack only. In order to access cloud reso
 
 ## Remove assigned meshCustomer Roles
 
-If you would like to remove a user or group from your meshCustomer go to your "Account" settings and select "Customer Access". You can click the "trash" icon in the "Customer Access" section to remove the user or group from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the Pending Role Requests section. When removing someone from the meshCustomer, the user or group is automatically removed from all projects it had access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshCustomer was revoked.
+If you would like to remove a user or group from your meshCustomer go to the "Access Control" tab and select "Current Access". You can click the "trash" icon in the "Current Access" section to remove the user or group from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshCustomer, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshCustomer was revoked.
 
 ## Customer Deletion
 

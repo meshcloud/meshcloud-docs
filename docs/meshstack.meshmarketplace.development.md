@@ -9,7 +9,7 @@ You can provide your service (e.g. databases, message brokers, filesystems, etc)
 
 ## Marketplace Development
 
-You can find the **Marketplace Development** in your meshCustomer Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace Development** in your [meshCustomer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer). Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
@@ -54,7 +54,7 @@ The Analytics functionality for Service Owners is available to Customer Admins, 
 
 ### Reviewing failed Service Instances
 
-From the meshCustomer Account area, you can access an overview of all failed service instances of your service brokers under the "Failed Instances" menu entry. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+From the [meshCustomer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer), you can access an overview of all failed service instances of your service brokers under the "Failed Instances" subpage which can be found under the "Marketplace" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
 
 ### Service Communication Logs
 
