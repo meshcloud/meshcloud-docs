@@ -222,8 +222,8 @@ let example
       , allow-hierarchical-folder-assignment = True
       , tenant-tags =
         { namespace-prefix = "meshstack_"
-        , tag-definitions =
-          [ { name = "cident"
+        , tag-mappers =
+          [ { key = "cident"
             , value-pattern = "prefix-\${customerIdentifier}"
             }
           ]

@@ -1,6 +1,6 @@
 ---
 id: meshstack.azure.index
-title: Integration Guide
+title: Integration
 ---
 
 meshcloud can automatically provision Azure Subscriptions as Tenants for [meshProjects](./meshcloud.project.md) and configure them according to your organiziations policies
@@ -109,7 +109,10 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Resources/tags/write",
 
 # Permission we need to activate/register required Resource Providers
-"*/register/action"
+"*/register/action",
+
+# Rename pre-provisioned subscriptions, not required for Enterprise Enrollment
+"Microsoft.Subscription/rename/action"
 ```
 
 You must must grant the meshcloud Service Principal this level access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
@@ -240,7 +243,7 @@ The following additional information to the required REST call parameters mentio
 | -------------------------------------- | ------------------------------------------------ |
 | `billingRoleAssignmentName` in the URL | **Must** be a random UUID you can freely choose. |
 | `properties.principalTenantId`         | The `aadtenant` value from above.               |
-| `properties.principalId`               | The `objectId` from above.                       |
+| `properties.principalId`               | The `objectId` of the **enterprise application**. This is **not** the same id as the object id as of the app registration.                 |
 
 The complete set of Azure documentation to complete this task can be found here:
 

@@ -22,8 +22,6 @@ You can configure these options in `meshfed.web.restriction` as follows:
     Optional Natural
 , projectIdentifierPrefix :
     Optional Text
-, projectNamePrefix :
-    Optional Text
 , envIdentifier :
     Optional Text
 }

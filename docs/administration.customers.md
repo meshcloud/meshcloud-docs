@@ -25,18 +25,13 @@ With meshcloud you can easily create customer accounts.
 
 After creation, a customer account contains no users yet. Therefore you need to [access the created customer account](#access-managed-customer-accounts) and add other users to the newly created account.
 
-### Share a Customer Registration Link
-
-If you want to have newly registered customers directly assigned to your administration account you can create an invitation link. If a new user registers with this link his customer account will be directly added to your administrator account and you will save some manual invitation steps afterwards. This feature must be enabled by the operator. To use it perform the following steps:
-
-1. Login to the meshPanel with your credentials.
-2. Navigate to the **Administration** area via the toolbox on the top right, then click on **Customers** in the menu.
-3. In the **Actions** column click on the **Invitation Link** button (it is only visible if it is enabled by the operator).
-4. Copy the link and give it to the people who should register a new customer.
-
 ### Approve new Customer Accounts
 
-A meshStack installation can be configured to require a manual approval by a partner/admin for new meshCustomer registrations. Users who register receive an email notifying them, that their account is currently being verified. As soon as a partner/admin approves the request, they receive another email. This email informs users, that they are now approved and can start working with the cloud resources. Dependend on the configuration, users may also have to confirm their email address via a confirmation link, that is available in the second email.
+A meshStack installation can be [configured](./meshstack.onboarding.md#additional-approval-flows) to require a manual approval by a partner user
+for new meshCustomer registrations. Users who register receive an email notifying them
+that their account is currently being verified. As soon as a partner user approves the
+request, they receive another email. This email informs users, that they are now approved
+and can start creating [meshProjects](./meshcloud.project.md).
 
 ## Manage Customer Accounts
 

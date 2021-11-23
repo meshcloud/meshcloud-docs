@@ -88,13 +88,7 @@ let example =
 
 ### Role Request Approval
 
-In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest` as follows:
-
-```dhall
-{ minApprovalCount = Some 2
-, enforceUserAcceptanceRequired = Some True
-}
-```
+In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest`. See the [role request configuration reference](meshstack.onboarding.md#customer-user-invitations) for details.
 
 If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to customer administrators who then can accept or decline such a request.
 
@@ -104,6 +98,8 @@ If the `minApprovalCount` option is set to 2 or higher upon adding a project rol
 </figure>
 
 New project role requests must be approved before the binding is created. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for an access request. This ensures that a _different_ customer admin must register the 2nd approval before the binding is created.
+
+> Note: if you make a role request on behalf of another customer admin, that user (or another customer admin) still has to approve or reject this request. This is intentional behavior to make users aware of any role changes done on their behalf.
 
 Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests. In case of a customer user group, all users of the group are informed.
 
@@ -117,7 +113,8 @@ Its recommended to configure a warning to be shown to the user if this happens s
 { show4EyePrincipleWarning = Some True }
 ```
 
-It's currently not possible to configure required approval for removal of role bindings.
+It's not possible to configure required approval for removal of role bindings. Removal of role bindings
+do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 

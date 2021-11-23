@@ -27,3 +27,16 @@ Future audits of these users' actions will thus still be possible. Furthermore, 
 ## Download User information
 
 To retrieve detailed information about which systems under meshStack management contain a user's personal information, just click the disc icon in the user list and a file containing this information will be downloaded.
+
+## Guest Users
+
+It's possible to flag meshUsers as "guest users". Guest users are intended for scenarios where a cloud foundation team wants to manage permissions for  external users via meshStack.
+A common scenario where this occurs is when you organization collaborates with external partners on cloud projects and these partners "bring their own" indentities.
+
+Guest users have the following properties
+
+- They are not expected or unable to sign in via the configured Enterprise  [Identity Provider](./meshstack.identity-provider.md).
+- Guest users are not able to login to meshPanel. It's sufficient for guest users to access any assigned cloud tenants directly via the cloud platform.
+- Guest users do not receive email notifications from meshStack, e.g. about changed role assignments
+- Guest users have an `euid`, see [configuring externally-provisioned identities](./meshstack.identity-federation.md#configuring-externally-provisioned-identity-federation).
+- Guest user identities are available in the cloud platform's IAM directory with an `euid`, e.g. via AAD B2B or disabling domain restricted sharing on GCP
