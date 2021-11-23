@@ -13,7 +13,7 @@ Log on to the Meshpanel with your account credentials and press `Create`. Type i
 
 ## Manage meshProjects
 
-In your **Account** section under **Projects** all meshProjects of your meshCustomer are listed. You find the **Account** section by pressing the settings icon on the top right of the meshPanel. You can execute administrative actions on your meshProjects from the **Projects** section. To edit a project, click the **pen** icon in the **Actions** column of the meshProject list. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
+In your [Customer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer) under **Projects** all meshProjects of your meshCustomer are listed. To manage a project, click the name of the meshProject. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
 
 The following diagram shows how access rights and project [replication](./meshcloud.tenant.md) result in the correct project access for your users.
 
@@ -75,7 +75,7 @@ In the **Project Access** section you can click the `-` button in the row of a u
 
 ## Delete a meshProject
 
-If you would like to delete a project which is no longer used, go to your **Account** settings. Navigate to **Projects** and click the button with the trash icon.
+If you would like to delete a project which is no longer used, open the corresponding project and navigate to "Settings > Danger Zone". In this screen you can execute the project deletion.
 
 The deletion procedure depends on the variaty of meshTenants under the project:
 

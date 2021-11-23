@@ -46,7 +46,7 @@ You can also enter an optional comment regarding the deletion which is limited t
 The "Deleted in platforms on" column shows the time when the background process completed the project deletion successfully.
 
 If you choose to decline the project deletion, you can do so by clicking on the decline button. You have to enter the project identifier to confirm that you decline the deletion.
-You can also enter an optional reason for deletion which is limited to 255 characters. Once you decline the deletion, the project will be available in the **Projects** section under the **Account** of the meshCustomer.
+You can also enter an optional reason for deletion which is limited to 255 characters. If you decline the deletion, the project will be available again in the **Projects** section of the meshCustomer.
 
 You also have to consider limitations described [here](meshstack.tenants.md).
 

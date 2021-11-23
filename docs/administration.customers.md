@@ -17,13 +17,11 @@ With meshcloud you can easily create customer accounts.
 
 1. Login to the meshPanel with your partner credentials.
 2. If not logged in, please login with your Partner account credentials.
-3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account selection on the top left.
-4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left.
-5. There is a button `+ Create Customer` on the top-right of the toolbar. After clicking the button, a dialog box will open and prompt for entering the name and identifier of the new customers as well as the user who owns the customer. An additional owner may be added in the Account area - Access Control page.
+3. On the toolbar at the top, please make sure that you have navigated into the 'Admin Area'.
+4. Select **Customers** in the menu bar on the left.
+5. There is a button `+ Create Customer` on the top-right of the table. After clicking the button, you will be navigated to the customer creation screen. Here you can enter the name and identifier of the new customer as well as the user(s) that should be assigned to the customer. Keep in mind that you are able to configure restricted tags, this is not possible for non-partner users.
 
-> **Attention**: The identifiers can not be changed. Please choose them carefully.
-
-After creation, a customer account contains no users yet. Therefore you need to [access the created customer account](#access-managed-customer-accounts) and add other users to the newly created account.
+> **Attention**: Identifiers can not be changed. Please choose them carefully.
 
 ### Approve new Customer Accounts
 
@@ -34,10 +32,6 @@ request, they receive another email. This email informs users, that they are now
 and can start creating [meshProjects](./meshcloud.project.md).
 
 ## Manage Customer Accounts
-
-### Update Account Status
-
-Partner users can update the status of meshCustomer accounts by clicking the `Edit` in the status column.
 
 #### Disabling Customer Accounts
 
