@@ -19,7 +19,7 @@ for users it selects the `userName`, for groups it uses the `displayName`. As a 
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
-**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified playes a huge role on the load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via support@meshcloud.io.
+**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified playes a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via support@meshcloud.io.
 
 ### Example
 
