@@ -33,7 +33,7 @@ and can start creating [meshProjects](./meshcloud.project.md).
 
 ## Manage Customer Accounts
 
-#### Disabling Customer Accounts
+### Disabling Customer Accounts
 
 Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
