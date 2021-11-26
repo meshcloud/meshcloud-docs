@@ -19,7 +19,7 @@ If a user with [customer admin](meshcloud.customer.md) access is available, mesh
 First, the user requiring emergency access must be invited to the meshCustomer
 
 - Ensure that the correct meshCustomer is selected
-- Open the "Access Control" tab in the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) and open the "Current Access" tab. 
+- Open the "Access Control" tab in the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) and open the "Current Access" tab.
 - At the bottom of the screen, type in the name or e-mail of the new user and invite them with the desired role.
   
 You can also grant customer admin rights to the newly invited user, i.e. if the emergency user needs to modify other user permissions. In this case, the new user can perform the following steps themselves.
