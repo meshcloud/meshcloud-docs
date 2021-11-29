@@ -298,22 +298,23 @@ let AwsSso =
         The SCIM endpoint you can find in you AWS SSO Automatic provisioning config.
       arn:
         The ARN of your AWS SSO Instance.
-      group-name-pattern:
-          Configures the pattern that defines the desired name of AWS SSO groups managed by meshStack.
-          This Java String.format format string receiving the following arguments:
 
-            1. meshCustomer identifier
-            2. meshProject identifier
-            3. meshProject ID (numeric)
-            4. role name suffix (configurable via Landing Zone)
+      group-name-pattern:
+        Configures the pattern that defines the desired name of AWS SSO groups managed by meshStack.
+        It follows the usual string pattern features and provides the additional replacement:
+
+          1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
 
           Operators must ensure the group names will be unique within the same AWS SSO Instance with that
-          configuration. meshStack will additionaly prefix the group name with "mst-" to be able to identify
+          configuration. meshStack will additionally prefix the group name with "mst-" to be able to identify
           the groups that are managed by meshStack.
+
       sso-access-token:
         The AWS SSO Access Token that was generated via the Automatic provisioning config in AWS SSO.
+
       sign-in-url:
         The AWS SSO Sign Url, that must be used by end-users to log in via AWS SSO to AWS Management Console.
+
       role-mappings:
         Defines the mapping of a meshProject role to an AWS SSO PermissionSet. The mapKey is the identifier of
         meshProject role. The aws-role-name will be used in the group name. The permission-set-arns will be
@@ -339,7 +340,8 @@ let example
     = { scim-endpoint =
           "https://scim.eu-central-1.amazonaws.com/xxxxx-xxxx-xxxx-xxxx/scim/v2/"
       , arn = "arn:aws:sso:::instance/ssoins-123456789"
-      , group-name-pattern = "%s.%s.%4\$s"
+      , group-name-pattern =
+          "\${customerIdentifier}.\${projectIdentifier}.\${platformGroupAlias}"
       , sso-access-token = Secret.fromEnv "AWS_SSO_ACCESS_TOKEN"
       , sign-in-url = "https://meshcloud-dev.awsapps.com/start"
       , role-mappings =

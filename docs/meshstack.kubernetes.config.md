@@ -83,6 +83,14 @@ let Aks =
       aksSubscriptionId:
         Azure Subscription ID that contains the AKS Cluster.
 
+      aksResourceGroup:
+        The name of the resource group the AKS cluster is placed in.
+        Required to redirect users from meshPanel directly into their AKS cluster.
+
+      aksClusterName:
+        The name of the AKS cluster. Required to redirect users from meshPanel directly
+        into their AKS cluster.
+
       redirectUrl:
         If users are invited (to get permissioned on the AKS cluster) into the AAD this is the invitation
         redirect link they see in their invitation mail (same as in the Azure platform configuration).
@@ -96,6 +104,8 @@ let Aks =
     -}
       { groupNamePattern : Text
       , aksSubscriptionId : Text
+      , aksResourceGroup : Text
+      , aksClusterName : Text
       , redirectUrl : Text
       , sendAzureInvitationMail : Bool
       , servicePrincipal : ServicePrincipal
@@ -107,6 +117,8 @@ let example
     : Aks
     = { groupNamePattern = "aks-%s.%s-%4\$s"
       , aksSubscriptionId = "1234-1234-1234-1234"
+      , aksClusterName = "aks-meshcloud-dev"
+      , aksResourceGroup = "aks-meshcloud-dev"
       , redirectUrl = "https://example.com"
       , sendAzureInvitationMail = False
       , servicePrincipal =
