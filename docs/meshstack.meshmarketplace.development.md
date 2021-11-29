@@ -7,6 +7,8 @@ You can provide your own services in the [meshMarketplace](marketplace.index.md)
 only available for [Customer Admins](meshcloud.customer.md#manage-groups-of-assigned-users).
 You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
 
+meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
+
 ## Marketplace Development
 
 You can find the **Marketplace Development** in your [meshCustomer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer). Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
@@ -18,7 +20,7 @@ Registering your Service Broker does not publish your Service Broker directly fo
 You can register your service broker via the **Register Service Broker** button. The following information must be provided for this:
 
 - **Name**: Give a name to the service broker you want to register. It is mainly used as a display name for your administrative Screens.
-- **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs. Choose wisely as *this identifier cannot be changed later* on.
+- **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs by meshStack. Choose wisely as *this identifier cannot be changed later* on. We advise to use meaningful and expressive names.
 - **Endpoint**: Root URL to your Service Broker's API endpoint. It must start with "http(s)://". Below this API endpoint the **/v2/catalog** endpoint must be available, as described in the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
 - **Basic Auth Username**: Communication between the meshMarketplace and your Service Broker is secured via HTTP Basic Auth. Therefore username and password have to be defined here, so the meshMarketplace can authenticate successfully to your Service Broker. Enter the username for HTTP Basic Auth here. The username can be changed at any time.
 - **Basic Auth Password**: Enter the password for your HTTP Basic Auth. A set password will never be shown to you again. This password will be stored encrypted in the database. You can set a new password at any time. No restrictions regarding the characters used in your password are applied. Please be sure to always use a secure password!
