@@ -50,12 +50,9 @@ let AzurePlatformCoreConfiguration =
 
       group-name-pattern:
         Configures the pattern that defines the desired name of AAD groups managed by meshStack.
-        This Java String.format format string receiving the following arguments:
+        It follows the usual string pattern features and provides the additional replacement:
 
-          1. meshCustomer identifier
-          2. meshProject identifier
-          3. meshProject ID (numeric)
-          4. role name suffix (configurable via Landing Zone)
+          1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
 
         Operators must ensure the group names are unique in the managed AAD Tenant.
     -}
@@ -73,7 +70,8 @@ let example
       -- and group names like "customer.project-reader"
       { platform = "azure.mylocation"
       , subscription-name-pattern = "%s.%s"
-      , group-name-pattern = ".%s.%s-%4\$s"
+      , group-name-pattern =
+          "\${customerIdentifier}.\${projectIdentifier}-\${platformGroupAlias}"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

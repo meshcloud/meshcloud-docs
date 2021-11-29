@@ -218,7 +218,8 @@ let example
       , billing-account-id = "123456-1234ABCD-1234FF"
       , project-name-pattern = "%.14s %.15s"
       , project-id-pattern = "%.15s-%.10s-%.3s"
-      , group-name-pattern = "%s.%s-%4\$s"
+      , group-name-pattern =
+          "\${customerIdentifier}.\${projectIdentifier}-\${platformGroupAlias}"
       , allow-hierarchical-folder-assignment = True
       , tenant-tags =
         { namespace-prefix = "meshstack_"
