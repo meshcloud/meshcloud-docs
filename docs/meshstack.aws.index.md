@@ -301,13 +301,15 @@ let AwsSso =
 
       group-name-pattern:
         Configures the pattern that defines the desired name of AWS SSO groups managed by meshStack.
-        It follows the usual string pattern features and provides the additional replacement:
+        It follows the usual replicator string pattern features and provides the additional replacement:
 
           1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
 
-          Operators must ensure the group names will be unique within the same AWS SSO Instance with that
-          configuration. meshStack will additionally prefix the group name with "mst-" to be able to identify
-          the groups that are managed by meshStack.
+        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
+
+        Operators must ensure the group names will be unique within the same AWS SSO Instance with that
+        configuration. meshStack will additionally prefix the group name with "mst-" to be able to identify
+        the groups that are managed by meshStack.
 
       sso-access-token:
         The AWS SSO Access Token that was generated via the Automatic provisioning config in AWS SSO.
