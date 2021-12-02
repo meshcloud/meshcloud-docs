@@ -40,19 +40,17 @@ let AzurePlatformCoreConfiguration =
 
       subscriptionNamePattern:
         Configures the pattern that defines the desired name of Azure Subscriptions managed by meshStack.
-        This Java String.format format string receiving the following arguments:
-
-          1. meshCustomer identifier
-          2. meshProject identifier
-          3. meshProject ID (numeric)
+        It follows the usual replicator string pattern features.
 
         Operators must ensure the resulting Subscription names are unique in the managed AAD Tenant.
 
       group-name-pattern:
         Configures the pattern that defines the desired name of AAD groups managed by meshStack.
-        It follows the usual string pattern features and provides the additional replacement:
+        It follows the usual replicator string pattern features and provides the additional replacement:
 
           1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
+
+        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
 
         Operators must ensure the group names are unique in the managed AAD Tenant.
     -}
@@ -69,7 +67,8 @@ let example
       -- creates subscription names like "customer.project"
       -- and group names like "customer.project-reader"
       { platform = "azure.mylocation"
-      , subscription-name-pattern = "%s.%s"
+      , subscription-name-pattern =
+          "\${customerIdentifier}.\${projectIdentifier}"
       , group-name-pattern =
           "\${customerIdentifier}.\${projectIdentifier}-\${platformGroupAlias}"
       }

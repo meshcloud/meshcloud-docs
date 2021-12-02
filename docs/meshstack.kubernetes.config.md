@@ -71,14 +71,11 @@ let Aks =
       groupNamePattern:
         Users need a cluster access permission in Azure in order to get credentials. This property defines
         how the name of this AAD group is chosen.
-        It consists of a Java String.format() format string, receiving the following arguments:
+        All the usual available replicator string template properties are available
+        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating) together
+        with the additional property:
 
-          1. meshCustomer identifier
-          2. meshProject identifier
-          3. meshProject ID (numeric)
-          4. role name suffix (configurable via Landing Zone)
-          5. platform identifier
-          6. location identifier.
+          1. platformGroupAlias (configurable via Landing Zone and can be used as a role name suffix)
 
       aksSubscriptionId:
         Azure Subscription ID that contains the AKS Cluster.

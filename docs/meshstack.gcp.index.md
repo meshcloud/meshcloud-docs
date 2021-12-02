@@ -163,29 +163,25 @@ let GcpPlatformCoreConfiguration =
         The id of the billing account to associate with all GCP projects managed by meshStack
 
       projectNamePattern:
-        A String.format format string receiving the following arguments:
-          1. meshCustomer identifier
-          2. meshProject identifier
+        All the usual available replicator string template properties are available.
+        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
         The result must be 4 to 30 characters.
-        Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
-        single-quote, double-quote, space, and exclamation point.
+        Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
+        and exclamation point.
         When length restrictions are applied, the abbreviation will be in the middle and marked by a single-quote
 
       projectIdPattern:
-        A String.format format string receiving the following arguments:
-          1. meshCustomer identifier
-          2. meshProject identifier
-          3. a random alphanumeric string suitable as a suffix
+        All the usual available replicator string template properties are available.
         The resulting string must not exceed a total length of 30 characters. Only alphanumeric + hyphen are allowed.
         We recommend that configuration include at least 3 characters of the random parameter to reduce the chance of
         naming collisions.
 
       groupNamePattern:
-        A String.format format string receiving the following arguments:
-          1. meshCustomer identifier
-          2. meshProject identifier
-          3. meshProject ID (numeric)
-          4. role name suffix (configurable via Landing Zone)
+        All the usual available replicator string template properties are available.
+        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
+        The additional property is available:
+
+          1. platformGroupAlias (configurable via Landing Zone and can be used as a role name suffix)
 
       allowHierarchicalFolderAssignment:
         Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
@@ -216,8 +212,10 @@ let example
       , domain = "myorg.example.com"
       , customer-id = " Cxxxx123"
       , billing-account-id = "123456-1234ABCD-1234FF"
-      , project-name-pattern = "%.14s %.15s"
-      , project-id-pattern = "%.15s-%.10s-%.3s"
+      , project-name-pattern =
+          "\${customerIdentifier:%.14s} \${projectIdentifier:%.15s}"
+      , project-id-pattern =
+          "\${customerIdentifier:%.15s}-\${projectIdentifier:%.10s}-\${rand:%.3s}"
       , group-name-pattern =
           "\${customerIdentifier}.\${projectIdentifier}-\${platformGroupAlias}"
       , allow-hierarchical-folder-assignment = True
