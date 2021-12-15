@@ -36,3 +36,8 @@ The following formatting should be applied for contribution to the meshcloud doc
 * No quotation marks around item names (") please.
 * Use the style as recommended by [markdownlint](https://github.com/markdownlint/markdownlint). For VSCode use the extensions `davidanson.vscode-markdownlint` to get inline linting.
 * Whenever possible, prefer including code blocks with the help of the snippets tooling as explained in the [README](./README.md#snippets).
+
+### Adding a new page
+
+Create your new markdown file `docs/mynewpage.md`.
+Link your markdown file in `website/sidebars.json`.
