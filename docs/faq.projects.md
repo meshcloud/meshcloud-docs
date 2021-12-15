@@ -15,4 +15,3 @@ The process for moving a meshProject from meshCustomer "source-customer" to mesh
 4. A Partner Admin of "target-customer" adopts the tenant via API into the meshCustomer "target-customer" and a project of their choosing.
 
 We have received the request to support moving meshProjects via the panel. If you have any additional input, please put it in a comment of this [canny post](https://meshcloud.canny.io/feature-requests/p/move-projects-between-customers).
-
