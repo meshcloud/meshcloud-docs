@@ -120,7 +120,7 @@ meshProject tags > payment method tags > meshCustomer tags
 You can find an example in the table below which explains this behavior:
 
 | meshObject        | Tag Name | Tag Value |
-| ------------      | -------- | --------- |
+| ----------------- | -------- | --------- |
 | meshCustomer      | cmdb-id  | 12        |
 | meshPaymentMethod | cmdb-id  | 34        |
 | meshProject       | cmdb-id  | 56        |
@@ -132,12 +132,13 @@ This example would result in `cmdb-id` being equal to `56` as the meshProject ha
 Some Landing Zone assets like [GCP Cloud Functions](meshstack.gcp.landing-zones.md) or [Azure Functions](./meshstack.azure.landing-zones.md) receive metadata tags from meshStack using HTTP Headers. meshStack invokes these Landing Zone assets using the following HTTP headers:
 
 
-| HTTP Header Name                 | Description                                                                                                                                                      |
-| -------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `x-mesh-customer-identifier`     | meshCustomer Identifier                                                                                                                                          |
-| `x-mesh-project-identifier`      | meshProject identifier                                                                                                                                           |
-| `x-mesh-costcenter` *deprecated* | If available, ID of the CostCenter selected for this meshProject. Please use `x-mesh-tag-cost-center` or another tag instead.                                    |
-| `x-mesh-tag-${format(tagName)}`  | metadata tags as defined in the tags screen in the admin area                                                                                                    |
+| HTTP Header Name                 | Description                                                                                                                   |
+| -------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| `x-mesh-customer-identifier`     | meshCustomer Identifier                                                                                                       |
+| `x-mesh-project-identifier`      | meshProject identifier                                                                                                        |
+| `x-mesh-costcenter` *deprecated* | If available, ID of the CostCenter selected for this meshProject. Please use `x-mesh-tag-cost-center` or another tag instead. |
+| `x-mesh-tenant-platform-number`  | A increasing sequence number for a meshProject tenant on a specific platform.                                                 |
+| `x-mesh-tag-${format(tagName)}`  | metadata tags as defined in the tags screen in the admin area                                                                 |
 
 Headers for *metadata tags* are formatted to an http-header name by converting `camelCase` tag names into a dashed string i.e. `camel-case` and prefixing them with `x-mesh-tag-`.
 As a full example, a tag named `myCustomerTag` would be provided as an HTTP header with name `x-mesh-tag-my-customer-tag`.
@@ -187,16 +188,16 @@ let example =
 The tag definition configuration describes on a per platform basis how these tags are extracted and transformed into cloud platform tags.
 The following tag values can be used in such a tag definition configuration:
 
-| Tag Key                    | Description                                                                                                                                                     |
-| -------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `${projectIdentfier}`      | The meshProject identifier                                                                                                                                      |
-| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                           |
-| `${projectName}`           | The meshProject display name                                                                                                                                    |
-| `${customerName}`          | The meshProject's customer name                                                                                                                                 |
-| `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied.  |
-| `${paymentIdentifier}`     | The identifier of the payment method that is assigned to the meshProject                                                                                        |
-| `${paymentName}`           | The display name of the payment method that is assigned to the meshProject                                                                                      |
-| `${paymentExpirationDate}` | The expiration date of the payment method that is assigned to the meshProject. It contains `none` if no expiration date is set for the payment method.          |
+| Tag Key                    | Description                                                                                                                                                    |
+| -------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `${projectIdentfier}`      | The meshProject identifier                                                                                                                                     |
+| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                          |
+| `${projectName}`           | The meshProject display name                                                                                                                                   |
+| `${customerName}`          | The meshProject's customer name                                                                                                                                |
+| `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied. |
+| `${paymentIdentifier}`     | The identifier of the payment method that is assigned to the meshProject                                                                                       |
+| `${paymentName}`           | The display name of the payment method that is assigned to the meshProject                                                                                     |
+| `${paymentExpirationDate}` | The expiration date of the payment method that is assigned to the meshProject. It contains `none` if no expiration date is set for the payment method.         |
 
 ### Tag sanitization
 
