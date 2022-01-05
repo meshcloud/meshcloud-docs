@@ -25,11 +25,7 @@ With meshcloud you can easily create customer accounts.
 
 ### Approve new Customer Accounts
 
-A meshStack installation can be [configured](./meshstack.onboarding.md#additional-approval-flows) to require a manual approval by a partner user
-for new meshCustomer registrations. Users who register receive an email notifying them
-that their account is currently being verified. As soon as a partner user approves the
-request, they receive another email. This email informs users, that they are now approved
-and can start creating [meshProjects](./meshcloud.project.md).
+A meshStack installation can be configured to require a manual approval by a partner/admin for new meshCustomer registrations. Users who register receive an email notifying them, that their account is currently being verified. As soon as a partner/admin approves the request, they receive another email. This email informs users, that they are now approved and can start working with the cloud resources. Depending on the configuration, users may also have to confirm their email address via a confirmation link, that is available in the second email.
 
 ## Manage Customer Accounts
 
@@ -48,7 +44,8 @@ If you want to prevent a customer from creating new [meshProjects](meshcloud.pro
 
 ### Access managed Customer Accounts
 
-As a partner user you can assign yourself a role on managed customer accounts. The role that will be assigned can either be "Customer Employee" or "Customer Admin" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#customer-user-invitations)). If you are assigned as a Customer Employee you cannot execute step four and five.
+As a partner user you can assign yourself a role on managed customer accounts. The role that will be assigned can either be "Customer Employee" or "Customer Admin" depending on the configuration of meshStack ([read more here](meshstack.configuration.md#customer-user-invitations)). If you are assigned as a Customer Employee you cannot execute
+step four and five.
 
 1. Go to **Administration &gt; Customers** and click on the **Users** icon on the managed customer account you want to edit.
 2. In the **Customers Users** view click on the button **Add Myself** in the top right corner.

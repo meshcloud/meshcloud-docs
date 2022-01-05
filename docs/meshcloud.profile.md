@@ -6,7 +6,7 @@ The following section covers all the relevant details regarding your meshStack u
 
 ## Account Creation
 
-In most meshcloud installations an external identiy provider (IdP) is available and configured for authentication in meshcloud.
+In most meshcloud installations an external identity provider (IdP) is available and configured for authentication in meshcloud.
 That way users and their credentials already exist and can be used to login to meshPanel. If an IdP is not available, the registration of new users is enabled in the meshIdB. Before being able to create a new meshCustomer, users have to create their user in meshIdB first.
 
 When a user already exists, he can create a new account (meshCustomer) after login. Click "Create meshCustomer" and fill out the form.
@@ -20,7 +20,7 @@ You will receive an email to confirm your account and after that you can start u
 Logging in to your federated meshFed SSO account can be done by:
 
 1. Navigate to your meshPanel.
-2. In the upper right corner or inside the home screen. click on the **Login** link.
+2. In the upper right corner or inside the home screen. Click on the **Login** link.
 3. You will be redirected to the meshFed SSO login.
 4. Enter your credentials (in most cases your known company credentials, or the ones you created during registration).
 5. After a successful login, you will be automatically redirected to the meshPanel project overview.
@@ -41,6 +41,6 @@ Here you can find all your personal information stored in the meshStack. You can
 ### Platform Notification Subscriptions
 
 Here you can also manage your subscriptions if you wish to receive emails for any [platform notifications](administration.platforms.md).
-While all platform notifications are also shown in the meshPanel (i.e. project overview/dashboards) it can be useful to subscribe to notifications for specific platforms.
+While all platform notifications are also shown in the meshPanel (i.e. control planes) it can be useful to subscribe to notifications for specific platforms.
 Notifications have a severity level (info > warning > critical) and you can select to only receive notifications above a certain level, i.e. selecting a minimum severity of info will also include warnings and critical notifications while selecting warning will *only* include warnings and critical notifications.
-If you have important applications running in a specifc platform you might be interested in notifications with a serverity level of at least warning, so you'd be informed about service disruptions, platform outages, etc.
+If you have important applications running in a specific platform you might be interested in notifications with a severity level of at least warning, so you'd be informed about service disruptions, platform outages, etc.
