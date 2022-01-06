@@ -49,7 +49,7 @@ tenants for this project that were booked in the selected period.
 
 > Note that chargeback statements aggregate usage reports by their **entry date** when they were charged to the chargeback account. This date is typically after the **report date** (i.e. time when the report was generated) of the usage reports booked. It's therefore possible that the chargeback statement for the month of June includes usage reports for the month of May etc.
 
-A chart in the project dashboard shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
+A chart in the project control plane shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
 
 Customer Admins also have access to an overview of the chargeback statements of all their projects in the Account Area via "Projects" -> "Chargeback Statements".
 Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Chargeback Statements".

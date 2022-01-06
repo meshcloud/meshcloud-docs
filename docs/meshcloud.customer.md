@@ -16,11 +16,11 @@ and any additional [metadata specific to your organization](meshstack.metadata-t
 
 ## Managing your meshCustomer
 
-Every aspect of your meshCustomer can be managed in the so-called [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). This customer control plane looks like the screenshot below.
+Every aspect of your meshCustomer can be managed in the so-called [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). The customer control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the customer and the meshStack configuration, you will have access to different to tabs like **Settings** or **Financials**. The customer control plane below shows the control plane from the perspective of a Customer Admin.
 
 ![Customer Control Plane User Interface](assets/customer-control-plane.png)
 
-General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited under the "Settings" tab.
+General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited under the **Settings** tab.
 The customer identifier is also shown here, but it can never be changed,
 as it is used as an immutable identifier of the meshCustomer for its
 representation in the different cloud platforms. You are however able to change the display name of the meshCustomer.
@@ -70,37 +70,36 @@ The following roles are available:
 
 The following table provides details about the functionality available to the different roles.
 
-|                       | Customer Owner | Customer Admin | Customer Employee |
-| --------------------- | :---: | :---: | :---: |
-| [Project&nbsp;Resources](meshcloud.project-resources.md) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Project&nbsp;Dashboard](meshcloud.project-resources.md#project-dashboard) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Project&nbsp;Platform&nbsp;Dashboard](meshcloud.project-resources.md#project-platform-dashboard) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report) | &#10003; | &#10003; | &#10003; |
-| [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject) | &#10003; | &#10003; | |
-| [Customer&nbsp;Users](meshcloud.customer.md) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.customer.md#invite-users-to-a-meshcustomer-team) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Customer&nbsp;Owner](meshcloud.customer.md#assign-meshcustomer-roles) | &#10003; | | |
-| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.customer.md#assign-meshcustomer-roles) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles) | &#10003; | &#10003; | |
-| [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups) | &#10003; | &#10003; | |
-| [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | &#10003; | |
-| [Delete&nbsp;Customer](meshcloud.customer.md#customer-deletion) | &#10003; | | |
-| [Payment&nbsp;Methods](meshcloud.payment-methods.md) | &#10003; | &#10003; | |
-| Domains | &#10003; | &#10003; | |
-| [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Service&nbsp;Broker](meshstack.meshmarketplace.development.md#how-to-use-it) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](meshstack.meshmarketplace.development.md#publish-your-service-broker) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](meshstack.meshmarketplace.development.md#debugging-your-service-broker) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;Failed&nbsp;Instances | &#10003; | &#10003; | |
+|                                                                                                                        | Customer Owner | Customer Admin | Customer Employee |
+| ---------------------------------------------------------------------------------------------------------------------- | :------------: | :------------: | :---------------: |
+| [Project&nbsp;Resources](meshcloud.project-resources.md)                                                               |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Tenant&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#tenant-control-plane)                      |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md)                                                             |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report)                                         |    &#10003;    |    &#10003;    |     &#10003;      |
+| [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                     |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                       |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects)                                              |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants)                                |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject)   |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject)                    |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign&nbsp;Customer&nbsp;Owner                                                          |    &#10003;    |                |                   |
+| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment)                           |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement)                                 |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject)                                           |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;Users](meshcloud.customer.md)                                                                           |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.customer.md#invite-users-to-a-meshcustomer-team)                              |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.customer.md#assign-meshcustomer-roles)                                        |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles)                             |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups)                                                    |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings)                                                      |    &#10003;    |    &#10003;    |                   |
+| [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                   |    &#10003;    |    &#10003;    |                   |
+| Domains                                                                                                                |    &#10003;    |    &#10003;    |                   |
+| [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md)                                               |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Service&nbsp;Broker](meshstack.meshmarketplace.development.md#how-to-use-it)                              |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](meshstack.meshmarketplace.development.md#publish-your-service-broker) |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](meshstack.meshmarketplace.development.md#debugging-your-service-broker)            |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;Failed&nbsp;Instances                                                                                |    &#10003;    |    &#10003;    |                   |
 
 > The roles that are available for Partner and Admin customers are described in the [Administration](administration.index.md) section.
 

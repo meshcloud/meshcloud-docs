@@ -9,7 +9,7 @@ meshProjects are multi-cloud enabled projects that allow teams to manage and sca
 
 ## Create a new meshProject
 
-Log on to the Meshpanel with your account credentials and press `Create`. Type in a name for your new project and press `Next`. Choose a payment method and press `Next` again. In the last step, you can choose the meshPlatforms from which you can obtain the cloud computing resources for your project. Press `Create Project` and you will see your new project listed in the Projects List.
+Log on to the meshPanel with your account credentials and press `Create`. Type in a name for your new project and press `Next`. Choose a payment method and press `Next` again. In the last step, you can choose the meshPlatforms from which you can obtain the cloud computing resources for your project. Press `Create Project` and you will see your new project listed in the Projects List.
 
 ## Manage meshProjects
 
@@ -91,13 +91,11 @@ The deletion procedure depends on the variaty of meshTenants under the project:
 - Kubernetes
 - Openshift
 
- If the project contains tenants on which an operator will have to perform manual deletion actions in the respective platform, you can provide operators with a reason for the deletion. The reason field is currently limited to 255 characters. The reason for deletion will be shown to the operator when they perform the required deletion actions. Manual deletion performed by a partner user is necessary for above mentioned cloud tenants.
- After performing the resource deletion you have to confirm the deletion by entering the identifier of your project. The actual project deletion in the platforms will be done in the background and may take a while. Once you confirm the deletion, all users will be removed immediately from the meshProject and the tenant in the respective platform. Therefore they will not be able to access the connected platform tenants or the related cloud resources anymore.
+If the project contains tenants on which an operator will have to perform manual deletion actions in the respective platform, you can provide operators with a reason for the deletion. The reason field is currently limited to 255 characters. The reason for deletion will be shown to the operator when they perform the required deletion actions. Manual deletion performed by a partner user is necessary for above mentioned cloud tenants.
+After performing the resource deletion you have to confirm the deletion by entering the identifier of your project. The actual project deletion in the platforms will be done in the background and may take a while. Once you confirm the deletion, all users will be removed immediately from the meshProject and the tenant in the respective platform. Therefore they will not be able to access the connected platform tenants or the related cloud resources anymore.
 
 If a meshProject contains meshTenants of the above mentioned cloud platform, a partner or platform operator will have to perform the deletion of those platform tenants manually in the respective platform.
-
 
 **2. OpenStack, Cloud Foundry and Marketplace meshTenants**: The system will perform a check to see if any resources exist in the tenants of the project being deleted. This check is currently implemented only for OpenStack and Cloud Foundry platforms. If resources do exist in any of those platform tenants, you will be informed about them. You have to manually delete those resources and any other resources in the scope of your project that may exist in other platform tenants where the resource check is not implemented. Once you have performed the manual resource deletion, you can confirm the project deletion by entering the identifier of your project. An asynchronous background job removes tenants from platforms regularly. During which the access will also be removed from the meshProject and the meshTenant.
 
 **3. Combination of meshTenants**: If a projects contains a combination of tenants from 1. and 2. the tenants which dont require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.
-
