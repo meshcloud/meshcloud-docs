@@ -59,6 +59,8 @@ The default configuration of meshStack ships with these roles and intended use.
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
+It is possible to define **additional custom roles**. These roles can also be referenced in the landing zone configuration to map them to roles available in the cloud platform.
+
 <!--snippet:mesh.meshfed.web.project-->
 
 The following configuration options are available at `mesh.meshfed.web.project`:
