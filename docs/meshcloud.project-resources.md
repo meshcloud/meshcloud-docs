@@ -3,19 +3,22 @@ id: meshcloud.project-resources
 title: Project Resources
 ---
 
-When a user is [assigned](meshcloud.project.md#assign-user-to-a-meshproject) to a meshProject, this project appears in his project list on the home screen. As long as he is not assigned, he also doesn't have access to the project and its resources. To access the meshProject you can either click on its name or the **Open Project Dashboard** button to get to the [Project Dashboard](#project-dashboard) or you click on a specific Cloud Platform to get directly to the [Project Platform Dashboard](#project-platform-dashboard).
+When users are [assigned](meshcloud.project.md#assign-user-to-a-meshproject) to a meshProject, this project appears in their projects overview on the customer control plane, also known as their home screen. As long as they are not assigned to the project, they do not have access to its resources and the regarding control planes. To access the meshProject you can click on its name to get to the [Project Control Plane](#project-control-plane) or you click on a specific Cloud Platform to get directly to the [Tenant Control Plane](#tenant-control-plane).
+![Home screen of a Customer Employee](assets/project-resources/access-control-planes.png)
 
-## Project Dashboard
+As a Customer Admin or Owner you are able to see all active meshProjects within your meshCustomer in your home screen. Additionally, you can also access the project and tenant control plane of them even if your are not assigned to the project.
+Only **Platform Access** won't still be possible in case you are not assigned to the project.
 
-In the project dashboard you get an overview of all locations and their platforms, that are available for for the selected meshProject.
-Via the **Manage** button on the card for a specific platform, you get to the [Project Platform Dashboard](#project-platform-dashboard).
+## Project Control Plane
 
-In each of the cards on the project dashboard, you can see the replication status of the tenant and the timestamp the tenant was last updated.
-The tenant status is one of 'Failed', 'Successful', 'Pending' or 'Not Started'
+In the project control plane you get an overview of all locations and their platforms, that are available for for the selected meshProject.
+Via the \*View Details\*\* button on the card for a specific platform, you'll get to the [tenant control plane](#tenant-control-plane).
+![View of a Customer Admin in the project control plane](assets/project-resources/project-control-plane.png)
+In each of the cards on the project control plane, you can see the replication status of the tenant and the timestamp the tenant was last updated.
+The tenant status is one of 'Replication failed', 'Replication in progress' or 'Replication successful'.
+## Tenant Control Plane
 
-## Project Platform Dashboard
-
-The project platform dashboard provides some general statistics for your meshProject in this cloud platform. Dependent on the Cloud Platform type, the menu on the left provides different options to interact with your cloud resources. Support varies by platform, but always includes a SSO login option to the platform's native CLI or web console.
+The tenant control plane provides some general statistics of your meshProject in this cloud platform. Depending on the Cloud Platform type, the sidebar under the **Platform Access** tab on the left provides different options to interact with your cloud resources. The support varies by platform, but always includes a SSO login option to the platform's native CLI or web console.
 
 A [Mesh Marketplace](marketplace.index.md) is another type of cloud platform, that allows you to provision different type of services.
 
