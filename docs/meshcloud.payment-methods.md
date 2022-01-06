@@ -7,7 +7,7 @@ title: Payment Methods
 
 Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process. As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshCustomers are correctly charged and that this information makes its way back to the required systems. Payment methods therefore are the link between the cloud usage and the resulting cost in the context of a meshProject.
 
-Payment methods are created **per** meshCustomer and can be enhanced with [metadata tags](meshcloud.metadata-tags.md) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgetting purposes.
+Payment methods are created **per** meshCustomer and can be enhanced with [metadata tags](meshcloud.metadata-tags.md) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgeting purposes.
 
 ![Payment Methods Lifecycle](assets/payment_methods/payment_method_overall_lifecycle.png)
 
@@ -43,15 +43,15 @@ As automation matters, there is also the possibility to create payment methods v
 
 Now that the Partner Admin has created one or more payment methods for a meshCustomer, we are ready to link a payment method to one or more meshProjects.
 
-First, check if the payment method is correctly created in the meshCustomer. You can do so by navigating to the [meshCustomer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer). In order to do that you need to have Customer Admin rights within the respective customer. In the Customer Control Plane, open "Financials" and then "Payment Methods". All payment methods that are created and assigned to your current meshCustomer are shown here.
+First, check if the payment method is correctly created in the meshCustomer. You can do so by navigating to the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). In order to do that you need to have Customer Admin rights within the respective customer. In the customer control plane, open **Financials** and then **Payment Methods**. All payment methods that are created and assigned to your current meshCustomer are shown here.
 
 The payment methods that are assigned can be used for both existing meshProjects and new meshProjects.
 
 ### Applying a Payment Method to an existing meshProject
 
-In the [Customer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer), open the corresponding project. Then click on the "Financials" tab and open the "Payment Methods" tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshstack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the Active Payment method will stay the same instead.
+In the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the Active Payment method will stay the same instead.
 
-![Set Payment Method in Project Edit screen](assets/payment_methods/payment_method_selection_project_edit.png)
+![Set Payment Method in project control plane](assets/payment_methods/payment_method_selection_project_edit.png)
 
 Select the Active Payment Method of choice, and optionally a Substitute Payment Method if that is desired. Save the meshProject and the payment method(s) will be assigned to the meshProject.
 
@@ -87,4 +87,4 @@ The other way of exporting metadata is via our [chargeback statements](meshcloud
 
 Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing.md#chargeback).
 
-The actual export itself can be done via the meshPanel. This is possible for both Partner Admins (for all meshCustomers) and Customer Admins (for the selected meshCustomer). When navigating to the Administration area (for partner admins) or [Customer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer) (for customer admins), you will see 'Chargeback Statements' on the left. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
+The actual export itself can be done via the meshPanel. This is possible for both Partner Admins (for all meshCustomers) and Customer Admins (for the selected meshCustomer). When navigating to the Administration area (for partner admins), you will see **Chargeback Statements** on the left. When navigating to the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) (for customer admins) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.

@@ -13,7 +13,7 @@ Log on to the meshPanel with your account credentials and press `Create`. Type i
 
 ## Manage meshProjects
 
-In your [Customer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer) under **Projects** all meshProjects of your meshCustomer are listed. To manage a project, click the name of the meshProject. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
+In your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) under **Projects** all meshProjects of your meshCustomer are listed. To manage a project, click the name of the meshProject. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
 
 The following diagram shows how access rights and project [replication](./meshcloud.tenant.md) result in the correct project access for your users.
 
@@ -75,9 +75,9 @@ In the **Project Access** section you can click the `-` button in the row of a u
 
 ## Delete a meshProject
 
-If you would like to delete a project which is no longer used, open the corresponding project and navigate to "Settings > Danger Zone". In this screen you can execute the project deletion.
+If you would like to delete a project which is no longer used, open the corresponding project and navigate to **Settings** > **Danger Zone**. In this screen you can execute the project deletion.
 
-The deletion procedure depends on the variaty of meshTenants under the project:
+The deletion procedure depends on the variety of meshTenants under the project:
 
 1. a project contains exclusively tenants where we don't support automatic deletion (AWS, GCP, Azure, Kubernetes, OpenShift)
 2. a project contains exclusively OpenStack, Cloud Foundry and Marketplace meshTenants
@@ -98,4 +98,4 @@ If a meshProject contains meshTenants of the above mentioned cloud platform, a p
 
 **2. OpenStack, Cloud Foundry and Marketplace meshTenants**: The system will perform a check to see if any resources exist in the tenants of the project being deleted. This check is currently implemented only for OpenStack and Cloud Foundry platforms. If resources do exist in any of those platform tenants, you will be informed about them. You have to manually delete those resources and any other resources in the scope of your project that may exist in other platform tenants where the resource check is not implemented. Once you have performed the manual resource deletion, you can confirm the project deletion by entering the identifier of your project. An asynchronous background job removes tenants from platforms regularly. During which the access will also be removed from the meshProject and the meshTenant.
 
-**3. Combination of meshTenants**: If a projects contains a combination of tenants from 1. and 2. the tenants which dont require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.
+**3. Combination of meshTenants**: If a projects contains a combination of tenants from 1. and 2. the tenants which don't require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.

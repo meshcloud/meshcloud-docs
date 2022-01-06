@@ -14,7 +14,7 @@ Project owners associate their project with payment information. This is used fo
 ### Payment Methods
 
 External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](./meshstack.api.md).
-meshStack operators can also provide payment methods for a customer via "Admin Area -> Customers -> Payment Methods".
+meshStack operators can also provide payment methods for a customer via [`Create/Edit Payment Methods`](meshcloud.payment-methods.md#creating-a-payment-method-via-the-meshpanel) button on the customer in the **Admin Area** > **Customers**.
 
 [Metadata](./meshcloud.metadata-tags.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
 
@@ -28,13 +28,13 @@ Additionally an amount can be set on the payment method, which indicates how muc
 
 A tenant usage report provides usage information of one tenant (project representation in a specific platform). E.g. all resources like VMs, Storage, Public IPs, etc are shown in this report.
 
-Tenant Usage Reports can be accessed from the Project Tenant screen via the menu entry "Usage Reports". For every period (e.g. a month),
+Tenant Usage Reports can be accessed in the tenant control plane under **Finacials** > **Usage Reports**. For every period (e.g. a month),
 a tenant usage report is created. You also have access to the current period (e.g. the current month), to always have full control of
 your resources and their usage.
 
 From a Tenant Usage Report you can also access a Detailed Report to see every single usage the resources created. That means you can e.g. see whether a resource was running for 3 hours, stopped for 5 hours and then started again for another 6 hours.
 
-Partner accounts can access tenant usage reports for all their assigned meshCustomers in the Administration Area via "Platforms" -> "Usage Reports".
+Partner accounts can access tenant usage reports for all their assigned meshCustomers in the Administration Area via **Platforms** > **Usage Reports**.
 
 Note that unit costs for Azure and GCP services are not supported.
 Therefore, the unit costs are not available in the Tenant Usage Reports for those platforms.
@@ -49,10 +49,10 @@ tenants for this project that were booked in the selected period.
 
 > Note that chargeback statements aggregate usage reports by their **entry date** when they were charged to the chargeback account. This date is typically after the **report date** (i.e. time when the report was generated) of the usage reports booked. It's therefore possible that the chargeback statement for the month of June includes usage reports for the month of May etc.
 
-A chart in the project control plane shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
+A chart under **Financials** > **Chargeback Statements** in the project control plane shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
 
-Customer Admins also have access to an overview of the chargeback statements of all their projects in the Account Area via "Projects" -> "Chargeback Statements".
-Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via "Projects" -> "Chargeback Statements".
+Customer Admins also have access to an overview of the chargeback statements of all their projects in the customer control plane via  **Financials** > **Chargeback Statements**.
+Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via **Projects** > **Chargeback Statements**.
 It is possible to do an export from these views by clicking on the "CSV Export" button. This export will contain the line items of all the chargeback statements currently in the view.
 Chargeback Statements also contain billing information per line item. It can be [configured](meshstack.billing.md#chargeback) per meshImplementation which information shall be shown there. This info will occur in the UI when looking at the line items of a chargeback statements.
 It will also be part of the CSV export. General payment information like payment name, identifier, expiration date and amount as well as any customer tags, project tags and payment tags can be [configured](meshstack.billing.md#chargeback) as a billing-related property.

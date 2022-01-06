@@ -190,7 +190,7 @@ The following tag values can be used in such a tag definition configuration:
 
 | Tag Key                    | Description                                                                                                                                                    |
 | -------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `${projectIdentfier}`      | The meshProject identifier                                                                                                                                     |
+| `${projectIdentifier}`      | The meshProject identifier                                                                                                                                     |
 | `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                          |
 | `${projectName}`           | The meshProject display name                                                                                                                                   |
 | `${customerName}`          | The meshProject's customer name                                                                                                                                |
