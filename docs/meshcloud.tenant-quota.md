@@ -17,7 +17,7 @@ You can directly submit a Tenant Quota Request when creating a meshProject or ad
 
 ## Managing Tenant Quota for existing meshTenants
 
-Quota requests can be made when editing a [meshProject](meshcloud.project.md). A dialog opens up when you click on the "tachometer" button next to the meshTenant.
+Quota requests can be made in the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane) under **Settings** > **Quotas**.
 
 ![Manage Tenant Quota](assets/tenants/manage-tenant-quota.png)
 
