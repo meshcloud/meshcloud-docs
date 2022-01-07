@@ -27,7 +27,25 @@ The figure and table below explain the relation of the most important concepts i
 | [meshLocation](meshcloud.platforms.md) | A grouping of meshPlatforms, e.g. by geographic region.                                   |
 
 
-## meshPanel supported browsers
+## meshPanel
+
+The meshPanel is the self-service user interface for meshStack and provides different control planes to manage various aspects of your meshObjects depending on your rights:
+
+- [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer)
+
+   Manage the access of your team members in your [meshCustomer](./meshcloud.customer.md), change the tags or check the available payment methods for your meshCustomer.
+
+- [project control plane](./meshcloud.project-resources.md#project-control-plane)
+
+   Get an overview of all locations and their platforms of your [meshProject](./meshcloud.project.md). Add new team members to it or change the payment methods of your project.
+
+- [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane)
+
+    Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
+
+The above description serve as an example what you are able to do as Customer Admin. Check out [meshCustomer Roles](./meshcloud.customer.md#meshcustomer-roles) for more details.
+
+### Supported browsers
 
 - Firefox ESR
 - last 2 Firefox versions
