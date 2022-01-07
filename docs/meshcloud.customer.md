@@ -16,7 +16,7 @@ and any additional [metadata specific to your organization](meshstack.metadata-t
 
 ## Managing your meshCustomer
 
-Every aspect of your meshCustomer can be managed in the so-called [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). The customer control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the customer and the meshStack configuration, you will have access to different to tabs like **Settings** or **Financials**. The customer control plane below shows the control plane from the perspective of a Customer Admin.
+Every aspect of your meshCustomer can be managed in the so-called [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). The customer control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the customer and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The customer control plane below shows the control plane from the perspective of a Customer Admin.
 
 ![Customer Control Plane User Interface](assets/customer-control-plane.png)
 
@@ -48,7 +48,7 @@ If 4 eyes-principle is active, the user or group will not be assigned directly t
 
 ## User Groups
 
-For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshCustomer. User groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-anagement-on-a-meshproject) in the same way as for usual users.
+For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshCustomer. User groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
 You can view user groups within your customer account by going to the **Groups** section in the **Access Control** tab.
 Currently, creating a group is only supported via [meshObject API](meshstack.api.md).
@@ -115,9 +115,10 @@ Before a meshCustomer may be deleted, a check is performed to verify the followi
 
 - all meshProjects in the meshCustomer have been deleted. This means, that they are not only [marked for deletion](meshcloud.project.md#delete-a-meshproject), but that they have [actually been deleted](administration.projects.md#delete-projects) in the platforms.
 - all published Service Brokers in the meshCustomer have been [deactivated](meshstack.meshmarketplace.development.md#deactivation-of-service-brokers)
-- the meshCustomer is not a meshPartner. Deletion of meshPartners is not supported.
 
 The deletion can be performed only by the Customer Owners! You can delete the customer under **Settings** > **Danger Zone** in the customer control plane. You will be asked for confirmation and a deletion reason when you click the button.
+
+Note : The deletion of a customer can not be reversed!
 
 The following steps will be done during deletion:
 
