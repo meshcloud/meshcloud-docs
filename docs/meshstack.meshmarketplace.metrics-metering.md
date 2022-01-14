@@ -68,8 +68,8 @@ A service that exposes metrics must define the `metrics` [catalog extension](htt
 
 ```json
 "metrics": {
-  "gauges": "http://example.com/dbaas-service/metrics/gauges",
-  "samplingCounters": "http://example.com/dbaas-service/metrics/samplingCounters",
+  "gauges": "http://example.com/metrics/gauges/$dbaas-service-definition-id",
+  "samplingCounters": "http://example.com/metrics/samplingCounters/$dbaas-service-definition-id",
   "periodicCounters": null
 }
 ```
@@ -99,6 +99,8 @@ To associate costs with the different metrics, costs defined in the [OSB Profile
 
 The following full example of a service definition in a Service Broker Catalog lists 4 different metrics exposed by the service, namely `outgoing_traffic`, `small_vms`, `requests_total` and `third_party_invoice`.
 
+> After the following catalog example, the service definition id will be shown as `$service-definition-id` in the next sections.
+
 ```json
 {
   "services": [{
@@ -106,9 +108,9 @@ The following full example of a service definition in a Service Broker Catalog l
     "id": "acb56d7c-XXXX-XXXX-XXXX-feb140a59a66",
     "description": "A service that uses all metric types.",
     "metrics": {
-      "gauges": "https://example.com/example-service/metrics/gauges",
-      "samplingCounters": "https://example.com/example-service/metrics/samplingCounters",
-      "periodicCounters": "https://example.com/example-service/metrics/periodicCounters"
+      "gauges": "https://example.com/metrics/gauges/acb56d7c-XXXX-XXXX-XXXX-feb140a59a66",
+      "samplingCounters": "https://example.com/metrics/samplingCounters/acb56d7c-XXXX-XXXX-XXXX-feb140a59a66",
+      "periodicCounters": "https://example.com/metrics/periodicCounters/acb56d7c-XXXX-XXXX-XXXX-feb140a59a66"
     },
     "plans": [
       {
@@ -194,7 +196,7 @@ An example response is shown below.
 
   "_links" : {
     "next" : {
-      "href" : "http://example.com/example-service/metrics/gauges?from=2020-09-01T00:00:00.000Z&to=2020-10-15T00:00:00.000Z"
+      "href" : "http://example.com/metrics/gauges/$service-definition-id/1?from=2020-09-01T00:00:00.000Z&to=2020-10-15T00:00:00.000Z"
     }
   }
 }
@@ -224,7 +226,7 @@ For a description of what gauges are and can be used for see [this section](#gau
 
 The `gauges` endpoint should return a response as shown below.
 
-`/metrics/gauges?from=2020-09-01T00:00:00.000Z&to=2020-10-15T00:00:00.000Z`
+`/metrics/gauges/$service-definition-id?from=2020-09-01T00:00:00.000Z&to=2020-10-15T00:00:00.000Z`
 
 ```json
 {
@@ -278,9 +280,9 @@ In the usage report for October (so far):
 
 For a description of what periodic counters are and can be used for see [this section](#periodic-counters). A PeriodicCounter can be used to model counts which belong to time periods. For example, between `2020-09-01T00:00:00.000Z` and `2020-09-12T00:00:00.000Z` there were 10,000 API requests.
 
-The `metrics/periodicCounters` endpoint should return a response as shown below.
+The `metrics/periodicCounters/$service-definition-id` endpoint should return a response as shown below.
 
-`/metrics/periodicCounters?from=2020-09-01T00:00:00.000Z&to=2020-10-13T00:00:00.000Z`
+`/metrics/periodicCounters/$service-definition-id?from=2020-09-01T00:00:00.000Z&to=2020-10-13T00:00:00.000Z`
 
 ```json
 {
@@ -391,9 +393,9 @@ Applicable usecases
 
 The cost for a SamplingCounter metric must be the cost per count. For example the cost per API call (or if the service counts API call in thousands, the cost per thousand API calls).
 
-The `metrics/samplingCounters` endpoint should return a response as shown below.
+The `metrics/samplingCounters/$service-definition-id` endpoint should return a response as shown below.
 
-`/metrics/samplingCounters?from=2020-09-01T00:00:00.000Z&to=2020-10-13T00:00:00.000Z`
+`/metrics/samplingCounters/$service-definition-id?from=2020-09-01T00:00:00.000Z&to=2020-10-13T00:00:00.000Z`
 
 ```json
 {
