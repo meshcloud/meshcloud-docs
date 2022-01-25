@@ -47,7 +47,7 @@ When configuring these roles, operators must take care to correctly guard agains
 
 ## Platform Instance Configuration
 
-> Note that we have developed [terraform](https://www.terraform.io/) modules to automate setting up the three accounts mentioned above. This is the preferred way to set up the accounts. Alternatively, you can manually create the following resources in the respective accounts to integrate your AWS platform.
+> The recommended way to set up AWS as a meshPlatform is via the public terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you use the terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform).
 
 ### meshcloud Account Setup
 
