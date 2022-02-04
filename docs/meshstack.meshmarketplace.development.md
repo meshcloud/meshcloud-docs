@@ -42,9 +42,9 @@ To publish your Service Broker, click the **Publish Service Broker** button for 
 
 You can choose which public Marketplace you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
 
-Location-based Service Brokers should be running independently from each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
+Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
 
-When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A meshAdmin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### Refresh Catalog of Published Service Broker
 
@@ -76,7 +76,7 @@ Searching the communication logs to e.g. find a specific issue that was reported
 - **Operation Type**: You can filter by the different operation types, that are defined by the [OSB specification](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md). A dropdown with the different operation types like FETCH_CATALOG or PROVISION_INSTANCE is available for selection.
 - **Response Code**: The response code (HTTP Status Code) is an often used filter criteria as you can search e.g. for all error responses by entering ">399", which will return all requests that failed with a client (4xx) or server (5xx) HTTP response code. But you can also search for a specific response codes like "403".
 - **Service Plan**: When you know that there was an issue with a specific service plan, you can search for all service plan related requests by entering the id of the service plan, that you defined in your [service broker catalog](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
-- **Servcie Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances.md), you can search for all related logs by entering the id of the service instance.
+- **Service Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances.md), you can search for all related logs by entering the id of the service instance.
 
 
 ## Deletion of Service Brokers

@@ -26,7 +26,7 @@ See the [meshCustomer](meshcloud.customer.md) documentation for details about ho
 The following table provides details about the functionality available to the different roles by default. The Access rights can also be adapted individually
 per meshcloud installation.
 
-|                                                                                                                           | meshAdmin            | meshAdmin Employee   | Platform Operator | Ops Support | Controller | Onboarding Support | Compliance Manager |
+|                                                                                                                           | Partner Admin        | Partner Employee     | Platform Operator | Ops Support | Controller | Onboarding Support | Compliance Manager |
 | ------------------------------------------------------------------------------------------------------------------------- | :------------------: | :------------------: | :---------------: | :---------: | :--------: | :----------------: | :----------------: |
 | [Customer&nbsp;List](administration.customers.md)                                                                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |                    |
 | &nbsp;&nbsp;[Project&nbsp;List](administration.projects.md)                                                               |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |                    |
