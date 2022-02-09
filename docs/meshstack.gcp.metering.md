@@ -34,7 +34,8 @@ Create GCP Cloud Billing data BigQuery Exports are available for all billing acc
 Create a view of the union over two base billing account exports.
 
 An example query for creating a view
-```
+
+```sql
   CREATE VIEW mydataset.meshcloud_billing_view AS
     (
       (SELECT
