@@ -35,7 +35,7 @@ Create a view of the union over two base billing account exports.
 
 An example query for creating a view
 ```
-  CREATE VIEW mydataset.usa_male_names(name, number) AS
+  CREATE VIEW mydataset.meshcloud_billing_view AS
     (
       (SELECT
         *,
