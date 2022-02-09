@@ -17,29 +17,19 @@ With meshcloud you can easily create customer accounts.
 
 1. Login to the meshPanel with your partner credentials.
 2. If not logged in, please login with your Partner account credentials.
-3. On the Welcome Dashboard, please make sure that you have selected your Partner account in the account selection on the top left.
-4. Select **Administration** from the toolbox and go to **Customers** in the menu bar on the left.
-5. There is a button `+ Create Customer` on the top-right of the toolbar. After clicking the button, a dialog box will open and prompt for entering the name and identifier of the new customers as well as the user who owns the customer. An additional owner may be added in the Account area - Access Control page.
+3. On the toolbar at the top, please make sure that you have navigated into the 'Admin Area'.
+4. Select **Customers** in the menu bar on the left.
+5. There is a button `+ Create Customer` on the top-right of the table. After clicking the button, you will be navigated to the customer creation screen. Here you can enter the name and identifier of the new customer as well as the user(s) that should be assigned to the customer. Keep in mind that you are able to configure restricted tags, this is not possible for non-partner users.
 
-> **Attention**: The identifiers can not be changed. Please choose them carefully.
-
-After creation, a customer account contains no users yet. Therefore you need to [access the created customer account](#access-managed-customer-accounts) and add other users to the newly created account.
+> **Attention**: Identifiers can not be changed. Please choose them carefully.
 
 ### Approve new Customer Accounts
 
-A meshStack installation can be [configured](./meshstack.onboarding.md#additional-approval-flows) to require a manual approval by a partner user
-for new meshCustomer registrations. Users who register receive an email notifying them
-that their account is currently being verified. As soon as a partner user approves the
-request, they receive another email. This email informs users, that they are now approved
-and can start creating [meshProjects](./meshcloud.project.md).
+A meshStack installation can be configured to require a manual approval by a partner/admin for new meshCustomer registrations. Users who register receive an email notifying them, that their account is currently being verified. As soon as a partner/admin approves the request, they receive another email. This email informs users, that they are now approved and can start working with the cloud resources. Depending on the configuration, users may also have to confirm their email address via a confirmation link, that is available in the second email.
 
 ## Manage Customer Accounts
 
-### Update Account Status
-
-Partner users can update the status of meshCustomer accounts by clicking the `Edit` in the status column.
-
-#### Disabling Customer Accounts
+### Disabling Customer Accounts
 
 Operators can disable meshCustomers in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
@@ -54,9 +44,7 @@ If you want to prevent a customer from creating new [meshProjects](meshcloud.pro
 
 ### Access managed Customer Accounts
 
-As a partner user you can assign yourself a role on managed customer accounts. The role that will be assigned can either be "Customer Employee" or "Customer Admin" depending
-on the configuration of meshstack ([read more here](meshstack.onboarding.md#customer-user-invitations)). If you are assigned as a Customer Employee you cannot execute
-step four and five.
+As a partner user you can assign yourself a role on managed customer accounts. The role that will be assigned can either be "Customer Employee" or "Customer Admin" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#customer-user-invitations)). If you are assigned as a Customer Employee you cannot execute step four and five.
 
 1. Go to **Administration &gt; Customers** and click on the **Users** icon on the managed customer account you want to edit.
 2. In the **Customers Users** view click on the button **Add Myself** in the top right corner.
@@ -92,7 +80,7 @@ Partners and Administrators can manage the quota, that limits the maximum number
 
 ### Edit Customer Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button
+Partner users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshCustomers** by navigating to the **Customers** list and clicking the `Customer Tags` button.
 
 ## Audit Customer Accounts
 

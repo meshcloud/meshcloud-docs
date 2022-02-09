@@ -84,11 +84,19 @@ let GcpPlatformKrakenConfiguration =
       additional-filter:
         Additional big query predicates to append to meshStack's queries. This allows operators to restrict
         what type of data is imported, e.g. to only include data for a specific organization or folder path.
+
+      partition-time-column:
+        If you are using the export of billing data from GCP directly as it is, then this should be set to
+        "_PARTITIONTIME". Overriding this is useful if you want to collect data from two billing exports and
+        provide a UNION view of the two. Since GCP BigQuery doesn't allow views to contain a column starting
+        with an underscore, the _PARTITIONTIME column would have to be mapped to another name. You should specify
+        that column name here.
     -}
       { platform : Text
       , bigquery-table : Text
       , service-account-credentials-b64 : Secret
       , additional-filter : Optional Text
+      , partition-time-column : Text
       }
 ```
 <!--Example-->
@@ -102,6 +110,7 @@ let exampleAllData
           "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
       , service-account-credentials-b64 = Secret.Native "..."
       , additional-filter = None Text
+      , partition-time-column = "_PARTITIONTIME"
       }
 
 let exampleOnlyFolder
@@ -115,6 +124,7 @@ let exampleOnlyFolder
       , service-account-credentials-b64 = Secret.Native "..."
       , additional-filter = Some
           "and STARTS_WITH(project.ancestry_numbers, '/123/345')"
+      , partition-time-column = "_PARTITIONTIME"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -124,6 +134,31 @@ let exampleOnlyFolder
 The data is collected incrementally from the exported billing data by filtering by the `export_time` attribute.
 Any entries with `cost_type` `tax` are ignored in the metering process.
 The monthly totals are calculated by aggregating by the `invoice.month` attribute.
+
+
+## Support for Multiple Billing Accounts
+
+There can be situations where you want the projects inside a single GCP meshPlatform to be associated with multiple
+billing accounts. One such example is when you have one billing account which has
+[Spend-based committed use discounts](https://cloud.google.com/docs/cuds-spend-based) applied and another billing account
+which contains free credit applied. To ensure that meshStack collects data from both the accounts, you have to create
+a view in BigQuery which is a union of the two billing data exports from the two billing accounts. Such a union can be
+created with a query which looks similar to the following
+
+```sql
+(SELECT _PARTITIONTIME as PARTITIONTIME, billing_account_id,service, sku, project, labels, system_labels,
+        location, cost, currency, usage, credits, invoice, cost_type, adjustment_info
+        from `project-name-root.billing_export.gcp_billing_export_general`)
+UNION ALL
+(SELECT  _PARTITIONTIME as PARTITIONTIME,billing_account_id,service, sku, project, labels, system_labels,
+        location, cost, currency, usage, credits, invoice, cost_type, adjustment_info
+        from `project-name.billing_export.gcp_billing_export_credit`)
+
+```
+
+Since BigQuery doesn't allow column names that start with an underscore character, you have to map the _PARTITIONTIME
+column to a different name as shown in the query. This column name has to be configured as shown in the configuration
+reference using the property `partition-time-column`.
 
 ## Configuring Seller Information
 

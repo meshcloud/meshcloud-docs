@@ -9,7 +9,7 @@ Access to OpenStack platforms takes place via a federated identity, i.e. there i
 
 OpenStack Keystone delegates the authentication in the federated case to an Apache module, in our case `mod_auth_openidc`, which among other things implements the OpenID Connect protocol for distributed authentication. When accessing the cloud, the user brings a token (JWT) with him, which was issued by the meshStack Keycloak and provided with the necessary access information and is validated by `mod_auth_openidc` (see access procedure). The meshStack Keycloak in turn accesses an external identity source (e.g. LDAP, central IdP).
 
-The Meshpanel frontend also validates the JWT tokens against Keycloak in order to grant the user the necessary access.
+The meshPanel frontend also validates the JWT tokens against Keycloak in order to grant the user the necessary access.
 
 The backend also uses the JWT token to check the user's permissions. If the permissions to the cloud for users are changed via the meshStack, the backend updates the permissions stored in Keycloak for this user.
 

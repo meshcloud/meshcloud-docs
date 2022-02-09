@@ -1,6 +1,6 @@
 ---
 id: meshcloud.customer
-title:  meshCustomer
+title: meshCustomer
 ---
 
 A meshCustomer usually represents a product team or department in your organization. Self-service within a meshCustomer
@@ -14,17 +14,24 @@ the process to some existing ITSM or process automation system. Operators can re
 In any case, the meshCustomer creation process always involves collecting basic customer information like name, identifier
 and any additional [metadata specific to your organization](meshstack.metadata-tags.md#customer-tag-schema).
 
-## Customer Settings
+## Managing your meshCustomer
 
-General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited here. The customer identifier is also shown here, but it can never be changed, as it is used as an immutable identifier of the meshCustomer for its representation in the different cloud platforms.
+Every aspect of your meshCustomer can be managed in the so-called [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). The customer control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the customer and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The customer control plane below shows the control plane from the perspective of a Customer Admin.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional customer [metadata tags](./meshcloud.metadata-tags.md) here.
+![Customer Control Plane User Interface](assets/customer-control-plane.png)
+
+General information of a meshCustomer (like its name) and [Customer Tags](meshstack.metadata-tags.md#customer-tag-schema) can be edited under the **Settings** tab.
+The customer identifier is also shown here, but it can never be changed,
+as it is used as an immutable identifier of the meshCustomer for its
+representation in the different cloud platforms. You are however able to change the display name of the meshCustomer.
+
+If configured by your Cloud Foundation team, you may also be able to edit additional customer [metadata tags](./meshcloud.metadata-tags.md) in the Settings Tab.
 
 ## Invite users to a meshCustomer team
 
-If you would like to give others access to your meshCustomer and the related meshProjects, go to your "Account" settings.
+If you would like to give others access to your meshCustomer and the related meshProjects, go to your **Access Control** tab.
 You can access them by pressing the settings icon on the top right of the meshPanel.
-From here, navigate to "Access Control". Here you can invite users or groups to the meshCustomer.
+From here, navigate to **Access Control**. Here you can invite users or groups to the meshCustomer.
 You can search for users via first & last name, email and username. The users that can be found via
 this search depend on the configured IAM system in you meshInstallation. It is e.g. possible to search for users in an Active Directory or a Google Cloud Directory. Additionally all users already known to meshStack can be found via this user search. Besides users, also [groups](#user-groups) can be searched for. You can search for groups via their name and identifier.
 
@@ -41,15 +48,15 @@ If 4 eyes-principle is active, the user or group will not be assigned directly t
 
 ## User Groups
 
-For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshCustomer. User groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-anagement-on-a-meshproject) in the same way as for usual users.
+For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshCustomer. User groups can be assigned roles on a [meshCustomer](#invite-users-to-a-meshcustomer-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
-You can view user groups within your customer account by going to the **Groups** section in the **Account** area.
+You can view user groups within your customer account by going to the **Groups** section in the **Access Control** tab.
 Currently, creating a group is only supported via [meshObject API](meshstack.api.md).
 
 ## Assign meshCustomer Roles
 
 You can change the role assigned to each user or group on the current meshCustomer.
-To change the assigned role choose a new role from the dropdown and save the changes via the disc icon.
+To change the assigned role choose a new role from the dropdown.
 
 A user or a group can be assigned multiple roles simultaneously. All users and members will receive the combined rights of all their assigned roles.
 
@@ -63,37 +70,36 @@ The following roles are available:
 
 The following table provides details about the functionality available to the different roles.
 
-|                       | Customer Owner | Customer Admin | Customer Employee |
-| --------------------- | :---: | :---: | :---: |
-| [Project&nbsp;Resources](meshcloud.project-resources.md) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Project&nbsp;Dashboard](meshcloud.project-resources.md#project-dashboard) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Project&nbsp;Platform&nbsp;Dashboard](meshcloud.project-resources.md#project-platform-dashboard) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md) | &#10003; | &#10003; | &#10003; |
-| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report) | &#10003; | &#10003; | &#10003; |
-| [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject) | &#10003; | &#10003; | |
-| [Customer&nbsp;Users](meshcloud.customer.md) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.customer.md#invite-users-to-a-meshcustomer-team) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Customer&nbsp;Owner](meshcloud.customer.md#assign-meshcustomer-roles) | &#10003; | | |
-| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.customer.md#assign-meshcustomer-roles) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles) | &#10003; | &#10003; | |
-| [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups) | &#10003; | &#10003; | |
-| [Customer&nbsp;Settings](meshcloud.customer.md#customer-settings) | &#10003; | &#10003; | |
-| [Delete&nbsp;Customer](meshcloud.customer.md#customer-deletion) | &#10003; | | |
-| [Payment&nbsp;Methods](meshcloud.payment-methods.md) | &#10003; | &#10003; | |
-| Domains | &#10003; | &#10003; | |
-| [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;[Service&nbsp;Broker](meshstack.meshmarketplace.development.md#how-to-use-it) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](meshstack.meshmarketplace.development.md#publish-your-service-broker) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](meshstack.meshmarketplace.development.md#debugging-your-service-broker) | &#10003; | &#10003; | |
-| &nbsp;&nbsp;&nbsp;Failed&nbsp;Instances | &#10003; | &#10003; | |
+|                                                                                                                        | Customer Owner | Customer Admin | Customer Employee |
+| ---------------------------------------------------------------------------------------------------------------------- | :------------: | :------------: | :---------------: |
+| [Project&nbsp;Resources](meshcloud.project-resources.md)                                                               |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Tenant&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#tenant-control-plane)                      |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md)                                                             |    &#10003;    |    &#10003;    |     &#10003;      |
+| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report)                                         |    &#10003;    |    &#10003;    |     &#10003;      |
+| [Customer&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                     |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                       |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects)                                              |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants)                                |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject)   |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject)                    |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Customer&nbsp;Owner](#assign-meshcustomer-roles)                                                         |    &#10003;    |                |                   |
+| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment)                           |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement)                                 |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject)                                           |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;Users](meshcloud.customer.md)                                                                           |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.customer.md#invite-users-to-a-meshcustomer-team)                              |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.customer.md#assign-meshcustomer-roles)                                        |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles)                             |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups)                                                    |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;Settings](#customer-deletion)                                                      |    &#10003;    |    &#10003;    |                   |
+| [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                   |    &#10003;    |    &#10003;    |                   |
+| Domains                                                                                                                |    &#10003;    |    &#10003;    |                   |
+| [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md)                                               |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;[Service&nbsp;Broker](meshstack.meshmarketplace.development.md#how-to-use-it)                              |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](meshstack.meshmarketplace.development.md#publish-your-service-broker) |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](meshstack.meshmarketplace.development.md#debugging-your-service-broker)            |    &#10003;    |    &#10003;    |                   |
+| &nbsp;&nbsp;&nbsp;Failed&nbsp;Instances                                                                                |    &#10003;    |    &#10003;    |                   |
 
 > The roles that are available for Partner and Admin customers are described in the [Administration](administration.index.md) section.
 
@@ -101,7 +107,7 @@ meshCustomer roles grant rights in meshStack only. In order to access cloud reso
 
 ## Remove assigned meshCustomer Roles
 
-If you would like to remove a user or group from your meshCustomer go to your "Account" settings and select "Customer Access". You can click the "trash" icon in the "Customer Access" section to remove the user or group from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the Pending Role Requests section. When removing someone from the meshCustomer, the user or group is automatically removed from all projects it had access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshCustomer was revoked.
+If you would like to remove a user or group from your meshCustomer go to the **Access Control** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshCustomer. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshCustomer, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshCustomer was revoked.
 
 ## Customer Deletion
 
@@ -109,9 +115,10 @@ Before a meshCustomer may be deleted, a check is performed to verify the followi
 
 - all meshProjects in the meshCustomer have been deleted. This means, that they are not only [marked for deletion](meshcloud.project.md#delete-a-meshproject), but that they have [actually been deleted](administration.projects.md#delete-projects) in the platforms.
 - all published Service Brokers in the meshCustomer have been [deactivated](meshstack.meshmarketplace.development.md#deactivation-of-service-brokers)
-- the meshCustomer is not a meshPartner. Deletion of meshPartners is not supported.
 
-The deletion can be performed only by the Customer Owners! You can find the "Delete" button on the "General" screen in the Customer Area. You will be asked for confirmation and a deletion reason when you click the button.
+The deletion can be performed only by the Customer Owners! You can delete the customer under **Settings** > **Danger Zone** in the customer control plane. You will be asked for confirmation and a deletion reason when you click the button.
+
+Note : The deletion of a customer can not be reversed!
 
 The following steps will be done during deletion:
 

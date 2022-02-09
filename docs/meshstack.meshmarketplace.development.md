@@ -7,9 +7,11 @@ You can provide your own services in the [meshMarketplace](marketplace.index.md)
 only available for [Customer Admins](meshcloud.customer.md#manage-groups-of-assigned-users).
 You can provide your service (e.g. databases, message brokers, filesystems, etc) by implementing the [Open Service Broker API](https://www.openservicebrokerapi.org/). Your implementation of an application that manages these services is called a Service Broker. Services provided by you can be consumed by other users of the meshPortal. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
 
+meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
+
 ## Marketplace Development
 
-You can find the **Marketplace Development** in your meshCustomer Account Area. Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace Development** in your [meshCustomer Control Plane](./meshcloud.customer.md#managing-your-meshcustomer). Via the **Service Broker** section in the navigation on the left, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
@@ -18,7 +20,7 @@ Registering your Service Broker does not publish your Service Broker directly fo
 You can register your service broker via the **Register Service Broker** button. The following information must be provided for this:
 
 - **Name**: Give a name to the service broker you want to register. It is mainly used as a display name for your administrative Screens.
-- **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs. Choose wisely as *this identifier cannot be changed later* on.
+- **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs by meshStack. Choose wisely as *this identifier cannot be changed later* on. We advise to use meaningful and expressive identifiers.
 - **Endpoint**: Root URL to your Service Broker's API endpoint. It must start with "http(s)://". Below this API endpoint the **/v2/catalog** endpoint must be available, as described in the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
 - **Basic Auth Username**: Communication between the meshMarketplace and your Service Broker is secured via HTTP Basic Auth. Therefore username and password have to be defined here, so the meshMarketplace can authenticate successfully to your Service Broker. Enter the username for HTTP Basic Auth here. The username can be changed at any time.
 - **Basic Auth Password**: Enter the password for your HTTP Basic Auth. A set password will never be shown to you again. This password will be stored encrypted in the database. You can set a new password at any time. No restrictions regarding the characters used in your password are applied. Please be sure to always use a secure password!
@@ -40,9 +42,9 @@ To publish your Service Broker, click the **Publish Service Broker** button for 
 
 You can choose which public Marketplace you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
 
-Location-based Service Brokers should be running independently from each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
+Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
 
-When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A meshAdmin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### Refresh Catalog of Published Service Broker
 
@@ -54,11 +56,11 @@ The Analytics functionality for Service Owners is available to Customer Admins, 
 
 ### Reviewing failed Service Instances
 
-From the meshCustomer Account area, you can access an overview of all failed service instances of your service brokers under the "Failed Instances" menu entry. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+From the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer), you can access an overview of all failed service instances of your service brokers under the "Failed Instances" sub-page which can be found under the "Marketplace" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
 
 ### Service Communication Logs
 
-Especially when an error occurs during a service broker call, detailed information about the request that was made from the meshMarketplace to the service broker helps in analyzing the reason why a call failed. But the communication logs are not only available in error cases, they are availbale for all requests that were made from the meshMarketplace to the Service Broker. Instead of implementing a detailed request and response logging in every service broker, the meshMarketplace provides this information for all service brokers.
+Especially when an error occurs during a service broker call, detailed information about the request that was made from the meshMarketplace to the service broker helps in analyzing the reason why a call failed. But the communication logs are not only available in error cases, they are available for all requests that were made from the meshMarketplace to the Service Broker. Instead of implementing a detailed request and response logging in every service broker, the meshMarketplace provides this information for all service brokers.
 
 All relevant information like the request date and the type of operation that was executed, all request and response headers as well as the body of the request and in case of an error also the response from the service broker, are available. The duration of the call and information about the used Service Plan and [Service Instance](marketplace.service-instances.md) are also available. This information, combined with the application logs of the service broker should provide all information for a successful error analysis.
 
@@ -74,7 +76,7 @@ Searching the communication logs to e.g. find a specific issue that was reported
 - **Operation Type**: You can filter by the different operation types, that are defined by the [OSB specification](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md). A dropdown with the different operation types like FETCH_CATALOG or PROVISION_INSTANCE is available for selection.
 - **Response Code**: The response code (HTTP Status Code) is an often used filter criteria as you can search e.g. for all error responses by entering ">399", which will return all requests that failed with a client (4xx) or server (5xx) HTTP response code. But you can also search for a specific response codes like "403".
 - **Service Plan**: When you know that there was an issue with a specific service plan, you can search for all service plan related requests by entering the id of the service plan, that you defined in your [service broker catalog](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
-- **Servcie Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances.md), you can search for all related logs by entering the id of the service instance.
+- **Service Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances.md), you can search for all related logs by entering the id of the service instance.
 
 
 ## Deletion of Service Brokers

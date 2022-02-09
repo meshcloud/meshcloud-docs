@@ -21,7 +21,7 @@ The **Administration** Area includes a quota dashboard that lets you define the 
 
 To edit the quotas, please follow these steps:
 
-1. Login to the Meshpanel with your Administrator credentials.
+1. Login to the meshPanel with your Administrator credentials.
 2. Navigate to the **Administration** via the settings button on the top right.
 3. Click on **Customers**. In this area you can create new customers and manage your customers’ quotas. You will see a list of your customers here.
 4. Under the **Actions** column, you can click on **Customer Projects** and you will see a list of all the projects belonging to that customer.
@@ -46,7 +46,7 @@ You can also enter an optional comment regarding the deletion which is limited t
 The "Deleted in platforms on" column shows the time when the background process completed the project deletion successfully.
 
 If you choose to decline the project deletion, you can do so by clicking on the decline button. You have to enter the project identifier to confirm that you decline the deletion.
-You can also enter an optional reason for deletion which is limited to 255 characters. Once you decline the deletion, the project will be available in the **Projects** section under the **Account** of the meshCustomer.
+You can also enter an optional reason for deletion which is limited to 255 characters. If you decline the deletion, the project will be available again in the **Projects** section of the meshCustomer.
 
 You also have to consider limitations described [here](meshstack.tenants.md).
 
@@ -65,7 +65,7 @@ If you need to get an overview of all projects or want to use them inside a spre
 
 To export projects, plase follow these steps:
 
-1. Login to the Meshpanel with your Administrator credentials.
+1. Login to the meshPanel with your Administrator credentials.
 2. Navigate to the **Administration** Area via the settings button on the top right.
 3. Click on **Customers**.
 4. In the upper right there is the button `Project Export`. By clicking it, the download of the Project .CSV file for all customers will start.
