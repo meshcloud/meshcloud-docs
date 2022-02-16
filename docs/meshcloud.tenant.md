@@ -4,13 +4,16 @@ title: meshTenant
 ---
 
 meshTenants are the representation of a [meshProject](./meshcloud.project.md) in a [meshPlatform](./meshcloud.platforms.md).
-meshTenants are isolated cloud environments protected by multi-tenant mechanisms of the cloud platform such as
-AWS Accounts, Azure Subscriptions or Cloud Foundry Spaces.
+meshTenants are isolated cloud environments protected by multi-tenant mechanisms of the cloud platform. The following types of meshTenants are supported by meshStack:
 
-[meshCustomers](./meshcloud.customer.md) don't manually create or manage meshTenants. Instead, meshTenants are always automatically managed through
-a [meshProject](./meshcloud.project.md).
+* Accounts in AWS
+* Subscriptions in Microsoft Azure
+* Projects in Google Cloud
+* Namespaces in Kubernetes & OpenShift
+* Projects in OpenStack
+* Spaces in CloudFoundry
 
-Some operational limitations around tenants are described [here](meshstack.tenants.md).
+Some operational limitations and other administrative information around tenants are described in the [administration section for meshTenants](meshstack.tenants.md).
 
 ## Replication and Reconciliation
 

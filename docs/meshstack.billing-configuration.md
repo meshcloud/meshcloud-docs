@@ -478,6 +478,4 @@ let example2
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Budgeting
-
-> under construction, get in touch for more details
+> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](./meshcloud.payment-methods.md).
