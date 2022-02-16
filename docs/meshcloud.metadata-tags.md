@@ -6,6 +6,8 @@ title: Metadata Tags
 Organizations can configure meshStack to collect, attach and distribute organization-specific metadata
 to objects in the [meshModel](meshcloud.index.md). Currently, [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](./meshcloud.payment-methods.md) support this metadata.
 
+Depending on the configuration of the administrators, some of these tags will be applied directly on to the meshTenant(s) in the cloud platform.
+
 Metadata consists of key-value pairs called **Tags**. Administrators influence the available tags by [configuring organization tags](meshstack.metadata-tags.md) in the Administration area.
 
 These tags are displayed in the meshPanel in their respective places and they can be recognized by green bubbles that display the name and value of the tag. Take these meshCustomers tags as an example, which are visible in the customer home screen:

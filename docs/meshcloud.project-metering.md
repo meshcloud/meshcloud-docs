@@ -26,6 +26,8 @@ Additionally an amount can be set on the payment method, which indicates how muc
 
 ### Tenant Usage Reports
 
+![Tenant Usage Reports](assets/tenant-usage-report-example.png)
+
 A tenant usage report provides usage information of one tenant (project representation in a specific platform). E.g. all resources like VMs, Storage, Public IPs, etc are shown in this report.
 
 Tenant Usage Reports can be accessed in the tenant control plane under **Finacials** > **Usage Reports**. For every period (e.g. a month),

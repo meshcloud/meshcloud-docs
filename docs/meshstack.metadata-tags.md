@@ -10,7 +10,7 @@ Operators can configure meshStack to collect, attach and distribute organization
 > meshStack currently supports tags on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
 > Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [meshCustomerUserGroups](meshstack.customer-group-sync.md) are freely taggable via the meshStack API.
 
-meshStack often acts as an organization's central registry of cloud environments and services. It therefore needs to cover
+meshStack acts as an organization's central registry of cloud environments and services. It therefore needs to cover
 a wide range of use cases for orchestrating organizational processes across multiple clouds, including;
 
 - centralized management and configuration of [cloud platforms](./meshcloud.platforms.md)
@@ -145,7 +145,10 @@ As a full example, a tag named `myCustomerTag` would be provided as an HTTP head
 
 ## Tags in Cloud Tenants
 
-Certain cloud platforms allow you to tag resources in order to help organize them. It is possible to use the metadata tags from meshStack to control how these resources are tagged during project replication. The whole lifecycle of these tags is managed. This means tags on the cloud platform are updated and removed depending on the underlying metadata of the replicated meshProject. In order to properly track meshStack managed tags, every tag is usually prefixed with a tag prefix (e.g. the `meshstack_` prefix in the tag label `meshstack_costcenter:12345`).
+Beside having tags in meshStack, it is also useful for cloud-native users to be aware of the metadata within e.g. Azure. This why meshStack
+supports the ability to "replicate" the tags into the actual cloud platforms. The entire lifecycle of these tags can be managed by meshStack. This means tags on the cloud platform are updated and removed depending on the underlying metadata of the replicated meshProject. meshStack manages all tags of a prefixed namespace (e.g. the `meshstack_` prefix in the tag label `meshstack_costcenter:12345` indicates that this is a meshStack managed tag).
+
+Use the configuration below and the [tag definition user interface](#how-to-define-a-new-tag) to enable automatic replication of tags to cloud tenants.
 
 <!--snippet:mesh.platform.tenantTags#type-->
 
