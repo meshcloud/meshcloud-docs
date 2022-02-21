@@ -27,6 +27,35 @@ resourcemanager.projects.get
 resourcemanager.projects.list
 ```
 
+## How to query multiple billing accounts for the same GCP organization
+
+Create GCP Cloud Billing data BigQuery Exports are available for all billing accounts. Use the same location for all datasets.
+
+Create a view of the union over two base billing account exports.
+
+An example query for creating a view
+
+```sql
+  CREATE VIEW mydataset.meshcloud_billing_view AS
+    (
+      (SELECT
+        *,
+        _PARTITIONTIME as PARTITIONTIME
+      FROM
+        project-id-a.billing.gcp_billing_export_v1_01234A_5678C_1A23B
+    )
+    UNION ALL
+    (
+      SELECT
+      *,
+      _PARTITIONTIME as PARTITIONTIME
+    FROM
+      project-id-b.billing.gcp_billing_export_v1_98765Z_4321X_9Z87Y
+    )
+```
+
+Grant Service Account Permissions on the dataset as described in [Service Account Configuration](#service-account-configuration).
+
 ## Configuration Reference
 
 This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
