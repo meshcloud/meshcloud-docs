@@ -211,6 +211,7 @@ meshStack currently provides two discount rules. Future releases could provide a
 let DiscountRule =
       < fixedPercentage : FixedPercentageDiscountRule
       | tieredPercentage : TieredPercentageDiscountRule
+      | tieredFixedAmount : TieredFixedAmountDiscountRule
       >
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -284,7 +285,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-##### Tiered Percentage Discount Rule
+##### Fixed percentage per tier
 
 The tiered percentage discount rule defines tiers of cloud resource consumption. For each tier a discount percentage is used to calculate the discount to be used.
 
@@ -354,7 +355,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-##### Tiered Fixed Amount Discount Rule
+##### Fixed cost per tier
 
 The tiered discount rule defines tiers of cloud resource consumption. For each tier a fixed amount is added.
 
@@ -366,7 +367,7 @@ The tiered discount rule defines tiers of cloud resource consumption. For each t
 ```dhall
 let TieredFixedAmountDiscountRule =
     {-
-        Adds a fixed amount discount based on source amount tier. 
+        Adds a fixed amount discount based on source amount tier.
 
          discountScope:
             The discount tier is applied on a source amount computed by summing the usage line item net amounts
