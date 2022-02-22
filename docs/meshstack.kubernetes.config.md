@@ -71,9 +71,8 @@ let Aks =
       groupNamePattern:
         Users need a cluster access permission in Azure in order to get credentials. This property defines
         how the name of this AAD group is chosen.
-        All the usual available replicator string template properties are available
-        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating) together
-        with the additional property:
+        All the usual available replicator string template properties are available together with the additional
+        property:
 
           1. platformGroupAlias (configurable via Landing Zone and can be used as a role name suffix)
 
@@ -112,7 +111,8 @@ let Aks =
 ```dhall
 let example
     : Aks
-    = { groupNamePattern = "aks-%s.%s-%4\$s"
+    = { groupNamePattern =
+          "aks-#{customerIdentifier}.#{projectIdentifier}-#{platformGroupAlias}"
       , aksSubscriptionId = "1234-1234-1234-1234"
       , aksClusterName = "aks-meshcloud-dev"
       , aksResourceGroup = "aks-meshcloud-dev"
