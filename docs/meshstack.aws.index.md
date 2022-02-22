@@ -300,7 +300,7 @@ let AwsSso =
         The ARN of your AWS SSO Instance.
 
       group-name-pattern:
-        Configures the pattern that defines the desired name of AWS SSO groups managed by meshStack.
+        Configures the pattern that defines the desired name of AAD groups managed by meshStack.
         It follows the usual replicator string pattern features and provides the additional replacement:
 
           1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
@@ -343,7 +343,7 @@ let example
           "https://scim.eu-central-1.amazonaws.com/xxxxx-xxxx-xxxx-xxxx/scim/v2/"
       , arn = "arn:aws:sso:::instance/ssoins-123456789"
       , group-name-pattern =
-          "\${customerIdentifier}.\${projectIdentifier}.\${platformGroupAlias}"
+          "#{customerIdentifier}.#{projectIdentifier}.#{platformGroupAlias}"
       , sso-access-token = Secret.fromEnv "AWS_SSO_ACCESS_TOKEN"
       , sign-in-url = "https://meshcloud-dev.awsapps.com/start"
       , role-mappings =

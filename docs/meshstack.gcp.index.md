@@ -164,10 +164,9 @@ let GcpPlatformCoreConfiguration =
 
       projectNamePattern:
         All the usual available replicator string template properties are available.
-        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
         The result must be 4 to 30 characters.
-        Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
-        and exclamation point.
+        Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
+        single-quote, double-quote, space, and exclamation point.
         When length restrictions are applied, the abbreviation will be in the middle and marked by a single-quote
 
       projectIdPattern:
@@ -177,11 +176,11 @@ let GcpPlatformCoreConfiguration =
         naming collisions.
 
       groupNamePattern:
-        All the usual available replicator string template properties are available.
-        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
-        The additional property is available:
-
-          1. platformGroupAlias (configurable via Landing Zone and can be used as a role name suffix)
+        A String.format format string receiving the following arguments:
+          1. meshCustomer identifier
+          2. meshProject identifier
+          3. meshProject ID (numeric)
+          4. role name suffix (configurable via Landing Zone)
 
       allowHierarchicalFolderAssignment:
         Configuration flag to enable or disable hierarchical folder assignment in GCP. This means
@@ -213,11 +212,11 @@ let example
       , customer-id = " Cxxxx123"
       , billing-account-id = "123456-1234ABCD-1234FF"
       , project-name-pattern =
-          "\${customerIdentifier:%.14s} \${projectIdentifier:%.15s}"
+          "#{customerIdentifier:%.14s} #{projectIdentifier:%.15s}"
       , project-id-pattern =
-          "\${customerIdentifier:%.15s}-\${projectIdentifier:%.10s}-\${rand:%.3s}"
+          "#{customerIdentifier:%.15s}-#{projectIdentifier:%.10s}-#{rand:%.3s}"
       , group-name-pattern =
-          "\${customerIdentifier}.\${projectIdentifier}-\${platformGroupAlias}"
+          "#{customerIdentifier}.#{projectIdentifier}-#{platformGroupAlias}"
       , allow-hierarchical-folder-assignment = True
       , tenant-tags =
         { namespace-prefix = "meshstack_"

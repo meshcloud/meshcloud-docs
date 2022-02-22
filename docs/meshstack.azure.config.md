@@ -68,9 +68,9 @@ let example
       -- and group names like "customer.project-reader"
       { platform = "azure.mylocation"
       , subscription-name-pattern =
-          "\${customerIdentifier}.\${projectIdentifier}"
+          "#{customerIdentifier}.#{projectIdentifier}"
       , group-name-pattern =
-          "\${customerIdentifier}.\${projectIdentifier}-\${platformGroupAlias}"
+          "#{customerIdentifier}.#{projectIdentifier}-#{platformGroupAlias}"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
