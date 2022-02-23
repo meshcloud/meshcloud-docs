@@ -47,7 +47,7 @@ When configuring these roles, operators must take care to correctly guard agains
 
 ## Platform Instance Configuration
 
-> The recommended way to set up AWS as a meshPlatform is via the public terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you use the terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform).
+> The recommended way to set up AWS as a meshPlatform is via the public terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you decide to use it.
 
 ### meshcloud Account Setup
 
