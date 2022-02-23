@@ -7,6 +7,8 @@ You can find a description of meshTenants [here](./meshcloud.tenant.md).
 
 ## Viewing tenant status
 
+![Tenant Overview](assets/tenant-overview.png)
+
 You can see the full list of meshTenants with their replication status in the Administration area. Click on `Tenants` below the `Platforms` header. The list contains all tenants and their status, which is either:
 
 - successful
