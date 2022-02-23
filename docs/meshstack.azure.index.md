@@ -20,26 +20,19 @@ In order to plan and execute a successful integration of Azure using meshcloud, 
 All subscriptions in Azure must be associated with exactly one AAD Tenant storing role and permission assignments. Azure uses this AAD Tenant to evaluate permissions on all resources contained in that subscription. meshcloud manages roles and assignments
 by automatically replicating [meshProject Role Assignments](./meshcloud.project.md) to this AAD Tenant.
 
-However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant.
-In the following section we describe a possible AAD setup.
+However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant. For best practices on setting up your AAD, check out our [Cloud Foundation](https://cloudfoundation.meshcloud.io/maturity-model/iam/federated-identity-and-authentication.html#azure-active-directory) website for typical implementations.
 
-### Externally Provisioned Identities
+> **Recommendation**: Because meshcloud requires read-write permissions to your Azure Active Directory to manage user roles on Azure Subscriptions, we recommend creating a separate **"Workload AAD Tenant"** to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant" (AAD B2B). This way, users have a single cloud identity managed by your organization-wide policies while isolating "workload" related Azure activies into its own AAD Tenant which has no way of affecting other applications using the home tenant like Office 365 etc.
 
-The default model expected by Microsoft is [Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/), i.e. a local Active Directory (AD) synced to Azure (Azure Active Directory, AAD). Organizations can implement this sync using
-[Azure Active Directory Connect (AD Connect)](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-azure-ad-connect). This sync populates user identities into an AAD Tenant owned by the organization and can also synchronize existing groups and memberships.
+### Considerations
 
-The user identities are synchronized to your organization's "home tenant", which also owns the email domains identifying these users.
-In most organizations, other applications like Office 365 already consume user identities from this AAD Tenant.
+#### Managed Users
 
-> Please make sure that all users who need access to the Azure Portal are replicated into the AAD. meshcloud will issue
-> a [replication](./meshcloud.tenant.md) warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
+All users who need access to the Azure Portal should be synced in the AAD managed by meshcloud.
 
-### Workload AAD Tenant
+> meshcloud will issue a [replication](./meshcloud.tenant.md) warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
 
-Because meshcloud requires read-write permissions to your Azure Active Directory to manage user roles on Azure Subscriptions, we recommend creating a
-separate "Workload AAD Tenant" to be exclusively used by meshcloud. Our orchestration engine then creates Guest Users in the meshcloud AAD Tenant that reference user identities from the "home tenant" (AAD B2B). This way, users have a single cloud identity managed by your organization-wide policies while isolating "workload" related Azure activies into its own AAD Tenant which has no way of affecting other applications using the home tenant like Office 356 etc.
-
-### External User Ids (euid)
+#### External User Ids (euid)
 
 Using [externally-provisioned user identities](./meshstack.identity-federation.md#externally-provisioned-identities) requires your IdP to provide a user identifier suitable to locate user identities
 in the "home tenant". This external user id needs to be mapped to the `euid` user attribute in the [meshIdB](./meshstack.identity-federation.md).
@@ -48,18 +41,27 @@ It is important that the provided euid's are **case-sensitive** and must match t
 
 > meshcloud can support complex Azure AD setups involving user identity lookup rules and multiple home tenants. Please contact our experts for more details.
 
-### Licensing Considerations
+#### Licensing
 
 Users managed in the meshcloud AAD Tenant do not require AAD Premium Licenses.
 
-## Service Principal Setup
+## Azure meshPlatform Setup
 
-meshStack uses separate service principals for different tasks following the best practice of least privilege principle. Depending on the way how you want to setup Subscription creation (there are two possible ways: Pre-provisioned Subscriptions or using an Enterprise Enrollment Account), you can use either an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#enterprise-enrollment-account), the usage of an App Registration principle is **mandatory**.
+### Service Principal Setup
+
+> The recommended way to set up Azure as a meshPlatform is via the public terraform [Azure meshPlatform Module](https://github.com/meshcloud/terraform-azure-meshplatform). The steps below are not needed if you decide to use it.
+
+meshStack uses separate service principals for different tasks following the best practice of least privilege principle. There are two possible ways to setup Subscription creation:
+
+1. Pre-provisioned Subscriptions
+2. Using an Enterprise Enrollment Account
+
+Depending on the way you choose, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#subscription-provisioning), the usage of an App Registration principle is **mandatory**.
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
 The Service Principal must be authorized in the scope of this AAD Tenant.
 
-### AAD Level Permissions
+#### AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **Enterprise applications**, click on **New application**.
 2. Click on **Create your own application**, choose a name e.g. `meshReplicator` and choose "Register an application to integrate with Azure AD".
@@ -79,7 +81,7 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
-### Azure RBAC Permissions
+#### Azure RBAC Permissions
 
 Created subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
 
@@ -121,7 +123,7 @@ In Azure Portal, navigate to the "Management Groups" blade, then click on the "D
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
-### Privilege Escalation Prevention
+#### Privilege Escalation Prevention
 
 Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy on a root management group level:
 
@@ -156,17 +158,17 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 }
 ```
 
-## Subscription Provisioning
+### Subscription Provisioning
 
 To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. Operators can find the corresponding configuration options in the [Provisioning Configuration Reference](./meshstack.azure.config.md#provisioning-configuration).
 
-### Enterprise Enrollment Account
+#### Enterprise Enrollment Account
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement, Microsoft Customer Agreement or a Microsoft Partner Agreement and want to provide a large number of subscriptions in a fully automated fashion.
 
 > Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](./meshcloud.platforms.md). Please contact our experts for more details.
 
-#### Setting up the Enrollment Account
+##### Setting up the Enrollment Account
 
 We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
 
@@ -224,7 +226,7 @@ the response is:
 
 The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account down, as it needs to be used as the `enrollmentAccountId` in the [DHALL provisioning configuration](meshstack.azure.config.md#provisioning-configuration).
 
-#### Enterprise Enrollment Account Permissions
+##### Enterprise Enrollment Account Permissions
 
 When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
 
@@ -253,7 +255,7 @@ The complete set of Azure documentation to complete this task can be found here:
 
 > The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01` which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
 
-#### Ensuring Retained Subscription Owners
+##### Ensuring Retained Subscription Owners
 
 Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist. This owner can also be the Azure [Blueprint Service Principal](#blueprint-configuration)
 
@@ -261,7 +263,7 @@ In contrast to other provisioning methods, EA provisioning will not retain a def
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
-### Pre-provisioned Subscriptions
+#### Pre-provisioned Subscriptions
 
 If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that whish
@@ -271,13 +273,13 @@ The meshcloud Azure [replication](./meshcloud.tenant.md) detects externally-prov
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 
-### Metering
+#### Metering
 
 In order to read resource usages, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by meshStacks's metering service:
 
 - `Cost Management Reader`
 
-## Blueprint Configuration
+### Blueprint Configuration
 
 The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
 of the app in the managed AAD Tenant.
