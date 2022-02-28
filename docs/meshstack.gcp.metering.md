@@ -14,8 +14,8 @@ Once billing export has been setup as explained in the GCP documentation linked 
 Assign the service account the following [predefined roles](https://cloud.google.com/bigquery/docs/access-control):
 
 ```text
-roles/bigquery.jobUser
-roles/bigquery.dataViewer
+roles/bigquery.jobUser (on the project of the ServiceAccount)
+roles/bigquery.dataViewer (on the project that holds the bigquery dataset)
 ```
 
 To enable meshStack to periodically collect active projects, create an IAM role with the following permissions and assign it to the service account.
