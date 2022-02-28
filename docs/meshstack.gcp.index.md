@@ -7,6 +7,8 @@ meshcloud can automatically provision GCP Projects as Tenants for [meshProjects]
 
 ## Integration Overview
 
+> The recommended way to set up GCP as a meshPlatform is via the public terraform [GCP meshPlatform Module](https://github.com/meshcloud/terraform-gcp-meshplatform). The steps below are not needed if you decide to use it.
+
 To enable integration with GCP, operators need to deploy and configure the meshStack GCP Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.GCP`. This makes GCP available to meshProjects like any other cloud platform in meshStack.
 
 Google Cloud Platform relies on [Google Cloud Identity (GCI)](https://cloud.google.com/identity/) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
