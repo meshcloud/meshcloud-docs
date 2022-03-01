@@ -14,17 +14,14 @@ right on the policies screen. After clicking on it, there is a redirection to th
 details need to be filled out. To create the policy, you need to add the policy name in the form. Then you need to add
 both the meshObjects from the dropdown menu. For ease of use, we already restricted the meshObject combinations which
 do not make sense. You can choose only possible meshObject combinations. Once you select both meshObjects, the section
-for adding rules will appear where you can select the tag of selected meshObject. It is a global rule which will be
-applied everywhere. The created policy has been applied to every configuration which has selected meshObjects.
+for adding tags will appear where you can select the tag of selected meshObject. This restriction will be
+applied everywhere. The created meshPolicy has been applied to every configuration which has selected meshObjects.
 
 ### How it works
 
 Let's consider a scenario where you want to set a policy for the selection of a meshLandingZone. Therefore you configure
-a policy with a rule on the environment tags. Operator 'in' works like an intersection between the meshObjects. So if
-you want to assign a landing zone with a "prod" tag to a project which has a "prod" tag, it is valid. It is possible to
-assign multiple rules to a policy. But at least one rule has to be configured. In order to map two meshObjects
-successfully one of the policies defined for a match needs to be true. In order for a policy to return true, the rules
-have to be met.
+a policy on the environment tags. Operator 'in' works like an intersection between the meshObjects. So if
+you want to assign a landing zone with a "prod" tag to a project which has a "prod" tag, it is valid.
 
 ## Edit meshPolicies
 
