@@ -116,7 +116,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 
 ## Subscription Provisioning
 
-To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. Operators can find the corresponding configuration options in the [Provisioning Configuration Reference](.//meshstack.azure.configuration-reference.md#provisioning-configuration).
+To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. Operators can find the corresponding configuration options in the [Provisioning Configuration Reference](meshstack.azure.configuration-reference.md#provisioning-configuration).
 
 ### Enterprise Enrollment Account
 
@@ -180,7 +180,7 @@ the response is:
 }
 ```
 
-The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account down, as it needs to be used as the `enrollmentAccountId` in the [DHALL provisioning configuration](/meshstack.azure.configuration-reference.md#provisioning-configuration).
+The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account down, as it needs to be used as the `enrollmentAccountId` in the [DHALL provisioning configuration](meshstack.azure.configuration-reference.md#provisioning-configuration).
 
 #### Enterprise Enrollment Account Permissions
 
