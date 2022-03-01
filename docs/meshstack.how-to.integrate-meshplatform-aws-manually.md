@@ -5,7 +5,7 @@ title: How to manually integrate AWS as meshPlatform
 
 > The recommended way to set up AWS as a meshPlatform is via the public terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you decide to use it.
 
-## AWS Account Setup 1: meshcloud 
+## AWS Account Setup 1: meshcloud
 
 The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
 
@@ -629,4 +629,3 @@ As you can see, meshStack has the permissions to upgrade this role if needed. Th
 If you prefer that meshStack does not have the capability to upgrade its own role, you can choose to implement your own role downgrade mechanism, for example via a Lambda call, which is also supported by meshLandingZones. In this case the role auto downgrade feature can be disabled.
 
 If you would like to audit the actions taken by this role, you can enable AWS CloudTrail on all the accounts provisioned by meshStack by using an AWS CloudFormation StackSet, which is also supported by meshLandingZones. With the auditing enabled, it will always be possible to identify at which point in time meshStack added additional rights to its role. It will help to easily identify that meshStack was only able to do certain actions given the rights assigned at a certain point in time.
-
