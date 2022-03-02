@@ -5,7 +5,7 @@ title: How to manually integrate GCP as meshPlatform
 
 > The recommended way to set up GCP as a meshPlatform is via the public terraform [GCP meshPlatform Module](https://github.com/meshcloud/terraform-gcp-meshplatform). The steps below are not needed if you decide to use it.
 
-## Service Account Configuration
+## Set up the Service Account for Replication
 
 meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the "least privilege" principle.
@@ -34,9 +34,9 @@ deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
-## Root Project Configuration
+## Configure the Root Project
 
-For some resources we need a “root” project for meshStack in GCP. This project is reserved for use by meshstack and operators. For this guide, we’ll call the root project `meshstack-root`.
+meshStack requires a project in GCP for some of the resources it uses. It is reserved for use by meshstack and operators. For this guide, we’ll call the project `meshstack-root`.
 
 ### Enable APIs
 
@@ -46,7 +46,7 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 - [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
 - [Cloud Billing API](https://console.cloud.google.com/apis/library/cloudbilling.googleapis.com/overview)
 
-### meshfed-service Service Account
+### Create meshfed-service Service Account
 
 Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/service-accounts) in the `meshstack-root` project.
 
@@ -59,7 +59,7 @@ The Service Account will be identified by an email address like
 meshfed-service@meshstack-root.iam.gserviceaccount.com
 ```
 
-#### Granting Resource Permissions
+#### Grant Resource Permissions
 
 The Service Account will be used by meshStack to perform project replication. Operators thus need to grant it the permissions of the
 `meshfed-service` IAM role on those folders of the [GCP resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
@@ -75,9 +75,9 @@ In order to associate created projects with a Billing Account, the replicator ne
 `billing.resourceAssociations.create` permission on the Billing Account. This is best achieved by assigning the
 `meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
-## Cloud Identity Configuration
+## Set up Cloud Identity
 
-### Authorizing the Service Account
+### Authorize the Service Account
 
 In order to perform certain group related administrative tasks the previosly created service account needs an additional role from the Admin Console (G Suite). In order to add this role you need to get the `unique ID` of the Service Account first.
 
@@ -94,7 +94,56 @@ Please follow the official [Google guide](https://cloud.google.com/identity/docs
 }
 ```
 
-## Audit Logs for meshfed-service User
+## Set up the Service Account for Metering
+
+Once billing export has been setup as explained in the GCP documentation linked above, meshStack should be configured with the credentials of a GCP service account that has permission to access the exported billing dataset. This service account must also have the permission to run jobs.
+
+Assign the service account the following [predefined roles](https://cloud.google.com/bigquery/docs/access-control):
+
+```text
+roles/bigquery.jobUser (on the project of the ServiceAccount)
+roles/bigquery.dataViewer (on the project that holds the bigquery dataset)
+```
+
+To enable meshStack to periodically collect active projects, create an IAM role with the following permissions and assign it to the service account.
+
+```text
+resourcemanager.folders.get
+resourcemanager.folders.list
+resourcemanager.projects.get
+resourcemanager.projects.list
+```
+
+## Optional: Query multiple billing accounts for the same GCP organization
+
+Create GCP Cloud Billing data BigQuery Exports are available for all billing accounts. Use the same location for all datasets.
+
+Create a view of the union over two base billing account exports.
+
+An example query for creating a view
+
+```sql
+  CREATE VIEW mydataset.meshcloud_billing_view AS
+    (
+      (SELECT
+        *,
+        _PARTITIONTIME as PARTITIONTIME
+      FROM
+        project-id-a.billing.gcp_billing_export_v1_01234A_5678C_1A23B
+    )
+    UNION ALL
+    (
+      SELECT
+      *,
+      _PARTITIONTIME as PARTITIONTIME
+    FROM
+      project-id-b.billing.gcp_billing_export_v1_98765Z_4321X_9Z87Y
+    )
+```
+
+Grant Service Account Permissions on the dataset as described in [Service Account Configuration](#service-account-configuration).
+
+## Optional: Enable Audit Logs for meshfed-service User
 
 The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
 

@@ -5,7 +5,7 @@ title: How to manually integrate AWS as meshPlatform
 
 > The recommended way to set up AWS as a meshPlatform is via the public terraform [AWS meshPlatform Module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you decide to use it.
 
-## AWS Account Setup 1: meshcloud
+## Set up AWS Account 1: meshcloud
 
 The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
 
@@ -48,7 +48,7 @@ Operators should generate a unique and random value for `EXTERNAL_ID`, e.g. a GU
 
 Operators need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
 
-## AWS Account Setup 2: Management
+## Set up AWS Account 2: Management
 
 > Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
 > a working AWS integration using meshStack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
@@ -145,7 +145,7 @@ Replace `MESHCLOUD_ACCOUNT_ID` with the dedicated meshcloud AWS account id where
 > More information on that can be found at this [AWS Guide](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/controlling_access.html#permissions-end-users-console).
 > To make use of these permissions, there must be an available launch path defined in AWS Service Catalog, as stated also in the [prerequisites](#aws-control-tower-integration).
 
-## AWS Account Setup 3: Automation
+## Set up AWS Account 3: Automation
 
 The automation account should contain a `MeshfedAutomationRole`.
 
@@ -230,11 +230,11 @@ In order to roll out CloudFormation Stack Instances in the newly provisioned acc
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## IAM Configuration
+## Set up IAM
 
 Currently meshStack supports 2 different ways of integrating AWS IAM with meshStack, either via [AWS SSO](#aws-sso) or [meshIdB](#meshidb-deprecated) (deprecated). The AWS SSO integration is the preferred integration as it allows using your company's central IdP to log in to AWS. This simplifies integration with meshStack, gives you more control over the AuthN part and improves UX for end-users when logging in to AWS.
 
-### AWS SSO
+### Using AWS SSO (recommended)
 
 The integration with AWS SSO basically works like this: AuthN is done via the company's IdP. Additionally users will be synced via AWS SSO Automated Provisioning (SCIM) to AWS SSO. meshStack takes care of AuthZ. That means meshStack will create groups for every project role on a meshTenant in AWS SSO. meshStack will assign the according users to these groups. As a last step, meshStack assigns the created groups to the according AWS account with configured PermissionSets.
 
@@ -332,13 +332,13 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-### meshIdB (deprecated)
+### Using meshIdB (deprecated)
 
 As AWS SSO is a rather new AWS feature, meshStack integrated IAM for AWS differently in the past. This AWS IAM integration should not be used
 for new integrations anymore. During replication meshStack configures meshIdB as an IdP within the managed account. Additionally according IAM
 roles are created during replication (dependent on configuration either my meshStack or by a CF template or a lambda function that are configured.
 in the Landing Zone). meshStack also sets up a trust relationship to meshIdB in order to allow SSO for the project users.
-meshStack additionaly creates according roles in the meshIdB so the AuthZ information on which accounts can be accessed
+meshStack additionally creates according roles in the meshIdB so the AuthZ information on which accounts can be accessed
 by which user are then part of the SAML token AWS receives after logging in via meshIdB.
 
 <!--snippet:mesh.platforms.aws.iam-configuration.mesh-idb-->
@@ -421,7 +421,7 @@ let exampleExternal
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Project-Account Email Addresses
+## Decide on a Project-Account Email Address Patterns
 
 AWS requires a unique email address for each account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder). For example, this pattern
 
@@ -435,7 +435,7 @@ allows generation of account names:
 * aws+customer.projectB@meshcloud.io
 
 
-## Account Alias Pattern
+## Decide on an Account Alias Pattern
 
 
 Accounts in AWS get an alias assigned. This alias is fully customizable. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
@@ -461,7 +461,7 @@ customer_identifier_length: 16
 project_identifier_length: 30
 ```
 
-## AWS Control Tower Integration
+## Integrate AWS Control Tower
 
 (also refer to [AWS Management Account Setup](#aws-management-account-setup))
 
@@ -565,7 +565,7 @@ The following prerequisites must be fulfilled for the enrollment to work:
 > enabled in AWS Organizations that prevents that.
 
 
-## Minimum Access Rights on Provisioned Accounts
+## Set Minimum Access Rights on Provisioned Accounts
 
 When provisioning a new account, a default role with administration privileges will be created in the new account. This role is by default named [OrganizationAccountAccessRole](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
 but the name can be configured via meshStack. The MeshfedServiceRole will assume this newly created role in the provisioned account to perform tasks such as setting the account alias or setting up the user roles. meshStack has the capability to self downgrade this role's permissions to a minimum. This can be configured via the `self-downgrade-access-role` configuration flag.
@@ -629,3 +629,92 @@ As you can see, meshStack has the permissions to upgrade this role if needed. Th
 If you prefer that meshStack does not have the capability to upgrade its own role, you can choose to implement your own role downgrade mechanism, for example via a Lambda call, which is also supported by meshLandingZones. In this case the role auto downgrade feature can be disabled.
 
 If you would like to audit the actions taken by this role, you can enable AWS CloudTrail on all the accounts provisioned by meshStack by using an AWS CloudFormation StackSet, which is also supported by meshLandingZones. With the auditing enabled, it will always be possible to identify at which point in time meshStack added additional rights to its role. It will help to easily identify that meshStack was only able to do certain actions given the rights assigned at a certain point in time.
+
+## Set up IAM User for metering
+
+```mermaid
+graph LR;
+    subgraph Organization Account
+        meshfedServiceRole["MeshfedServiceRole"];
+        costExplorerServiceRole["MeshCostExplorerServiceRole"];
+    end
+    subgraph meshcloud Account
+        replicatorUser["ReplicatorUser & AccessKey"];
+        costExplorerUser["CostExplorerUser & AccessKey"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedServiceRole;
+    costExplorerUser--Trusted Entity with External-id-->costExplorerServiceRole;
+    subgraph Automation Account
+        meshfedAutomationRole["MeshfedAutomationRole"];
+    end
+    replicatorUser--Trusted Entity with External-id-->meshfedAutomationRole
+```
+
+For the purpose of metering, meshStack requires the AWS Access Key and Secret Key of a user created in the `meshcloud` AWS account.
+A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
+
+1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+2. **CostExplorerUser's Assume Role Policy**: This policy allows CostExplorerUser IAM user to assume the IAM Role `MeshCostExplorerServiceRole`
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Organization Account MeshCostExplorerServiceRole's Access Policy-->
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": [
+                "ce:GetSavingsPlansUtilizationDetails",
+                "ce:GetSavingsPlansUtilization",
+                "ce:GetSavingsPlansCoverage",
+                "ce:GetReservationUtilization",
+                "ce:GetReservationCoverage",
+                "ce:GetDimensionValues",
+                "ce:GetCostAndUsage",
+                "organizations:ListAccounts"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+<!--Meshcloud Account CostExplorerUser's Assume Role Policy-->
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<<ORGANIZATION_ACCOUNT_ID>>:role/MeshCostExplorerServiceRole"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<<EXTERNAL_ID>>"
+        }
+      }
+    }
+  ]
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
+## Leverage Reserved Instances & Savings Plans
+
+This section applies only if your meshCustomers pay you (the Cloud Foundation team), upfront to purchase Reserved Instances
+and Savings Plans directly on their AWS accounts, which give them priority for consuming the RI or SP.
+If this is the case, you can enable `reservedInstanceFairChargeback` and `savingsPlanFairChargeback` feature
+flags to achieve the following. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+
+The upfront payments will be shown as line items in the tenant usage report for the month on which the Reserved Instance or Savings Plan starts.
+
+meshStack also adds a discount which is equal to the `amortized upfront cost` to the relevant tenant usage report.
+This line item will be added to the report every month until the end of the Reserved Instances or Savings Plan period.
+
+To achieve this, meshStack collects the information about Reserved Instances and Savings Plans via the cost explorer API.
