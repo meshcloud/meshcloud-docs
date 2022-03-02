@@ -5,7 +5,7 @@ title: meshPolicies
 
 ## Introduction: what are meshPolicies?
 
-A meshPolicy is a set of rule(s) between two [meshObjects](meshcloud.index.md#introduction) that are globally defined by your organization. Each rule describes what [tag](meshcloud.metadata-tags.md) values have to be present on both meshObjects, in order to comply with the meshPolicy. meshPolicies are enforced in various places when attaching meshObjects. How meshPolicies can be configured is described [here](administration.mesh-policies.md).
+A meshPolicy describes a restriction between two [meshObjects](meshcloud.index.md#introduction) that are globally defined by your organization. Each meshPolicy describes which [tag](meshcloud.metadata-tags.md) values have to be present on both meshObjects, in order to comply with the meshPolicy. meshPolicies are enforced in various places when attaching meshObjects. How meshPolicies can be configured is described [here](administration.mesh-policies.md).
 
 ### meshPolicies for meshUsers/Groups
 
