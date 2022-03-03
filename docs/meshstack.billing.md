@@ -12,6 +12,9 @@ integrated process that serves all stakeholders (platform owners, project owners
 Metering ⟶ Billing ⟶ Chargeback
 ```
 
+> Learn more about how your cloud foundation team can enable cloud cost management in
+> the [Cloud Foundation Maturity Model](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/)
+
 ## Metering
 
 > Metering is the process of collecting and calculating cloud resource usage. Metering also involves pricing this resource usage to calculate cost.
@@ -55,3 +58,6 @@ One core aspect is that metering data must be made plausible for the consumers. 
 reporting so that they can verify how each of their deployed cloud resources contributes to the total usage.
 meshStack includes a sophisticated private-cloud metering engine that allows operators to define their own product catalogs
 and create accurate metering data.
+
+> To learn more about enabling a solid private cloud billing process, read the Cloud Foundation Building Block
+> on [private cloud pay-per-use chargeback](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/private-cloud-pay-per-use-chargeback.html).

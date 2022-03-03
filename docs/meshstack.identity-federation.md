@@ -7,6 +7,8 @@ One of meshStacks main features is to provide single identities across multiple 
 
 Identity Federation enables enterprises to integrate corporate SSO systems at a single point (the **mesh Identity Broker**). meshStack then uses it's desired-state replication to ensure correct configuration of identity and authorization information into all connected **meshPlatforms**. The diagram below depicts the principal components involved.
 
+> To get a more fundamental understanding of doing IAM in the cloud, look into the IAM Building Blocks in the [Cloud Foundation Maturity Model](https://cloudfoundation.meshcloud.io/maturity-model/iam/).
+
 ```mermaid
 graph LR;
     subgraph Enterprise IAM

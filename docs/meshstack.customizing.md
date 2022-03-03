@@ -5,18 +5,6 @@ title: Customizing
 
 meshStack allows operators to customise the user experience according to the needs of their organisation.
 
-## Feedback Mailbox
-
-Users have the option to quickly submit feedback via the meshPanel's "thumbs up/down" button in the navbar.
-Operators can configure the mailbox this feedback is sent to via `meshfed.web`:
-
-```dhall
-{
-  {- e.g. "feedback@example.com" -}
-  feedbackEmail : Optional Text
-}
-```
-
 ## Message of the Day
 
 Operators can configure an optional "message of the day" to be displayed in meshPanel.
