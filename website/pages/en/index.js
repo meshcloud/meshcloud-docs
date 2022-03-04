@@ -84,7 +84,7 @@ const LearnHow = props => (
     {[
       {
         title: `[User Documentation](${docUrl('meshcloud.index.html', props.language)})`,
-        content: 'Documentation for DevOps Teams and IT Managers using a meshcloud installation as end-users.',
+        content: 'Hello world from Netlify 👋 Documentation for DevOps Teams and IT Managers using a meshcloud installation as end-users.',
       },
       {
         title: `[Operator Documentation](${docUrl('meshstack.index.html', props.language)})`,
