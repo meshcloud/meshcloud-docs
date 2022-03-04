@@ -213,9 +213,9 @@ The complete set of Azure documentation to complete this task can be found here:
 
 #### Ensure Retained Subscription Owners
 
-Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist. This owner can also be the Azure [Blueprint Service Principal](#blueprint-configuration)
+Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist.
 
-In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Operators should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. This owner can also be an empty AAD group or Service Principal.
+In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Operators should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty AAD group or the [Blueprint Service Principal](#blueprint-configuration).
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
