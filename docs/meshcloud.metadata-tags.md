@@ -27,6 +27,11 @@ Administrators can configure tags so that only [Partner users](./administration.
 
 The [administration documentation](./administration.index.md) provides further details on how partner users can edit restricted tags.
 
+## Immutable tags
+
+Administrators can configure immutable tags. This means that we allow the selection of specific tag values only during the creation process of [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](./meshcloud.payment-methods.md). Afterwards it is no longer possible to edit the selected values. Also administrators cannot change immutable tag values after creation.
+For example if you create a meshProject with **environment** tag **dev** then you can't change the meshProject to **prod**. If you want a meshProject with **environment** tag **dev** then you need to create a new meshProject.
+
 ## Enforce organizational policies using tags
 
 Beside providing valuable metadata, tags can also be used to enforce organizational [policies](https://docs.meshcloud.io/docs/meshcloud.policies.html) in your meshstack. A common use case for this is enforcing that a meshCustomer can only create meshProjects for which it has one of the environment tag values set. If a meshCustomer has environment `dev` and `qa`, it is possible to enforce that users only create meshProjects for these environments but not for e.g. `prod` projects (until an adminstrator gives the meshCustomer a `prod` environment tag). The environment tag on the meshCustomer should also be a restricted tag in this case to ensure only partners can influence this behavior.
