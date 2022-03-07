@@ -79,7 +79,7 @@ In order to associate created projects with a Billing Account, the replicator ne
 
 ### Authorize the Service Account
 
-In order to perform certain group related administrative tasks the previously created service account needs the "Groups Admin" role from the Admin Console (G Suite). 
+In order to perform certain group related administrative tasks the previously created service account needs the "Groups Admin" role from the Admin Console (G Suite).
 
 To authorize the Service Account **via the Google Admin Console** navigate to `@Account` in the sidebar and then `Admin Roles -> Groups Admin` and click `Assign Service Accounts`. In the prompt that appears, enter the service account email, which looks like `user@project.iam.gserviceaccount.com`.
 
