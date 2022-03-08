@@ -79,20 +79,11 @@ In order to associate created projects with a Billing Account, the replicator ne
 
 ### Authorize the Service Account
 
-In order to perform certain group related administrative tasks the previosly created service account needs an additional role from the Admin Console (G Suite). In order to add this role you need to get the `unique ID` of the Service Account first.
+In order to perform certain group related administrative tasks the previously created service account needs the "Groups Admin" role from the Admin Console (G Suite).
 
-Please follow the official [Google guide](https://cloud.google.com/identity/docs/how-to/setup#auth-no-dwd) in order to:
+To authorize the Service Account **via the Google Admin Console** navigate to `@Account` in the sidebar and then `Admin Roles -> Groups Admin` and click `Assign Service Accounts`. In the prompt that appears, enter the service account email, which looks like `user@project.iam.gserviceaccount.com`.
 
-1. Find the `roleID` of the `Group Administrator` role in your Admin SDK.
-2. Use the [Role Assignments API](https://developers.google.com/admin-sdk/directory/v1/reference/roleAssignments/insert) and assign this role to the service account with help of its unique id. The HTTP POST payload looks like:
-
-```json
-{
-  "assignedTo": "SERVICE_ACCOUNT_UNIQUE_ID",
-  "roleID": "ROLE_ID",
-  "scopeType": "CUSTOMER"
-}
-```
+You can alternatively authorize the Service Account **via the Cloud Identity Groups API**. Please find the instructions in for this in the official [Google guide](https://cloud.google.com/identity/docs/how-to/setup#auth-no-dwd).
 
 ## Set up the Service Account for Metering
 
