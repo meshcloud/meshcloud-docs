@@ -17,3 +17,11 @@
 
   # This ensures the build is ignored if there are no changes to the base directory or the /docs/ directory.
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/"
+
+[[redirects]]
+  # This works for now but once we migrate `docs.meshcloud.io` to Netlify too, we will have to
+  # adapt this configuration.
+  from = "/api/*"
+  to = "http://docs.dev.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/:splat"
+  status = 200
+  force = true
