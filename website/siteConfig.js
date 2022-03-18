@@ -142,4 +142,15 @@ const siteConfig = {
 }],
 };
 
+if (process.env.CONTEXT === 'production') {
+  siteConfig.scripts.push({
+    // TODO: when meshcloud-docs is deployed on Netlify we have to replace
+    // the script that is mentioned here. The correct script from Netlify
+    // is already properly redirected. See the netlify.toml for that.
+    src: '/js/script-docs.js',
+    defer: true,
+    'data-domain': 'docs.meshcloud.io'
+  });
+}
+
 module.exports = siteConfig;
