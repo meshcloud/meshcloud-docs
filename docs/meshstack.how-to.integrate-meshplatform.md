@@ -5,7 +5,7 @@ title: How to integrate a meshPlatform into meshStack
 
 A meshPlatform describes a deployment of a cloud platform (e.g. GCP, AWS, Azure, Openstack, etc.). In order to leverage meshcloud's functionalities for a particular cloud platform, a meshPlatform needs to be integrated into meshStack. Below is a step-by-step guide to integrate your desired meshPlatform.
 
-> For more details on the integrations please visit the integration page of the specific cloud platform in the [Operator Docs](https://docs.meshcloud.io/docs/meshstack.index.html).
+> For more details on the integrations please visit the integration page of the specific cloud platform in the [Operator Docs](meshstack.index.md).
 
 ## Step 1: Set up the meshPlatform in the panel
 
