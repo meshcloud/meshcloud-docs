@@ -13,18 +13,16 @@ const GridBlock = CompLibrary.GridBlock;
 
 const siteConfig = require(process.cwd() + '/siteConfig.js');
 
-function docUrl(doc, language) {
-  return siteConfig.baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
+function docUrl(doc) {
+  return siteConfig.baseUrl + 'docs/' + doc;
 }
 
 class Help extends React.Component {
   render() {
-    let language = this.props.language || '';
     const supportLinks = [
       {
         content: `Learn more using the [documentation on this site.](${docUrl(
-          'meshcloud.index.html',
-          language
+          'meshcloud.index.html'
         )})`,
         title: 'Browse Docs',
       },
