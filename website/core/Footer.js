@@ -8,9 +8,9 @@
 const React = require('react');
 
 class Footer extends React.Component {
-  docUrl(doc, language) {
+  docUrl(doc) {
     const baseUrl = this.props.config.baseUrl;
-    return baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
+    return baseUrl + 'docs/' + doc;
   }
 
   pageUrl(doc, language) {
@@ -35,10 +35,10 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('meshcloud.index.html', this.props.language)}>
+            <a href={this.docUrl('meshcloud.index.html')}>
               User Documentation
             </a>
-            <a href={this.docUrl('meshstack.index.html', this.props.language)}>
+            <a href={this.docUrl('meshstack.index.html')}>
               Operator Documentation
             </a>
           </div>
