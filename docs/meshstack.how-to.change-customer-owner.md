@@ -26,7 +26,7 @@ curl --location --request POST 'https://backend-url/api/meshobjectcollections' \
 
 ## Step 2: Import existing Customer Owners into the meshObjectCollection
 
-Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/#_meshcustomeruserbinding) for the Customer Owners into the meshObjectCollection. 
+Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/#_meshcustomeruserbinding) for the Customer Owners into the meshObjectCollection.
 Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/#mesh_object_declarative_import) in the request URL.
 
 ```sh
@@ -39,7 +39,7 @@ kind: meshCustomerUserBinding
 roleRef:
   name: Customer Owner
 targetRef: my-customer
-  name: 
+  name:
 subjects:
   - name: partner@meshcloud.io'
 ```
