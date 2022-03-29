@@ -58,7 +58,7 @@ kind: meshCustomerUserBinding
 roleRef:
   name: Customer Owner
 targetRef:
-  name: unipipe-osb-dev
+  name: my-customer
 subjects:
   - name: partner@meshcloud.io'
 ```
