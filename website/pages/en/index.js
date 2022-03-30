@@ -8,7 +8,6 @@
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
@@ -18,12 +17,8 @@ function imgUrl(img) {
   return siteConfig.baseUrl + 'img/' + img;
 }
 
-function docUrl(doc, language) {
-  return siteConfig.baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
-}
-
-function pageUrl(page, language) {
-  return siteConfig.baseUrl + (language ? language + '/' : '') + page;
+function docUrl(doc) {
+  return siteConfig.baseUrl + 'docs/' + doc;
 }
 
 class Button extends React.Component {
@@ -83,11 +78,11 @@ const LearnHow = props => (
   <Block background="light" layout="twoColumn">
     {[
       {
-        title: `[User Documentation](${docUrl('meshcloud.index.html', props.language)})`,
+        title: `[User Documentation](${docUrl('meshcloud.index.html')})`,
         content: 'Documentation for DevOps Teams and IT Managers using a meshcloud installation as end-users.',
       },
       {
-        title: `[Operator Documentation](${docUrl('meshstack.index.html', props.language)})`,
+        title: `[Operator Documentation](${docUrl('meshstack.index.html')})`,
         content: 'Documentation for multi-cloud management and cloud operation teams operating a meshcloud installation and connected cloud platforms.',
       }
     ]}
