@@ -114,22 +114,23 @@ Besides end-users being impacted at the places above, there are also other place
 ```mermaid
 flowchart TB
     subgraph Legend
-    start1["blocking violationon new assignments"]:::legendClass --> stop1[ ]:::legendClass
-    start2["logging violation but not blocking"]:::legendClass -.-> stop2[ ]:::legendClass
-    start3["blocks on creation and editing"]:::legendClass --> stop3[ ]:::legendClass
+    start1["blocking violation on new assignments of"]:::legendClass --> stop1[ ]:::legendClass
+    start2["logging violation of existing assignments on"]:::legendClass -.-> stop2[ ]:::legendClass
+    start3["blocking violation on creation and editing of"]:::legendClass --> stop3[ ]:::legendClass
     end
     subgraph In case of policy violation
-      meshCustomer:::authorativeClass --> meshProject
-      meshProject:::authorativeClass -.-> meshCustomer
-      meshProject --> meshLandingZone
-      meshLandingZone -.-> meshProject
-      meshUser/Group --> meshCustomer
-      meshCustomer -.-> meshUser/Group
-      meshUser/Group -.-> meshProject
+    direction TB
+      meshCustomer:::authoritativeClass --> meshProject
+      meshCustomer --> meshUser/Group
       meshProject --> meshUser/Group
+      meshProject:::authoritativeClass --> meshLandingZone
+      meshLandingZone -.-> meshProject
+      meshUser/Group -.-> meshCustomer
+      meshUser/Group -.-> meshProject
+
     end
 
-classDef authorativeClass fill:#dae8fc;
+classDef authoritativeClass fill:#dae8fc;
 classDef legendClass height:0px;
 linkStyle 2 stroke: blue;
 linkStyle 3 stroke: blue;
