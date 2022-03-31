@@ -49,6 +49,9 @@ subjects:
 Set yourself as Customer Owner.
 
 ```sh
+# If you skipped steps 1 and 2, use this URL:
+# curl --location --request PUT 'https://backend-url/api/meshobjects \
+# If you went through steps 1 and 2, run the command as is:
 curl --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCollection=collection-my-customer-customer-owners&owner=partner@meshcloud.io' \
 --header 'Content-Type:  application/vnd.meshcloud.api.meshobjects.v1+yaml;charset=UTF-8' \
 --header 'Accept:  application/vnd.meshcloud.api.meshobjects.v1+json' \
