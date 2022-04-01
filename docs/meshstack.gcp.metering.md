@@ -97,11 +97,11 @@ a view in BigQuery which is a union of the two billing data exports from the two
 created with a query which looks similar to the following
 
 ```sql
-(SELECT _PARTITIONTIME as PARTITIONTIME, billing_account_id,service, sku, STRUCT(project.id as id) as project, labels, system_labels,
+(SELECT _PARTITIONTIME as PARTITIONTIME, billing_account_id,service, sku, STRUCT(project.id as id, project.ancestry_numbers as ancestry_numbers) as project, labels, system_labels,
         location, cost, currency, usage, credits, invoice, cost_type, adjustment_info
         from `project-name-root.billing_export.gcp_billing_export_general`)
 UNION ALL
-(SELECT  _PARTITIONTIME as PARTITIONTIME,billing_account_id,service, sku, STRUCT(project.id as id) as project, labels, system_labels,
+(SELECT  _PARTITIONTIME as PARTITIONTIME,billing_account_id,service, sku, STRUCT(project.id as id, project.ancestry_numbers as ancestry_numbers) as project, labels, system_labels,
         location, cost, currency, usage, credits, invoice, cost_type, adjustment_info
         from `project-name.billing_export.gcp_billing_export_credit`)
 
