@@ -20,13 +20,17 @@ section of the navigation area. After clicking policies, you can view all polici
 Policy creation is only possible for a user who has a partner admin role. There is a 'Create Policy' button top
 right on the meshPolicies screen. After clicking on it, there is a redirection to the screen of "Create Policy" where all details need to be filled out.
 
-- **Policy Name**: choose a human readabale display name for the meshPolicy
+- **Policy Name**: choose a human readable display name for the meshPolicy
+
+- **Description (optional)**: add a description to make everyone aware what your policy is about and why it is necessary
 
 - **Policy Subjects**: select the subjects which shall be evaluated
 
 - **Policy Subject Tags**: select a tag on both subjects that shall be evaluated against each other within this meshPolicy
 
 - **Policy Evaluation Strategy**: select the evaluation strategy for how the subjects shall be evaluated (click [here](meshcloud.policies.md#meshPolicy-evaluation-strategy) to learn more about the different strategies)
+
+- **How to fix (optional)**: provide an additional hint how users can resolve the situation when they violate a policy
 
 To learn more about how meshPolicies work, please click [here](meshcloud.policies.md).
 
