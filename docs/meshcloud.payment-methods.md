@@ -88,3 +88,15 @@ The other way of exporting metadata is via our [chargeback statements](meshcloud
 Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing.md#chargeback).
 
 The actual export itself can be done via the meshPanel. This is possible for both Partner Admins (for all meshCustomers) and Customer Admins (for the selected meshCustomer). When navigating to the Administration area (for partner admins), you will see **Chargeback Statements** on the left. When navigating to the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) (for customer admins) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
+
+### External Payment Method Registration
+
+Beside manually creating a new payment method in the meshPanel on an ad-hoc basis, it is also possible to let users navigate to an external URL for requesting
+a new payment method, e.g. an internal budget request form. To make this even better, you can use the API of meshStack to create an approval flow and automate the creation
+of any new payment methods.
+
+The external URL can be figured under the configuration option `environment.ui.externalPaymentMethodUrl`.
+
+By configuring the URL, the following button will appear in the meshPanel for meshCustomers:
+
+![Request Payment Method Button](assets/payment_methods/payment_method_request_button.png)

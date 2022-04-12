@@ -5,11 +5,70 @@ title: meshPolicies
 
 ## Introduction: what are meshPolicies?
 
-A meshPolicy describes a restriction between two [meshObjects](meshcloud.index.md#introduction) that are globally defined by your organization. Each meshPolicy describes which [tag](meshcloud.metadata-tags.md) values have to be present on both meshObjects, in order to comply with the meshPolicy. meshPolicies are enforced in various places when attaching meshObjects. How meshPolicies can be configured is described [here](administration.mesh-policies.md).
+A meshPolicy describes a restriction between two meshObjects. You can only define a meshPolicy on certain meshObjects by using their defined tags. These particular meshObjects are called meshSubjects. For ease of use, we restrict the combinations of meshSubjects which do not make sense. Each meshPolicy describes which [tag](meshcloud.metadata-tags.md) values have to be present on both meshSubjects, in order to comply with the meshPolicy.
+
+> **meshCustomer**, **meshProject**, **meshUser/Group** and **meshLandingZone** are meshSubjects
+
+You can find the authoritative meshSubject on the left side and the affected meshSubject on the right side. Each meshPolicy describes which [tag](meshcloud.metadata-tags.md) values have to be present on both meshSubjects, in order to comply with the meshPolicy. To decide if a meshPolicy is compliant it is necessary to select an evaluation strategy how you want to evaluate the authoritative meshSubject against the affected meshSubject. meshPolicies are enforced in various places when attaching meshSubjects. How meshPolicies can be configured is described [here](administration.mesh-policies.md).
+
+> meshPolicies will only be enforced for meshCustomers. meshPartners are excluded.
+
+### Authoritative and affected meshSubject
+
+The terms authoritative and affected meshSubject shall make clear in which direction the meshPolicy will be evaluated. In general the authoritative meshSubject restricts the affected meshSubject depending on the selected evaluation strategy.
+
+We have a limited selection of authoritative and affected meshSubject combinations. Valid combinations are
+
+- meshCustomer -> meshUser/Group
+- meshCustomer -> meshProject
+- meshProject -> meshUser/Group
+- meshProject -> meshLandingZone
+
+### meshPolicy evaluation strategy
+
+A meshPolicy evaluation stategy describes a strategy how authoritative and affected meshSubjects shall be evaluated in context of a meshPolicy. There exists two different selectable evaluation options `Subset` and `Intersection`.
+
+#### Subset
+
+Describes an evaluation strategy that the tag values of the affected meshSubject **must be a subset** of the authoritative meshSubject tag values.
+
+> Recommended for meshPolicy between:
+>
+> - meshCustomer -> meshProject
+
+Examples:
+
+**Valid:**
+  authoritativeTagValues: ['dev', 'prod']
+  affectedTagValues: ['dev']
+
+**Invalid:**
+  authoritativeTagValues: ['dev', 'prod']
+  affectedTagValues: ['dev', 'test']
+
+#### Intersection
+
+Describes an evaluation strategy that the tag values of the affected meshSubject **must have an intersection** with the tag values of the authoritative meshSubject tag values.
+
+> Recommended for meshPolicy between:
+>
+> - meshCustomer -> meshUser/Group
+> - meshProject -> meshUser/Group
+> - meshProject -> meshLandingZone
+
+Examples:
+
+**Valid:**
+  authoritativeTagValues: ['dev', 'prod']
+  affectedTagValues: ['dev', 'test']
+
+**Invalid:**
+  authoritativeTagValues: ['dev', 'prod']
+  affectedTagValues: ['qa']
 
 ### meshPolicies for meshUsers/Groups
 
-meshUsers and meshCustomerUserGroups are treated as one when it comes to meshPolicies. You can only define a policy for "meshUser/Group". Those policies will always apply to both meshObject types. It is not possible to define a policy that only matches meshUsers, but not meshCustomerUserGroups. The reason for that is, that you can assign both meshObject types (meshUsers and meshCustomerUserGroups) to meshCustomers and meshProjects. If you want to restrict this access to e.g. only allow access to production for certains users and groups, the policy always has to apply to both meshObject types. It wouldn't make sense to restrict only the assignment of groups, but you could still assign any user. Because of that, you can only select "meshUser/Group" as a policy subject in a meshPolicy.
+meshUsers and meshCustomerUserGroups are treated as one when it comes to meshPolicies. You can only define a meshPolicy for "meshUser/Group". Those policies will always apply to both meshSubject types. It is not possible to define a meshPolicy that only matches meshUsers, but not meshCustomerUserGroups. The reason for that is, that you can assign both meshSubject types (meshUsers and meshCustomerUserGroups) to meshCustomers and meshProjects. If you want to restrict this access to e.g. only allow access to production for certains users and groups, the meshPolicy always has to apply to both meshSubject types. It wouldn't make sense to restrict only the assignment of groups, but you could still assign any user. Because of that, you can only select "meshUser/Group" as a meshPolicy subject in a meshPolicy.
 
 meshUsers exist on a global level and are not related to a specific meshCustomer. If you want to define a meshPolicy to only provide certain meshUsers/Groups access to a e.g. production projects, the following aspects have to be considered:
 
@@ -21,16 +80,17 @@ meshUsers exist on a global level and are not related to a specific meshCustomer
 
 > If your organization has no policies defined at all, the information below is not relevant.
 
-Note that it depends if your organization uses policies and on which meshObjects they are applied. We will discuss all possible places here.
+Note that it depends if your organization uses policies and on which meshSubjects they are applied. We will discuss all possible places here.
 You may encounter policies in the meshPanel when doing any of the following actions:
 
 1. Creating a new project
     1. When adding a meshPlatform with a meshLandingZone to a new project, all policies are evaluated between a 'meshProject' and a 'meshLandingZone'
-    2. Upon saving a new project, all policies between 'meshCustomer' and 'meshProject' are evaluated.
+    2. When adding a new meshUser or meshCustomerUserGroup to a meshCustomer, all policies are evaluated between the 'meshCustomer' and the 'meshUser/Group'.
+    3. Upon saving a new project, all policies between 'meshCustomer' and 'meshProject' are evaluated.
 2. Editing a project
     1. When adding a new meshTenant with a meshLandingZone all policies are evaluated between the 'meshProject' and the selected 'meshLandingZone'.
     2. When adding a new meshUser or meshCustomerUserGroup to a meshProject, all policies are evaluated between the 'meshProject' and the 'meshUser/Group'.
-    3. When changing a tag value (e.g. changing the environment) of a project, **all** policies related to the meshProject are evaluated as it impacts many meshObjects. The following meshObjects will be evaluated on to the project:
+    3. When changing a tag value (e.g. changing the environment) of a project, **all** policies related to the meshProject are evaluated as it impacts many meshSubjects. The following meshSubjects will be evaluated on to the project:
         - the meshCustomer the project lives in
         - all assigned meshLandingZones
         - all assigned meshUsers
@@ -41,7 +101,7 @@ You may encounter policies in the meshPanel when doing any of the following acti
 
 It might happen, consciously or unconsciously, that you violate one or more policies. At every place in the meshPanel that is mentioned above this section, we prevent you from finalizing the violation and you will be prompted with an error message explaining which meshPolicy or policies you violated, and why.
 
-Take this policy violation as an example (see the picture below), where we have a meshPolicy defined on 'meshCustomer' and 'meshProject', both on the `environment` tag.
+Take this meshPolicy violation as an example (see the picture below), where we have a meshPolicy defined on 'meshCustomer' and 'meshProject' with the evaluation strategy 'Subset', both on the `environment` tag.
 
 ![Example Policy Error Message](assets/mesh_policies/policies_example_error_message.png)
 
@@ -49,9 +109,32 @@ The project that is being created called 'my-example-project-prod' wants environ
 
 ### Are there any other places where policies are enforced?
 
-Besides end-users being impacted at the places above, there are also other places where policy violations could be caused. The diagram below describes all possible relationships between meshObjects and the behavior that is expected, depending on who is doing the change.
+Besides end-users being impacted at the places above, there are also other places where meshPolicy violations could be caused. The diagram below describes all possible relationships between meshSubjects and the behavior that is expected, depending on who is doing the change.
 
-![Policy Relationships](assets/mesh_policies/policy_relationships.png)
+```mermaid
+flowchart TB
+    subgraph Legend
+    start1["blocking violation on new assignments of"]:::legendClass --> stop1[ ]:::legendClass
+    start2["logging violation of existing assignments on"]:::legendClass -.-> stop2[ ]:::legendClass
+    start3["blocking violation on creation and editing of"]:::legendClass --> stop3[ ]:::legendClass
+    end
+    subgraph In case of policy violation
+    direction TB
+      meshCustomer:::authoritativeClass --> meshProject
+      meshCustomer --> meshUser/Group
+      meshProject --> meshUser/Group
+      meshProject:::authoritativeClass --> meshLandingZone
+      meshLandingZone -.-> meshProject
+      meshUser/Group -.-> meshCustomer
+      meshUser/Group -.-> meshProject
+
+    end
+
+classDef authoritativeClass fill:#dae8fc;
+classDef legendClass height:0px;
+linkStyle 2 stroke: blue;
+linkStyle 3 stroke: blue;
+```
 
 The purple arrows describe an action done by administrators, and red arrows describe an action done by end-users (e.g. Customer Admins), which is what was discussed above this section.
 
@@ -61,7 +144,7 @@ The purple arrows indicate a 'soft' violation, meaning that the change will actu
 
 > Note: the information below might be more relevant for administrators, but nevertheless it should give you a rough idea on how policies could be implemented.
 
-Your organization is fully free to define policies across the entire meshStack. A few common use cases are:
+Your organization is fully free to define meshPolicies across the entire meshStack. A few common use cases are:
 
 1) Enforcing that a meshProject is used for an environment that is also defined on its meshCustomer.
 
@@ -75,18 +158,19 @@ Your organization is fully free to define policies across the entire meshStack. 
 
 ### How are meshPolicies evaluated
 
-As mentioned before, meshPolicies are built on top of meshStack's [tagging](./meshcloud.metadata-tags.md) system. This is done by evaluating two meshObjects on their tags. There is no "direction" in a meshPolicy: the meshObjects are evaluated bi-directionally. It does not matter if you have a meshPolicy for "meshCustomer & meshProject" or "meshProject & meshCustomer", the policy evaluation is equal.
-If a policy is defined, the two meshObjects' tags will be evaluated on a so-called set intersection. This means that for either tags, at least one value must be present on both sides for a successful evaluation. If neither side have the given tag, the policy is also successful.
+As mentioned before, meshPolicies are built on top of meshStack's [tagging](./meshcloud.metadata-tags.md) system. This is done by evaluating two meshSubjects on their tags. There is the "direction" between the affected meshSubject and authoritative meshSubject in a meshPolicy: the meshSubjects are evaluated unidirectionally.
+If a meshPolicy is defined, the two meshSubjects' tags will be evaluated depending on the evaluation strategy. If neither side have the given tag, the meshPolicy is also successful.
 To make this more clear, the table below describes certain conditions and their behavior when policies are applied on tags.
 
-In this example, we're looking at a meshPolicy between a meshProject's `environment` tag, and a meshCustomer's `environment` tag with the following allowed values: `dev`, `qa`, and `prod`.
+In this example, we're looking at a meshPolicy between a meshProject's `environment` tag, and a meshCustomer's `environment` tag with the following allowed values: `dev`, `qa`, and `prod`. The meshProject is the affected meshSubject and the meshCustomer is the authoritative meshSubject. The chosen evaluation strategy for this example is 'Subset'.
 
 | meshProject  | meshCustomer | Result | Explanation |
 | ------------ | ------------ | ------ | ----------- |
-| `prod`       | `prod`       | ✓      | Both tags contain the value `prod` |
-| `prod`       | `dev`, `qa`  | ✖      | There is no overlapping value |
+| `prod`       | `prod`       | ✓      | meshProject tag values are equal to meshCustomer tag values |
+| `prod`       | `dev`, `qa`  | ✖      | meshProject is not a subset of meshCustomer |
 | < empty >    | `dev`        | ✖      | There is no overlapping value, the meshProject has no tag values at all |
 | < empty >    | < empty >    | ✓      | Both tags have no values, which equates to a successful evaluation |
-| `prod`, `qa` | `qa`, `dev`  | ✓      | Both tags contain at least one matching value: `qa` |
+| `prod`, `qa` | `qa`, `dev`  | ✖      | meshProject is not a subset of meshCustomer |
+| `dev`, `qa` | `qa`, `dev` | ✓ | meshProject tag values are equal to meshCustomer tag values |
 
-Keep in mind that some tags might be so-called "single-select" or "multi-select" values. For policy evaluations, all tags are treated as arrays: no matter if there are no values, a single value, or multiple values. This means you can also create a meshPolicy that evaluates a single-select value against a multi-select value.
+Keep in mind that some tags might be so-called "single-select" or "multi-select" values. For meshPolicy evaluations, all tags are treated as arrays: no matter if there are no values, a single value, or multiple values. This means you can also create a meshPolicy that evaluates a single-select value against a multi-select value.
