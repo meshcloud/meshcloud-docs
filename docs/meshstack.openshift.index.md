@@ -297,39 +297,11 @@ For example if you plan to use custom roles named `my-custom-view` and `my-custo
 # ...
 ```
 
-### Tagging configuration
+### Tagging Configuration
 
 Openshift supports meshStack's powerful multi-cloud [tagging system](./meshstack.metadata-tags.md#replicate-tags-to-cloud-platforms).
-To enable the Openshift integration to automatically replicate tags from meshStack into the cloud platform, the following configuration must be active.
+To enable the Openshift integration to automatically replicate tags from meshStack into the cloud platform, a label prefix must be defined in the OpenShift configuration.
+It can be found in the meshPanel in the Administration Area. Go to "meshPlatforms" on the left, click on an OpenShift platform and go to "Settings" -> "Config".
+The Label Prefix can be found under the "Replication Configuration" header.
 
-Additionally, it is possible to replicate any [extra metadata](./meshstack.metadata-tags.md#extra-metadata) tags that are coming from meshStack, e.g. the name of the payment method or the name of the meshProject.
-Use the `tag-mappers` configuration part for this mechanism.
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let OpenshiftPlatformCoreConfiguration =
-    {-
-
-      tenantTags:
-        Configures how to map tags coming from meshStack to project labels in Openshift. For more information please look into
-        the TenantTags type documentation. Please make sure to pick a valid DNS namespace-prefix that ends with a slash!
-    -}
-      { tenant-tags : TenantTags
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : GcpPlatformCoreConfiguration
-    = { tenant-tags =
-        { namespace-prefix = "your-company.com/"
-        , tag-mappers =
-          [ { key = "payment-name"
-            , value-pattern = "\${paymentName}"
-            }
-          ]
-        }
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+> 💡 Make sure to pick a valid DNS prefix that ends with a slash, e.g. "yourcompany.com/".
