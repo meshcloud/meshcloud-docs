@@ -421,36 +421,12 @@ let exampleExternal
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Decide on a Project-Account Email Address Patterns
+## Decide on Naming Patterns
 
-AWS requires a unique email address for each account. Operators must thus configure a wildcard email address pattern with a placeholder `%s`. The pattern must not exceed a total length of `20` characters (including the placeholder). For example, this pattern
+You can define naming patterns based on the [String Templating](meshstack.replication-configuration.md#string-templating) syntax of meshStack for the following properties:
 
-```yaml
-accountEmailTemplate: aws+%s@meshcloud.io
-```
-
-allows generation of account names:
-
-* aws+customer.projectA@meshcloud.io
-* aws+customer.projectB@meshcloud.io
-
-
-## Decide on an Account Alias Pattern
-
-
-Accounts in AWS get an alias assigned. This alias is fully customizable. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
-
-For example a string pattern `%s.%s` would generate: `customer.project`. Which is also the default.
-
-> The account alias must be unique across all of AWS. Operators should therefore consider using a company-specific prefix together with a combination of meshCustomer and meshProject identifier.
-
-The following arguments are provided:
-
-1. argument: meshCustomer [identifier](./meshstack.identifiers.md)
-2. argument: meshProject [identifier](./meshstack.identifiers.md)
-3. argument: meshProject [ID (numeric)](./meshstack.identifiers.md)
-
-You can decide if you want to enforce the account alias by using the `enforceAccountAlias` flag. If you want to keep any existing account alias (which might not fit into the defined pattern), set this flag to `false`.
+* Account Email Address: Please make sure to consider that this is limited to 64 characters
+* Account Alias Pattern: The account alias must be unique across all of AWS. Operators should therefore consider using a company-specific prefix together with a combination of meshCustomer and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
 
 ## Identifier Configuration
 
