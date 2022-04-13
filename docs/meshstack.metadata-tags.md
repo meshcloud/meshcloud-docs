@@ -69,6 +69,8 @@ You will be prompted with a new page where you can enter a lot of information. W
 
 > Note: replication is not supported for meshLandingZones
 
+#### Replicate Tags to Cloud Platforms
+
 - **Replication**:  If a tag has replication enabled, it will be used to tag an actual tenant in the cloud platform.
   - **Replication Tag Key**: Although we recommend using the exact same value as **Name** here, it's possible to use a slightly different tag key when it is used for replication. Also, keep in mind that the tag key will be prefixed, depending on what is configured for [tenant tags](#tags-in-cloud-tenants). When a tag key or value does not meet the cloud platforms' requirements, it will automatically be [sanitized](#tag-sanitization)
 
@@ -99,7 +101,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Exposing tags via landing zones
+## Exposing Tags via Landing Zones
 
 meshStack makes metadata available to [Landing Zones](./meshcloud.landing-zones.md), for example by providing it as parameters to an [Azure Blueprint](meshstack.azure.landing-zones.md). The Landing Zone documentation for each of meshStack's supported platforms describes how meshStack makes **meshTenant metadata** available.
 
@@ -192,12 +194,14 @@ let example =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-The tag definition configuration describes on a per platform basis how these tags are extracted and transformed into cloud platform tags.
-The following tag values can be used in such a tag definition configuration:
+### Extra metadata
+
+The tag definition configuration describes on a per-platform basis how these tags are extracted and transformed into cloud platform tags.
+The following extra metadata can be used in such a tag definition configuration:
 
 | Tag Key                    | Description                                                                                                                                                    |
 | -------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `${projectIdentifier}`      | The meshProject identifier                                                                                                                                     |
+| `${projectIdentifier}`     | The meshProject identifier                                                                                                                                     |
 | `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                          |
 | `${projectName}`           | The meshProject display name                                                                                                                                   |
 | `${customerName}`          | The meshProject's customer name                                                                                                                                |
