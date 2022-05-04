@@ -22,7 +22,6 @@ We have a limited selection of authoritative and affected meshSubject combinatio
 - meshCustomer -> meshUser/Group
 - meshCustomer -> meshProject
 - meshProject -> meshUser/Group
-- meshProject -> meshLandingZone
 
 ### meshPolicy evaluation strategy
 
