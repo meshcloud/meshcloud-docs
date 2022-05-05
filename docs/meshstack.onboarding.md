@@ -3,7 +3,7 @@ id: meshstack.onboarding
 title: Onboarding
 ---
 
-meshStack enables self-service onboarding for your internal customers. Operators can use the following options to customise the experience.
+meshStack enables self-service onboarding for your internal customers. Operators can use the following options to customize the experience.
 
 ## Customer Registration
 

@@ -68,7 +68,7 @@ don't support (nor require) rollbacks. Any release is generally considered "End 
 with a higher version number becomes available. meshcloud's managed service supports operation for EOL releases for
 a limited time period (upgrade window) before the customer is expected to approve an update to the next release.
 
-meshcloud can offer extended support for feature releases that have officialy reached end of life as part of an individual managed service agreement. Extended support covers managed operation of an EOL release as well as a
+meshcloud can offer extended support for feature releases that have officially reached end of life as part of an individual managed service agreement. Extended support covers managed operation of an EOL release as well as a
 commitment to providing further patch releases for critical bugs and security issues found in a given feature release.
 
 ## Monitoring and Support
