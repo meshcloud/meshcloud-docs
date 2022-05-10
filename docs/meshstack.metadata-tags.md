@@ -30,27 +30,31 @@ such metadata include:
 - Data Confidentiality Levels
 - Project Staging Environment, e.g. QA or production
 
-## How to view and define available tags
+## How to view and define available tags?
 
-> Note: doing the actions below will require the Partner Admin role.
+> All actions below will require the partner role.
 
-Navigate to the Tags page which is available in the Administration area:
+Navigate to **Compliance** > **Tags** in the **Administration** Area:
 
 ![Tag List](assets/metadata_tags/admin_area_tags_list.png)
 
 This page will show you all tags that are currently active on supported meshObjects. If you would like to know more details about a tag, or create, edit, or delete a tag, you can do so by clicking on the large arrow ▶️ on the right for a meshObject.
-This next page will show you more details about a tag such as the title, description or data type of the tag and allow you to modify existing and define new tags.
+The next page will show you more details about a tag such as the title, description or data type of the tag and allow you to modify existing and define new tags.
 
-### How to modify an existing tag
+### How to modify an existing tag?
 
-Click on the edit button for the tag you want to modify.
+1. Navigate to **Compliance** > **Tags**.
+2. Click on ▶️ of the meshObject type you want to modify the tag of. A list of active tags of the meshObject type will appear.
+3. Click on the pencil icon in the 'Actions' column of the tag you want to edit in the list of active tags.
 
 ![Tag Edit](assets/metadata_tags/edit_button.png)
 
 
-### How to define a new tag
+### How to define a new tag?
 
-You can define a new tag by clicking '+ Create' when you navigate to one of the specific meshObject pages.
+1. Navigate to **Compliance** > **Tags**.
+2. Click on ▶️ of the meshObject type you want to define new the tag for. A list of active tags of the meshObject type will appear.
+3. Click on `+ Create Tag` button in the top right corner.
 
 You will be prompted with a new page where you can enter a lot of information. We will briefly explain what each fields means and why you should use it.
 
@@ -67,12 +71,22 @@ You will be prompted with a new page where you can enter a lot of information. W
 - **Restricted**: If a tag is restricted, it means only Partner users can enter this tag value. The input will also not be shown to the end-user when creating a new meshObject. This is useful if an organization doesn't want users to edit these values in self-service. For example, an organization can use restricted tags to implement a "segregation of duty" control to ensure that a partner user confirmed a project's data classification.
 - **Immutable**: If a tag is immutable, it means tag values can be assigned only during the creation of a meshObject. Afterwards it is not longer possible to change the tag values.
 
-> Note: replication is not supported for meshLandingZones
+> Replication is not supported for meshLandingZones
 
 #### Replicate Tags to Cloud Platforms
 
 - **Replication**:  If a tag has replication enabled, it will be used to tag an actual tenant in the cloud platform.
   - **Replication Tag Key**: Although we recommend using the exact same value as **Name** here, it's possible to use a slightly different tag key when it is used for replication. Also, keep in mind that the tag key will be prefixed, depending on what is configured for [tenant tags](#tags-in-cloud-tenants). When a tag key or value does not meet the cloud platforms' requirements, it will automatically be [sanitized](#tag-sanitization)
+
+
+## How to delete a tag?
+
+1. Navigate to **Compliance** > **Tags**.
+2. Click on ▶️ of the meshObject type you want to delete the tag for. A list of active tags of the meshObject type will appear.
+3. Click on the trash icon in the 'Actions' column of the meshPolicy you want to delete in the list of active tags. A prompt will appear.
+4. Confirm the deletion by entering the tag key in the input field of the prompt. After the deletion of your tag is finalized your list of active tags will be updated.
+
+> You can only delete a tag which it is not used by any [meshPolicies](meshcloud.policies.md).
 
 ## Tags on meshUsers
 
