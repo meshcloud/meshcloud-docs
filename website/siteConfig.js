@@ -37,6 +37,7 @@ const siteConfig = {
     { href: '/api', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
     { page: 'help', label: 'Help' },
+    { href: 'https://meshcloud.canny.io/documentation', label: 'Feedback' }
   ],
 
   // If you have users set above, you add it here:
