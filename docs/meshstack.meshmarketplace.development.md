@@ -54,8 +54,7 @@ Open the Marketplace controls on the meshCustomer level, navigate to "Service Br
 
 Now add the configuration and add the Service Broker by pressing "+".
 
-![Uploading image.png…]()
-
+![image](https://user-images.githubusercontent.com/67903933/167908972-1df80355-7982-4f39-8abc-97875cd4ff07.png)
 
 ### Refresh Catalog of Published Service Broker
 
