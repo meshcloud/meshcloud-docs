@@ -40,11 +40,22 @@ As soon as your Service Broker is production-ready, you can publish it to the pu
 
 To publish your Service Broker, click the **Publish Service Broker** button for the according Service Broker.
 
-You can choose which public Marketplace you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
+You can choose which public Marketplace you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.a
 
 Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
 
 When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+
+### How to publish your Service Broker
+
+Open the Marketplace controls on the meshCustomer level, navigate to "Service Brokers" and choose "Published Service Brokers" for the Service Broker you want to publish.
+
+![image](https://user-images.githubusercontent.com/67903933/167908168-a8c7ff34-d3cd-40c4-b731-10c5c798239d.png)
+
+Now add the configuration and add the Service Broker by pressing "+".
+
+![Uploading image.png…]()
+
 
 ### Refresh Catalog of Published Service Broker
 
