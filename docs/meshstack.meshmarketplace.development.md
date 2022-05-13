@@ -44,21 +44,25 @@ You can choose which public Marketplace you want to publish your Service Broker 
 
 Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
 
-When you publish your Service Broker it won't be available in the meshMarketplace you published it to directly. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the meshMarketplace. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### How to publish your Service Broker
 
-Open the Marketplace controls on the meshCustomer level, navigate to "Service Brokers" and choose "Published Service Brokers" for the Service Broker you want to publish.
+Please execute the following steps:
+
+1. Open the Marketplace controls on the meshCustomer level.
+2. Navigate to "Service Brokers".
+3. Choose "Published Service Brokers" for the Service Broker you want to publish.
 
 ![image](https://user-images.githubusercontent.com/67903933/167908168-a8c7ff34-d3cd-40c4-b731-10c5c798239d.png)
 
-Now add the configuration and add the Service Broker by pressing "+".
+4. Now add the configuration and the Service Broker by pressing "+".
 
 ![image](https://user-images.githubusercontent.com/67903933/167908972-1df80355-7982-4f39-8abc-97875cd4ff07.png)
 
 ### Refresh Catalog of Published Service Broker
 
-Like for your private Service Broker, you can also actively [refresh the catalog](#refresh-service-broker-catalog) of your published Service Broker. This is done via the **Refresh Catalog** button in the Publishing list of your Service Broker.
+Like for your private Service Broker, you can also actively [refresh the catalog](#refresh-service-broker-catalog) of your published Service Broker. You can click on **Refresh Catalog** button in the Publishing List of your Service Broker.
 
 The Analytics functionality for Service Owners is available to Customer Admins, who already [registered a Service Broker](meshstack.meshmarketplace.development.md#register-your-service-broker).
 
