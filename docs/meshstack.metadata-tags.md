@@ -1,12 +1,12 @@
 ---
-id: meshstack.metadata-tags
+id: meshstack.metadata-tags 
 title: Managing Tags
 ---
 
 Operators can configure meshStack to collect, attach and distribute organization-specific metadata to various [meshModel](meshcloud.index.md) objects using [metadata tags](./meshcloud.metadata-tags.md).
 
 > To get more insight into how your cloud foundation can improve the use of metadata tags,
-> read the [Cloud Tenant Building Block](/https://cloudfoundation.meshcloud.io/maturity-model/security-and-compliance/cloud-tenant-tagging.html).
+> read the [Cloud Tenant Building Block](https://cloudfoundation.meshcloud.io/maturity-model/security-and-compliance/cloud-tenant-tagging.html).
 
 ## Use Cases for Tags
 
