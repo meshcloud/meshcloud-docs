@@ -242,95 +242,9 @@ Details about what needs to be configured inside AWS SSO can be found [here](mes
 
 > An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
 
-<!--snippet:mesh.platforms.aws.iam-configuration.aws-sso-->
+The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
 
-The following configuration options are available at `mesh.platforms.aws.iam-configuration.aws-sso`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AwsSso =
-    {-
-      scim-endpoint:
-        The SCIM endpoint you can find in you AWS SSO Automatic provisioning config.
-      arn:
-        The ARN of your AWS SSO Instance.
-
-      group-name-pattern:
-        Configures the pattern that defines the desired name of AAD groups managed by meshStack.
-        It follows the usual replicator string pattern features and provides the additional replacement:
-
-          1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
-
-        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
-
-        Operators must ensure the group names will be unique within the same AWS SSO Instance with that
-        configuration. meshStack will additionally prefix the group name with "mst-" to be able to identify
-        the groups that are managed by meshStack.
-
-      sso-access-token:
-        The AWS SSO Access Token that was generated via the Automatic provisioning config in AWS SSO.
-
-      sign-in-url:
-        The AWS SSO Sign Url, that must be used by end-users to log in via AWS SSO to AWS Management Console.
-
-      role-mappings:
-        Defines the mapping of a meshProject role to an AWS SSO PermissionSet. The mapKey is the identifier of
-        meshProject role. The aws-role-name will be used in the group name. The permission-set-arns will be
-        assigned to the created group.
-    -}
-      { scim-endpoint : Text
-      , arn : Text
-      , group-name-pattern : Text
-      , sso-access-token : Secret.Type
-      , sign-in-url : Text
-      , role-mappings :
-          List
-            { mapKey : Text
-            , mapValue :
-                { aws-role-name : Text, permission-set-arns : List Text }
-            }
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : AwsSso
-    = { scim-endpoint =
-          "https://scim.eu-central-1.amazonaws.com/xxxxx-xxxx-xxxx-xxxx/scim/v2/"
-      , arn = "arn:aws:sso:::instance/ssoins-123456789"
-      , group-name-pattern =
-          "#{customerIdentifier}.#{projectIdentifier}.#{platformGroupAlias}"
-      , sso-access-token = Secret.fromEnv "AWS_SSO_ACCESS_TOKEN"
-      , sign-in-url = "https://meshcloud-dev.awsapps.com/start"
-      , role-mappings =
-        [ { mapKey = "admin"
-          , mapValue =
-            { aws-role-name = "meshstack-project-admin"
-            , permission-set-arns =
-              [ "arn:aws:sso:::permissionSet/ssoins-123456789/ps-123456789"
-              ]
-            }
-          }
-        , { mapKey = "user"
-          , mapValue =
-            { aws-role-name = "meshstack-project-developer"
-            , permission-set-arns =
-              [ "arn:aws:sso:::permissionSet/ssoins-123456789/ps-456789123"
-              ]
-            }
-          }
-        , { mapKey = "reader"
-          , mapValue =
-            { aws-role-name = "meshstack-project-reader"
-            , permission-set-arns =
-              [ "arn:aws:sso:::permissionSet/ssoins-123456789/ps-789123456"
-              ]
-            }
-          }
-        ]
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+![AWS SSO Configuration](assets/platform_maintenance/aws-sso.png)
 
 ### Using meshIdB (deprecated)
 
@@ -341,85 +255,9 @@ in the Landing Zone). meshStack also sets up a trust relationship to meshIdB in 
 meshStack additionally creates according roles in the meshIdB so the AuthZ information on which accounts can be accessed
 by which user are then part of the SAML token AWS receives after logging in via meshIdB.
 
-<!--snippet:mesh.platforms.aws.iam-configuration.mesh-idb-->
+The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
 
-The following configuration options are available at `mesh.platforms.aws.iam-configuration.mesh-idb`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let MeshIdb =
-    {-
-      role-mappings-managed:
-        Defines the mapping of a meshProject role to an AWS IAM Role. As this is a managed mapping, meshStack will
-        take care of creating the AWS IAM Role. The mapKey is the identifier of
-        meshProject role. The aws-role-name will be used in the SAML role that will be created for the mapping.
-        The policies will be assigned to the new IAM Role that will be created by meshStack.
-      role-mappings-external:
-        Defines the mapping of a meshProject role to an AWS IAM Role. As this is an external mapping, meshStack will
-        not take care of creating the AWS IAM Role and assigning some policies to it. meshStack will only assign
-        users to the according SAML Role. The IAM Role must be provisioned in the managed account by e.g.
-        Cloud Formation Templates or a Lambda function defined in the Landing Zone. The mapKey is the identifier of
-        meshProject role. The aws-role-name will be used in the SAML role that will be created for the mapping.
-    -}
-      { role-mappings-managed :
-          List
-            { mapKey : Text
-            , mapValue : { aws-role-name : Text, policies : List Text }
-            }
-      , role-mappings-external :
-          List { mapKey : Text, mapValue : { aws-role-name : Text } }
-      }
-```
-<!--Example-->
-```dhall
-let exampleManaged
-    : MeshIdb
-    = { role-mappings-managed =
-        [ { mapKey = "admin"
-          , mapValue =
-            { aws-role-name = "meshstack-project-admin"
-            , policies = [ "arn:aws:iam::aws:policy/AdministratorAccess" ]
-            }
-          }
-        , { mapKey = "user"
-          , mapValue =
-            { aws-role-name = "meshstack-project-developer"
-            , policies = [ "arn:aws:iam::aws:policy/AmazonS3FullAccess" ]
-            }
-          }
-        , { mapKey = "reader"
-          , mapValue =
-            { aws-role-name = "meshstack-project-reader"
-            , policies = [ "arn:aws:iam::aws:policy/ReadOnlyAccess" ]
-            }
-          }
-        ]
-      , role-mappings-external =
-          [] : List { mapKey : Text, mapValue : { aws-role-name : Text } }
-      }
-
-let exampleExternal
-    : MeshIdb
-    = { role-mappings-external =
-        [ { mapKey = "admin"
-          , mapValue.aws-role-name = "meshstack-project-admin"
-          }
-        , { mapKey = "user"
-          , mapValue.aws-role-name = "meshstack-project-developer"
-          }
-        , { mapKey = "reader"
-          , mapValue.aws-role-name = "meshstack-project-reader"
-          }
-        ]
-      , role-mappings-managed =
-          [] : List
-                 { mapKey : Text
-                 , mapValue :
-                     { aws-role-name : Text, policies : List Text }
-                 }
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+![AWS meshIdB Configuration](assets/platform_maintenance/aws-meshidb.png)
 
 ## Decide on Naming Patterns
 
@@ -449,30 +287,9 @@ meshStack can be enabled to trigger the Account Factory via AWS Service Catalog.
 The correct Id of the Account Factory Product needs to be specified in the enrollment configuration besides the management account Id.
 meshStack will create new accounts as usual and in a later step will enroll them via the Account Factory with AWS Control Tower.
 
-<!--snippet:mesh.platforms.aws.enrollment-configuration-->
+The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
 
-The following configuration options are available at `mesh.platforms.aws.enrollment-configuration`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let EnrollmentConfiguration =
-      { management-account-id :
-          {- The account Id of the management account configured for the platform instance. -}
-          Text
-      , account-factory-product-id :
-          {- The product Id of the AWS Account Factory Product in AWS Service Catalog, that should be used for enrollment. -}
-          Text
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : EnrollmentConfiguration
-    = { management-account-id = "123456789012"
-      , account-factory-product-id = "prod-a1b2c3d4e5"
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+![AWS Control Tower Enrollment](assets/platform_maintenance/aws-control-tower.png)
 
 > In order to enroll created accounts with AWS Control Tower, **a Landing Zone must be configured**. The `Target Organization Unit Id` from the Landing Zone
 > configuration must belong to a OU that is already enrolled with AWS Control Tower.

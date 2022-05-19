@@ -7,85 +7,15 @@ meshStack imports metering data from [GCP Cloud Billing data BigQuery Export](ht
 
 meshStack also periodically collects the currently active projects in order to apply the per tenant fee.
 
-## Configuration Reference
+## Configuration
 
-This section describes the configuration of a GCP Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
-at `mesh.platforms` for GCP metering.
-
-<!--snippet:mesh.platforms.gcp.kraken#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let GcpPlatformKrakenConfiguration =
-    {-
-      platform:
-        The meshPlatform identifier
-
-      bigQueryTable:
-        The big query table name containing the GCP Cloud Billing BigQuery export.
-        See https://cloud.google.com/billing/docs/how-to/export-data-bigquery
-        Format must be: $project-id.$dataset-id.$table-id
-
-      service-account-credentials-b64:
-        base64 encoded credentials.json file for a GCP ServiceAccount. meshStack uses this Service Account
-        to collect billing data from the BigQuery export table.
-
-      additional-filter:
-        Additional big query predicates to append to meshStack's queries. This allows operators to restrict
-        what type of data is imported, e.g. to only include data for a specific organization or folder path.
-
-      partition-time-column:
-        If you are using the export of billing data from GCP directly as it is, then this should be set to
-        "_PARTITIONTIME". Overriding this is useful if you want to collect data from two billing exports and
-        provide a UNION view of the two. Since GCP BigQuery doesn't allow views to contain a column starting
-        with an underscore, the _PARTITIONTIME column would have to be mapped to another name. You should specify
-        that column name here.
-    -}
-      { platform : Text
-      , bigquery-table : Text
-      , service-account-credentials-b64 : Secret
-      , additional-filter : Optional Text
-      , partition-time-column : Text
-      }
-```
-<!--Example-->
-```dhall
-let exampleAllData
-    : GcpPlatformKrakenConfiguration
-    =
-      -- configures meshStack to import all available billing data
-      { platform = "my.gcp"
-      , bigquery-table =
-          "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
-      , service-account-credentials-b64 = Secret.Native "..."
-      , additional-filter = None Text
-      , partition-time-column = "_PARTITIONTIME"
-      }
-
-let exampleOnlyFolder
-    : GcpPlatformKrakenConfiguration
-    =
-      -- configures meshStack to only import billing data for projects that live in the GCP resource hierarchy
-      -- under folder id '345' in the organization with id '123'.
-      { platform = "my.gcp"
-      , bigquery-table =
-          "project-id.billing.gcp_billing_export_v1_01234A_5678C_1A23B"
-      , service-account-credentials-b64 = Secret.Native "..."
-      , additional-filter = Some
-          "and STARTS_WITH(project.ancestry_numbers, '/123/345')"
-      , partition-time-column = "_PARTITIONTIME"
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+[Connection information](meshstack.how-to.integrate-meshplatform-gcp-manually.md#set-up-the-service-account-for-metering) and metering behavior can be configured via the [Platform Connection Configuration](administration.platforms.md#platform-connection-config). 
 
 ## Billing Data Import
 
 The data is collected incrementally from the exported billing data by filtering by the `export_time` attribute.
 Any entries with `cost_type` `tax` are ignored in the metering process.
 The monthly totals are calculated by aggregating by the `invoice.month` attribute.
-
 
 ## Support for Multiple Billing Accounts
 

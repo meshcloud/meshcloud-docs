@@ -16,7 +16,8 @@ The following Kubernetes distributions are supported:
 
 ## Integration Overview
 
-To enable integration with Kubernetes, operators deploy and configure the meshStack Kubernetes Module. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` Kubernetes. This makes Kubernetes available to meshProjects like any other cloud platform in meshStack.
+To enable integration with Kubernetes, operators deploy and configure the meshStack Kubernetes Module. Operators can configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes. This makes Kubernetes available to meshProjects like any other cloud platform in meshStack.
+In order to successfully replicate and meter this platform, the [Platform Connection Configuration](administration.platforms.md#platform-connection-config) must be entered via meshPanel based on the configurations inside the platform described on this page.
 
 Depending on which Kubernetes distribution you want to use you will need to follow different steps. Below are the steps for the [meshStack Identity Federation](./meshstack.identity-federation.md) integration as well as for the [Azure Kubernetes Services](#azure-kubernetes-services).
 
@@ -215,7 +216,6 @@ kubectl get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[
 
 Operators need to securely inject these access token into the configuration of the Kubernetes modules.
 
-
 ### Custom meshProject Roles
 
 > If you want to use custom roles to be mapped to your meshProject roles (and not just the pre-defined `admin`, `edit` and `view` roles) you need to make sure to also list these roles in the Cluster Role binding section for the meshfed-service principal.
@@ -269,3 +269,5 @@ After a successful replication, users can then fetch their `kubectl` credentials
 ```bash
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
+
+This credential information and some additional configuration around the azure tenant the AKS cluster is running in have to provided in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).
