@@ -3,179 +3,22 @@ id: meshstack.azure.config
 title: Configuration Reference
 ---
 
-This section describes the configuration of an Azure Platform Instance in the meshStack configuration model at `mesh.platforms`.
+This section describes the top-level configuration options available for an Azure Platform Instance in the [platform config](administration.platforms.md#platform-connection-config). For details on how to set this up, please have a look at this [guide](meshstack.how-to.integrate-meshplatform-azure-manually.md). All individual configuration options are explained directly in meshPanel.
 
-For easier reference the following sections break down the configuration model in multiple parts. The union of these defines the full configuration model.
-
-<!--snippet:mesh.platform.azure#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AzurePlatformConfiguration =
-        AzurePlatformCoreConfiguration
-      ⩓ AzurePlatformBlueprintConfiguration
-      ⩓ { service-principal : ServicePrincipal
-        , b2b-user-invitation : Optional InviteB2BUserConfig
-        , provisioning : Provisioning
-        , role-mappings : List RoleMapping
-        , tenant-tags : TenantTags
-        }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-## Core Configuration
-
-<!--snippet:mesh.platforms.azure.core#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AzurePlatformCoreConfiguration =
-    {-
-      platform:
-        The meshPlatform identifier
-
-      subscriptionNamePattern:
-        Configures the pattern that defines the desired name of Azure Subscriptions managed by meshStack.
-        It follows the usual replicator string pattern features.
-
-        Operators must ensure the resulting Subscription names are unique in the managed AAD Tenant.
-
-      group-name-pattern:
-        Configures the pattern that defines the desired name of AAD groups managed by meshStack.
-        It follows the usual replicator string pattern features and provides the additional replacement:
-
-          1. platformGroupAlias (contains the role name suffix, configurable via Landing Zone)
-
-        (see: http://docs.meshcloud.io/docs/meshstack.replication-configuration.html#string-templating)
-
-        Operators must ensure the group names are unique in the managed AAD Tenant.
-    -}
-      { platform : Text
-      , subscription-name-pattern : Text
-      , group-name-pattern : Text
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : AzurePlatformCoreConfiguration
-    =
-      -- creates subscription names like "customer.project"
-      -- and group names like "customer.project-reader"
-      { platform = "azure.mylocation"
-      , subscription-name-pattern =
-          "#{customerIdentifier}.#{projectIdentifier}"
-      , group-name-pattern =
-          "#{customerIdentifier}.#{projectIdentifier}-#{platformGroupAlias}"
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-
-## Blueprint Configuration
-
-<!--snippet:mesh.platforms.azure.blueprint#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AzurePlatformBlueprintConfiguration =
-    {-
-        blueprintServicePrincipal:
-          Object Id of the Enterprise Application belonging to the Microsoft Application "Azure Blueprints" with Application Id
-          f71766dc-90d9-4b7d-bd9d-4499c4331c3f in the managed AAD Tenant. meshStack will grant the necessary permissions on
-          managed Subscriptions to this SPN so that it can create System Assigned Managed Identities (SAMI) for Blueprint execution.
-
-          Note: Operators can also explicitly configure an UAMI to be used instead of a SAMI in Azure Landing Zone definitions.
-          If an UAMI is not explicitly configured, meshStack will default to using the SAMI.
-
-        blueprintLocation:
-          The Azure location where replication creates and updates Blueprint Assignments. Note that it's still
-          possible that the Blueprint creates resources in other locations, this is merely the location where the
-          Blueprint Assignment is managed.
-    -}
-      { blueprint-service-principal : Text, blueprint-location : Text }
-```
-<!--Example-->
-```dhall
-let example
-    : AzurePlatformBlueprintConfiguration
-    = { blueprint-service-principal =
-          "2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20"
-      , blueprint-location = "westeurope"
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-## Service Principal Configuration
-
-This section configures the Service Principal (SPP) used by meshStack's replicator
-to automate project replication. The SPP needs to be configured in the same
-AAD Tenant that is used to hold all Subscriptions managed by this meshPlatform.
-
-**Caution**: Currently it is not possible to manage SPPs in the Azure Portal. As a result we strongly recommend to create the SPP via the API (e.g. via Terraform) or the Azure CLI. This is required in order to retrieve the necessary client secret that meshcloud needs. You can achieve this by running:
-
-```bash
-az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
-# Save the `password` result of this command; it can never be retrieved again!
-```
-
-
-<!--snippet:mesh.platform.azure.servicePrincipal#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let ServicePrincipal =
-    {-
-      Configures an Azure Service Principal.
-
-          aadTenant:
-              Domain name or Id of the AAD Tenant that holds the Service Principal.
-
-          objectId:
-              The Object Id of the Service Principal. In Azure Portal, this is the Object Id
-              of the "Enterprise Application".
-
-          clientId:
-              The Application Client Id. In Azure Portal, this is the Application Id of the
-              "Enterprise Application" but can also be retrieved via the "App Registration" object
-              as "Application (Client) Id".
-
-          clientSecret:
-              A valid secret for accessing the SPN. In Azure Portal, this can be configured on the
-              "App Registration" objecct.
-    -}
-      { aad-tenant : Text
-      , object-id : Text
-      , client-id : Text
-      , client-secret : Secret
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : ServicePrincipal
-    = { aad-tenant = "example.onmicrosoft.com"
-      , object-id = "655985db-ca43-4b9f-b317-9dd3d0289c50"
-      , client-id = "2a51f406-27fd-4e40-8bd3-fe83ff934a47"
-      , client-secret = Secret.Native "AZURE_CLIENT_SECRET"
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-### B2B User Invitation
-
-This configuration is optional. When configured, instructs the replicator to create AAD B2B guest invitations for
+* **Replication Connection and Credential Information**: A meshStack replication service principal is used to access the configured azure tenant.
+* **Blueprint configuration**: The Automation Account is used to provide all AWS StackSets and Lambda Functions that shall be executed via meshLandingZones.
+* **Replication Behavior**: Details like naming patterns for AWS Accounts and AWS Account Aliases can be defined here.
+* **Role Mappings**: For AWS 2 different kinds of role mappings are supported. The external role mappings are only checked against the SAML IDP setting. No policies are attached nor checked. It is assumed that an external source (e.g. an AVM) has assigned proper policies to them. The other option are fully managed role mappings via meshstack. They are created if needed and also the polices listed are checked and attached.
+* **Tag Configuration**: [Tag Configuration](meshstack.metadata-tags.md#tags-in-cloud-tenants) can be used to set certain tags on AWS accounts and resources inside these accounts.
+* **B2B User Invitation**: This configuration is optional. When configured, instructs the replicator to create AAD B2B guest invitations for
 users missing in the AAD tenant managed by this meshPlatform. This configuration is useful if you have one or more
 "workload" AAD tenants for Azure Subscriptions while having a central "home tenant" for your organization's user
-identities that handles O365 and related services.
+identities that handles O365 and related services. Details about some implications of it can be found [here](#b2b-user-invitation).
+* **IAM Configuration**: AWS SSO should be used for IAM. meshStack creates groups in AWS SSO, assigns users to them and establishes access to the AWS accounts for the according groups with defined Permission Sets.
+* **Metering Connection and Credential Information**: A meshStack metering service principal is used to access the configured azure tenant.
+* **Metering Behavior**: You can manage how to handle some aspects of how chargeback is applied. I.e. you can exclude taxes from the internal chargeback.
+
+### B2B User Invitation
 
 Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
 ["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
