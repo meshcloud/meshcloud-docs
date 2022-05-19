@@ -8,68 +8,9 @@ configured via the `awsStateCollectionInterval` property.
 
 The `amortized cost` is used when generating the tenant usage reports.
 
-## Configuration Reference
+## Configuration
 
-This section describes the configuration of a AWS Platform Instance in the meshStack [configuration model](./meshstack.index.md#configuration)
-at `mesh.platforms` for AWS metering.
-
-<!--snippet:mesh.platforms.aws.kraken#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let AwsPlatformKrakenConfiguration =
-      { platform :
-          {- The combination of meshPlatform and meshLocation identifiers, i.e. <platform-id>.<location-id> -}
-          Text
-      , region :
-          {- The region of the IAM user -}
-          Text
-      , meshfed-service-user :
-          {-
-              Metering IAM user credentials
-                  access-key: "<AWS_ACCESS_KEY>"
-                  secret-key: "<AWS_SECRET_KEY>"
-          -}
-          { access-key : Secret, secret-key : Secret }
-      , organization-root-account-role :
-          {- The role assigned to the metering IAM user -}
-          Text
-      , organization-root-account-external-id :
-          {- The external ID passed to "sts:AssumeRole" when used in privileged context -}
-          Optional Text
-      , filter :
-          {- Filter type of NONE and EXCLUDE_TAX are supported. -}
-          FilterType
-      , reservedInstanceFairChargeback :
-          {-Enable fair chargeback for meshCustomer purchased RIs-}
-          Bool
-      , savingsPlanFairChargeback :
-          {-Enable fair chargeback for meshCustomer purchased SPs-}
-          Bool
-      }
-```
-<!--Example-->
-```dhall
-let example
-    : AwsPlatformKrakenConfiguration
-    = { platform = "aws.aws-location"
-      , region = "eu-central-1"
-      , meshfed-service-user =
-        { access-key = Secret.Native "AWS_ACCESS_KEY_KRAKEN"
-        , secret-key = Secret.Native "AWS_SECRET_KEY_KRAKEN"
-        }
-      , organization-root-account-role =
-          "arn:aws:iam::123456789123:role/MeteringRole"
-      , organization-root-account-external-id = Some
-          "abcd1234-12ab-12ab-12ab-abcdef123456"
-      , filter = FilterType.NONE
-      , reservedInstanceFairChargeback = True
-      , savingsPlanFairChargeback = True
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+[Connection information](meshstack.how-to.integrate-meshplatform-aws-manually.md#set-up-iam-user-for-metering) and metering behavior can be configured via the [Platform Connection Configuration](administration.platforms.md#platform-connection-config). Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](meshstack.how-to.integrate-meshplatform-aws-manually.md#leverage-reserved-instances--savings-plans).
 
 ## Configuring Seller Information
 

@@ -25,8 +25,15 @@ Open the official meshcloud terraform module for the target platform and follow 
 
 ### Alternative to Step 2: Set up platform permissions manually
 
-Follow the instructions for the target platform.
+Follow the instructions for the target public cloud platform.
 
 - [How to manually integrate AWS as meshPlatform](meshstack.how-to.integrate-meshplatform-aws-manually.md)
 - [How to manually integrate Azure as meshPlatform](meshstack.how-to.integrate-meshplatform-azure-manually.md)
 - [How to manually integrate GCP as meshPlatform](meshstack.how-to.integrate-meshplatform-gcp-manually.md)
+
+For private cloud platforms, you can find integration information here:
+
+- [Integration of CloudFoundry](meshstack.cloudfoundry.index.md)
+- [Integration of Kubernetes](meshstack.kubernetes.index.md)
+- [Integration of OpenShift](meshstack.openshift.index.md)
+- [Integration of meshMarketplace](meshstack.meshmarketplace.index.md)
