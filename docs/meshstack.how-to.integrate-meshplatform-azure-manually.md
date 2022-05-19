@@ -17,6 +17,13 @@ Depending on the way you choose, you can either use an App Registration or an En
 In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
 The Service Principal must be authorized in the scope of this AAD Tenant.
 
+**Caution**: Currently it is not possible to manage SPPs in the Azure Portal. As a result we strongly recommend to create the SPP via the API (e.g. via Terraform) or the Azure CLI. This is required in order to retrieve the necessary client secret that meshcloud needs. You can achieve this by running:
+
+```bash
+az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
+# Save the `password` result of this command; it can never be retrieved again!
+```
+
 ### Set AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **Enterprise applications**, click on **New application**.
