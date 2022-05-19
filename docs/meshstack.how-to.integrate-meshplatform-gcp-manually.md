@@ -134,6 +134,20 @@ An example query for creating a view
 
 Grant Service Account Permissions on the dataset as described in [Service Account Configuration](#service-account-configuration).
 
+## Optional: Billing Account owned by a different organization
+
+In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
+
+Operators create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
+
+```text
+billing.resourceAssociations.create
+```
+
+The `meshfed-service` user needs to be granted the `meshfed-billing-creator` role in the organization that owns the target billing account.
+
+Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#set-up-the-service-account-for-replication).
+
 ## Optional: Enable Audit Logs for meshfed-service User
 
 The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
