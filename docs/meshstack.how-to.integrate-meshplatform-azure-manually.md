@@ -38,7 +38,7 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 6. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
-    - `User.Invite.All` - this permission is required if you want to enable B2B User Invitation (see below)
+    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)
 7. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 8. In the **Overview** section of your app also write down the **Directory (tenant) ID** this is the `aadTenant` (you can also use the primary domain, this is typically a `*.onmicrosoft.com` domain)
 
@@ -264,3 +264,17 @@ Id                    : 2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20
 ```
 
 This `Id` needs to be configured in the Azure Platform configuration.
+
+## B2B User Invitation
+
+You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform. 
+This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central 
+"home tenant" for your organization's user identities that handles O365 and related services.
+
+Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
+["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
+
+- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
+- meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
+
+> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
