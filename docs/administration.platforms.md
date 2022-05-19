@@ -55,6 +55,23 @@ For public cloud platforms, we recommend to name them according to the provider 
 Additionally you can provide some provider information of your meshLocation. You can describe how you operate your Cloud Platforms that belong to a meshLocation,
 you can provide a link to a Wiki to provide further, more detailed information about your meshPlatforms within a meshLocation.
 
+#### Platform Connection Config
+
+When integrating a cloud platform into meshStack you have to enter some specific configuration so meshStack knows how to handle the platform. This relates to replication as well as metering configuration. A central aspect of it is defining how to connect to your cloud platform. For public cloud platforms you have to provide some kind of root account all tenants managed by meshStack are living in. This is for example an AWS Root Account, a GCP Billing Account or an Azure Tenant. For private cloud platforms you usually have to provide an endpoint for the API meshStack will communicate with to manage tenants. In all cases you have to provide some kind of credentials so meshStack can perform the actions needed for replication and metering. You can find details about how to set up the cloud platform with credentials and more in the platform-specific [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform.md) guide.
+
+The following list provides the most common configurations available for different cloud platform types:
+
+* Credentials and connection attributes for replication and metering
+* Role Mappings for mapping Project Roles in meshStack to specific roles in the cloud platform
+* Naming of platform tenants (e.g. AWS Account or Azure Subscription) via [String Templates](meshstack.replication-configuration.md#string-templating)
+* Naming via [String Templates](meshstack.replication-configuration.md#string-templating) of platform IAM groups created by meshStack to provide users access to their tenants 
+* [Tag Configuration](meshstack.metadata-tags.md#tags-in-cloud-tenants) for platform tenants and resources (e.g. add customer and project identifier as a tag to the platform tenant)
+* platform-specific additional configuration
+
+As an example you can find a part of the GCP configuration in the following image:
+
+![GCP Connection Configuration](assets/platform_maintenance/gcp-config.png)
+
 #### Restrict Platform Access
 
 Access to a specific meshPlatform can be restricted via the "Restrictions" tab. This feature is helpful
