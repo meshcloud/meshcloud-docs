@@ -64,7 +64,7 @@ The following list provides the most common configurations available for differe
 * Credentials and connection attributes for replication and metering
 * Role Mappings for mapping Project Roles in meshStack to specific roles in the cloud platform
 * Naming of platform tenants (e.g. AWS Account or Azure Subscription) via [String Templates](meshstack.replication-configuration.md#string-templating)
-* Naming via [String Templates](meshstack.replication-configuration.md#string-templating) of platform IAM groups created by meshStack to provide users access to their tenants 
+* Naming via [String Templates](meshstack.replication-configuration.md#string-templating) of platform IAM groups created by meshStack to provide users access to their tenants
 * [Tag Configuration](meshstack.metadata-tags.md#tags-in-cloud-tenants) for platform tenants and resources (e.g. add customer and project identifier as a tag to the platform tenant)
 * platform-specific additional configuration
 
