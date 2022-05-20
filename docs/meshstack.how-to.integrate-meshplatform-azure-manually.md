@@ -123,7 +123,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 
 ## Set up Subscription Provisioning
 
-To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. Operators can find the corresponding configuration options in the [Provisioning Configuration Reference](meshstack.azure.configuration-reference.md#provisioning-configuration).
+To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. The Enterprise Enrollment is always the preferred one if you have an Enterprise Agreement as it allows full automation by meshStack for accoutn creation.
 
 ### Option 1: Use an Enterprise Enrollment Account
 
@@ -187,7 +187,7 @@ the response is:
 }
 ```
 
-The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account down, as it needs to be used as the `enrollmentAccountId` in the [DHALL provisioning configuration](meshstack.azure.configuration-reference.md#provisioning-configuration).
+The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account down, as it needs to be used as the `enrollmentAccountId` in the [Platform Connection Config](administration.platforms.md#platform-connection-config).
 
 #### Grant Enterprise Enrollment Account Permissions
 
@@ -267,8 +267,8 @@ This `Id` needs to be configured in the Azure Platform configuration.
 
 ## B2B User Invitation
 
-You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform. 
-This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central 
+You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform.
+This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central
 "home tenant" for your organization's user identities that handles O365 and related services.
 
 Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
