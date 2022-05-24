@@ -13,10 +13,19 @@
   publish = "build/meshcloud-docs"
 
   # Default build command.
-  command = "yarn build"
+  command = "sed -i \"s|API_DOCS_DOMAIN_PLACEHOLDER|${API_DOCS_DOMAIN}|g\" ../netlify.toml && cat ../netlify.toml && yarn build"
 
-  # This ensures the build is ignored if there are no changes to the base directory or the /docs/ directory.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/"
+  # This ensures the build is ignored if there are no changes to the base or /docs/ directory.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/ ../netlify.toml"
+
+[context.production.environment]
+  API_DOCS_DOMAIN = "meshcloud"
+
+[context.branch-deploy.environment]
+  API_DOCS_DOMAIN = "dev.meshcloud"
+
+[context.deploy-preview.environment]
+  API_DOCS_DOMAIN = "dev.meshcloud"
 
 # This is for netlify to prevent being blocked by ad-blockers.
 # TODO: this is currently not used. We need to deploy Netlify on our production docs.meshcloud.io first!
@@ -32,10 +41,8 @@
   status = 200
   force = true
 
-# This works for now but once we migrate `docs.meshcloud.io` to Netlify too, we will have to
-# adapt this configuration.
 [[redirects]]
   from = "/api/*"
-  to = "http://docs.dev.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/:splat"
+  to = "http://docs.API_DOCS_DOMAIN_PLACEHOLDER.io.s3-website.eu-central-1.amazonaws.com/api/:splat"
   status = 200
   force = true
