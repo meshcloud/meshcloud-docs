@@ -18,8 +18,14 @@
   # This ensures the build is ignored if there are no changes to the base or /docs/ directory.
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/ ../netlify.toml"
 
+[context.production]
+  ignore = "exit 1"
+
 [context.production.environment]
   API_DOCS_DOMAIN = "meshcloud"
+
+[context.branch-deploy]
+  ignore = "exit 1"
 
 [context.branch-deploy.environment]
   API_DOCS_DOMAIN = "dev.meshcloud"
