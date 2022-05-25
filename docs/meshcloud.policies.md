@@ -30,29 +30,36 @@ You can find the authoritative meshSubject on the left side and the affected mes
 
 ### meshPolicy evaluation strategy
 
-A meshPolicy evaluation strategy describes a strategy how authoritative and affected meshSubjects shall be evaluated in context of a meshPolicy. There exist two different selectable evaluation options `Subset` and `Intersection`.
+A meshPolicy evaluation strategy describes a strategy how authoritative and affected meshSubjects shall be evaluated in the context of a meshPolicy. In that way, you can decide in which form the tags values have to be present on both meshSubjects to comply with the meshPolicy. As mentioned before, meshPolicies are built on top of meshStack's [tagging](./meshcloud.metadata-tags.md) system. By that system, you can allow your tag to only have one value or multiple values. For the evaluation, all tags are treated as arrays: no matter if there are no values, a single value, or multiple values. This means you can also create a meshPolicy that evaluates a single-select tag against a multi-select tag.
+
+> If **neither** meshSubject has the tag defined in your meshPolicy, your meshSubjects are evaluated as compliant with that meshPolicy.
+
+There are two different selectable evaluation options `Subset` and `Intersection`.
 
 #### Subset
 
-Describes an evaluation strategy that the tag values of the affected meshSubject **must be a subset** of the authoritative meshSubject tag values.
+Describes an evaluation strategy that the tag values of the affected meshSubject **must be a subset** of the authoritative meshSubject tag values. The evaluation of a `Subset` is successful, if the affected meshSubject is only tagged with values which are also present in the tag values of the authoritative meshSubject.
 
 > Recommended for meshPolicy between:
 >
 > - meshCustomer -> meshProject
 
-Examples:
+Example:
 
-**Valid:**
-authoritativeTagValues: ['dev', 'prod']
-affectedTagValues: ['dev']
+In this example, we're looking at a meshPolicy between a meshProject's `environment` tag, and a meshCustomer's `environment` tag with the following allowed values: `dev`, `qa`, and `prod`. The meshProject is the affected meshSubject and the meshCustomer is the authoritative meshSubject.
 
-**Invalid:**
-authoritativeTagValues: ['dev', 'prod']
-affectedTagValues: ['dev', 'test']
+| meshProject  | meshCustomer | Result | Explanation                                                             |
+| ------------ | ------------ | ------ | ----------------------------------------------------------------------- |
+| `prod`       | `prod`       | ✓      | `prod` is present on both meshProject and meshCustomer                  |
+| `prod`       | `dev`, `qa`  | ✖      | meshProject `prod` is not present on meshCustomer `qa`,`dev`            |
+| < empty >    | `dev`        | ✖      | No overlapping value, the meshProject has no tag values at all          |
+| < empty >    | < empty >    | ✓      | Both tags have no values, which equates to a successful evaluation      |
+| `prod`, `qa` | `qa`, `dev`  | ✖      | meshProject `prod` is not present in meshCustomer `qa`,`dev`            |
+| `dev`, `qa`  | `qa`, `dev`  | ✓      | `dev`, `qa` is present on both  meshProject and meshCustomer            |
 
 #### Intersection
 
-Describes an evaluation strategy that the tag values of the affected meshSubject **must have an intersection** with the tag values of the authoritative meshSubject tag values.
+Describes an evaluation strategy that the tag values of the affected meshSubject **must have an intersection** with the tag values of the authoritative meshSubject tag values. The evaluation of a `Intersection` is successful, if at least one tag value is present on both meshSubjects.
 
 > Recommended for meshPolicy between:
 >
@@ -60,15 +67,18 @@ Describes an evaluation strategy that the tag values of the affected meshSubject
 > - meshProject -> meshUser/Group
 > - meshProject -> meshLandingZone
 
-Examples:
+Example:
 
-**Valid:**
-authoritativeTagValues: ['dev', 'prod']
-affectedTagValues: ['dev', 'test']
+In this example, we're looking at a meshPolicy between a meshUser/Group `environment` tag, and a meshCustomer's `environment` tag with the following allowed values: `dev`, `qa`, and `prod`. The meshUser/Group is the affected meshSubject and the meshCustomer is the authoritative meshSubject.
 
-**Invalid:**
-authoritativeTagValues: ['dev', 'prod']
-affectedTagValues: ['qa']
+|  meshUser/Group  | meshCustomer | Result | Explanation                                                             |
+| ---------------- | ------------ | ------ | ----------------------------------------------------------------------- |
+| `prod`           | `prod`       | ✓      | `prod` is present on meshUser/Group and meshCustomer                    |
+| `prod`           | `dev`, `qa`  | ✖      | meshUser/Group `prod` is not present on meshCustomer `qa`,`dev`         |
+| < empty >        | `dev`        | ✖      | No overlapping value, the meshUser/Group has no tag values at all       |
+| < empty >        | < empty >    | ✓      | Both tags have no values, which equates to a successful evaluation      |
+| `prod`, `qa`     | `qa`, `dev`  | ✓      | meshUser/Group `qa` is present in meshCustomer `qa`,`dev`               |
+| `dev`, `qa`      | `qa`, `dev`  | ✓      | `dev`, `qa` is present on meshUser/Group and meshCustomer               |
 
 ### meshPolicies for meshUsers/Groups
 
@@ -170,22 +180,3 @@ Your organization is fully free to define meshPolicies across the entire meshSta
 3. Enforcing that a meshProject only has meshLandingZones assigned to it that are meant for the environment of the meshProject.
 
 4. Enforcing that a meshProject only has meshLandingZones assigned to it that are meant for the given business unit of the meshProject.
-
-### How are meshPolicies evaluated?
-
-As mentioned before, meshPolicies are built on top of meshStack's [tagging](./meshcloud.metadata-tags.md) system. This is done by evaluating two meshSubjects based on their tags. There is the "direction" between the affected meshSubject and authoritative meshSubject in a meshPolicy: the meshSubjects are evaluated unidirectionally.
-If a meshPolicy is defined, the two meshSubjects' tags will be evaluated depending on the evaluation strategy. If neither side has the given tag value, the meshPolicy is also successful.
-To make this more clear, the table below describes certain conditions and the outcome when a meshPolicy is applied.
-
-In this example, we're looking at a meshPolicy between a meshProject's `environment` tag, and a meshCustomer's `environment` tag with the following allowed values: `dev`, `qa`, and `prod`. The meshProject is the affected meshSubject and the meshCustomer is the authoritative meshSubject. The chosen evaluation strategy for this example is 'Subset'.
-
-| meshProject  | meshCustomer | Result | Explanation                                                             |
-| ------------ | ------------ | ------ | ----------------------------------------------------------------------- |
-| `prod`       | `prod`       | ✓      | meshProject tag values are equal to meshCustomer tag values             |
-| `prod`       | `dev`, `qa`  | ✖      | meshProject is not a subset of meshCustomer                             |
-| < empty >    | `dev`        | ✖      | There is no overlapping value, the meshProject has no tag values at all |
-| < empty >    | < empty >    | ✓      | Both tags have no values, which equates to a successful evaluation      |
-| `prod`, `qa` | `qa`, `dev`  | ✖      | meshProject is not a subset of meshCustomer                             |
-| `dev`, `qa`  | `qa`, `dev`  | ✓      | meshProject tag values are equal to meshCustomer tag values             |
-
-Keep in mind that some tags might be so-called "single-select" or "multi-select" values. For meshPolicy evaluations, all tags are treated as arrays: no matter if there are no values, a single value, or multiple values. This means you can also create a meshPolicy that evaluates a single-select value against a multi-select value.
