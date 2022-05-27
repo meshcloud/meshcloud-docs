@@ -44,14 +44,17 @@ Therefore, the unit costs are not available in the Tenant Usage Reports for thos
 ### Chargeback Statements
 
 Each project in meshStack is associated with a Chargeback Account. Tenant Usage Reports are booked into these
-Chargeback Accounts as soon as they are processed by meshStack. meshStack periodically generates chargeback account statements, called chargeback statements.
-A chargeback statement lists all tenant usage reports that were booked in the selected period.
+Chargeback Accounts as soon as they are processed by meshStack. meshStack periodically generates chargeback account
+statements, called chargeback statements. A chargeback statement lists all tenant usage reports that were booked in the
+selected period.
 
-As an anology from banking you can think of a 
-chargeback account like a credit account and the chargeback statement like a credit card statement you receive at the
-end of the month about all transactions charged to the card.
+As an anology from banking you can think of a chargeback account like a credit account and the chargeback statement like
+a credit card statement you receive at the end of the month about all transactions charged to the card.
 
-> Note that chargeback statements list usage reports by their **entry date** when they were booked to the chargeback account. This date is typically after the **report date** (i.e. time when the report was generated) of the usage reports booked. It's therefore possible that the chargeback statement for the month of June includes usage reports for the month of May etc.
+> Note that chargeback statements list usage reports by their **entry date** when they were booked to the chargeback
+> account. This date is typically after the **report date** (i.e. time when the report was generated) of the usage
+> reports booked. It's therefore possible that the chargeback statement for the month of June includes usage reports
+> for the month of May etc.
 
 #### Tags and Payment Methods
 
@@ -60,20 +63,22 @@ the chargeback statement is generated. This implies that e.g. the payment method
 point in time when the chargeback statement is generated will be charged for all line items in the chargeback statement
 The same also applies to tags (i.e. meshProject and meshCustomer tags).
 
-Depending on meshStack's configuration, chargeback statements are generated e.g. on the 6th of a month. 
+Depending on meshStack's configuration, chargeback statements are generated e.g. on the 6th of a month.
 Customer admins should ensure that their project metadata (like payment method, tags) is up to date at that point
 and their payment method is still active on that date.
 
-> Controllers should consider this when defining an expiration date of a [payment method](meshcloud.payment-methods.md). E.g. a payment method valid for the year of 2021 should expire in Janaury 2022 *after* the end of the chargeback period.
- 
+> Controllers should consider this when defining an expiration date of a [payment method](meshcloud.payment-methods.md).
+> E.g. a payment method valid for the year of 2021 should expire in Janaury 2022 *after* the end of the chargeback period.
 
 #### Chargeback Statement Previews
 
-meshStack also generates and updates a preview of the next chargeback statement. This preview includes all tenant usage 
-reports, including tenant usage report previews, that meshStack expects to be finalized before the end of the chargeback period. This preview is periodically updated and contains only reports available up until that point.
+meshStack also generates and updates a preview of the next chargeback statement. This preview includes all tenant usage
+reports, including tenant usage report previews, that meshStack expects to be finalized before the end of the chargeback
+period. This preview is periodically updated and contains only reports available up until that point.
 
-> Note that meshStack currently only generates a preview for the currently active chargeback period. 
-> A tenant usage report that will finalize in the next chargeback period will not be included in the current period's preview.
+> Note that meshStack currently only generates a preview for the currently active chargeback period.
+> A tenant usage report that will finalize in the next chargeback period will not be included in the current period's
+> preview.
 
 #### Viewing Chargeback Statements
 
