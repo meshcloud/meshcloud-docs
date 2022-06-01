@@ -38,8 +38,8 @@ curl --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCol
 kind: meshCustomerUserBinding
 roleRef:
   name: Customer Owner
-targetRef: my-customer
-  name:
+targetRef:
+  name: my-customer
 subjects:
   - name: partner@meshcloud.io'
 ```
