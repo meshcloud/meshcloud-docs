@@ -30,7 +30,7 @@ meshStack should work with any Kubernetes version and distribution that offers t
 - `core/v1`
 - `rbac.authorization.k8s.io/v1`
 
-meshStack has been specifically validated to work with RKE (Rancher Kubernetes Enginge) and CFCR (Cloud Foundry Container Runtime).
+meshStack has been specifically validated to work with RKE (Rancher Kubernetes Engine), [AKS](#azure-kubernetes-services) (Azure Kubernetes Cluster) and CFCR (Cloud Foundry Container Runtime).
 
 ### meshStack Configuration
 
