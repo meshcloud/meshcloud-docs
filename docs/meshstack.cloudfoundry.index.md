@@ -19,6 +19,24 @@ The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are crea
 
 ![Cloud Foundry Architecture](assets/cf-architecture.svg)
 
+## CloudFoundry Versions
+
+In general all CloudFoundry versions that provide the V2 API for the following endpoints are supported:
+
+* /v2/organizations
+* /v2/quota_definitions
+* /v2/space_quota_definitions
+* /v2/spaces
+* /v2/users
+* /v2/apps
+* /v2/private_domains
+* /v2/domains
+
+Integration with the following Cloud Foundry API Versions are additionally tested successfully:
+
+* 2.155.0
+* 2.181.0
+
 ## Cloud Foundry Access Workflow
 
 The full workflow to access the Cloud Foundry platform is as follows:

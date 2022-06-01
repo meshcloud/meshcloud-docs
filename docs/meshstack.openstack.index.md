@@ -15,6 +15,24 @@ The backend also uses the JWT token to check the user's permissions. If the perm
 
 ![OpenStack Architecture](assets/os-architecture.png)
 
+## OpenStack Versions
+
+meshStack currently fully supports OpenStack Ocata, Pike and Queens. Replication and Metering is also officially supported up to OpenStack Ussuri. For the versions beyond Queens the meshPanel integration of workload management in OpenStack can not be guaranteed.
+
+In general all versions providing the following APIs should be working fine with meshStack:
+
+* KeystoneV3
+* CinderV3
+* Neutron v2.0
+* Glance V2
+
+Additionally the following OpenStack services are used, but not explicitly versioned by OpenStack:
+
+* Nova: list servers & VM flavors
+* Swift or Radosgw-Swift: list Object Storages, via meshPanel also creation of those
+* Heat: list Heat Stacks
+* Designate: list DNS Zones
+
 ## OpenStack Access
 
 1. The user accesses the meshStack via the browser.
@@ -43,9 +61,9 @@ As OpenStack has to scope authorization to a specific project, the token from th
 
 Project Users get the following OpenStack roles:
 
-- _member_
-- heat_stack_owner
-- creator
+* _member_
+* heat_stack_owner
+* creator
 
 The actual access rights associated with these roles are managed by the OpenStack instance and are not part of meshStack.
 

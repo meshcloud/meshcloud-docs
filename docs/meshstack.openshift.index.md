@@ -15,7 +15,12 @@ To enable integration with OpenShift, operators deploy and configure the meshSta
 
 ### OpenShift Versions
 
-meshStack currently supports OpenShift version 3.9+ as either Open-Source (OKD) or OpenShift Enterprise variants.
+meshStack currently supports OpenShift version 3.9+ and 4.x as either Open-Source (OKD) or OpenShift Enterprise variants.
+
+In general meshStack supports all OpenShift versions that can provide the resources listed for the required [service accounts](meshstack.openshift.index.md#meshstack-service-accounts). These resources are consumed with the following versions. So as long as the following endpoints are supported in the OpenShift version, meshStack should be able to work with it:
+
+* /api/v1
+* /apis/template.openshift.io/v1
 
 ### IdP Configuration
 
