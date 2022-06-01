@@ -59,16 +59,16 @@ a credit card statement you receive at the end of the month about all transactio
 #### Tags and Payment Methods
 
 Chargeback statements capture the billing information associated with the chargeback account at the time
-the chargeback statement is generated. This implies that e.g. the payment method that is active on the project at the
-point in time when the chargeback statement is generated will be charged for all line items in the chargeback statement
+the chargeback statement is generated. This implies that the payment method that is active on the project at the
+point in time when the chargeback statement is generated will be charged for all line items in the chargeback statement.
 The same also applies to tags (i.e. meshProject and meshCustomer tags).
 
-Depending on meshStack's configuration, chargeback statements are generated e.g. on the 6th of a month.
+Depending on meshStack's configuration, chargeback statements are generated on the 6th of a month.
 Customer admins should ensure that their project metadata (like payment method, tags) is up to date at that point
 and their payment method is still active on that date.
 
 > Controllers should consider this when defining an expiration date of a [payment method](meshcloud.payment-methods.md).
-> E.g. a payment method valid for the year of 2021 should expire in Janaury 2022 *after* the end of the chargeback period.
+> For example, a payment method valid for the year of 2021 should expire in Janaury 2022 *after* the end of the chargeback period.
 
 #### Chargeback Statement Previews
 
