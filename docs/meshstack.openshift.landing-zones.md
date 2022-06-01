@@ -15,11 +15,6 @@ These quotas can be defined on an OpenShift Landing Zone via the [Quota Manageme
 
 Templates can be used to deploy some resources to projects that are provisioned via meshStack. Templates will be synchronized automatically with OpenShift when they are put into a Landing Zone and meshTenants are using this Landing Zone. This template shows up in the OpenShift web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
 
-It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like for example creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the platform config:
+It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However, doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like, for example, creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).
 
-```yml
-replicator-openshift:
-  platforms:
-    - platform: okd.eu-de-central
-      enable-template-instantiation: true
-```
+It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like for example creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).

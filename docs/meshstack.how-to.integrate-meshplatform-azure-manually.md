@@ -17,6 +17,13 @@ Depending on the way you choose, you can either use an App Registration or an En
 In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
 The Service Principal must be authorized in the scope of this AAD Tenant.
 
+**Caution**: Currently it is not possible to manage SPPs in the Azure Portal. As a result we strongly recommend to create the SPP via the API (e.g. via Terraform) or the Azure CLI. This is required in order to retrieve the necessary client secret that meshcloud needs. You can achieve this by running:
+
+```bash
+az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
+# Save the `password` result of this command; it can never be retrieved again!
+```
+
 ### Set AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **Enterprise applications**, click on **New application**.
@@ -31,7 +38,7 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 6. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
-    - `User.Invite.All` - this permission is required if you want to enable B2B User Invitation (see below)
+    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)
 7. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 8. In the **Overview** section of your app also write down the **Directory (tenant) ID** this is the `aadTenant` (you can also use the primary domain, this is typically a `*.onmicrosoft.com` domain)
 
@@ -116,7 +123,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 
 ## Set up Subscription Provisioning
 
-To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. Operators can find the corresponding configuration options in the [Provisioning Configuration Reference](meshstack.azure.configuration-reference.md#provisioning-configuration).
+To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. The Enterprise Enrollment is always the preferred one if you have an Enterprise Agreement as it allows full automation by meshStack for account creation.
 
 ### Option 1: Use an Enterprise Enrollment Account
 
@@ -180,7 +187,7 @@ the response is:
 }
 ```
 
-The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account down, as it needs to be used as the `enrollmentAccountId` in the [DHALL provisioning configuration](meshstack.azure.configuration-reference.md#provisioning-configuration).
+The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account, as it needs to be used as the `enrollmentAccountId` in the [Platform Connection Config](administration.platforms.md#platform-connection-config).
 
 #### Grant Enterprise Enrollment Account Permissions
 
@@ -257,3 +264,17 @@ Id                    : 2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20
 ```
 
 This `Id` needs to be configured in the Azure Platform configuration.
+
+## B2B User Invitation
+
+You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform.
+This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central
+"home tenant" for your organization's user identities that handles O365 and related services.
+
+Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
+["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
+
+- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
+- meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
+
+> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).

@@ -9,7 +9,7 @@ relies on this monitoring to operate meshStack installations.
 
 ## Prometheus Scraping
 
-Prometheus scrapes metrics from nodes as well as from all meshStack configuration.
+Prometheus scrapes metrics from nodes (for IaaS deployments) as well as from meshStack components.
 Scraping is secured using HTTPS Basic auth. The credentials are managed as part of the deployment.
 
 ## Additional Alert Inboxes

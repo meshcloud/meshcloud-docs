@@ -1,12 +1,12 @@
 ---
-id: meshstack.metadata-tags
+id: meshstack.metadata-tags 
 title: Managing Tags
 ---
 
 Operators can configure meshStack to collect, attach and distribute organization-specific metadata to various [meshModel](meshcloud.index.md) objects using [metadata tags](./meshcloud.metadata-tags.md).
 
 > To get more insight into how your cloud foundation can improve the use of metadata tags,
-> read the [Cloud Tenant Building Block](/https://cloudfoundation.meshcloud.io/maturity-model/security-and-compliance/cloud-tenant-tagging.html).
+> read the [Cloud Tenant Building Block](https://cloudfoundation.meshcloud.io/maturity-model/security-and-compliance/cloud-tenant-tagging.html).
 
 ## Use Cases for Tags
 
@@ -165,48 +165,16 @@ As a full example, a tag named `myCustomerTag` would be provided as an HTTP head
 
 ## Tags in Cloud Tenants
 
-Beside having tags in meshStack, it is also useful for cloud-native users to be aware of the metadata within e.g. Azure. This why meshStack
+Beside having tags in meshStack, it is also useful for cloud-native users to be aware of the metadata within e.g. Azure. This is why meshStack
 supports the ability to "replicate" the tags into the actual cloud platforms. The entire lifecycle of these tags can be managed by meshStack. This means tags on the cloud platform are updated and removed depending on the underlying metadata of the replicated meshProject. meshStack manages all tags of a prefixed namespace (e.g. the `meshstack_` prefix in the tag label `meshstack_costcenter:12345` indicates that this is a meshStack managed tag).
 
-Use the configuration below and the [tag definition user interface](#how-to-define-a-new-tag) to enable automatic replication of tags to cloud tenants.
+Use the config tab in the [platform control plane](administration.platforms.md#platform-control-plane) and the [tag definition user interface](#how-to-define-a-new-tag) to enable automatic replication of tags to cloud tenants.
 
-<!--snippet:mesh.platform.tenantTags#type-->
+![Tag Configuration Header](assets/platform_maintenance/tag-config-1.png)
 
+![Tag Configuration](assets/platform_maintenance/tag-config-2.png)
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let TenantTags =
-    {-
-      namespace-prefix:
-        Every tag managed by meshstack is prefixed so meshstack can detect deleted tags and clean them up.
-        Using a prefix to identify this enables the customer to use own tags on resources which are not touched
-        by meshstack.
-
-      tag-mappers[].key:
-        The name of the tag on the target platform. Every platform might have different limitations about the
-        tag names.
-
-      tag-mappers[].value-pattern:
-        Define a pattern which is used to generate the tag value on the platform. Every platform might have different
-        limitations about the tag values. For a list about the placeholder you can use please check the meshstack
-        documentation. Currently its not possible to use more then one identifier per valuePattern.
-    -}
-      { namespace-prefix : Text
-      , tag-mappers : List { key : Text, value-pattern : Text }
-      }
-```
-<!--Example-->
-```dhall
-let example =
-        { namespace-prefix = "meshstack_"
-        , tag-mappers =
-          [ { key = "cident", value-pattern = "prefix-\${customerIdentifier}" }
-          ]
-        }
-      : TenantTags
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
+Every platform might have different limitations about the tag names and values, which are described in the following sections.
 
 ### Extra metadata
 

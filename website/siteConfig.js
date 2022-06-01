@@ -143,12 +143,11 @@ const siteConfig = {
 }],
 };
 
+// For the production build we include the Plausible tracking script.
+// For more info, see the netlify.toml file.
 if (process.env.CONTEXT === 'production') {
   siteConfig.scripts.push({
-    // TODO: when meshcloud-docs is deployed on Netlify we have to replace
-    // the script that is mentioned here. The correct script from Netlify
-    // is already properly redirected. See the netlify.toml for that.
-    src: '/js/script-docs.js',
+    src: '/js/script.js',
     defer: true,
     'data-domain': 'docs.meshcloud.io'
   });
