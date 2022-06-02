@@ -9,6 +9,8 @@ If the meshCustomer does not have a Customer Owner yet, you can add yourself as 
 
 If the meshCustomer has a single Customer Owner set, you do not need to use a meshObjectCollection and can start at step 3.
 
+If the meshCustomer has two Customer Owners set, you need to follow all three steps.
+
 ## Step 1: Create a meshObjectCollection
 
 Follow [API docs](https://docs.meshcloud.io/api/#mesh_object_collection_create) to create a meshObjectCollection.
