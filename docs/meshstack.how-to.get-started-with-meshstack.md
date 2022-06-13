@@ -25,10 +25,10 @@ To experience what this feels like, create your first customer via the panel. To
 
 ![Create meshCustomer](assets/create-customer.png)
 
-Of course, this can also be achieved via API. Take a look [here](./meshstack.how-to.create-customer.html) for a short intro into the API.
+Of course, this can also be achieved via API. Take a look [here](./meshstack.how-to.create-customer.md) for a short intro into the API.
 
 ## Step 3: Create your first meshPlatform
 
 As a cloud foundation platform, meshStack allows you offer self-service tenant management, chargeback and much more to your customers.
 
-To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.html).
+To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.md).
