@@ -7,7 +7,7 @@ This how-to guide is targeted at Cloud Foundation Partners. You need an meshObje
 
 ## Step 1: Install Postman
 
-First install postman. While any tool will do, in this how-to will use [Postman] (https://www.postman.com/).
+First install postman. While any tool will do, in this how-to will use [Postman](https://www.postman.com/).
 
 ## Step 2: Import existing Customer Owners into the meshObjectCollection
 
