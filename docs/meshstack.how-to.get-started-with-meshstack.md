@@ -7,7 +7,7 @@ This how-to guide is targeted at Cloud Foundation Partners that are starting out
 
 ## Step 1: Log into your meshStack
 
-As a cloud foundation team member you are directly on the admin area view of meshStack. This is the cockpit that helps you stay in control of everything happening in meshStack.
+As a Cloud Foundation Partner you are directly forwarded to the admin area of meshStack. This is the cockpit that helps you stay in control of everything happening in meshStack.
 
 This it what it looks like.
 
@@ -25,10 +25,10 @@ To experience what this feels like, create your first customer via the panel. To
 
 ![Create meshCustomer](assets/create-customer.png)
 
-Of course, this can also be achieved via API. Take a look [here](./meshstack.how-to.create-customer.md) for a short intro into the API.
+Of course, this can also be achieved via API. Take a look at our [short API intro](./meshstack.how-to.create-customer.md).
 
 ## Step 3: Create your first meshPlatform
 
-As a cloud foundation platform, meshStack allows you offer self-service tenant management, chargeback and much more to your customers.
+As a Cloud Foundation Platform, meshStack allows you offer self-service tenant management, chargeback and much more to your customers.
 
 To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.md).
