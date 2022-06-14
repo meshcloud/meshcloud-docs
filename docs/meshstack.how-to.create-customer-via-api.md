@@ -1,5 +1,5 @@
 ---
-id: meshstack.how-to.create-customer
+id: meshstack.how-to.create-customer-via-api
 title: How to create a meshCustomer via API
 ---
 
