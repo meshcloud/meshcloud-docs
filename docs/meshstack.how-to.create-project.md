@@ -7,8 +7,8 @@ If you are not familiar with what a meshProject is, please check the [official m
 
 ## Pre-Requisites
 
-- Permissions: Your user needs either the Customer Admin or Customer Owner role in the meshCustomer you want to create the meshProject in
-- Valid Payment Method: meaning the payment method is not expired and assigned to your customer
+- Permissions: Your user needs either the Customer Admin or Customer Owner role in the meshCustomer for which you want to create the meshProject.
+- Valid Payment Method: It means that the payment method is not expired and assigned to your customer
 
 ## Step to Step Guide
 
