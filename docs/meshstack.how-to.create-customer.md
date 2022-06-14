@@ -15,10 +15,9 @@ Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/#_m
 Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/#mesh_object_declarative_import) in the request URL.
 
 ```sh
-curl --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCollection=collection-my-customer-customer-owners&owner=partner@meshcloud.io' \
+curl --user name:password --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCollection=collection-my-customer-customer-owners&owner=partner@meshcloud.io' \
 --header 'Content-Type:  application/vnd.meshcloud.api.meshobjects.v1+yaml;charset=UTF-8' \
 --header 'Accept:  application/vnd.meshcloud.api.meshobjects.v1+json' \
---header 'Authorization: Basic xyz' \
 --data-raw 'apiVersion: v1
 kind: meshCustomerUserBinding
 roleRef:
