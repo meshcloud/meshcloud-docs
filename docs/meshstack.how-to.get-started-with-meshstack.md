@@ -25,7 +25,7 @@ To experience what this feels like, create your first customer via the panel. To
 
 ![Create meshCustomer](assets/create-customer.png)
 
-Of course, this can also be achieved via API. Take a look at our [short API intro](./meshstack.how-to.create-customer.md).
+Of course, this can also be achieved via API. Take a look at our [short API intro](./meshstack.how-to.create-customer-via-api.md).
 
 ## Step 3: Create your first meshPlatform
 
