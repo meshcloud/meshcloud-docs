@@ -23,7 +23,7 @@ If you are not familiar with what a meshCustomer is, please check the [official 
 
 ![Add a user to the customer](./assets/customer/customer-access-control-add-a-user.png "add a user")
 
-- Customer Owner can only be granted to max. 2 user per Customer. Also only a Customer Owner can grant another user the Owner role - except there is no Customer Owner at all.
+- Customer Owner can only be granted to max. 2 users per Customer. Also, only a Customer Owner can grant another user the Owner role - except there is no Customer Owner at all.
 
 ### Optional
 
