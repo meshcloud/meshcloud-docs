@@ -3,7 +3,7 @@ id: meshstack.how-to.onboard-team-to-customer
 title: How to onboard your team to your meshCustomer
 ---
 
-If you are not familiar with what a meshCustomer is, please check the [official meshcloud documentation](meshcloud.md).
+If you are not familiar with what a meshCustomer is, please check the [official meshcloud documentation](meshcloud.customer.md).
 
 ## Pre-Requisites
 
@@ -28,7 +28,7 @@ If you are not familiar with what a meshCustomer is, please check the [official 
 ### Optional
 
 meshStack provides the optional configuration for 4-eyes access controls.
-Please check the [official meshcloud documentation](meshcloud.customer.html#invite-users-to-a-meshcustomer-team).
+Please check the [official meshcloud documentation](meshcloud.customer.md#invite-users-to-a-meshcustomer-team).
 
 - A second user with Customer Admin or Customer Owner permission needs to approve the access request. The second user must also navigate to the specific meshCustomer (see step 1.), go to the `Access Control` tab (see step 2.) and then click on the `Access Requests` tab in the second tab-row.
 ![Click the Access Requests tab](./assets/customer/customer-access-approve.png "Access Control - Access Requests")
