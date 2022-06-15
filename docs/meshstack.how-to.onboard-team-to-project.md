@@ -20,7 +20,7 @@ If you are not familiar with what a meshProject is, please check the [official m
 
 ![Select meshProject in the upper left corner](./assets/project/project-in-top-nav.png)
 
-- Select the meshproject from the meshCustomer overview
+- Select the meshProject from the meshCustomer overview
 
 ![Select meshProject in meshCustomer overview](./assets/project/project-in-overview.png "Access Control - Access Requests")
 
