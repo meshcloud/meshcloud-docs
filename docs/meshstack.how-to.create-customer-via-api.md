@@ -3,7 +3,7 @@ id: meshstack.how-to.create-customer-via-api
 title: How to create a meshCustomer via API
 ---
 
-This how-to guide is targeted at Cloud Foundation Partners. You need an meshObject API user to run through the steps below.
+This how-to guide is targeted at Cloud Foundation Partners. You need meshObject API user to run through the steps below.
 
 ## Step 1: Install Postman
 
