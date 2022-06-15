@@ -19,7 +19,7 @@ If you are not familiar with what a meshCustomer is, please check the [official 
 
 ![Click the Access Control tab](./assets/customer/customer-access-control.png "Access Control")
 
-- At the end of the `Current Access` list will be a input field. Type in the first-, last-name or email address to find and select the user you want to add. Choose a Customer Role (Customer Owner, Admin or Employee) and press the `+` button.
+- At the end of the `Current Access` list will be an input field. Type in the first-, last-name or email address to find and select the user you want to add. Choose a Customer Role (Customer Owner, Admin or Employee) and press the `+` button.
 
 ![Add a user to the customer](./assets/customer/customer-access-control-add-a-user.png "add a user")
 
