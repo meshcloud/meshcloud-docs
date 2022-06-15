@@ -11,7 +11,7 @@ If you are not familiar with what a Partner User is, please check the [official 
 
 ## Step to Step Guide
 
-1. Login into the meshPanel and navigate to the Administration Area. Open the Admin Are by clicking on the "ADMIN AREA" button in the top navigation.
+1. Login into the meshPanel and navigate to the Administration Area. Open the Admin Area by clicking on the `ADMIN AREA` button in the top navigation.
 ![Select Admin Area in the top navigation bar](./assets/partner/navigate-to-admin-area.png "Go to the Admin Area")
 2. You now need to go to the Project Deleted Projects view where see the overview of meshProjects pending for deletion.
 ![Select Project - Deleted Projects menu item on the left side](./assets/partner/navigate-to-project-deletion.png "Deleted Projects")
