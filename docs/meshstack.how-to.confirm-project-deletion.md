@@ -1,5 +1,5 @@
 ---
-id: meshstack.how-to.onboard-team-to-cusotmer
+id: meshstack.how-to.onboard-team-to-customer
 title: How to onboard your team to your meshCustomer
 ---
 
@@ -13,7 +13,7 @@ If you are not familiar with what a Partner User is, please check the [official 
 
 1. Login into the meshPanel and navigate to the Administration Area. Open the Admin Area by clicking on the `ADMIN AREA` button in the top navigation.
 ![Select Admin Area in the top navigation bar](./assets/partner/navigate-to-admin-area.png "Go to the Admin Area")
-2. You now need to go to the Project Deleted Projects view where see the overview of meshProjects pending for deletion.
+2. You now need to go to the Deleted Projects view where you can see the overview of meshProjects pending for deletion.
 ![Select Project - Deleted Projects menu item on the left side](./assets/partner/navigate-to-project-deletion.png "Deleted Projects")
 3. Confirm the meshProject deletion by clicking on the bin icon. A pop-up for the meshProject deletion will show an overview of the meshProject and the possibility to add a comment for the meshProject deletion. The checkbox is required to be checked to confirm the deletion.
 
@@ -35,5 +35,5 @@ You can also take other actions besides the meshProject deletion:
 
 ## Additional
 
-You can also uncheck the "Required manual deletion" checkbox to see all already confirmed or automatically deleted meshProjects.
+You can also uncheck the "Required manual deletion" checkbox to see already confirmed or automatically deleted meshProjects.
 ![uncheck the "Required manual deletion" checkbox](./assets/partner/all-deleted-meshprojects.png)
