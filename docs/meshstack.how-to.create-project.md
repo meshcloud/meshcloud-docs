@@ -3,7 +3,7 @@ id: meshstack.how-to.create-project
 title: How to create a meshProject
 ---
 
-If you are not familiar with what a meshProject is, please check the [official meshcloud documentation](https://docs.meshcloud.io/docs/meshcloud.index.html).
+If you are not familiar with what a meshProject is, please check the [official meshcloud documentation](meshcloud.md).
 
 ## Pre-Requisites
 
