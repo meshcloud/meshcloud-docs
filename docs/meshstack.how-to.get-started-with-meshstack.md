@@ -15,7 +15,7 @@ This it what it looks like.
 
 To return to this view, you can always press the "Admin Area" button in the top bar.
 
-If you do not see this screen, you are missing partner level rights. This can be fixed by any other partner level user.
+If you are npt able to see this screen, you are missing partner rights. This can be fixed by any other partner user.
 
 ## Step 2: Create your first meshCustomer
 
@@ -29,6 +29,6 @@ Of course, this can also be achieved via API. Take a look at our [short API intr
 
 ## Step 3: Create your first meshPlatform
 
-As a Cloud Foundation Platform, meshStack allows you offer self-service tenant management, chargeback and much more to your customers.
+As a Cloud Foundation Platform, meshStack allows you to offer self-service tenant management, chargeback and much more to your customers.
 
 To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.md).
