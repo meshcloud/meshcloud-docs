@@ -33,7 +33,7 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 
 ![Enterprise application registration](assets/app-creation-1.png)
 
-5.Choose "Accounts in this organizational directory only, Single tenant".
+5. Choose "Accounts in this organizational directory only, Single tenant".
 
 ![Choose single tenant](assets/app-creation-2.png)
 
