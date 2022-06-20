@@ -42,7 +42,6 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)
-    
 11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
