@@ -215,7 +215,7 @@ In order to grant the Service Principal the `Subscription Creator` role the easi
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview
 ```
 
-Please check the [official documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) for meaning of the parameter and the required body payload (there is also a **Try it** button which can directly execute this call). On this page there is also an [example](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#putenrollmentaccountsubscriptioncreatorroleassignment) which assigns the required role to a Service Principal. Please adapt the parameters there accordingly.
+Please check the [official documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) for the meaning of the parameter and the required body payload (there is also a **Try it** button which can directly execute this call). On this page, there is also an [example](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#putenrollmentaccountsubscriptioncreatorroleassignment) which assigns the required role to a Service Principal. Please adapt the parameters there accordingly.
 
 The following additional information, about the required REST call parameters mentioned in the above links, can be helpful:
 
