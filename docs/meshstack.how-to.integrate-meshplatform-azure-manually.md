@@ -32,26 +32,18 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 4. Choose "Register an application to integrate with Azure AD".
 
 ![Enterprise application registration](assets/app-creation-1.png)
-
 5. Choose "Accounts in this organizational directory only, Single tenant".
-
 ![Choose single tenant](assets/app-creation-2.png)
-
 6. It can take some time to show up in the overview, but then please write down its Object ID (will later correspond to `objectId`) and Application (client) ID (will later correspond to `client-id`).
-
 7. In the AAD overview now go to **App registrations** (the created app should show up there as well). 
-
 8. Click on the app.
- 
 9. Add a client secret under **Certificates &amp; secrets**. Write it down (it is the `client-secret`).
-
 10. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)
     
 11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
-
 12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
