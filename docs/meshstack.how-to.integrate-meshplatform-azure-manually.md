@@ -35,7 +35,7 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 5. Choose "Accounts in this organizational directory only, Single tenant".
 ![Choose single tenant](assets/app-creation-2.png)
 6. It can take some time to show up in the overview, but then please write down its Object ID (will later correspond to `objectId`) and Application (client) ID (will later correspond to `client-id`).
-7. In the AAD overview now go to **App registrations** (the created app should show up there as well). 
+7. In the AAD overview now go to **App registrations** (the created app should show up there as well).
 8. Click on the app.
 9. Add a client secret under **Certificates &amp; secrets**. Write it down (it is the `client-secret`).
 10. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
@@ -86,7 +86,7 @@ All permissions left are therefore granted only via the Management Group hierarc
 You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
 
 1. In Azure Portal, navigate to the "Management Groups" blade.
-2. Click on the "Details" link of the management group you want to give access to. 
+2. Click on the "Details" link of the management group you want to give access to.
 3. Select "Access Control (IAM)" from the menu.
 4. Create a role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
 
