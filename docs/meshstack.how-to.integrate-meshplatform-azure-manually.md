@@ -3,16 +3,16 @@ id: meshstack.how-to.integrate-meshplatform-azure-manually
 title: How to manually integrate Azure as meshPlatform
 ---
 
-> The recommended way to set up Azure as a meshPlatform is via the public terraform [Azure meshPlatform Module](https://github.com/meshcloud/terraform-azure-meshplatform). The steps below are not needed if you decide to use it.
+> The recommended way to set up Azure as a meshPlatform is via the public terraform [Azure meshPlatform Module](https://github.com/meshcloud/terraform-azure-meshplatform). If you use it then the steps given below are not needed.
 
 ## Set up the Replication Service Principal
 
-meshStack uses separate service principals for different tasks following the best practice of least privilege principle. There are two possible ways to setup Subscription creation:
+meshStack uses separate service principals for different tasks based on the best practice of least privilege principle. There are two possible ways to setup Subscription creation:
 
 1. Pre-provisioned Subscriptions
 2. Using an Enterprise Enrollment Account
 
-Depending on the way you choose, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#subscription-provisioning), the usage of an App Registration principle is **mandatory**.
+Depending on the way you choose to setup, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#subscription-provisioning), the usage of an App Registration principle is **mandatory**.
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
 The Service Principal must be authorized in the scope of this AAD Tenant.
@@ -27,20 +27,32 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 ### Set AAD Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **Enterprise applications**, click on **New application**.
-2. Click on **Create your own application**, choose a name e.g. `meshReplicator` and choose "Register an application to integrate with Azure AD".
+2. Click on **Create your own application**.
+3. Choose a name for example, `meshReplicator`.
+4. Choose "Register an application to integrate with Azure AD".
 
 ![Enterprise application registration](assets/app-creation-1.png)
-3. On the next step, choose "Accounts in this organizational directory only, Single tenant)".
+
+5.Choose "Accounts in this organizational directory only, Single tenant".
 
 ![Choose single tenant](assets/app-creation-2.png)
-4. It can take some time to the app to show up in the overview, but then please write down its Object ID (will later correspond to `objectId`) and Application (client) ID (will later correspond to `client-id`).
-5. In the AAD overview now go to **App registrations** (the created app should show up there as well). Click on the app and add an client secret under **Certificates &amp; secrets**. Write it down (it is the `client-secret`).
-6. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
+
+6. It can take some time to show up in the overview, but then please write down its Object ID (will later correspond to `objectId`) and Application (client) ID (will later correspond to `client-id`).
+
+7. In the AAD overview now go to **App registrations** (the created app should show up there as well). 
+
+8. Click on the app.
+ 
+9. Add a client secret under **Certificates &amp; secrets**. Write it down (it is the `client-secret`).
+
+10. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)
-7. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
-8. In the **Overview** section of your app also write down the **Directory (tenant) ID** this is the `aadTenant` (you can also use the primary domain, this is typically a `*.onmicrosoft.com` domain)
+    
+11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
+
+12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
 Operators need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
@@ -48,7 +60,7 @@ Operators need to supply these variables to the [meshStack Configuration](#meshs
 
 Created subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.
 
-All permissions left are therefore granted only via the Management Group hierarchy. The meshstack software does **not** need access related to actual workload inside these subscriptions. However in order to perform certain maintenance tasks, the following permissions/roles must be granted to the replicator principal:
+All permissions left are therefore granted only via the Management Group hierarchy. The meshstack software does **not** need access related to actual workload inside these subscriptions. However, in order to perform certain maintenance tasks, the following permissions/roles must be granted to the replicator principal:
 
 ```hcl
 # Assigning Users
@@ -80,9 +92,12 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Subscription/rename/action"
 ```
 
-You must grant the meshcloud Service Principal this level access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
+You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
 
-In Azure Portal, navigate to the "Management Groups" blade, then click on the "Details" link of the management group you want to give access to. Select "Access Control (IAM)" from the menu and create a role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
+1. In Azure Portal, navigate to the "Management Groups" blade.
+2. Click on the "Details" link of the management group you want to give access to. 
+3. Select "Access Control (IAM)" from the menu.
+4. Create a role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
@@ -140,7 +155,7 @@ We recommend using dedicated enrollment accounts (EA) for exclusive use by meshc
 Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
 If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
 
-For setting up the replicator configuration you need the scope of the enrollment account. Microsoft states this is the ID, however their documentation is inconclusive about this. The recommend to use a REST call to [get the Enrollment Account ID/Scope](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to) (it should be executed in the scope of a user who is the owner of this EA account):
+For setting up the replicator configuration you need the scope of the enrollment account. Microsoft states this is the ID, however their documentation is inconclusive about this. The recommendation is to use a REST call to [get the Enrollment Account ID/Scope](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to) (it should be executed in the scope of a user who is the owner of this EA account):
 
 ```bash
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
@@ -200,9 +215,9 @@ In order to grant the Service Principal the `Subscription Creator` role the easi
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview
 ```
 
-Please check the [official documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) for the meaning of the parameter and the required body payload (there is also a **Try it** button which can directly execute this call). On this page there is also an [example](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#putenrollmentaccountsubscriptioncreatorroleassignment) which assigns the required role to a Service Principal. Please adapt the parameters there accordingly.
+Please check the [official documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) for meaning of the parameter and the required body payload (there is also a **Try it** button which can directly execute this call). On this page there is also an [example](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#putenrollmentaccountsubscriptioncreatorroleassignment) which assigns the required role to a Service Principal. Please adapt the parameters there accordingly.
 
-The following additional information to the required REST call parameters mentioned in the above links can be helpful:
+The following additional information, about the required REST call parameters mentioned in the above links, can be helpful:
 
 | Name                                   | Description                                      |
 | -------------------------------------- | ------------------------------------------------ |
@@ -216,7 +231,7 @@ The complete set of Azure documentation to complete this task can be found here:
 - [How to assign EA roles to a Service Principal](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals)
 - [REST API Docs for role assignment](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)
 
-> The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01` which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
+> The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
 
 #### Ensure Retained Subscription Owners
 
@@ -229,8 +244,8 @@ In contrast to other provisioning methods, EA provisioning will not retain a def
 ### Option 2: Using pre-provisioned Subscriptions
 
 If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
-consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that whish
-to use "Pay-as-you-go" subscriptions or if you're organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
+consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish
+to use "Pay-as-you-go" subscriptions or if your organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
 
 The meshcloud Azure [replication](./meshcloud.tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
@@ -238,7 +253,7 @@ and removed from the subscription pool.
 
 ### Set up the Metering Service Principal
 
-In order to read resource usages, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by meshStacks's metering service:
+In order to read resource usage, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by meshStacks's metering service:
 
 - `Cost Management Reader`
 
