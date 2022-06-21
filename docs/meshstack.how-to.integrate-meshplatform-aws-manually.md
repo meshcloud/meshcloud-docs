@@ -142,7 +142,7 @@ The following trust relationship needs to be attached to the MeshfedServiceRole 
 Replace `MESHCLOUD_ACCOUNT_ID` with the dedicated meshcloud AWS account id where the `meshfed-service-user` lives. Replace `EXTERNAL_ID` accordingly as well.
 
 > For Enrollment with AWS Control Tower, the `MeshfedServiceRole` needs to have extra permissions to invoke the Account Factory.
-> More information on that can be found at this [AWS Guide](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/controlling_access.html#permissions-end-users-console).
+> More information on that can be found at [AWS Guide](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/controlling_access.html#permissions-end-users-console).
 > To make use of these permissions, there must be an available launch path defined in AWS Service Catalog, as stated also in the [prerequisites](#aws-control-tower-integration).
 
 ## Set up AWS Account 3: Automation
@@ -236,11 +236,11 @@ Currently meshStack supports 2 different ways of integrating AWS IAM with meshSt
 
 ### Using AWS SSO (recommended)
 
-The integration with AWS SSO basically works like this: AuthN is done via the company's IdP. Additionally users will be synced via AWS SSO Automated Provisioning (SCIM) to AWS SSO. meshStack takes care of AuthZ. That means meshStack will create groups for every project role on a meshTenant in AWS SSO. meshStack will assign the according users to these groups. As a last step, meshStack assigns the created groups to the according AWS account with configured PermissionSets.
+The integration with AWS SSO basically works like this: AuthN is done via the company's IdP. Additionally users will be synced via AWS SSO Automated Provisioning (SCIM) to AWS SSO. meshStack takes care of AuthZ. That means meshStack will create groups for every project role on a meshTenant in AWS SSO. meshStack will assign the according users to these groups. As a last step, meshStack assigns the created groups to the respective AWS account with configured PermissionSets.
 
 Details about what needs to be configured inside AWS SSO can be found [here](meshstack.aws.sso-setup.md).
 
-> An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
+> An important precondition, regarding the automated user provisioning to AWS SSO, is that the userName in AWS SSO has to be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
 
 The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
 
@@ -353,7 +353,7 @@ The following prerequisites must be fulfilled for the enrollment to work:
 }
 ```
 
-> During the enrollment process, we create a new role in the tenant account that grants permissions to the management
+> During the enrollment process, we create a new role in the tenant account that grants permissions to management
 > account to perform AWS Control Tower execution steps. You have to make sure that there is no Service Control Policy (SCP)
 > enabled in AWS Organizations that prevents that.
 
