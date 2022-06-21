@@ -13,7 +13,9 @@ If you are not familiar with what a meshProject is, please check the [official m
 ## Step to Step Guide
 
 - Make sure you are in the meshCustomer you want to add further users. Do this by checking the drop-down in the upper-left corner.
-![Select meshCustomer in the upper left corner](.././assets/customer/choose-customer.png "Pick meshCustomer")
+
+![Select meshCustomer in the upper left corner](./assets/customer/choose-customer.png "Pick meshCustomer")
+
 - You need to navigate to the meshProject where you want to onboard your project team members.
 
 - Select the meshProject using the top navigation bar
