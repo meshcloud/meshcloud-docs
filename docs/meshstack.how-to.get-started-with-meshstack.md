@@ -15,7 +15,7 @@ This it what it looks like.
 
 To return to this view, you can always press the "Admin Area" button in the top bar.
 
-If you are npt able to see this screen, you are missing partner rights. This can be fixed by any other partner user.
+If you are not able to see this screen, you are missing partner rights. This can be fixed by any other partner user.
 
 ## Step 2: Create your first meshCustomer
 

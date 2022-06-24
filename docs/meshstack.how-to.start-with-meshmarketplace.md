@@ -13,35 +13,32 @@ Offering your services in the central cloud foundation portal has the following 
 - out-of-the-box billing capabilities
 - (optional) user assignment through the cloud foundation portal
 
-We suggest you to setup your Service Broker using meshcloud open-source project "Unipipe-Service-Broker". The Unipipe-Service-Broker will enable you fast and quick demo setup, quick iterative service development and a quick time-to-market.
-The Unipipe-Service-Broker will reduce your own code development efforts as it provides the basic functionality required by the Open Service Broker API reference.
+We suggest you to set up your Service Broker using meshcloud's open-source [UniPipe Service Broker](https://github.com/meshcloud/unipipe-service-broker). UniPipe will enable you a quick setup, development and time-to-market.
+UniPipe will reduce your own code development efforts as it provides the basic functionality required by the [Open Service Broker API](https://www.openservicebrokerapi.org/) reference.
 
 ## Requirements
 
-Service Owner need to implement their service according to the [Open Service Broker API](https://www.openservicebrokerapi.org/).
-The complete API design ist detailed in the [Open Service Broker API spec](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md).
+If you want to offer a service in the marketplace you have to meet the following requirements:
 
-If you want to offer a service in the marketplace you need meet the following requirements:
+- You have your own meshCustomer in the meshPanel where you can add your Open Service Broker.
+- You have a running Service Broker that implements the [Open Service Broker API](https://www.openservicebrokerapi.org/).
+  - To learn more about the OSB API, read the complete the [API spec](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md).
 
-- Your own meshCustomer in the meshPanel where you can add your Open Service Broker
-- Your Open Service Broker implementation including a catalog definition
+## How to start using UniPipe
 
+### UniPipe Wiki
 
-## How to start using Unipipe-Service-Broker
+The [UniPipe Wiki](https://github.com/meshcloud/unipipe-service-broker/wiki) will provide you most information to start and set up your own service broker in a short time.
 
-### Unipipe-Service-Broker Wiki
+### How to deploy UniPipe
 
-The [Unipipe-Service-Broker Wiki](https://github.com/meshcloud/unipipe-service-broker/wiki) will provide you most infromation to start and setup your own service broker in a short time.
+Once you implemented your service broker, you can deploy it. The UniPipe Wiki has a detailed description on [how to deploy UniPipe](https://github.com/meshcloud/unipipe-service-broker/wiki/How-To-Guides#-how-to-deploy-unipipe-service-broker)
 
-### How to deploy the Unipipe-Service-Broker
-
-Follow the official Unipipe-Service-Broker documentation [How to deploy Unipipe-Service-Broker](https://github.com/meshcloud/unipipe-service-broker/wiki/How-To-Guides#-how-to-deploy-unipipe-service-broker)
-
-## How to setup your Service Broker in the meshMarketplace
+## How to set up your Service Broker in the meshMarketplace
 
 Service development in the meshMarketplace is documented in [meshcloud docs](./meshstack.meshmarketplace.development.md).
 
-- Login into the meshPanel.
+- Log in into the meshPanel.
 - Open the Customer Overview.
 - Select the tab Marketplace and the sub-tab Service Brokers.
 - Click on '+ Register'
@@ -51,3 +48,7 @@ Service development in the meshMarketplace is documented in [meshcloud docs](./m
 - Register the Service Broker by entering the required parameters.
 
 ![Register Service Broker](./assets/marketplace/marketplace-register-service-broker.png)
+
+You can now start booking and using your services within your own meshCustomer. This is useful for testing and verifying whether your service broker works as intended.
+
+Once you are ready for other teams to book your offered services, you can [publish](./meshstack.meshmarketplace.development.md#publish-your-service-broker) your service broker.
