@@ -54,11 +54,11 @@ Please execute the following steps:
 2. Navigate to "Service Brokers".
 3. Choose "Published Service Brokers" for the Service Broker you want to publish.
 
-![image](https://user-images.githubusercontent.com/67903933/167908168-a8c7ff34-d3cd-40c4-b731-10c5c798239d.png)
+   ![image](https://user-images.githubusercontent.com/67903933/167908168-a8c7ff34-d3cd-40c4-b731-10c5c798239d.png)
 
 4. Now add the configuration and the Service Broker by pressing "+".
 
-![image](https://user-images.githubusercontent.com/67903933/167908972-1df80355-7982-4f39-8abc-97875cd4ff07.png)
+   ![image](https://user-images.githubusercontent.com/67903933/167908972-1df80355-7982-4f39-8abc-97875cd4ff07.png)
 
 ### Refresh Catalog of Published Service Broker
 
