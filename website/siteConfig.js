@@ -36,7 +36,9 @@ const siteConfig = {
     { doc: 'meshstack.index', label: 'Operator Docs' },
     { href: '/api', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
+    { doc: 'faq', label: 'FAQ' },
     { page: 'help', label: 'Help' },
+    { href: 'https://meshcloud.canny.io/documentation', label: 'Feedback' }
   ],
 
   // If you have users set above, you add it here:
@@ -142,12 +144,11 @@ const siteConfig = {
 }],
 };
 
+// For the production build we include the Plausible tracking script.
+// For more info, see the netlify.toml file.
 if (process.env.CONTEXT === 'production') {
   siteConfig.scripts.push({
-    // TODO: when meshcloud-docs is deployed on Netlify we have to replace
-    // the script that is mentioned here. The correct script from Netlify
-    // is already properly redirected. See the netlify.toml for that.
-    src: '/js/script-docs.js',
+    src: '/js/script.js',
     defer: true,
     'data-domain': 'docs.meshcloud.io'
   });

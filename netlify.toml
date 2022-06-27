@@ -12,14 +12,35 @@
   # located at the absolute path "root/project/build-output"
   publish = "build/meshcloud-docs"
 
-  # Default build command.
-  command = "yarn build"
+  # Default build command. Notes
+  # - this replaces contents in _this_ netlify.toml file, especially the domain redirects. These are _not_ settable via 
+  #   context, see https://docs.netlify.com/configure-builds/file-based-configuration/#deploy-contexts.
+  #   The netlify.toml ends up in the final build output and controls the Netlify CDN
+  # - we do _not_ run lint in netlify. We run the more expensive build actions in github-actions and treat netlify as 
+  #   merely a "deploy" build, not a "CI build" with tests and everything
+  command = "sed -itoml \"s|API_DOCS_DOMAIN_PLACEHOLDER|${API_DOCS_DOMAIN}|g\" ../netlify.toml && yarn build:develop"
 
-  # This ensures the build is ignored if there are no changes to the base directory or the /docs/ directory.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/"
+  # This ensures the build is ignored if there are no changes to the base or /docs/ directory.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/ ../netlify.toml"
+
+[context.production]
+  # for production, we need to run the build:master commmand 
+  command = "sed -itoml \"s|API_DOCS_DOMAIN_PLACEHOLDER|${API_DOCS_DOMAIN}|g\" ../netlify.toml && yarn build:master"
+  ignore = "exit 1" # never ignore a build
+
+[context.production.environment]
+  API_DOCS_DOMAIN = "meshcloud"
+
+[context.branch-deploy]
+  ignore = "exit 1" # never ignore a build
+
+[context.branch-deploy.environment]
+  API_DOCS_DOMAIN = "dev.meshcloud"
+
+[context.deploy-preview.environment]
+  API_DOCS_DOMAIN = "dev.meshcloud"
 
 # This is for netlify to prevent being blocked by ad-blockers.
-# TODO: this is currently not used. We need to deploy Netlify on our production docs.meshcloud.io first!
 [[redirects]]
   from = "/js/script.js"
   to = "https://plausible.io/js/plausible.js"
@@ -32,10 +53,8 @@
   status = 200
   force = true
 
-# This works for now but once we migrate `docs.meshcloud.io` to Netlify too, we will have to
-# adapt this configuration.
 [[redirects]]
   from = "/api/*"
-  to = "http://docs.dev.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/:splat"
+  to = "http://docs.API_DOCS_DOMAIN_PLACEHOLDER.io.s3-website.eu-central-1.amazonaws.com/api/:splat"
   status = 200
   force = true

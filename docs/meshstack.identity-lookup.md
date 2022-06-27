@@ -4,7 +4,7 @@ title: Identity Lookup
 ---
 
 meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.customer.md#invite-users-to-a-meshcustomer-team) with an assisted onboarding workflow.
-This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. This search process is called identity lookup.
+This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. We call this search process identity lookup.
 
 <!--snippet:mesh.meshfed.web.identity-lookup-->
 
@@ -124,7 +124,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-With this initial config is present, operators can setup the following optional settings to customize the way meshStack provisions user accounts from identity lookup.
+With this initial config is present, operators can set up the following optional settings to customize the way meshStack provisions user accounts from identity lookup.
 
 To provision new meshUsers as [guest users](./administration.users.md#guest-users), configure the guest detection.
 
@@ -353,7 +353,7 @@ let example
 
 The GCD Service User needs read access to the [GCD Directory API](https://developers.google.com/admin-sdk/directory/v1/get-start/getting-started).
 
-If this initial config if present you can decide to setup the following optional user identity steps:
+If this initial config if present you can decide to set up the following optional user identity steps:
 
 <!--snippet:mesh.meshfed.identitylookup.gcd.euid#type-->
 

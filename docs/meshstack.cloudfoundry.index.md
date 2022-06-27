@@ -3,7 +3,7 @@ id: meshstack.cloudfoundry.index
 title: Integration
 ---
 
-meshStack supports access to Cloud Foundry platforms which provide convenient application hosting capabilities to software and DevOps engineers. Usually, there are also many backing services available within the platforms marketplace such as database, data processing, queueing, and many more (depending on the platform operators choice of services).
+meshStack supports access to Cloud Foundry platforms which provide convenient application hosting capabilities to software and DevOps engineers. Usually, there are also many backing services available within the platforms marketplace such as database, data processing, queuing, and many more (depending on the platform operators choice of services).
 
 For Cloud Foundry, meshStack provides org and space creation and configuration, user management and SSO via Cloud Foundry's UAA.
 
@@ -18,6 +18,24 @@ When accessing the platform the user has an OIDC Token (JWT) which is issued by 
 The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's meshProject permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
 
 ![Cloud Foundry Architecture](assets/cf-architecture.svg)
+
+## Cloud Foundry Versions
+
+meshcloud officially validates compatibility with the following API versions:
+
+* `2.155.0`
+* `2.181.0`
+
+In general all CloudFoundry versions that provide the V2 API for the following endpoints are supported:
+
+* `/v2/organizations`
+* `/v2/quota_definitions`
+* `/v2/space_quota_definitions`
+* `/v2/spaces`
+* `/v2/users`
+* `/v2/apps`
+* `/v2/private_domains`
+* `/v2/domains`
 
 ## Cloud Foundry Access Workflow
 

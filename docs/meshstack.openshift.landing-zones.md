@@ -15,40 +15,6 @@ These quotas can be defined on an OpenShift Landing Zone via the [Quota Manageme
 
 Templates can be used to deploy some resources to projects that are provisioned via meshStack. Templates will be synchronized automatically with OpenShift when they are put into a Landing Zone and meshTenants are using this Landing Zone. This template shows up in the OpenShift web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
 
-It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like for example creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the platform config:
+It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However, doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like, for example, creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).
 
-```yml
-replicator-openshift:
-  platforms:
-    - platform: okd.eu-de-central
-      enable-template-instantiation: true
-```
-
-## Default Labels
-
-Labels are used to identify existing Resources inside OpenShift or Kubernetes projects. It is possible to define a set of default labels which get applied to every resource created via meshStack. Usually these managed resources are created by a Landing Zone configuration (e.g. [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/admin_guide/quota.html) or [Templates](https://docs.openshift.com/container-platform/3.11/dev_guide/templates.html)).
-
-In order to set these default labels use the replicator OpenShift platform configuration and set the property `default-resource-labels` like so:
-
-```yml
-replicator-openshift:
-  platforms:
-    - platform: okd.eu-de-central
-      default-resource-labels:
-        my-label-1: sample-value-123
-        my-label-2: sample-value-456
-```
-
-## Dynamic Labels
-
-You can also specify certain labels which are populated via data from the meshProject spec. This can be for example a costcenter id. You need to map these fields via the replicator config as well:
-
-```yml
-replicator-openshift:
-  platforms:
-    - platform: okd.eu-de-central
-      meta-label-mappings:
-        costCenter: io.meshcloud/costCenter
-```
-
-This configuration will map the value from the specs metadata with the key `costCenter` to an OpenShift label with the key `io.meshcloud/costCenter`. The datapoints available in the specs for mapping might be differnt depending on the configured environment of your meshStack installation. Please contact the [support](https://support.meshcloud.io/hc/en-us/requests/new) for more details.
+It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However doing so requires currently that the [service principal](meshstack.openshift.index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like for example creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).

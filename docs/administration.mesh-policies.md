@@ -12,15 +12,22 @@ The following meshSubjects are available:
 - meshLandingZone
 - meshUser/Group
 
-In the administration area, there is an option of 'Policies' in the 'Compliance'
-section of the navigation area. After clicking policies, you can view all policies in your meshStack instance.
+You can see all existing meshPolicies in the **Administration** Area by navigating to **Compliance** > **Policies**.
+If you want to see all detected policy violations, you can go to to **Compliance** > **Policy Violations** in the **Administration** Area or on a customer control plane.
+
+> Creating and Editing meshPolicy triggers an evaluation process of the meshPolicy. This process may take a while. After the process ends, you can see the violations caused by the (updated) meshPolicy in the **Policy Violations**.
 
 ## Create meshPolicies
 
-Policy creation is only possible for a user who has a partner admin role. There is a 'Create Policy' button top
-right on the meshPolicies screen. After clicking on it, there is a redirection to the screen of "Create Policy" where all details need to be filled out.
+Policy creation is only possible for a user who has a partner role.
 
-- **Policy Name**: choose a human readabale display name for the meshPolicy
+1. Navigate to **Compliance** > **Policies**.
+2. Click on `+ Create Policy` button in the top right corner. The button is only visible for users with the right permission.
+3. Configure your meshPolicy.
+
+- **Policy Name**: choose a human readable display name for the meshPolicy
+
+- **Description (optional)**: add a description to make everyone aware what your policy is about and why it is necessary
 
 - **Policy Subjects**: select the subjects which shall be evaluated
 
@@ -28,17 +35,21 @@ right on the meshPolicies screen. After clicking on it, there is a redirection t
 
 - **Policy Evaluation Strategy**: select the evaluation strategy for how the subjects shall be evaluated (click [here](meshcloud.policies.md#meshPolicy-evaluation-strategy) to learn more about the different strategies)
 
+- **How to fix (optional)**: provide an additional hint how users can resolve the situation when they violate a policy
+
 To learn more about how meshPolicies work, please click [here](meshcloud.policies.md).
 
-After creating the meshPolicy, it will be applied everywhere to all selected meshSubjects. Any violations of the new meshPolicy that exist already will create new policy violations in meshStack. These can be either fixed by customer admins or partner admins, by picking the right tag values.
+After creating a meshPolicy, every meshSubjects defined in meshPolicy will be evaluated. All violations caused by the new meshPolicy will be logged. These can be either fixed by customer admins or partner admins, by picking the right tag values.
 
 ## Edit meshPolicies
 
-In the policy item list, there is an edit policy button in the 'Actions' column which redirects to the Edit Policy
-screen where one can update the policy.
+1. Navigate to **Compliance** > **Policies**.
+2. Click on the pencil icon in the 'Actions' column of the meshPolicy you want to edit in the meshPolicy list.
+
 
 ## Delete meshPolicies
 
-In the policy item list, there is a "delete policy" button in the 'Actions' column. On clicking, it waits for 5 seconds
-to confirm the deletion. If one clicks within 5 seconds it will be deleted and redirected to the policy list screen
-otherwise button will be back to normal.
+1. Navigate to **Compliance** > **Policies**.
+2. Click on the trash icon in the 'Actions' column of the meshPolicy you want to delete in the meshPolicy list. A checkmark will appear in place of the trash icon.
+3. Confirm the deletion by clicking on the checkmark icon within 5 seconds. After the deletion of your meshPolicy is finalized your meshPolicy list will be updated. In case, you don't confirm the deletion within 5 seconds. The trash icon will reappear.
+

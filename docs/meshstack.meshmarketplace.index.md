@@ -46,10 +46,9 @@ meshMarketplace also supports two different options for authenticanting users of
 - using an OIDC client in meshIdB as described in the [dashboard-tutorial](./meshstack.meshmarketplace.dashboard-tutorial.md)
 - replicating of permission to Azure Active Directory groups
 
-
 ## Platform Instance Configuration
 
-Please consult the following example as a reference of possible configuration settings.
+meshMarketplace can only be configured by meshcloud via dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
 
 ```dhall
 let PermissionReplication = ./PermissionReplication.dhall

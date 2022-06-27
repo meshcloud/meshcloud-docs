@@ -88,7 +88,7 @@ See [metadata tags](./meshstack.metadata-tags.md) for more information.
 
 The meshProject roles must be mapped to GCP specific roles. You are able to control this mapping with a Landing Zone setting. You can specifiy these mappings by adding role mappings and supplying a GCP Role. You can both use custom roles which look like `organizations/123123123123/roles/meshstack.project_developer` or predifined GCP roles like `roles/editor`.
 
-You can specify multiple GCP roles for each meshRole. All defined GCP roles are added to the user group of the assigned users.
+You can specify multiple GCP roles for each meshRole. All defined GCP roles are added to the user group. Additional roles can be managed for the user group outside of meshStack. meshStack does not remove roles from a user group. It only adds the mapped roles specified in the landing zone definition.
 
 ## Cloud Function URL
 
