@@ -36,6 +36,7 @@ const siteConfig = {
     { doc: 'meshstack.index', label: 'Operator Docs' },
     { href: '/api', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
+    { doc: 'faq', label: 'FAQ' },
     { page: 'help', label: 'Help' },
     { href: 'https://meshcloud.canny.io/documentation', label: 'Feedback' }
   ],
