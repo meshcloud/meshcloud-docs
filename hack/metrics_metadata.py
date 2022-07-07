@@ -1,9 +1,9 @@
-import json
 import sys
 import subprocess
 import time
 import re
 import argparse
+import requests
 
 
 def parse_args(args):
@@ -30,17 +30,15 @@ def get_metrics_metadata_from_prometheus(context, namespace):
         while True:
             time.sleep(2)
             try:
-                subprocess.check_output(
-                    ["curl", "--no-progress-meter", "http://localhost:9090/api/v1/metadata"])
-                break
-            except subprocess.CalledProcessError:
-                if proc.poll() is not None:
-                    sys.exit("Error: Unable to connect to Prometheus")
-                continue
+                r = requests.get("http://localhost:9090/api/v1/metadata")
+                if r.status_code == 200:
+                    break
+            except:
+                proc.poll()
+                if proc.returncode is not None:
+                    sys.exit("Error: Port-forwarding failed")
 
-        # get metrics metadata from Prometheus
-        metrics_json = subprocess.check_output(
-            ["curl", "--no-progress-meter", "http://localhost:9090/api/v1/metadata"])
+        metrics_json = r.json()
     finally:
         proc.kill()
     return metrics_json
@@ -53,7 +51,7 @@ def json_to_md_table(metrics_json):
     Args:
         metrics_json: Prometheus metrics metadata in JSON format (Response to GET /api/v1/metadata request from Prometheus).
     """
-    metrics_metadata = json.loads(metrics_json.decode('utf8'))["data"]
+    metrics_metadata = metrics_json["data"]
 
     # build markdown table
     md_table = "| Metric | Description |\n"

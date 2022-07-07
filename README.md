@@ -85,7 +85,7 @@ Have a look at the `update-snippets` in case you want more fine-grained control 
 To do so, run the following:
 
 ```bash
-python3 ./hack/metrics_metadata.py <target-k8s-context> <target-k8s-namespace> ./docs/meshstack.monitoring.md
+python3 ./hack/metrics_metadata.py <target-k8s-context> <target-k8s-namespace> ./docs/meshstack.monitoring.metrics.md
 ```
 
 Note: This assumes that the running prometheus service name has the following format: `prometheus-<k8s-namespace>-server`
