@@ -18,5 +18,5 @@ The size of the image should not be more than 250 KB.
 
 ### Reset Logo
 
-With this button you can delete an uploaded Logo for all users of your company.
-After you used this button the logo will be the default logo.
+After clicking the "Reset Logo" button, the logo will be reset to the default logo, which is usually the meshcloud logo.
+This change will be visible to all users of your company.
