@@ -3,6 +3,8 @@ id: administration.meshstack-settings
 title: meshStack Settings
 ---
 
+To change Settings for the meshStack go to the "meshStack Settings" section of the Administration area.
+
 ## Change Logo
 
 Partner Admins and Partner Employees can access the meshStack Settings to change the logo on the top left of the panel.
