@@ -49,7 +49,7 @@ graph LR;
 
 ## Designing Multi-Cloud Identity and Access Management
 
-Designing an effefctive multi-cloud identity and access management strategy is no small feat. This guide describes the
+Designing an effective multi-cloud identity and access management strategy is no small feat. This guide describes the
 most important considerations that enterprise architects and IAM specialists need to be aware of when designing
 a multi-cloud IAM strategy for their organisation. Wherever applicable, it will link to sections that describe relevant configuration options in detail.
 
@@ -235,7 +235,7 @@ meshStack supports configuration of an optional identity lookup source. When pos
 Since email is a fundamental attribute of every meshUser, every identity lookup source is capable
 of providing this attribute.
 If an operator does not configure an identity lookup source, meshStack will use the email address entered by the inviting user.
-This email adress can also be used to set a user's `euid`, see the [user onboarding configuration reference](meshstack.onboarding.md#customer-user-invitations) for details.
+This email address can also be used to set a user's `euid`, see the [user onboarding configuration reference](meshstack.onboarding.md#customer-user-invitations) for details.
 
 
 | Identity Lookup Source | euid attributes supported                                               |
