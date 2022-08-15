@@ -28,7 +28,7 @@ Additionally an amount can be set on the payment method, which indicates how muc
 
 ![Tenant Usage Reports](assets/tenant-usage-report-example.png)
 
-A tenant usage report provides usage information of one tenant (project representation in a specific platform). E.g. all resources like VMs, Storage, Public IPs, etc are shown in this report.
+A tenant usage report provides usage information of one tenant (project representation in a specific platform). This report shows for example all resources like VMs, Storage, Public IPs, etc.
 
 Tenant Usage Reports can be accessed in the tenant control plane under **Finacials** > **Usage Reports**.
 meshStack generates a tenant usage report for every usage period (monthly).
@@ -38,7 +38,7 @@ meshStack generates a tenant usage report for every usage period (monthly).
 You also have access to a preview report of the current period (e.g. the current month), to always have full control of
 your resources and their usage.
 
-From a Tenant Usage Report you can also access a Detailed Report to see every single usage the resources created.
+From a Tenant Usage Report you can also access a Detailed Report to see every single resource consumption.
 That means you can e.g. see whether a resource was running for 3 hours, stopped for 5 hours and then started again for another 6 hours.
 
 Partner accounts can access tenant usage reports for all their assigned meshCustomers in the Administration Area via **Platforms** > **Usage Reports**.
@@ -109,6 +109,10 @@ This export will contain the line items (see above) of all the chargeback statem
 The line item data is suitable for feeding into chargeback processing, e.g. importing it to an ERP System to transfer
 budgets between cost centers.
 
-Chargeback Statements also contain billing information per line item. You Cloud Foundation team can [configure](meshstack.billing.md#chargeback)
-which information shall be shown there. This info will occur in the UI when looking at the line items of a chargeback statements.
-It will also be part of the CSV export. General payment information like payment name, identifier, expiration date and amount as well as any customer tags, project tags and payment tags can be [configured](meshstack.billing.md#chargeback) as a billing-related property.
+Chargeback Statements also contain billing information per line item. Your Cloud Foundation team can [configure](meshstack.billing.md#chargeback)
+which information meshStack should include as billing information in chargeback statements.
+
+> Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any customer tags, project tags and payment method tags.
+
+Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chageback statements also include the configured billing information.
+
