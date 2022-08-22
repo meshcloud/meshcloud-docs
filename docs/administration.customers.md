@@ -89,15 +89,16 @@ Partner users can edit tag values for tags defined in both [restricted and unres
 Sometimes additional information about the lifecycle of a customer is required. The archive icon in the list of customers shows all major events that happened on the customer.
 
 The following events are available:
-
-- **CUSTOMER_REGISTERED**: A new meshCustomer registered in self-service.
-- **CUSTOMER_CREATED**: A new meshCustomer was created by a partner/admin.
-- **USER_INVITED**: A user was invited to a meshCustomer.
-- **USER_ACCEPTED_INVITATION**: A user accepted the invitation.
-- **USER_INVITATION_CANCELLED**: An invitation was cancelled by a customer admin.
-- **USER_REMOVED**: A user was removed from the meshCustomer.
-- **USER_ROLE_CHANGED**: The role of a user was changed on the meshCustomer.
-- **CUSTOMER_QUOTA_EDITED**: The quota of a meshCustomer was changed.
-- **USER_ASSIGNED_HIMSELF**: A partner/admin assigned himself to a meshCustomer.
-- **CUSTOMER_STATUS_CHANGED**: A partner/admin changed the status of a meshCustomer (i.e. disabled or enabled the meshCustomer).
-- **CUSTOMER_APPROVED**: A partner/admin approved a new meshCustomer registration. This event is only available, when the [manual customer approval](#approve-customer) is activated.
+| Event | Description |
+| ------| ----------- |
+| **CUSTOMER_REGISTERED**| A new meshCustomer registered in self-service. |
+| **CUSTOMER_CREATED**| A new meshCustomer was created by a partner/admin. |
+| **USER_INVITED**| A user was invited to a meshCustomer. |
+| **USER_ACCEPTED_INVITATION**| A user accepted the invitation. |
+| **USER_INVITATION_CANCELLED**| An invitation was cancelled by a customer admin. |
+| **USER_REMOVED**| A user was removed from the meshCustomer. |
+| **USER_ROLE_CHANGED**| The role of a user was changed on the meshCustomer. |
+| **CUSTOMER_QUOTA_EDITED**| The quota of a meshCustomer was changed. |
+| **USER_ASSIGNED_HIMSELF**| A partner/admin assigned himself to a meshCustomer. |
+| **CUSTOMER_STATUS_CHANGED**| A partner/admin changed the status of a meshCustomer (i.e. disabled or enabled the meshCustomer). |
+| **CUSTOMER_APPROVED**| A partner/admin approved a new meshCustomer registration. This event is only available, when the [manual customer approval](#approve-customer) is activated. |
