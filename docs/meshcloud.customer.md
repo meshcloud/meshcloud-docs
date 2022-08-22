@@ -113,10 +113,10 @@ If you would like to remove a user or group from your meshCustomer go to the **A
 
 Before a meshCustomer may be deleted, a check is performed to verify the following:
 
-- all meshProjects in the meshCustomer have been deleted. This means, that they are not only [marked for deletion](meshcloud.project.md#delete-a-meshproject), but that they have [actually been deleted](administration.projects.md#delete-projects) in the platforms.
+- all meshProjects in the meshCustomer have been deleted
 - all published Service Brokers in the meshCustomer have been [deactivated](meshstack.meshmarketplace.development.md#deactivation-of-service-brokers)
 
-The deletion can be performed only by the Customer Owners! You can delete the customer under **Settings** > **Danger Zone** in the customer control plane. You will be asked for confirmation and a deletion reason when you click the button.
+The deletion can be performed only by the Customer Owners! You can delete the customer under **Danger Zone** in the customer control plane. You will be asked for confirmation and a deletion reason when you click the button.
 
 Note : The deletion of a customer can not be reversed!
 
