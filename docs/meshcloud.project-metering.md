@@ -30,7 +30,7 @@ Additionally an amount can be set on the payment method, which indicates how muc
 
 A tenant usage report provides usage information of one tenant (project representation in a specific platform). This report shows for example all resources like VMs, Storage, Public IPs, etc.
 
-Tenant Usage Reports can be accessed in the tenant control plane under **Finacials** > **Usage Reports**.
+Tenant Usage Reports can be accessed in the tenant control plane under **Financials** > **Usage Reports**.
 meshStack generates a tenant usage report for every usage period (monthly).
 
 > meshStack defines **usage period** as starting from the first day of a month to the last day of the month in UTC.
@@ -68,17 +68,18 @@ statements do as well show charges with a booking and valuta date.
 
 #### Tags and Payment Methods
 
-Chargeback statements capture the billing information associated with the chargeback account at the time
-the chargeback statement is generated. This implies that the payment method that is active on the project at the
-point in time when the chargeback statement is generated will be charged for all line items in the chargeback statement.
+Chargeback statements capture the billing information associated with the chargeback account at the end of the report period
+of its line items. This implies that the payment method that is active on the project at the
+end of the report period of a line item will be set for the according line item.
 The same also applies to tags (i.e. meshProject and meshCustomer tags).
 
-Depending on meshStack's configuration, chargeback statements are generated on the 6th of a month.
-Customer admins should ensure that their project metadata (like payment method, tags) is up to date at that point
-and their payment method is still active on that date.
+Always using the project metadata and tags that were set at the end of the report period (usually end of a month) allows easy
+handling of payment method expiration and usage of tags that were actually set in the according report period. If e.g. a
+payment method expires on the 1st of January 2022 it shall be used for the December chargeback statement no matter when
+the chargeback statement is actually generated.
 
 > Controllers should consider this when defining an expiration date of a [payment method](meshcloud.payment-methods.md).
-> For example, a payment method valid for the year of 2021 should expire in Janaury 2022 *after* the end of the chargeback period.
+> For example, a payment method valid for the year of 2021 should expire on the 1st of Janaury 2022, not on the 31st of December.
 
 #### Chargeback Statement Previews
 
