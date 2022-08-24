@@ -5,11 +5,11 @@ title: Project Metering
 
 meshStack provides central [multi-cloud billing](meshstack.billing.md). It can automatically collect usage information from all your cloud platforms and provides central access to cost and usage data.
 
-Project owners can get a detailed overview about when and how long your resources were running and how much this costs.
+Project owners can get a detailed overview of when and how long your resources were running and how much this costs.
 
 ## Project Payment Information
 
-Project owners associate their project with payment information. This is used for the chargeback process.
+Project owners associate their projects with payment information. This is used for the chargeback process.
 
 ### Payment Methods
 
@@ -57,7 +57,7 @@ chargeback statement.
 > meshStack defines the **chargeback period** as a monthly period with a configurable offset (e.g. 6 days)
 > allowing cloud providers to finish processing of usage reports for the usage period.
 
-As an anology from banking you can think of a chargeback account like a credit account and the chargeback statement like
+As an analogy from banking, you can think of a chargeback account like a credit account and the chargeback statement like
 a credit card statement you receive at the end of the month about all transactions charged to the card. Credit card
 statements do as well show charges with a booking and valuta date.
 
@@ -71,15 +71,16 @@ statements do as well show charges with a booking and valuta date.
 Chargeback statements capture the billing information associated with the chargeback account at the end of the report period
 of its line items. This implies that the payment method that is active on the project at the
 end of the report period of a line item will be set for the according line item.
-The same also applies to tags (i.e. meshProject and meshCustomer tags).
+The same also applies to tags (i.e. meshProject and meshCustomer tags). For example, a June 2022 chargeback statement line item
+will always have the tags and metadata set that were present at the end of June 30th.
 
 Always using the project metadata and tags that were set at the end of the report period (usually end of a month) allows easy
-handling of payment method expiration and usage of tags that were actually set in the according report period. If e.g. a
+handling of payment method expiration and usage of tags that were set in the according report period. If e.g. a
 payment method expires on the 1st of January 2022 it shall be used for the December chargeback statement no matter when
-the chargeback statement is actually generated.
+the chargeback statement is generated.
 
 > Controllers should consider this when defining an expiration date of a [payment method](meshcloud.payment-methods.md).
-> For example, a payment method valid for the year of 2021 should expire on the 1st of Janaury 2022, not on the 31st of December.
+> For example, a payment method valid for the year of 2021 should expire on the 1st of January 2022, not on the 31st of December.
 
 #### Chargeback Statement Previews
 
@@ -115,5 +116,5 @@ which information meshStack should include as billing information in chargeback 
 
 > Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any customer tags, project tags and payment method tags.
 
-Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chageback statements also include the configured billing information.
+Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
 
