@@ -74,7 +74,7 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Management/managementGroups/write",
 
 # Permissions for reading and writing tags
-"Microsoft.Resources/tags/write",
+"Microsoft.Resources/tags/*",
 
 # Permission we need to activate/register required Resource Providers
 "*/register/action",
