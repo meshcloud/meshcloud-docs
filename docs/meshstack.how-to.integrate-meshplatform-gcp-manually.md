@@ -169,6 +169,20 @@ The following example excludes all projects nested underneath folder `123456789`
 AND "123456789" IN UNNEST(SPLIT(project.ancestry_number, "/"))
 ```
 
+### Optional: Enable GCP Cloud Carbon Footprint Export
+
+meshStack metering supports general environmental reports based on GCP Cloud Carbon Footprint data.
+To enable this feature,set up a big query data set containing the carbon footprint export data, see
+[Export your carbon footprint](https://cloud.google.com/carbon-footprint/docs/export#bigquery) on the GCP documentation.
+
+Then enable the `kraken-service` service account to read this dataset.
+
+```text
+roles/bigquery.dataViewer
+```
+
+Finally configure the table id containing the exported carbon data in the meshPlatform configuration.
+
 ## Optional: Enable Audit Logs for meshfed-service User
 
 The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
