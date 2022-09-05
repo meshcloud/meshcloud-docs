@@ -183,6 +183,10 @@ roles/bigquery.dataViewer
 
 Finally configure the table id containing the exported carbon data in the meshPlatform configuration.
 
+> Setting up GCP Big Query Transfer configuration will execute the transfer job on behalf of the user setting up
+> the transfer config. The user must therefore grant permission to the big query service to access their account.
+> This is a [limitation](https://cloud.google.com/bigquery/docs/use-service-accounts) of the big query data transfer service authorization model.
+
 ## Optional: Enable Audit Logs for meshfed-service User
 
 The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
