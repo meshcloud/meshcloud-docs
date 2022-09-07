@@ -11,8 +11,8 @@ First install postman. While any tool will do, in this how-to will use [Postman]
 
 ## Step 2: Import existing Customer Owners into the meshObjectCollection
 
-Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/#_meshcustomeruserbinding) for the Customer Owners into the meshObjectCollection.
-Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/#mesh_object_declarative_import) in the request URL.
+Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/index.html#_meshcustomeruserbinding) for the Customer Owners into the meshObjectCollection.
+Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/index.html#mesh_object_declarative_import) in the request URL.
 
 ```sh
 curl --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCollection=collection-my-customer-customer-owners&owner=partner@meshcloud.io' \
