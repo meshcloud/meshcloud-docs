@@ -13,7 +13,7 @@ If the meshCustomer has two Customer Owners set, you need to follow all three st
 
 ## Step 1: Create a meshObjectCollection
 
-Follow [API docs](https://docs.meshcloud.io/api/#mesh_object_collection_create) to create a meshObjectCollection.
+Follow [API docs](https://docs.meshcloud.io/api/index.html#mesh_object_collection_create) to create a meshObjectCollection.
 
 ```sh
 curl --location --request POST 'https://backend-url/api/meshobjectcollections' \
@@ -28,8 +28,8 @@ curl --location --request POST 'https://backend-url/api/meshobjectcollections' \
 
 ## Step 2: Import existing Customer Owners into the meshObjectCollection
 
-Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/#_meshcustomeruserbinding) for the Customer Owners into the meshObjectCollection.
-Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/#mesh_object_declarative_import) in the request URL.
+Import the existing [meshCustomerUserBindings](https://docs.meshcloud.io/api/index.html#_meshcustomeruserbinding) for the Customer Owners into the meshObjectCollection.
+Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/index.html#mesh_object_declarative_import) in the request URL.
 
 ```sh
 curl --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCollection=collection-my-customer-customer-owners&owner=partner@meshcloud.io' \

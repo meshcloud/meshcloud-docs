@@ -99,7 +99,7 @@ Assignment of global groups to meshCustomers and meshProjects within the meshPan
 
 The following guide shows how an AAD can be configured to enable SCIM user and group provisioning to meshStack. In order
 to connect to meshStack you will need a Basic Authentication user with permissions to access the SCIM Api. Please refer
-to the [Authentication](https://docs.meshcloud.io/api/#authentication) section within the API Docs for the credentials configuration.
+to the [Authentication](https://docs.meshcloud.io/api/index.html#authentication) section within the API Docs for the credentials configuration.
 
 ### General Setup Steps
 
