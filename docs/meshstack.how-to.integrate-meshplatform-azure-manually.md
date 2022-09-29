@@ -236,7 +236,7 @@ In contrast to other provisioning methods, EA provisioning will not retain a def
 
 If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish
-to use "Pay-as-you-go" subscriptions or if your organization partners with an [Azure Cloud Solution Provider](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview) to provide your subscriptions.
+to use "Pay-as-you-go" subscriptions or if your organization partners with an [Azure Cloud Solution Provider](https://learn.microsoft.com/en-us/partner-center/azure-plan-lp) to provide your subscriptions.
 
 The meshcloud Azure [replication](./meshcloud.tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
