@@ -43,7 +43,7 @@ class Footer extends React.Component {
             </a>
           </div>
           <div>
-            <h5>Community &amp; Follow us</h5>
+            <h5>Community &amp; Follow us bla bla bla</h5>
             <a
               href="https://twitter.com/meshstack"
               target="_blank"
