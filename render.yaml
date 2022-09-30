@@ -5,14 +5,9 @@ services:
     env: static
     branch: master
     # Production requires a different build command
-    rootDir: website
-    buildCommand: yarn build:master
+    buildCommand: cd website && yarn build:master
     staticPublishPath: build/meshcloud-docs
     pullRequestPreviewsEnabled: false
-    buildFilter:
-      # For the master build we just want to always do a build, no matter what files were changed.
-      paths:
-        - **/*
     routes:
       # These rewrites prevent Plausible from being blocked by ad-blockers.
       - type: rewrite
@@ -31,17 +26,9 @@ services:
     name: meshcloud-docs-dev
     env: static
     # The default branch of meshcloud-docs is the develop branch
-    rootDir: website
-    buildCommand: yarn build:develop
+    buildCommand: cd website && yarn build:develop
     staticPublishPath: build/meshcloud-docs
     pullRequestPreviewsEnabled: true
-    buildFilter:
-      # Only changes in docs or website folder should actually lead to a build.
-      # And we check render.yaml, so we can directly apply any hosting configuration.
-      paths:
-        - docs/*
-        - website/*
-        - render.yaml
     routes:
       # These rewrites prevent Plausible from being blocked by ad-blockers.
       - type: rewrite
