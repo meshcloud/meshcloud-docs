@@ -1,4 +1,5 @@
 services:
+  # This configuration is for the production version of docs (docs.meshcloud.io)
   - type: web
     name: meshcloud-docs
     env: static
@@ -6,7 +7,7 @@ services:
     rootDir: website
     buildCommand: yarn build:master
     staticPublishPath: build/meshcloud-docs
-    pullRequestPreviewsEnabled: true # TODO: need to set this probably to false hwne finished. We do not really open any PRs directly against 'master'
+    pullRequestPreviewsEnabled: false
     routes:
       # These redirects prevents Plausible from being blocked by ad-blockers.
       - type: redirect
@@ -19,3 +20,24 @@ services:
       - type: redirect
         source: /api/*
         destination: http://docs.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*
+  # This configuration is for the development version of docs (docs.dev.meshcloud.io) and also makes sure PRs are opened
+  # against the develop branch.
+  - type: web
+    name: meshcloud-docs-dev
+    env: static
+    rootDir: website
+    buildCommand: yarn build:develop
+    staticPublishPath: build/meshcloud-docs
+    pullRequestPreviewsEnabled: true
+    routes:
+      # These redirects prevents Plausible from being blocked by ad-blockers.
+      - type: redirect
+        source: /js/script.js
+        destination: https://plausible.io/js/plausible.js
+      - type: redirect
+        source: /api/event
+        destination: https://plausible.io/api/event
+      # This redirect will serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
+      - type: redirect
+        source: /api/*
+        destination: http://docs.dev.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*
