@@ -54,7 +54,7 @@ class Footer extends React.Component {
               href="https://www.facebook.com/meshstack/"
               target="_blank"
               rel="noreferrer noopener">
-              Facebook
+              Meta Facebook
             </a>
             <a
               href="https://www.linkedin.com/company/meshcloud"
