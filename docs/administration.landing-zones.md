@@ -23,7 +23,7 @@ Platform Operators can configure a custom Landing Zone [meshTag](./meshstack.met
 
 ## Defining Quotas
 
-Limiting access to private cloud platforms is an important tool to keep control over the load on your platform and providing a fair share of resources to your customers. Therefore private cloud platforms provide quotas to achieve this limitation. Defining these quotas is supported by meshStack per meshLandingZone. This provides maximum flexibility to Platform Operators to define quotas for their customers. meshPlatforms that support quota management will provide an according section when editing landing zones.
+Limiting access to private cloud platforms is an important tool to keep control over the load on your platform and providing a fair share of resources to your customers. Therefore, private cloud platforms provide quotas to achieve this limitation. Defining these quotas is supported by meshStack per meshLandingZone. This provides maximum flexibility to Platform Operators to define quotas for their customers. meshPlatforms that support quota management will provide an according section when editing landing zones.
 
 ![Landing Zone Quota](assets/tenants/landing-zone-quota.png)
 
