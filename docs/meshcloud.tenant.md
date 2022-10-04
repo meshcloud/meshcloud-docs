@@ -30,9 +30,9 @@ Any update to tenant metadata (e.g. a change in payment method) triggers a new m
 
 ## Delete a meshTenant
 
-> Only users or users of [group](meshcloud.customer.md#user-groups) with the role [Customer Admin](meshcloud.customer.md#assign-meshcustomer-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Customer Admin](meshcloud.customer.md#assign-meshcustomer-roles) or [Customer Owner](meshcloud.customer.md#assign-meshcustomer-roles) have access to the administrative functionality described in this section.
 
-If you would like to delete a meshTenant which is no longer used, open the corresponding meshTenant and navigate to **Danger Zone**. In this screen you can execute the deletion.
+If you would like to delete a meshTenant which is no longer used, open the corresponding meshTenant, navigate to **Danger Zone**, and start the deletion here.
 
 We distinguish between automatic and non-automatic deletion supported procedures. The deletion procedure depends on the platform of the meshTenant.
 
@@ -58,4 +58,4 @@ For the following platforms automatic deletion is supported:
 
 The system will perform a check to see if any resources exist in the tenants being deleted. This check is currently implemented only for OpenStack and Cloud Foundry platforms. If resources do exist in any of those platform tenants, you will be informed about them. You have to manually delete those resources. Once you have performed the manual resource deletion, you can confirm the tenant deletion.
 
-> When all meshTenants with meshProject have been deleted successfully, your meshProject is deleted.
+> Your meshProject [submitted for deletion](meshcloud.project.md#delete-a-meshproject) is classified as deleted once all meshTenants within the meshProject have been deleted successfully.

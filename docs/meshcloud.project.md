@@ -5,7 +5,7 @@ title: meshProject
 
 meshProjects are multi-cloud enabled projects that allow teams to manage and scale cloud resources across all [meshPlatforms](meshcloud.platforms.md) made available to their [meshCustomer](meshcloud.customer.md).
 
-> Only users or users of [group](meshcloud.customer.md#user-groups) with the role [Customer Admin](meshcloud.customer.md#assign-meshcustomer-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Customer Admin](meshcloud.customer.md#assign-meshcustomer-roles) or [Customer Owner](meshcloud.customer.md#assign-meshcustomer-roles) have access to the administrative functionality described in this section.
 
 ## Create a new meshProject
 
@@ -52,7 +52,7 @@ In the **Project Access Control** section you can find a type-ahead `Search for 
 
 ### Project Roles
 
-Project roles grant a configured set of permissions in cloud platforms used by the project. Project roles can be configured according to exisiting requirements or policies, by default the following roles are used:
+Project roles grant a configured set of permissions in cloud platforms used by the project. Project roles can be configured according to existing requirements or policies, by default the following roles are used:
 
 - **Project Reader**: A read-only user, like a controller or similar.
 - **Project User**: A default user, like a developer, who can manage resources in the cloud platform.
@@ -75,7 +75,7 @@ In the **Project Access** section you can click the `-` button in the row of a u
 
 ## Delete a meshProject
 
-If you would like to delete a project which is no longer used, open the corresponding project and navigate to  **Danger Zone**. A meshProject is deleted when the deletion of all meshTenants have been performed successfully. In this screen you can execute the deletion of all meshTenants within your  meshProject. You can also [delete a single meshTenant](meshcloud.tenant.md#delete-a-meshtenant) on the tenant control plane.
+If you would like to delete a project that is no longer used, open the corresponding project, navigate to **Danger Zone**, and start the deletion here. The project deletion will be finalized when the deletion of all meshTenants in the project has been performed successfully. If you want to keep the project but delete one or more individual tenants, you can also [delete a single meshTenant](meshcloud.tenant.md#delete-a-meshtenant) on the tenant control plane.
 
 The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) of your meshProject depends on the variety of meshTenants. There 3 possible cases:
 
@@ -83,10 +83,10 @@ The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) of your meshPr
 2. a project contains exclusively OpenStack, Cloud Foundry and Marketplace meshTenants
 3. a project contains a project containing a combination of 1. and 2.
 
-**1. Non-automatic deletion**: If the project contains tenants on which a partner or an platform operator will have to perform manual deletion actions. Your project is deleted, when all tenant deletions have been confirmed by them.
+**1. Non-automatic deletion**: If the project contains tenants on which a partner or a platform operator will have to perform manual deletion actions. Your project is deleted, when all tenant deletions have been confirmed by the partner or platform operator.
 
 **2. Automatic deletion**: The system will perform a check to see if any resources exist in the tenants of the project being deleted. If resources do exist in any of those platform tenants, you will be informed about them and have to manually delete those resources. Once you have performed the manual resource deletion, you can confirm the project deletion by entering the identifier of your project.
 
 **3. Combination of the above**: If a projects contains a combination of tenants from 1. and 2. the tenants which don't require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.
 
-> Your meshProject is not deleted when any meshTenant requiring a manual deletion has been declined.This means, your meshProject will be available on the customer control plane containing only the meshTenants which deletion had been declined.
+> Your meshProject is not deleted when any meshTenant requiring a manual deletion has been declined. This means, your meshProject will be available on the customer control plane containing only the meshTenants whose deletion had been declined.
