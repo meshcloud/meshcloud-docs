@@ -3,23 +3,21 @@ services:
   - type: web
     name: meshcloud-docs
     env: static
-    repo: https://github.com/meshcloud/meshcloud-docs.git
     branch: master
     # Production requires a different build command
-    rootDir: website
-    buildCommand: yarn build:master
+    buildCommand: cd website && yarn build:master
     staticPublishPath: build/meshcloud-docs
     pullRequestPreviewsEnabled: false
     routes:
-      # These redirects prevents Plausible from being blocked by ad-blockers.
-      - type: redirect
+      # These rewrites prevent Plausible from being blocked by ad-blockers.
+      - type: rewrite
         source: /js/script.js
         destination: https://plausible.io/js/plausible.js
-      - type: redirect
+      - type: rewrite
         source: /api/event
         destination: https://plausible.io/api/event
-      # This redirect will serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
-      - type: redirect
+      # This rewrite will serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
+      - type: rewrite
         source: /api/*
         destination: http://docs.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*
   # This configuration is for the development version of docs (docs.dev.meshcloud.io) and also makes sure PRs are opened
@@ -27,21 +25,19 @@ services:
   - type: web
     name: meshcloud-docs-dev
     env: static
-    repo: https://github.com/meshcloud/meshcloud-docs.git
-    branch: develop
-    rootDir: website
-    buildCommand: yarn build:develop
+    # The default branch of meshcloud-docs is the develop branch
+    buildCommand: cd website && yarn build:develop
     staticPublishPath: build/meshcloud-docs
     pullRequestPreviewsEnabled: true
     routes:
-      # These redirects prevents Plausible from being blocked by ad-blockers.
-      - type: redirect
+      # These rewrites prevent Plausible from being blocked by ad-blockers.
+      - type: rewrite
         source: /js/script.js
         destination: https://plausible.io/js/plausible.js
-      - type: redirect
+      - type: rewrite
         source: /api/event
         destination: https://plausible.io/api/event
-      # This redirect will serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
-      - type: redirect
+      # This rewrites will serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
+      - type: rewrite
         source: /api/*
         destination: http://docs.dev.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*
