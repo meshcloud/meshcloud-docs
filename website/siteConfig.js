@@ -145,8 +145,8 @@ const siteConfig = {
 };
 
 // For the production build we include the Plausible tracking script.
-// For more info, see the netlify.toml file.
-if (process.env.CONTEXT === 'production') {
+// We only use this for the master build. Not for develop builds or preview builds.
+if (process.env.RENDER_GIT_BRANCH === 'master') {
   siteConfig.scripts.push({
     src: '/js/script.js',
     defer: true,
