@@ -12,7 +12,7 @@ services:
     buildFilter:
       # For the master build we just want to always do a build, no matter what files were changed.
       paths:
-        - **/**
+        - "**/*"
     routes:
       # These rewrites prevent Plausible from being blocked by ad-blockers.
       - type: rewrite
@@ -39,8 +39,8 @@ services:
       # Only changes in docs or website folder should actually lead to a build.
       # And we check render.yaml, so we can directly apply any hosting configuration.
       paths:
-        - docs/*
-        - website/*
+        - docs/**/*
+        - website/**/*
         - render.yaml
     routes:
       # These rewrites prevent Plausible from being blocked by ad-blockers.
