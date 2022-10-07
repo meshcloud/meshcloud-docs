@@ -9,6 +9,8 @@ services:
     buildCommand: yarn build:master
     staticPublishPath: build/meshcloud-docs
     pullRequestPreviewsEnabled: false
+    domains:
+      - docs.meshcloud.io
     buildFilter:
       # For the master build we just want to always do a build, no matter what files were changed.
       paths:
@@ -35,6 +37,8 @@ services:
     buildCommand: yarn build:develop
     staticPublishPath: build/meshcloud-docs
     pullRequestPreviewsEnabled: true
+    domains:
+      - docs.dev.meshcloud.io
     buildFilter:
       # Only changes in docs or website folder should actually lead to a build.
       # And we check render.yaml, so we can directly apply any hosting configuration.
