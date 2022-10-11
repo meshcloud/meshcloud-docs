@@ -47,7 +47,7 @@ Technical safeguards are implemented such as detecting and responding to Distrib
 
 A dedicated Virtual Cloud Network is provided for the meshStack. This network is completely encapsulated from other meshStack and their dedicated customer networks. The network configuration also includes the usage of Security Groups to strictly configure communication in the network.
 
-### Does meshStack support Single sign-on (SSO) and Multi-Factor-Authentication (MFA)?
+### Does meshStack support Single Sign-On (SSO) and Multi-Factor-Authentication (MFA)?
 
 Yes, meshStack supports SSO and MFA.
 
