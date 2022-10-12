@@ -30,7 +30,7 @@ To edit the quotas, follow these steps:
 
 ### Delete Projects & Tenants
 
-Projects can currently only be deleted by meshCustomers.
+Projects can currently only be deleted by Customer Admins.
 
 If a meshProject is marked for deletion by a meshCustomer, and all meshTenants of the meshProject
 have been successfully deleted, the meshProject is then automatically deleted.
