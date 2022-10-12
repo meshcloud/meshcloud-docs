@@ -3,11 +3,11 @@ id: administration.delete-tenants
 title: Delete Tenants
 ---
 
-# Delete Tenants
+## Delete Tenants
 
 The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) depends on the platform of the meshTenant.
 
-For the following platforms manual actions are required by a partner or a platform operator:
+Manual actions are required by a partner or a platform operator for the following platforms:
 
 - AWS
 - GCP
