@@ -75,7 +75,7 @@ In the **Project Access** section you can click the `-` button in the row of a u
 
 ## Delete a meshProject
 
-If you would like to delete a project that is no longer used, open the corresponding project, navigate to **Danger Zone**, and start the deletion here. The project deletion will be finalized when the deletion of all meshTenants in the project has been performed successfully. If you want to keep the project but delete one or more individual tenants, you can also [delete a single meshTenant](meshcloud.tenant.md#delete-a-meshtenant) on the tenant control plane.
+If you would like to delete a project that is no longer used, open the corresponding project, navigate to **Deletion**. The project deletion will be finalized when the deletion of all meshTenants in the project has been performed successfully. If you want to keep the project but delete one or more individual tenants, you can also [delete a single meshTenant](meshcloud.tenant.md#delete-a-meshtenant) on the tenant control plane.
 
 The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) of your meshProject depends on the variety of meshTenants. There 3 possible cases:
 
