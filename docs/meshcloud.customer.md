@@ -83,7 +83,7 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants)                                |    &#10003;    |    &#10003;    |                   |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject)   |    &#10003;    |    &#10003;    |                   |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject)                    |    &#10003;    |    &#10003;    |                   |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Customer&nbsp;Owner](#assign-meshcustomer-roles)                                                         |    &#10003;    |                |                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Customer&nbsp;Owner](#assign-meshcustomer-roles)                            |    &#10003;    |                |                   |
 | &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment)                           |    &#10003;    |    &#10003;    |                   |
 | &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement)                                 |    &#10003;    |    &#10003;    |                   |
 | &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject)                                           |    &#10003;    |    &#10003;    |                   |
@@ -92,7 +92,7 @@ The following table provides details about the functionality available to the di
 | &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.customer.md#assign-meshcustomer-roles)                                        |    &#10003;    |    &#10003;    |                   |
 | &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.customer.md#remove-assigned-meshcustomer-roles)                             |    &#10003;    |    &#10003;    |                   |
 | [Customer&nbsp;User&nbsp;Groups](meshcloud.customer.md#user-groups)                                                    |    &#10003;    |    &#10003;    |                   |
-| [Customer&nbsp;Settings](#customer-deletion)                                                      |    &#10003;    |    &#10003;    |                   |
+| [Customer&nbsp;Settings](#customer-deletion)                                                                           |    &#10003;    |    &#10003;    |                   |
 | [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                   |    &#10003;    |    &#10003;    |                   |
 | Domains                                                                                                                |    &#10003;    |    &#10003;    |                   |
 | [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md)                                               |    &#10003;    |    &#10003;    |                   |
@@ -116,7 +116,7 @@ Before a meshCustomer may be deleted, a check is performed to verify the followi
 - all meshProjects in the meshCustomer have been deleted
 - all published Service Brokers in the meshCustomer have been [deactivated](meshstack.meshmarketplace.development.md#deactivation-of-service-brokers)
 
-The deletion can be performed only by the Customer Owners! You can delete the customer under **Danger Zone** in the customer control plane. You will be asked for confirmation and a deletion reason when you click the button.
+The deletion can be performed only by the Customer Owners! You can delete the customer under **Deletion** in the customer control plane. You will be asked for confirmation and a deletion reason.
 
 Note : The deletion of a customer can not be reversed!
 

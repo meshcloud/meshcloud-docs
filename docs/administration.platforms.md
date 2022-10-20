@@ -95,7 +95,7 @@ If you want to remove quotas from a platform just click the "-" button on the ri
 
 Via the "Danger Zone" tab you can deactivate or reactivate your meshPlatform.
 
-Deactivation will make the meshPlatform not selectable anymore for new meshTenants, existing meshTenants won't be accessible via meshPanel anymore and no more replication will be executed. Metering instead will still be executed for non-deleted meshTenants of this meshPlatform for now. In order to immediatly stop metering as well, the Metering Configuration needs to be removed. All settings of the platform will remain in meshStack by default. Direct access in the cloud platform itself to the platform tenants is still possible as meshStack does not delete or do any updates on platform's tenants when a meshPlatform is deactivated.
+Deactivation will make the meshPlatform not selectable anymore for new meshTenants, existing meshTenants won't be accessible via meshPanel anymore and no more replication will be executed. Metering instead will still be executed for non-deleted meshTenants of this meshPlatform for now. In order to immediately stop metering as well, the Metering Configuration needs to be removed. All settings of the platform will remain in meshStack by default. Direct access in the cloud platform itself to the platform tenants is still possible as meshStack does not delete or do any updates on platform's tenants when a meshPlatform is deactivated.
 
 A reactivation of meshPlatforms is also possible. This will allow reaccessing and replicating non-deleted meshTenants of this meshPlatform again and make the meshPlatform available again for new meshTenants.
 
