@@ -32,3 +32,10 @@ Of course, this can also be achieved via API. Take a look at our [short API intr
 As a Cloud Foundation Platform, meshStack allows you to offer self-service tenant management, chargeback and much more to your customers.
 
 To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.md).
+
+
+## Step 4: Create your first meshProject
+
+After you onboarded your first meshPlatform, your Cloud Foundations' customers can manage their cloud tenants (Azure Subscriptions, GCP Projects, AWS Accounts) in meshProjects.
+
+To experience how smooth the self-service experience is, create your first project via the panel. You might want to check out the [user guide](./meshstack.how-to.create-project.md) or a less than 4 minute [tutorial video](https://www.youtube.com/watch?v=NYQa-WVtfDM).
