@@ -44,6 +44,6 @@ For private cloud platforms, you can find integration information here:
 
 Enter the credentials from Step 2 in the platform configuration.
 
-## Step 4: Try out your new platform!
+## Step 4: Try out your new platform
 
 Try out the new meshPlatform by configuring a new Landing Zone in the admin area and using the Landing Zone to create a meshProject.
