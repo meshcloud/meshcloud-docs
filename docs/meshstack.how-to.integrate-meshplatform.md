@@ -42,4 +42,8 @@ For private cloud platforms, you can find integration information here:
 
 ## Step 3: Complete the meshPlatform configuration in the panel
 
-Enter the credentials from Step 2 in the platform configuration. Try out the new meshPlatform by creating a meshProject.
+Enter the credentials from Step 2 in the platform configuration.
+
+## Step 4: Try out your new platform!
+
+Try out the new meshPlatform by configuring a new Landing Zone in the admin area and using the Landing Zone to create a meshProject.
