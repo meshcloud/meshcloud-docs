@@ -13,7 +13,7 @@ Open the admin area of the panel and navigate to meshPlatform view. Choose "Crea
 
 ![Create meshPlatform](assets/create-meshPlatform.png)
 
-The required credentials for the platform configuration are created in the following step. 
+The required credentials for the platform configuration are created in the following step.
 
 ## Step 2: Set up platform permissions using Infrastructure as Code (recommended)
 
