@@ -12,6 +12,8 @@ If you are not familiar with what a meshProject is, please check the [official m
 
 ## Step to Step Guide
 
+> Check out the [video tutorial](https://www.youtube.com/watch?v=NYQa-WVtfDM) version of this guide.
+
  1. Make sure you are in the meshCustomer the new meshProject will belong to. Do this by checking the drop-down in the upper-left corner.
 ![Select meshCustomer in the upper left corner](./assets/project-creation/choose-customer.png "Pick meshCustomer")
  2. Start the meshProject creation by clicking the `Create Project` button, either in the navigation bar at the top (A) or
