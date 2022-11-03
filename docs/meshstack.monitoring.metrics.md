@@ -65,7 +65,7 @@ Prometheus exposes `/api/v1/metadata` endpoint that shows metadata (name and des
 | erlang_vm_dirty_cpu_schedulers_online | The number of dirty CPU scheduler threads online. |
 | erlang_vm_dirty_io_schedulers | The number of scheduler dirty I/O scheduler threads used by the emulator. |
 | erlang_vm_dist_node_queue_size_bytes | The number of bytes in the output distribution queue. This queue sits between the Erlang code and the port driver. |
-| erlang_vm_dist_node_state | The current state of the distribution link. The state is represented as a numerical value where `pending=1', `up_pending=2' and `up=3'. |
+| erlang_vm_dist_node_state | The current state of the distribution link. The state is represented as a numerical value where `pending=1`, `up_pending=2` and `up=3`. |
 | erlang_vm_dist_port_input_bytes | The total number of bytes read from the port. |
 | erlang_vm_dist_port_memory_bytes | The total number of bytes allocated for this port by the runtime system. The port itself can have allocated memory that is not included. |
 | erlang_vm_dist_port_output_bytes | The total number of bytes written to the port. |
@@ -77,7 +77,7 @@ Prometheus exposes `/api/v1/metadata` endpoint that shows metadata (name and des
 | erlang_vm_dist_proc_min_heap_size_words | The minimum heap size for the process. |
 | erlang_vm_dist_proc_reductions | The number of reductions executed by the process. |
 | erlang_vm_dist_proc_stack_size_words | The stack size, in words, of the process. |
-| erlang_vm_dist_proc_status | The current status of the distribution process. The status is represented as a numerical value where `exiting=1', `suspended=2', `runnable=3', `garbage_collecting=4', `running=5' and `waiting=6'. |
+| erlang_vm_dist_proc_status | The current status of the distribution process. The status is represented as a numerical value where `exiting=1`, `suspended=2`, `runnable=3`, `garbage_collecting=4`, `running=5` and `waiting=6`. |
 | erlang_vm_dist_proc_total_heap_size_words | The total size, in words, of all heap fragments of the process. This includes the process stack and any unreceived messages that are considered to be part of the heap. |
 | erlang_vm_dist_recv_avg_bytes | Average size of packets, in bytes, received by the socket. |
 | erlang_vm_dist_recv_bytes | Number of bytes received by the socket. |
@@ -211,7 +211,7 @@ Prometheus exposes `/api/v1/metadata` endpoint that shows metadata (name and des
 | go_gc_duration_seconds | A summary of the pause duration of garbage collection cycles. |
 | go_goroutines | Number of goroutines that currently exist. |
 | go_info | Information about the Go environment. |
-| go_memstats_alloc_bytes | Total number of bytes allocated, even if freed. |
+| go_memstats_alloc_bytes | Number of bytes allocated and still in use. |
 | go_memstats_alloc_bytes_total | Total number of bytes allocated, even if freed. |
 | go_memstats_buck_hash_sys_bytes | Number of bytes used by the profiling bucket hash table. |
 | go_memstats_frees | Total number of frees. |
@@ -1728,7 +1728,7 @@ Prometheus exposes `/api/v1/metadata` endpoint that shows metadata (name and des
 | rabbitmq_channel_messages_unroutable_returned_total | Total number of messages published as mandatory into an exchange and returned to the publisher as unroutable |
 | rabbitmq_channel_prefetch | Total limit of unacknowledged messages for all consumers on a channel |
 | rabbitmq_channel_process_reductions_total | Total number of channel process reductions |
-| rabbitmq_channels | Channels currently open |
+| rabbitmq_channels |  |
 | rabbitmq_channels_closed_total | Total number of channels closed |
 | rabbitmq_channels_opened_total | Total number of channels opened |
 | rabbitmq_connection_channels | Channels on a connection |
@@ -1738,7 +1738,7 @@ Prometheus exposes `/api/v1/metadata` endpoint that shows metadata (name and des
 | rabbitmq_connection_outgoing_packets_total | Total number of packets sent on a connection |
 | rabbitmq_connection_pending_packets | Number of packets waiting to be sent on a connection |
 | rabbitmq_connection_process_reductions_total | Total number of connection process reductions |
-| rabbitmq_connections | Connections currently open |
+| rabbitmq_connections |  |
 | rabbitmq_connections_closed_total | Total number of connections closed or terminated |
 | rabbitmq_connections_opened_total | Total number of connections opened |
 | rabbitmq_consumed_total |  |
