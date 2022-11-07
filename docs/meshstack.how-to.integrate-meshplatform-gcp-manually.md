@@ -131,14 +131,45 @@ or directly on the dataset itself.
 roles/bigquery.dataViewer
 ```
 
-### Optional: Query multiple billing accounts for the same GCP organization
+### Optional: Provide a custom BigQuery table
+
+Beyond the default BigQuery Billing Export, meshStack can also support custom BigQuery tables. You might want to apply
+some custom transformations or logic on the data. As long as the view or table is given in the same format as the
+default BigQuery Billing Export, meshStack can handle and process the data.
+
+Below, the columns are listed that are required by meshStack, and in which format. Make sure that the data types are
+the same as the default export.
+
+- invoice.month
+- project.id
+- service.id
+- service.description
+- sku.id
+- sku.description
+- currency
+- usage.pricing_unit
+- cost
+- credits.amount
+- usage.amount_in_pricing_units
+- cost_type
+- Partition Time*
+
+*Since BigQuery doesn't allow column names that start with an underscore character, you have to map the `_PARTITIONTIME`
+column to a different name (see example query below). This column name has to be configured in the platform configuration
+under 'Partition Time Column'.
+
+Make sure that the `kraken-service` service account has permission on the table or view as described above and
+use it in place of a table in the metering configuration for the GCP meshPlatform, which you can find under
+'Metering Configuration' -> 'BigQuery Table'.
+
+#### Example: multiple billing accounts for the same GCP organization
 
 There can be situations where you want the projects inside a single GCP meshPlatform to be associated with multiple
 billing accounts. One such example is when you have one billing account which has
 [Spend-based committed use discounts](https://cloud.google.com/docs/cuds-spend-based) applied and another billing account
-which contains free credit applied. To ensure that meshStack collects data from both the accounts, you have to create
+which contains free credit applied. To ensure that meshStack collects data from both the accounts, you can to create
 a view in BigQuery which is a union of the two billing data exports from the two billing accounts. Such a union can be
-created with a query which looks similar to the following
+created with a query which looks similar to the following.
 
 ```sql
 (SELECT _PARTITIONTIME as PARTITIONTIME, billing_account_id,service, sku, STRUCT(project.id as id, project.ancestry_numbers as ancestry_numbers) as project, labels, system_labels,
@@ -150,12 +181,7 @@ UNION ALL
         from `project-name.billing_export.gcp_billing_export_credit`)
 ```
 
-Since BigQuery doesn't allow column names that start with an underscore character, you have to map the _PARTITIONTIME
-column to a different name as shown in the query. This column name has to be configured as shown in the configuration
-reference using the property `partition-time-column`.
-
-Then proceed granting the `kraken-service` service account permission on the view as described above and
-use it in place of a table in the metering configuration for the GCP meshPlatform.
+Configure this view as mentioned in the section above and meshStack will start using this data for cost collection.
 
 ### Optional: Filter billable projects from the export
 
