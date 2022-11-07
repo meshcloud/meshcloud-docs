@@ -12,18 +12,6 @@ relies on this monitoring to operate meshStack installations.
 Prometheus scrapes metrics from nodes (for IaaS deployments) as well as from meshStack components.
 Scraping is secured using HTTPS Basic auth. The credentials are managed as part of the deployment. Information about metrics can be found in [Metrics Metadata](./meshstack.monitoring.metrics.md).
 
-## Additional Alert Inboxes
-
-meshStack comes with pre-configured alerting rules. These alerts are typically only addressed to our [managed service](meshstack.managed-service.md) team, but can also be sent to additional alert inboxes if required.
-
-These email inboxes be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `monitor` as follows:
-
-```dhall
-{
-, additionalAlertAddresses = [ "alerts@example.com" ]
-}
-```
-
 ## Health endpoint
 
 meshStack configures a health endpoint which returns the current status and also the status of database connections. These information are available under path `/actuator/health`.

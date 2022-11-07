@@ -52,13 +52,14 @@ def json_to_md_table(metrics_json):
         metrics_json: Prometheus metrics metadata in JSON format (Response to GET /api/v1/metadata request from Prometheus).
     """
     metrics_metadata = metrics_json["data"]
-
+    print(metrics_metadata)
     # build markdown table
     md_table = "| Metric | Description |\n"
     md_table += "| ------ | ----------- |\n"
     for metric in metrics_metadata:
         description = metrics_metadata[metric][0:][0]["help"]
-        md_table += "| " + metric + " | " + description + " |\n"
+        # regex replace required as some fetched descriptions have faulty code snippets (starting with ` but ending with ')
+        md_table += "| " + metric + " | " + re.sub(r"`(.*?)'",r"`\1`",description) + " |\n"
 
     return md_table
 
