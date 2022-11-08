@@ -9,7 +9,7 @@ meshProjects are multi-cloud enabled projects that allow teams to manage and sca
 
 ## Create a new meshProject
 
-Log on to the meshPanel with your account credentials and press `Create`. Type in a name for your new project and press `Next`. Choose a payment method and press `Next` again. In the last step, you can choose the meshPlatforms from which you can obtain the cloud computing resources for your project. Press `Create Project` and you will see your new project listed in the Projects List.
+We wrote an extensive guide on how to create a new meshProject [here](./meshstack.how-to.create-project.md).
 
 ## Manage meshProjects
 
