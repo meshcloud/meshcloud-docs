@@ -48,3 +48,11 @@ Users managed in the meshcloud AAD Tenant do not require AAD Premium Licenses.
 ## How to integrate Azure as a meshPlatform into meshStack
 
 This is described in the Guide section under [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform.md).
+
+## Azure Resource Groups
+
+The regular Azure integration uses Subscription based meshTenants. However, there might be reasons you do wish to use Resource Groups as the meshTenant representation in your setup. Often legacy setups use this
+organizational structure. It might also be helpful if your company does not yet have a Microsoft Enterprise Agreement. A requirement for automatic Subscription creation.
+In the Azure Resource Group integration, every meshTenant will lead to a Resource Group generation inside a fixed parent Subscription. User access is granted via user groups bound to these Resource Groups.
+
+The integration is very similar to the regular Azure setup. More information can be found in the Guide section under [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform.md).
