@@ -197,30 +197,49 @@ The value for a billing scope and id are the same thing. The id for your enrollm
 
 #### Grant Enterprise Enrollment Account Permissions
 
-When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account [following the official instructions](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
+The Service Principal needs the `Subscription Creator` role.
 
-In order to grant the Service Principal the `Subscription Creator` role the easiest way is to again perform a REST call:
+When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account.
 
+This happens via a PUT request against `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview`.
 
-```bash
-PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview
+## Option 1: PowerShell Script
+
+Replace the parameters in the following PowerShell script and execute it in a cloud shell:
+
+```powershell
+# Manual input
+$principalId = "11111111-1111-1111-1111-111111111111" # Object ID of the replicator enterprise application
+$aadTenantId = "11111111-1111-1111-1111-111111111111" # Your AAD tenant id
+$billingAccountId = "1234567" # You can find the billing account id in the Azure portal on the Cost Management + Billing overview page.
+$enrollmentAccountId = "7654321"
+
+# Build the request
+$token = (Get-AzAccessToken -ResourceUrl 'https://management.azure.com').Token
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Content-Type", "application/json")
+$headers.Add("Authorization","Bearer $token")
+$billingRoleAssignmentName = (New-Guid).Guid
+
+$url = "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/$billingAccountId/enrollmentAccounts/$enrollmentAccountId/billingRoleAssignments/$billingRoleAssignmentName`?api-version=2019-10-01-preview"
+
+$roleDefinitionId = "/providers/Microsoft.Billing/billingAccounts/$billingAccountId/enrollmentAccounts/$enrollmentAccountId/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71"
+
+$body = "{
+`"properties`": {
+  `"principalId`": `"$principalId`",
+  `"principalTenantId`": `"$aadTenantId`",
+  `"roleDefinitionId`": `"$roleDefinitionId`"}`n}"
+
+# Send request
+Invoke-RestMethod $url -Method 'Put' -Headers $headers -Body $body
 ```
 
-Please check the [official documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) for the meaning of the parameter and the required body payload (there is also a **Try it** button which can directly execute this call). On this page, there is also an [example](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#putenrollmentaccountsubscriptioncreatorroleassignment) which assigns the required role to a Service Principal. Please adapt the parameters there accordingly.
+## Option 2: Use the Try it Button
 
-The following additional information, about the required REST call parameters mentioned in the above links, can be helpful:
+The Mircosoft [API documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) offers a **Try it** button which you can use to execute the call. 
 
-| Name                                   | Description                                      |
-| -------------------------------------- | ------------------------------------------------ |
-| `billingRoleAssignmentName` in the URL | **Must** be a random UUID you can freely choose. |
-| `properties.principalTenantId`         | The `aadtenant` value from above.               |
-| `properties.principalId`               | The `objectId` of the **enterprise application**. This is **not** the same id as the object id as of the app registration.                 |
-
-The complete set of Azure documentation to complete this task can be found here:
-
-- [General documentation for programmatical Subscription creation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest)
-- [How to assign EA roles to a Service Principal](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals)
-- [REST API Docs for role assignment](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)
+The complete instructions for this can be found in Mircosoft [role assignment documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
 
 > The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
 
