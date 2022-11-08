@@ -5,28 +5,47 @@ title: How to create a meshProject
 
 If you are not familiar with what a meshProject is, please check the [official meshcloud documentation](meshcloud.project.md).
 
-## Pre-Requisites
+## Prerequisites
 
 - Permissions: Your user needs either the Customer Admin or Customer Owner role in the meshCustomer for which you want to create the meshProject.
-- Valid Payment Method: It means that the payment method is not expired and assigned to your customer
+- Valid Payment Method: Your meshCustomer has a payment method that is not expired.
 
-## Step to Step Guide
+## Step-by-Step Guide
 
 > Check out the [video tutorial](https://www.youtube.com/watch?v=NYQa-WVtfDM) version of this guide.
 
  1. Make sure you are in the meshCustomer the new meshProject will belong to. Do this by checking the drop-down in the upper-left corner.
-![Select meshCustomer in the upper left corner](./assets/project-creation/choose-customer.png "Pick meshCustomer")
+    ![Select meshCustomer in the upper left corner](./assets/project-creation/choose-customer.png "Pick meshCustomer")
  2. Start the meshProject creation by clicking the `Create Project` button, either in the navigation bar at the top (A) or
- in the customer control plane under **Projects** > **Overview** (B).
- ![Start meshProject Creation](./assets/project-creation/start-project-creation.png "Start Project Creation")
-A project creation wizard will appear.
-![Project Creation Wizard](./assets/project-creation/open-project-wizard.png "Project Creation Wizard").
- 3. First you have to give your project a name. The best practice is to use the name of the application, product, or project plus the environment type. The identifier is automatically generated but can be modified by you. We recommend to keep the identifier as it is. ![General Information](./assets/project-creation/choose-project-name.png "Naming")
+    in the customer control plane under **Projects** > **Overview** (B).
+    ![Start meshProject Creation](./assets/project-creation/start-project-creation.png "Start Project Creation")
+    A project creation wizard will appear.
+    ![Project Creation Wizard](./assets/project-creation/open-project-wizard.png "Project Creation Wizard")
+ 3. First you have to give your project a name. The best practice is to use the name of the application, product,
+    or project plus the environment type. The identifier is automatically generated but can be modified by you.
+    We recommend to keep the identifier as it is.
+    ![General Information](./assets/project-creation/choose-project-name.png "Naming")
  4. The lower part of the first page allows you to tag your meshProject. Some tags are required to be specified by you. You can recognize the required tags by the red line on the left side of the input field. Some of the tags you choose might have an impact on the landing zone you are allowed to choose. This happens if there is a policy that might restrict the usage. Click next![Tags](./assets/project-creation/choose-tags.png "Tags")
- 5. Select the payment method provided via the meshCustomer. Click next
- 6. Now we come to the most important part. Choose at least one of the platforms for your future meshProject. The marketplace with interesting services provided by your organization is selected by default. If you want to have for example an AWS account pick AWS and select a provided Landing Zone as well. Click next  ![Platform and Landing Zone](./assets/project-creation/choose-platform-lz.png "Platform and Landing Zone")
- 7. Now add any team members who should have access to the new meshProject and the corresponding cloud tenants. You can also add yourself by clicking the `Add myself` button. The access of your team members to the project can be changed at any point in the project control plane under **Access Control** > **Current Access** ![Add Users and Groups](./assets/project-creation/add-yourself.png "Add Users and Groups")
- 8. Finally! The moment has come and you can create your project. Click the `Create Project` button to confirm your new project. After confirming the project creation, you will land on the project control plane of your new project. It will take a while to replicate the tenant(s) of your project. You can check the replication status of your tenant(s) in the project control plane.
-![Check Replication Status](./assets/project-creation/replication-status.png "Check Replication Status")
+ 5. Select the payment method provided via the meshCustomer and click Next.
+ 6. Now we come to the most important part. Choose at least one of the platforms for your future meshProject.
+    The global marketplace is always included and contains interesting services provided by your organization, which you
+    can book later. If you want to have for example an AWS account, pick AWS. Click next.
+    ![Select Platform](./assets/project-creation/choose-platform.png "Select Platform")
+ 7. We now have to configure any possible platform configuration. For public cloud platforms & Kubernetes-based platforms
+    this means picking a landing zone (A).
+    Additionally, for some landing zones there might be services included as part of the landing zone (B). These can be
+    either required, meaning you have to book them, or they can be optional, which means you can consider booking the
+    service, but you can also decide to skip it. Once all values are filled in, a green box should appear at the bottom,
+    and you will be able to continue by clicking Next.
+    ![Landing Zone & Services](./assets/project-creation/choose-lz-and-services.png "Landing Zone & Services")
+ 8. Now add any team members who should have access to the new meshProject and the corresponding cloud tenants.
+    You can also add yourself by clicking the `Add myself` button. The access of your team members to the project can be
+    changed at any point in the project control plane under **Access Control** > **Current Access**. Click Next to continue
+    ![Add Users and Groups](./assets/project-creation/add-yourself.png "Add Users and Groups")
+ 9. At last, a 'Review & Create' page will be shown. You can verify here whether your about-to-be-created project is
+    looking as you want it to be. If everything looks good, hit 'Create Project' and your project will be created!
+10. You will land on the project control plane of your new project. It will take a while to replicate the tenant(s) of
+    your project. You can check the replication status of your tenant(s) in the project control plane.
+    ![Check Replication Status](./assets/project-creation/replication-status.png "Check Replication Status")
 
 ### Congratulations, you are done
