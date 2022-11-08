@@ -13,6 +13,8 @@ Open the admin area of the panel and navigate to meshPlatform view. Choose "Crea
 
 ![Create meshPlatform](assets/create-meshPlatform.png)
 
+The required credentials for the platform configuration are created in the following step.
+
 ## Step 2: Set up platform permissions using Infrastructure as Code (recommended)
 
 > You do not have to be familiar with terraform to execute the integration. All commands are outlined in the module instructions.
@@ -37,3 +39,11 @@ For private cloud platforms, you can find integration information here:
 - [Integration of Kubernetes](meshstack.kubernetes.index.md)
 - [Integration of OpenShift](meshstack.openshift.index.md)
 - [Integration of meshMarketplace](meshstack.meshmarketplace.index.md)
+
+## Step 3: Complete the meshPlatform configuration in the panel
+
+Enter the credentials from Step 2 in the platform configuration.
+
+## Step 4: Try out your new platform
+
+Try out the new meshPlatform by configuring a new Landing Zone in the admin area and using the Landing Zone to create a meshProject.
