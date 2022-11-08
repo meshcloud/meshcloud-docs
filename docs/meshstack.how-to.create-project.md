@@ -35,7 +35,7 @@ If you are not familiar with what a meshProject is, please check the [official m
     this means picking a landing zone (A).
     Additionally, for some landing zones there might be services included as part of the landing zone (B). These can be
     either required, meaning you have to book them, or they can be optional, which means you can consider booking the
-    service, but you can also decide to skip it. If you would like to have multiple instance of a service, you can 
+    service, but you can also decide to skip it. If you would like to have multiple instance of a service, you can
     click on 'Add another one' and another instance of the service will be included.
     Once all values are filled in, a green box should appear at the bottom,
     and you will be able to continue to the next step by clicking Next.
