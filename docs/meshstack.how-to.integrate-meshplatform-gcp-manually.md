@@ -155,11 +155,11 @@ the same as the default export.
 - Partition Time*
 
 *Since BigQuery doesn't allow column names that start with an underscore character, you have to map the `_PARTITIONTIME`
-column to a different name (see example query below). This column name has to be configured in the platform configuration
+column to a different name (see example query [below](#example-multiple-billing-accounts-for-the-same-gcp-organization)). This column name has to be configured in the platform configuration
 under 'Partition Time Column'.
 
-Make sure that the `kraken-service` service account has permission on the table or view as described above and
-use it in place of a table in the metering configuration for the GCP meshPlatform, which you can find under
+Make sure that the `kraken-service` service account has permission on the table or view as described above.
+Then, enter the BigQuery reference in the GCP meshPlatform configuration in meshStack, which you can find under
 'Metering Configuration' -> 'BigQuery Table'.
 
 #### Example: multiple billing accounts for the same GCP organization
