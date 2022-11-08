@@ -35,8 +35,10 @@ If you are not familiar with what a meshProject is, please check the [official m
     this means picking a landing zone (A).
     Additionally, for some landing zones there might be services included as part of the landing zone (B). These can be
     either required, meaning you have to book them, or they can be optional, which means you can consider booking the
-    service, but you can also decide to skip it. Once all values are filled in, a green box should appear at the bottom,
-    and you will be able to continue by clicking Next.
+    service, but you can also decide to skip it. If you would like to have multiple instance of a service, you can 
+    click on 'Add another one' and another instance of the service will be included.
+    Once all values are filled in, a green box should appear at the bottom,
+    and you will be able to continue to the next step by clicking Next.
     ![Landing Zone & Services](./assets/project-creation/choose-lz-and-services.png "Landing Zone & Services")
  8. Now add any team members who should have access to the new meshProject and the corresponding cloud tenants.
     You can also add yourself by clicking the `Add myself` button. The access of your team members to the project can be
@@ -44,7 +46,7 @@ If you are not familiar with what a meshProject is, please check the [official m
     ![Add Users and Groups](./assets/project-creation/add-yourself.png "Add Users and Groups")
  9. At last, a 'Review & Create' page will be shown. You can verify here whether your about-to-be-created project is
     looking as you want it to be. If everything looks good, hit 'Create Project' and your project will be created!
-10. You will land on the project control plane of your new project. It will take a while to replicate the tenant(s) of
+10. You will land on the project control plane of your new project. It might take a while to replicate the tenant(s) of
     your project. You can check the replication status of your tenant(s) in the project control plane.
     ![Check Replication Status](./assets/project-creation/replication-status.png "Check Replication Status")
 
