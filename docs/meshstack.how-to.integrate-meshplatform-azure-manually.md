@@ -240,6 +240,7 @@ $body = "{
 # Send request
 Invoke-RestMethod $url -Method 'Put' -Headers $headers -Body $body
 ```
+
 > The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
 
 #### Ensure Retained Subscription Owners
