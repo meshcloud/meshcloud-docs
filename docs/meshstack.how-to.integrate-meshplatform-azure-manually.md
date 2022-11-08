@@ -203,15 +203,13 @@ When using an [Enterprise Enrollment Account (EA) for Subscription provisioning]
 
 This happens via a PUT request against `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview`.
 
-##### Use the Try it Button
+##### Method 1: Use the Try it Button
 
 The Mircosoft [API documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) offers a **Try it** button which you can use to execute the call.
 
-The complete instructions for this can be found in Mircosoft [role assignment documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
+Using the Try it Button is also mentioned in the Mircosoft [role assignment documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
 
-> The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
-
-##### Alternative: Use a PowerShell Script
+##### Method 2: Use a PowerShell Script
 
 Replace the parameters in the following PowerShell script and execute it in a cloud shell:
 
@@ -242,6 +240,7 @@ $body = "{
 # Send request
 Invoke-RestMethod $url -Method 'Put' -Headers $headers -Body $body
 ```
+> The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
 
 #### Ensure Retained Subscription Owners
 
