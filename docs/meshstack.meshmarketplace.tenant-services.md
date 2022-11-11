@@ -9,12 +9,14 @@ networks with intranet connectivity, CI/CD platform integration and similar scen
 can then bind their [meshTenants](./meshcloud.tenant.md) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
 consumer wants the service to be provisioned.
 
+It is possible to provide tenant services as part of a landing zone.
+Read [here](./administration.landing-zones.md#include-tenant-services-as-part-of-the-landing-zone) how you can do this.
 
 ## Service Broker Categories
 
 There are 2 different categories of Service Brokers that can be implemented that way. They don't differ from an API perspective, but they treat bindings differently in their implementation.
 
-- `single-tenant-aware`: For each tenant binding a specific configuration is done inside the tenant. It could e.g. provide an "OnPrem Connect" to a public cloud tenant. This configuration must be done for every tenant that is provided via a binding.
+- `single-tenant-aware`: Foxr each tenant binding a specific configuration is done inside the tenant. It could e.g. provide an "OnPrem Connect" to a public cloud tenant. This configuration must be done for every tenant that is provided via a binding.
 - `multi-tenant-aware`: Bindings are a configuration to make the service aware of tenants it can work with. An example for this is a "CI/CD" Service Broker. The CI/CD pipeline should be able to work on multiple tenants of a multi-cloud application. E.g. parts of the application are deployed to Azure, others to AWS. Especially for this type of Service Brokers not only tenants of the same meshProject must be selectable, but also tenants of other meshProjects in the same meshCustomer. E.g. the CI/CD pipeline should have access to dev, int and prod tenants, which might be located in different meshProjects. Providing those cross-project bindings can be achieved via [Service Instance Sharing](#sharable-service-instances).
 
 ## Creating Service Binding
