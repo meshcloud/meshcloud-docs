@@ -17,7 +17,7 @@ Read [here](./administration.landing-zones.md#include-tenant-services-as-part-of
 There are 2 different categories of Service Brokers that can be implemented that way. They don't differ from an API perspective, but they treat bindings differently in their implementation.
 
 - `single-tenant-aware`: For each tenant binding a specific configuration is done inside the tenant. It could e.g. provide an "OnPrem Connect" to a public cloud tenant. This configuration must be done for every tenant that is provided via a binding.
-- `multi-tenant-aware`: Bindings are a configuration to make the service aware of tenants it can work with. An example for this is a "CI/CD" Service Broker. The CI/CD pipeline should be able to work on multiple tenants of a multi-cloud application. E.g. parts of the application are deployed to Azure, others to AWS. Especially for this type of Service Brokers not only tenants of the same meshProject must be selectable, but also tenants of other meshProjects in the same meshCustomer. E.g. the CI/CD pipeline should have access to dev, int and prod tenants, which might be located in different meshProjects. Providing those cross-project bindings can be achieved via [Service Instance Sharing](#sharable-service-instances).
+- `multi-tenant-aware`: Bindings are a configuration to make the service aware of tenants it can work with. An example for this is a "CI/CD" Service Broker. The CI/CD pipeline should be able to work on multiple tenants of a multi-cloud application. E.g. parts of the application are deployed to Azure, others to AWS. Especially for this type of Service Brokers not only tenants of the same meshProject must be selectable, but also tenants of other meshProjects in the same meshCustomer. E.g. the CI/CD pipeline should have access to dev, int and prod tenants, which might be located in different meshProjects. Providing those cross-project bindings can be achieved via [Service Instance Sharing](./marketplace.service-instances.md#share-service-instance).
 
 ## Creating Service Binding
 
@@ -44,3 +44,22 @@ As a response the Service Broker will provide a credential binding. Depending on
 Services can be platform-specific. A specific AWS OnPrem Connect SB is an example for this. It should only be possible to bind AWS tenants to this service. This can be achieved by [publishing](meshstack.meshmarketplace.development.md#publish-your-service-broker) this Service Broker only to marketplaces of AWS meshLocations. This will allow the user to only select tenants related to this meshLocation.
 
 Multi-tenant-aware service brokers that support different platform types, should only be [published](meshstack.meshmarketplace.development.md#publish-your-service-broker) to the global location. This allows the user to select any tenant in the meshProject, independent of the meshLocation.
+
+## Converting non-tenant-aware services to tenant-aware services
+
+> If you are actually interested in doing a proper tenant binding workflow, read our documentation above.
+> This section only describes a workaround for services that already know for which cloud tenant(s) they need to connect.
+
+For some service brokers it might be the case that you have built some kind of automation that can understand which
+meshTenant belongs to which service, but they do not use meshStack's concept of tenant-aware services.
+
+For these kind of cases we have a workaround that allows these services to become tenant-aware anyway:
+
+1. Flag the service in the service catalog as `tenantAware: true`. You can see an example of that [here](./meshstack.meshmarketplace.profile.md#tenant-aware-services). If you
+   use our [unipipe-service-broker](https://github.com/meshcloud/unipipe-service-broker), you can do this in the [catalog.yml](https://github.com/meshcloud/unipipe-service-broker/wiki/Reference#catalogyml).
+2. When a service is now tenant-aware, the meshMarketplace expects an endpoint for creating so-called tenant bindings.
+   You must implement this endpoint, because otherwise the service binding will show up as 'Failed' in meshStack.
+   The endpoint does not actually have to do something, but it needs to exist and return an HTTP 200 with at least an
+   empty JSON object `{}`. Read the [OSB Spec](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#request-creating-a-service-binding)
+   on what exact URL the endpoint needs to be & some more information if you are interested.
+
