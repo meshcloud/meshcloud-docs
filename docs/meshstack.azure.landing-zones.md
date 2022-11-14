@@ -113,12 +113,6 @@ Blueprint assignments are performed with a specific [resource locking mode](http
 | AllResourcesReadOnly    | Locked resource groups are read only and other locked resources can't be modified at all. |
 | AllResourcesDoNotDelete | Locked resources can be modifiede but not deleted.                                        |
 
-### meshRole to Platform Role Mapping
-
-Both the Subscription and Resource Group based integration supports this Landing Zone configuration option.
-
-Please see [meshRole to Platform Role Mapping](#platform-role-mapping).
-
 ## Azure Resource Group
 
 The following description targets the Azure integration based on Resource Groups.
@@ -128,17 +122,11 @@ The following description targets the Azure integration based on Resource Groups
 The newly created Resource Group for the meshProjects will get assigned to this location. Please take care that the entered location must be all lower case and without spaces (e.g. eastus2 for East US 2).
 In order to list the available locations you can use `az account list-locations --query "[*].name" --out tsv | sort`.
 
-### meshRole to Platform Role Mapping
-
-Both the Subscription and Resource Group based integration supports this Landing Zone configuration option.
-
-Please see [meshRole to Platform Role Mapping](#platform-role-mapping).
-
 ## Shared Configuration
 
-This options are shared between the two different Landing Zone configuration.
+These options are shared between both Azure Subscription & Azure Resource Group configuration.
 
-### Platform Role Mapping
+### meshRole to Platform Role Mapping
 
 The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the [AAD group name generation](./meshstack.azure.index.md#aad-group-name), this setting is used or not.
 
