@@ -9,6 +9,8 @@ networks with intranet connectivity, CI/CD platform integration and similar scen
 can then bind their [meshTenants](./meshcloud.tenant.md) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
 consumer wants the service to be provisioned.
 
+It is possible to provide tenant services as part of a landing zone.
+Read [here](./administration.landing-zones.md#include-tenant-services-as-part-of-the-landing-zone) how you can do this.
 
 ## Service Broker Categories
 
