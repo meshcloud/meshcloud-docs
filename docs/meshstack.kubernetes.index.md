@@ -3,7 +3,6 @@ id: meshstack.kubernetes.index
 title: Integration
 ---
 
-
 meshStack supports project creation, configuration, user management and SSO for Kubernetes clusters.
 Our Kubernetes integration is distribution-independent and is purely based on "vanilla" upstream Kubernetes services.
 Operators should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
@@ -43,6 +42,8 @@ You can refer to the [official Documentation](https://kubernetes.io/docs/concept
 
 
 ### meshStack Service Accounts
+
+> The recommended way to set up Kubernetes as a meshPlatform is via the public terraform [Kubernetes meshPlatform Module](https://github.com/meshcloud/terraform-kubernetes-meshplatform). The steps below are not needed if you decide to use it.
 
 The meshStack Kubernetes Modules use dedicated Kubernetes ServiceAccounts to work with Kubernetes APIs on behalf of meshStack.
 To create these credentials, create the following objects via `kubectl apply` as a Cluster Administrator.
