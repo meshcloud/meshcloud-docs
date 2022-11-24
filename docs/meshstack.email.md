@@ -47,9 +47,6 @@ The following configuration options are available at `mesh.meshfed.mail`:
             If True, enables authentication (must be supported by SMTP server)
 
     theme:
-        show-social:
-            If True, adds configured social icons to email messages
-
         logo:
             href:
                 Location of the logo file
@@ -57,11 +54,8 @@ The following configuration options are available at `mesh.meshfed.mail`:
             url:
                 Url that the image links to
 
-        bg-color:
-            Color hex code for background
-
-        div-color:
-            Color hex code for div-containers
+        button-color:
+            Color hex code for buttons
 
         messages:
             List of mappings to configure template messages
@@ -69,18 +63,12 @@ The following configuration options are available at `mesh.meshfed.mail`:
 -}
   { enabled : Bool
   , username : Text
-  , password : Secret
   , host : Text
   , port : Natural
   , sender : { address : Text, reply-to : Optional Text }
   , smtp :
       { ssl : { enable : Bool }, starttls : { enable : Bool }, auth : Bool }
-  , theme :
-      { show-social : Bool
-      , logo : { href : Text, url : Text }
-      , bg-color : Text
-      , div-color : Text
-      }
+  , theme : { logo : { href : Text, url : Text }, button-color : Text }
   , messages : List { mapKey : Text, mapValue : Text }
   }
 ```

@@ -50,7 +50,7 @@ let example
     = { url = "ldap://example.com:389"
       , base = "dc=meshcloud,dc=io"
       , username = "user"
-      , password = Secret.Native "LDAP_PASSWORD"
+      , password = Secret.Raw "LDAP_PASSWORD"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -443,7 +443,7 @@ let example
       , apiUser =
         { username = "identityconnectorapi"
         , password =
-            Secret.Native "EXTERNAL_IDENTITYCONNECTOR_MESH_API_PASSWORD"
+            Secret.Raw "EXTERNAL_IDENTITYCONNECTOR_MESH_API_PASSWORD"
         , authorities =
           [ Authority.EXTERNAL_MESH_OBJECT_IMPORT
           , Authority.CUSTOMEROWNER_ASSIGN

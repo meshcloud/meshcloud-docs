@@ -25,23 +25,12 @@ let Registration =
             process (e.g. via API createLimitedPaymentMethod).
 
             See ui.costCenter for customizing the default cost center payment method.
-
-        externalRegistrationUrl:
-            If set, disables the self-service customer registration wizard and instead redirects to the specified external
-            url. Use this if the meshStack implementation uses another way to register customers (e.g. via API).
     -}
-      { requirePayment : Bool
-      , externalRegistrationUrl : Optional Text
-      }
+      { requirePayment : Bool }
 ```
 <!--Example-->
 ```dhall
-let example =
-        { requirePayment = True
-        , externalRegistrationUrl = Some
-            "https://itsm.example.com/order/meshcloud"
-        }
-      : Registration
+let example = { requirePayment = True } : Registration
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
