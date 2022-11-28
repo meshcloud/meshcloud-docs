@@ -180,14 +180,15 @@ let example =
 ```dhall
 let IfNullAttributeTransformation =
     {-
-      A IfNullAttributeTransformation takes a nullable attribute. If the value is null it uses a replacement value.
-      In a second step it applies an optional postProcessor on the value.
+      A IfNullAttributeTransformation takes a nullable attribute.
+      If the value of this attribute is null for an entity it uses a replacement value.
+      After an attribute value is found, the transformation applies an optional postProcessor on the value.
 
       attribute:
-          The LDAP attribute that should be processed. Can be null. For example "mail"
+          The LDAP attribute that should be looked up first. For example "mail"
 
       ifNullAttribute:
-          The LDAP attribute that should be processed if attribute is null. For example "cn"
+          The LDAP attribute that should be looked up if the value of the first attribute is null. For example "cn"
 
       postProcessor:
           Any post processing function that should be run on the mapped value. Can be one of UPPERCASE or LOWERCASE
