@@ -25,7 +25,7 @@ The following step-by-step guide shows how to successfully request a meshProject
 
 1. Go to your meshCustomer where the meshProject is located in the meshPanel ![Choose meshCustomer](./assets/customer/choose-customer.png)
 2. Go to your meshProject from which you want to delete the meshTenant ![Choose meshProject](./assets/project/project-in-top-nav.png)
-3. Click on the "Deletion" tab and follow the deletion instusction for the meshProject !["Delete meshTenant"](./assets/project/project-deletion.png)
+3. Click on the "Deletion" tab and follow the deletion instruction for the meshProject !["Delete meshTenant"](./assets/project/project-deletion.png)
 
 ## Delete meshCustomer
 
