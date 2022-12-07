@@ -24,7 +24,7 @@ The following step-by-step guide shows how to successfully request the deletion 
 The meshTenant deletion requires follow up action from Cloud Foundation administrators (Partner Admins or similar).
 Cloud Foundation or Cloud Platform administrators can either confirm or decline the deletion after checking the meshTenant.
 
-> Please reach out to us if you are interessted in deletion request notifications. Deletion request notifications will inform you via Email or Slack if a new deletion request arrives.
+> Please reach out to support@meshcloud.io if you are interested in deletion request notifications. Deletion request notifications will inform you via Email or Slack if a new deletion request arrives.
 #### How to confirm or decline a meshTenant deletion request
 
 1. Go to the Admin Area ![Admin Area](./assets/partner/navigate-to-admin-area.png)
