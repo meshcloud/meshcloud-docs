@@ -32,7 +32,7 @@ The following step-by-step guide shows how to successfully request a meshProject
 Your user needs the "Customer Owner" role to proceed with the deletion of the meshCustomer.
 
 1. Go to your meshCustomer where the meshProject is located in the meshPanel ![Choose meshCustomer](./assets/customer/choose-customer.png)
-2. Click on the "Deletion" tab and follow the deletion instusction for the meshCustomer !["Delete meshTenant"](./assets/customer/customer-deletion.png)
+2. Click on the "Deletion" tab and follow the deletion instructions for the meshCustomer !["Delete meshTenant"](./assets/customer/customer-deletion.png)
 
 ## Admin action
 
