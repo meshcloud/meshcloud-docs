@@ -21,7 +21,6 @@ The following step-by-step guide shows how to successfully request the deletion 
 
 ## Delete meshProjects
 
-The deletion of an meshProjects is quite similar to the meshTenant deletion.
 The following step-by-step guide shows how to successfully request a meshProject deletion:
 
 1. Go to your meshCustomer where the meshProject is located in the meshPanel ![Choose meshCustomer](./assets/customer/choose-customer.png)
