@@ -8,7 +8,7 @@ The following guide provides a guide for users how to proceed with the deletion 
 
 ## Step-by-Step Guide
 
-## Delete meshTenant from my meshProject
+## How to delete a meshTenant
 
 If you want to delete just a meshTenant e.g. AWS Account without deleting your complete meshProject you can use the meshTenant deletion.
 
