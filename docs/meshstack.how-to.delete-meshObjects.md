@@ -19,7 +19,7 @@ The following step-by-step guide shows how to successfully request the deletion 
 3. Click on "View more details" for the meshTenant you want to delete !["View more details"](./assets/project/project-nav-to-tenant.png)
 4. Click on the "Deletion" tab and follow the deletion instusction for the meshTenant !["Delete meshTenant"](./assets/project/project-tenant-deletion.png)
 
-## Delete meshProjects
+## How to delete a meshProject
 
 The following step-by-step guide shows how to successfully request a meshProject deletion:
 
