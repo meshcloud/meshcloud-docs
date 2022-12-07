@@ -41,7 +41,7 @@ Cloud Foundation or Cloud Platform administrators can either confirm or decline 
 
 > Please reach out to us if you are interessted in deletion request notifications. Deletion request notifications will inform you via Email or Slack if a new deletion request arrives.
 
-### Confirm or delcine a meshTenant deletion
+### How to confirm or decline a meshTenant deletion request
 
 1. Go to the Admin Area ![Admin Area](./assets/partner/navigate-to-admin-area.png)
 2. Navigate to Platforms -> Deleted Tenants ![deleted meshTenants](./assets/partner/partner-tenant-deletion-action.png)
