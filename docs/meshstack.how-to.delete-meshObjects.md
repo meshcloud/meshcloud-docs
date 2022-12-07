@@ -3,7 +3,7 @@ id: meshstack.how-to.delete-meshObjects
 title: How to delete meshObjects in the meshPanel
 ---
 
-Part of the cloud lifecyle inside meshStack is the deletion of the meshCustomers, meshProject and meshTenants.
+Part of the cloud lifecyle inside meshStack is the deletion of meshCustomers, meshProject and meshTenants.
 The following guide provides insight for users and admins how to proceed the deletion of their cloud accounts and meshObjects via the meshPanel
 
 ## Step-by-Step Guide
