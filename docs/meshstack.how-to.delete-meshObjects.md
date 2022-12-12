@@ -25,12 +25,15 @@ The meshTenant deletion requires follow up action from Cloud Foundation administ
 Cloud Foundation or Cloud Platform administrators can either confirm or decline the deletion after checking the meshTenant.
 
 > Please reach out to support@meshcloud.io if you are interested in deletion request notifications. Deletion request notifications will inform you via Email or Slack if a new deletion request arrives.
+
 #### How to confirm or decline a meshTenant deletion request
 
 1. Go to the Admin Area ![Admin Area](./assets/partner/navigate-to-admin-area.png)
 2. Navigate to Platforms -> Deleted Tenants ![deleted meshTenants](./assets/partner/partner-tenant-deletion-action.png)
+
 2.1. Click on the bin icon (green) to confirm the meshTenant deletion. The meshTenant will than be deleted from meshStack. <p>
 2.2. Click on the stop icon (yellow) to decline the meshTenant deletion. The meshTenant will re-appear in the meshCustomers meshProject.
+
 ## How to delete a meshProject
 
 Your user needs at least the Customer Admin role to proceed with the meshProject deletion.
