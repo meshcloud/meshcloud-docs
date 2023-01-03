@@ -140,7 +140,7 @@ let SonarScope =
 ```dhall
 let example =
         { username = "username@example.com"
-        , password = Secret.fromEnv "PASSWORD"
+        , password = Secret.Raw "PASSWORD"
         , customer = "example-customer"
         , projects =
           [ { projectName = "p0"
