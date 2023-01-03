@@ -80,6 +80,10 @@ All permissions left are therefore granted only via the Management Group hierarc
 
 # Rename pre-provisioned subscriptions, not required for Enterprise Enrollment
 "Microsoft.Subscription/rename/action"
+
+# The following permission is only required if you plan to use this principal for Azure Resource Group
+# integeration.
+"Microsoft.Resources/subscriptions/resourceGroups/write",
 ```
 
 You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
@@ -237,7 +241,10 @@ $body = "{
   `"roleDefinitionId`": `"$roleDefinitionId`"}`n}"
 
 # Send request
-Invoke-RestMethod $url -Method 'Put' -Headers $headers -Body $body
+Invoke-RestMethod $url -Method 'Put' -Headers $headers -Body $body | Format-List
+
+# Check that the creation was successfull
+Invoke-RestMethod $url -Method 'Get' -Headers $headers | Format-List
 ```
 
 > The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.

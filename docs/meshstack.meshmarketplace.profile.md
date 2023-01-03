@@ -96,7 +96,7 @@ In the service catalog it would like this:
 }
 ```
 
-Please review the [Tenant-Services documentation](./meshstack.meshmarketplace.tenant-services.md) for more details-
+Please review the [Tenant Services documentation](./meshstack.meshmarketplace.tenant-services.md) for more details.
 
 ### Sharable Service Instances
 

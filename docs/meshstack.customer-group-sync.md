@@ -50,7 +50,7 @@ let example
     = { url = "ldap://example.com:389"
       , base = "dc=meshcloud,dc=io"
       , username = "user"
-      , password = Secret.Native "LDAP_PASSWORD"
+      , password = Secret.Raw "LDAP_PASSWORD"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -137,6 +137,7 @@ let AttributeTransformation =
       can be assigned to a field in a meshObject. There are two types of AttributeTransformations, Static and Regex.
     -}
       < Static : StaticAttributeTransformation
+      | IfNull : IfNullAttributeTransformation
       | Regex : RegexAttributeTransformation
       >
 ```
@@ -168,6 +169,45 @@ let example =
       { attribute = "cn", postProcessor = Some PostProcessor.LOWERCASE }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+#### IfNullAttributeTransformation
+
+<!--snippet:mesh.identityconnector.ldap.ifNullAttributeTransformation#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let IfNullAttributeTransformation =
+    {-
+      A IfNullAttributeTransformation takes a nullable attribute.
+      If the value of this attribute is null for an entity it uses a replacement value.
+      After an attribute value is found, the transformation applies an optional postProcessor on the value.
+
+      attribute:
+          The LDAP attribute that should be looked up first. For example "mail"
+
+      ifNullAttribute:
+          The LDAP attribute that should be looked up if the value of the first attribute is null. For example "cn"
+
+      postProcessor:
+          Any post processing function that should be run on the mapped value. Can be one of UPPERCASE or LOWERCASE
+    -}
+      { attribute : Text
+      , ifNullAttribute : Text
+      , postProcessor : Optional PostProcessor
+      }
+```
+<!--Example-->
+```dhall
+let example =
+      { attribute = "mail"
+      , ifNullAttribute = "cn"
+      , postProcessor = Some PostProcessor.LOWERCASE
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 
 #### RegexAttributeTransformation
 
@@ -443,7 +483,7 @@ let example
       , apiUser =
         { username = "identityconnectorapi"
         , password =
-            Secret.Native "EXTERNAL_IDENTITYCONNECTOR_MESH_API_PASSWORD"
+            Secret.Raw "EXTERNAL_IDENTITYCONNECTOR_MESH_API_PASSWORD"
         , authorities =
           [ Authority.EXTERNAL_MESH_OBJECT_IMPORT
           , Authority.CUSTOMEROWNER_ASSIGN

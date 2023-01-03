@@ -27,6 +27,6 @@ The template engine allows you to use the following placeholders if not describe
 | customerIdentifier   | string | Customer Identifier                                                                                                                    |
 | projectIdentifier    | string | Project Identifier                                                                                                                     |
 | meshProjectId        | number | Internal ID of the meshProject. Every project is guaranteed to have a unique ID, but tenants on different platforms can share this ID. |
-| platform             | string | Name of the platform                                                                                                                   |
+| platform             | string | Platform Identifier                                                                                                                   |
 | rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
 | tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
