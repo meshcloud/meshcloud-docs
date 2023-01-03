@@ -333,6 +333,8 @@ let example
 
           The applicable fee depends on the source amount.
 
+          In combination with TieredFixedAmountDiscountRule, complex discounts and fees can be modeled.
+
           Using interval notation the explicitly defined tiers can be described as:
               - source amount in [5,10) -> 2.5% fee
               - source amount in [10,∞) -> 1% fee
@@ -399,6 +401,9 @@ let example
           This TieredFixedAmountDiscountRule is applied on all Azure consumption.
 
           The applicable fee depends on the source amount.
+
+          TieredFixedAmountDiscountRule is commonly used for fees and rarely makes sense for modeling discounts.
+          In combination with TieredPercentageDiscountRule, complex discounts and fees can be modeled.
 
           Using interval notation the explicitly defined tiers can be described as:
               - source amount in [5,10) -> 100€ (currency matches consumption currency)

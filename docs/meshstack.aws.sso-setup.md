@@ -3,6 +3,8 @@ id: meshstack.aws.sso-setup
 title: SSO Setup
 ---
 
+> This guide was written for AWS SSO, which has a new name AWS IAM Identity Center. The guide is still valuable and applicable.
+
 ## Enable AWS SSO
 
 Switch to AWS Console and search for `sso`, now choose `AWS Single Sign-on`
