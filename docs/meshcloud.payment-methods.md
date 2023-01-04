@@ -11,6 +11,8 @@ Payment methods are created **per** meshCustomer and can be enhanced with [metad
 
 ![Payment Methods Lifecycle](assets/payment_methods/payment_method_overall_lifecycle.png)
 
+> Current limitation to how meshStack handles currencies: Although budgets can be applied in Dollar and Euro, budget alerts and payment method status only considers Euro. It is planned to expand the support for currencies besides Euro further in the future.
+
 ## The Payment Method Lifecycle: Creation
 
 The first step in reaping the benefits of payment methods is creating them. A few important things must be considered about payment methods before creating them:
