@@ -18,7 +18,7 @@ meshStack operators can also provide payment methods for a customer via [`Create
 
 [Metadata](./meshcloud.metadata-tags.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
 
-Payment Methods can have an expiration date set. Expired payment methods can not be assigned to meshProjects anymore (see [payment method handling on meshProjects](meshcloud.project.md#editing-payment-and-project-settings)).
+Payment Methods can have an expiration date set. Expired payment methods can not be assigned to meshProjects anymore and are removed from meshProject when expired. (see [payment method handling on meshProjects](meshcloud.project.md#editing-payment-and-project-settings)).
 
 Additionally an amount can be set on the payment method, which indicates how much money is available on that payment method (e.g. to represent a budget).
 
@@ -117,4 +117,8 @@ which information meshStack should include as billing information in chargeback 
 > Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any customer tags, project tags and payment method tags.
 
 Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
+
+#### Retroactive Chargeback Statements
+
+When no payment method is active on a meshProject, chargeback statements are not created at the end of a month. Only when an active payment method is applied at a later point in time does the chargeback statements generation resume. For missing months, where no payment method was applied the next chargeback statement with a valid payment method will contain the usage reports of the missing months.
 
