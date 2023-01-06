@@ -119,5 +119,6 @@ which information meshStack should include as billing information in chargeback 
 Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
 
 #### Retroactive Chargeback Statements
+
 When no payment method is active on a meshProject, chargeback statements are not created at the end of a month. Only when an active payment method is applied at a later point in time does the chargeback statements generation resume. For missing months, where no payment method was applied the next chargeback statement with a valid payment method will contain the usage reports of the missing months.
 
