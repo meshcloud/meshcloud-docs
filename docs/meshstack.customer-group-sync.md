@@ -338,9 +338,12 @@ let TransformConfiguration =
        There are three types of meshObjects that are imported. meshUsers, meshCustomerUserGroups
        and meshCustomerGroupBindings.
 
+       includeAllUsers:
+         If set to true all meshUsers found in the LDAP are sent to meshstack.
+         If set to false only users that have at least one group assignment are sent to meshstack.
+
        userAttributesTransformations:
          Specifies how an LDAP user entity should be transformed into a meshUser.
-
 
        groupAttributesTransformations:
          Specifies how an LDAP group entity should be transformed into a meshCustomer user group.
@@ -349,7 +352,8 @@ let TransformConfiguration =
           Specifies how a meshCustomerGroupBinding meshObject should be constructed from an LDAP group entity.
 
     -}
-      { userAttributesTransformations : UserAttributesTransformations
+      { includeAllUsers : Bool
+      , userAttributesTransformations : UserAttributesTransformations
       , groupAttributesTransformations : GroupAttributesTransformations
       , groupBindingAttributesTransformations :
           GroupBindingAttributesTransformations
@@ -359,7 +363,8 @@ let TransformConfiguration =
 ```dhall
 let example
     : TransformConfiguration
-    = { userAttributesTransformations =
+    = { includeAllUsers = False
+      , userAttributesTransformations =
         { distinguishedNameAttribute = "dn"
         , name =
             AttributeTransformation.Static
