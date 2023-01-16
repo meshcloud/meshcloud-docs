@@ -15,6 +15,8 @@ In the below screenshot you can see an example of a budget alert that was receiv
 
 It contains the necessary information for the user to be aware of where the problem lies, and how severe it is.
 
+> Current limitation to how meshStack handles currencies: Although budgets can be applied in Dollar and Euro, budget alerts and payment method status only considers Euro. It is planned to expand the support for currencies besides Euro further in the future.
+
 ## How do I use Budget Alerts?
 
 Budget alerts do not have to be configured. They will automatically be sent out if the conditions are right. A budget alert will be sent to a user if the following conditions are met:
