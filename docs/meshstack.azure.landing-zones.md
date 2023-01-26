@@ -41,10 +41,9 @@ The following parameter can be used in the Blueprint:
 | Parameter          | Description                                                                               |
 |--------------------|:------------------------------------------------------------------------------------------|
 | customerIdentifier | Customer Identifier                                                                       |
-| ~~costcenter~~     | ID of the CostCenter defined for this meshProject. (Deprecated. Please use tagCostCenter) |
 | projectIdentifier  | The project identifier                                                                    |
 | SubscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
-| tagCostCenter      | Example for a  [metadata tags](./meshstack.metadata-tags.md) named `costCenter`              |
+| tagCostCenter      | Example for a  [metadata tags](./meshstack.metadata-tags.md) named `costCenter`           |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags can also be used in the Blueprints.
 The following modifications are applied to metadata tag keys by meshstack before making them available as parameters:
