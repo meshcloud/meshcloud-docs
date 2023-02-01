@@ -91,15 +91,23 @@ If you want to remove quotas from a platform just click the "-" button on the ri
 
 ![Manage Platform Quota Definitions](assets/tenants/platform-quota-definitions.png)
 
-### Platform Danger Zone
+### Deprecate Platform
 
-Via the "Danger Zone" tab you can deprecate, undo a deprecation or delete your meshPlatform.
+**Deprecation** will prevent the meshPlatform from being selected for new meshTenants. Existing meshTenants of this meshPlatform will still be replicated and can still be accessed via the meshPanel. Your users can recognize a meshTenant of a deprecated meshPlatform by a yellow bubble on the platform icon in the "Projects Overview" on the customer control plane. If your users are on the tenant control plane, a yellow status label will appear in the header of the control plane. You can also **undo the deprecation**. This allows your users to select the meshPlatform for new meshTenants again.
 
-**Deprecation** will prevent the meshPlatform from being selected for new meshTenants. Existing meshTenants of this meshPlatform will still be replicated and can still be accessed via the meshPanel.
+1. Navigate to **Platforms** > **meshPlatforms**.
+2. Select the meshPlatform.
+3. Navigate to **Danger Zone**. Depending on the state of your meshPlatform, you can either see a `Deprecate meshPlatform` or `Reactivate meshPlatform` button.
+4. Click on the button.
 
-**Reverting a deprecation** can be done by the `Reactivate meshPlatform` button. This allows your users to select the meshPlatform for new meshTenants again.
+### Delete Platform
 
-**Deletion** will make the meshPlatform not selectable for new meshTenants and existing meshTenants not accessible via meshPanel anymore. No more replication will be executed. Metering instead will still be executed for non-deleted platform tenants of this meshPlatform for now. In order to immediately stop metering as well, the Metering Configuration needs to be removed. All settings of the platform will remain in meshStack by default. Direct access in the cloud platform itself to the platform tenants is still possible as meshStack does not delete or do any updates on platform's tenants when a meshPlatform is deactivated.
+**Deletion** will make the meshPlatform not selectable for new meshTenants and existing meshTenants not accessible via meshPanel anymore. No more replication will be executed. Once you delete a meshPlatform, meshStack will automatically delete all meshTenants of the meshPlatform without deleting the platform tenants in the cloud platform. The deletion process of a meshPlatform will also remove the replicator and metering configurations. Therefore, your meshPlatform will be completely inaccessible via meshStack and can not be recovered. As meshStack does not delete or do any updates on platform tenants themselves when a meshPlatform is deleted, direct access in the cloud platform to the platform tenants is still possible.
+
+1. Navigate to **Platforms** > **meshPlatforms**.
+2. Select the meshPlatform.
+3. Navigate to **Danger Zone**.
+4. Click on `Delete meshPlatform` button and confirm the deletion with its identifier. A deletion **can not be reverted**.
 
 ## Platform Notifications
 
