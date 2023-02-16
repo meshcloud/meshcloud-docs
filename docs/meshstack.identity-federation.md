@@ -365,3 +365,31 @@ let AzureLookupStrategy =
       < UserByMailLookupStrategy | UserByUsernameLookupStrategy >
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+## Group Cleanup
+
+For the platform listed below user access is given by assigning groups with the apropriate users inside to the platform tenant. The naming of these groups can be customized by setting the `User Group Name Pattern` in the appropriate meshPlatform Configuration. See the image below.
+
+![User Group Name pattern in the meshPlatform config](assets/platform-config-groupname-pattern.png)
+
+Additionally added group permissions are discouraged, but possible for some platforms. For other platforms additional added permissions are removed during a replication run. This currently is a slight inconsistent behavior that will be unified in the future. Below is a table to see in which platform externally added permissions are kept on their usergroups during project replication.
+
+| Platform               | Additional Permission Possible |
+| ---------------------- | :----------------------------: |
+| AWS (meshIdB)          |               ✅                |
+| Azure                  |               ❌                |
+| GCP                    |               ✅                |
+| OpenStack              |               ✅                |
+| OpenShift              |               ✅                |
+| AKS (AAD Permissions¹) |               ❌                |
+| CloudFoundry²          |               ✅                |
+
+¹: This applies only the the user group permissions that are applied in the AAD to give the users general access to the AKS cluster. The cluster role assignments in the cluster are not affected.
+
+²: In Cloud Foundry the permissions are handled by the IDP and no direct group permissions replication is happening on the platform.
+
+When the name of a group has changed by a user initiated config change e.g. when modifying the group name pattern inside the platform config or by changing the meshRole to Platform Role Mapping inside a Landing Zone as long as the parameter `#{platformGroupAlias}` is used in the User Group Name Pattern, the group is deleted and re-created with a different name.
+The deletion is done because certain cloud platforms don't support group renaming
+If additional tenant access permissions were attached to this group by an external system, these permissions are lost and not carried over.
+
+Automatic group cleanup is available for GCP, AWS, Azure, Azure Kubernetes Service, and OpenShift.
