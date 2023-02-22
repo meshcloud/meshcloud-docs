@@ -7,7 +7,7 @@ To manage users of your customers go to the **Users** section of the **Administr
 
 To search for a user, please follow these steps:
 
-1. Click on **All Users** in the **Administration** Area.
+1. Click on **meshStack Users** in the **Administration** Area.
 2. Enter a part or the complete first name, last name or email address of the user you are searching for.
 3. The list will restrict the results to your search criteria automatically.
 
