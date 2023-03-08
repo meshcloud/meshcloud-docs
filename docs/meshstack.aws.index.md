@@ -17,9 +17,11 @@ meshStack automatically configures AWS IAM in all managed accounts to integrate 
 
 meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
-* meshcloud Account - `meshfed-service-user` (Replicator User) should be created in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
-* Management Account - All accounts created by meshStack reside "under" this account and its Organization Units. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.
-* Automation Account - This account is usually used to host CloudFormation templates, provide an Account Vending Machine and is needed to setup Landing Zones later on.
+- management account: organization management account, the account that hosts the AWS Organization. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.`meshfed-service-user` (Replicator User)
+- meshcloud account: meshStack will use this account to host the IAM users used by meshStack. `meshfed-service-user` (Replicator User) lives in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
+- automation account: meshStack will use this account to manage CloudFormation that are used in [Landing Zones](https://docs.meshcloud.io/docs/meshcloud.landing-zones.html).
+
+* meshcloud Account - 
 
 ```mermaid
 graph LR;
