@@ -1,6 +1,6 @@
 ---
 id: meshstack.user-group-provisioning
-title: User and Group Provisioning
+title: User & Group SCIM Synchronisation
 ---
 
 Provisioning users and groups to meshStack works based on the [SCIM 2.0](http://www.simplecloud.info/) standard.
@@ -86,7 +86,7 @@ The implementation of meshStack's SCIM API does not support all features of SCIM
 - The parameter for excluded attributes in the search endpoints is limited:
   - For users to: `name`, `userName`, `emails`
   - For groups to: `members`, `displayName`
-  
+
 ## Global Groups
 
 The established concept of a group in meshStack is called a "meshCustomerUserGroup". Those are always related to a meshCustomer,
