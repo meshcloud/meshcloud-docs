@@ -19,7 +19,7 @@ for users it selects the `userName`, for groups it uses the `displayName`. As a 
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
-**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified playes a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via support@meshcloud.io.
+**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via support@meshcloud.io.
 
 ### Example
 
@@ -78,7 +78,6 @@ PATCH .../api/scim/v2/Groups/d90c1657-63b1-44be-8cdc-e3a8ffc5a7d1
 The SCIM standard introduces comprehensive functionality to work with user and group resources.
 The implementation of meshStack's SCIM API does not support all features of SCIM. Here is a list of current limitations:
 
-- Deletion of users is not supported. Users can be removed as members of groups, but cannot be deleted from meshStack completely.
 - SCIM endpoints on `/ResourceTypes` and `/Schemas` are not supported
 - Filtering options to search resources are reduced:
   - For users: only simple equals filters on *one* of the following fields: `id`, `userName`, `externalId`
@@ -117,9 +116,8 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
     - Add filter rules by navigating to the `Attribute Mapping`, then go to `Source Object Scope` and select `Add scoping filter`. This applies for both groups and users.
     ![assets/aad_provisioning_scim/scim_source_object_scope.png](assets/aad_provisioning_scim/scim_source_object_scope.png)
 
-5. Disable user deletion. This step is required, because meshStack does not yet support user deletion. Go to "Provisioning" -> "Mappings" and then choose the settings for users. Untick the checkbox for "Deletion".
-6. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table) and remove all other mappings. Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
-7. Start the provisioning process and regularly monitor the provisioning logs.
+5. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table) and remove all other mappings. Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
+6. Start the provisioning process and regularly monitor the provisioning logs.
 
 ### User Mappings Table
 
