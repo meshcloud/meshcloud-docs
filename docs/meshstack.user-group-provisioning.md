@@ -131,3 +131,53 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 | surname                                                       | name.familyName                            |
 | Join(" ", [givenName], [surname])                             | name.formatted                             |
 | Attribute which is used as euid in your meshStack             | externalId                                 |
+
+## User Lifecycle with AAD and SCIM
+
+The following section describes how users are created and removed from meshStack when you have Azure Active Directory
+(AAD) configured as described above.
+
+### Creation
+
+AAD sends a request to create a user via SCIM if that user is in the provisioning scope of the Enterprise Application.
+
+### Deactivation
+
+SCIM deactivation requests are sent, for example, in the following cases:
+
+- A user has moved out of the provisioning scope.
+- A user was explicitly disabled in AAD.
+- A user was removed in AAD, but not permanently deleted yet: If the user is still visible in the "Deleted users"
+  section in AAD, then the user is deactivated, but not deleted.
+
+Deactivating a user via SCIM has the following consequences in meshStack:
+
+- The user will have their access rights revoked from all platforms.
+- The user will be unable to log in to meshPanel. This is also the case when federated authentication is used with an
+  IdP other than AAD. For example, if AAD is used to synchronize users to meshStack, but Google SSO is used for
+  authentication, users are unable to login if AAD deactivated them via SCIM, regardless of their activation status in
+  Google.
+
+User deactivation is reversible: If meshStack subsequently receives an SCIM request to activate this user, then the user
+will regain their previous access rights on all platforms as well as the possibility to log in to meshPanel.
+
+### Deletion
+
+SCIM deletion requests are sent, for example, in the following cases:
+
+- The user was *permanently* deleted in AAD.
+- The user was previously deleted in AAD, and has now automatically been permanently deleted in AAD after a given
+  period (usually 30 days) has passed.
+
+**Attention**: A previous version of this guide has explicitly demanded to configure AAD such that user deletion via
+SCIM is disabled, because previous versions of meshStack did not support deletion. With the current version of
+meshStack, deletion is supported. If you have previously disabled user deletion and now want to enable it, please
+proceed as follows:
+
+In the Azure portal, visit the service "Azure Active Directory" and the section "Enterprise Application". Then, go to
+"Provisioning" → "Edit attribute mappings" to see the user mapping. Below "Target Object Actions", three checkboxes are
+displayed: "Create", "Update" and "Delete". Ensure that all three checkboxes are checked.
+
+Deleting a user via SCIM has the following consequences in meshStack: The user will be irrevocably deleted and only the
+bare minimum of information required for GDPR compliance is retained. After deletion, it is possible to create a new
+user with the same username and email as the previously deleted user, but the deleted user cannot be restored.
