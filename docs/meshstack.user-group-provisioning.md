@@ -108,7 +108,7 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 2. In the EA set up the meshStack endpoint as target API:
    1. Go to the "Provisioning" section and then to "Admin Credentials"-
    2. Use your meshStack's URL as endpoint: `<meshStack>/api/scim/v2/`.
-   3. Set the Basic Auth Credentials as "Token" (without `Basic` prefix).
+   3. Set the Basic Auth Credentials as "Secret Token". For example, if you have an API user named `myuser` with the password `mypassword`, then you have to enter the base64-encoded form of `myuser:mypassword` (do not include the `Basic` prefix).
 3. Decide on how to set up the scope of users / groups that should be provisioned. Therefore, go to the "Settings" menu within "Provisioning". You can either:
    1. Sync only users and groups that are assigned to your EA.
    2. Sync all users and groups from your AAD.
