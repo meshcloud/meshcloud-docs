@@ -109,10 +109,10 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
    1. Go to the "Provisioning" section and then to "Admin Credentials"-
    2. Use your meshStack's URL as endpoint: `<meshStack>/api/scim/v2/`.
    3. Set the Basic Auth Credentials as "Secret Token". For example, if you have an API user named `myuser` with the password `mypassword`, then you have to enter the base64-encoded form of `myuser:mypassword` (do not include the `Basic` prefix).
-3. Decide on how to set up the scope of users / groups that should be provisioned. Therefore, go to the "Settings" menu within "Provisioning". You can either:
+3. Go to "Settings" menu within "Provisioning" and configure which users and groups should be provisioned. You can either:
    1. Sync only users and groups that are assigned to your EA.
-   2. Sync all users and groups from your AAD.
-4. Limit the scope of users and groups. This is a very important step to make sure that not all users and groups from your directory are synced. Go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters that apply filter rules to whitelist the users / groups to provision. Make sure to have a look at the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
+   2. Sync all users and groups from your AAD. This option should always be combined with Scopes as described in the step below.
+4. To fine-tune which and users and groups to sync go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters as described in the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
     - Add filter rules by navigating to the `Attribute Mapping`, then go to `Source Object Scope` and select `Add scoping filter`. This applies for both groups and users.
     ![assets/aad_provisioning_scim/scim_source_object_scope.png](assets/aad_provisioning_scim/scim_source_object_scope.png)
 
