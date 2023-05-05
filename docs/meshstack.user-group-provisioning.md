@@ -3,7 +3,7 @@ id: meshstack.user-group-provisioning
 title: User & Group SCIM Synchronisation
 ---
 
-Provisioning users and groups to meshStack works based on the [SCIM 2.0](http://www.simplecloud.info/) standard.
+Provisioning users and groups to meshStack works based on the [SCIM 2.0](https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management) standard.
 We provide an SCIM API that enables external systems such as an Azure Active Directory (AAD) to directly
 manage up-to-date user and group information within meshStack. `Provisioning` means changes about users and groups
 in the external system are automatically mirrored to the provisioned equivalents in meshStack. For example, when
