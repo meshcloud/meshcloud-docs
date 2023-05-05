@@ -3,7 +3,7 @@ id: meshstack.how-to.change-customer-owner
 title: How to change the Customer Owner of a meshCustomer via API
 ---
 
-This how-to guide is targeted at Cloud Foundation Partners. You need a meshObject API user with permissions `Get any meshObject`, `Import any supported meshObject` and `Allow assignment of the Custome Owner role to a user or group` to run through the steps below.
+This how-to guide is targeted at Cloud Foundation Partners. You need a meshObject API user with permissions `Get any meshObject`, `Import any supported meshObject`, and `Allow assignment of the Customer Owner role to a user or group` to run through the steps below.
 
 If the meshCustomer does not have a Customer Owner yet, you can add yourself as a Customer Admin and assign yourself the Customer Owner role via the panel.
 
