@@ -43,7 +43,7 @@ roleRef:
 targetRef:
   name: my-customer
 subjects:
-  - name: partner@meshcloud.io'
+  - name: partner-old@meshcloud.io'
 ```
 
 ## Step 3: Set yourself as Customer Owner
@@ -65,5 +65,5 @@ roleRef:
 targetRef:
   name: my-customer
 subjects:
-  - name: partner@meshcloud.io'
+  - name: partner-new@meshcloud.io'
 ```
