@@ -1,9 +1,9 @@
 ---
-id: meshstack.customer-group-sync
+id: meshstack.workspace-group-sync
 title: User & Group LDAP Synchronisation
 ---
 
-meshStack supports importing users and groups into meshStack from a source that supports the LDAP protocol, for example, Microsoft Active Directory. The [`Simple Paged Results Control`](https://www.ietf.org/rfc/rfc2696.txt) is used to do a paginated LDAP query to fetch the users and groups. Because of this, it is required that the LDAP server supports the `Simple Paged Results Control`. Other than importing users and groups, meshStack also has the capability to assign a [customer role](./meshcloud.customer.md#assign-meshcustomer-roles) or [partner role](./administration.index.md) to the imported group. The entities read via LDAP are imported to meshStack via the [meshObject import API](./meshstack.api.md#meshobject-api). At the moment, we only support the import of three kinds of meshObjects: meshUser, meshGroup and meshCustomerGroupBinding. The other meshObjects, such as meshProjectUserBindings can be created via the panel.
+meshStack supports importing users and groups into meshStack from a source that supports the LDAP protocol, for example, Microsoft Active Directory. The [`Simple Paged Results Control`](https://www.ietf.org/rfc/rfc2696.txt) is used to do a paginated LDAP query to fetch the users and groups. Because of this, it is required that the LDAP server supports the `Simple Paged Results Control`. Other than importing users and groups, meshStack also has the capability to assign a [workspace role](./meshcloud.workspace.md#assign-meshworkspace-roles) or [partner role](./administration.index.md) to the imported group. The entities read via LDAP are imported to meshStack via the [meshObject import API](./meshstack.api.md#meshobject-api). At the moment, we only support the import of three kinds of meshObjects: meshUser, meshGroup and meshWorkspaceGroupBinding. The other meshObjects, such as meshProjectUserBindings can be created via the panel.
 
 ## Configuration Reference
 
@@ -256,7 +256,7 @@ let example =
       The following example takes the 'cn' attribute and if the attribute matches the first rule,
       will assign whatever follows the "MESHCLOUD-ROLE-" as the value of the meshObject field. If the attribute matches
       the second rule, will assign the value "Platform Operator" and if none of the rules match, assigns the
-      value "Customer Employee".
+      value "Customer Admin".
     -}
       { attribute = "cn"
       , postProcessor = None PostProcessor
@@ -267,7 +267,7 @@ let example =
           }
         ]
       , template = None Text
-      , otherwise = Some "Customer Employee"
+      , otherwise = Some "Customer Admin"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -328,15 +328,15 @@ let GroupAttributesTransformations =
 let GroupBindingAttributesTransformations =
     {-
       roleName:
-        Specify which LDAP attribute should be transformed and assigned to the 'roleName' field of the meshCustomer user group
+        Specify which LDAP attribute should be transformed and assigned to the 'roleName' field of the meshWorkspace user group
     -}
       { roleName : AttributeTransformation }
 
 let TransformConfiguration =
     {-
        Specifies how LDAP entities should be transformed into meshObjects.
-       There are three types of meshObjects that are imported. meshUsers, meshCustomerUserGroups
-       and meshCustomerGroupBindings.
+       There are three types of meshObjects that are imported. meshUsers, meshWorkspaceUserGroups
+       and meshWorkspaceGroupBindings.
 
        includeAllUsers:
          If set to true all meshUsers found in the LDAP are sent to meshstack.
@@ -346,10 +346,10 @@ let TransformConfiguration =
          Specifies how an LDAP user entity should be transformed into a meshUser.
 
        groupAttributesTransformations:
-         Specifies how an LDAP group entity should be transformed into a meshCustomer user group.
+         Specifies how an LDAP group entity should be transformed into a meshWorkspace user group.
 
         groupBindingAttributesTransformations:
-          Specifies how a meshCustomerGroupBinding meshObject should be constructed from an LDAP group entity.
+          Specifies how a meshWorkspaceGroupBinding meshObject should be constructed from an LDAP group entity.
 
     -}
       { includeAllUsers : Bool
@@ -439,7 +439,7 @@ let example
                 }
               ]
             , template = None Text
-            , otherwise = Some "Customer Employee"
+            , otherwise = Some "Customer Admin"
             }
       }
 ```

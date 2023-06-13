@@ -88,11 +88,11 @@ The implementation of meshStack's SCIM API does not support all features of SCIM
 
 ## Global Groups
 
-The established concept of a group in meshStack is called a "meshCustomerUserGroup". Those are always related to a meshCustomer,
+The established concept of a group in meshStack is called a "meshWorkspaceUserGroup". Those are always related to a meshWorkspace,
 so they exist with a relation to one.  With the provisioning of users and groups to meshStack we introduce a new type of
-groups called "global groups". Those are not owned by a meshCustomer but are rather available to all of them.
+groups called "global groups". Those are not owned by a meshWorkspace but are rather available to all of them.
 They cannot be modified manually or programmatically but are synced only via an external system, in this case an Azure AD.
-Assignment of global groups to meshCustomers and meshProjects within the meshPanel works the same way as it does for meshCustomerUserGroups.
+Assignment of global groups to meshWorkspaces and meshProjects within the meshPanel works the same way as it does for meshWorkspaceUserGroups.
 
 ## AAD Configuration
 

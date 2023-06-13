@@ -3,7 +3,7 @@ id: meshstack.identity-lookup
 title: Identity Lookup
 ---
 
-meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.customer.md#invite-users-to-a-meshcustomer-team) with an assisted onboarding workflow.
+meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. We call this search process identity lookup.
 
 <!--snippet:mesh.meshfed.web.identity-lookup-->
@@ -20,7 +20,7 @@ let IdentityLookup =
             Configure the identity provider to use as a source for identity lookup.
 
         deny-assigning-other-users:
-            Controls the behavior of self-service user invitations (e.g. meshCustomer role assignments from meshPanel).
+            Controls the behavior of self-service user invitations (e.g. meshWorkspace role assignments from meshPanel).
             When true, users can only invite other users listed in the identity provider.
             When false, users can create invitations also for users not listed in the identity provider.
     -}
@@ -82,7 +82,7 @@ Operators must then configure the service principal credentials and user lookup 
 let AzureCreds =
     {-
       Setting this configuration enables the use of an AAD as a user lookup source to allow
-      autocomplete of user information when adding new users to customers.
+      autocomplete of user information when adding new users to workspaces.
 
         aad-tenant:
             The active directory tenant. Its either a UID of the AAD or its domain
@@ -139,8 +139,8 @@ let AzureGuestDetection =
       When adding/inviting a new meshUser check AAD User attributes data to determine if the meshUser shall be provisioned as a guest user in meshStack.
 
       Attention: This check is only performe on the first attempt when a user is added/invited
-      to a customer. If this check is configured after some users were initially added to a
-      customer they are not detected as guest users.
+      to a workspace. If this check is configured after some users were initially added to a
+      workspace they are not detected as guest users.
 
         guestProperty:
             The AAD's custom attribute which is checked against the guestValue.
@@ -182,15 +182,15 @@ To use an AAD attribute as euid
 ```dhall
 let AzureEuidUserAttribute =
     {-
-      When adding/inviting a new user to a customer a (custom) attribute property from the users AAD
+      When adding/inviting a new user to a workspace a (custom) attribute property from the users AAD
       schema can be used to fill in his euid. For a list of user attributes for the AAD user object
       see:
 
       https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#json-representation
 
       Attention: This check is only performed on the first attempt when a user is added/invited
-      to a customer. If this check is configured after some users were initially added to a
-      customer their euid's are not udpated.
+      to a workspace. If this check is configured after some users were initially added to a
+      workspace their euid's are not udpated.
 
         userAttributeName:
             The AAD's user (custom) attribute.
@@ -215,12 +215,12 @@ To use an attribute from the AAD extension schema as euid
 ```dhall
 let AzureEuidExtensionSchema =
     {-
-      When adding/inviting a new user to a customer a custom attribute property from the users AAD
+      When adding/inviting a new user to a workspace a custom attribute property from the users AAD
       extension schema can be used to fill in his euid.
 
       Attention: This check is only performed on the first attempt when a user is added/invited
-      to a customer. If this check is configured after some users were initially added to a
-      customer their euid's are not udpated.
+      to a workspace. If this check is configured after some users were initially added to a
+      workspace their euid's are not udpated.
 
         euidExtensionSchemaProperty:
             The name of the extension schema property which is used as EUID value.
@@ -253,7 +253,7 @@ To use an AAD attribute other than userPrincipalName attribute, which is the def
 ```dhall
 let AzureUsernameAttributeUpdate =
     {-
-      When adding/inviting a new user to a customer a custom attribute property from the users AAD
+      When adding/inviting a new user to a workspace a custom attribute property from the users AAD
       extension schema can be used to fill in his username.
 
       Cannot be used together with an AzureEmailAttributeUpdate.
@@ -287,7 +287,7 @@ To use an AAD attribute, other than the  "mail" attribute which is the default, 
 ```dhall
 let AzureEmailAttributeUpdate =
     {-
-      When adding/inviting a new user to a customer a custom attribute property from the users AAD
+      When adding/inviting a new user to a workspace a custom attribute property from the users AAD
       extension schema can be used to fill in his email.
 
       Cannot be used together with an AzureUsernameAttributeUpdate.
@@ -322,7 +322,7 @@ In order to use Google Cloud Directory (also called Google Cloud Identity) as a 
 let GcdCreds =
     {-
       Setting this configuration enables the use of an GCD as a user lookup source to allow
-      autocomplete of user information when adding new users to customers.
+      autocomplete of user information when adding new users to workspaces.
 
         domain:
             The domain used for cloud identity directory-groups created and managed by meshStack.
@@ -363,12 +363,12 @@ If this initial config if present you can decide to set up the following optiona
 ```dhall
 let GcdEuid =
     {-
-      When adding/inviting a new user to a customer a custom attribute property from the users GCD
+      When adding/inviting a new user to a workspace a custom attribute property from the users GCD
       custom schema can be used to fill in his euid.
 
       Attention: This check is only performed on the first attempt when a user is added/invited
-      to a customer. If this check is configured after some users were initially added to a
-      customer their euid's are not udpated anymore.
+      to a workspace. If this check is configured after some users were initially added to a
+      workspace their euid's are not udpated anymore.
 
         euidCustomSchema:
             The name of the extension schema which contains the EUID value.

@@ -25,9 +25,9 @@ Since the Cloud Foundation Team has a good overview of the resource usage across
 
 ## Individual Purchase
 
-In this approach, the teams themselves (or meshCustomers in meshcloud terminology) pay the Cloud Foundation team upfront, and the Cloud Foundation team buys Reserved Instances and Savings Plans under the meshCustomers' tenants.
+In this approach, the teams themselves (or meshWorkspaces in meshcloud terminology) pay the Cloud Foundation team upfront, and the Cloud Foundation team buys Reserved Instances and Savings Plans under the meshWorkspaces' tenants.
 
-There might be meshCustomers/meshProjects that can estimate their own workload and would prefer to have Reserved Instances or Savings Plans that give them priority. This ensures them the benefit of the RI or SP rather than having to share with other tenants and only have a chance of benefiting. Or a certain team (meshCustomer) has leftover budget from the current budgeting period and would like to purchase RIs or SPs with that.
+There might be meshWorkspaces/meshProjects that can estimate their own workload and would prefer to have Reserved Instances or Savings Plans that give them priority. This ensures them the benefit of the RI or SP rather than having to share with other tenants and only have a chance of benefiting. Or a certain team (meshWorkspace) has leftover budget from the current budgeting period and would like to purchase RIs or SPs with that.
 
 In this situation, the payment to the Cloud Foundation team happens at the time of purchase, and such tenants should not be charged for the usage of the RI and SP via the amortized cost, because they have already pre-paid. (Note that the upfront fee component is only available in All Upfront and Partial Upfront RIs & SPs. It doesn't apply for No Upfront ones.)
 
@@ -37,7 +37,7 @@ This discount will achieve one of the following results
 
 1. **Cancel out the amortized cost for usage** : If the purchasing account fully used the RI or SP, this discount will cancel out that usage, because they have already paid for that upfront.
 
-2. **Cancel out the amortized cost for non-usage** : If the purchasing account did not use the RI or SP and no other account utilized it either, there would be amortized cost line items in the tenant usage report for this non-usage. These would also be cancelled out by the above mentioned discount, because the purchasing meshCustomer has already made the payment upfront.
+2. **Cancel out the amortized cost for non-usage** : If the purchasing account did not use the RI or SP and no other account utilized it either, there would be amortized cost line items in the tenant usage report for this non-usage. These would also be cancelled out by the above mentioned discount, because the purchasing application team (represented by a meshWorkspace) has already made the payment upfront.
 
 3. **Provide a discount in the case of some other account utilizing it** : If the purchasing account did not use the RI or SP but some other account did use it, then the other account will pay the cost of the usage to the Cloud Foundation team via the amortized costs. The purchasing account will effectively get a reduction in their total costs via the above mentioned discount.
 

@@ -24,7 +24,7 @@ let Snippet =
           {-
               requirePayment:
                   Determines if the customer registration wizard will collect a default "Cost Center" payment method.
-                  Disabling this will cause new meshCustomers to be registered without a payment method.
+                  Disabling this will cause new meshWorkspaces to be registered without a payment method.
                   This is useful if the meshStack implementation requires customers to register payment methods via an external
                   process (e.g. via API createLimitedPaymentMethod).
 
@@ -55,7 +55,7 @@ let Registration =
     {-
         requirePayment:
             Determines if the customer registration wizard will collect a default "Cost Center" payment method.
-            Disabling this will cause new meshCustomers to be registered without a payment method.
+            Disabling this will cause new meshWorkspaces to be registered without a payment method.
             This is useful if the meshStack implementation requires customers to register payment methods via an external
             process (e.g. via API createLimitedPaymentMethod).
 

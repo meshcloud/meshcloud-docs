@@ -3,22 +3,22 @@ id: meshstack.meshmarketplace.development
 title: Marketplace Development
 ---
 
-> Only users with the role [Customer Admin](meshcloud.customer.md#assign-meshcustomer-roles) or [Customer Owner](meshcloud.customer.md#assign-meshcustomer-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Customer Admin](meshcloud.workspace.md#assign-meshworkspace-roles) or [Customer Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
-You can provide your own services (e.g. databases, message brokers, filesystems, etc) in the [meshMarketplace](marketplace.index.md) via the **Marketplace** >  **Service Brokers** on your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
+You can provide your own services (e.g. databases, message brokers, filesystems, etc) in the [meshMarketplace](marketplace.index.md) via the **Marketplace** >  **Service Brokers** on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
 
 meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
 
 ## Marketplace
 
-You can find the **Marketplace** tab on your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). Via **Service Brokers** tab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+You can find the **Marketplace** tab on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). Via **Service Brokers** tab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
 
 ### Register your Service Broker
 
-Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshCustomer will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace development from the first steps on. A new Marketplace Platform for your Customer will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
+Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace development from the first steps on. A new Marketplace Platform for your Workspace will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
 
 
-1. Open **Marketplace** on your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer).
+1. Open **Marketplace** on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace).
 2. Navigate to the **Service Brokers** tab.
 3. Click `+ Register` in the upper right corner.
 
@@ -29,7 +29,7 @@ The following information must be provided for the registration:
 - **Endpoint**: Root URL to your Service Broker's API endpoint. It must start with "http(s)://". Below this API endpoint the **/v2/catalog** endpoint must be available, as described in the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
 - **Basic Auth Username**: Communication between the meshMarketplace and your Service Broker is secured via HTTP Basic Auth. Therefore username and password have to be defined here, so the meshMarketplace can authenticate successfully to your Service Broker. Enter the username for HTTP Basic Auth here. The username can be changed at any time.
 - **Basic Auth Password**: Enter the password for your HTTP Basic Auth. A set password will never be shown to you again. This password will be stored encrypted in the database. You can set a new password at any time. No restrictions regarding the characters used in your password are applied. Please be sure to always use a secure password!
-- **Development Mode**: As all communication should be secured via SSL by using an https endpoint, it might be too complicated to provide a valid certificate during development. Therefore SSL validation of your Service Broker's certificate can be disabled via this **Development Mode**. This is only possible for the Development Service Broker only your meshCustomer has access to. [Published Service Brokers](#publish-your-service-broker) always need a valid certificate!
+- **Development Mode**: As all communication should be secured via SSL by using an https endpoint, it might be too complicated to provide a valid certificate during development. Therefore SSL validation of your Service Broker's certificate can be disabled via this **Development Mode**. This is only possible for the Development Service Broker only your meshWorkspace has access to. [Published Service Brokers](#publish-your-service-broker) always need a valid certificate!
 
 ### Edit Service Broker Registrations
 
@@ -41,7 +41,7 @@ Service Brokers provide the catalog of all available service according to the [O
 
 ## Publish your Service Broker
 
-As soon as your Service Broker is production-ready, you can publish it to the public meshMarketplaces, so all users of meshStack can use it. You should provide a new deployment of your Service Broker in order to publish it. Your private service broker configuration will remain untouched when publishing the service broker. The private Service Broker will still be available for your meshCustomer.
+As soon as your Service Broker is production-ready, you can publish it to the public meshMarketplaces, so all users of meshStack can use it. You should provide a new deployment of your Service Broker in order to publish it. Your private service broker configuration will remain untouched when publishing the service broker. The private Service Broker will still be available for your meshWorkspace.
 
 To publish your Service Broker, click the **Publish Service Broker** button for the according Service Broker.
 
@@ -55,7 +55,7 @@ When you publish your Service Broker it won't be available in the meshMarketplac
 
 Please execute the following steps:
 
-1. Open the Marketplace controls on the meshCustomer level.
+1. Open the Marketplace controls on the meshWorkspace level.
 2. Navigate to "Service Brokers".
 3. Choose "Published Service Brokers" for the Service Broker you want to publish.
 
@@ -75,7 +75,7 @@ The Analytics functionality for Service Owners is available to Customer Admins, 
 
 ### Reviewing failed Service Instances
 
-From the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer), you can access an overview of all failed service instances of your service brokers under the "Failed Instances" sub-page which can be found under the "Marketplace" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+From the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), you can access an overview of all failed service instances of your service brokers under the "Failed Instances" sub-page which can be found under the "Marketplace" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
 
 ### Service Communication Logs
 

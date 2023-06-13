@@ -67,7 +67,7 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 
 1. Start again in the `Edit Claim Rules` dialog.
 2. Select `Send Group Membership as a Claim` rule type.
-3. Usually two groups should be defined via this. They should result in Outgoing claim type `Group` with Outgoing claim values `meshUser` and `meshManager`. A `meshUser` can login to meshcloud and be invited to existing meshCustomers. A `meshManager` is allowed to create new `meshCustomers`.
+3. Usually two groups should be defined via this. They should result in Outgoing claim type `Group` with Outgoing claim values `meshUser` and `meshManager`. A `meshUser` can login to meshcloud and be invited to existing meshWorkspaces. A `meshManager` is allowed to create new `meshWorkspaces`.
 
 ### Azure AD (AAD)
 

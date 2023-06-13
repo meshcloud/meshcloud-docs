@@ -59,14 +59,14 @@ Please note that you probably want to enable all the necessary APIs on the GCP p
 The properties of the provided configuration file will be expanded with properties from meshcloud and these can be used inside the template itself. The following properties are provided:
 
 | Template Property  | Description                                                                   |
-| ------------------ | :---------------------------------------------------------------------------- |
-| customerIdentifier | Customer Identifier                                                           |
+|--------------------| :---------------------------------------------------------------------------- |
+| customerIdentifier | Workspace Identifier                                                          |
 | tagCostCenter      | ID of the CostCenter defined for this meshProject.                            |
 | projectIdentifier  | The project identifier                                                        |
 | projectId          | The ID of the GCP project associated with this meshProject                    |
 | tagCostCenter      | Example for a [metadata tag](./meshstack.metadata-tags.md) named `costCenter` |
 
-As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags are also provided to the template.
+As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or workspace tags are also provided to the template.
 The following modifications are applied to metdata tag keys by meshstack before making them available as properties:
 
 - Parameters are prefixed with `tag`

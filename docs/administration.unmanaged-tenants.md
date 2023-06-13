@@ -8,7 +8,7 @@ title: Unmanaged Tenants
 Workload that is running indefinitely without anyone's awareness can be an easy way to burn through cloud budget. This is otherwise
 known as 'Shadow IT'. To make it easier to spot this kind of workload, meshStack offers a table view of all tenants that are unmanaged.
 
-The definition of an unmanaged tenant is a cloud tenant that is not related to any meshCustomer & meshProject. In other words, it does not
+The definition of an unmanaged tenant is a cloud tenant that is not related to any meshWorkspace & meshProject. In other words, it does not
 have any organizational metadata applied to it, and it is "unknown" who owns the tenant from a meshStack perspective.
 
 > If you recently started using meshStack, you will most likely have a lot of unmanaged tenants. This is fine

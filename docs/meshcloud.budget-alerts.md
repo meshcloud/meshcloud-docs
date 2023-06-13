@@ -21,8 +21,8 @@ It contains the necessary information for the user to be aware of where the prob
 
 Budget alerts do not have to be configured. They will automatically be sent out if the conditions are right. A budget alert will be sent to a user if the following conditions are met:
 
-- The user is a Customer Admin or Customer Owner in a meshCustomer.
-- The meshCustomer has a payment method with a configured limit. The cloud consumption should be 80% or more on this payment method limit, e.g. €400 costs out of a €500 limit.
+- The user is a Customer Admin or Customer Owner in a meshWorkspace.
+- The meshWorkspace has a payment method with a configured limit. The cloud consumption should be 80% or more on this payment method limit, e.g. €400 costs out of a €500 limit.
 
 The budget alert will be sent via e-mail on Monday morning each week. To prevent spam, the user will receive all relevant budget alerts in a single e-mail, and not as one separate e-mail per budget alert.
 
@@ -36,7 +36,7 @@ The first and easiest option to fix a budget that is reaching its limit is to in
 
 ### 2. Request a new Payment Method
 
-Another option is to request a new payment method. If configured by your Cloud Foundation team, in the customer control plane, you can go to “Financials” → “Payment Methods” and click “Request Payment Method” which will open a form on a new page to request a new payment method for your meshCustomer.
+Another option is to request a new payment method. If configured by your Cloud Foundation team, in the workspace control plane, you can go to “Financials” → “Payment Methods” and click “Request Payment Method” which will open a form on a new page to request a new payment method for your meshWorkspace.
 Once the new payment method is created, do not forget to set it as the active payment method on the project.
 
 > For admins: click [here](https://docs.meshcloud.io/docs/meshcloud.payment-methods.html#external-payment-method-registration) to learn how to configure a payment method request button.

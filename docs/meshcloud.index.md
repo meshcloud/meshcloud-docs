@@ -18,9 +18,9 @@ The figure and table below explain the relation of the most important concepts i
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | [meshUser](./meshcloud.profile.md)             | An individual user account. Roles define its level of access and permissions.             |
 | [meshPartner](administration.index.md)         | Partners administrate and support a meshcloud installation.                               |
-| [meshCustomer](./meshcloud.customer.md)        | A DevOps Team that manages its own [meshProject](./meshcloud.project.md)s and permissions |
-| [meshCustomerUserGroup](./meshcloud.customer.md)| A group of users on a meshCustomer, that can be granted access via roles. |
-| [meshProject](./meshcloud.project.md)          | A multi-cloud project owned by a [meshCustomer](./meshcloud.customer.md)                  |
+| [meshWorkspace](./meshcloud.workspace.md)        | A DevOps Team that manages its own [meshProjects](./meshcloud.project.md) and permissions |
+| [meshWorkspaceUserGroup](./meshcloud.workspace.md)| A group of users on a meshWorkspace, that can be granted access via roles. |
+| [meshProject](./meshcloud.project.md)          | A multi-cloud project owned by a [meshWorkspace](./meshcloud.workspace.md)                  |
 | [meshTenant](./meshcloud.tenant.md)            | An isolated environment in a specific cloud platform, e.g. an AWS Account.                |
 | [meshLandingZone](meshcloud.landing-zones.md)  | Defines configuration and governance policies for cloud environments.                     |
 | [meshPlatform](meshcloud.platforms.md) | An individual cloud platform connected to meshcloud.                                      |
@@ -31,9 +31,9 @@ The figure and table below explain the relation of the most important concepts i
 
 The meshPanel is the self-service user interface for meshStack and provides different control planes to manage various aspects of your meshObjects depending on your rights:
 
-- [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer)
+- [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace)
 
-   Manage the access of your team members in your [meshCustomer](./meshcloud.customer.md), change the tags or check the available payment methods for your meshCustomer.
+   Manage the access of your team members in your [meshWorkspace](./meshcloud.workspace.md), change the tags or check the available payment methods for your meshWorkspace.
 
 - [project control plane](./meshcloud.project-resources.md#project-control-plane)
 
@@ -43,7 +43,7 @@ The meshPanel is the self-service user interface for meshStack and provides diff
 
     Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
 
-The above description serve as an example what you are able to do as Customer Admin. Check out [meshCustomer Roles](./meshcloud.customer.md#meshcustomer-roles) for more details.
+The above description serve as an example what you are able to do as Customer Admin. Check out [meshWorkspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
 
 ### Supported browsers
 

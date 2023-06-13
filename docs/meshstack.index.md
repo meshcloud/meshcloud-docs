@@ -30,7 +30,7 @@ These mappings can be customized. For more details, please consult documentation
 
 The connections are shown in the following matrix table:
 
-|               | [meshCustomer](./meshcloud.customer.md) | [meshProject](./meshcloud.project.md) | [meshUser](./meshcloud.profile.md) | [Landing Zone](./meshcloud.landing-zones.md) |
+|               | [meshWorkspace](./meshcloud.workspace.md) | [meshProject](./meshcloud.project.md) | [meshUser](./meshcloud.profile.md) | [Landing Zone](./meshcloud.landing-zones.md) |
 | :-----------: | :-------------------------------------: | :-----------------------------------: | :--------------------------------: | :-----------------------------------------: |
 |   OpenStack   |              Domain (optional)          |                Project                |        Keystone Shadow User        |                    Quota                    |
 | Cloud Foundry |              Organization               |                 Space                 |              UAA User              |                    Quota                    |

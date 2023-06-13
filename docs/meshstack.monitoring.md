@@ -18,9 +18,9 @@ Metrics are labelled, numerical time-series data.
 
 - operating-system level metrics like CPU and disk usage
 - application-service metrics like database, queue and load-balancer performance
-- meshStack application metrics like API performance and statistics about meshObjects like meshCustomers, meshProjects etc.
+- meshStack application metrics like API performance and statistics about meshObjects like meshWorkspaces, meshProjects etc.
 
-Application-level metrics can contain labels that include customer data such as meshCustomer and meshPlatform identifiers.
+Application-level metrics can contain labels that include customer data such as meshWorkspace and meshPlatform identifiers.
 
 ## Logs
 

@@ -42,11 +42,11 @@ in.
 
 > Please note that landing zone quotas are currently only available for OpenShift & Kubernetes platforms.
 
-Limiting access to private cloud platforms is an important tool to keep control over the load on your platform and providing a fair share of resources to your customers. Therefore, private cloud platforms provide quotas to achieve this limitation. Defining these quotas is supported by meshStack per meshLandingZone. This provides maximum flexibility to Platform Operators to define quotas for their customers. meshPlatforms that support quota management will provide an according section when editing landing zones.
+Limiting access to private cloud platforms is an important tool to keep control over the load on your platform and providing a fair share of resources to your workspaces. Therefore, private cloud platforms provide quotas to achieve this limitation. Defining these quotas is supported by meshStack per meshLandingZone. This provides maximum flexibility to Platform Operators to define quotas for their workspaces. meshPlatforms that support quota management will provide an according section when editing landing zones.
 
 ![Landing Zone Quota](assets/tenants/landing-zone-quota.png)
 
 > Available quotas can be managed via the [Platform Quota Definition Screen](administration.platforms.md#manage-quota-definitions) that is available for each platform.
 > Currently Quota Management is only supported for OpenShift platforms. More private cloud platforms will follow.
 
-Quotas defined here will be applied as default quotas to newly created meshTenants. That way you can provide direct access to your customers with a limited scope. If customers require a higher quota, they can create a [Tenant Quota Request](./meshcloud.tenant-quota.md), which has to be [approved](./administration.tenants.md#tenant-quota-requests) by a Platform Operator.
+Quotas defined here will be applied as default quotas to newly created meshTenants. That way you can provide direct access to your workspaces with a limited scope. If users require a higher quota, they can create a [Tenant Quota Request](./meshcloud.tenant-quota.md), which has to be [approved](./administration.tenants.md#tenant-quota-requests) by a Platform Operator.

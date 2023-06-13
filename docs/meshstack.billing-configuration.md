@@ -473,7 +473,7 @@ You need to specify a wait-period after which the chargeback statements are fina
 | -------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GCP      | 5 Days                                                                                                                                                                              |
 | AWS      | 6 Days                                                                                                                                                                              |
-| Azure    | Depends on the customers Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
+| Azure    | Depends on the workspaces Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
 
 ### Available metadata keys
 
@@ -511,7 +511,7 @@ let Statements =
         A list of metadata and tag keys that shall appear in chargeback statements as billing info.
         General payment information can be accessed via paymentName, paymentIdentifier, paymentExpirationDate
         and paymentAmount. Custom Tags can be referenced via their property name in the according tag JSON schema.
-        Custom Tags are customer tags, project tags and payment tags.
+        Custom Tags are workspace tags, project tags and payment tags.
 
       period-offset-days:
         It is the offset of days after which chargeback statements are generated.
