@@ -79,9 +79,24 @@ let ProjectRoleConfiguration =
 ```dhall
 let example =
         { roles =
-          [ { name = "Project-Admin", identifier = "admin" }
-          , { name = "Project-User", identifier = "user" }
-          , { name = "Project-Reader", identifier = "reader" }
+          [ { name = "Project Admin"
+            , identifier = "admin"
+            , description = Some
+                "Can fully access the project in the cloud platform with administrative permissions including changing project configuration."
+            , rank = 3
+            }
+          , { name = "Project User"
+            , identifier = "user"
+            , description = Some
+                "Can use, create, and manage cloud resources within the cloud platforms project."
+            , rank = 2
+            }
+          , { name = "Project Reader"
+            , identifier = "reader"
+            , description = Some
+                "Can only view project resources in the cloud platform without the ability to use, manage and create new resources."
+            , rank = 1
+            }
           ]
         }
       : ProjectRoleConfiguration
