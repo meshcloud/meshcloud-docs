@@ -18,7 +18,7 @@ Metrics are labelled, numerical time-series data.
 
 - operating-system level metrics like CPU and disk usage
 - application-service metrics like database, queue and load-balancer performance
-- application level metrics like API performance and statistics about meshObjects like meshCustomers, meshProjects etc.
+- meshStack application metrics like API performance and statistics about meshObjects like meshCustomers, meshProjects etc.
 
 Application-level metrics can contain labels that include customer data such as meshCustomer and meshPlatform identifiers.
 
@@ -28,11 +28,40 @@ meshStack collects various logs as described in [Logging & Auditing](./meshstack
 
 Log data is therefore not part of telemetry data we collect.
 
+## Product Usage Data
+
+meshPanel can optionally collect product usage data and feedback. We use this data to help us understand how to improve the product and to prioritize new features.
+meshPanel uses the privacy-preserving and open source web-analytics library plausible.io for collecting anonymous usage data as described in the [plausible data policy](https://plausible.io/data-policy).
+
+<!--snippet:mesh.panel.environment#Plausible-->
+
+The following configuration options are available at `mesh.panel.environment#Plausible`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let Plausible =
+    {-
+        activatePlausibleTracking:
+            Enable product usage analysis and telemetry using the plausible JavaScript library.
+    -}
+      { activatePlausibleTracking : Bool }
+```
+<!--Example-->
+```dhall
+let example = { activatePlausibleTracking = True } : Plausible
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+When enabled, meshPanel will send usage data to this meshStack's meshPanel domain, which means there will be
+no third-party domains accessed from user's browsers.
+
 ## Telemetry
 
-meshcloud transmits and processes metrics data to a central monitoring system (meshOperations center) responsible for performance monitoring and alerting.
+meshcloud transmits and processes metrics data to a central monitoring system operated by meshcloud (meshOperations center) responsible for performance monitoring and alerting.
 
 Customers can find more details including a full list of metrics transmitted in meshStack's security documentation.
+
+When enabled, [product usage data](#product-usage-data) is relayed from meshPanel's web server to a central plausible server instance operated by meshcloud.
 
 ## Health endpoint
 
