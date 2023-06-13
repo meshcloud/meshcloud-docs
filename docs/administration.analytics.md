@@ -13,9 +13,9 @@ Administrators can access performance analytics to get an overview of platform u
 : This graph shows the number of active [projects](meshcloud.project.md) over the last 90 days. Projects are considered active until they are queued for deletion.
 ![meshProjects](assets/administration.analytics.meshProjects.png)
 
-**Active meshCustomers**
-:  This graph shows the number of [managed customers](meshcloud.customer.md) over the last 90 days.
-![meshCustomers](assets/administration.analytics.meshCustomers.png)
+**Active meshWorkspaces**
+:  This graph shows the number of [managed workspaces](meshcloud.workspace.md) over the last 90 days.
+![meshWorkspaces](assets/administration.analytics.meshWorkspaces.png)
 
 **Users**
 :  This graph shows the number of users over the last 90 days.

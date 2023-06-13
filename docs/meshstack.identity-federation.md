@@ -227,7 +227,7 @@ In case operators do not configure an identity lookup (see next section), this a
 
 ### Identity Lookup
 
-meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.customer.md#invite-users-to-a-meshcustomer-team) with an assisted onboarding workflow.
+meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. This search process is called identity lookup.
 
 meshStack supports configuration of an optional identity lookup source. When possible, IAM architects should give preference to using the configured identity provider also as as an identity lookup source.
@@ -235,7 +235,7 @@ meshStack supports configuration of an optional identity lookup source. When pos
 Since email is a fundamental attribute of every meshUser, every identity lookup source is capable
 of providing this attribute.
 If an operator does not configure an identity lookup source, meshStack will use the email address entered by the inviting user.
-This email address can also be used to set a user's `euid`, see the [user onboarding configuration reference](meshstack.onboarding.md#customer-user-invitations) for details.
+This email address can also be used to set a user's `euid`, see the [user onboarding configuration reference](meshstack.onboarding.md#workspace-user-invitations) for details.
 
 
 | Identity Lookup Source | euid attributes supported                                               |
@@ -249,7 +249,7 @@ For further details, please consult the [Identity Lookup configuration reference
 
 ### Identity Connector
 
-The [Identity Connector](meshstack.customer-group-sync.md) can automatically provision meshUsers via the meshObject API.
+The [Identity Connector](meshstack.workspace-group-sync.md) can automatically provision meshUsers via the meshObject API.
 As a part of this process, the identity connector can also set the `euid` attribute.
 
 
@@ -257,7 +257,7 @@ As a part of this process, the identity connector can also set the `euid` attrib
 | ------------------------- | --------------------------------------------------------- |
 | LDAP                      | every attribute available via LDAP query on a User entity |
 
-If the identity connector is used, see the [Identity Connector](./meshstack.customer-group-sync.md) configuration reference.
+If the identity connector is used, see the [Identity Connector](./meshstack.workspace-group-sync.md) configuration reference.
 
 ### Platform Configuration
 

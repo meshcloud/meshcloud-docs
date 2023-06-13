@@ -15,7 +15,7 @@ You can see the full list of meshTenants with their replication status in the Ad
 - in progress
 - failed
 
-Additionally, the list can be filtered on customer, project, location, platform, landing zone and replication status.
+Additionally, the list can be filtered on workspace, project, location, platform, landing zone and replication status.
 
 For more information, click on 'View more' in the tenant list and in this screen additional information is available. You can especially see detailed information about what happened during tenant replication to the cloud platform. You can see which steps have been executed and if errors or warnings occurred, you will also see them here.
 
@@ -29,7 +29,7 @@ Via the button at the top right of the replication status mentioned in the secti
 
 In the tenant list you can filter in the `Quota Request` column to only get meshTenants with an open [Tenant Quota Request](meshcloud.tenant-quota.md). Platform Operators have to take action on these requests and either approve or decline them. They also have the option to change the quota before approval if the request cannot be approved as is.
 
-It is also possible to change tenant quota proactively as a platform operator, even if no tenant quota request exists. This is important, as meshStack will always make sure the defined quotas are applied in the platform. That means it is not possible to apply different quotas in the platform, as they will be overwritten on every replication by meshStack. If no quota request has been made yet by the meshCustomer, default quotas defined in the [meshLandingZone](administration.landing-zones.md#defining-quotas) are applied.
+It is also possible to change tenant quota proactively as a platform operator, even if no tenant quota request exists. This is important, as meshStack will always make sure the defined quotas are applied in the platform. That means it is not possible to apply different quotas in the platform, as they will be overwritten on every replication by meshStack. If no quota request has been made yet by the meshWorkspace, default quotas defined in the [meshLandingZone](administration.landing-zones.md#defining-quotas) are applied.
 
 When a quota request is active for a meshTenant you will see info about the quotas currently applied to the tenant, the requested quota and you have the option to overwrite requested quotas.
 

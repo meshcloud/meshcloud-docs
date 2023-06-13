@@ -28,7 +28,7 @@ If another domain name as the predefined shared domains should be used a so call
 
 In order to configure a private domain go to
 
-1. Click on **Settings** in the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer)
+1. Click on **Settings** in the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace)
 2. In the row of sub-tabs click on **Cloud Foundry Domains**
 3. Enter the desired domain name for your apps and click on the `+` sign
 4. If the domain could be created update your DNS setting at your provider and you can start to create apps with an own domain

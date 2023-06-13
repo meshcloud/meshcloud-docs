@@ -26,8 +26,8 @@ The following platform types are available for selection.
 
 You have to assign a [meshLocation](#meshlocation) to your meshPlatform. Details about what a meshLocation is and how to use it can be found [here](#meshlocation).
 
-Additionally you can directly [restrict](#restrict-platform-access) your meshPlatform to certain meshCustomers to e.g. first test a new meshPlatform integration
-with a private meshCustomer that only you have access to. Doing this during creation can prevent confusion of other users who may see the meshPlatform shortly if you would [restrict](#restrict-platform-access) it after creation.
+Additionally you can directly [restrict](#restrict-platform-access) your meshPlatform to certain meshWorkspaces to e.g. first test a new meshPlatform integration
+with a private meshWorkspace that only you have access to. Doing this during creation can prevent confusion of other users who may see the meshPlatform shortly if you would [restrict](#restrict-platform-access) it after creation.
 
 You can always change the mutable information given during meshPlatform creation later in the [Settings](#settings) tab of the Platform Control Plane.
 
@@ -65,7 +65,7 @@ The following list provides the most common configurations available for differe
 * Role Mappings for mapping Project Roles in meshStack to specific roles in the cloud platform
 * Naming of platform tenants (e.g. AWS Account or Azure Subscription) via [String Templates](meshstack.replication-configuration.md#string-templating)
 * Naming via [String Templates](meshstack.replication-configuration.md#string-templating) of platform IAM groups created by meshStack to provide users access to their tenants
-* [Tag Configuration](meshstack.metadata-tags.md#tags-in-cloud-tenants) for platform tenants and resources (e.g. add customer and project identifier as a tag to the platform tenant)
+* [Tag Configuration](meshstack.metadata-tags.md#tags-in-cloud-tenants) for platform tenants and resources (e.g. add workspace and project identifier as a tag to the platform tenant)
 * platform-specific additional configuration
 
 As an example you can find a part of the GCP configuration in the following image:
@@ -75,10 +75,10 @@ As an example you can find a part of the GCP configuration in the following imag
 #### Restrict Platform Access
 
 Access to a specific meshPlatform can be restricted via the "Restrictions" tab. This feature is helpful
-when a new meshPlatform shall be integrated, but initially only be visible to a few meshCustomers for integration testing.
-Another use-case is having a dedicated Cloud Platform that shall only be available to certain meshCustomers in general.
+when a new meshPlatform shall be integrated, but initially only be visible to a few meshWorkspaces for integration testing.
+Another use-case is having a dedicated Cloud Platform that shall only be available to certain meshWorkspaces in general.
 
-To restrict the meshPlatform, search for the customers the platform shall be restricted to and add these customers via the *+* button.
+To restrict the meshPlatform, search for the workspaces the platform shall be restricted to and add these workspaces via the *+* button.
 
 #### Manage Quota Definitions
 
@@ -93,7 +93,7 @@ If you want to remove quotas from a platform just click the "-" button on the ri
 
 ### Deprecate Platform
 
-**Deprecation** will prevent the meshPlatform from being selected for new meshTenants. Existing meshTenants of this meshPlatform will still be replicated and can still be accessed via the meshPanel. Your users can recognize a meshTenant of a deprecated meshPlatform by a yellow bubble on the platform icon in the "Projects Overview" on the customer control plane. If your users are on the tenant control plane, a yellow status label will appear in the header of the control plane. You can also **undo the deprecation**. This allows your users to select the meshPlatform for new meshTenants again.
+**Deprecation** will prevent the meshPlatform from being selected for new meshTenants. Existing meshTenants of this meshPlatform will still be replicated and can still be accessed via the meshPanel. Your users can recognize a meshTenant of a deprecated meshPlatform by a yellow bubble on the platform icon in the "Projects Overview" on the workspace control plane. If your users are on the tenant control plane, a yellow status label will appear in the header of the control plane. You can also **undo the deprecation**. This allows your users to select the meshPlatform for new meshTenants again.
 
 1. Navigate to **Platforms** > **meshPlatforms**.
 2. Select the meshPlatform.

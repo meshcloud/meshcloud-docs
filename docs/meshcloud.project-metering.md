@@ -14,7 +14,7 @@ Project owners associate their projects with payment information. This is used f
 ### Payment Methods
 
 External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](./meshstack.api.md).
-meshStack operators can also provide payment methods for a customer via [`Create/Edit Payment Methods`](meshcloud.payment-methods.md#creating-a-payment-method-via-the-meshpanel) button on the customer in the **Admin Area** > **Customers**.
+meshStack operators can also provide payment methods for a workspace via [`Create/Edit Payment Methods`](meshcloud.payment-methods.md#creating-a-payment-method-via-the-meshpanel) button on the workspace in the **Admin Area** > **Workspaces**.
 
 [Metadata](./meshcloud.metadata-tags.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
 
@@ -41,7 +41,7 @@ your resources and their usage.
 From a Tenant Usage Report you can also access a Detailed Report to see every single resource consumption.
 That means you can e.g. see whether a resource was running for 3 hours, stopped for 5 hours and then started again for another 6 hours.
 
-Partner accounts can access tenant usage reports for all their assigned meshCustomers in the Administration Area via **Platforms** > **Usage Reports**.
+Partner accounts can access tenant usage reports for all their assigned meshWorkspaces in the Administration Area via **Platforms** > **Usage Reports**.
 
 Note that unit costs for Azure and GCP services are not supported.
 Therefore, the unit costs are not available in the Tenant Usage Reports for those platforms.
@@ -71,7 +71,7 @@ statements do as well show charges with a booking and valuta date.
 Chargeback statements capture the billing information associated with the chargeback account at the end of the report period
 of its line items. This implies that the payment method that is active on the project at the
 end of the report period of a line item will be set for the according line item.
-The same also applies to tags (i.e. meshProject and meshCustomer tags). For example, a June 2022 chargeback statement line item
+The same also applies to tags (i.e. meshProject and meshWorkspace tags). For example, a June 2022 chargeback statement line item
 will always have the tags and metadata set that were present at the end of June 30th.
 
 Always using the project metadata and tags that were set at the end of the report period (usually end of a month) allows easy
@@ -101,8 +101,8 @@ When booking a tenant usage report, meshStack splits up the report's `netAmount`
 individual entries. This split allows cloud foundation teams to process chargeback for different kinds of usage
 like cloud provider cost vs. internal overhead fees.
 
-Customer Admins also have access to an overview of the chargeback statements of all their projects in the customer control plane via  **Financials** > **Chargeback Statements**.
-Also Partner accounts can access the chargeback statements for all their assigned meshCustomers in the Administration Area via **Projects** > **Chargeback Statements**.
+Customer Admins also have access to an overview of the chargeback statements of all their projects in the workspace control plane via  **Financials** > **Chargeback Statements**.
+Also Partner accounts can access the chargeback statements for all their assigned meshWorkspaces in the Administration Area via **Projects** > **Chargeback Statements**.
 
 #### Exporting Chargeback Statements
 
@@ -114,7 +114,7 @@ budgets between cost centers.
 Chargeback Statements also contain billing information per line item. Your Cloud Foundation team can [configure](meshstack.billing.md#chargeback)
 which information meshStack should include as billing information in chargeback statements.
 
-> Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any customer tags, project tags and payment method tags.
+> Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any workspace tags, project tags and payment method tags.
 
 Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
 

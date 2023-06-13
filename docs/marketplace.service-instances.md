@@ -35,7 +35,7 @@ It is not possible to select the same meshTenant for multiple bindings of the sa
 
 ### Share Service Instance
 
-If the Service Broker [supports](meshstack.meshmarketplace.profile.md#sharable-service-instances) it, service Instances can be shared between meshProjects of the same meshCustomer. It is only sharable to projects, if the meshLocation the Service Instance relates to exists in the meshProject the instance shall be shared with. This is currently only supported for the global marketplace.
+If the Service Broker [supports](meshstack.meshmarketplace.profile.md#sharable-service-instances) it, service Instances can be shared between meshProjects of the same meshWorkspace. It is only sharable to projects, if the meshLocation the Service Instance relates to exists in the meshProject the instance shall be shared with. This is currently only supported for the global marketplace.
 
 Shared Instances are read-only. Only “own” bindings can be created/updated/deleted. This means that only bindings of the current project are shown and can be created/updated/deleted.
 

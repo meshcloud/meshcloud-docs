@@ -3,10 +3,10 @@ id: meshcloud.project-resources
 title: Project Resources
 ---
 
-When users are [assigned](meshcloud.project.md#assign-user-to-a-meshproject) to a meshProject, this project appears in their projects overview on the customer control plane, also known as their home screen. As long as they are not assigned to the project, they do not have access to its resources and the regarding control planes. To access the meshProject you can click on its name to get to the [project control plane](meshcloud.project-resources.md#project-control-plane) or you click on a specific Cloud Platform to get directly to the [tenant control plane](meshcloud.project-resources.md#tenant-control-plane).
+When users are [assigned](meshcloud.project.md#assign-user-to-a-meshproject) to a meshProject, this project appears in their projects overview on the workspace control plane, also known as their home screen. As long as they are not assigned to the project, they do not have access to its resources and the regarding control planes. To access the meshProject you can click on its name to get to the [project control plane](meshcloud.project-resources.md#project-control-plane) or you click on a specific Cloud Platform to get directly to the [tenant control plane](meshcloud.project-resources.md#tenant-control-plane).
 ![Home screen of a Customer Employee](assets/project-resources/access-control-planes.png)
 
-As a Customer Admin or Owner you are able to see all active meshProjects within your meshCustomer in your home screen. Additionally, you can also access the project and tenant control plane of them even if your are not assigned to the project.
+As a Customer Admin or Owner you are able to see all active meshProjects within your meshWorkspace in your home screen. Additionally, you can also access the project and tenant control plane of them even if your are not assigned to the project.
 Only **Platform Access** won't still be possible in case you are not assigned to the project.
 
 ## Project Control Plane

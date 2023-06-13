@@ -3,7 +3,7 @@ id: administration.index
 title: Overview
 ---
 
-Partners Users have access to the so called **Administration Area**. The administration area enables partner users to manage their child [meshCustomer](./meshcloud.customer.md) accounts within the meshcloud platform.
+Partners Users have access to the so called **Administration Area**. The administration area enables partner users to manage their child [meshWorkspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
 Assigning Partner Users can only be done by a **meshcloud operator** or Partner Admins.
 
 Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
@@ -16,30 +16,30 @@ available to users of the administration area:
   platform operations in the administration area.
 - **Ops Support**: Not all Ops operations must be executed by Platform Operators. E.g. setting quotas is a task that can also be done by
   a separate Ops Support team.
-- **Controller**: A Controller has access to billing and usage information of customer projects.
+- **Controller**: A Controller has access to billing and usage information of workspace projects.
 - **Onboarding Support**: A support team in place to help users who want to sign up may also need access to some administration
   functionality which is granted by this role.
 - **Compliance Manager**: Has the rights to manage meshPolicies and tag definitions.
 - **Replication Operator**: A supportive role that can assist by viewing tenants' replication status.
   This role is helpful for meshcloud employees to debug any potential issues with tenant replication.
 
-See the [meshCustomer](meshcloud.customer.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable by adding roles to reflect individual access requirements of your organization.
+See the [meshWorkspace](meshcloud.workspace.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable by adding roles to reflect individual access requirements of your organization.
 
 The following table provides details about the functionality available to the different roles by default. The Access rights can also be adapted individually
 per meshcloud installation.
 
 |                                                                                                                           | Partner Admin        | Partner Employee     | Platform Operator | Ops Support | Controller | Onboarding Support | Compliance Manager | Replication Operator |
 | ------------------------------------------------------------------------------------------------------------------------- | :------------------: | :------------------: | :---------------: | :---------: | :--------: | :----------------: | :----------------: | :------------------: |
-| [Customer&nbsp;List](administration.customers.md)                                                                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
+| [Workspace&nbsp;List](administration.workspaces.md)                                                                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
 | &nbsp;&nbsp;Payment&nbsp;Methods&nbsp;List                                                                                |       &#10003;       |       &#10003;       |                   |          |  &#10003;  |                    |                    |                      |
 | &nbsp;&nbsp;Manage&nbsp;Payment&nbsp;Methods                                                                              |       &#10003;       |       &#10003;       |                   |          |  &#10003;  |                    |                    |                      |
 | &nbsp;&nbsp;[Project&nbsp;List](administration.projects.md)                                                               |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
 | &nbsp;&nbsp;&nbsp;&nbsp;[Manage&nbsp;Quota](administration.projects.md#set-project-quotas)                                |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;project&nbsp;tags                                                                       |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |      &#10003;      |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;[History](administration.projects.md#project-history)                                             |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |      &#10003;      |         &#10003;     |
-| &nbsp;&nbsp;[List&nbsp;Customer&nbsp;Users](administration.customers.md#access-managed-customer-accounts)                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.customers.md#access-managed-customer-accounts)                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](administration.customers.md#send-messages-to-customer-users)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[List&nbsp;Workspace&nbsp;Users](administration.workspaces.md#access-managed-workspace-accounts)                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.workspaces.md#access-managed-workspace-accounts)                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](administration.workspaces.md#send-messages-to-workspace-users)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;role&nbsp;requests                                                                   |       &#10003;       |       &#10003;       |                   |  &#10003;   |            |      &#10003;      |                    |                      |
 | &nbsp;&nbsp;[Project&nbsp;Export](administration.projects.md#project-export)                                              |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
 | &nbsp;&nbsp;[Quota&nbsp;Export](administration.projects.md#quota-export)                                                  |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |                    |                      |
@@ -66,4 +66,4 @@ per meshcloud installation.
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | [Performance&nbsp;Analytics](administration.analytics.md)                                                                 |       &#10003;       |       &#10003;       |                   |             |            |      &#10003;      |                    |                      |
 
-Please review [meshCustomer roles](meshcloud.customer.md#assign-meshcustomer-roles) for roles available to end-users of your meshStack implementation.
+Please review [meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) for roles available to end-users of your meshStack implementation.

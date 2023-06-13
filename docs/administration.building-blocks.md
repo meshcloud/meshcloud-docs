@@ -7,8 +7,8 @@ Building Blocks are a useful tool to make the journey to successful cloud projec
 For use cases where you roll out or offer pieces of cloud infrastructure & configuration repetitively, meshStack's
 Building Blocks can help you take work out of your hands.
 
-Building Blocks can be added on-demand by your meshCustomers in self-service in the tenant control plane, or when
-your meshCustomers create a new meshProject or meshTenant.
+Building Blocks can be added on-demand by your users in self-service in the tenant control plane, or when
+your users create a new meshProject or meshTenant.
 
 Building Blocks are instantiated from so-called Definitions. These Building Block Definitions are created and maintained
 in the Admin Area by the Cloud Foundation Team. Read more below on how you can create and deploy a new Building Block

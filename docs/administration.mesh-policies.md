@@ -7,13 +7,13 @@ meshPolicies are described in detail [here](meshcloud.policies.md). They can be 
 
 The following meshSubjects are available:
 
-- meshCustomer
+- meshWorkspace
 - meshProject
 - meshLandingZone
 - meshUser/Group
 
 You can see all existing meshPolicies in the **Administration** Area by navigating to **Compliance** > **Policies**.
-If you want to see all detected policy violations, you can go to to **Compliance** > **Policy Violations** in the **Administration** Area or on a customer control plane.
+If you want to see all detected policy violations, you can go to to **Compliance** > **Policy Violations** in the **Administration** Area or on a workspace control plane.
 
 > Creating and Editing meshPolicy triggers an evaluation process of the meshPolicy. This process may take a while. After the process ends, you can see the violations caused by the (updated) meshPolicy in the **Policy Violations**.
 

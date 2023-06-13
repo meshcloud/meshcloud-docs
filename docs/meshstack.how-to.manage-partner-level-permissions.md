@@ -7,7 +7,7 @@ If you are not familiar with what a Partner User is, please check the [official 
 
 ## Pre-Requisites
 
-- Permissions: Your user needs the Partner Admin role in the Partner Customer to assign other users administration and/or privileged roles
+- Permissions: Your user needs the Partner Admin role in the Partner Workspace to assign other users administration and/or privileged roles
 
 ## Step to Step Guide
 

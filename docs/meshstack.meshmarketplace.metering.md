@@ -13,7 +13,7 @@ in the service catalog of their Service Broker implementations. meshStack meteri
 and generate a [Tenant Usage Report](./meshcloud.project-metering.md) for each marketplace used in a meshProject.
 
 In the context of meshMarketplace metering Service Owners are also called **Sellers**. The id of a seller is the
-identifier of the meshCustomer that has registed the Service Broker with the meshMarketplace.
+identifier of the meshWorkspace that has registed the Service Broker with the meshMarketplace.
 
 ### OSB API Service Catalog
 
@@ -151,7 +151,7 @@ let MeshMarketplace =
             A list of seller ids that are "out of scope" for meshMarketplace metering.
             All usage rates for service plans published by these sellers will be replaced with 0.0.
 
-            Note: Seller id's are the meshCustomer identifiers of the meshCustomer owning the Service Broker
+            Note: Seller id's are the meshWorkspace identifiers of the meshWorkspace owning the Service Broker
             registration
     -}
       { outOfScopeMarketplaceSellers : List Text }
@@ -165,13 +165,13 @@ let example
 
 ## Reviewing Metering Data
 
-Metering & Usage information for Service Owners is available for your Service Brokers from the "Marketplace" tab in your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer).
+Metering & Usage information for Service Owners is available for your Service Brokers from the "Marketplace" tab in your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace).
 
 You see a list of all plans of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per Marketplace you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
 
 The screen provides you with information about:
 
-- Which customers and projects are using your services?
+- Which workspaces and projects are using your services?
 - How long have certain plans been used in projects?
 - What are the costs per plan and project for one period?
 
