@@ -1,0 +1,21 @@
+# This workflow merges releases (i.e. tags) to master
+name: "Release"
+
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: master
+          depth: 0
+      - run: |
+          git config --global user.email "github-actions@meshcloud.io"
+          git config --global user.name "GitHub Actions"
+          git merge develop
+          git push
