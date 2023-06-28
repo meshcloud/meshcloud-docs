@@ -30,3 +30,6 @@ The template engine allows you to use the following placeholders if not describe
 | platform             | string | Platform Identifier                                                                                                                   |
 | rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
 | tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
+
+Note that you can also use tags! The placeholders for these are generated automatically. For example, if you have a tag
+in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`.
