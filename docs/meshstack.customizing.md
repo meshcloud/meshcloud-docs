@@ -120,7 +120,7 @@ options in `panel.ui`.
 
     {- Displayed when users are required to sign in before accepting an invite. Configure this to explain users which IDP/Credential they need to provide -}
   , idpAcceptCustomerUserRoleRequest : Optional Text
-    {- Displayed in when users provide a cost center that's already used by another meshStack customer. Configure this e.g. to encourage users to register only one meshCustomer per cost center. -}
+    {- Displayed in when users provide a cost center that's already used by another meshStack workspace. Configure this e.g. to encourage users to register only one meshWorkspace per cost center. -}
   , duplicateCostCenter : Optional Text
     {- Display a configurable confidentiality label in the meshPanel navbar, e.g. "internal" or "secret". -}
   , confidentialityLevel : Optional Text

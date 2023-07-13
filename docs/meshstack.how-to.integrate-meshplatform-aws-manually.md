@@ -264,7 +264,7 @@ The following configuration options are available in the AWS [Platform Connectio
 You can define naming patterns based on the [String Templating](meshstack.replication-configuration.md#string-templating) syntax of meshStack for the following properties:
 
 * Account Email Address: Please make sure to consider that this is limited to 64 characters
-* Account Alias Pattern: The account alias must be unique across all of AWS. Operators should therefore consider using a company-specific prefix together with a combination of meshCustomer and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
+* Account Alias Pattern: The account alias must be unique across all of AWS. Operators should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
 
 ## Identifier Configuration
 
@@ -446,7 +446,7 @@ graph LR;
 For the purpose of metering, meshStack requires the AWS Access Key and Secret Key of a user created in the `meshcloud` AWS account.
 A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
-1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshCustomers buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshWorkspaces buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
 2. **CostExplorerUser's Assume Role Policy**: This policy allows CostExplorerUser IAM user to assume the IAM Role `MeshCostExplorerServiceRole`
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -500,7 +500,7 @@ A role  should be created in the AWS `management account` which has the followin
 
 ## Leverage Reserved Instances & Savings Plans
 
-This section applies only if your meshCustomers pay you (the Cloud Foundation team), upfront to purchase Reserved Instances
+This section applies only if your application teams (represented by meshWorkspaces) pay you (the Cloud Foundation team), upfront to purchase Reserved Instances
 and Savings Plans directly on their AWS accounts, which give them priority for consuming the RI or SP.
 If this is the case, you can enable `reservedInstanceFairChargeback` and `savingsPlanFairChargeback` feature
 flags to achieve the following. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.

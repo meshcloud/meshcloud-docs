@@ -10,8 +10,8 @@ Operators can configure meshStack to collect, attach and distribute organization
 
 ## Use Cases for Tags
 
-> meshStack currently supports tags on [meshCustomers](meshcloud.customer.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
-> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [meshCustomerUserGroups](meshstack.customer-group-sync.md) are freely taggable via the meshStack API.
+> meshStack currently supports tags on [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
+> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [meshWorkspaceUserGroups](meshstack.workspace-group-sync.md) are freely taggable via the meshStack API.
 
 meshStack acts as an organization's central registry of cloud environments and services. It therefore needs to cover
 a wide range of use cases for orchestrating organizational processes across multiple clouds, including;
@@ -90,7 +90,7 @@ You will be prompted with a new page where you can enter a lot of information. W
 
 ## Tags on meshUsers
 
-meshUsers are defined globally in meshStack and therefore their tags are identical within all meshCustomers. As described in [meshPolicies](meshcloud.policies.md#meshpolicies-for-meshUsers/Groups) there are use cases where it makes sense to just apply a set of default tags to all meshUsers. I.e. you want to allow to assign all users to "dev" and "qa" projects, but not to "prod" projects.
+meshUsers are defined globally in meshStack and therefore their tags are identical within all meshWorkspaces. As described in [meshPolicies](meshcloud.policies.md#meshpolicies-for-meshUsers/Groups) there are use cases where it makes sense to just apply a set of default tags to all meshUsers. I.e. you want to allow to assign all users to "dev" and "qa" projects, but not to "prod" projects.
 
 <!--snippet:mesh.web.user-->
 
@@ -102,7 +102,7 @@ let UserTagsConfig =
     {-
           tags:
             Default tags will be applied to every active user in meshStack on every startup of meshStack and
-            whenever a new user is added to a meshCustomer or imported via API
+            whenever a new user is added to a meshWorkspace or imported via API
     -}
       { tags : List { mapKey : Text, mapValue : List Text } }
 ```
@@ -124,24 +124,24 @@ meshStack makes metadata available to [Landing Zones](./meshcloud.landing-zones.
 > meshTenant metadata is part of a tenant's desired state. meshStack will therefore automatically reconcile any change to metadata with the actual tenant state.
 
 meshStack automatically derives [metadata tags](./meshcloud.metadata-tags.md) for [meshTenants](./meshcloud.tenant.md) based on the metadata tags set on the [meshProject](./meshcloud.project.md), the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
-the [meshCustomer](./meshcloud.customer.md) it belongs to.
+the [meshWorkspace](./meshcloud.workspace.md) it belongs to.
 
-It's possible that these objects have tags with the same tag key. For example, both the meshCustomer and
+It's possible that these objects have tags with the same tag key. For example, both the meshWorkspace and
 meshProject could contain a `cmdb-id` tag. Setting the `cmdb-id` tag value on the
-meshCustomer provides it as a "default" value to all tenants owned by that meshCustomer. A user can then override
+meshWorkspace provides it as a "default" value to all tenants owned by that meshWorkspace. A user can then override
 this default value on an individual meshProject by providing a value for the optional `cmdb-id` tag on the meshProject.
 
 When merging the tag sources for a meshTenant, meshStack therefore applies the following precedence rule:
 
 ```text
-meshProject tags > payment method tags > meshCustomer tags
+meshProject tags > payment method tags > meshWorkspace tags
 ```
 
 You can find an example in the table below which explains this behavior:
 
 | meshObject        | Tag Name | Tag Value |
 | ----------------- | -------- | --------- |
-| meshCustomer      | cmdb-id  | 12        |
+| meshWorkspace     | cmdb-id  | 12        |
 | meshPaymentMethod | cmdb-id  | 34        |
 | meshProject       | cmdb-id  | 56        |
 
@@ -153,8 +153,8 @@ Some Landing Zone assets like [GCP Cloud Functions](meshstack.gcp.landing-zones.
 
 
 | HTTP Header Name                 | Description                                                                                                                   |
-| -------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| `x-mesh-customer-identifier`     | meshCustomer Identifier                                                                                                       |
+|----------------------------------| :---------------------------------------------------------------------------------------------------------------------------- |
+| `x-mesh-customer-identifier`     | meshWorkspace Identifier                                                                                                       |
 | `x-mesh-project-identifier`      | meshProject identifier                                                                                                        |
 | `x-mesh-costcenter` *deprecated* | If available, ID of the CostCenter selected for this meshProject. Please use `x-mesh-tag-cost-center` or another tag instead. |
 | `x-mesh-tenant-platform-number`  | A increasing sequence number for a meshProject tenant on a specific platform.                                                 |
@@ -182,11 +182,11 @@ The tag definition configuration describes on a per-platform basis how these tag
 The following extra metadata can be used in such a tag definition configuration:
 
 | Tag Key                    | Description                                                                                                                                                    |
-| -------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|----------------------------| :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `${projectIdentifier}`     | The meshProject identifier                                                                                                                                     |
-| `${customerIdentifier}`    | The meshProject's customer identifier                                                                                                                          |
+| `${customerIdentifier}`    | The meshProject's workspace identifier                                                                                                                          |
 | `${projectName}`           | The meshProject display name                                                                                                                                   |
-| `${customerName}`          | The meshProject's customer name                                                                                                                                |
+| `${customerName}`          | The meshProject's workspace name                                                                                                                                |
 | `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied. |
 | `${paymentIdentifier}`     | The identifier of the payment method that is assigned to the meshProject                                                                                       |
 | `${paymentName}`           | The display name of the payment method that is assigned to the meshProject                                                                                     |
@@ -237,4 +237,4 @@ During replication non conform tag keys and values are possibly adapted to the p
 
 ## Tags in Reports
 
-meshStack includes meshCustomer, meshProject and Payment Method metadata tags as extra columns in relevant reports, e.g. [Chargeback Statements](./meshstack.billing-configuration.md#chargeback).
+meshStack includes meshWorkspace, meshProject and Payment Method metadata tags as extra columns in relevant reports, e.g. [Chargeback Statements](./meshstack.billing-configuration.md#chargeback).

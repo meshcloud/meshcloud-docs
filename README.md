@@ -4,7 +4,7 @@
 
 Welcome to the meshcloud Platform documentation!
 
-It's all built on [docusaurus](https://docusaurus.io/en/) and available on [GitHub](https://github.com/meshcloud/meshcloud-docs). We accept community contributions!
+It's all built on [docusaurus](https://docusaurus.io) and available on [GitHub](https://github.com/meshcloud/meshcloud-docs). We accept community contributions!
 
 ## Running Locally
 

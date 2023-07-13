@@ -33,7 +33,7 @@ meshStack has been specifically validated to work with RKE (Rancher Kubernetes E
 
 ### meshStack Configuration
 
-Your meshStack installation needs to be configured to restrict meshProject and meshCustomer identifiers as follows:
+Your meshStack installation needs to be configured to restrict meshProject and meshWorkspace identifiers as follows:
 
 - alphanumeric characters only
 - maximum combined length of 63 characters

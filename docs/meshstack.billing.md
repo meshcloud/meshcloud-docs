@@ -30,13 +30,13 @@ A product catalog also contains pricing rules that determine the cost for a part
 
 ## Billing
 
-> Billing is the process of attributing resource usage to cloud tenants and creating appropiate invoices.
+> Billing is the process of attributing resource usage to cloud tenants and creating appropriate invoices.
 
 There are two principal steps to the billing process. The first is creating periodic (e.g. monthly) [Tenant Usage Reports](meshcloud.project-metering.md) that
 aggregate cloud resource usage data for tenants. meshStack makes [Tenant Usage Reports](meshcloud.project-metering.md) available to all
-involved users, i.e. customer & project owners, platform operators and partners.
+involved users, i.e. workspace & project owners, platform operators and partners.
 
-The second is invocing the customer according to agreed terms for this usage. This may also involve applying additional
+The second is invoicing the application team (represented by a meshWorkspace) according to agreed terms for this usage. This may also involve applying additional
 pricing and discount rules to aggregated usage reports, i.e. volume discounts.
 
 ### Public cloud billing with meshcloud
@@ -50,7 +50,7 @@ for its aggregated cloud spend. These invoices list the cloud spend by individua
 
 ### Private cloud billing with meshcloud
 
-Private cloud platforms like OpenStack, OpenShift and Cloud Foundry usually do not provide built-in metering and biling capabilities.
+Private cloud platforms like OpenStack, OpenShift and Cloud Foundry usually do not provide built-in metering and billing capabilities.
 While they may have APIs or facilities to expose basic usage information, they do not come with metering and pricing capabilities
 that match the expectations developers and project managers have grown accustomed to from public cloud billing.
 

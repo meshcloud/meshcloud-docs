@@ -3,7 +3,7 @@ id: meshstack.email
 title: Email
 ---
  
-For all email based communication (e.g. for [customer registration](./meshstack.onboarding.md#customer-registration) or [customer user invitations](./meshstack.onboarding.md#customer-user-invitations)) meshStack will use the configured SMTP server.
+For all email based communication (e.g. for [workspace registration](./meshstack.onboarding.md#workspace-registration) or [workspace user invitations](./meshstack.onboarding.md#workspace-user-invitations)) meshStack will use the configured SMTP server.
 
 <!--snippet:mesh.meshfed.mail-->
 

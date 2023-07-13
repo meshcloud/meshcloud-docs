@@ -25,7 +25,7 @@ If you are not familiar with what a Partner User is, read more [here](administra
 
 ## Declining Deletion
 
-You can also decline the meshTenant deletion request and bounce it back to the customer
+You can also decline the meshTenant deletion request and bounce it back to the user
 e.g. if they forgot to clean up certain resources in the cloud tenant.
 
 ## Additional

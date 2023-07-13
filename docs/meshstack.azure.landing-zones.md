@@ -15,7 +15,7 @@ The following description targets the regular Azure Subscription based integrati
 
 ### Management Group Assignment
 
-All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://azure.microsoft.com/en-us/features/management-groups/). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
+All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
 
 > Management Groups used in different Azure [Landing Zones](./meshcloud.landing-zones.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
 
@@ -40,12 +40,12 @@ The following parameter can be used in the Blueprint:
 
 | Parameter          | Description                                                                               |
 |--------------------|:------------------------------------------------------------------------------------------|
-| customerIdentifier | Customer Identifier                                                                       |
+| workspaceIdentifier | Workspace Identifier                                                                       |
 | projectIdentifier  | The project identifier                                                                    |
 | SubscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
 | tagCostCenter      | Example for a  [metadata tags](./meshstack.metadata-tags.md) named `costCenter`           |
 
-As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or customer tags can also be used in the Blueprints.
+As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or workspace tags can also be used in the Blueprints.
 The following modifications are applied to metadata tag keys by meshstack before making them available as parameters:
 
 - Parameters are prefixed with `tag`
