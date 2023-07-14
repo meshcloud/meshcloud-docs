@@ -8,7 +8,7 @@ allows you to invite and manage team members, create [meshProjects](meshcloud.pr
 
 ## Workspace Creation
 
-Organizations implementing meshStack can choose to offer self-service workspace registration via meshPanel or externalize
+Organizations implementing meshStack can choose to offer self-service workspace creation via meshPanel or externalize
 the process to some existing ITSM or process automation system. Operators can read more about these options [here](meshstack.onboarding.md#workspace-registration).
 
 In any case, the meshWorkspace creation process always involves collecting basic workspace information like name, identifier
