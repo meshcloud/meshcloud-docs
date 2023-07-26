@@ -25,7 +25,7 @@ The first step in reaping the benefits of payment methods is creating them. A fe
 One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the 'Partner Admin' role. Navigate to the Admin area and follow these steps:
 
 1. Click on 'Workspaces' on the left.
-2. Find a workspace you want to create a payment method for and click on the 'Workspace Payment Methods' icon on the right.
+2. Find a workspace you want to create a payment method for and click on the 'Create/Edit Payment methods' icon on the right.
 
     ![List Payment Methods](assets/payment_methods/workspace_list_payment_methods.png)
 
