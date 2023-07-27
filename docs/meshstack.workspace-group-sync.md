@@ -256,7 +256,7 @@ let example =
       The following example takes the 'cn' attribute and if the attribute matches the first rule,
       will assign whatever follows the "MESHCLOUD-ROLE-" as the value of the meshObject field. If the attribute matches
       the second rule, will assign the value "Platform Operator" and if none of the rules match, assigns the
-      value "Customer Admin".
+      value "Workspace Manager".
     -}
       { attribute = "cn"
       , postProcessor = None PostProcessor
@@ -267,7 +267,7 @@ let example =
           }
         ]
       , template = None Text
-      , otherwise = Some "Customer Admin"
+      , otherwise = Some "Workspace Manager"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -439,7 +439,7 @@ let example
                 }
               ]
             , template = None Text
-            , otherwise = Some "Customer Admin"
+            , otherwise = Some "Workspace Manager"
             }
       }
 ```

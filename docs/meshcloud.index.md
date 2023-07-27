@@ -43,7 +43,7 @@ The meshPanel is the self-service user interface for meshStack and provides diff
 
     Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
 
-The above description serve as an example what you are able to do as Customer Admin. Check out [meshWorkspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
+The above description serve as an example what you are able to do as Workspace Manager. Check out [meshWorkspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
 
 ### Supported browsers
 

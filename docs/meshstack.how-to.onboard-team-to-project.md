@@ -8,7 +8,7 @@ If you are not familiar with what a meshProject is, please check the [official m
 ## Pre-Requisites
 
 - Users you want to add to an meshProject needs to be added to the meshWorkspace first. Check out the `Onboarding your team to your meshWorkspace` guide.
-- Permissions: Your user needs either the Customer Admin or Customer Owner role in the meshWorkspace
+- Permissions: Your user needs either the Workspace Manager or Workspace Owner role in the meshWorkspace
 
 ## Step to Step Guide
 
@@ -36,5 +36,5 @@ If you are not familiar with what a meshProject is, please check the [official m
 meshStack enterprise supports 4-eyes access controls.
 Please check the [official meshcloud documentation](meshcloud.project.md#access-control-on-a-meshproject).
 
-- A second user with Customer Admin or Customer Owner permission needs to approve the access request. The second user must also navigate to the specific meshWorkspace (see step 1.), select the meshProject (see step 2.), go to the `Access Control` tab (see step 3.) and then click on the `Access Requests` tab in the second tab-row.
+- A second user with Workspace Manager or Workspace Owner permission needs to approve the access request. The second user must also navigate to the specific meshWorkspace (see step 1.), select the meshProject (see step 2.), go to the `Access Control` tab (see step 3.) and then click on the `Access Requests` tab in the second tab-row.
 ![Click the Access Requests tab](./assets/project/project-access-approve.png "Access Control - Access Requests")

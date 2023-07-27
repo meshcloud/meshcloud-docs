@@ -39,7 +39,7 @@ Policy creation is only possible for a user who has a partner role.
 
 To learn more about how meshPolicies work, please click [here](meshcloud.policies.md).
 
-After creating a meshPolicy, every meshSubjects defined in meshPolicy will be evaluated. All violations caused by the new meshPolicy will be logged. These can be either fixed by customer admins or partner admins, by picking the right tag values.
+After creating a meshPolicy, every meshSubjects defined in meshPolicy will be evaluated. All violations caused by the new meshPolicy will be logged. These can be either fixed by workspace managers or partner admins, by picking the right tag values.
 
 ## Edit meshPolicies
 

@@ -7,7 +7,7 @@ If you are not familiar with what a meshProject is, please check the [official m
 
 ## Prerequisites
 
-- Permissions: Your user needs either the Customer Admin or Customer Owner role in the meshWorkspace for which you want to create the meshProject.
+- Permissions: Your user needs either the Workspace Manager or Workspace Owner role in the meshWorkspace for which you want to create the meshProject.
 - Valid Payment Method: Your meshWorkspace has a payment method that is not expired.
 
 ## Step-by-Step Guide

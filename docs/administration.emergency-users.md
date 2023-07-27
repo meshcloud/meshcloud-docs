@@ -10,11 +10,11 @@ Example use cases for emergency users and emergency intervention include
 - An important application has stopped functioning and operating users needs access to debug and fix the problem
 - Project access for a specific user must be immediately revoked (e.g. due to an account compromise)
 
-In all cases access permissions can always be modified through the [meshPartner](administration.index.md) account which is managed by an operations team. If available, a user with customer admin access is also sufficient for some cases.
+In all cases access permissions can always be modified through the [meshPartner](administration.index.md) account which is managed by an operations team. If available, a user with workspace manager access is also sufficient for some cases.
 
-## Emergency Access with Customer Admin
+## Emergency Access with Workspace Manager
 
-If a user with [customer admin](meshcloud.workspace.md) access is available, meshProject users and roles can be managed the normal way, even if the customer admin is not assigned to the meshProject.
+If a user with [workspace manager](meshcloud.workspace.md) access is available, meshProject users and roles can be managed the normal way, even if the workspace manager is not assigned to the meshProject.
 
 First, the user requiring emergency access must be invited to the meshWorkspace
 
@@ -22,9 +22,9 @@ First, the user requiring emergency access must be invited to the meshWorkspace
 - Open the **Access Control** tab in the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) and open the **Current Access** tab.
 - At the bottom of the screen, type in the name or e-mail of the new user and invite them with the desired role.
 
-You can also grant customer admin rights to the newly invited user, i.e. if the emergency user needs to modify other user permissions. In this case, the new user can perform the following steps themselves.
+You can also grant workspace manager rights to the newly invited user, i.e. if the emergency user needs to modify other user permissions. In this case, the new user can perform the following steps themselves.
 
-### Adding emergency as Customer Admin
+### Adding emergency as Workspace Manager
 
 The user can then be assigned to meshProjects belonging to the meshWorkspace:
 
@@ -36,7 +36,7 @@ Since emergency access should only be temporary, it's strongly advised to assign
 
 ### Approving emergency user requests
 
-User project role assignments can be configured to require consent from multiple customer admins ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough customer admins are available to confirm an urgent user role request, the meshPartner can confirm project role requests directly:
+User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, the meshPartner can confirm project role requests directly:
 
 - Ensure that the partner is selected from the meshWorkspace drop down
 - Open "Administration" from the settings menu in the top right
@@ -52,26 +52,26 @@ When emergency access is no longer required the following steps will revert perf
 
 ## Access with meshPartner
 
-Even when no customer admin is available, users with partner admin/employee access can manage permissions for their managed meshWorkspaces.
+Even when no workspace manager is available, users with partner admin/employee access can manage permissions for their managed meshWorkspaces.
 
 ### Adding emergency user as meshPartner
 
-Note: this only works when Customer Admin role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
+Note: this only works when Workspace Manager role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
 value ([read more here](meshstack.onboarding.md#workspace-user-invitations))
 
-In order to manage users for a specific meshProject, the partner user must add their own account to the respective meshWorkspace as a customer admin:
+In order to manage users for a specific meshProject, the partner user must add their own account to the respective meshWorkspace as a workspace manager:
 
 - Ensure that the meshPartner is selected from the meshWorkspace dropdown
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace User" from the actions column for the target workspace
 - Activate “Add Myself” button in the top right
 
-Afterwards they may proceed to manage users for this meshWorkspace as a customer admin (see previous section).
+Afterwards they may proceed to manage users for this meshWorkspace as a workspace manager (see previous section).
 
 ### Removing emergency user as meshPartner
 
-Since the meshPartner user is now a customer admin the procedure is the same as outlined in the previous section.
-However, to revert the temporary customer admin role assignment, another customer admin must remove the partner user from the workspace via **Access Control** > **Current Access**.
+Since the meshPartner user is now a workspace manager the procedure is the same as outlined in the previous section.
+However, to revert the temporary workspace manager role assignment, another workspace manager must remove the partner user from the workspace via **Access Control** > **Current Access**.
 
 ## Access Through Service Users
 

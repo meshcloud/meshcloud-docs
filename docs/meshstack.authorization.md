@@ -19,7 +19,7 @@ meshStack includes **meshObject roles** that manage permissions on different [me
 
 Role bindings can also have a managed expiry date after which meshStack will automatically revoke the role.
 
-Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Customer Admin" [meshWorkspace Role](meshcloud.workspace.md#assign-meshWorkspace-roles) can add new role bindings to that meshWorkspace.
+Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Workspace Manager" [meshWorkspace Role](meshcloud.workspace.md#assign-meshWorkspace-roles) can add new role bindings to that meshWorkspace.
 
 ### Access Requests
 
@@ -107,22 +107,22 @@ let example =
 
 In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest`. See the [role request configuration reference](meshstack.onboarding.md#workspace-user-invitations) for details.
 
-If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to customer administrators who then can accept or decline such a request.
+If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to workspace managers who then can accept or decline such a request.
 
 <figure>
   <img src="assets/authorization.additional-role-info.png" style="width: 50%;" alt="Additional Information Role Request Popup">
   <figcaption>Popup requesting additional information for a project role request</figcaption>
 </figure>
 
-New project role requests must be approved before the binding is created. The customer admin making the role request registers an implict approval of the request. Each customer admin can only reqister a single approval for an access request. This ensures that a _different_ customer admin must register the 2nd approval before the binding is created.
+New project role requests must be approved before the binding is created. The workspace manager making the role request registers an implict approval of the request. Each workspace manager can only reqister a single approval for an access request. This ensures that a _different_ workspace manager must register the 2nd approval before the binding is created.
 
-> Note: if you make a role request on behalf of another customer admin, that user (or another customer admin) still has to approve or reject this request. This is intentional behavior to make users aware of any role changes done on their behalf.
+> Note: if you make a role request on behalf of another workspace manager, that user (or another workspace manager) still has to approve or reject this request. This is intentional behavior to make users aware of any role changes done on their behalf.
 
-Customer admins will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests. In case of a workspace user group, all users of the group are informed.
+Workspace managers will be notified by email about pending approvals. The affected user is also informed via mail about approved or rejected role requests. In case of a workspace user group, all users of the group are informed.
 
-When any customer admin declines the role request, the role request is immediately cancelled.
+When any workspace manager declines the role request, the role request is immediately cancelled.
 
-> Note: When a workspace has less customer admins than the requested `minApprovalCount`, role requests will get automatically approved when all customer admins have registered an approval. The meshPanel can be configured to display a warning in this case.
+> Note: When a workspace has less workspace managers than the requested `minApprovalCount`, role requests will get automatically approved when all workspace managers have registered an approval. The meshPanel can be configured to display a warning in this case.
 
 Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the workspace. To do so configure the [meshStack configuration model](meshstack.index.md#configuration) under `panel.mesh.dashboardNotification`:
 
@@ -153,7 +153,7 @@ The following claims in the OIDC token represent this information and can be use
   ],
   "MC_CUSTOMER": "my-workspace",
   "MC_GROUPS": [
-    "Customer Admin"
+    "Workspace Manager"
   ],
   "preferred_username": "user@meshcloud.io",
   "email": "user@meshcloud.io",
@@ -174,6 +174,6 @@ A Service User can be created and deleted by all users assigned to the project. 
 
 ## Role Revocation
 
-User role revocation on [meshProject](meshcloud.project.md#unassign-principal-from-a-meshproject) and [meshWorkspace](meshcloud.workspace.md#remove-assigned-meshworkspace-roles) level allow Customer Admins to always limit access to the meshWorkspace and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshWorkspaces and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
+User role revocation on [meshProject](meshcloud.project.md#unassign-principal-from-a-meshproject) and [meshWorkspace](meshcloud.workspace.md#remove-assigned-meshworkspace-roles) level allow Workspace Managers to always limit access to the meshWorkspace and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshWorkspaces and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
 
 Users who e.g. left the company, can automatically be revoked in meshStack as described [here](meshstack.user-revocation.md).
