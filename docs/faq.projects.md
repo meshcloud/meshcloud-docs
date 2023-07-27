@@ -9,7 +9,7 @@ While it is possible, we advise against moving meshProjects. The recommended opt
 
 Process for moving a meshProject from meshWorkspace `source-workspace` to meshWorkspace `target-workspace`:
 
-1. A Customer Admins of `source-workspace` marks the meshProject for deleted in the meshWorkspace
+1. A Workspace Managers of `source-workspace` marks the meshProject for deleted in the meshWorkspace
 2. A Partner Admin confirms deletion of the meshProject in the admin area
 3. meshcloud support un-blocks the tenant localId (there is a safety mechanism in place to prevent double billing of resources when re-using a tenant).
 4. A Partner Admin of `target-workspace` adopts the tenant via API into the meshWorkspace `target-workspace` and a project of their choosing.

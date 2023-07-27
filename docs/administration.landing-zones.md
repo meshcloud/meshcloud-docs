@@ -15,7 +15,7 @@ Please consult the [operator documentation](./meshstack.index.md) of the respect
 ## Disabling Landing Zones
 
 Disabled Landing Zones can't be assigned to projects anymore. If the Landing Zone has already been assigned to a project,
-this assignment will remain, but customer admins can no longer create new projects using this Landing Zone.
+this assignment will remain, but workspace managers can no longer create new projects using this Landing Zone.
 
 ## Configure Landing Zone tags
 

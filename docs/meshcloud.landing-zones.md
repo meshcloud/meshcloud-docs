@@ -23,5 +23,5 @@ and use it.
 
 ## Using Landing Zones
 
-Customer administrators can choose a Landing zone when [adding meshTenants](./meshcloud.project.md#adding-meshtenants) to a meshProject.
+Workspace managers can choose a Landing zone when [adding meshTenants](./meshcloud.project.md#adding-meshtenants) to a meshProject.
 It is not possible to change the chosen Landing Zone of an existing meshTenant. The only way of doing so is by removing the meshTenant and creating another by re-adding the same meshPlatform to the Project again.

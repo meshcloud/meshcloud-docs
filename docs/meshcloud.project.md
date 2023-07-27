@@ -5,7 +5,7 @@ title: meshProject
 
 meshProjects are multi-cloud enabled projects that allow teams to manage and scale cloud resources across all [meshPlatforms](meshcloud.platforms.md) made available to their [meshWorkspace](meshcloud.workspace.md).
 
-> Only users with the role [Customer Admin](meshcloud.workspace.md#assign-meshworkspace-roles) or [Customer Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
 ## Create a new meshProject
 
@@ -66,7 +66,7 @@ You can change the Project Role, by choosing a different role in the dropdown at
 
 An expiration date can be set for an assignment to a project. When this expiration date is reached, access to the project will be revoked. An expiration date can be set directly when assigning a user or group to the project. It can also be updated any time.
 
-Customer Admins are informed about project role assignments that will expire soon via dashboard notifications on the my project screen and in the Account Dashboard.
+Workspace Managers are informed about project role assignments that will expire soon via dashboard notifications on the my project screen and in the Account Dashboard.
 Via "Projects" -> "Expired Access", the expired or soon to expire role assignments are listed and can be extended.
 
 ### Unassign user or group from a meshProject
