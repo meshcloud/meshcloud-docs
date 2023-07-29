@@ -2,6 +2,7 @@
 id: meshstack.index
 title: Overview
 ---
+
 <h3 style="margin-top: 0">Welcome to the meshStack Documentation!</h3>
 
 meshStack is the name of our technology that powers the meshcloud solution. This document is targeted at cloud architects and SREs and introduces the components of meshStack and their interaction.
@@ -30,16 +31,15 @@ These mappings can be customized. For more details, please consult documentation
 
 The connections are shown in the following matrix table:
 
-|               | [meshWorkspace](./meshcloud.workspace.md) | [meshProject](./meshcloud.project.md) | [meshUser](./meshcloud.profile.md) | [Landing Zone](./meshcloud.landing-zones.md) |
-| :-----------: | :-------------------------------------: | :-----------------------------------: | :--------------------------------: | :-----------------------------------------: |
-|   OpenStack   |              Domain (optional)          |                Project                |        Keystone Shadow User        |                    Quota                    |
-| Cloud Foundry |              Organization               |                 Space                 |              UAA User              |                    Quota                    |
-|  Kubernetes   |                    -                    |               Namespace               |            Rolebinding             |               YAML Templates                |
-|   OpenShift   |                    -                    |                Project                |                User                |               YAML Templates                |
-|      AWS      |                    -                    |                Account                |              IAM Role              |      CF StackSets / Organization Units      |
-|     Azure     |                    -                    |             Subscription              |              AAD User              |        Blueprints / Management Groups        |
-|      GCP      |                    -                    |                Project                |              GCD User              |     Organization Policy / GDM Template      |
-
+|               | [meshWorkspace](./meshcloud.workspace.md) | [meshProject](./meshcloud.project.md) | [meshUser](./meshcloud.profile.md) | [meshLandingZone](./meshcloud.landing-zones.md) |
+| :-----------: | :---------------------------------------: | :-----------------------------------: | :--------------------------------: | :------------------------------------------: |
+|   OpenStack   |             Domain (optional)             |                Project                |        Keystone Shadow User        |                    Quota                     |
+| Cloud Foundry |               Organization                |                 Space                 |              UAA User              |                    Quota                     |
+|  Kubernetes   |                     -                     |               Namespace               |            Rolebinding             |                YAML Templates                |
+|   OpenShift   |                     -                     |                Project                |                User                |                YAML Templates                |
+|      AWS      |                     -                     |                Account                |              IAM Role              |      Organization Units / CF StackSets       |
+|     Azure     |                     -                     |             Subscription              |              AAD User              |        Management Groups / Blueprints        |
+|      GCP      |                     -                     |                Project                |              GCD User              |           Folders / GDM Templates            |
 
 ## Operations
 
@@ -47,6 +47,7 @@ meshcloud will typically operate your meshStack installation as a [managed servi
 
 ### Configuration
 
-meshcloud configures your meshStack installation using a [dhall](https://dhall-lang.org/) configuration model. As part of meshcloud's managed service, customers get access to their configuration in a git repository. This is also useful to communicate configuration options and track changes.
+Most of meshStack's configuration can be done in self-service via the meshPanel in the Administration area.
 
-The configuration documentation will occasionally also make references to [YAML](https://en.wikipedia.org/wiki/YAML) configuration options. These will be replaced with `dhall` models in the next releases. Dhall models can generate YAML configuration files dynamically, but provide superior features in terms of flexibility and validation.
+meshStack also supports advanced configuration options. Please see [managed service](./meshstack.managed-service.md) for more details.
+
