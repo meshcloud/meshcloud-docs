@@ -24,8 +24,9 @@ In general meshStack supports all OpenShift versions that can provide the resour
 
 ### IdP Configuration
 
-The same external IdP as configured for meshStack must be used for OpenShift (see [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities)).
 meshStack will identify and assign users in OpenShift via their euid (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
+In practice, we recommend using the same external IdP as configured for meshStack and configuring OpenShift to use the same attribute as `username`.
+
 
 ### meshStack Service Accounts
 
