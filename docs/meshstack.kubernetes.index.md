@@ -3,22 +3,21 @@ id: meshstack.kubernetes.index
 title: Integration
 ---
 
-meshStack supports project creation, configuration, user management and SSO for Kubernetes clusters.
-Our Kubernetes integration is distribution-independent and is purely based on "vanilla" upstream Kubernetes services.
-Operators should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
-required APIs and configuration options available.
+meshStack supports namespace creation, configuration, access control, quota management and billing for Kubernetes.
 
-The following Kubernetes distributions are supported:
+Our Kubernetes integration is generally distribution-independent and is purely based on "vanilla" upstream Kubernetes services. Operators should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
+required APIs (described below) and configuration options available.
 
-- **Native Kubernetes** Supports user authentication via Keycloak integration.
-- **Azure Kubernetes Services** Supports Azure AAD authenticated users to get seamless access to the AKS cluster.
+The following Kubernetes distributions are supported and covered on this page:
+
+- **Native Kubernetes** with [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities) using externally provisioned identities
+- **Azure Kubernetes Services** with user authentication and authorization via AKS AAD integration
+
+> meshStack additionally offers [OpenShift integration](./meshstack.openshift.index.md). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
 
 ## Integration Overview
 
-To enable integration with Kubernetes, operators deploy and configure the meshStack Kubernetes Module. Operators can configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes. This makes Kubernetes available to meshProjects like any other cloud platform in meshStack.
-In order to successfully replicate and meter this platform, the [Platform Connection Configuration](administration.platforms.md#platform-connection-config) must be entered via meshPanel based on the configurations inside the platform described on this page.
-
-Depending on which Kubernetes distribution you want to use you will need to follow different steps. Below are the steps for the [meshStack Identity Federation](./meshstack.identity-federation.md) integration as well as for the [Azure Kubernetes Services](#azure-kubernetes-services).
+To enable integration with Kubernetes, operators configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 
@@ -29,9 +28,9 @@ meshStack should work with any Kubernetes version and distribution that offers t
 - `core/v1`
 - `rbac.authorization.k8s.io/v1`
 
-meshStack has been specifically validated to work with RKE (Rancher Kubernetes Engine), [AKS](#azure-kubernetes-services) (Azure Kubernetes Cluster) and CFCR (Cloud Foundry Container Runtime).
+meshStack has been specifically validated to work with RKE (Rancher Kubernetes Engine) and [AKS](#azure-kubernetes-services).
 
-### meshStack Configuration
+## meshStack Configuration
 
 Your meshStack installation needs to be configured to restrict meshProject and meshWorkspace identifiers as follows:
 
@@ -40,6 +39,8 @@ Your meshStack installation needs to be configured to restrict meshProject and m
 
 You can refer to the [official Documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names).
 
+
+## Kubernetes Cluster Configuration
 
 ### meshStack Service Accounts
 
@@ -229,7 +230,6 @@ For example if you plan to use a role named `my-custom-role` please change the r
 - apiGroups:
   - ""
   - rbac.authorization.k8s.io
-  - authorization.openshift.io
   resources:
   - clusterroles
   verbs:
@@ -241,27 +241,31 @@ For example if you plan to use a role named `my-custom-role` please change the r
   - my-custom-role
 ```
 
-## meshStack Identity Federation
+### Access Control Integration
 
-In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as a trusted authentication provider. You will need to configure your Kubernetes distribution to apply the following configuration to [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/). Variables prefixed with `$` must
-be replaced with the appropriate values for your individual meshStack installation.
+Integrating access control with meshStack requires different steps depending on your Kubernetes distribution.
+
+#### Generic Kubernetes Distributions
+
+meshStack will identify and assign users to roles in Kubernetes based on their `euid` (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
+In practice this means that meshStack will replicate `ClusterRoleBinding` with subjects like
 
 ```yaml
-authorization-mode: RBAC
-oidc-issuer-url: "https://$SSO_URL/auth/realms/meshfed"
-oidc-client-id: "meshfed-oidc"
-oidc-username-claim: "sub"
-oidc-username-prefix: "mesh:"
-oidc-groups-claim: "MC_CUSTOMER_PROJECTS"
-oidc-groups-prefix: ""
-cors-allowed-origins: "http://localhost:9001,https://.*"
+subjects:
+- kind: User
+  name: "$euid"
+  apiGroup: rbac.authorization.k8s.io
 ```
 
-meshStack automatically configures Kubernetes namespaces and RBAC permissions to integrate SSO with [meshStack Identity Federation](./meshstack.identity-federation.md).
+You will need to configure your Kubernetes distribution to map the same attribute value configured as `euid` in meshStack as the [subject identifier](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects) in your Kubernetes Cluster.
+For example, if you're using an OIDC identity provider, configure the kube-apiserver `oidc-username-claim` to use the same attribute value used for meshUser's `euid`.
+For more details, please review the [Kubernetes documentation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens) or your Kubernetes distribution's specific instructions.
 
-## Azure Kubernetes Services
+#### Azure Kubernetes Services
 
-In order to use the AKS cluster properly with meshStack you need to enable the Azure AD integration. A good description on what needs to be done can be found in the [AKS-managed Azure Active Directory integration](https://docs.microsoft.com/en-us/azure/aks/managed-aad) document from Microsoft.
+If you're using AKS, choose the platform type AKS when configuring the meshPlatform. This enables you to use Azure AD integration with your AKS cluster.
+
+To prepare your AKS Cluster follow the official instructions [AKS-managed Azure Active Directory integration](https://docs.microsoft.com/en-us/azure/aks/managed-aad).
 
 You need the Azure CLI version 2.0.61 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see Install Azure CLI.
 
