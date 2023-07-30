@@ -5,11 +5,11 @@ title: Integration
 
 meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.index.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
 
-meshStack supports project creation, configuration and user management for OpenShift.
+meshStack supports project creation, configuration, access control, quota management and billing for OpenShift.
 
 ## Integration Overview
 
-To enable integration with OpenShift, operators deploy and configure the meshStack OpenShift Connector. Operators can configure one or multiple `PlatformInstance`s of `PlatformType` OpenShift. This makes OpenShift available to meshProjects like any other cloud platform in meshStack.
+To enable integration with OpenShift, operators configure one or multiple `meshPlatform`s of `PlatformType` OpenShift in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 

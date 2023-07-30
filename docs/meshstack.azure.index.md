@@ -3,12 +3,12 @@ id: meshstack.azure.index
 title: Integration
 ---
 
-meshcloud can automatically provision Azure Subscriptions as Tenants for [meshProjects](./meshcloud.project.md) and configure them according to your organiziations policies
+meshStack can automatically provision Azure Subscriptions or Resource Groups as Tenants for [meshProjects](./meshcloud.project.md) and configure them according to your organiziations policies
 using [Landing Zones](./meshcloud.landing-zones.md).
 
 ## Integration Overview
 
-To enable integration with Azure, operators need to deploy and configure the meshStack Azure Replicator. Operators can configure one or multiple `PlatformInstance`s of `PlatformType.Azure`. This makes Azure available to meshProjects like any other cloud platform in meshStack.
+To enable integration with Azure, operators configure one or multiple `meshPlatform`s of `PlatformType` Azure in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 Azure relies on Azure Active Directoy (AAD) for authentication and authorization. meshcloud can seamlessly integrate with common
 setups like [Azure Hybrid Identity](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/). meshcloud helps you implement Azure in line with [Governance best-practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/govern/governance-disciplines) by integrating [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) and Management Groups using [Landing Zones](#landing-zones)
