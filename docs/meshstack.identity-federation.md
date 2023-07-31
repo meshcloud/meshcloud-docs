@@ -3,7 +3,7 @@ id: meshstack.identity-federation
 title: Identity and Access Management
 ---
 
-One of meshStacks main features is to provide single identities across multiple cloud and container platforms. Therefore, meshStack contains a full-featured **Identity Broker** (meshIdB) which consumes identities from company directories and adds authorization information for the specific cloud platforms.
+meshStack supports a central Identity Provider architecture across multiple cloud and container platforms. Therefore, meshStack contains a full-featured Identity Broker (meshIdB) which consumes identities from company directories and adds authorization information for the specific cloud platforms.
 
 Identity Federation enables enterprises to integrate corporate SSO systems at a single point (the **mesh Identity Broker**). meshStack then uses it's desired-state replication to ensure correct configuration of identity and authorization information into all connected **meshPlatforms**. The diagram below depicts the principal components involved.
 
@@ -50,7 +50,7 @@ graph LR;
 ## Designing Multi-Cloud Identity and Access Management
 
 Designing an effective multi-cloud identity and access management strategy is no small feat. This guide describes the
-most important considerations that enterprise architects and IAM specialists need to be aware of when designing
+most important considerations that nterprise architects and IAM zpecialists need to be aware of when designing
 a multi-cloud IAM strategy for their organisation. Wherever applicable, it will link to sections that describe relevant configuration options in detail.
 
 ## Federated Multi-Cloud Identities
@@ -61,7 +61,7 @@ The identity provisioning mechanism and the resulting federation setup depends o
 
 ### meshStack-provisioned Identities
 
-In this mode meshStack provisions identities used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation and deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
+In this mode meshStack provisions identities used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation and deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance. This is only available for Cloud Foundry.
 
 ```mermaid
 graph LR;
@@ -126,7 +126,7 @@ meshStack supports the following identity provisioning strategies:
 | :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
 |   OpenStack   |                               -                                |   [supported](./meshstack.openstack.index.md#access-control-integration)   |
 | Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
-|  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
+|  Kubernetes   |                               -                                |  [deprecated](./meshstack.kubernetes.index.md#access-control-integration)   |
 |   OpenShift   |                               -                                |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
 |      AWS      |   [deprecated](./meshstack.aws.index.md#meshidb-deprecated)    |               [supported](./meshstack.aws.index.md#aws-sso)                |
 |     Azure     |   [AAD B2B](./meshstack.azure.index.md#workload-aad-tenant)    | [supported](./meshstack.azure.index.md#azure-active-directory-integration) |
