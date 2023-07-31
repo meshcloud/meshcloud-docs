@@ -118,5 +118,3 @@ This library is a golang client for communicating with service brokers,
 useful for Platform developers.
 
 - [HPE](https://github.com/reddypramod85/hpe-openservicebroker-clientapp): This project is a client platform for accessing services via the Open Service Broker API.
-
-- [Service Broker Dashboard](https://github.com/evoila/osb-dashboard): This project is intended to be the fundamental implementation of Dashboard, which could be applied to any Service Broker.

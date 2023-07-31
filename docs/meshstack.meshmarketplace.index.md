@@ -39,12 +39,15 @@ meshcloud implements an extended [meshMarketplace OSB API Profile](./meshstack.m
 
 All communication between the meshMarketplace and Service Brokers is secured using HTTPS Basic Auth and a pre-shared key. Service owners that also develop brokers for platforms like Cloud Foundry or OpenShift will be familiar with this model.
 
-### Service Broker Dashboard SSO
+### Replicating Authorization Information
 
-meshMarketplace also supports two different options for authenticanting users of Service Broker [dashboard clients](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#dashboard-client-object)
+> meshStack also supports the use of OSB Dashboard Clients for Authorization, but this option is **Deprecated**.
+> Please do not use this, and instead use the alternative described below (AAD Permission Replication) or even
+> use the meshObject API for replicating Authorization information from meshStack.
 
-- using an OIDC client in meshIdB as described in the [dashboard-tutorial](./meshstack.meshmarketplace.dashboard-tutorial.md)
-- replicating of permission to Azure Active Directory groups
+meshMarketplace also supports an option for authenticating users of
+Service Brokers by [replicating permissions](./meshstack.meshmarketplace.index.md#aad-permission-replication)
+to Azure Active Directory groups.
 
 ## Platform Instance Configuration
 
@@ -59,6 +62,8 @@ in    λ(Secret : Type)
 
 The default `permissionReplication` for setting every meshMarketplace meshPlatform is an instance of `MeshIdb`, which
 offers no further configuration options. Note that these platforms do not need to be explicitly configured at this time.
+
+### AAD Permission Replication
 
 Platforms that want to use AAD permission replication need to configure an instance of `AzureAd`
 
