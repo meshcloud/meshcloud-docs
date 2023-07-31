@@ -241,24 +241,6 @@ For example if you plan to use a role named `my-custom-role` please change the r
   - my-custom-role
 ```
 
-## meshStack Identity Federation
-
-In order to integrate with [meshStack Identity Federation](./meshstack.identity-federation.md), operators need to configure the meshStack Identity Broker as a trusted authentication provider. You will need to configure your Kubernetes distribution to apply the following configuration to [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/). Variables prefixed with `$` must
-be replaced with the appropriate values for your individual meshStack installation.
-
-```yaml
-authorization-mode: RBAC
-oidc-issuer-url: "https://$SSO_URL/auth/realms/meshfed"
-oidc-client-id: "meshfed-oidc"
-oidc-username-claim: "sub"
-oidc-username-prefix: "mesh:"
-oidc-groups-claim: "MC_CUSTOMER_PROJECTS"
-oidc-groups-prefix: ""
-cors-allowed-origins: "http://localhost:9001,https://.*"
-```
-
-meshStack automatically configures Kubernetes namespaces and RBAC permissions to integrate SSO with [meshStack Identity Federation](./meshstack.identity-federation.md).
-
 ## Azure Kubernetes Services
 
 In order to use the AKS cluster properly with meshStack you need to enable the Azure AD integration. A good description on what needs to be done can be found in the [AKS-managed Azure Active Directory integration](https://docs.microsoft.com/en-us/azure/aks/managed-aad) document from Microsoft.
