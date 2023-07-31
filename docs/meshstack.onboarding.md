@@ -5,9 +5,9 @@ title: Onboarding
 
 meshStack enables self-service onboarding for your internal customers. Operators can use the following options to customize the experience.
 
-## Customer Registration
+## Workspace Registration
 
-Multiple options are available to control how [meshCustomers](./meshcloud.customer.md) can sign up to meshStack in
+Multiple options are available to control how [meshWorkspaces](./meshcloud.workspace.md) can sign up to meshStack in
 self-service. meshStack can be configured to suit your organization's unique demands for sign up.
 
 <!--snippet:mesh.panel.environment.mesh.registration-->
@@ -19,9 +19,9 @@ The following configuration options are available at `mesh.panel.environment.mes
 let Registration =
     {-
         requirePayment:
-            Determines if the customer registration wizard will collect a default "Cost Center" payment method.
-            Disabling this will cause new meshCustomers to be registered without a payment method.
-            This is useful if the meshStack implementation requires customers to register payment methods via an external
+            Determines if the workspace registration wizard will collect a default "Cost Center" payment method.
+            Disabling this will cause new meshWorkspaces to be registered without a payment method.
+            This is useful if the meshStack implementation requires users to register payment methods via an external
             process (e.g. via API createLimitedPaymentMethod).
 
             See ui.costCenter for customizing the default cost center payment method.
@@ -42,8 +42,8 @@ Additional configuration options control backend behavior in `meshfed.web.regist
 
 { {- Allow sign up only if valid payment information was provided during registration  -}
 , requirePayment : Optional Bool
-  {- Require manual approval of new meshCustomer accounts by a partner before they can use cloud resources.
-     This is useful when you do not (yet) want your customers to onboard in self-service. -}
+  {- Require manual approval of new meshWorkspaces by a partner before they can use cloud resources.
+     This is useful when you do not (yet) want your users to onboard in self-service. -}
 , approvalRequired : Optional Bool
 }
 ```
@@ -54,20 +54,20 @@ Additional remarks and configuration links:
 
 ### Default Quotas
 
-meshStack assigns a default quota to newly registered [meshCustomers](./meshcloud.customer.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
+meshStack assigns a default quota to newly registered [meshWorkspaces](./meshcloud.workspace.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
 ```dhall
-{ {- the number of allowed meshProjects per meshCustomer -}
+{ {- the number of allowed meshProjects per meshWorkspace -}
   meshProjects : Natural
 }
 ```
 
-The default only applies to newly registered [meshCustomers](./meshcloud.customer.md). [meshPartners](./administration.index.md) can change the individual quotas for managed meshCustomers at any time using the [administration area](administration.customers.md#customer-quota-management).
+The default only applies to newly registered [meshWorkspaces](./meshcloud.workspace.md). [meshPartners](./administration.index.md) can change the individual quotas for managed meshWorkspaces at any time using the [administration area](administration.workspaces.md#workspace-quota-management).
 
 
-## Customer User Invitations
+## Workspace User Invitations
 
-When a user is invited to a customer there are several configurations to customize this invitation flow which is explained below.
+When a user is invited to a workspace there are several configurations to customize this invitation flow which is explained below.
 
 
 <!--snippet:mesh.web.user.rolerequest-->
@@ -79,7 +79,7 @@ The following configuration options are available at `mesh.web.user.rolerequest`
 let UserRoleRequest =
     {-
       Configure settings related to role-requests for users. This includes
-      functionality like adding new users to a meshCustomer.
+      functionality like adding new users to a meshWorkspace.
 
         min-approval-count:
           The minimum number of approvals needed before a requested role binding is granted and made effective.
@@ -93,13 +93,13 @@ let UserRoleRequest =
           this.
 
         restrict-customer-admin-role-assignment:
-          When enabled, prevents self-service assignment of the Customer Admin role via meshPanel.
+          When enabled, prevents self-service assignment of the Workspace Manager role via meshPanel.
           In this case, only meshObject API (or meshStack's Identity Connector) can be used for creating these role
           bindings. This is useful when an external system is the source of truth regarding
-          Customer Admin role assignments.
+          Workspace Manager role assignments.
 
           Also, partner users using the "add myself" functionality in the admin area will be restricted to granting
-          themselves 'Customer Employee' roles instead of 'Customer Admin'.
+          themselves 'Workspace Member' roles instead of 'Workspace Manager'.
     -}
       { min-approval-count : Natural
       , set-email-as-euid : Bool

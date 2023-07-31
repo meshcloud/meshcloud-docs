@@ -7,17 +7,17 @@ If you are not familiar with what a meshProject is, please check the [official m
 
 ## Prerequisites
 
-- Permissions: Your user needs either the Customer Admin or Customer Owner role in the meshCustomer for which you want to create the meshProject.
-- Valid Payment Method: Your meshCustomer has a payment method that is not expired.
+- Permissions: Your user needs either the Workspace Manager or Workspace Owner role in the meshWorkspace for which you want to create the meshProject.
+- Valid Payment Method: Your meshWorkspace has a payment method that is not expired.
 
 ## Step-by-Step Guide
 
 > Check out the [video tutorial](https://www.youtube.com/watch?v=NYQa-WVtfDM) version of this guide.
 
- 1. Make sure you are in the meshCustomer the new meshProject will belong to. Do this by checking the drop-down in the upper-left corner.
-    ![Select meshCustomer in the upper left corner](./assets/project-creation/choose-customer.png "Pick meshCustomer")
+ 1. Make sure you are in the meshWorkspace the new meshProject will belong to. Do this by checking the drop-down in the upper-left corner.
+    ![Select meshWorkspace in the upper left corner](./assets/project-creation/choose-workspace.png "Pick meshWorkspace")
  2. Start the meshProject creation by clicking the `Create Project` button, either in the navigation bar at the top (A) or
-    in the customer control plane under **Projects** > **Overview** (B).
+    in the workspace control plane under **Projects** > **Overview** (B).
     ![Start meshProject Creation](./assets/project-creation/start-project-creation.png "Start Project Creation")
     A project creation wizard will appear.
     ![Project Creation Wizard](./assets/project-creation/open-project-wizard.png "Project Creation Wizard")
@@ -26,7 +26,7 @@ If you are not familiar with what a meshProject is, please check the [official m
     We recommend to keep the identifier as it is.
     ![General Information](./assets/project-creation/choose-project-name.png "Naming")
  4. The lower part of the first page allows you to tag your meshProject. Some tags are required to be specified by you. You can recognize the required tags by the red line on the left side of the input field. Some of the tags you choose might have an impact on the landing zone you are allowed to choose. This happens if there is a policy that might restrict the usage. Click next![Tags](./assets/project-creation/choose-tags.png "Tags")
- 5. Select the payment method provided via the meshCustomer and click Next.
+ 5. Select the payment method provided via the meshWorkspace and click Next.
  6. Now we come to the most important part. Choose at least one of the platforms for your future meshProject.
     The global marketplace is always included and contains interesting services provided by your organization, which you
     can book later. If you want to have for example an AWS account, pick AWS. Click next.

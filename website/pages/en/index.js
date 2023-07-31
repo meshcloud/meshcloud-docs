@@ -105,7 +105,7 @@ class Index extends React.Component {
                 contents={[
                   {
                     content: 
-                      `DevOps Teams use meshcloud to setup and [configure a team](${docUrl('meshcloud.customer.html', language)}),
+                      `DevOps Teams use meshcloud to setup and [configure a team](${docUrl('meshcloud.workspace.html', language)}),
                        [create projects](${docUrl('meshcloud.project.html', language)}) and provision managed cloud environments using [Landing Zones](${docUrl('meshcloud.landing-zones.html', language)}).
                        Once setup you can [manage resources](${docUrl('meshcloud.project-resources.html', language)}), [review costs](${docUrl('meshcloud.project-metering.html', language)})
                        and [consume marketplace services](${docUrl('marketplace.index.html', language)}).`,
@@ -117,7 +117,7 @@ class Index extends React.Component {
                   },
                   {
                     content:
-                    `Multi-cloud management teams use meshcloud to provide [managed cloud environments](${docUrl('administration.landing-zones.html', language)}) to internal [customers](${docUrl('administration.customers.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
+                    `Multi-cloud management teams use meshcloud to provide [managed cloud environments](${docUrl('administration.landing-zones.html', language)}) to internal [customers](${docUrl('administration.workspaces.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
                     They set the standards for cloud usage and ensure that teams can move to the cloud quickly and safely while [staying in control](${docUrl('administration.analytics.html', language)}).
                     `,
                     image: `${imgUrl('persona_governance.png')}`,

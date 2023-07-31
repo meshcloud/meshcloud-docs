@@ -3,9 +3,9 @@ id: meshcloud.project
 title: meshProject
 ---
 
-meshProjects are multi-cloud enabled projects that allow teams to manage and scale cloud resources across all [meshPlatforms](meshcloud.platforms.md) made available to their [meshCustomer](meshcloud.customer.md).
+meshProjects are multi-cloud enabled projects that allow teams to manage and scale cloud resources across all [meshPlatforms](meshcloud.platforms.md) made available to their [meshWorkspace](meshcloud.workspace.md).
 
-> Only users with the role [Customer Admin](meshcloud.customer.md#assign-meshcustomer-roles) or [Customer Owner](meshcloud.customer.md#assign-meshcustomer-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
 ## Create a new meshProject
 
@@ -13,7 +13,7 @@ We wrote an extensive guide on how to create a new meshProject [here](./meshstac
 
 ## Manage meshProjects
 
-In your [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) under **Projects** all meshProjects of your meshCustomer are listed. To manage a project, click the name of the meshProject. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
+In your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) under **Projects** all meshProjects of your meshWorkspace are listed. To manage a project, click the name of the meshProject. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
 
 The following diagram shows how access rights and project [replication](./meshcloud.tenant.md) result in the correct project access for your users.
 
@@ -32,7 +32,7 @@ When adding a [meshPlatform](meshcloud.platforms.md) to a meshProject, meshStack
 
 ### Editing Payment and Project Settings
 
-You can configure one or multiple [payment methods](meshcloud.payment-methods.md) for you meshCustomer. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
+You can configure one or multiple [payment methods](meshcloud.payment-methods.md) for you meshWorkspace. For a meshProject you have to select a specific one, so the project resources can be billed via a specific payment method and to a specific billing address.
 
 You also have the option of setting a substitute payment method on a project. This feature is enabled via a configuration in meshStack. A job that runs daily will check if the already assigned payment method is expired and if it is, will replace it with the substitute payment method. In that case, the substitute payment will be set to `None`.
 
@@ -40,7 +40,7 @@ Depending on the configuration of your meshStack implementation, you may be able
 
 ## Access Control on a meshProject
 
-Before being able to assign a user or [user groups](meshcloud.customer.md#user-groups) to a meshProject, the user or group must have been [invited to the meshCustomer](meshcloud.customer.md#invite-users-to-a-meshcustomer-team). By adding a group, all users of this group will be provided access to the meshProject. In the **Project Access** section of the project edit screen all users and groups of the project are listed and new ones can be added. When adding/changing or removing a user or a group, all users and members will be informed via email about this change of access rights they have.
+Before being able to assign a user or [user groups](meshcloud.workspace.md#user-groups) to a meshProject, the user or group must have been [invited to the meshWorkspace](meshcloud.workspace.md#invite-users-to-a-meshworkspace-team). By adding a group, all users of this group will be provided access to the meshProject. In the **Project Access** section of the project edit screen all users and groups of the project are listed and new ones can be added. When adding/changing or removing a user or a group, all users and members will be informed via email about this change of access rights they have.
 While adding users or groups or updating roles on a project an expiration date can be set. All expired and soon expired roles will be listed under projects/expired access.
 Soon expired access (expiration date < 7 days) will be highlighted with **yellow** and expired access will be highlighted with **red**.
 
@@ -48,7 +48,7 @@ If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is a
 
 ### Assign user to a meshProject
 
-In the **Project Access Control** section you can find a type-ahead `Search for a customer user or group` field at the bottom. You search for users via their first and last name, email address and username. Groups can be found via their group name and identifier. You have to select the user or group you want to assign in the dropdown. Also select a project role. Press the `+` to add the user or group to the project. Note that only users with a valid account on the meshPanel can access your projects. You can assign multiple project roles to a user or a group on the same project.
+In the **Project Access Control** section you can find a type-ahead `Search for a workspace user or group` field at the bottom. You search for users via their first and last name, email address and username. Groups can be found via their group name and identifier. You have to select the user or group you want to assign in the dropdown. Also select a project role. Press the `+` to add the user or group to the project. Note that only users with a valid account on the meshPanel can access your projects. You can assign multiple project roles to a user or a group on the same project.
 
 ### Project Roles
 
@@ -66,7 +66,7 @@ You can change the Project Role, by choosing a different role in the dropdown at
 
 An expiration date can be set for an assignment to a project. When this expiration date is reached, access to the project will be revoked. An expiration date can be set directly when assigning a user or group to the project. It can also be updated any time.
 
-Customer Admins are informed about project role assignments that will expire soon via dashboard notifications on the my project screen and in the Account Dashboard.
+Workspace Managers are informed about project role assignments that will expire soon via dashboard notifications on the my project screen and in the Account Dashboard.
 Via "Projects" -> "Expired Access", the expired or soon to expire role assignments are listed and can be extended.
 
 ### Unassign user or group from a meshProject
@@ -89,4 +89,4 @@ The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) of your meshPr
 
 **3. Combination of the above**: If a projects contains a combination of tenants from 1. and 2. the tenants which don't require manual deletion are deleted automatically. For the other tenants the manual deletion step is necessary.
 
-> Your meshProject is not deleted when any meshTenant requiring a manual deletion has been declined. This means, your meshProject will be available on the customer control plane containing only the meshTenants whose deletion had been declined.
+> Your meshProject is not deleted when any meshTenant requiring a manual deletion has been declined. This means, your meshProject will be available on the workspace control plane containing only the meshTenants whose deletion had been declined.

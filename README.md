@@ -4,7 +4,7 @@
 
 Welcome to the meshcloud Platform documentation!
 
-It's all built on [docusaurus](https://docusaurus.io/en/) and available on [GitHub](https://github.com/meshcloud/meshcloud-docs). We accept community contributions!
+It's all built on [docusaurus](https://docusaurus.io) and available on [GitHub](https://github.com/meshcloud/meshcloud-docs). We accept community contributions!
 
 ## Running Locally
 
@@ -79,16 +79,6 @@ source repositories checked out to your local machine.
 ```
 
 Have a look at the `update-snippets` in case you want more fine-grained control over snippet updates for further options.
-
-### Updating Metrics Metadata
-
-To do so, run the following:
-
-```bash
-python3 ./hack/metrics_metadata.py <target-k8s-context> <target-k8s-namespace> ./docs/meshstack.monitoring.metrics.md
-```
-
-Note: This assumes that the running prometheus service name has the following format: `prometheus-<k8s-namespace>-server`
 
 ## License
 

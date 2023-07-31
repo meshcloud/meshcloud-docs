@@ -23,10 +23,13 @@ my-customer.my-proj-test.004
 The template engine allows you to use the following placeholders if not described otherwise in the corresponding documentation:
 
 | Placeholder          | Type   | Description                                                                                                                            |
-| -------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| customerIdentifier   | string | Customer Identifier                                                                                                                    |
+|----------------------| ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| customerIdentifier   | string | Workspace Identifier                                                                                                                    |
 | projectIdentifier    | string | Project Identifier                                                                                                                     |
 | meshProjectId        | number | Internal ID of the meshProject. Every project is guaranteed to have a unique ID, but tenants on different platforms can share this ID. |
 | platform             | string | Platform Identifier                                                                                                                   |
 | rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
 | tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
+
+Note that you can also use tags! The placeholders for these are generated automatically. For example, if you have a tag
+in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`.

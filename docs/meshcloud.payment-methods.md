@@ -5,9 +5,9 @@ title: Payment Methods
 
 ## Introduction
 
-Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process. As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshCustomers are correctly charged and that this information makes its way back to the required systems. Payment methods therefore are the link between the cloud usage and the resulting cost in the context of a meshProject.
+Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process. As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshWorkspaces are correctly charged and that this information makes its way back to the required systems. Payment methods therefore are the link between the cloud usage and the resulting cost in the context of a meshProject.
 
-Payment methods are created **per** meshCustomer and can be enhanced with [metadata tags](meshcloud.metadata-tags.md) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgeting purposes.
+Payment methods are created **per** meshWorkspace and can be enhanced with [metadata tags](meshcloud.metadata-tags.md) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgeting purposes.
 
 ![Payment Methods Lifecycle](assets/payment_methods/payment_method_overall_lifecycle.png)
 
@@ -17,24 +17,24 @@ Payment methods are created **per** meshCustomer and can be enhanced with [metad
 
 The first step in reaping the benefits of payment methods is creating them. A few important things must be considered about payment methods before creating them:
 
-1. A payment method is **always** scoped to a single meshCustomer. This means it is not possible to create a global payment method that can be used for all meshCustomers. It is also not possible to re-use a single payment method across multiple meshCustomers.
-2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshCustomers. Make sure to use an identifier that will not collide in other meshCustomers.
+1. A payment method is **always** scoped to a single meshWorkspace. This means it is not possible to create a global payment method that can be used for all meshWorkspaces. It is also not possible to re-use a single payment method across multiple meshWorkspaces.
+2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshWorkspaces. Make sure to use an identifier that will not collide in other meshWorkspaces.
 
 ### Creating a Payment Method via the meshPanel
 
 One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the 'Partner Admin' role. Navigate to the Admin area and follow these steps:
 
-1. Click on 'Customers' on the left.
-2. Find a customer you want to create a payment method for and click on the 'Customer Payment Methods' icon on the right.
+1. Click on 'Workspaces' on the left.
+2. Find a workspace you want to create a payment method for and click on the 'Create/Edit Payment methods' icon on the right.
 
-    ![List Payment Methods](assets/payment_methods/customer_list_payment_methods.png)
+    ![List Payment Methods](assets/payment_methods/workspace_list_payment_methods.png)
 
 3. Click on 'Create Payment Method' at the top right.
 4. Enter a name and identifier for the new payment method.
 5. (This is optional) Set a maximum amount of EUR on the payment method to indicate the remaining budget of this payment method.
 6. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
 7. Additionally, you can enter tags for the payment method, which are custom for your meshStack (also see [meshTags](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
-8. Click 'Save' and your new payment method will be available to the meshCustomer it was created in!
+8. Click 'Save' and your new payment method will be available to the meshWorkspace it was created in!
 
 ### Creating a Payment Method via the meshObject API
 
@@ -42,15 +42,15 @@ As automation matters, there is also the possibility to create payment methods v
 
 ## The Payment Method Lifecycle: Assigning to meshProjects
 
-Now that the Partner Admin has created one or more payment methods for a meshCustomer, we are ready to link a payment method to one or more meshProjects.
+Now that the Partner Admin has created one or more payment methods for a meshWorkspace, we are ready to link a payment method to one or more meshProjects.
 
-First, check if the payment method is correctly created in the meshCustomer. You can do so by navigating to the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer). In order to do that you need to have Customer Admin rights within the respective customer. In the customer control plane, open **Financials** and then **Payment Methods**. All payment methods that are created and assigned to your current meshCustomer are shown here.
+First, check if the payment method is correctly created in the meshWorkspace. You can do so by navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). In order to do that you need to have Workspace Manager rights within the respective workspace. In the workspace control plane, open **Financials** and then **Payment Methods**. All payment methods that are created and assigned to your current meshWorkspace are shown here.
 
 The payment methods that are assigned can be used for both existing meshProjects and new meshProjects.
 
 ### Applying a Payment Method to an existing meshProject
 
-In the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the active payment method will be removed.
+In the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the active payment method will be removed.
 
 ![Set Payment Method in project control plane](assets/payment_methods/payment_method_selection_project_edit.png)
 
@@ -62,7 +62,7 @@ Create a new meshProject at the top of the meshPanel. Follow the project creatio
 
 ![Set Payment Method in Project Create screen](assets/payment_methods/payment_method_selection_project_create.png)
 
-As you can see, on this page you have the ability to assign a payment method to the meshProject. Keep in mind that this is mandatory. If you want to specify a substitute payment method, you can do so after creating the meshProject and following the steps above in '**Applying a payment method to an existing meshProject'**. If your meshCustomer has no payment methods, you will be confronted with a warning that looks like this:
+As you can see, on this page you have the ability to assign a payment method to the meshProject. Keep in mind that this is mandatory. If you want to specify a substitute payment method, you can do so after creating the meshProject and following the steps above in '**Applying a payment method to an existing meshProject'**. If your meshWorkspace has no payment methods, you will be confronted with a warning that looks like this:
 
 ![Missing Payment Method warning](assets/payment_methods/payment_method_missing_in_project_create.png)
 
@@ -80,7 +80,7 @@ There are two possible ways to exporting the metadata of the payment methods, de
 
 ### Applying Metadata on Tenants in Cloud Platforms
 
-One way of exporting the payment method data (on top of other metadata from meshCustomers and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.metadata-tags.md#meshtenant-metadata) and decide what approach fits best.
+One way of exporting the payment method data (on top of other metadata from meshWorkspaces and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.metadata-tags.md#meshtenant-metadata) and decide what approach fits best.
 
 ### Exporting Financial Data and Metadata
 
@@ -88,7 +88,7 @@ The other way of exporting metadata is via our [chargeback statements](meshcloud
 
 Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing.md#chargeback).
 
-The actual export itself can be done via the meshPanel. This is possible for both Partner Admins (for all meshCustomers) and Customer Admins (for the selected meshCustomer). When navigating to the Administration area (for partner admins), you will see **Chargeback Statements** on the left. When navigating to the [customer control plane](./meshcloud.customer.md#managing-your-meshcustomer) (for customer admins) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
+The actual export itself can be done via the meshPanel. This is possible for both Partner Admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for partner admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) (for workspace managers) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
 
 ### External Payment Method Registration
 
@@ -98,6 +98,6 @@ of any new payment methods.
 
 The external URL can be figured under the configuration option `environment.ui.externalPaymentMethodUrl`.
 
-By configuring the URL, the following button will appear in the meshPanel for meshCustomers:
+By configuring the URL, the following button will appear in the meshPanel for meshWorkspaces:
 
 ![Request Payment Method Button](assets/payment_methods/payment_method_request_button.png)

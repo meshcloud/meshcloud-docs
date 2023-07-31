@@ -7,9 +7,9 @@ The following section covers all the relevant details regarding your meshStack u
 ## Account Creation
 
 In most meshcloud installations an external identity provider (IdP) is available and configured for authentication in meshcloud.
-That way users and their credentials already exist and can be used to login to meshPanel. If an IdP is not available, the registration of new users is enabled in the meshIdB. Before being able to create a new meshCustomer, users have to create their user in meshIdB first.
+That way users and their credentials already exist and can be used to login to meshPanel. If an IdP is not available, the registration of new users is enabled in the meshIdB. Before being able to create a new meshWorkspace, users have to create their user in meshIdB first.
 
-When a user already exists, he can create a new account (meshCustomer) after login. Click "Create meshCustomer" and fill out the form.
+When a user already exists, he can create a new account (meshWorkspace) after login. Click "Create meshWorkspace" and fill out the form.
 
 Submit the form to create an account.
 

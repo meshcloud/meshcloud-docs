@@ -17,25 +17,25 @@ To return to this view, you can always press the "Admin Area" button in the top 
 
 If you are not able to see this screen, you are missing partner rights. This can be fixed by any other partner user.
 
-## Step 2: Create your first meshCustomer
+## Step 2: Create your first meshWorkspace
 
-The customers of your Cloud Foundation are represented by meshStack as meshCustomers.
+The workspaces of your Cloud Foundation are represented by meshStack as meshWorkspaces.
 
-To experience what this feels like, create your first customer via the panel. To open the wizard, click on "customer +" as shown in the picture below.
+To experience what this feels like, create your first workspace via the panel. To open the wizard, click on "workspace +" as shown in the picture below.
 
-![Create meshCustomer](assets/create-customer.png)
+![Create meshWorkspace](assets/create-workspace.png)
 
-Of course, this can also be achieved via API. Take a look at our [short API intro](./meshstack.how-to.create-customer-via-api.md).
+Of course, this can also be achieved via API. Take a look at our [short API intro](./meshstack.how-to.create-workspace-via-api.md).
 
 ## Step 3: Create your first meshPlatform
 
-As a Cloud Foundation Platform, meshStack allows you to offer self-service tenant management, chargeback and much more to your customers.
+As a Cloud Foundation Platform, meshStack allows you to offer self-service tenant management, chargeback and much more to your workspaces.
 
 To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.md).
 
 
 ## Step 4: Create your first meshProject
 
-After you onboarded your first meshPlatform, your Cloud Foundations' customers can manage their cloud tenants (Azure Subscriptions, GCP Projects, AWS Accounts) in meshProjects.
+After you onboarded your first meshPlatform, your Cloud Foundations' workspaces can manage their cloud tenants (Azure Subscriptions, GCP Projects, AWS Accounts) in meshProjects.
 
 To experience how smooth the self-service experience is, create your first project via the panel. You might want to check out the [user guide](./meshstack.how-to.create-project.md) or a less than 4 minute [tutorial video](https://www.youtube.com/watch?v=NYQa-WVtfDM).

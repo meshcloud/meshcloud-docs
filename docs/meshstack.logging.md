@@ -35,34 +35,34 @@ In order to provide an available system, logging is required for error analysis.
 Changes (add, change, delete) to data are logged to provide traceability. Regarding logging of personal user data, meshStack only logs the Username or the Keycloak Id of the user. No further personal information is logged.
 
 | Event (What?)                                                                   | Log-File / DB-Table (Where)          |
-| ------------------------------------------------------------------------------- | ------------------------------------ |
+| ------------------------------------------------------------------------------- |--------------------------------------|
 | Authentication ((invalid) Logins, Logout, Timeout of session, …)                | Keycloak Events table, events.log    |
 | Create/Edit/Delete Project, Add/Remove Tenant from Project                      | ProjectEvent table, mesh.log         |
 | Replication to cloud platform                                                   | According component log              |
 | Interactions with Service Brokers (create/update/delete instance & bindings)    | mesh.log, ServiceInstanceEvent table |
-| Register Customer, Edit Customer Master Data (Payment Info)                     | CustomerEvent table, mesh.log        |
-| Invite/Remove/Update users in customer                                          | CustomerEvent table, mesh.log        |
+| Register Workspace, Edit Workspace Master Data (Payment Info)                   | CustomerEvent table, mesh.log        |
+| Invite/Remove/Update users in workspace                                         | CustomerEvent table, mesh.log        |
 | Edit Project (Assign/Unassign users, edit user roles, edit billing information) | ProjectEvent table, mesh.log         |
 
 ## Logging of Business-Related Administrative Access
 
 Administrators and meshPartner have access rights, that exceed the normal user’s capabilities. Therefore administrative actions require special control and traceability.
 
-| Event (What?)                                 | Log-File / DB-Table (Where)                      |
-| --------------------------------------------- | ------------------------------------------------ |
-| Assign yourself to a customer                 | User Event table, Customer Event Table, mesh.log |
-| Change project quota                          | Project Event table, mesh.log                    |
-| Update financial information of a project     | Project Event table, mesh.log                    |
-| Send message to customer                      | mesh.log                                         |
-| Change status of customer (Disabled/Verified) | Customer Event table, mesh.log                   |
-| Deletion of a user                            | User table in deletedOn and deletedBy fields     |
+| Event (What?)                                   | Log-File / DB-Table (Where)                      |
+|-------------------------------------------------|--------------------------------------------------|
+| Assign yourself to a workspace                  | User Event table, Customer Event Table, mesh.log |
+| Change project quota                            | Project Event table, mesh.log                    |
+| Update financial information of a project       | Project Event table, mesh.log                    |
+| Send message to workspace                       | mesh.log                                         |
+| Change status of workspace (Disabled/Verified)  | Customer Event table, mesh.log                   |
+| Deletion of a user                              | User table in deletedOn and deletedBy fields     |
 
 ## Security Relevant Events
 
 This section overlaps in some parts with the previously mentioned log files, but it summarizes all logs that are written for security related actions, like giving and revoking access.
 
 | Event (What?)                                                         | Log-File / DB-Table (Where)                     |
-| --------------------------------------------------------------------- | ----------------------------------------------- |
+| --------------------------------------------------------------------- |-------------------------------------------------|
 | Successful and denied login attempts, as well as logouts              | Keycloak Events, events.log                     |
 | Create, change, lock, unlock and delete accounts and roles            | Customer/Project Event table, mesh.log          |
 | Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log           |
@@ -140,7 +140,7 @@ Example Login Event:
 
 Example Admin Event:
 
-`2018-08-30 16:36:26,889 DEBUG [org.keycloak.events] (default task-35) operationType=UPDATE, realmId=master, clientId=200c6050-d7d1-4430-914a-f45ab139e494, userId=e7a64cb7-b692-4af0-b965-f3efba739815, ipAddress=11.12.13.14, resourcePath=clients/f99f22d7-87d7-4f4e-8235-23e07f58974e/roles/my-customer|my-project-noadmin`
+`2018-08-30 16:36:26,889 DEBUG [org.keycloak.events] (default task-35) operationType=UPDATE, realmId=master, clientId=200c6050-d7d1-4430-914a-f45ab139e494, userId=e7a64cb7-b692-4af0-b965-f3efba739815, ipAddress=11.12.13.14, resourcePath=clients/f99f22d7-87d7-4f4e-8235-23e07f58974e/roles/my-workspace|my-project-noadmin`
 
 #### Logs in meshStack services
 

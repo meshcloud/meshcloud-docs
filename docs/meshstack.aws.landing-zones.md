@@ -13,7 +13,7 @@ Each Landing Zone has parameters which control its behavior. The available param
 
 ### Target Organization Unit ID
 
-This parameter is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP (Service Control Policy) should be assigned to all of these projects. If left empty a new OU will be created for every customer and all of his meshProjects with AWS platform will be placed in it.
+This parameter is optional. If it is set all meshProjects placed under this Landing Zone will be put under this Organization Unit (OU). This might be helpful if a SCP (Service Control Policy) should be assigned to all of these projects. If left empty a new OU will be created for every workspace and all of his meshProjects with AWS platform will be placed in it.
 
 You must provide the ID of the OU which can be found in the AWS Organizational Management panel. The IDs start with `ou-*`.
 
@@ -41,12 +41,12 @@ The following parameters can be used in the StackSet template:
 | AccountEmail   | Email associated with the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html) |
 | AccountId      | Unique Id of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)          |
 | AccountArn     | ARN of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)                |
-| ProductName    | meshCustomer Identifier                                                                                                             |
+| ProductName    | meshWorkspace Identifier                                                                                                             |
 | ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter)                                        |
 | ContactEmail   | E-Mail of the meshProject creator. Currently this is the user who created the project.                                        |
 | Stage          | The meshProject identifier                                                                                                          |
 
-In addition, any payment settings, project tags or customer tags can also be used in the StackSet template. These parameter keys will have the prefix `tag`.
+In addition, any payment settings, project tags or workspace tags can also be used in the StackSet template. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
 > If you are planning on converting any of the StackSet parameters into AWS tags, please be aware of the limits and requirements
@@ -132,12 +132,12 @@ The following parameters can be used in the Lambda function and are provided as 
 | AccountEmail   | Email associated with the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html) |
 | AccountId      | Unique Id of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)          |
 | AccountArn     | ARN of the created [AWS account](https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html)                |
-| ProductName    | meshCustomer Identifier                                                                                                             |
+| ProductName    | meshWorkspace Identifier                                                                                                             |
 | ~~CostCenter~~ | ID of the CostCenter defined for this meshProject.(Deprecated, please use tagCostCenter)                                        |
 | ContactEmail   | E-Mail of the meshProject creator. Currently this is the user who created the project.                                        |
 | Stage          | The meshProject identifier                                                                                                          |
 
-In addition, any payment settings, project tags or customer tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
+In addition, any payment settings, project tags or workspace tags can also be used as Lambda function parameters. These parameter keys will have the prefix `tag`.
 For example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
 
 ## Account Vending Machines
@@ -146,7 +146,7 @@ In order to detect the finished execution of the AVM meshStack looks for certain
 
 Currently the account must contain these tags to be picked up:
 
-- ProductName: Must contain the meshCustomer identifier
+- ProductName: Must contain the meshWorkspace identifier
 - Stage: Must contain the meshProject identifier
 
 > These tags will soon be customizable in the AWS Landing Zone configuration.
@@ -386,7 +386,7 @@ logger.setLevel(logging.DEBUG)
 
 
 def lambda_handler(event, context):
-    logger.debug("Recieved event " + json.dumps(event))
+    logger.debug("Received event " + json.dumps(event))
 #  E.g EVENT FORMAT:
 # {
 #     "tagEnvironment": "Test",
