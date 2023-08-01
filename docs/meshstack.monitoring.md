@@ -30,13 +30,22 @@ Log data is therefore not part of telemetry data we collect.
 
 ## Product Usage Data
 
-In order to continuesly improve our product we collect product usage data and feedback. This needs to be enabled via an operator after confirmation of the customer. meshPanel uses the privacy-preserving and open source web-analytics library plausible.io for collecting anonymous usage data as described in the [plausible data policy](https://plausible.io/data-policy). Data collected will remain within the secure meshcloud environment and will not be shared or processed externally. 
+In order to continuously improve our product we collect product usage data and feedback. 
+Product usage data collection can be explicitly enabled by an operator after prior confirmation of the customer. 
+
+meshPanel uses the privacy-preserving and open source web-analytics library plausible.io for collecting anonymous usage data as described in the [plausible data policy](https://plausible.io/data-policy). 
+Data collected will remain within the secure meshcloud environment and will not be shared or processed externally. 
 
 ### What data is collected?
+
 Rest assured, the data we collect will not include any Personally Identifiable Information (PII).
+Data that we collect includes the following:
+
 - Satisfaction Ratings: To gauge user satisfaction, we will implement a star rating system. After completing an activity within the product, such as creating a meshProject, users will be prompted to provide a rating based on their experience.
 - Usage Metrics: We will collect data on the frequency and manner in which functionalities are utilized within meshStack. This will help us identify patterns and understand how our product is being used, allowing us to make informed decisions for further improvement.
 
+
+### Enabling Product Usage data collection
 
 <!--snippet:mesh.panel.environment#Plausible-->
 
