@@ -14,10 +14,37 @@ meshStack supports metering and billing for most common OpenStack versions. For 
   - note: Panko can also be used with suitable patches on older OpenStack releases
   - Contact us for details
 
+For metering
+
+`KeystoneV3`
+`CinderV3`
+`Neutron v2.0`
+`Glance V2`
+
 ## Supported Resources
 
 Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). Operators can use the traits of these resources to define fine-granular product and pricing rules.
 
+### Neutron - Floating IP
+<!--snippet:mesh.kraken.productcatalog.traits.openstack.neutron.floatingIp#type-->
+
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let FloatingIpResourceTraits =
+    {-
+        This type has no traits. However you can still create products charging for the resource's existence.
+    -}
+      {}
+```
+<!--Example-->
+```dhall
+let example
+    : FloatingIpResourceTraits
+    = {=}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Neutron - Router
 <!--snippet:mesh.kraken.productcatalog.traits.openstack.neutron.router#type-->
@@ -117,28 +144,6 @@ let example
       , status = "available"
       , volumeSize = +10
       }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-
-### Neutron - Floating IP
-<!--snippet:mesh.kraken.productcatalog.traits.openstack.neutron.floatingIp#type-->
-
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let FloatingIpResourceTraits =
-    {-
-        This type has no traits. However you can still create products charging for the resource's existence.
-    -}
-      {}
-```
-<!--Example-->
-```dhall
-let example
-    : FloatingIpResourceTraits
-    = {=}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 

@@ -124,7 +124,7 @@ meshStack supports the following identity provisioning strategies:
 
 |               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
 | :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
-|   OpenStack   |      [deprecated](./meshstack.openstack.index.md#meshidp)      |         [supported](./meshstack.openstack.index.md#enterprise-idp)         |
+|   OpenStack   |                               -                                |   [supported](./meshstack.openstack.index.md#access-control-integration)   |
 | Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
 |  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
 |   OpenShift   |                               -                                |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
@@ -380,13 +380,13 @@ Additionally added group permissions are discouraged, but possible for some plat
 
 | Platform               | Additional Permission Possible |
 | ---------------------- | :----------------------------: |
-| AWS (meshIdB)          |               ✅               |
-| Azure                  |               ❌               |
-| GCP                    |               ✅               |
-| OpenStack              |               ✅               |
-| OpenShift              |               ✅               |
-| AKS (AAD Permissions¹) |               ❌               |
-| CloudFoundry²          |               ✅               |
+| AWS (meshIdB)          |               ✅                |
+| Azure                  |               ❌                |
+| GCP                    |               ✅                |
+| OpenStack              |               ✅                |
+| OpenShift              |               ✅                |
+| AKS (AAD Permissions¹) |               ❌                |
+| CloudFoundry²          |               ✅                |
 
 ¹: This applies only the the user group permissions that are applied in the AAD to give the users general access to the AKS cluster. The cluster role assignments in the cluster are not affected.
 
