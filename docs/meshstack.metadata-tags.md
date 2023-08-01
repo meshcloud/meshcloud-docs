@@ -184,7 +184,7 @@ The following extra metadata can be used in such a tag definition configuration:
 | Tag Key                    | Description                                                                                                                                                    |
 |----------------------------| :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `${projectIdentifier}`     | The meshProject identifier                                                                                                                                     |
-| `${customerIdentifier}`    | The meshProject's workspace identifier                                                                                                                          |
+| `${workspaceIdentifier}`   | The meshProject's workspace identifier                                                                                                                          |
 | `${projectName}`           | The meshProject display name                                                                                                                                   |
 | `${customerName}`          | The meshProject's workspace name                                                                                                                                |
 | `${landingzone}`           | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied. |
