@@ -21,7 +21,7 @@ If you are not able to see this screen, you are missing partner rights. This can
 
 The workspaces of your Cloud Foundation are represented by meshStack as meshWorkspaces.
 
-To experience what this feels like, create your first workspace via the panel. To open the wizard, click on "workspace +" as shown in the picture below.
+To experience what this feels like, create your first workspace via the panel. To open the wizard, click on "Create Workspace +" as shown in the picture below.
 
 ![Create meshWorkspace](assets/create-workspace.png)
 
