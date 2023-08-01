@@ -18,7 +18,7 @@ However, some advanced product functionality is currently only available via a c
 When applicable to your chosen meshStack plan, meshcloud can make the configuration model of your meshStack instance available to you as a git repository.
 This is useful to track configuration changes, for example to integrate with a change management process.
 
-To request advanced configuration changes for your meshStack instance, please contact your contact from customer sucess or support@meshcloud.io.
+To request advanced configuration changes for your meshStack instance, please contact your contact from customer success or support@meshcloud.io.
 
 ### Versioning & Continuous Delivery
 
