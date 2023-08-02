@@ -34,7 +34,7 @@ In order to continuously improve our product we collect product usage data and f
 Product usage data collection can be explicitly enabled by an operator after prior confirmation of the customer. 
 
 meshPanel uses the privacy-preserving and open source web-analytics library plausible.io for collecting anonymous usage data as described in the [plausible data policy](https://plausible.io/data-policy). 
-Data collected will remain within the secure meshcloud environment and will not be shared or processed externally. 
+The system we use is operated by meshcloud and the data collected will remain within the secure meshcloud environment and will not be shared or processed externally. 
 
 ### What data is collected?
 
