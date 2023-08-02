@@ -44,8 +44,7 @@ Data that we collect includes the following:
 - Satisfaction Ratings: To gauge user satisfaction, we will implement a star rating system. After completing an activity within the product, such as creating a meshProject, users will be prompted to provide a rating based on their experience.
 - Usage Metrics: We will collect data on the frequency and manner in which functionalities are utilized within meshStack. This will help us identify patterns and understand how our product is being used, allowing us to make informed decisions for further improvement.
 
-
-### Enabling Product Usage data collection
+### Enabling Product Usage Data Collection
 
 <!--snippet:mesh.panel.environment#Plausible-->
 
