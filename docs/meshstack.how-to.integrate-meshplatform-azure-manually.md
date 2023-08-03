@@ -38,7 +38,7 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 7. In the AAD overview now go to **App registrations** (the created app should show up there as well).
 8. Click on the app.
 9. Add a client secret under **Certificates &amp; secrets**. Write it down (it is the `client-secret`).
-10. Under **API permissions** add the following for the **Microsoft Graph API** (not Azure AD Graph API):
+10. Under **API permissions** → **Add a permission** → **Microsoft Graph API** (not Azure AD Graph API) → **Application permissions**:
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
     - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)

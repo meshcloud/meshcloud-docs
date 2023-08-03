@@ -8,7 +8,7 @@ The following guide provides a guide for users how to proceed with the deletion 
 
 ## How to delete a meshTenant
 
-Your user needs at least the Customer Admin role to proceed with the meshProject deletion.
+Your user needs at least the Workspace Manager role to proceed with the meshProject deletion.
 
 If you want to delete just a meshTenant e.g. AWS Account without deleting your complete meshProject you can use the meshTenant deletion.
 
@@ -36,7 +36,7 @@ Cloud Foundation or Cloud Platform administrators can either confirm or decline 
 
 ## How to delete a meshProject
 
-Your user needs at least the Customer Admin role to proceed with the meshProject deletion.
+Your user needs at least the Workspace Manager role to proceed with the meshProject deletion.
 
 The following step-by-step guide shows how to successfully request a meshProject deletion:
 
@@ -46,7 +46,7 @@ The following step-by-step guide shows how to successfully request a meshProject
 
 ## How to delete a meshWorkspace
 
-Your user needs the "Customer Owner" role to proceed with the deletion of the meshWorkspace.
+Your user needs the "Workspace Owner" role to proceed with the deletion of the meshWorkspace.
 
 1. Go to your meshWorkspace where the meshProject is located in the meshPanel ![Choose meshWorkspace](assets/workspace/choose-workspace.png)
 2. Click on the "Deletion" tab and follow the deletion instructions for the meshWorkspace !["Delete meshTenant"](assets/workspace/workspace-deletion.png)

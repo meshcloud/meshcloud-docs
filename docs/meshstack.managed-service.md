@@ -13,11 +13,12 @@ which can be either [meshStack SaaS](#meshstack-saas) or [meshStack Enterprise](
 ### Configuration
 
 Most of meshStack's configuration can be done in self-service via the meshPanel in the Administration area.
-However, there might be some product functionality which has to be configured by meshcloud in the configuration as
-code repository. To do so, please contact support@meshcloud.io.
+However, some advanced product functionality is currently only available via a configuration as code model based on [dhall](https://dhall-lang.org/).
 
-It will be clear from the designated product documentation page whether the feature can be configured in self-service
-or via the configuration as code repository.
+When applicable to your chosen meshStack plan, meshcloud can make the configuration model of your meshStack instance available to you as a git repository.
+This is useful to track configuration changes, for example to integrate with a change management process.
+
+To request advanced configuration changes for your meshStack instance, please contact your contact from customer success or support@meshcloud.io.
 
 ### Versioning & Continuous Delivery
 

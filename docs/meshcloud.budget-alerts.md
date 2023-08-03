@@ -21,7 +21,7 @@ It contains the necessary information for the user to be aware of where the prob
 
 Budget alerts do not have to be configured. They will automatically be sent out if the conditions are right. A budget alert will be sent to a user if the following conditions are met:
 
-- The user is a Customer Admin or Customer Owner in a meshWorkspace.
+- The user is a Workspace Manager or Workspace Owner in a meshWorkspace.
 - The meshWorkspace has a payment method with a configured limit. The cloud consumption should be 80% or more on this payment method limit, e.g. €400 costs out of a €500 limit.
 
 The budget alert will be sent via e-mail on Monday morning each week. To prevent spam, the user will receive all relevant budget alerts in a single e-mail, and not as one separate e-mail per budget alert.

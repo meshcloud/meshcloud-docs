@@ -93,13 +93,13 @@ let UserRoleRequest =
           this.
 
         restrict-customer-admin-role-assignment:
-          When enabled, prevents self-service assignment of the Customer Admin role via meshPanel.
+          When enabled, prevents self-service assignment of the Workspace Manager role via meshPanel.
           In this case, only meshObject API (or meshStack's Identity Connector) can be used for creating these role
           bindings. This is useful when an external system is the source of truth regarding
-          Customer Admin role assignments.
+          Workspace Manager role assignments.
 
           Also, partner users using the "add myself" functionality in the admin area will be restricted to granting
-          themselves 'Customer Employee' roles instead of 'Customer Admin'.
+          themselves 'Workspace Member' roles instead of 'Workspace Manager'.
     -}
       { min-approval-count : Natural
       , set-email-as-euid : Bool

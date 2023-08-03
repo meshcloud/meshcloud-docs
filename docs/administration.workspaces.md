@@ -31,7 +31,7 @@ A meshStack installation can be configured to require a manual approval by a par
 
 ### Disabling Workspaces
 
-Operators can disable meshWorkspaces in case the responsible customer admins do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
+Operators can disable meshWorkspaces in case the responsible workspace managers do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
 Setting the meshWorkspace status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this workspace:
 
@@ -44,7 +44,7 @@ If you want to prevent a workspace from creating new [meshProjects](meshcloud.pr
 
 ### Access managed Workspaces
 
-As a partner user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Customer Employee" or "Customer Admin" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Customer Employee you cannot execute step four and five.
+As a partner user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
 
 1. Go to **Administration &gt; Workspaces** and click on the **Users** icon on the managed workspace you want to edit.
 2. In the **Workspaces Users** view click on the button **Add Myself** in the top right corner.
@@ -96,7 +96,7 @@ The following events are available:
 | **CUSTOMER_CREATED**| A new meshWorkspace was created by a partner/admin. |
 | **USER_INVITED**| A user was invited to a meshWorkspace. |
 | **USER_ACCEPTED_INVITATION**| A user accepted the invitation. |
-| **USER_INVITATION_CANCELLED**| An invitation was cancelled by a customer admin. |
+| **USER_INVITATION_CANCELLED**| An invitation was cancelled by a workspace manager. |
 | **USER_REMOVED**| A user was removed from the meshWorkspace. |
 | **USER_ROLE_CHANGED**| The role of a user was changed on the meshWorkspace. |
 | **CUSTOMER_QUOTA_EDITED**| The quota of a meshWorkspace was changed. |

@@ -101,7 +101,7 @@ When booking a tenant usage report, meshStack splits up the report's `netAmount`
 individual entries. This split allows cloud foundation teams to process chargeback for different kinds of usage
 like cloud provider cost vs. internal overhead fees.
 
-Customer Admins also have access to an overview of the chargeback statements of all their projects in the workspace control plane via  **Financials** > **Chargeback Statements**.
+Workspace Managers also have access to an overview of the chargeback statements of all their projects in the workspace control plane via  **Financials** > **Chargeback Statements**.
 Also Partner accounts can access the chargeback statements for all their assigned meshWorkspaces in the Administration Area via **Projects** > **Chargeback Statements**.
 
 #### Exporting Chargeback Statements

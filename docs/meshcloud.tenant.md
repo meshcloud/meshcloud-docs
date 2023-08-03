@@ -30,7 +30,7 @@ Any update to tenant metadata (e.g. a change in payment method) triggers a new m
 
 ## Delete a meshTenant
 
-> Only users with the role [Customer Admin](meshcloud.workspace.md#assign-meshworkspace-roles) or [Customer Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
 If you would like to delete a meshTenant which is no longer used, open the corresponding meshTenant, navigate to **Deletion**.
 

@@ -16,7 +16,7 @@ and any additional [metadata specific to your organization](meshstack.metadata-t
 
 ## Managing your meshWorkspace
 
-Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Customer Admin.
+Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
 
 ![Workspace Control Plane User Interface](assets/workspace-control-plane.png)
 
@@ -44,7 +44,7 @@ Press "+" to add to the meshWorkspace. All users and members of the group will r
 that they have been granted access to your meshWorkspace.
 
 Assigning a meshWorkspace role is necessary in order to give access to [meshProjects](meshcloud.project.md) insight the meshWorkspace.
-If 4 eyes-principle is active, the user or group will not be assigned directly to your meshWorkspace. Another Customer Admin has to approve this role assignment first. Therefore the user or group will appear in the "Pending Requests" section.
+If 4 eyes-principle is active, the user or group will not be assigned directly to your meshWorkspace. Another Workspace Manager has to approve this role assignment first. Therefore the user or group will appear in the "Pending Requests" section.
 
 ## User Groups
 
@@ -62,15 +62,15 @@ A user or a group can be assigned multiple roles simultaneously. All users and m
 
 The following roles are available:
 
-- **Customer Owner**: Has full access to the meshWorkspace and its projects and can manage access to the meshWorkspace. A user that has this role will be the contact person for any matters related to the meshWorkspace. There can be maximum two Customer Owners in a meshWorkspace. If a Customer Owner already exists, that Customer Owner can assign the Customer Owner role to another user. If a Customer Owner doesn't exist, the Customer Admins can assign a Customer Owner.
-- **Customer Admin**: Has full access to the meshWorkspace and its projects and can manage access to the meshWorkspace.
-- **Customer Employee**: Has full access to project resources, but **cannot** manage access, create projects, etc. of the meshWorkspace.
+- **Workspace Owner**: Has full access to the meshWorkspace and its projects and can manage access to the meshWorkspace. A user that has this role will be the contact person for any matters related to the meshWorkspace. There can be maximum two Workspace Owners in a meshWorkspace. If a Workspace Owner already exists, that Workspace Owner can assign the Workspace Owner role to another user. If a Workspace Owner doesn't exist, the Workspace Managers can assign a Workspace Owner.
+- **Workspace Manager**: Has full access to the meshWorkspace and its projects and can manage access to the meshWorkspace.
+- **Workspace Member**: Has full access to project resources, but **cannot** manage access, create projects, etc. of the meshWorkspace.
 
 ### meshWorkspace Roles
 
 The following table provides details about the functionality available to the different roles.
 
-|                                                                                                                        | Customer Owner | Customer Admin | Customer Employee |
+|                                                                                                                        | Workspace Owner | Workspace Manager | Workspace Member |
 | ---------------------------------------------------------------------------------------------------------------------- | :------------: | :------------: |:----------------:|
 | [Project&nbsp;Resources](meshcloud.project-resources.md)                                                               |    &#10003;    |    &#10003;    |     &#10003;     |
 | &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;     |
@@ -107,7 +107,7 @@ meshWorkspace roles grant rights in meshStack only. In order to access cloud res
 
 ## Remove assigned meshWorkspace Roles
 
-If you would like to remove a user or group from your meshWorkspace go to the **Access Control** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshWorkspace. If 4-AP is active in your meshInstallation and the role request has not been approved by another Customer Admin yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshWorkspace, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshWorkspace was revoked.
+If you would like to remove a user or group from your meshWorkspace go to the **Access Control** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshWorkspace. If 4-AP is active in your meshInstallation and the role request has not been approved by another Workspace Manager yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshWorkspace, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshWorkspace was revoked.
 
 ## Workspace Deletion
 
@@ -116,7 +116,7 @@ Before a meshWorkspace may be deleted, a check is performed to verify the follow
 - all meshProjects in the meshWorkspace have been deleted
 - all published Service Brokers in the meshWorkspace have been [deactivated](meshstack.meshmarketplace.development.md#deactivation-of-service-brokers)
 
-The deletion can be performed only by the Customer Owners! You can delete the workspace under **Deletion** in the workspace control plane. You will be asked for confirmation and a deletion reason.
+The deletion can be performed only by the Workspace Owners! You can delete the workspace under **Deletion** in the workspace control plane. You will be asked for confirmation and a deletion reason.
 
 Note : The deletion of a workspace can not be reversed!
 

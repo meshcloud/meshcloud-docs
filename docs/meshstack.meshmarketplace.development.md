@@ -3,7 +3,7 @@ id: meshstack.meshmarketplace.development
 title: Marketplace Development
 ---
 
-> Only users with the role [Customer Admin](meshcloud.workspace.md#assign-meshworkspace-roles) or [Customer Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
 You can provide your own services (e.g. databases, message brokers, filesystems, etc) in the [meshMarketplace](marketplace.index.md) via the **Marketplace** >  **Service Brokers** on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
 
@@ -69,7 +69,7 @@ Please execute the following steps:
 
 Like for your private Service Broker, you can also actively [refresh the catalog](#refresh-service-broker-catalog) of your published Service Broker. You can click on **Refresh Catalog** button in the Publishing List of your Service Broker.
 
-The Analytics functionality for Service Owners is available to Customer Admins, who already [registered a Service Broker](meshstack.meshmarketplace.development.md#register-your-service-broker).
+The Analytics functionality for Service Owners is available to Workspace Managers, who already [registered a Service Broker](meshstack.meshmarketplace.development.md#register-your-service-broker).
 
 ## Debugging your Service Broker
 

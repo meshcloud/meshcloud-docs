@@ -86,7 +86,7 @@ graph LR;
 
 ### Externally-provisioned Identities
 
-Some public cloud platforms like [Microsoft Azure](./meshstack.azure.index.md) or [Google Cloud Platform](./meshstack.gcp.index.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google G-Suite.
+Some public cloud platforms like [Microsoft Azure](./meshstack.azure.index.md) or [Google Cloud Platform](./meshstack.gcp.index.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google Google Workspace.
 
 meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](./meshcloud.platforms.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation between on-premise and cloud-directory happens outside of meshStack.
 
@@ -122,15 +122,15 @@ While it's a key consideration for meshStack to deliver a unified multi-cloud IA
 architects need to consider the unique capabilities of cloud platform IAM systems (e.g. AAD vs. Google Cloud Identity) and of their organizations' IAM architecture. Based on the platform's native capabilities,
 meshStack supports the following identity provisioning strategies:
 
-|               |      [meshStack-provisioned](#meshstack-provisioned-identities)       |        [externally-provisioned](#externally-provisioned-identities)        |
-| :-----------: | :-------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-|   OpenStack   |         [deprecated](./meshstack.openstack.index.md#meshidp)          |         [supported](./meshstack.openstack.index.md#enterprise-idp)         |
-| Cloud Foundry |    [supported](meshstack.cloudfoundry.index.md#uaa-configuration)     |                                 _planned_                                  |
-|  Kubernetes   | [supported](./meshstack.kubernetes.index.md#api-server-configuration) |                                 _planned_                                  |
-|   OpenShift   |                                   -                                   |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
-|      AWS      |       [deprecated](./meshstack.aws.index.md#meshidb-deprecated)       |               [supported](./meshstack.aws.index.md#aws-sso)                |
-|     Azure     |       [AAD B2B](./meshstack.azure.index.md#workload-aad-tenant)       | [supported](./meshstack.azure.index.md#azure-active-directory-integration) |
-|      GCP      |                                   -                                   |     [supported](./meshstack.gcp.index.md#cloud-identity-configuration)     |
+|               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
+| :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
+|   OpenStack   |      [deprecated](./meshstack.openstack.index.md#meshidp)      |         [supported](./meshstack.openstack.index.md#enterprise-idp)         |
+| Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
+|  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
+|   OpenShift   |                               -                                |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
+|      AWS      |   [deprecated](./meshstack.aws.index.md#meshidb-deprecated)    |               [supported](./meshstack.aws.index.md#aws-sso)                |
+|     Azure     |   [AAD B2B](./meshstack.azure.index.md#workload-aad-tenant)    | [supported](./meshstack.azure.index.md#azure-active-directory-integration) |
+|      GCP      |                               -                                |     [supported](./meshstack.gcp.index.md#cloud-identity-configuration)     |
 
 #### Availability of Users and Atttributes
 
@@ -222,12 +222,12 @@ For further details, please consult the [Identity Provider configuration referen
 
 meshStack updates the `euid` of a user with the latest value passed from the IdP on every log in of the user into meshPanel.
 In case operators do not configure an identity lookup (see next section), this allows meshStack to retrieve an `euid` that is not an email from the IdP. However, operators need to be aware that
- users that have never logged in to meshStack will not have an `euid` set and can thus not be replicated
- to cloud platforms configured to use externally-provisioned identities.
+users that have never logged in to meshStack will not have an `euid` set and can thus not be replicated
+to cloud platforms configured to use externally-provisioned identities.
 
 ### Identity Lookup
 
-meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
+meshStack allows Workspace Managers to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. This search process is called identity lookup.
 
 meshStack supports configuration of an optional identity lookup source. When possible, IAM architects should give preference to using the configured identity provider also as as an identity lookup source.
@@ -237,7 +237,6 @@ of providing this attribute.
 If an operator does not configure an identity lookup source, meshStack will use the email address entered by the inviting user.
 This email address can also be used to set a user's `euid`, see the [user onboarding configuration reference](meshstack.onboarding.md#workspace-user-invitations) for details.
 
-
 | Identity Lookup Source | euid attributes supported                                               |
 | ---------------------- | ----------------------------------------------------------------------- |
 | none                   | email (manual input)                                                    |
@@ -246,12 +245,10 @@ This email address can also be used to set a user's `euid`, see the [user onboar
 
 For further details, please consult the [Identity Lookup configuration reference](./meshstack.identity-lookup.md).
 
-
 ### Identity Connector
 
 The [Identity Connector](meshstack.workspace-group-sync.md) can automatically provision meshUsers via the meshObject API.
 As a part of this process, the identity connector can also set the `euid` attribute.
-
 
 | Identity Connector Source | euid attributes supported                                 |
 | ------------------------- | --------------------------------------------------------- |
@@ -268,13 +265,13 @@ As a part of this process, meshStack has to map each meshUser to a native platfo
 
 #### Transforming euids with patterns
 
-Some common cloud IAM architectures require using different user account for test and production workloads (e.g. `user@test.example.com`, `user@example.com`) or using a different user account for private and public clouds (`example-corp\user`, `user@example.com`). In order to allow support these setups, operators can configure this transformation  of the meshUser `euid` individually for each meshPlatform.
+Some common cloud IAM architectures require using different user account for test and production workloads (e.g. `user@test.example.com`, `user@example.com`) or using a different user account for private and public clouds (`example-corp\user`, `user@example.com`). In order to allow support these setups, operators can configure this transformation of the meshUser `euid` individually for each meshPlatform.
 
 <!--snippet:meshfed.platform#type-->
 
-
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
+
 ```dhall
 let Platform =
       let Platform =
@@ -303,6 +300,7 @@ let Platform =
 
       in  Platform
 ```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 #### Looking up transformed euids
@@ -310,28 +308,32 @@ let Platform =
 In order for the replicator to map the transformed `euid` to a cloud platform's native user object, operators must configure which platform user attribute to use for this lookup.
 
 > IAM architects need to ensure that any external user provisioning processes outside of meshStack fill platform user object
-attributes with the correct euid values.
+> attributes with the correct euid values.
 
 The cloud platforms supported by meshStack have different capabilities to query user attributes via API.
 meshStack can thus only support lookup in one or two platform user attributes.
 
-| Platform         | platform user object attributes supported |
-| ---------------- | ----------------------------------------- |
-| Azure            | `userPrincipalName`, `mail`               |
-| AWS              | `userName`                                |
-| GCP              | `primaryEmail`                            |
-| OpenShift        | `User.metadata.name`                      |
-| OpenStack        | `User.federated[].protocols[].uniqueId`   |
-| meshMarketplace* | `userPrincipalName`, `mail`               |
+| Platform          | platform user object attributes supported |
+| ----------------- | ----------------------------------------- |
+| Azure             | `userPrincipalName`, `mail`               |
+| AWS               | `userName`                                |
+| GCP               | `primaryEmail`                            |
+| OpenShift         | `User.metadata.name`                      |
+| Kubernetes        | `User.metadata.name`                      |
+| OpenStack         | `User.federated[].protocols[].uniqueId`   |
+| meshMarketplace\* | `userPrincipalName`, `mail`               |
 
-\**with AAD permission Replication*
+\*_with AAD permission Replication_
 
 At the moment only AAD offers a choice of user lookup attributes. Operators can configure these globally for all meshPlatforms.
+
 <!--snippet:mesh.replicator-->
 
 The following configuration options are available at `mesh.replicator`:
+
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
+
 ```dhall
 let Replicator =
     {-
@@ -342,13 +344,14 @@ let Replicator =
     -}
       { aadUserLookupStrategy : Platform.Azure.AzureLookupStrategy }
 ```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <!--snippet:replicator.platform.azure.AzureLookupStrategy#type-->
 
-
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
+
 ```dhall
 let AzureLookupStrategy =
     {-
@@ -364,6 +367,7 @@ let AzureLookupStrategy =
     -}
       < UserByMailLookupStrategy | UserByUsernameLookupStrategy >
 ```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Group Cleanup
@@ -376,13 +380,13 @@ Additionally added group permissions are discouraged, but possible for some plat
 
 | Platform               | Additional Permission Possible |
 | ---------------------- | :----------------------------: |
-| AWS (meshIdB)          |               ✅                |
-| Azure                  |               ❌                |
-| GCP                    |               ✅                |
-| OpenStack              |               ✅                |
-| OpenShift              |               ✅                |
-| AKS (AAD Permissions¹) |               ❌                |
-| CloudFoundry²          |               ✅                |
+| AWS (meshIdB)          |               ✅               |
+| Azure                  |               ❌               |
+| GCP                    |               ✅               |
+| OpenStack              |               ✅               |
+| OpenShift              |               ✅               |
+| AKS (AAD Permissions¹) |               ❌               |
+| CloudFoundry²          |               ✅               |
 
 ¹: This applies only the the user group permissions that are applied in the AAD to give the users general access to the AKS cluster. The cluster role assignments in the cluster are not affected.
 

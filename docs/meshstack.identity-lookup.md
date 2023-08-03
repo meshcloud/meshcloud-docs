@@ -3,7 +3,7 @@ id: meshstack.identity-lookup
 title: Identity Lookup
 ---
 
-meshStack allows Customer Admins to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
+meshStack allows Workspace Managers to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. We call this search process identity lookup.
 
 <!--snippet:mesh.meshfed.web.identity-lookup-->
