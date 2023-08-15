@@ -93,6 +93,8 @@ To set up Azure Active Directory for IDP authentication follow these steps:
 
 5. Provide admin consent for the `User.ReadAll` permission of the app registration.
 
+    ![Grant admin consent](./assets/aad_identity_provider/aad-5.png)
+
 ### Google Cloud Directory (GCD)
 
 The setup of the GCD Federation is quite straight forward. The easiest way to do is to setup a SAML login federation between meshstack and Google. To do so follow these steps (for more detailed steps you can also follow the [SAML guide](https://support.google.com/a/answer/6087519?hl=en) from Google):
