@@ -39,16 +39,19 @@ meshcloud implements an extended [meshMarketplace OSB API Profile](./meshstack.m
 
 All communication between the meshMarketplace and Service Brokers is secured using HTTPS Basic Auth and a pre-shared key. Service owners that also develop brokers for platforms like Cloud Foundry or OpenShift will be familiar with this model.
 
-### Service Broker Dashboard SSO
+### Replicating Authorization Information
 
-meshMarketplace also supports two different options for authenticanting users of Service Broker [dashboard clients](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#dashboard-client-object)
+meshMarketplace supports two different options for authenticating and authorizing users of marketplace services.
 
-- using an OIDC client in meshIdB as described in the [dashboard-tutorial](./meshstack.meshmarketplace.dashboard-tutorial.md)
-- replicating of permission to Azure Active Directory groups
+- (Enterprise Plans only) use an OIDC client in meshIdB as described in the [OSB dashboard tutorial](./meshstack.meshmarketplace.dashboard-tutorial.md)
+- replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
+
+If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack
+using the [meshObject API](https://docs.meshcloud.io/api/).
 
 ## Platform Instance Configuration
 
-meshMarketplace can only be configured by meshcloud via dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
+meshMarketplace can only be configured by meshcloud via Dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
 
 ```dhall
 let PermissionReplication = ./PermissionReplication.dhall
@@ -60,7 +63,9 @@ in    λ(Secret : Type)
 The default `permissionReplication` for setting every meshMarketplace meshPlatform is an instance of `MeshIdb`, which
 offers no further configuration options. Note that these platforms do not need to be explicitly configured at this time.
 
-Platforms that want to use AAD permission replication need to configure an instance of `AzureAd`
+### AAD Permission Replication
+
+Platforms that want to use AAD group permission replication need to configure an instance of `AzureAd`
 
 ```dhall
 let InviteB2BUserConfig =
