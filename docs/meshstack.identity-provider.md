@@ -71,12 +71,29 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 
 ### Azure AD (AAD)
 
-You can also use the plain Azure Active Directory to setup IDP authentication. In order to do so follow these steps:
+To set up Azure Active Directory for IDP authentication follow these steps:
 
-1. Create a new App registration in AAD. You can choose a display name like `meshcloud SSO`. Define the redirect URI that will be provided by meshcloud. It is individual per meshcloud installation.
-2. Provide "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, to meshcloud.
-3. Create a client secret via "Manage -> Certficates & Secrets". This secret must also be provided to meshcloud.
-4. After the secret is configured in the identity broker by meshcloud, an Azure admin needs to provide admin consent for the `User.ReadAll` permission of the app registration via Azure Portal.
+1. Create a new non-gallery Enterprise Application in AAD ([Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started)) with display name `meshcloud SSO` or similar.
+
+    ![Register non-gallery Enterprise Application](./assets/aad_identity_provider/aad-1.png)
+
+    > We create a non-gallery Enterprise Application (that creates an App Registration) instead of directly creating an App Registration here because [provisioning via SCIM](meshstack.user-group-provisioning.html#aad-configuration) will be set up later with this Enterprise Application.
+
+2. Open the App Registration for `meshcloud SSO`. Navigate to Authentication and add a new Platform of Type Web. Enter the redirect URI for your meshStack that was provided by meshcloud.
+
+    ![Add Authentication to App Registration](./assets/aad_identity_provider/aad-2.png)
+
+3. Create a client secret via "Manage -> Certficates & Secrets". This secret must be shared with meshcloud.
+
+    ![Add Secret to App Registration](./assets/aad_identity_provider/aad-3.png)
+
+4. Share "Application (client) ID" and "Directory (tenant) ID", that is shown in the Overview screen of your new app registration, with meshcloud.
+
+    ![Read Client ID and Tenant ID of App Registration](./assets/aad_identity_provider/aad-4.png)
+
+5. Provide admin consent for the `User.ReadAll` permission of the app registration.
+
+    ![Grant admin consent](./assets/aad_identity_provider/aad-5.png)
 
 ### Google Cloud Directory (GCD)
 
