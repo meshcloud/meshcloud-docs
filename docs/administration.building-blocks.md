@@ -19,6 +19,8 @@ Definition.
 In the Admin Area, click on the "Building Block" item in the sidebar under "Platforms". On this page, click
 "Create new Definition". A wizard opens that guides you through the creation of the entire Building Block.
 
+> While our current support covers Terraform up to version 1.5.5, we're actively investigating the possibility of extending our support to upcoming Terraform versions. We're excited to share that we're also exploring the potential support for openTF. This initiative seeks to provide an open-source alternative to the official HashiCorp Terraform provider.
+
 ### General Building Block Definition Information
 
 On the first page, you simply have to put in:
