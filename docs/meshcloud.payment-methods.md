@@ -13,13 +13,6 @@ Payment methods are created **per** meshWorkspace and can be enhanced with [meta
 
 > Current limitation to how meshStack handles currencies: Although budgets can be applied in Dollar and Euro, budget alerts and payment method status only considers Euro. It is planned to expand the support for currencies besides Euro further in the future.
 
-## The Payment Method Lifecycle: Creation
-
-The first step in reaping the benefits of payment methods is creating them. A few important things must be considered about payment methods before creating them:
-
-1. A payment method is **always** scoped to a single meshWorkspace. This means it is not possible to create a global payment method that can be used for all meshWorkspaces. It is also not possible to re-use a single payment method across multiple meshWorkspaces.
-2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshWorkspaces. Make sure to use an identifier that will not collide in other meshWorkspaces.
-
 ### Creating a Payment Method via the meshPanel
 
 One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the 'Partner Admin' role. Navigate to the Admin area and follow these steps:
