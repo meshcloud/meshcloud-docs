@@ -19,6 +19,11 @@ meshcloud allows creation of [Service Users](meshcloud.service-user.md) for Clou
 
 Partners can enforce detailed per-project quotas for Cloud Foundry via meshcloud.
 
+## CLI Access
+
+meshPanel generates Cloud Foundry cli login instructions that enable users to quickly authenticate the cli
+for working with their Cloud Foundry space.
+
 ## Private Domains
 
 If another domain name as the predefined shared domains should be used a so called Private Domain can be registered with Cloud Foundry. This domain can then be used to create a route to a deployed app similiar to what would be possible with the predefined shared domains.
@@ -59,3 +64,4 @@ Tip: To quickly delete all routes no longer bound to an app use `cf delete-orpha
 
 Registering a Private Domain will not associate it with a external DNS system. In order to correctly receive and forward incoming traffic for the private domain to your Apps, you need to setup DNS records and you may also have to provision a load-balancer/reverse-proxy service.
 Please contact your platform operator for details.
+
