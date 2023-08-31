@@ -12,6 +12,8 @@ the most frequently asked questions from organizations' cybersecurity department
 
 meshcloud GmbH is an [ISO 27001 certified](https://www.meshcloud.io/2021/10/28/meshcloud-is-iso-27001-certified/) company. The scope of the certification covers the design, development, implementation, operation, and support of multi-cloud management and governance solutions for public and private cloud platforms.
 
+meshcloud GmbH is furthermore a [TISAX certified](https://www.meshcloud.io/en/blog/meshcloud-is-tisax-certified/) company.
+
 The design, development, implementation, and maintenance process of the meshStack follows the secure development lifecycle.
 
 meshStack is hosted by default hosted in GCP, a leading cloud provider. The geolocation is primarily within the EU but can be changed upon the customer’s requirement. This includes also the storage for backups. meshStack leverages different services of the cloud to provide security in terms of data encryption, protection against DoS attacks, access control, etc.
