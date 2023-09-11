@@ -50,7 +50,7 @@ graph LR;
 ## Designing Multi-Cloud Identity and Access Management
 
 Designing an effective multi-cloud identity and access management strategy is no small feat. This guide describes the
-most important considerations that nterprise architects and IAM zpecialists need to be aware of when designing
+most important considerations that enterprise architects and IAM specialists need to be aware of when designing
 a multi-cloud IAM strategy for their organisation. Wherever applicable, it will link to sections that describe relevant configuration options in detail.
 
 ## Federated Multi-Cloud Identities
@@ -123,10 +123,10 @@ architects need to consider the unique capabilities of cloud platform IAM system
 meshStack supports the following identity provisioning strategies:
 
 |               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
-| :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
+| :-----------: | :------------------------------------------------------------: |:--------------------------------------------------------------------------:|
 |   OpenStack   |                               -                                |   [supported](./meshstack.openstack.index.md#access-control-integration)   |
 | Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
-|  Kubernetes   |                               -                                |  [deprecated](./meshstack.kubernetes.index.md#access-control-integration)   |
+|  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
 |   OpenShift   |                               -                                |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
 |      AWS      |   [deprecated](./meshstack.aws.index.md#meshidb-deprecated)    |               [supported](./meshstack.aws.index.md#aws-sso)                |
 |     Azure     |   [AAD B2B](./meshstack.azure.index.md#workload-aad-tenant)    | [supported](./meshstack.azure.index.md#azure-active-directory-integration) |
