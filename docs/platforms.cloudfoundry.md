@@ -21,7 +21,7 @@ Partners can enforce detailed per-project quotas for Cloud Foundry via meshcloud
 
 ## CLI Access
 
-meshPanel generates Cloud Foundry cli login instructions that enable users to quickly authenticate the cli
+meshPanel generates Cloud Foundry CLI login instructions that enable users to quickly authenticate the CLI
 for working with their Cloud Foundry space.
 
 ## Private Domains

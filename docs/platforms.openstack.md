@@ -13,5 +13,5 @@ Platform operators can enforce detailed per-project quotas for OpenStack via mes
 
 ## CLI Access
 
-meshPanel generates OpenStack cli login instructions that enable users to quickly authenticate the cli
+meshPanel generates OpenStack CLI login instructions that enable users to quickly authenticate the CLI
 for working with their OpenStack project.
