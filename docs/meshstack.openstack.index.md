@@ -14,7 +14,7 @@ meshStack supports project creation, configuration, access control, quota manage
 ## Prerequisites
 
 OpenStack comes in many different distributions and flavors. Similar to our approach for supporting Kubernetes,
-we try and maintain our OpenStack integration distribution-independent and purles based on "vanilla" OpenStack APIs.
+we try and maintain our OpenStack integration distribution-independent and purely based on "vanilla" OpenStack APIs.
 
 The latest OpenStack release officially validated with meshStack is [OpenStack Ussuri](https://www.openstack.org/software/ussuri/).
 However, any later OpenStack releases that continues to maintain API compatibility with the API versions specified
@@ -65,7 +65,7 @@ let platformConfig =
 ```
 
 During replication, meshStack will make sure that users have access to the OpenStack projects they are assigned to in meshStack.
-Users will be assigned to the according groups (per meshProject) meshStack creates in OpenStack.
+Users will be assigned to the according groups (per meshProject) that meshStack creates in OpenStack.
 If meshStack is about to assign a user that does not exist in OpenStack yet, meshStack will create this user with the
 according IDP attributes and create the user in the Keystone domain `MeshUsers`.
 
