@@ -3,7 +3,11 @@ id: meshstack.email
 title: Email
 ---
  
-For all email based communication (e.g. for [workspace registration](./meshstack.onboarding.md#workspace-registration) or [workspace user invitations](./meshstack.onboarding.md#workspace-user-invitations)) meshStack will use the configured SMTP server.
+For all email based communication (e.g. for [workspace registration](./meshstack.onboarding.md#workspace-registration)
+or [workspace user invitations](./meshstack.onboarding.md#workspace-user-invitations)) meshStack will use the configured SMTP server.
+
+> Tip for enterprise meshStacks: you can configure a custom e-mail footer by creating an object in the `messages` configuration below using mapKey `mail.footer`.
+> Any valid HTML can be set as a value here. Contact your customer success team to get it set up.
 
 <!--snippet:mesh.meshfed.mail-->
 

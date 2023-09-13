@@ -3,7 +3,11 @@ id: meshstack.kubernetes.metering
 title: Metering
 ---
 
-meshStack supports metering and billing for most common Kubernetes versions.
+meshStack supports metering and billing for the most common types of Kubernetes resources.
+Metering is based on periodically sampling the state of Kubernetes resources from the platform's API.
+
+> The accuracy of sampling-based metering naturally depends on the sampling interval. While insufficient for
+> supporting a per-second billing model, it works very well for billing resources on a per-hour billing model.
 
 ## Prerequisites
 

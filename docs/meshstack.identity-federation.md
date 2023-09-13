@@ -3,7 +3,7 @@ id: meshstack.identity-federation
 title: Identity and Access Management
 ---
 
-One of meshStacks main features is to provide single identities across multiple cloud and container platforms. Therefore, meshStack contains a full-featured **Identity Broker** (meshIdB) which consumes identities from company directories and adds authorization information for the specific cloud platforms.
+meshStack supports a central Identity Provider architecture across multiple cloud and container platforms. Therefore, meshStack contains a full-featured Identity Broker (meshIdB) which consumes identities from company directories and adds authorization information for the specific cloud platforms.
 
 Identity Federation enables enterprises to integrate corporate SSO systems at a single point (the **mesh Identity Broker**). meshStack then uses it's desired-state replication to ensure correct configuration of identity and authorization information into all connected **meshPlatforms**. The diagram below depicts the principal components involved.
 
@@ -61,7 +61,7 @@ The identity provisioning mechanism and the resulting federation setup depends o
 
 ### meshStack-provisioned Identities
 
-In this mode meshStack provisions identities used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation and deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance.
+In this mode meshStack provisions identities used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including [revocation and deprovisioning](./meshstack.user-revocation.md). In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance. This is only available for Cloud Foundry.
 
 ```mermaid
 graph LR;
@@ -123,8 +123,8 @@ architects need to consider the unique capabilities of cloud platform IAM system
 meshStack supports the following identity provisioning strategies:
 
 |               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
-| :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
-|   OpenStack   |      [deprecated](./meshstack.openstack.index.md#meshidp)      |         [supported](./meshstack.openstack.index.md#enterprise-idp)         |
+| :-----------: | :------------------------------------------------------------: |:--------------------------------------------------------------------------:|
+|   OpenStack   |                               -                                |   [supported](./meshstack.openstack.index.md#access-control-integration)   |
 | Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
 |  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
 |   OpenShift   |                               -                                |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
@@ -380,13 +380,13 @@ Additionally added group permissions are discouraged, but possible for some plat
 
 | Platform               | Additional Permission Possible |
 | ---------------------- | :----------------------------: |
-| AWS (meshIdB)          |               ✅               |
-| Azure                  |               ❌               |
-| GCP                    |               ✅               |
-| OpenStack              |               ✅               |
-| OpenShift              |               ✅               |
-| AKS (AAD Permissions¹) |               ❌               |
-| CloudFoundry²          |               ✅               |
+| AWS (meshIdB)          |               ✅                |
+| Azure                  |               ❌                |
+| GCP                    |               ✅                |
+| OpenStack              |               ✅                |
+| OpenShift              |               ✅                |
+| AKS (AAD Permissions¹) |               ❌                |
+| CloudFoundry²          |               ✅                |
 
 ¹: This applies only the the user group permissions that are applied in the AAD to give the users general access to the AKS cluster. The cluster role assignments in the cluster are not affected.
 
