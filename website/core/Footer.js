@@ -39,7 +39,7 @@ class Footer extends React.Component {
               User Documentation
             </a>
             <a href={this.docUrl('meshstack.index.html')}>
-              Operator Documentation
+              Administrator Documentation
             </a>
           </div>
           <div>
