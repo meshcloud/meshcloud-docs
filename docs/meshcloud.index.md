@@ -2,56 +2,68 @@
 id: meshcloud.index
 title: Overview
 ---
-Welcome to the meshcloud platform documentation!
-
-Here, you can find information on how to use meshcloud and an explanation of the most important concepts.
 
 ## Introduction
 
-Quite a bit of complexity in multi-cloud management and multi-cloud governance comes from the use of different and inconsistent terminology between cloud platforms. meshcloud rectifies this using a unified language describing organization and governance structures independent of individual cloud platform implementations. We call this language the **meshModel**. Each individual object in this meshModel is called a **meshObject**. To resolve ambiguity we're prefixing entities in the meshModel using the `mesh` prefix.
+Welcome to the meshStack documentation! This part of the documentation is intended for end users
+of the meshStack platform. Be aware that it the meshStack you are using is rebranded and has a different name,
+but everything you can find in the documentation will apply to the meshStack you are using as well.
 
-The figure and table below explain the relation of the most important concepts in the meshModel.
+meshStack is useful for anyone that wants to use cloud services in their organization and manage their costs.
+Maybe you are a DevOps team that wants to create a few cloud projects in Microsoft Azure their projects across
+one or more cloud providers or maybe you are a Project Manager that wants to manage the budget of a cloud project. 
 
-![meshModel](assets/meshmodel-simplified.svg)
+The actual cloud platforms and services that are available to you depend on the setup of the meshStack and your organization.
+One organization might just only offer Microsoft Azure, but another might offer all cloud providers. Your meshStack will automatically
+reflect whatever is available in your case.
 
-| Entity                                         | Summary                                                                                   |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [meshUser](./meshcloud.profile.md)             | An individual user account. Roles define its level of access and permissions.             |
-| [meshPartner](administration.index.md)         | Partners administrate and support a meshcloud installation.                               |
-| [meshWorkspace](./meshcloud.workspace.md)        | A DevOps Team that manages its own [meshProjects](./meshcloud.project.md) and permissions |
-| [meshWorkspaceUserGroup](./meshcloud.workspace.md)| A group of users on a meshWorkspace, that can be granted access via roles. |
-| [meshProject](./meshcloud.project.md)          | A multi-cloud project owned by a [meshWorkspace](./meshcloud.workspace.md)                  |
-| [meshTenant](./meshcloud.tenant.md)            | An isolated environment in a specific cloud platform, e.g. an AWS Account.                |
-| [meshLandingZone](meshcloud.landing-zones.md)  | Defines configuration and governance policies for cloud environments.                     |
-| [meshPlatform](meshcloud.platforms.md) | An individual cloud platform connected to meshcloud.                                      |
-| [meshLocation](meshcloud.platforms.md) | A grouping of meshPlatforms, e.g. by geographic region.                                   |
+## Concepts
 
+To work with meshStack, the following concepts are of importance:
+
+- [Workspace](./meshcloud.workspace.md): The workspace is the highest level that you will work with. In here, you will invite
+  your entire team of managers, developers and more. In the workspace you will create one or more projects.
+- [Project](./meshcloud.project.md): The project is a cloud-agnostic concept which usually maps to an environment of an application
+  that you and your team are developing. The project will have a payment method assigned that acts as the budget. On the project
+  you invite team members that are needed for that environment, e.g. for a production project you will invite your SRES. Within
+  the project, you will have one or more cloud tenants.
+- [Tenant](./meshcloud.tenant.md): The tenant is an isolated and tangible place in an actual cloud provider. It depends on what cloud
+  you use what this maps to. For example for AWS this maps to an `Account`, for Azure this is a `Subscription` and for Google Cloud
+  it is a `Project`. meshStack can easily let you log in and redirect you to the tenant in the respective cloud provider.
+- [Landing Zone](./meshcloud.landing-zones.md): The landing zone is a template created by your organization that you pick
+  when you create a new tenant. It cannot be changed afterward. The idea of the landing zone is that you already get a set
+  of policies and perhaps resources to start using the cloud right away according to the compliance and best practices
+  of your organization.
+- [Building Blocks](./administration.building-blocks.md): A building block is a piece of infrastructure that can be booked
+  by you on top of a tenant. The library of Building Blocks is fully maintained by your administration team, so it depends
+  what is available to you. You can view the library in the meshPanel.
+- [Platform](./meshcloud.platforms.md): The platform is the actual cloud platform that you can use to create a new tenant
+  and start consuming the cloud. When you create a new project, you can select which platform(s) you want to use and the 
+  respective tenants will be created in the background.
 
 ## meshPanel
 
 The meshPanel is the self-service user interface for meshStack and provides different control planes to manage various aspects of your meshObjects depending on your rights:
 
-- [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace)
+- [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): Manage the access of your team members in your [meshWorkspace](./meshcloud.workspace.md), change the tags or check the available payment methods for your meshWorkspace.
 
-   Manage the access of your team members in your [meshWorkspace](./meshcloud.workspace.md), change the tags or check the available payment methods for your meshWorkspace.
+- [project control plane](./meshcloud.project-resources.md#project-control-plane): Get an overview of all tenants of your [meshProject](./meshcloud.project.md). Add new team members to it or change the payment methods of your project.
 
-- [project control plane](./meshcloud.project-resources.md#project-control-plane)
+- [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane): Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
 
-   Get an overview of all locations and their platforms of your [meshProject](./meshcloud.project.md). Add new team members to it or change the payment methods of your project.
+The above description serve as an example what you are able to do as Workspace Manager. Workspace Members will have a lot less
+access rights. Check out [Workspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
 
-- [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane)
+> If you are an administrator, please be aware that there are a lot more user interfaces available
+> to you. Read more in the [Admin Docs](./meshstack.index.md)
 
-    Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
-
-The above description serve as an example what you are able to do as Workspace Manager. Check out [meshWorkspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
-
-### Supported browsers
+### Supported Browsers
 
 - Firefox ESR
 - last 2 Firefox versions
 - last 2 Chrome versions
 
-If you experience problems with other browsers like Edge (Chromium), Safari or with mobile experience let us know.
+If you experience problems with other browsers like Edge (Chromium), Safari or with mobile browser let us know.
 We are interested to make that work as well!
 
 ## Contributing
