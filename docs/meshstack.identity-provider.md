@@ -91,7 +91,7 @@ To set up Azure Active Directory for IDP authentication follow these steps:
 
     ![Read Client ID and Tenant ID of App Registration](./assets/aad_identity_provider/aad-4.png)
 
-5. Provide admin consent for the `User.ReadAll` permission of the app registration.
+5. Provide delegated admin consent for the `User.ReadAll` permission of the app registration.
 
     ![Grant admin consent](./assets/aad_identity_provider/aad-5.png)
 
