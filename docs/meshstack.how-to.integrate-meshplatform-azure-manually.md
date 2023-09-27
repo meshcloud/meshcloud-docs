@@ -117,7 +117,7 @@ Furthermore in order to prevent the replicator from assigning itself more permis
                   {
                     "field": "Microsoft.Authorization/roleAssignments/principalId",
                     "equals": "<objectId>"
-                  },
+                  }
                 ]
               }
             ]
