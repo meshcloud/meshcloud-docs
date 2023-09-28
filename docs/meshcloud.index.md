@@ -11,7 +11,7 @@ but everything you find in the documentation will apply to the meshStack you are
 
 meshStack is useful for anyone that wants to use cloud services in their organization and manage their costs.
 Maybe you are a DevOps team that wants to create a few cloud projects in Microsoft Azure their projects across
-one or more cloud providers, or maybe you are a Project Manager that wants to manage the budget of a cloud project. 
+one or more cloud providers, or maybe you are a Project Manager that wants to manage the budget of a cloud project.
 
 The actual cloud platforms and services that are available to you depend on the setup of the meshStack and your organization.
 One organization might only offer Microsoft Azure, but another might offer all major cloud providers. Your meshStack will automatically
@@ -38,7 +38,7 @@ To work with meshStack, the following concepts are of importance:
   by you on top of a tenant. The library of Building Blocks is fully maintained by your administration team, so it depends on
   what is available to you. You can view the library in the meshPanel.
 - [Platform](./meshcloud.platforms.md): The platform is the actual cloud platform that you can use to create a new tenant
-  and start consuming the cloud. When you create a new project, you can select which platform(s) you want to use and the 
+  and start consuming the cloud. When you create a new project, you can select which platform(s) you want to use and the
   respective tenants will be created in the background.
 
 ## meshPanel
