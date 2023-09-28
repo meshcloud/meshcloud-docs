@@ -110,7 +110,7 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
    2. Use your meshStack's backend URL as endpoint: `https://meshfed.<meshStack>/api/scim/v2/`.
    3. Create an [API user](administration.apiusers.md) with permission `Use all SCIM endpoints provided by meshStack` in meshStack.
    ![Create API User](assets/aad-user-and-group-sync.png)
-   4. Set the Basic Auth Credentials as "Secret Token". For example, if you have an API user named `myuser` with the password `mypassword`, then you have to enter the base64-encoded form of `myuser:mypassword` (do not include the `Basic` prefix).
+   4. Set the base64 encoded Basic Auth Credentials as "Secret Token".
    ![Set Secret Token](assets/scim-secret-token.png)
 3. Go to "Settings" menu within "Provisioning" and configure which users and groups should be provisioned. You can either:
    1. Sync only users and groups that are assigned to your EA.
