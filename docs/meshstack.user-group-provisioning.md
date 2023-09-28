@@ -19,7 +19,7 @@ for users it selects the `userName`, for groups it uses the `displayName`. As a 
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
-**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via support@meshcloud.io.
+**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via <support@meshcloud.io>.
 
 ### Example
 
@@ -184,3 +184,9 @@ displayed: "Create", "Update" and "Delete". Ensure that all three checkboxes are
 Deleting a user via SCIM has the following consequences in meshStack: The user will be irrevocably deleted and only the
 bare minimum of information required for GDPR compliance is retained. After deletion, it is possible to create a new
 user with the same username and email as the previously deleted user, but the deleted user cannot be restored.
+
+## SCIM only option for User Lifecycle
+
+By default, in meshStack, you can create users through a diverse range of methods like Panel, IDP, SCIM, and other available options. Now you can choose an option to manage users and groups within the Workspace and Admin areas exclusively via SCIM to prevent conflicts and double assignments when other methods are available. To enable creation only via SCIM go to the Settings page on the Admin area and in the Manage tab switch on a "SCIM only user management" button. The button is switched off by default, which means that users and groups can be created through a diverse range of methods.
+
+<img src="assets/scim-user-management.png" alt="SCIM only user management">
