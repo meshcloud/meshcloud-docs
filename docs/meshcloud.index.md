@@ -9,9 +9,10 @@ Welcome to the meshStack documentation! This part of the documentation is intend
 of the meshStack platform. Be aware that meshStack might be rebranded in your organization and has a different name,
 but everything you find in the documentation will apply to the meshStack you are using as well.
 
-meshStack is useful for anyone that wants to use cloud services in their organization and manage their costs.
-Maybe you are a DevOps team that wants to create a few cloud projects in Microsoft Azure their projects across
-one or more cloud providers, or maybe you are a Project Manager that wants to manage the budget of a cloud project.
+meshStack is useful for anyone that wants to use platform services in their organization and manage their costs.
+Maybe you are an Application team that wants to create a few cloud projects in Microsoft Azure or Google Cloud,
+use an organization-specific service like an On-Premise network connector, or maybe you are a Project Manager that
+wants to manage the budget of a cloud project.
 
 The actual cloud platforms and services that are available to you depend on the setup of the meshStack and your organization.
 One organization might only offer Microsoft Azure, but another might offer all major cloud providers. Your meshStack will automatically
@@ -51,7 +52,7 @@ The meshPanel is the self-service user interface for meshStack and provides diff
 
 - [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane): Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
 
-The above description serve as an example what you are able to do as Workspace Manager. Workspace Members will have a lot less
+The above description serves as an example what you are able to do as Workspace Manager. Workspace Members will have a lot less
 access rights. Check out [Workspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
 
 > If you are an administrator, please be aware that there are a lot more user interfaces available
