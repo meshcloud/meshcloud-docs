@@ -64,6 +64,5 @@ per meshcloud installation.
 | [API Users](administration.apiusers.md)                                                                                 |       &#10003;       |            |                   |             |            |                    |                    |                      |
 | [Service&nbsp;Broker](administration.service-brokers.md)                                                                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| [Performance&nbsp;Analytics](administration.analytics.md)                                                                 |       &#10003;       |       &#10003;       |                   |             |            |      &#10003;      |                    |                      |
 
 Please review [meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) for roles available to end-users of your meshStack implementation.
