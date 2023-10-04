@@ -232,6 +232,7 @@ $billingRoleAssignmentName = (New-Guid).Guid
 
 $url = "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/$billingAccountId/enrollmentAccounts/$enrollmentAccountId/billingRoleAssignments/$billingRoleAssignmentName`?api-version=2019-10-01-preview"
 
+# Subscription Creator. See https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals#permissions-that-can-be-assigned-to-the-spn
 $roleDefinitionId = "/providers/Microsoft.Billing/billingAccounts/$billingAccountId/enrollmentAccounts/$enrollmentAccountId/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71"
 
 $body = "{
