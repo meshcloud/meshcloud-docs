@@ -9,7 +9,7 @@ Welcome to the meshStack documentation! This part of the documentation is intend
 of the meshStack platform. Be aware that meshStack might be rebranded in your organization and has a different name,
 but everything you find in the documentation will apply to the meshStack you are using as well.
 
-meshStack is useful for anyone that wants to use platform services in their organization and manage their costs.
+meshStack is useful for anyone who wants to use platform services in their organization and manage their costs.
 Maybe you are an Application team that wants to create a few cloud projects in Microsoft Azure or Google Cloud,
 use an organization-specific service like an On-Premise network connector, or maybe you are a Project Manager that
 wants to manage the budget of a cloud project.
