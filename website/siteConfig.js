@@ -14,8 +14,8 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'meshcloud' /* title for your website */,
-  tagline: 'we enable cloud-native organizations',
+  title: 'meshStack' /* title for your website */,
+  tagline: 'The leading Cloud Foundation Platform brought to you by meshcloud',
   url: 'https://docs.meshcloud.io' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -33,7 +33,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: 'meshcloud.index', label: 'User Docs' },
-    { doc: 'meshstack.index', label: 'Operator Docs' },
+    { doc: 'meshstack.index', label: 'Administrator Docs' },
     { href: '/api/index.html', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
     { doc: 'faq', label: 'FAQ' },
@@ -103,7 +103,7 @@ const siteConfig = {
 
     // add mermaid.js for diagrams
     // unfortunately it's not easy to make mermaid work during static site generation on docusaurus v1, so we will
-    // include it as a runtime dependency for now. The benefits of having diagrams outweight the downsides of an 
+    // include it as a runtime dependency for now. The benefits of having diagrams outweight the downsides of an
     // additional dependency. References
     // - https://github.com/facebook/docusaurus/issues/1258
     // - https://github.com/mermaid-js/mermaid/issues/485

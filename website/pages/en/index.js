@@ -79,11 +79,11 @@ const LearnHow = props => (
     {[
       {
         title: `[User Documentation](${docUrl('meshcloud.index.html')})`,
-        content: 'Documentation for DevOps Teams and IT Managers using a meshcloud installation as end-users.',
+        content: 'Documentation for DevOps Teams using meshStack to create their cloud projects and manage their costs and budgets.',
       },
       {
-        title: `[Operator Documentation](${docUrl('meshstack.index.html')})`,
-        content: 'Documentation for multi-cloud management and cloud operation teams operating a meshcloud installation and connected cloud platforms.',
+        title: `[Administrator Documentation](${docUrl('meshstack.index.html')})`,
+        content: 'Documentation for Administrators that integrate and operate cloud platforms, manage costs, or even operate meshStack as a whole.',
       }
     ]}
   </Block>
@@ -104,8 +104,8 @@ class Index extends React.Component {
                 align="center"
                 contents={[
                   {
-                    content: 
-                      `DevOps Teams use meshcloud to setup and [configure a team](${docUrl('meshcloud.workspace.html', language)}),
+                    content:
+                      `DevOps Teams use meshStack to setup and [configure a team](${docUrl('meshcloud.workspace.html', language)}),
                        [create projects](${docUrl('meshcloud.project.html', language)}) and provision managed cloud environments using [Landing Zones](${docUrl('meshcloud.landing-zones.html', language)}).
                        Once setup you can [manage resources](${docUrl('meshcloud.project-resources.html', language)}), [review costs](${docUrl('meshcloud.project-metering.html', language)})
                        and [consume marketplace services](${docUrl('marketplace.index.html', language)}).`,
@@ -117,31 +117,31 @@ class Index extends React.Component {
                   },
                   {
                     content:
-                    `Multi-cloud management teams use meshcloud to provide [managed cloud environments](${docUrl('administration.landing-zones.html', language)}) to internal [customers](${docUrl('administration.workspaces.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
-                    They set the standards for cloud usage and ensure that teams can move to the cloud quickly and safely while [staying in control](${docUrl('administration.analytics.html', language)}).
+                    `Cloud Foundation Teams use meshStack to provide [managed cloud environments](${docUrl('administration.landing-zones.html', language)}) to internal [workspaces](${docUrl('administration.workspaces.html', language)}) and their [projects](${docUrl('administration.projects.html', language)}).
+                    They set the standards for cloud usage and ensure that teams can move to the cloud quickly and safely while staying in control.
                     `,
                     image: `${imgUrl('persona_governance.png')}`,
                     imageAlign: 'top',
-                    imageAlt: 'IT Governance',
+                    imageAlt: 'Enterprise Architects',
                     title:
-                      'IT Governance <br/><font size="2">IAM & Compliance Management</font>',
+                      'Cloud Foundation Teams <br/><font size="2">Enterprise Architects</font>',
                   },
                   {
                     content:
-                      `Platform operators are responsible for [configuring and maintaining cloud platforms](${docUrl('meshstack.index.html', language)}) like AWS, Azure or OpenShift clusters. 
-                      As experts for the cloud platforms they [integrate platforms](${docUrl('meshstack.index.html#integrations', language)}) with meshcloud, provide Landing Zone implementations and governance automation.`,
+                      `Platform Engineers are responsible for [configuring and maintaining cloud platforms](${docUrl('meshstack.index.html', language)}) like AWS, Azure or OpenShift clusters. 
+                      As experts for the cloud platforms they [integrate platforms](${docUrl('meshstack.index.html#integrations', language)}) with meshStack, provide Landing Zone implementations and governance automation.`,
                     image: `${imgUrl('persona_platformops.png')}`,
                     imageAlign: 'top',
-                    imageAlt: 'Platform Operators ',
+                    imageAlt: 'Platform Engineers',
                     title:
-                      'Platform Operators <br/><font size="2">Cloud Platform Experts</font>',
+                      'Platform Engineers <br/><font size="2">Cloud Platform Experts</font>',
                   },
 
                   {
                     content:
-                      `Service Owners provide application services like managed databases, on-prem connectivity, firewall automation and email services to DevOps teams. 
-                      Service Owners can offer their services on the [meshMarketplace](${docUrl('meshstack.meshmarketplace.index.html', language)}) 
-                      and use meshcloud to [develop and manage](${docUrl('meshstack.meshmarketplace.development.html', language)}) their service offerings.`,
+                      `Service Owners provide additional infrastructure services like managed databases, on-prem connectivity, firewall automation and email services to DevOps teams. 
+                      Service Owners can automate and offer [OSB services](${docUrl('meshstack.meshmarketplace.index.html', language)}) and [building blocks](${docUrl('administration.building-blocks.html', language)})
+                      to build an internal infrastructure [marketplace](${docUrl('meshstack.meshmarketplace.development.html', language)}).`,
                     image: `${imgUrl('persona_serviceowner.png')}`,
                     imageAlign: 'top',
                     imageAlt: 'Service Owners ',
