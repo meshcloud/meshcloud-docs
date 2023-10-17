@@ -66,3 +66,10 @@ per meshcloud installation.
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 
 Please review [meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) for roles available to end-users of your meshStack implementation.
+
+## Admin Groups
+
+To avoid assigning multiple users individually, you can create Admin Groups. These groups can be assigned to roles in the same way as individual users.
+
+You can view Admin Groups within your Administration Area by going to the **Admin Groups** section on the **Admin Access Control** page. Currently, the creation of Admin Groups is only possible via [meshObject API](https://docs.meshcloud.io/docs/meshstack.api.html), namely [meshWorkspaceUserGroups API endpoint](https://docs.meshcloud.io/api/index.html#mesh_workspaceusergroup), and to create one you will need a unique identifier, which you can find in the Admin Group section. In the example provided, the identifier is named "demo-partner," but it is unique to every meshStack.
+![Alt text](image-1.png)
