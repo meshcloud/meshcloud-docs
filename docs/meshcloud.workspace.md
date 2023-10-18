@@ -52,7 +52,7 @@ For not having to assign multiple users individually to your projects, you can a
 
 You can view user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
 Currently, creating a group is only supported via [meshObject API](meshstack.api.md) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
-![Alt text](image.png)
+![workspace-identifier](assets/workspace-identifier.png)
 
 ## Assign meshWorkspace Roles
 
