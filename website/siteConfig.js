@@ -134,6 +134,7 @@ const siteConfig = {
 
   algolia: {
     apiKey: process.env.DOCSEARCH_APIKEY,
+    appId: process.env.DOCSEARCH_APP_ID,
     indexName: process.env.DOCSEARCH_INDEXNAME
   },
 
