@@ -79,7 +79,7 @@ All permissions left are therefore granted only via the Management Group hierarc
 "*/register/action",
 
 # Rename pre-provisioned subscriptions, not required for Enterprise Enrollment
-"Microsoft.Subscription/rename/action"
+"Microsoft.Subscription/rename/action",
 
 # The following permission is only required if you plan to use this principal for Azure Resource Group
 # integeration.
