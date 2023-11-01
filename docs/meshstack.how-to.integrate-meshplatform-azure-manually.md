@@ -79,7 +79,7 @@ All permissions left are therefore granted only via the Management Group hierarc
 "*/register/action",
 
 # Rename pre-provisioned subscriptions, not required for Enterprise Enrollment
-"Microsoft.Subscription/rename/action"
+"Microsoft.Subscription/rename/action",
 
 # The following permission is only required if you plan to use this principal for Azure Resource Group
 # integeration.
@@ -291,9 +291,9 @@ The meshcloud Azure [replication](./meshcloud.tenant.md) detects externally-prov
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 
-### Set up the Metering Service Principal
+## Set up the Metering Service Principal
 
-In order to read resource usage, a metering principal is needed. It requires the following permissions/roles on all resources which should be accessed by meshStacks's metering service:
+To read resource usage, a metering principal is needed. It requires the following role on all resources which should be accessed by meshStacks's metering service:
 
 - `Cost Management Reader`
 
