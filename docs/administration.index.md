@@ -65,8 +65,8 @@ per meshcloud installation.
 | [Service&nbsp;Broker](administration.service-brokers.md)                                                                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)                  |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md)     | &#10003; | &#10003; | &#10003; | &#10003; | | | | &#10003; |
-| &nbsp;&nbsp;&nbsp;Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions     | &#10003; | &#10003; | &#10003; | &#10003; | | | | &#10003;|
-| &nbsp;&nbsp;&nbsp;Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions     | &#10003; | &#10003; | &#10003; | | | | |                    
+| &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md)     | &#10003; | &#10003; | &#10003; | &#10003; | | | | &#10003;|
+| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md)     | &#10003; | &#10003; | &#10003; | | | | |                    
 
 
 
