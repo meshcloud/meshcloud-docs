@@ -26,12 +26,12 @@ Platform Operators can configure a custom Landing Zone [meshTag](./meshstack.met
 For all types of platforms it is possible to include marketplace services as part of the landing zone. These tenant
 services can be configured to be either:
 
-- Required: this means the tenant service has to be booked by the customer user. This is useful when you want to enforce
+- Required: this means the tenant service has to be booked by the workspace user. This is useful when you want to enforce
   the usage of a particular marketplace service in combination with the landing zone.
-- Optional: this means the tenant service can be optionally booked by the customer user, but they are not required to
+- Optional: this means the tenant service can be optionally booked by the workspace user, but they are not required to
   do so and they could decide to skip booking this service.
 
-Once one or more services have been added to the landing zone, customer users will be seeing this as part of the project
+Once one or more services have been added to the landing zone, workspace users will be seeing this as part of the project
 creation process. You can see an example of this [here](./meshstack.how-to.create-project.md) at step 7.
 
 Please note that you can only select services that are [tenant-aware](./meshstack.meshmarketplace.tenant-services.md)
