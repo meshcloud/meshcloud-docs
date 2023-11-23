@@ -113,6 +113,34 @@ The inputs' behavior can be further decided:
   shown to any users. Also meshStack only has very limited access to this secret. Only once Terraform gets executed,
   the secret is decrypted.
 
+We support different types of inputs, the basic types are STRING, NUMBER and BOOLEAN. There will be more complex types 
+like LIST and MAP coming as well. For now, there is an exception for the source "User Permissions". It already provides
+a LIST of objects to the Building Block, with a JSON structure that looks like this:
+
+```json
+[
+  {
+    meshIdentifier: 'identifier1',
+    username: 'johndoe',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'johndoe@test.com',
+    euid: 'johndoe',
+    roles: ['reader']
+  },
+  {
+    meshIdentifier: 'identifier2',
+    username: 'lisaluck',
+    firstName: 'Lisa',
+    lastName: 'Luck',
+    email: 'lisaluck@test.com',
+    euid: 'lisaluck',
+    roles: ['admin', 'reader', 'user']
+  }
+]
+```
+
+
 ### Building Block Outputs
 
 You can also extract the Terraform outputs into meshStack. This is useful in two scenarios:
