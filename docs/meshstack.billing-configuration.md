@@ -5,16 +5,17 @@ title: Configuration
 
 ## Currency Conversion
 
-In order to simplify multi-cloud governance, the best practice is to have single chargeback currency. meshStack simplifies the chargeback process with automatic currency conversion capability, namely regardless of the original currency from cloud providers like AWS chargeback statements will be converted to a single currency - Euro. 
+To streamline cloud governance, meshStack recommends using a single chargeback currency. This functionality automatically converts $ from cloud providers like AWS into Euro. This simplification aids in the chargeback process to teams. 
 
-You have two options based on your [plan](https://www.meshcloud.io/en/pricing/) to enable currency conversion for chargebacks and usage reports:
+You have two options for enabling currency conversion in chargeback and usage reports:
 
-- For the all Plans default converter is available. For the default converter, we are getting rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates by the European Central Bank.Go to the Financial Tab on the Settings page and simply activate a toggle to use the default converter. 
-- If you are on the Power Plan, you can integrate your own converter via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team. They will support you in connecting your preferred converter with meshStack.
+- Standard Currency Rate: By default, meshStack uses the conversion rates from frankfurter.app, which provides exchange rates from the European Central Bank. To activate this, navigate to the Financial Tab on the Settings page and enable the conversion feature using the provided toggle.
+- Customized Currency Rate: For a customized approach, you can supply your own conversion rates via API. First, deactivate the standard rate toggle in the Financial Tab. Then, contact our support team at support@meshcloud.io for assistance in integrating your system.
 
-If your meshStack is hosted in a private environment and has permission to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off togle button in the Financial Tab of the Settings page.
+If your meshStack instance is in a private environment with permissions for external requests, enable the default converter through the Settings page as described above.
+For environments with restricted external access, allow meshStack to communicate with external services by configuring your firewall rules accordingly.
 
-> Please be aware that enabling the default converter or integrating your own one will only affect data moving forward, namely past chargebacks and usage reports won´t retroactively convert to the base currency. 
+> Activating currency conversion affects both current and future months. It does not retroactively alter past cost data.
 
 ### Other Supported Currencies 
 
