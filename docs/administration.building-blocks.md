@@ -17,14 +17,15 @@ Definition.
 ## Creating a new Building Block Definition
 
 In the Admin Area, click on the "Building Block" item in the sidebar under "Platforms". On this page, click
-"Create new Definition". A wizard opens that guides you through the creation of the entire Building Block.
+"Create new Definition". A wizard opens that guides you through the creation of the entire Building Block Definition.
 
 > While our current support covers Terraform up to version 1.5.5, we're actively investigating the possibility of extending our support to upcoming Terraform versions. We're excited to share that we're also exploring the potential support for openTF. This initiative seeks to provide an open-source alternative to the official HashiCorp Terraform provider.
 
-<!-- -->
-> [**Building Blocks Repository**](https://github.com/meshcloud/building-blocks)
-This repository serves as a central hub for building block modules, and we encourage you to explore and utilize the existing ones or even contribute your own modules if you've created any. Our modules are organized by cloud providers, making it easy to find what you need within the respective folders.
-Additionally, in the [Wiki](https://github.com/meshcloud/building-blocks/wiki) you'll discover valuable resources on how to create Terraform modules, craft building blocks based on them, and access a multitude of examples to spark your inspiration. It exist to facilitate your Building Block journey and empower your infrastructure development.
+### Building Blocks Repository
+
+The [Building Blocks Repository](https://github.com/meshcloud/building-blocks) serves as a central hub for building block modules. We invite you to explore and take advantage of the existing modules, or even contribute your own if you have created any. Our modules are conveniently organized by cloud providers, making it easy for you to quickly find what you need in the respective folders. 
+
+Additionally, our [Wiki](https://github.com/meshcloud/building-blocks/wiki) offers a wealth of valuable resources on how to create Terraform modules, craft building blocks based on them, and access a multitude of examples to spark your inspiration. The Wiki is designed to facilitate your Building Block journey and empower your infrastructure development. We hope you will find it to be a valuable resource in your work.
 
 ### General Building Block Definition Information
 
