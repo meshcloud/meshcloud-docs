@@ -10,6 +10,16 @@ in the external system are automatically mirrored to the provisioned equivalents
 the members of a certain AAD group are changing and provisioning is set up, those changes will be reflected in the group within meshStack as well
 without additional effort. That way we can model the complete lifecycle of users and groups automatically.
 
+## Enable SCIM
+
+By default, in meshStack, you can create users through a diverse range of methods like the Panel, IDP, and other available
+options. If you want to manage your users via SCIM exclusively you need to enable this setting in the Admin area
+(this disabled all other methods to prevent conflicts and double assignments).
+To enable SCIM go to the Settings page on the Admin area and in the Manage tab switch on a "SCIM only user management" button.
+The button is switched  off by default, which means that users and groups can be created through a diverse range of methods.
+
+<img src="assets/scim-user-management.png" alt="SCIM only user management">
+
 ## Provisioning with SCIM
 
 SCIM clients are the source for users and groups. They need to address users and groups in order to manage the creation,
@@ -184,9 +194,3 @@ displayed: "Create", "Update" and "Delete". Ensure that all three checkboxes are
 Deleting a user via SCIM has the following consequences in meshStack: The user will be irrevocably deleted and only the
 bare minimum of information required for GDPR compliance is retained. After deletion, it is possible to create a new
 user with the same username and email as the previously deleted user, but the deleted user cannot be restored.
-
-## SCIM only option for User Lifecycle
-
-By default, in meshStack, you can create users through a diverse range of methods like Panel, IDP, SCIM, and other available options. Now you can choose an option to manage users and groups within the Workspace and Admin areas exclusively via SCIM to prevent conflicts and double assignments when other methods are available. To enable creation only via SCIM go to the Settings page on the Admin area and in the Manage tab switch on a "SCIM only user management" button. The button is switched off by default, which means that users and groups can be created through a diverse range of methods.
-
-<img src="assets/scim-user-management.png" alt="SCIM only user management">
