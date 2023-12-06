@@ -26,7 +26,7 @@ If you are not familiar with what a meshProject is, please check the [official m
 
 ![Select meshProject in meshWorkspace overview](./assets/project/project-in-overview.png "Access Control - Access Requests")
 
-- Go to the access control panel by clicking on the `Access Control` tab
+- Go to the access control panel by clicking on the `Project Access` tab
 - At the end of the `Current Access` list will be an input field. Type in the first-, last-name or email address to find and select the user you want to add. Choose a Project Role and press the `+` button.
 
 ![Add a user to the workspace](./assets/project/project-access-control.png "add a user")
@@ -36,5 +36,5 @@ If you are not familiar with what a meshProject is, please check the [official m
 meshStack enterprise supports 4-eyes access controls.
 Please check the [official meshcloud documentation](meshcloud.project.md#access-control-on-a-meshproject).
 
-- A second user with Workspace Manager or Workspace Owner permission needs to approve the access request. The second user must also navigate to the specific meshWorkspace (see step 1.), select the meshProject (see step 2.), go to the `Access Control` tab (see step 3.) and then click on the `Access Requests` tab in the second tab-row.
+- A second user with Workspace Manager or Workspace Owner permission needs to approve the access request. The second user must also navigate to the specific meshWorkspace (see step 1.), select the meshProject (see step 2.), go to the `Workspace Access` tab (see step 3.) and then click on the `Access Requests` tab in the second tab-row.
 ![Click the Access Requests tab](./assets/project/project-access-approve.png "Access Control - Access Requests")
