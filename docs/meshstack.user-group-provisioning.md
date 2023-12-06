@@ -19,7 +19,7 @@ for users it selects the `userName`, for groups it uses the `displayName`. As a 
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
-**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via support@meshcloud.io.
+**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via <support@meshcloud.io>.
 
 ### Example
 
@@ -107,8 +107,11 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 1. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning. A step-by-step guide is available [here](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started).
 2. In the EA set up the meshStack endpoint as target API:
    1. Go to the "Provisioning" section and then to "Admin Credentials"-
-   2. Use your meshStack's backend URL as endpoint: `meshfed.<meshStack>/api/scim/v2/`.
-   3. Set the Basic Auth Credentials as "Secret Token". For example, if you have an API user named `myuser` with the password `mypassword`, then you have to enter the base64-encoded form of `myuser:mypassword` (do not include the `Basic` prefix).
+   2. Use your meshStack's backend URL as endpoint: `https://meshfed.<meshStack>/api/scim/v2/`.
+   3. Create an [API user](administration.apiusers.md) with permission `Use all SCIM endpoints provided by meshStack` in meshStack.
+   ![Create API User](assets/aad-user-and-group-sync.png)
+   4. Set the base64 encoded Basic Auth Credentials as "Secret Token".
+   ![Set Secret Token](assets/scim-secret-token.png)
 3. Go to "Settings" menu within "Provisioning" and configure which users and groups should be provisioned. You can either:
    1. Sync only users and groups that are assigned to your EA.
    2. Sync all users and groups from your AAD. This option should always be combined with Scopes as described in the step below.
@@ -181,3 +184,9 @@ displayed: "Create", "Update" and "Delete". Ensure that all three checkboxes are
 Deleting a user via SCIM has the following consequences in meshStack: The user will be irrevocably deleted and only the
 bare minimum of information required for GDPR compliance is retained. After deletion, it is possible to create a new
 user with the same username and email as the previously deleted user, but the deleted user cannot be restored.
+
+## SCIM only option for User Lifecycle
+
+By default, in meshStack, you can create users through a diverse range of methods like Panel, IDP, SCIM, and other available options. Now you can choose an option to manage users and groups within the Workspace and Admin areas exclusively via SCIM to prevent conflicts and double assignments when other methods are available. To enable creation only via SCIM go to the Settings page on the Admin area and in the Manage tab switch on a "SCIM only user management" button. The button is switched off by default, which means that users and groups can be created through a diverse range of methods.
+
+<img src="assets/scim-user-management.png" alt="SCIM only user management">

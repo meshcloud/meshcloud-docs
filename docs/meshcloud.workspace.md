@@ -110,6 +110,12 @@ meshWorkspace roles grant rights in meshStack only. In order to access cloud res
 
 If you would like to remove a user or group from your meshWorkspace go to the **Workspace Access** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshWorkspace. If 4-AP is active in your meshInstallation and the role request has not been approved by another Workspace Manager yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshWorkspace, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshWorkspace was revoked.
 
+## Roles Recertification
+
+If you do not have a central Identity and Access Management (IAM) system for recertifying roles, you can still recertify roles locally in meshStack by controlling the duration of access for a Workspace. To do this, navigate to the Settings page and select the Compliance tab. From there, you can choose a specific time frame for a particular Workspace role, such as a 6-month limit for the Workspace Owner role. This means that users cannot be assigned to the Workspace Owner role for longer than 6 months. By choosing a specific time frame, you also make it mandatory to set an expiration date for Workspace roles. This means that an expiration date for a Workspace role will be required during Workspace creation or when assigning users afterward. After the expiration date, users will be automatically unassigned from Workspace.
+
+Role recertification is also available for assigning users to the role via API. When you enable Workspace Role Recertification in the Settings, the system will automatically set an expiration date when you create a WorkspaceUserBinding or WorkspaceGroupBinding using the meshObject API. For instance, if you've configured on the Settings page to limit a Workspace Owner's access to 6 months, any Workspace Owner created via the API will automatically have an expiration date of 6 months from the date they were created.
+
 ## Workspace Deletion
 
 Before a meshWorkspace may be deleted, a check is performed to verify the following:
