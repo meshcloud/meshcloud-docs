@@ -12,11 +12,10 @@ without additional effort. That way we can model the complete lifecycle of users
 
 ## Enable SCIM
 
-By default, in meshStack, you can create users through a diverse range of methods like the Panel, IDP, and other available
-options. If you want to manage your users via SCIM exclusively you need to enable this setting in the Admin area
-(this disabled all other methods to prevent conflicts and double assignments).
-To enable SCIM go to the Settings page on the Admin area and in the Manage tab switch on a "SCIM only user management" button.
-The button is switched  off by default, which means that users and groups can be created through a diverse range of methods.
+By default, in meshStack, users can be created using a variety of methods such as the Panel, IDP, and other available options. If you prefer to manage
+your users exclusively via SCIM, you need to enable this setting in the Admin area. This disables all other methods to prevent conflicts and double
+assignments. To enable SCIM, go to the Settings page in the Admin area, and in the 'Manage' tab, turn on the 'SCIM only user management' button.
+By default, this button is turned off, allowing users and groups to be created through other means.
 
 <img src="assets/scim-user-management.png" alt="SCIM only user management">
 
@@ -24,8 +23,7 @@ The button is switched  off by default, which means that users and groups can be
 
 SCIM clients are the source for users and groups. They need to address users and groups in order to manage the creation,
 updates and deletion. Because they cannot know user or group identifiers in advance they will attempt to find a user or
-group by a unique attribute:
-for users it selects the `userName`, for groups it uses the `displayName`. As a result these fields need to be unique.
+group by a unique attribute: for users it selects the `userName`, for groups it uses the `displayName`. As a result these fields need to be unique.
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
@@ -114,24 +112,23 @@ to the [Authentication](https://docs.meshcloud.io/api/index.html#authentication)
 
 To set up the provisioning on AAD side, have a look at [Microsoft's guideline](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal) and please follow these steps:
 
-1. [Enable SCIM](#enable-scim).
-2. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning. A step-by-step guide is available [here](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started).
-3. In the EA set up the meshStack endpoint as target API:
+1. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning. A step-by-step guide is available [here](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started).
+2. In the EA set up the meshStack endpoint as target API:
    1. Go to the "Provisioning" section and then to "Admin Credentials"-
    2. Use your meshStack's backend URL as endpoint: `https://meshfed.<meshStack>/api/scim/v2/`.
    3. Create an [API user](administration.apiusers.md) with permission `Use all SCIM endpoints provided by meshStack` in meshStack.
    ![Create API User](assets/aad-user-and-group-sync.png)
    4. Set the base64 encoded Basic Auth Credentials as "Secret Token".
    ![Set Secret Token](assets/scim-secret-token.png)
-4. Go to "Settings" menu within "Provisioning" and configure which users and groups should be provisioned. You can either:
+3. Go to "Settings" menu within "Provisioning" and configure which users and groups should be provisioned. You can either:
    1. Sync only users and groups that are assigned to your EA.
    2. Sync all users and groups from your AAD. This option should always be combined with Scopes as described in the step below.
-5. To fine-tune which users and groups are synced go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters as described in the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
+4. To fine-tune which users and groups are synced go to "Provisioning", then "Mappings" and then to "Users" / "Groups". For users and groups you can separately define Scoping Filters as described in the [official guidelines](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-scoping-filters) from Microsoft.
     - Add filter rules by navigating to the `Attribute Mapping`, then go to `Source Object Scope` and select `Add scoping filter`. This applies for both groups and users.
     ![assets/aad_provisioning_scim/scim_source_object_scope.png](assets/aad_provisioning_scim/scim_source_object_scope.png)
 
-6. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table) and remove all other mappings. Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
-7. Start the provisioning process and regularly monitor the provisioning logs.
+5. In the Mapping for Users make sure that you have the mappings configured as described in the [user mappings table](#user-mappings-table) and remove all other mappings. Note that the externalId attribute should be mapped to the AAD Attribute that is used as the euid in meshStack.
+6. Start the provisioning process and regularly monitor the provisioning logs.
 
 ### User Mappings Table
 
