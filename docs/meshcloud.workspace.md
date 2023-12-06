@@ -18,7 +18,7 @@ and any additional [metadata specific to your organization](meshstack.metadata-t
 
 Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
 
-![Workspace Control Plane User Interface](assets/workspace-control-plane.png)
+![Workspace Control Plane User Interface](assets/Workspace-overview.png)
 
 General information of a meshWorkspace (like its name) and [Workspace Tags](meshstack.metadata-tags.md#workspace-tag-schema) can be edited under the **Settings** tab.
 The workspace identifier is also shown here, but it can never be changed,
@@ -29,9 +29,9 @@ If configured by your Cloud Foundation team, you may also be able to edit additi
 
 ## Invite users to a meshWorkspace team
 
-If you would like to give others access to your meshWorkspace and the related meshProjects, go to your **Access Control** tab.
+If you would like to give others access to your meshWorkspace and the related meshProjects, go to your **Workspace Access** tab.
 You can access them by pressing the settings icon on the top right of the meshPanel.
-From here, navigate to **Access Control**. Here you can invite users or groups to the meshWorkspace.
+From here, navigate to **Current Access**. Here you can invite users or groups to the meshWorkspace.
 You can search for users via first & last name, email and username. The users that can be found via
 this search depend on the configured IAM system in you meshInstallation. It is e.g. possible to search for users in an Active Directory or a Google Cloud Directory. Additionally all users already known to meshStack can be found via this user search. Besides users, also [groups](#user-groups) can be searched for. You can search for groups via their name and identifier.
 
@@ -108,7 +108,7 @@ meshWorkspace roles grant rights in meshStack only. In order to access cloud res
 
 ## Remove assigned meshWorkspace Roles
 
-If you would like to remove a user or group from your meshWorkspace go to the **Access Control** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshWorkspace. If 4-AP is active in your meshInstallation and the role request has not been approved by another Workspace Manager yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshWorkspace, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshWorkspace was revoked.
+If you would like to remove a user or group from your meshWorkspace go to the **Workspace Access** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshWorkspace. If 4-AP is active in your meshInstallation and the role request has not been approved by another Workspace Manager yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshWorkspace, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshWorkspace was revoked.
 
 ## Workspace Deletion
 
