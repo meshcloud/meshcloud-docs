@@ -75,7 +75,7 @@ The Analytics functionality for Service Owners is available to Workspace Manager
 
 ### Reviewing failed Service Instances
 
-From the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), you can access an overview of all failed service instances of your service brokers under the "Failed Instances" sub-page which can be found under the "Marketplace" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+From the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), you can quicly analyze errors in your service broker by simply accessing "Instances" under the "Service Brokers" tab and apply a filter to display instances with a failed status. This will give you an overview of all problematic service instances, including their specific local ID, name, service plan, and the details of the last operation.
 
 ### Service Communication Logs
 
