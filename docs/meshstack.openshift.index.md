@@ -9,7 +9,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with OpenShift, operators configure one or multiple `meshPlatform`s of `PlatformType` OpenShift in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with OpenShift, Platform Operators configure one or multiple `meshPlatform`s of `PlatformType` OpenShift in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 

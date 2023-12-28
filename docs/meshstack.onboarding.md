@@ -54,7 +54,7 @@ Additional remarks and configuration links:
 
 ### Default Quotas
 
-meshStack assigns a default quota to newly registered [meshWorkspaces](./meshcloud.workspace.md) (see section above). Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
+meshStack assigns a default quota to newly registered [meshWorkspaces](./meshcloud.workspace.md) (see section above). Platform Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
 ```dhall
 { {- the number of allowed meshProjects per meshWorkspace -}
