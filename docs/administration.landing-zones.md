@@ -10,7 +10,7 @@ Platform Operators can configure the [Landing Zones](./meshcloud.landing-zones.m
 This ensures enterprises can seamlessly integrate existing operational capabilities and leverage the most powerful
 and best-integrated tooling available for each platform. In most instances, this tooling follows an infrastructure-as-code paradigm that fits naturally with meshcloud's multi-cloud orchestration approach.
 
-Please consult the [operator documentation](./meshstack.index.md) of the respective cloud platforms for more details.
+Please consult the [Administrator documentation](./meshstack.index.md) of the respective cloud platforms for more details.
 
 ## Disabling Landing Zones
 
