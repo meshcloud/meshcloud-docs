@@ -12,12 +12,12 @@ currencies. For example GCP might charge your organization for cloud consumption
 In case standardisation on a single currency is not possible, meshStack supports chargeback in multiple currencies. The
 following product funcitonalities fully support multi-currency scenarios:
 
-- **Private Cloud billing**: Operators can define products and usage rates in any currency.
+- **Private Cloud billing**: Partner can define products and usage rates in any currency.
 - **Public Cloud billing**: meshStack preserves the original currency when importing cost and consumption data from the cloud provider.
 - **meshMarketplace**: Service owners can define prices for their services using the OSB Catalog in any currency.
 - **Tenant Usage Reports**: Tenant usage reports support line items in multiple currencies and aggregates net amounts in each currency separately.
 - **Chargeback Statements**: Chargeback statements support multiple currencies and aggregate net amounts in each currency separately.
-- **Tenant Fees**: Operators can define tenant fees in any currency.
+- **Tenant Fees**: Partner can define tenant fees in any currency.
 - **Discounts**: Discounts support any currency. Discounts calculated from a source amount (e.g. percentage discounts) use the same currency as the source amount.
 
 The following product functionalitities do currently not support multi-currency scenarios:
@@ -97,9 +97,9 @@ let example2 =
 
 #### Usage Types and Units
 
-When configuring a product for private cloud billing, operators need to choose the cloud resource type to target and how the metering engine
+When configuring a product for private cloud billing, Partner need to choose the cloud resource type to target and how the metering engine
 should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
-Traits are a properties of a cloud resource like CPU or RAM. Operators can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
+Traits are a properties of a cloud resource like CPU or RAM. Paertner can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
 
 meshMetering supports flexible rules for creating usages, like
 
@@ -115,9 +115,9 @@ This can lead to small differences when describing units. For example, one kilo-
 - `1 kB` in a usage report
 - `1 kBy` in a product catalog entry
 
-When building a product catalog, operators can define rates to define prices for usages.
+When building a product catalog, Partners can define rates to define prices for usages.
 It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
-trait is measured in "MB", operators can define a price in "GB". meshMetering will automatically apply
+trait is measured in "MB", Partners can define a price in "GB". meshMetering will automatically apply
 the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules. meshMetering supports the following prefixes, with examples described in bytes
 according to UCUM "case-sensitive" representation.
 
@@ -132,7 +132,7 @@ according to UCUM "case-sensitive" representation.
 
 ### Discounts
 
-Discounts allow Operators to add or deduct charges to Tenant Usage Reports. A common use case for Platform Operators is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
+Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for Platform Operators is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
 
 <!--snippet:mesh.kraken.productcatalog.discount#type-->
 

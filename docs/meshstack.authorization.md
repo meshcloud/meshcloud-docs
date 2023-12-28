@@ -23,7 +23,7 @@ Some roles also include permissions that allow users to manage role bindings in 
 
 ### Access Requests
 
-Any change in role binding always occurs via an **access request**. Access requests can be either approved or denied. Access requests may be subject to **approval conditions**. Operators can configure these conditions to meet a range of organisational and regulatory requirements like e.g. a 4 eyes principle.
+Any change in role binding always occurs via an **access request**. Access requests can be either approved or denied. Access requests may be subject to **approval conditions**. Partners can configure these conditions to meet a range of organisational and regulatory requirements like e.g. a 4 eyes principle.
 
 Role requests produce an audit trail and may trigger notifications to involved parties.
 

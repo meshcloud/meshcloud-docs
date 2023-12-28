@@ -56,7 +56,7 @@ that match the expectations developers and project managers have grown accustome
 
 One core aspect is that metering data must be made plausible for the consumers. Consumers demand resource-level usage
 reporting so that they can verify how each of their deployed cloud resources contributes to the total usage.
-meshStack includes a sophisticated private-cloud metering engine that allows operators to define their own product catalogs
+meshStack includes a sophisticated private-cloud metering engine that allows Partners to define their own product catalogs
 and create accurate metering data.
 
 > To learn more about enabling a solid private cloud billing process, read the Cloud Foundation Building Block

@@ -3,7 +3,7 @@ id: administration.emergency-users
 title: "Guide: Emergency Users"
 ---
 
-meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access meshProjects and associated meshTenants. This page outlines step-by-step procedures that meshStack operators can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
+meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access meshProjects and associated meshTenants. This page outlines step-by-step procedures that Platform Operators can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
 
 Example use cases for emergency users and emergency intervention include
 
