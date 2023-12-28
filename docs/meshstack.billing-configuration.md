@@ -3,11 +3,22 @@ id: meshstack.billing-configuration
 title: Configuration
 ---
 
-## Supported Currencies
+## Currency Conversion
 
-In order to simplify multi-cloud governance, cloud foundation teams should prefer standardising on a single chargeback currency.
-However, Cloud Foundation teams sometimes encounter situations in which they need to process billing or chargeback in multiple
-currencies. For example GCP might charge your organization for cloud consumption in EUR while Azure charges consumption in USD.
+In order to simplify multi-cloud governance, the best practice is to have single chargeback currency. meshStack simplifies the chargeback process with automatic currency conversion capability, namely regardless of the original currency from cloud providers like AWS chargeback statements will be converted to a single currency - Euro. 
+
+You have two options based on your [plan](https://www.meshcloud.io/en/pricing/) to enable currency conversion for chargebacks and usage reports:
+
+- For the all Plans default converter is available. For the default converter, we are getting rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates by the European Central Bank.Go to the Financial Tab on the Settings page and simply activate a toggle to use the default converter. 
+- If you are on the Power Plan, you can integrate your own converter via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team. They will support you in connecting your preferred converter with meshStack.
+
+If your meshStack is hosted in a private environment and has permission to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off togle button in the Financial Tab of the Settings page.
+
+> Please be aware that enabling the default converter or integrating your own one will only affect data moving forward, namely past chargebacks and usage reports won´t retroactively convert to the base currency. 
+
+### Other Supported Currencies 
+
+Sometimes Cloud Foundation teams encounter situations in which they need to process billing or chargeback in multiple currencies. For example GCP might charge your organization for cloud consumption in EUR while Azure charges consumption in USD.
 
 In case standardisation on a single currency is not possible, meshStack supports chargeback in multiple currencies. The
 following product funcitonalities fully support multi-currency scenarios:
@@ -27,7 +38,6 @@ The following product functionalitities do currently not support multi-currency 
   are in EUR. This can create confusion if the underlying Tenant Usage Report uses a different or multiple currencies.
 - **Payment Methods**: Amounts specified on payment methods are currently assumed to be in EUR.
 
-> meshcloud will revisse support for multi-currency billing and chargeback in these areas as part of the upcoming [Cost Management Roadmap Feature](https://www.meshcloud.io/product/).
 
 ## Defining a custom Product Catalog
 

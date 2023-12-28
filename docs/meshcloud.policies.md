@@ -13,7 +13,7 @@ For ease of use, we restrict the combinations of meshSubjects which do not make 
 
 > meshPolicies will only be enforced for meshWorkspaces. meshPartner is excluded.
 
-meshPolicies are enforced in various places wherever you edit a tag of a meshSubject or assign a meshSubject to another meshSubject (e.g. assigning a meshUser to meshWorkspace in the Access Control). How meshPolicies can be configured is described [here](administration.mesh-policies.md).
+meshPolicies are enforced in various places wherever you edit a tag of a meshSubject or assign a meshSubject to another meshSubject (e.g. assigning a meshUser to meshWorkspace in the Workspace Access). How meshPolicies can be configured is described [here](administration.mesh-policies.md).
 
 ### Authoritative and affected meshSubject
 
