@@ -27,4 +27,4 @@ In order to confirm the deletion, you have to first perform the manual deletion 
 
 If you choose to decline the deletion, you can do so by clicking on the decline button. If you decline the deletion, the meshTenant will be available again on the workspace control plane.
 
-> If a meshProject was marked for deletion before by a customer, and all meshTenants of the meshProject have been successfully deleted, the meshProject is permanently deleted.
+> If a meshProject was marked for deletion before by a workspace user, and all meshTenants of the meshProject have been successfully deleted, the meshProject is permanently deleted.
