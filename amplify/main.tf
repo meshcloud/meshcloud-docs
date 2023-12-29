@@ -79,68 +79,63 @@ resource "aws_amplify_app" "docs" {
   }
 }
 
-# import {
-#   to = aws_amplify_branch.master
-#   id = "d1hcfax2v5hi8a/main"
-# }
-
 # # todo: needs to be renamed to main, but requires changes to release automation logic
-# resource "aws_amplify_branch" "master" {
-#   app_id      = aws_amplify_app.docs.id
-#   branch_name = "master"
-#   framework   = "Docusaurus"
-#   stage       = "PRODUCTION"
-#   tags        = {}
+resource "aws_amplify_branch" "master" {
+  app_id      = aws_amplify_app.docs.id
+  branch_name = "master"
+  framework   = "Docusaurus"
+  stage       = "PRODUCTION"
+  tags        = {}
 
-#   enable_pull_request_preview = false
+  enable_pull_request_preview = false
 
-#   environment_variables = {
-#     "DOCSEARCH_INDEXNAME" = "meshcloud"
-#     "DOCSEARCH_APIKEY"    = "aa3b874dff5c832fe2e3ed42a8062160"
-#     "DOCSEARCH_APP_ID"    = "LDDGX81P02"
-#   }
-# }
+  environment_variables = {
+    "DOCSEARCH_INDEXNAME" = "meshcloud"
+    "DOCSEARCH_APIKEY"    = "aa3b874dff5c832fe2e3ed42a8062160"
+    "DOCSEARCH_APP_ID"    = "LDDGX81P02"
+  }
+}
 
-# resource "aws_amplify_branch" "develop" {
-#   app_id      = aws_amplify_app.docs.id
-#   branch_name = "develop"
-#   framework   = "Docusaurus"
-#   stage       = "DEVELOPMENT"
-#   tags        = {}
+resource "aws_amplify_branch" "develop" {
+  app_id      = aws_amplify_app.docs.id
+  branch_name = "develop"
+  framework   = "Docusaurus"
+  stage       = "DEVELOPMENT"
+  tags        = {}
 
-#   enable_pull_request_preview = true
+  enable_pull_request_preview = true
 
-#   environment_variables = {
-#     "DOCSEARCH_INDEXNAME" = "meshcloud_dev"
-#     "DOCSEARCH_APIKEY"    = "97ab0f20a3d4208be89e9f23d2bc9787"
-#     "DOCSEARCH_APP_ID"    = "LUMRH2SV4Z"
-#   }
-# }
+  environment_variables = {
+    "DOCSEARCH_INDEXNAME" = "meshcloud_dev"
+    "DOCSEARCH_APIKEY"    = "97ab0f20a3d4208be89e9f23d2bc9787"
+    "DOCSEARCH_APP_ID"    = "LUMRH2SV4Z"
+  }
+}
 
-# resource "aws_amplify_domain_association" "docs_meshcloud_io" {
-#   app_id      = aws_amplify_app.docs.id
-#   domain_name = "docs.meshcloud.io"
+resource "aws_amplify_domain_association" "docs_meshcloud_io" {
+  app_id      = aws_amplify_app.docs.id
+  domain_name = "docs.meshcloud.io"
 
-#   sub_domain {
-#     branch_name = aws_amplify_branch.master.branch_name
-#     prefix      = ""
-#   }
-# }
+  sub_domain {
+    branch_name = aws_amplify_branch.master.branch_name
+    prefix      = ""
+  }
+}
 
-# resource "aws_amplify_domain_association" "docs_dev_meshcloud_io" {
-#   app_id      = aws_amplify_app.docs.id
-#   domain_name = "docs.dev.meshcloud.io"
+resource "aws_amplify_domain_association" "docs_dev_meshcloud_io" {
+  app_id      = aws_amplify_app.docs.id
+  domain_name = "docs.dev.meshcloud.io"
 
-#   sub_domain {
-#     branch_name = aws_amplify_branch.develop.branch_name
-#     prefix      = ""
-#   }
-# }
+  sub_domain {
+    branch_name = aws_amplify_branch.develop.branch_name
+    prefix      = ""
+  }
+}
 
 
-# output "domains" {
-#   value = [
-#     aws_amplify_domain_association.docs_meshcloud_io,
-#     aws_amplify_domain_association.docs_dev_meshcloud_io
-#   ]
-# }
+output "domains" {
+  value = [
+    aws_amplify_domain_association.docs_meshcloud_io,
+    aws_amplify_domain_association.docs_dev_meshcloud_io
+  ]
+}
