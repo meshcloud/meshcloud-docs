@@ -14,67 +14,70 @@ provider "aws" {
 }
 
 
-# locals {
-#   redirects = [
-#     # currently none, would be of form
-#     # {
-#     #   source = "/from"
-#     #   target = "/to"
-#     # }
-#   ]
-# }
+locals {
+  redirects = [
+    # currently none, would be of form
+    # {
+    #   source = "/from"
+    #   target = "/to"
+    # }
+  ]
+}
 
-# import {
-#   to = aws_amplify_app.docs
-#   id = "d1hcfax2v5hi8a"
-# }
+import {
+  to = aws_amplify_app.docs
+  id = "d17q6gob2fx97d"
+}
 
-# resource "aws_amplify_app" "docs" {
-#   name       = "meshcloud-docs"
-#   repository = "https://github.com/meshcloud/meshcloud-docs"
+resource "aws_amplify_app" "docs" {
+  name       = "meshcloud-docs"
+  repository = "https://github.com/meshcloud/meshcloud-docs"
 
-#   # note: rules here are processed top to bottom! 
+  build_spec = null # we use amplify.yml to host the build spec
 
-#   ## Redirects required for bypassing adblockers with plausible.io
-#   ## See https://plausible.io/docs/proxy/guides/netlify
-#   ## Contrary to netlify docs, only status=200 works here, see https://github.com/plausible/docs/issues/177
-#   custom_rule {
-#     source = "/js/script.js"
-#     target = "https://plausible.io/js/plausible.js"
-#     status = 200
-#   }
+  # note: rules here are processed top to bottom! 
 
-#   custom_rule {
-#     source = "/api/event"
-#     target = "https://plausible.io/api/event"
-#     status = 200
-#   }
+  ## Redirects required for bypassing adblockers with plausible.io
+  ## See https://plausible.io/docs/proxy/guides/netlify
+  ## Contrary to netlify docs, only status=200 works here, see https://github.com/plausible/docs/issues/177
+  custom_rule {
+    source = "/js/script.js"
+    target = "https://plausible.io/js/plausible.js"
+    status = 200
+  }
 
-#   custom_rule {
-#     # This rewrite will serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
-#     source = "/api/*"
-#     target = "http://docs.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*"
-#     status = 200
-#   }
+  custom_rule {
+    source = "/api/event"
+    target = "https://plausible.io/api/event"
+    status = 200
+  }
 
-#   # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google      
-#   dynamic "custom_rule" {
-#     for_each = toset(local.redirects)
+  custom_rule {    
+    # Todo: figure out how to serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
+    # Amplify requires HTTPS in HTTP 200 rewrite rules
+    source = "/api/*"
+    target = "http://docs.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*"
+    status = 301
+  }
 
-#     content {
-#       source = custom_rule.value.source
-#       target = custom_rule.value.target
-#       status = "301"
-#     }
-#   }
+  # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google      
+  dynamic "custom_rule" {
+    for_each = toset(local.redirects)
 
-#   # not sure what this one does? probably the 404 handler
-#   custom_rule {
-#     source = "/<*>"
-#     status = "404-200"
-#     target = "/index.html"
-#   }
-# }
+    content {
+      source = custom_rule.value.source
+      target = custom_rule.value.target
+      status = "301"
+    }
+  }
+
+  # not sure what this one does? probably the 404 handler
+  custom_rule {
+    source = "/<*>"
+    status = "404-200"
+    target = "/index.html"
+  }
+}
 
 # import {
 #   to = aws_amplify_branch.master
@@ -115,7 +118,7 @@ provider "aws" {
 # }
 
 # resource "aws_amplify_domain_association" "docs_meshcloud_io" {
-#   app_id      = aws_amplify_app.cloudfoundation.id
+#   app_id      = aws_amplify_app.docs.id
 #   domain_name = "docs.meshcloud.io"
 
 #   sub_domain {
@@ -125,7 +128,7 @@ provider "aws" {
 # }
 
 # resource "aws_amplify_domain_association" "docs_dev_meshcloud_io" {
-#   app_id      = aws_amplify_app.cloudfoundation.id
+#   app_id      = aws_amplify_app.docs.id
 #   domain_name = "docs.dev.meshcloud.io"
 
 #   sub_domain {
