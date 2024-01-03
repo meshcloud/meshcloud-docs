@@ -29,18 +29,105 @@ The following product functionalitities do currently not support multi-currency 
 
 > meshcloud will revisse support for multi-currency billing and chargeback in these areas as part of the upcoming [Cost Management Roadmap Feature](https://www.meshcloud.io/product/).
 
-## Defining a custom Product Catalog
+##  Setting Prices: Product Catalog Definition
 
-The following sections will introduce features of the meshStack product catalog.
+In meshStack, you can define your own prices to charge for Private Platforms and Platform Services. The setup of your own prices gives you the possibility to cover, for example, licensing costs or the work required to maintain and develop specific services. Please be aware that the price for any product will be reflected in the chargeback statements based on the period it was changed. (For example, the new price, which was set for Building Block on the 28th of March, will be applied to the March chargeback statement.)
+
+>In the near future, we plan to enable a self-service Product Catalog for you, as a fisrt step you can now set simple prices for Platforms and Building Blocks in UI (see guides how to do it downbelow in dadicated sections). If you would like to add other prices, please contact our support team so that they can set them for you in dhall.
+
+### Products 
+
+#### Public Platforms 
+
+Usage costs for Public Cloud Platforms are gathered by meshStack from providers such as AWS, GCP, etc. Nevertheless, you have the flexibility to customize additional charges according to your specific requirements.
+
+In meshStack, you can now set recurring prices (monthly and daily) per meshTenant and set up fees during Platform creation, which will be charged once when a user adds a Platform Tenant. 
+
+A screenshot needs to be added.
+
+You can also modify prices for any platform by navigating to the Financial Tab of the Platform and pressing the "Save" button. 
+
+A screenshot needs to be added.
+
+Also, it is possible to set prices for platforms per Landing Zone via dhall with meshcloud support team, as well as other pricing options (see Core Concept section below).
+
+#### Custom Platforms
+For Custom PLatform you can define reoccuring costs (monthly, dail and hourly) and set-up fees in meshStack per meshTenant similary as it was shown before for Public Platform. Other pricning models such as % fees needs to be set together with support team.
+
+#### Private Platforms
+When configuring prices for a private cloud, partners need to select the cloud resource type and its associated traits for charging purposes. Traits are a properties of a cloud resource like CPU or RAM. Partner can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
+
+Please check the Metering section of the private cloud platforms docs page to overview available resourse and traits in the meshStack´s metering engine.
+
+
+meshMetering supports flexible rules for creating usages, like
+
+- **time**: charge consumption based on the usage of a resource over a time period
+- **quantity**: charge consumption based on a quantity
+- **time-quantity**: charge consumption based on the product of time and quantity
+
+Quantities are represented with prefixable units according to the [UCUM standard](https://ucum.org/ucum.html) inside meshMetering.
+Specifically, meshMetering uses the UCUM "print" formatting where units need to be human readable (e.g. in usage reports).
+In configuration (e.g. when defining a product catalog entry), meshMetering uses the UCUM "case-sensitive" representations.
+This can lead to small differences when describing units. For example, one kilo-byte would be represented as
+
+- `1 kB` in a usage report
+- `1 kBy` in a product catalog entry
+
+When building a product catalog, Partners can define rates to define prices for usages.
+It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
+trait is measured in "MB", Partners can define a price in "GB". meshMetering will automatically apply
+the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules. meshMetering supports the following prefixes, with examples described in bytes
+according to UCUM "case-sensitive" representation.
+
+| Metric Prefix | Example | Binary Prefix | Example |
+| ------------- | ------- | ------------- | ------- |
+| kilo (10^3)   | 1 kBy   | kibi (1024^1) | 1 KiBy  |
+| mega (10^6)   | 1 MBy   | mebi (1024^2) | 1 MiBy  |
+| giga (10^9)   | 1 GBy   | gibi (1024^3) | 1 GiBy  |
+| terra (10^12) | 1 TBy   | tebi (1024^4) | 1 TiBy  |
+| peta (10^15)  | 1 PBy   | pebi (1024^5) | 1 PiBy  |
+
+
+Currently available for Azure, AWS and GCP platforms.
+
+```text
+id: mesh.tenant
+traits:
+  - landingZoneName
+  - platformType
+```
+
+You can define products based on this resource type to charge fees based on the Landing Zone that is in use by a meshTenant
+or to simply charge a fee on the meshTenant itself.
+
+For Private Cloud Platforms metering see more information down below in a dadicated section.
+
+#### Building Blocks
+
+The prices for Building Blocks definitions can be set in meshStack during Building Block creation as recurring monthly, daily, or hourly fees per Building Block instance, as well as a one-time fee when the user adds a new Building Block instance.
+
+A screenshot needs to be added.
+
+You can also modify prices for any Building Block definition by navigating to the Financial Tab of the Building Block and pressing the "Save" button.
+
+A screenshot needs to be added.
+
+
+#### OSB Services
+Setting up prices for OSB Services is currently available only in dhall. Please contact our support team for assistance. 
+
+You can assign recurring monthly, daily, or hourly prices per OSB instance. Additionally, you can configure your own metric-based pricing, such as the number of API requests, consumption of storage capacity, and more, based on your provided endpoint.
+
 
 ### Core Concepts
 
-#### Scope Selectors
+#### Selection of Pricing Scope
 
-Every cloud resource has a scope in meshcloud, defined by the meshTenant in belongs to.
-ScopeSelectors are hierarchical selectors that allow Product Catalog entries to specify the resource scopes they apply to. ScopeSelectors can target all platforms of a certain platform type, a specific meshPlatform or an individual meshTenant.
+Every cloud resource has a scope in meshStack, defined by the meshTenant in belongs to.
+ScopeSelectors are hierarchical selectors that allow Product Catalog entries to specify the resource scopes they apply to. For example, ScopeSelectors can target all platforms of a certain platform type, a specific meshPlatform or an individual meshTenant.
 
-Using ScopeSelectors, Operators can for example define different prices for platforms running in different locations or platforms.
+Using ScopeSelectors, Platform Operators can for example define different prices for diffrent platforms or if they are running in different locations
 
 <!--snippet:mesh.kraken.productcatalog.scopeselector#type-->
 
@@ -94,45 +181,9 @@ let example2 =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+#### Discounts
 
-#### Usage Types and Units
-
-When configuring a product for private cloud billing, Partner need to choose the cloud resource type to target and how the metering engine
-should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
-Traits are a properties of a cloud resource like CPU or RAM. Paertner can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
-
-meshMetering supports flexible rules for creating usages, like
-
-- **time**: charge consumption based on the usage of a resource over a time period
-- **quantity**: charge consumption based on a quantity
-- **time-quantity**: charge consumption based on the product of time and quantity
-
-Quantities are represented with prefixable units according to the [UCUM standard](https://ucum.org/ucum.html) inside meshMetering.
-Specifically, meshMetering uses the UCUM "print" formatting where units need to be human readable (e.g. in usage reports).
-In configuration (e.g. when defining a product catalog entry), meshMetering uses the UCUM "case-sensitive" representations.
-This can lead to small differences when describing units. For example, one kilo-byte would be represented as
-
-- `1 kB` in a usage report
-- `1 kBy` in a product catalog entry
-
-When building a product catalog, Partners can define rates to define prices for usages.
-It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
-trait is measured in "MB", Partners can define a price in "GB". meshMetering will automatically apply
-the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules. meshMetering supports the following prefixes, with examples described in bytes
-according to UCUM "case-sensitive" representation.
-
-| Metric Prefix | Example | Binary Prefix | Example |
-| ------------- | ------- | ------------- | ------- |
-| kilo (10^3)   | 1 kBy   | kibi (1024^1) | 1 KiBy  |
-| mega (10^6)   | 1 MBy   | mebi (1024^2) | 1 MiBy  |
-| giga (10^9)   | 1 GBy   | gibi (1024^3) | 1 GiBy  |
-| terra (10^12) | 1 TBy   | tebi (1024^4) | 1 TiBy  |
-| peta (10^15)  | 1 PBy   | pebi (1024^5) | 1 PiBy  |
-
-
-### Discounts
-
-Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for Platform Operators is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
+Discounts allow Partners to add or deduct charges to Tenant Usage Reports. For example, you can configure a discount with a negative rate to charge Projects with a "management fee" to cover support costs.
 
 <!--snippet:mesh.kraken.productcatalog.discount#type-->
 
@@ -198,9 +249,7 @@ let example
 
 #### Discount rules
 
-Discount rules specify how a discount is computed.
-
-meshStack currently provides two discount rules. Future releases could provide additional discount rule options.
+Discount rules specify how a discount is computed. meshStack currently provides two discount rules. 
 
 <!--snippet:mesh.kraken.productcatalog.discountrule#type-->
 
@@ -440,24 +489,7 @@ The following configuration options are available at `mesh.kraken.productcatalog
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Common Chargeable Resources
 
-This section describes the resources that do not strictly belong to a specific cloud platform that can be defined in the catalog.
-Products referring to these resources can be defined for all or multiple cloud platforms.
-
-### meshTenant
-
-Represents a meshTenant. Currently available for Azure, AWS and GCP platforms.
-
-```text
-id: mesh.tenant
-traits:
-  - landingZoneName
-  - platformType
-```
-
-You can define products based on this resource type to charge fees based on the Landing Zone that is in use by a meshTenant
-or to simply charge a fee on the meshTenant itself.
 
 ## Chargeback
 
