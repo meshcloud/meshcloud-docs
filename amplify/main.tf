@@ -52,14 +52,6 @@ resource "aws_amplify_app" "docs" {
     status = 200
   }
 
-  custom_rule {    
-    # Todo: figure out how to serve our internal API documentation neatly under `docs.meshcloud.io/api/*`
-    # Amplify requires HTTPS in HTTP 200 rewrite rules
-    source = "/api/*"
-    target = "http://docs.meshcloud.io.s3-website.eu-central-1.amazonaws.com/api/*"
-    status = 301
-  }
-
   # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google      
   dynamic "custom_rule" {
     for_each = toset(local.redirects)
@@ -129,7 +121,7 @@ resource "aws_amplify_domain_association" "docs_dev_meshcloud_io" {
   sub_domain {
     branch_name = aws_amplify_branch.develop.branch_name
     prefix      = ""
-  }
+  }  
 }
 
 
