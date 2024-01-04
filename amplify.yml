@@ -8,7 +8,12 @@ frontend:
     build:
       commands:
         - yarn build
-        - cp robots.${AWS_BRANCH}.txt build/meshcloud-docs/robots.txt
+        - |
+          if [[ $AWS_BRANCH = main ]]; then
+              cp robots.main.txt build/meshcloud-docs/robots.txt
+          else
+              cp robots.develop.txt build/meshcloud-docs/robots.txt
+          fi
   artifacts:
     # IMPORTANT - Please verify your build output directory
     baseDirectory: website/build/meshcloud-docs
