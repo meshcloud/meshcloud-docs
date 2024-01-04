@@ -12,7 +12,7 @@ meshStack supports metering and billing for all versions of Cloud Foundry.
 
 ## Supported Resources
 
-Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog).Platform Operators can use the traits of these resources to define fine-granular product and pricing rules.
+Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). Platform Operators can use the traits of these resources to define fine-granular product and pricing rules.
 
 ### Service Instance
 <!--snippet:mesh.kraken.productcatalog.traits.cloudfoundry.service.instance#type-->
