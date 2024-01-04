@@ -133,7 +133,7 @@ and deleted on the first day of reporting period #2 would incur a full charge of
 
 ### Configuring "out of scope" Sellers
 
-Platform operators can mark sellers as "out of scope" via configuration. Once a seller is marked as out of scope,
+Partners can mark sellers as "out of scope" via configuration. Once a seller is marked as out of scope,
 the costs for that seller's products will be set to zero in the meshStack metering product catalog.
 
 The line items for the seller will appear in the usage reports and chargeback statements with an appended "Out of Scope" suffix on the usage type. The total column for those line items will be zero, but the used quantity will be shown correctly.

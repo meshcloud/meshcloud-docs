@@ -3,7 +3,7 @@ id: meshstack.identity-provider
 title: Identity Provider
 ---
 
-Platform Operators must be aware of the following requirements and limitations for IdPs serving as identity sources for meshStack.
+Partners must be aware of the following requirements and limitations for IdPs serving as identity sources for meshStack.
 
 ## Supported Federation Technologies
 
@@ -14,7 +14,7 @@ The main supported technologies for Identity Federation with meshStack are
 - SAML
 - Azure AD
 
-meshStack supports the simultaneous integration of multiple [Enterprise Identity Providers (IdPs)](https://en.wikipedia.org/wiki/Identity_provider) at the Identity Broker. This allows Platform Operators to combine identities from different sources in the platform and unify management of multi-cloud access in meshStack.
+meshStack supports the simultaneous integration of multiple [Enterprise Identity Providers (IdPs)](https://en.wikipedia.org/wiki/Identity_provider) at the Identity Broker. This allows Partners to combine identities from different sources in the platform and unify management of multi-cloud access in meshStack.
 
 ## User Attribute Requirements
 
