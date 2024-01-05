@@ -147,7 +147,7 @@ const siteConfig = {
 
 // For the production build we include the Plausible tracking script.
 // We only use this for the master build. Not for develop builds or preview builds.
-if (process.env.RENDER_GIT_BRANCH === 'master') {
+if (process.env.AWS_BRANCH === 'master') {
   siteConfig.scripts.push({
     src: '/js/script.js',
     defer: true,

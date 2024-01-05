@@ -10,12 +10,20 @@ in the external system are automatically mirrored to the provisioned equivalents
 the members of a certain AAD group are changing and provisioning is set up, those changes will be reflected in the group within meshStack as well
 without additional effort. That way we can model the complete lifecycle of users and groups automatically.
 
+## Enable SCIM
+
+By default, in meshStack, users can be created using a variety of methods such as the Panel, IDP, and other available options. If you prefer to manage
+your users exclusively via SCIM, you need to enable this setting in the Admin area. This disables all other methods to prevent conflicts and double
+assignments. To enable SCIM, go to the Settings page in the Admin area, and in the 'Manage' tab, turn on the 'SCIM only user management' button.
+By default, this button is turned off, allowing users and groups to be created through other means.
+
+<img src="assets/scim-user-management.png" alt="SCIM only user management">
+
 ## Provisioning with SCIM
 
 SCIM clients are the source for users and groups. They need to address users and groups in order to manage the creation,
 updates and deletion. Because they cannot know user or group identifiers in advance they will attempt to find a user or
-group by a unique attribute:
-for users it selects the `userName`, for groups it uses the `displayName`. As a result these fields need to be unique.
+group by a unique attribute: for users it selects the `userName`, for groups it uses the `displayName`. As a result these fields need to be unique.
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
@@ -98,7 +106,7 @@ Assignment of global groups to meshWorkspaces and meshProjects within the meshPa
 
 The following guide shows how an AAD can be configured to enable SCIM user and group provisioning to meshStack. In order
 to connect to meshStack you will need a Basic Authentication user with permissions to access the SCIM Api. Please refer
-to the [Authentication](https://docs.meshcloud.io/api/index.html#authentication) section within the API Docs for the credentials configuration.
+to the [Authentication](/api/#authentication) section within the API Docs for the credentials configuration.
 
 ### General Setup Steps
 
@@ -184,9 +192,3 @@ displayed: "Create", "Update" and "Delete". Ensure that all three checkboxes are
 Deleting a user via SCIM has the following consequences in meshStack: The user will be irrevocably deleted and only the
 bare minimum of information required for GDPR compliance is retained. After deletion, it is possible to create a new
 user with the same username and email as the previously deleted user, but the deleted user cannot be restored.
-
-## SCIM only option for User Lifecycle
-
-By default, in meshStack, you can create users through a diverse range of methods like Panel, IDP, SCIM, and other available options. Now you can choose an option to manage users and groups within the Workspace and Admin areas exclusively via SCIM to prevent conflicts and double assignments when other methods are available. To enable creation only via SCIM go to the Settings page on the Admin area and in the Manage tab switch on a "SCIM only user management" button. The button is switched off by default, which means that users and groups can be created through a diverse range of methods.
-
-<img src="assets/scim-user-management.png" alt="SCIM only user management">
