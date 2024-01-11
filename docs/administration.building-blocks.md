@@ -158,6 +158,15 @@ Last but not least, save your Building Block definition, and it is be ready to b
 
 For Terraform blocks, meshStack will run the required Terraform in the background.
 
+### State Storage Recommendations
+
+Storing state is a crucial aspect of Terraform. We have the following recommendations regarding state storage when
+using Terraform-based Building Blocks in meshStack:
+
+1. Use a remote backend to store your state like Amazon S3, Azure Storage or Google Cloud Storage.
+2. Use a single storage per Building Block Definition. meshStack organizes the storage on a per workspace/project basis.
+   By using a single storage per Building Block Definition you keep a clear separation of your state.
+
 ### How to debug
 
 You can view the logs of meshStack running the Terraform files. To do so, go to the Tenant Overview in the Admin Area
@@ -166,8 +175,25 @@ and read the logs that were written while executing the Terraform.
 
 ## Editing Building Block Definitions
 
-You can edit existing Building Block definitions, but not all properties are currently editable. Please also read the
-descriptions in the meshPanel as the behavior of editing a property of a Building Block definition depends.
+It is possible to edit existing Building Block Definitions, but you will be required to create a new **version**. This way
+any users of your "old" Building Block Definitions will not experience any impact. 
 
-In a future release of meshStack, we will introduce the concept of versioning and make modifications to
-Building Block definitions a more confident and streamlined process.
+To properly make changes to your Building Block Definition and also upgrade the existing Building Blocks, do the following:
+
+1. Open the Building Block Definition.
+2. On the right-hand side there is a version dropdown. Click the button "Create Draft" next to it and confirm the creation.
+3. Your Building Block Definition is now in draft state. While in draft state, you can make any changes that you like
+   such as removing inputs, adding inputs, or changing the Git commit hash.
+4. When you are happy with your changes, publish the new version. On the right-hand side, next to the version dropdown, click on "Publish".
+5. The new version is now published! This also means that any workspace users that create new Building Blocks will use that version by default
+
+At this point, any existing Building Blocks still use the old version. To make sure that these are also upgraded to the latest version do the following:
+
+1. On the left-hand side open up the list of all Building Blocks.
+2. In the list, search for all Building Blocks of the recently upgraded Building Block Definition.
+3. Tick all Building Blocks that you want to upgrade and click on the right-hand side on "Actions > Upgrade".
+4. Confirm the upgrade, enter any missing input (if applicable) and run the upgrade.
+5. That's it! The Building Block is now upgraded! A new run has also started in the meantime so that any changes to the
+   Terraform are applied as soon as possible.
+
+
