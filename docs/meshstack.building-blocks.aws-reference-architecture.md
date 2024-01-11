@@ -15,7 +15,7 @@ Depending on your requirements, we recommend different reference architectures.
 Use this decision tree to find out the recommended reference architecture given your requirements.
 
 ```mermaid
-graph LR
+graph TD
 
 start((start))
 start --> trust
@@ -51,7 +51,7 @@ When the cloud foundation team has the permission to establish trust, create a d
 
 #### Cloud Foundation Team offers main building block
 
-If the cloud foundation team offers the main building block, keep 
+If the cloud foundation team offers the main building block, this building block should manage the necessary access.
 
 To summarize, in this reference architecture
 
