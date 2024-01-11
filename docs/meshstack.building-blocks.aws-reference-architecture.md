@@ -9,6 +9,7 @@ As with any high privileged access, this access needs to be handled with great c
 Managing permissions to AWS accounts are always managed within the individual account, whereas in other platforms permissions can be inherited via a resource hierarchy. 
 When providing a centralised service to application teams, you therefore have to design permission delegation explicitly.
 In AWS permissions are granted using resource-based policy or cross-account IAM role that includes trust policy allowing one AWS account to access to resources in another account by assuming cross account role. We this document we describe the latter option.
+
 ## Deciding on a pattern
 
 Depending on your requirements, we recommend different reference architectures.
