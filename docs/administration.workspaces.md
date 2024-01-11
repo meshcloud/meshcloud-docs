@@ -31,7 +31,7 @@ A meshStack installation can be configured to require a manual approval by a par
 
 ### Disabling Workspaces
 
-Operators can disable meshWorkspaces in case the responsible workspace managers do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
+Partners can disable meshWorkspaces in case the responsible workspace managers do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
 Setting the meshWorkspace status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this workspace:
 

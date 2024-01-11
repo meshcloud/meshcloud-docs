@@ -29,10 +29,9 @@ times when delivering new releases to your meshStack environment(s).
 
 #### Versioning Scheme
 
-All meshStack releases have a version number based on the schema `$major.$minor.$patch`:
+All meshStack releases have a version number based on the schema `$year.$minor.$patch`:
 
-- `$major` is a number that increments with every **major release** or a **breaking change**.
-  These type of releases are not done frequently, but they might happen every once in a while.
+- `$year` is the year in which the release was done.
 - `$minor` is a number that increments with every **feature release**.
   Feature releases can contain new functionality and introduce non-backwards compatible changes.
 - `$patch` is a number that increments with every **patch release**.
@@ -44,9 +43,9 @@ All releases contain [release notes](/blog) describing the changes to the produc
 
 #### Versioning Example
 
-`7.90.0` indicates the 7th **major release** of meshStack released, with the 90th **minor** release.
-This release may be followed by a **patch release** `7.90.1`, which indicates the 1st patch release
-for the `7.90` minor release.
+`2023.42.0` indicates the 42nd **minor release** of meshStack released, in the **year** 2023.
+This release may be followed by a **patch release** `2023.42.1`, which indicates the 1st patch release
+for the `2023.42.0` minor release.
 
 #### Supported Versions
 
