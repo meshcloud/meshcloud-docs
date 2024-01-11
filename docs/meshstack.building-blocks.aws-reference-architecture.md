@@ -42,10 +42,10 @@ credentials -- Yes --> sharedRunner[use shared runner and pass credentials <br> 
 ## Reference Architectures
 
 The decision trees implies six possible combinations, each with a different reference architecture.
-The diagrams in this section depict the three combinations where no long lived secrets are allowed fo an example building block "Managed VPC".
+The diagrams in this section depict the three combinations where no long lived secrets are allowed for a building block "Managed VPC" in this example.
 If long lived secrets are allowed, you can simplify the terraform runner setup, the rest stays the same.
 
-### Cloud Foundation Team has the permission to manage trust
+### Cloud Foundation Team has the permission to manage cross-account trust
 
 When the cloud foundation team has the permission to establish trust, create a dedicated role for managing the main building block later on.
 
@@ -78,5 +78,5 @@ To summarize, in this reference architecture
 1. the cloud foundation team does not have the permission to establish trust
 2. either the cloud foundation team or a dedicated networking team offers the "Managed VPC" building block
 3. no long lived secrets are allowed
-
+4. Product/tenant owner reviews and provides the required cross-account trust
 ![Reference Architecture for no long lived secrets are allowed and the cloud foundation team does not have permission to establish trust](assets/building-blocks/ded-nocred-notrust.png)
