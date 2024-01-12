@@ -166,6 +166,7 @@ using Terraform-based Building Blocks in meshStack:
 1. Use a remote backend to store your state like Amazon S3, Azure Storage or Google Cloud Storage.
 2. Use a single storage per Building Block Definition. meshStack organizes the storage on a per workspace/project basis.
    By using a single storage per Building Block Definition you keep a clear separation of your state.
+3. Apply backup best practices to your remote backend so you can restore your state in case you run into an issue.
 
 ### How to debug
 
