@@ -13,14 +13,14 @@ With meshStack, you can not only develop Platform Services for your application 
 
 The Marketplace Catalog presents application teams with details, prices, and documentation for all available Platform Services, allowing them to effortlessly add them to their Projects. Through the Marketplace Catalog, Workspace Owners and Managers can provision Platform Services for both new and existing Projects and Tenants. Here you can find a [guide](meshstack.how-to.add-platformservice.md) for adding different Platform Services from the Marketplace Catalog.
 
-[Overview of Marketplace](assets/marketplace/marketplace-overview.png)
+![Overview of Marketplace](assets/marketplace/marketplace-overview.png)
 
 You can access the Marketplace Catalog not only through the Workspace panel but also directly from your meshTenant. Smart filtering is applied in the meshTenant control view, ensuring that only relevant Platform Services are displayed based on the specific meshTenant. For example, Azure meshTenant services, such as Azure Vnet, will be shown. 
 
 To navigate to the Tenant Marketplace, choose a Tenant from the Project overview panel, click on the Tenant, and then select the Marketplace tab.
 
-[Overview of Tenant](assets/marketplace/tenant-overview.png)
+![Overview of Tenant](assets/marketplace/tenant-overview.png)
 
-[Marketplace Tenant](assets/marketplace/tenant-marketplace.png)
+![Marketplace Tenant](assets/marketplace/tenant-marketplace.png)
 
 >In the next phase of upgrades for the Marketplace Catalog, we'll be introducing tags for Platform Services that will enable you to effortlessly filter and find the specific Platform Service you're looking for.
