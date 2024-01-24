@@ -17,7 +17,7 @@ This guide is designed for application team members who are not yet assigned to 
 - Access the meshStack platform using your credentials.
 - If you don't have any Workspaces yet, you'll be greeted with an introduction to meshStack, where you can click on "See All Available Services" to access the Service Catalog.
 
-[Untitled](./assets/marketplace/onboarding1.png)
+![Untitled](./assets/marketplace/onboarding1.png)
 
 **2. Explore Available Services**
 
@@ -25,9 +25,9 @@ This guide is designed for application team members who are not yet assigned to 
 - Select a Platform Service you want to start with from the Service Catalog.
 - Click on its details and then click "Continue" to proceed.
     
-    [Untitled](./assets/marketplace/onboarding2.png)
+    ![Untitled](./assets/marketplace/onboarding2.png)
     
-    [Untitled](./assets/marketplace/onboarding3.png)
+    ![Untitled](./assets/marketplace/onboarding3.png)
     
 
 3. **Short Introduction to meshStack**
