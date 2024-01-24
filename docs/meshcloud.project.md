@@ -80,7 +80,7 @@ If you would like to delete a project that is no longer used, open the correspon
 The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) of your meshProject depends on the variety of meshTenants. There 3 possible cases:
 
 1. a project contains exclusively tenants where we don't support automatic deletion (AWS, GCP, Azure, Kubernetes, OpenShift)
-2. a project contains exclusively OpenStack, Cloud Foundry and Marketplace meshTenants
+2. a project contains exclusively OpenStack, Cloud Foundry and OSB Services meshTenants
 3. a project contains a project containing a combination of 1. and 2.
 
 **1. Non-automatic deletion**: If the project contains tenants on which a partner or a platform operator will have to perform manual deletion actions. Your project is deleted, when all tenant deletions have been confirmed by the partner or platform operator.

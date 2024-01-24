@@ -19,6 +19,6 @@ This security check is currently supported for the platforms:
 
 * CloudFoundry
 * OpenStack
-* Service Marketplace
+* OSB Services
 
 > Since this security measure is very important, fully automated deprovisioning of projects from other platforms is currently not supported and requires [manual intervention](administration.projects.md#delete-tenants). We are looking into extending support for further automating this process in the future.

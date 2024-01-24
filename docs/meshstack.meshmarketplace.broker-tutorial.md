@@ -91,7 +91,7 @@ This section has some implementation recommendations based on experience:
 - Implement proper error handling for all operations, return the correct response codes.
 - Properly implement synchronous/asynchronous operations.
 - Deal with orphaned Service Instances.
-- “The platform marketplace is the source of truth for service instances and bindings. Service brokers are expected to have successfully provisioned all the service instances and bindings that the marketplace knows about, and none that it doesn't.”
+- “The platform OSB Services is the source of truth for service instances and bindings. Service brokers are expected to have successfully provisioned all the service instances and bindings that the OSB Service platform knows about, and none that it doesn't.”
 - Consider supporting multiple service bindings per service instance, prefer to create separate credentials for each binding.
 - Consider checking your service implementation using the official [checker tool (experimental)](https://github.com/openservicebrokerapi/osb-checker).
 

@@ -21,22 +21,16 @@ this assignment will remain, but workspace managers can no longer create new pro
 
 Platform Operators can configure a custom Landing Zone [meshTag](./meshstack.metadata-tags.md). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
 
-## Include Tenant Services as part of the Landing Zone
+## Include Platform Services as part of the Landing Zone
 
-For all types of platforms it is possible to include marketplace services as part of the landing zone. These tenant
-services can be configured to be either:
+For all types of platforms it is possible to include some Platform Services, namely OSB Services and Building Blokcs as part of the Landing Zone. These Platform Services can be configured to be either:
 
-- Required: this means the tenant service has to be booked by the workspace user. This is useful when you want to enforce
-  the usage of a particular marketplace service in combination with the landing zone.
-- Optional: this means the tenant service can be optionally booked by the workspace user, but they are not required to
-  do so and they could decide to skip booking this service.
+- Required: this means the Platform Service has to be booked by the Workspace user. This is useful when you want to enforce
+  the usage of a particular Platform Service in combination with the Landing Zone.
+- Optional: this means the Platform Service can be optionally added by the Workspace user, but they are not required to
+  do so and they could decide not to add it
 
-Once one or more services have been added to the landing zone, workspace users will be seeing this as part of the project
-creation process. You can see an example of this [here](./meshstack.how-to.create-project.md) at step 7.
-
-Please note that you can only select services that are [tenant-aware](./meshstack.meshmarketplace.tenant-services.md)
-and are either offered in the global marketplace or in a local marketplace where the meshPlatform of the landing zone is
-in.
+Building Blocks and OSB Services could be added to the Landing Zone as part of the Project (see an example of step 6 for OSB Services and step 6 for Building Blocks [here](./meshstack.how-to.create-project.md) as well as from the Marketplace Catalog (see example here)
 
 ## Defining Quotas
 

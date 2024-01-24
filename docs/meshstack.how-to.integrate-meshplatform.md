@@ -39,7 +39,7 @@ For private cloud platforms, you can find integration information here:
 - [Integration of CloudFoundry](meshstack.cloudfoundry.index.md)
 - [Integration of Kubernetes](meshstack.kubernetes.index.md)
 - [Integration of OpenShift](meshstack.openshift.index.md)
-- [Integration of meshMarketplace](meshstack.meshmarketplace.index.md)
+- [Integration of OSB Services](meshstack.meshmarketplace.index.md)
 
 ## Step 3: Complete the meshPlatform configuration in the panel
 
