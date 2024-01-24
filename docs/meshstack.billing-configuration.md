@@ -14,7 +14,7 @@ following product funcitonalities fully support multi-currency scenarios:
 
 - **Private Cloud billing**: Partner can define products and usage rates in any currency.
 - **Public Cloud billing**: meshStack preserves the original currency when importing cost and consumption data from the cloud provider.
-- **meshMarketplace**: Service owners can define prices for their services using the OSB Catalog in any currency.
+- *OSB Services** (old meshMarketplace): Service owners can define prices for their services using the OSB Catalog in any currency.
 - **Tenant Usage Reports**: Tenant usage reports support line items in multiple currencies and aggregates net amounts in each currency separately.
 - **Chargeback Statements**: Chargeback statements support multiple currencies and aggregate net amounts in each currency separately.
 - **Tenant Fees**: Partner can define tenant fees in any currency.
@@ -23,7 +23,7 @@ following product funcitonalities fully support multi-currency scenarios:
 The following product functionalitities do currently not support multi-currency scenarios:
 
 - **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and
-  meshMarketplace) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items
+OSB Services) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items
   are in EUR. This can create confusion if the underlying Tenant Usage Report uses a different or multiple currencies.
 - **Payment Methods**: Amounts specified on payment methods are currently assumed to be in EUR.
 

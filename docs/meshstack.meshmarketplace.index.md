@@ -3,17 +3,17 @@ id: meshstack.meshmarketplace.index
 title: Integration
 ---
 
-The Open Service Broker (OSB) Marketplace provides a common integration point for any remote service which can be provisioned by an API (e.g. a database). A lightweight service broker component implementing the [Open Service Broker API Specification](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md) allows such services to become a resource within a meshProject and be included in the project lifecycle management at the meshStack platform.
+The Open Service Broker (OSB) platform provides a common integration point for any remote service which can be provisioned by an API (e.g. a database). A lightweight service broker component implementing the [Open Service Broker API Specification](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/spec.md) allows such services to become a resource within a meshProject and be included in the project lifecycle management at the meshStack platform.
 
 > To learn more about providing a service ecosystem in your cloud foundation team, have a look at the [maturity model](https://cloudfoundation.meshcloud.io/maturity-model/service-ecosystem/).
 
-## meshMarketplace
+## OSB Services Platform
 
-The meshMarketplace allows users to manage service instances attached to a meshProject. The meshMarketplace uses the official Open Service Broker API standard to communicate with Service Brokers, which are responsible for the actual provisioning of service instances through their service implementation. This guide aims to provide a quick overview of the Open Service Broker API and implementation specific topics. It is required that service implementers study the Open Service Broker API specification for in-depth information.
+The OSB Services Platform allows users to manage service instances attached to a meshProject. The OSB Services Platform uses the official Open Service Broker API standard to communicate with Service Brokers, which are responsible for the actual provisioning of service instances through their service implementation. This guide aims to provide a quick overview of the Open Service Broker API and implementation specific topics. It is required that service implementers study the Open Service Broker API specification for in-depth information.
 
 ## Locality of Services
 
-The meshMarketplace provides support for global and local services. Service Providers must choose which type of Service they want to offer so that the service is appropriately integrated into the user interface.
+The OSB Services Platform provides support for global and local services. Service Providers must choose which type of Service they want to offer so that the service is appropriately integrated into the user interface.
 
 ### Global Service
 
@@ -31,17 +31,17 @@ The meshMarketplace provides support for global and local services. Service Prov
 
 ## OSB API Profile
 
-meshcloud implements an extended [meshMarketplace OSB API Profile](./meshstack.meshmarketplace.profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
+meshcloud implements an extended [OSB API Profile](./meshstack.meshmarketplace.profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
 
 ## Authentication & Authorization
 
 ### Marketplace to Service Broker
 
-All communication between the meshMarketplace and Service Brokers is secured using HTTPS Basic Auth and a pre-shared key. Service owners that also develop brokers for platforms like Cloud Foundry or OpenShift will be familiar with this model.
+All communication between the OSB Services platform and Service Brokers is secured using HTTPS Basic Auth and a pre-shared key. Service owners that also develop brokers for platforms like Cloud Foundry or OpenShift will be familiar with this model.
 
 ### Replicating Authorization Information
 
-meshMarketplace supports two different options for authenticating and authorizing users of marketplace services.
+OSB Services platform supports two different options for authenticating and authorizing users.
 
 - (Enterprise Plans only) use an OIDC client in meshIdB as described in the [OSB dashboard tutorial](./meshstack.meshmarketplace.dashboard-tutorial.md)
 - replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
@@ -51,7 +51,7 @@ using the [meshObject API](https://docs.meshcloud.io/api/).
 
 ## Platform Instance Configuration
 
-meshMarketplace can only be configured by meshcloud via Dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
+OSB Services platform can only be configured by meshcloud via Dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
 
 ```dhall
 let PermissionReplication = ./PermissionReplication.dhall
@@ -60,7 +60,7 @@ in    λ(Secret : Type)
     → { platform : Text, permissionReplication : PermissionReplication Secret }
 ```
 
-The default `permissionReplication` for setting every meshMarketplace meshPlatform is an instance of `MeshIdb`, which
+The default `permissionReplication` for setting every OSB Services platform is an instance of `MeshIdb`, which
 offers no further configuration options. Note that these platforms do not need to be explicitly configured at this time.
 
 ### AAD Permission Replication
@@ -103,7 +103,7 @@ in    λ(Secret : Type)
 ```
 
 Role mappings must be configured for all [meshProject roles](./meshcloud.project.md#project-roles). Note that in
-contrast to the [Azure replicator](meshstack.azure.index.md) replication for the meshMarketplace will not create any
+contrast to the [Azure replicator](meshstack.azure.index.md) replication for the OSB Services platform will not create any
 Azure-role assignments.
 
 ### AAD Group Name

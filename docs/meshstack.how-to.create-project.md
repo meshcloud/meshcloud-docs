@@ -28,8 +28,7 @@ If you are not familiar with what a meshProject is, please check the [official m
  4. The lower part of the first page allows you to tag your meshProject. Some tags are required to be specified by you. You can recognize the required tags by the red line on the left side of the input field. Some of the tags you choose might have an impact on the landing zone you are allowed to choose. This happens if there is a policy that might restrict the usage. Click next![Tags](./assets/project-creation/choose-tags.png "Tags")
  5. Select the payment method provided via the meshWorkspace and click Next.
  6. Now we come to the most important part. Choose at least one of the platforms for your future meshProject.
-    The global marketplace is always included and contains interesting services provided by your organization, which you
-    can book later. If you want to have for example an AWS account, pick AWS. Click next.
+    If you want to have for example an AWS account, pick AWS. Click next.
     ![Select Platform](./assets/project-creation/choose-platform.png "Select Platform")
  7. We now have to configure any possible platform configuration. For public cloud platforms & Kubernetes-based platforms
     this means picking a landing zone (A).
