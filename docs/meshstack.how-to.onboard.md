@@ -47,7 +47,8 @@ yellow Please note that if you have an external service like ServiceNow or any o
 ![Untitled](./assets/marketplace/onboarding6.png)
 
 ### Payment Method (if applicable)
-If a valid payment method for your Workspace is not available, creating a Project is prevented. Please request one from your cloud foundation team following the instructions on the screen.
+
+- If a valid payment method for your Workspace is not available, creating a Project is prevented. Please request one from your cloud foundation team following the instructions on the screen.
     
     ![Untitled](./assets/marketplace/onboarding7.png)
     
