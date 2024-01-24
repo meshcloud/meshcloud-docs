@@ -12,14 +12,14 @@ This guide is designed for application team members who are not yet assigned to 
 
 ## Step-by-Step Guide
 
-**Log in to meshStack**
+### Log in to meshStack
 
 - Access the meshStack platform using your credentials.
 - If you don't have any Workspaces yet, you'll be greeted with an introduction to meshStack, where you can click on "See All Available Services" to access the Service Catalog.
 
 ![Untitled](./assets/marketplace/onboarding1.png)
 
-**Explore Available Services**
+### Explore Available Services
 
 - The Service Catalog provides an overview of all **Platform Services** available within your company.
 - Select a Platform Service you want to start with from the Service Catalog.
@@ -30,7 +30,7 @@ This guide is designed for application team members who are not yet assigned to 
     ![Untitled](./assets/marketplace/onboarding3.png)
     
 
-**Short Introduction to meshStack**
+### Short Introduction to meshStack
 
 - After clicking "Continue," you'll receive a brief intro to meshStack, explaining what Workspaces and Projects are.
     
@@ -38,7 +38,7 @@ This guide is designed for application team members who are not yet assigned to 
     
     ![Untitled](./assets/marketplace/onboarding5.png)
     
-**Create Workspace**
+### Create Workspace
 
 yellow Please note that if you have an external service like ServiceNow or any other external solutions to create a Workspace, you'll be redirected directly there, and the next steps are not relevant to your case.
 
@@ -46,12 +46,13 @@ yellow Please note that if you have an external service like ServiceNow or any o
 
 ![Untitled](./assets/marketplace/onboarding6.png)
 
-**Payment Method (if applicable)**
-- If a valid payment method for your Workspace is not available, creating a Project is prevented. Please request one from your cloud foundation team following the instructions on the screen.
+### Payment Method (if applicable)
+If a valid payment method for your Workspace is not available, creating a Project is prevented. Please request one from your cloud foundation team following the instructions on the screen.
     
     ![Untitled](./assets/marketplace/onboarding7.png)
     
-**Create a Project**
+### Create a Project
+
 - Once the Workspace is set up, you can create a Project.
 - The selected Platform Service from the beginning will be preselected, but you can add more or change the selection during Project creation.
  ![Untitled](./assets/marketplace/onboarding8.png)
