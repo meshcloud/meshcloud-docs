@@ -48,7 +48,7 @@ If [4-eye-principle](meshstack.authorization.md#user-project-role-approval) is a
 
 ### Assign user to a meshProject
 
-In the **Project Access Control** section you can find a type-ahead `Search for a workspace user or group` field at the bottom. You search for users via their first and last name, email address and username. Groups can be found via their group name and identifier. You have to select the user or group you want to assign in the dropdown. Also select a project role. Press the `+` to add the user or group to the project. Note that only users with a valid account on the meshPanel can access your projects. You can assign multiple project roles to a user or a group on the same project.
+In the **Project Access** section you can find a type-ahead `Search for a workspace user or group` field at the bottom. You search for users via their first and last name, email address and username. Groups can be found via their group name and identifier. You have to select the user or group you want to assign in the dropdown. Also select a project role. Press the `+` to add the user or group to the project. Note that only users with a valid account on the meshPanel can access your projects. You can assign multiple project roles to a user or a group on the same project.
 
 ### Project Roles
 

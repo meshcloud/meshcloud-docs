@@ -14,7 +14,7 @@ meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to pro
 
 * management account: organization management account, the account that hosts the AWS Organization. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.`meshfed-service-user` (Replicator User)
 * meshcloud account: meshStack will use this account to host the IAM users used by meshStack. `meshfed-service-user` (Replicator User) lives in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
-* automation account: meshStack will use this account to manage CloudFormation that are used in [Landing Zones](https://docs.meshcloud.io/docs/meshcloud.landing-zones.html).
+* automation account: meshStack will use this account to manage CloudFormation that are used in [Landing Zones](./meshcloud.landing-zones.md).
 
 ```mermaid
 graph LR;

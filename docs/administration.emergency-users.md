@@ -19,7 +19,7 @@ If a user with [workspace manager](meshcloud.workspace.md) access is available, 
 First, the user requiring emergency access must be invited to the meshWorkspace
 
 - Ensure that the correct meshWorkspace is selected
-- Open the **Access Control** tab in the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) and open the **Current Access** tab.
+- Open the **Workspace Access** tab in the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) and navigate to **Current Access** subtab.
 - At the bottom of the screen, type in the name or e-mail of the new user and invite them with the desired role.
 
 You can also grant workspace manager rights to the newly invited user, i.e. if the emergency user needs to modify other user permissions. In this case, the new user can perform the following steps themselves.
@@ -29,7 +29,7 @@ You can also grant workspace manager rights to the newly invited user, i.e. if t
 The user can then be assigned to meshProjects belonging to the meshWorkspace:
 
 - In the project overview in the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), open the designated project by clicking on its name.
-- Navigate to the **Access Control** tab and open the **Current Access** tab.
+- Navigate to the **Project Access** tab and open the **Current Access** subtab.
 - Add the user with the desired project role.
 
 Since emergency access should only be temporary, it's strongly advised to assign the user a role with a [set expiration date](./meshcloud.project.md#expiry-of-a-user-assignment) which will ensure that the user is automatically removed from the meshProject after the specified date.
@@ -47,8 +47,8 @@ User project role assignments can be configured to require consent from multiple
 
 When emergency access is no longer required the following steps will revert performed changes:
 
-- Remove user from meshProject by opening the project again and navigating to **Access Control** > **Current Access** (performed automatically if expiration date was set)
-- Remove user from meshWorkspace via the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): go to **Access Control** > **Current Access**.
+- Remove user from meshProject by opening the project again and navigating to **Project Access** > **Current Access** (performed automatically if expiration date was set)
+- Remove user from meshWorkspace via the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): go to **Workspace Access** > **Current Access**.
 
 ## Access with meshPartner
 
@@ -71,7 +71,7 @@ Afterwards they may proceed to manage users for this meshWorkspace as a workspac
 ### Removing emergency user as meshPartner
 
 Since the meshPartner user is now a workspace manager the procedure is the same as outlined in the previous section.
-However, to revert the temporary workspace manager role assignment, another workspace manager must remove the partner user from the workspace via **Access Control** > **Current Access**.
+However, to revert the temporary workspace manager role assignment, another workspace manager must remove the partner user from the workspace via **Workspace Access** > **Current Access**.
 
 ## Access Through Service Users
 

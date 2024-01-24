@@ -30,7 +30,7 @@ If you are not familiar with what a meshProject is, please check the [official m
  6. Now we come to the most important part. Choose at least one of the platforms for your future meshProject.
     The global marketplace is always included and contains interesting services provided by your organization, which you
     can book later. If you want to have for example an AWS account, pick AWS. Click next.
-    ![Select Platform](./assets/project-creation/choose-platform.png "Select Platform")
+    ![Select Platform](./assets/project-creation/choose_platforms.png "Select Platform")
  7. We now have to configure any possible platform configuration. For public cloud platforms & Kubernetes-based platforms
     this means picking a landing zone (A).
     Additionally, for some landing zones there might be services included as part of the landing zone (B). These can be
@@ -42,7 +42,7 @@ If you are not familiar with what a meshProject is, please check the [official m
     ![Landing Zone & Services](./assets/project-creation/choose-lz-and-services.png "Landing Zone & Services")
  8. Now add any team members who should have access to the new meshProject and the corresponding cloud tenants.
     You can also add yourself by clicking the `Add myself` button. The access of your team members to the project can be
-    changed at any point in the project control plane under **Access Control** > **Current Access**. Click Next to continue
+    changed at any point in the project control plane under **Project Access** > **Current Access**. Click Next to continue
     ![Add Users and Groups](./assets/project-creation/add-yourself.png "Add Users and Groups")
  9. At last, a 'Review & Create' page will be shown. You can verify here whether your about-to-be-created project is
     looking as you want it to be. If everything looks good, hit 'Create Project' and your project will be created!

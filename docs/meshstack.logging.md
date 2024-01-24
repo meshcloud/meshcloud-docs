@@ -68,7 +68,7 @@ This section overlaps in some parts with the previously mentioned log files, but
 | Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log           |
 | Password changes - Authorization via federated IdP                    | Federated IdP                                   |
 | Access Right changes (i.e. user rights)                               | Customer/Project Event table, mesh.log          |
-| Changes to logging configuration (especially deactivation of logging) | Can only be done by an Platform Operator, no logging atm |
+| Changes to logging configuration (especially deactivation of logging) | Can only be done by meshcloud, no logging atm |
 | Start and stop administrative processes (Batch-Jobs)                  | mesh.log                                        |
 
 ## Structure / Content, Format and Retention
