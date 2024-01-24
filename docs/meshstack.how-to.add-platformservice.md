@@ -11,19 +11,19 @@ Prerequisites:
 
 Step by Step guide:
 
-1. **Choose a Workspace:**
+1. Choose a Workspace:
     
     Navigate to the upper left corner of your screen and select the Workspace for which you want to add a platform service.
     
     ![Untitled](./assets/marketplace/guide1.png)
     
-2. **Access Marketplace:**
+2. Access Marketplace:
     
     Within the chosen Workspace, go to the "Marketplace" tab.
     
     ![Untitled](./assets/marketplace/guide2.png)
     
-3. **Select Platform Services:**
+3. Select Platform Services:
     
     From the list of available services, choose the desired Platform Service. This could be a platform like AWS or any DevOps tool or service like AzureVnet (see examples below). The main distinction between a Service and a Platform lies in the fact that a Service you choose always necessitates a specific Platform to function. In other words, a Service requires the existence of a Tenant or the creation of one to be added to your Project. 
     
@@ -38,7 +38,7 @@ Step by Step guide:
 
 ![Untitled](./assets/marketplace/guide4.png)
 
-**4.1. Adding a Platform:**
+4.1. Adding a Platform:
 
 Adding a Platform to a Project creates a Tenant, which is an isolated cloud environment within that Project (e.g., AWS account, Azure subscription).
 
@@ -47,7 +47,7 @@ If you selected a Platform, decide whether to
 - [create a new Project for it](#guide-for-adding-platform-to-new-project)
 - [add it to an existing Project](#guide-for-adding-platform-to-new-project)
 
-**4.2. Adding Service**
+4.2. Adding Service
 
 The distinction between creating a Service and a Platform lies in the fact that a chosen Service always requires a specific Platform to function, thus requiring the existence of a Tenant or the creation of one to add the Service successfully. Details regarding the required Tenant type for a particular Service are displayed on the service details screen. 
 
@@ -58,7 +58,7 @@ You have the flexibility to choose whether to add Service to:
 - [a new Project (Create a Project and Tenant, together with adding a Service)](#guide-for-adding-service-to-a-new-project)
 - [an existing Project](#guide-for-adding-service-to-an-existing-project)
 
-**4.3 Adding a Service (Open Service Brocker)** 
+4.3 Adding a Service (Open Service Brocker)
 
 > To avoid any confusion, we recommend to our customer with upgraded Marketplace considering a name change for meshMarketplace Platforms from "Marketplace" to "OSB Services" to ensure clarity and clear separation of concept names within your meshStack.
 
