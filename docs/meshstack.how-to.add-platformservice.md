@@ -29,9 +29,9 @@ Step by Step guide:
     
      
     
-    - example of a Platform
-    
-    ![Untitled](./assets/marketplace/guide3.png)
+- example of a Platform
+
+![Untitled](./assets/marketplace/guide3.png)
     
 
 - example of a Service
