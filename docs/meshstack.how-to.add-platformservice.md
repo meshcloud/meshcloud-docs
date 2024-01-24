@@ -71,7 +71,7 @@ All available Service Instances will be shown on the Service Catalog and you can
 - [a new Project (Create a Project and Tenant, together with adding a Service)](#guide-for-adding-service-to-a-new-project)
 - [an existing Project](#guide-for-adding-service-to-an-existing-project)
 
-### Guide for adding Platform to new Project:
+## Guide for adding Platform to new Project
 
 **Step 1:** If you decide to create a new Project with a Platform, after choosing it from the Service Catalog click on “Create a Project”  and simply follow the on-screen steps for Project creation. 
 
@@ -88,7 +88,7 @@ All available Service Instances will be shown on the Service Catalog and you can
 
 ![Untitled](./assets/marketplace/guide11.png)
 
-### Guide for adding Platform to existing Project:
+## Guide for adding Platform to existing Project
 
 **Step 1:** Choose a Platform from the Service Catalog and select an existing Project from the list. Please be aware that only one Tenant per platform type can be created in the Project. For example, if you already have an Azure Tenant in a Project, you can´t add another Azure Tenant to the same Project.
 
@@ -106,7 +106,7 @@ All available Service Instances will be shown on the Service Catalog and you can
 
 ![Untitled](./assets/marketplace/guide15.png)
 
-### Guide for adding Service to a new Project:
+## Guide for adding Service to a new Project
 
 **Step 1:** If you decide to create a new Project with a Service, after choosing it from the Service Catalog, click on “Create a Project”, agree to create a Project with your Service, and simply follow the on-screen steps for Project creation. 
 
@@ -130,7 +130,7 @@ All available Service Instances will be shown on the Service Catalog and you can
 
 ![Untitled](./assets/marketplace/guide22.png)
 
-### Guide for adding Service to an existing Project:
+## Guide for adding Service to an existing Project
 
 **Step 1:** Navigate to the Service Catalog and select the Service that you want to add to your existing Project.
 

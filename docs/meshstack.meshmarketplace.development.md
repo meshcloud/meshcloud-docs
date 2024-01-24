@@ -11,7 +11,7 @@ You can provide your own OSB services (e.g. databases, message brokers, filesyst
 meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
 
 
-### Register your Service Broker
+## Register your Service Broker
 
 Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker. A new OSB Services Platform for your Workspace will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own OSB Services Platform will be available on the project.
 
