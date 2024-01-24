@@ -5,13 +5,13 @@ title: OSB Services Platform Development
 
 > Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
-You can provide your own OSB services (e.g. databases, message brokers, filesystems, etc) via the **Service Brokers** tab and **Service Brocker** subtab on your Wrokspace Control Plane. This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the OSB Services Platform are described [here](meshstack.marketplace.service-instances). Also via **Instances** subtab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+You can provide your own OSB services (e.g. databases, message brokers, filesystems, etc) via the **Service Brokers** tab and **Service Brocker** subtab on your Wrokspace Control Plane. This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the OSB Services Platform are described [here](marketplace.service-instances.md). Also via **Instances** subtab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
 
 
 meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
 
 
-### Register your Service Broker
+## Register your Service Broker
 
 Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker. A new OSB Services Platform for your Workspace will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own OSB Services Platform will be available on the project.
 
