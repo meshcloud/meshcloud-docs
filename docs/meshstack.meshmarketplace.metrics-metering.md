@@ -3,7 +3,7 @@ id: meshstack.meshmarketplace.metrics-metering
 title: Metrics-based Metering
 ---
 
-It is not always the best approach to apply a [fixed periodic fee](meshstack.meshmarketplace.metering.md#osb-api-service-catalog) on a Service Plan. There are usecases where marketplace services have to be charged based on certain metrics. If a service instance has other resources (like virtual machines or storage) attached, charging usage-based via a related metric makes sense. An example would be a `database as a service` (DBaaS) which needs to be charged on the actual storage capacity used, rather than the time the service instance was active.
+It is not always the best approach to apply a [fixed periodic fee](meshstack.meshmarketplace.metering.md#osb-api-service-catalog) on a Service Plan. There are usecases where OSB Services have to be charged based on certain metrics. If a service instance has other resources (like virtual machines or storage) attached, charging usage-based via a related metric makes sense. An example would be a `database as a service` (DBaaS) which needs to be charged on the actual storage capacity used, rather than the time the service instance was active.
 
 ## Example use cases
 
