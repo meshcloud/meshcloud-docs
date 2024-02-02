@@ -35,12 +35,10 @@ pkgs.mkShell {
   '';
 
   buildInputs = [
-    # NOTE: nodejs-12 is marked insecure on nix packages and consumers have to build it themselves which takes ages
-    # we will upgrade to node-16 soon anyway
-    # node / typescript (meshPanel, utilities eetc.)
-    pkgs.nodejs-16_x
+    pkgs.terraform
+    pkgs.nodejs-18_x
     (pkgs.yarn.override {
-      nodejs = pkgs.nodejs-16_x;
+      nodejs = pkgs.nodejs-18_x;
     })
 
     # NOTE: these are most likely present the wrong version on your package registry, install them into

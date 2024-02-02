@@ -11,8 +11,8 @@ First install postman. While any tool will do, in this how-to will use [Postman]
 
 ## Step 2: Import existing Workspace Owners into the meshObjectCollection
 
-Import the existing [meshWorkspaceUserBindings](https://docs.meshcloud.io/api/index.html#_meshworkspaceuserbinding) for the Workspace Owners into the meshObjectCollection.
-Importing is done by specifying the [meshObjectCollection](https://docs.meshcloud.io/api/index.html#mesh_object_declarative_import) in the request URL.
+Import the existing [meshWorkspaceUserBindings](/api/index.html#_meshworkspaceuserbinding) for the Workspace Owners into the meshObjectCollection.
+Importing is done by specifying the [meshObjectCollection](/api/index.html#mesh_object_declarative_import) in the request URL.
 
 ```sh
 curl --location --request PUT 'https://backend-url/api/meshobjects?meshObjectCollection=collection-my-workspace-workspace-owners&owner=partner@meshcloud.io' \

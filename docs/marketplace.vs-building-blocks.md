@@ -5,10 +5,10 @@ title: Service Brokers vs. Building Blocks
 
 [Building Blocks](administration.building-blocks.md) are the newest capability of meshStack to repetitively roll out infrastructure
 by your workspace users. Building Blocks are considered the future of doing so, and this page explains the current gaps, and
-pros and cons of using Building Blocks or the meshMarketplace, and should help you make a decision which is the better fit
+pros and cons of using Building Blocks or the OSB Services, and should help you make a decision which is the better fit
 for your use case!
 
-Keep in mind that even though Building Blocks are currently more actively being worked on, the Service Broker-based meshMarketplace
+Keep in mind that even though Building Blocks are currently more actively being worked on, the Service Broker-based on OSB Services Platform (old meshMarketplace)
 will continue to be supported in the future. In the future Building Blocks will offer further technical implementation types such as Service Brokers.
 
 The table below describes each capability and to what extent it is supported by the respective feature (Building Blocks or Service Brokers)

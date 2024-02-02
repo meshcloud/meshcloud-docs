@@ -112,13 +112,22 @@ Address: 1600 Amphitheatre Pkwy,
          Mountain View, California 94043, United States
 ```
 
-**ClickUp:** ClickUp is used as a project management, support management & ticketing tool for meshcloud GmbH. ClickUp stores data according to the AICPA SOC2, GDPR & HIPAA compliances in different data centers worldwide (Germany & Ireland in Europe) hosted by AWS.
+**ClickUp:** ClickUp is used as a project management & ticketing tool for meshcloud GmbH. ClickUp stores data according to the AICPA SOC2, GDPR & HIPAA compliances in different data centers worldwide (Germany & Ireland in Europe) hosted by AWS.
 
 ```text
 ClickUp security overview: https://clickup.com/security
 Address: Rechenzentren in den USA
          363 Fifth Ave. Suite 300
          San Diego, California 92101, United States
+```
+
+**BoldDesk:** BoldDesk is used as a support management tool for meshcloud GmbH. BoldDesk stores data according to the SOC2 Type 2 and GDPR compliances in different data centers in the United States and the United Kingdom hosted by Google Cloud Platform and Azure.
+
+```text
+BoldDesk security overview: https://www.bolddesk.com/legal/security
+Address: Syncfusion, Inc.
+         2501 Aerial Center Parkway, Suite 111,
+         Morrisville, North Carolina 27560, United States
 ```
 
 **Slack:** meshcloud GmbH uses Slack messaging software for interacting within the workplace. By default, Slack encrypts data at rest and data in transit for all of its customers. The security program at Slack protects its customer's data at every layer and has the following compliance certifications and attestations:

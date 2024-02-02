@@ -1,33 +1,33 @@
 ---
-id: meshstack.meshmarketplace.development
-title: Marketplace Development
+id: meshstack.OSBServicesPlatform.development
+title: OSB Services Platform Development
 ---
 
 > Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
-You can provide your own services (e.g. databases, message brokers, filesystems, etc) in the [meshMarketplace](marketplace.index.md) via the **Marketplace** >  **Service Brokers** on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the meshMarketplace are described [here](meshstack.meshmarketplace.index.md).
+You can provide your own OSB services (e.g. databases, message brokers, filesystems, etc) via the **Service Brokers** tab and **Service Brocker** subtab on your Wrokspace Control Plane. This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the OSB Services Platform are described [here](marketplace.service-instances.md). Also via **Instances** subtab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+
 
 meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
 
-## Marketplace
 
-You can find the **Marketplace** tab on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). Via **Service Brokers** tab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+## Register your Service Broker
 
-### Register your Service Broker
-
-Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker via the meshMarketplace development from the first steps on. A new Marketplace Platform for your Workspace will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own Marketplace will be available on the project.
+Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker. A new OSB Services Platform for your Workspace will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own OSB Services Platform will be available on the project.
 
 
-1. Open **Marketplace** on your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace).
-2. Navigate to the **Service Brokers** tab.
+1. Open **Service Brocker** on your Workspace control plane
+2. Navigate to the **Service Brokers** subtab.
 3. Click `+ Register` in the upper right corner.
+[overview OSB](assets/marketplace/osb-overview.png)
+
 
 The following information must be provided for the registration:
 
 - **Name**: Give a name to the service broker you want to register. It is mainly used as a display name for your administrative Screens.
 - **Identifier**: Globally unique, immutable identifier for your Service Broker, used in API requests and logs by meshStack. Choose wisely as *this identifier cannot be changed later* on. We advise to use meaningful and expressive identifiers.
 - **Endpoint**: Root URL to your Service Broker's API endpoint. It must start with "http(s)://". Below this API endpoint the **/v2/catalog** endpoint must be available, as described in the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
-- **Basic Auth Username**: Communication between the meshMarketplace and your Service Broker is secured via HTTP Basic Auth. Therefore username and password have to be defined here, so the meshMarketplace can authenticate successfully to your Service Broker. Enter the username for HTTP Basic Auth here. The username can be changed at any time.
+- **Basic Auth Username**: Communication between the OSB Services Platform and your Service Broker is secured via HTTP Basic Auth. Therefore username and password have to be defined here, so the OSB Services Platform can authenticate successfully to your Service Broker. Enter the username for HTTP Basic Auth here. The username can be changed at any time.
 - **Basic Auth Password**: Enter the password for your HTTP Basic Auth. A set password will never be shown to you again. This password will be stored encrypted in the database. You can set a new password at any time. No restrictions regarding the characters used in your password are applied. Please be sure to always use a secure password!
 - **Development Mode**: As all communication should be secured via SSL by using an https endpoint, it might be too complicated to provide a valid certificate during development. Therefore SSL validation of your Service Broker's certificate can be disabled via this **Development Mode**. This is only possible for the Development Service Broker only your meshWorkspace has access to. [Published Service Brokers](#publish-your-service-broker) always need a valid certificate!
 
@@ -37,25 +37,25 @@ Data entered when [registering](#register-your-service-broker) your service brok
 
 ### Refresh Service Broker Catalog
 
-Service Brokers provide the catalog of all available service according to the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management). The meshMarketplace periodically calls the catalog endpoint and updates the available services internally. To force this refresh of your Service Broker's catalog, you can click the **Refresh Catalog** button in the list of your Service Brokers.
+Service Brokers provide the catalog of all available service according to the [Open Service Broker API](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management). The OSB Services Platform periodically calls the catalog endpoint and updates the available services internally. To force this refresh of your Service Broker's catalog, you can click the **Refresh Catalog** button in the list of your Service Brokers.
 
 ## Publish your Service Broker
 
-As soon as your Service Broker is production-ready, you can publish it to the public meshMarketplaces, so all users of meshStack can use it. You should provide a new deployment of your Service Broker in order to publish it. Your private service broker configuration will remain untouched when publishing the service broker. The private Service Broker will still be available for your meshWorkspace.
+As soon as your Service Broker is production-ready, you can add  it to the OSB Services Platform and it will be shown on Marketplace Catalog, so all users of meshStack can use it. You should provide a new deployment of your Service Broker in order to publish it. Your private service broker configuration will remain untouched when publishing the service broker. The private Service Broker will still be available for your meshWorkspace.
 
 To publish your Service Broker, click the **Publish Service Broker** button for the according Service Broker.
 
-You can choose which public Marketplace you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
+You can choose which OSB Services Platform you want to publish your Service Broker to. For many services, like databases, storage, etc, it makes sense to provide the Service Broker in the same Location the applications consuming the service are running. This enables best latency, security and performance for using your services. But there are also other Service Brokers like a service that provides user credentials for using an internet proxy, which are independent of the Location. In these cases the Service Broker can simply be published to the **Global** Location.
 
-Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the meshMarketplace and your Service Broker.
+Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the OSB Services Platform and your Service Broker.
 
-When you publish your Service Broker it won't be available in the meshMarketplace. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the OSB Services Platform. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### How to publish your Service Broker
 
 Please execute the following steps:
 
-1. Open the Marketplace controls on the meshWorkspace level.
+1. Open the Servive Broker controls on the meshWorkspace level.
 2. Navigate to "Service Brokers".
 3. Choose "Published Service Brokers" for the Service Broker you want to publish.
 
@@ -75,15 +75,15 @@ The Analytics functionality for Service Owners is available to Workspace Manager
 
 ### Reviewing failed Service Instances
 
-From the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), you can access an overview of all failed service instances of your service brokers under the "Failed Instances" sub-page which can be found under the "Marketplace" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+From the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), you can access an overview of all failed service instances of your service brokers under the "Instances" sub-page which can be found under the "Service Broker" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
 
 ### Service Communication Logs
 
-Especially when an error occurs during a service broker call, detailed information about the request that was made from the meshMarketplace to the service broker helps in analyzing the reason why a call failed. But the communication logs are not only available in error cases, they are available for all requests that were made from the meshMarketplace to the Service Broker. Instead of implementing a detailed request and response logging in every service broker, the meshMarketplace provides this information for all service brokers.
+Especially when an error occurs during a service broker call, detailed information about the request that was made from the OSB Services Platform to the service broker helps in analyzing the reason why a call failed. But the communication logs are not only available in error cases, they are available for all requests that were made from the OSB Services Platform to the Service Broker. Instead of implementing a detailed request and response logging in every service broker, the OSB Services Platform provides this information for all service brokers.
 
 All relevant information like the request date and the type of operation that was executed, all request and response headers as well as the body of the request and in case of an error also the response from the service broker, are available. The duration of the call and information about the used Service Plan and [Service Instance](marketplace.service-instances.md) are also available. This information, combined with the application logs of the service broker should provide all information for a successful error analysis.
 
-The communication logs are available for [private](meshstack.meshmarketplace.development.md#register-your-service-broker) and [published](meshstack.meshmarketplace.development.md#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the marketplace integration phase of your service broker.
+The communication logs are available for [private](meshstack.meshmarketplace.development.md#register-your-service-broker) and [published](meshstack.meshmarketplace.development.md#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the OSB Services Platform integration phase of your service broker.
 
 A searchable overview of all communication logs is the starting point for analyzing communication logs. When more details about a specific log is needed, the **info** icon in the list of logs provides you with all details that are available to a specific call that was made.
 
@@ -109,6 +109,6 @@ After you have published your Service Broker you can also revoke this publishing
 
 ## Deactivation of Service Brokers
 
-If a Service Broker has been [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker) it can no longer be deleted because there may already be provisioned service instances. Instead, a published Service Broker can be **deactivated**. Deactivating a Service Broker does not delete any service instances or bindings but ensures that no new service instances can be created. Marketplaces will no longer show any services offered by this broker and if the Service Broker uses a dashboard client it will no longer be available.
+If a Service Broker has been [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker) it can no longer be deleted because there may already be provisioned service instances. Instead, a published Service Broker can be **deactivated**. Deactivating a Service Broker does not delete any service instances or bindings but ensures that no new service instances can be created. OSB Services platform will no longer show any services offered by this broker and if the Service Broker uses a dashboard client it will no longer be available.
 
 > Deactivating a Service Broker is permanent and irreversible!

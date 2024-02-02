@@ -17,7 +17,7 @@ Metering is based on periodically sampling the state of Kubernetes resources fro
 
 ## Supported Resources
 
-Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). Operators can use the traits of these resources to define fine-granular product and pricing rules.
+Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). Platform Operators can use the traits of these resources to define fine-granular product and pricing rules.
 
 ### Pod
 

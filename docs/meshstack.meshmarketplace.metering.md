@@ -3,16 +3,16 @@ id: meshstack.meshmarketplace.metering
 title: Metering
 ---
 
-meshStack supports metering of meshMarketplace services. This allows Service Owners to collect charges using
+meshStack supports metering of OSB Services. This allows Service Owners to collect charges using
 meshStack's multi-cloud chargeback process.
 
 ## Product Catalog Configuration
 
 Serice Owners that want to charge consumers of their services via meshStack need to expose cost information
 in the service catalog of their Service Broker implementations. meshStack metering will then automatically calculate charges
-and generate a [Tenant Usage Report](./meshcloud.project-metering.md) for each marketplace used in a meshProject.
+and generate a [Tenant Usage Report](./meshcloud.project-metering.md) for each OSB Services Platform used in a meshProject.
 
-In the context of meshMarketplace metering Service Owners are also called **Sellers**. The id of a seller is the
+In the context of OSB Services metering Service Owners are also called **Sellers**. The id of a seller is the
 identifier of the meshWorkspace that has registed the Service Broker with the meshMarketplace.
 
 ### OSB API Service Catalog
@@ -133,7 +133,7 @@ and deleted on the first day of reporting period #2 would incur a full charge of
 
 ### Configuring "out of scope" Sellers
 
-meshStack operators can mark sellers as "out of scope" via configuration. Once a seller is marked as out of scope,
+Partners can mark sellers as "out of scope" via configuration. Once a seller is marked as out of scope,
 the costs for that seller's products will be set to zero in the meshStack metering product catalog.
 
 The line items for the seller will appear in the usage reports and chargeback statements with an appended "Out of Scope" suffix on the usage type. The total column for those line items will be zero, but the used quantity will be shown correctly.
@@ -165,9 +165,9 @@ let example
 
 ## Reviewing Metering Data
 
-Metering & Usage information for Service Owners is available for your Service Brokers from the "Marketplace" tab in your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace).
+Metering & Usage information for Service Owners is available for your Service Brokers from the "Service Broker" tab in your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace).
 
-You see a list of all plans of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per Marketplace you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
+You see a list of all plans of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per OSB Services platform you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
 
 The screen provides you with information about:
 
@@ -177,6 +177,6 @@ The screen provides you with information about:
 
 ## Seller Usage Report (CSV Export)
 
-All the metering usage data for your services can be downloaded as CSV. This is called a seller usage report in meshcloud because the service owner acts as a seller on the meshMarketplace.
+All the metering usage data for your services can be downloaded as CSV. This is called a seller usage report in meshcloud because the service owner acts as a seller on the OSB Services platform.
 
 The download can be triggered directly from Metering & Usage information page. The data transformations like sorting and filtering are also included. Additional meta information can be configured beneath the metering usage information. This information will only be visible within the exported CSV document.
