@@ -20,13 +20,30 @@ Viewing unmanaged tenants can be easily done within the administration area. In 
 
 A table will open up with all unmanaged tenants that are known to meshStack. This list is refreshed on a daily basis.
 
-It is also recorded when the unmanaged tenant was last observed. If the last observed date is from longer than a few days ago, it has disappeared. This
-probably means that it was deleted and it no longer exists in the cloud platform.
-
-Tenants that are adopted into meshStack are removed from the unmanaged tenants list and shown in the tenants list instead.
-
-> Adopting a tenant into meshStack can be done via the meshObject API.
+It is also recorded when the unmanaged tenant was last observed. If the unmanaged tenant has not been observed for a few days meshStack will
+assume that it has been deleted in the cloud platform and will remove it from the list.
 
 The screenshot below depicts how the unmanaged tenant list could look like.
 
 ![Unmanaged Tenants](assets/unmanaged-tenants.png)
+
+## Importing Unmanaged Tenants
+
+It is recommended to manage all your tenants via meshStack, so they are assigned a clear ownership, and you benefit from the full Tenant Management
+capabilities that meshStack has to offer.
+
+You can easily import an unmanaged tenant into meshStack by doing the following:
+
+- Click the Import button as depicted in the screenshot
+- In the prompt that opens up, select to which workspace & project this tenant should belong
+- Select the Landing Zone that should be applied to this tenant.
+  - The Landing Zone will automatically be applied after the first tenant replication and the
+    tenant will e.g. be assigned in the resource hierarchy in the cloud platform
+
+![Unmanaged Tenant Import](assets/unmanaged-tenants-import.png)
+
+Tenants that are imported into meshStack are removed from the unmanaged tenants list and shown in the tenants list instead.
+
+Alternatively, if you prefer building an automation or an "as Code"-approach, you can use the [meshTenant API Import](https://docs.meshcloud.io/api/#_meshtenant).
+
+
