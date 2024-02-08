@@ -59,7 +59,6 @@ let platformConfig =
       ...
       , idp-provider = "aad"
       , idp-protocol = "openid"
-      , federated-idp-enabled = True
       }
 ...
 ```
@@ -71,8 +70,6 @@ according IDP attributes and create the user in the Keystone domain `MeshUsers`.
 
 That way once the user logs in via the IdP, he will be mapped to the user created by meshStack.
 If the user already exists in OpenStack during replication, meshStack will pick up this user to assign him to the according groups.
-
-> Note: OpenStack IAM integration via meshIdB with meshStack-provisioned identities is no longer available to new meshStack customers.
 
 <!-- 
 The following features are currently missing documentation
