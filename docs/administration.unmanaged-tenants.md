@@ -27,22 +27,22 @@ The screenshot below depicts how the unmanaged tenant list could look like.
 
 ![Unmanaged Tenants](assets/unmanaged-tenants.png)
 
-## Importing Unmanaged Tenants
+## Assigning Unmanaged Tenants
 
 It is recommended to manage all your tenants via meshStack, so they are assigned a clear ownership, and you benefit from the full Tenant Management
 capabilities that meshStack has to offer.
 
-You can easily import an unmanaged tenant into meshStack by doing the following:
+You can easily assign an unmanaged tenant to a project in meshStack by doing the following:
 
-- Click the Import button as depicted in the screenshot
+- Click the "Assign to project" button as depicted in the screenshot
 - In the prompt that opens up, select to which workspace & project this tenant should belong
 - Select the Landing Zone that should be applied to this tenant.
   - The Landing Zone will automatically be applied after the first tenant replication and the
     tenant will e.g. be assigned in the resource hierarchy in the cloud platform
 
-![Unmanaged Tenant Import](assets/unmanaged-tenants-import.png)
+![Unmanaged Tenant Assignment](assets/unmanaged-tenants-assignment.png)
 
-Tenants that are imported into meshStack are removed from the unmanaged tenants list and shown in the tenants list instead.
+Tenants that are assigned into meshStack are removed from the unmanaged tenants list and shown in the tenants list instead.
 
 Alternatively, if you prefer building an automation or an "as Code"-approach, you can use the [meshTenant API Import](https://docs.meshcloud.io/api/#_meshtenant).
 
