@@ -49,9 +49,24 @@ OSB Services platform supports two different options for authenticating and auth
 If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack
 using the [meshObject API](/api/).
 
-## Platform Instance Configuration
+## Deprecating OSB Services
 
-OSB Services platform can only be configured by meshcloud via Dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
+At some point along the lifecycle of an OSB service you might want to deprecate it, i.e. existing service instances will
+remain and keep working but you prevent the booking of new service instances.
+
+You can do so by removing the service definition from the service catalog. meshStack will retain all known information about
+the service and service instances but from there on it will no longer be possible to book new instances of
+the service.
+
+### Undeprecating an OSB Service
+
+Did you wrongly deprecate a service? Or was the deprecation only temporary? You can bring back the service at any time.
+Just place it back in the service catalog (with the same identifier!) and meshStack will pick it up again, and it will be
+made available in the marketplace and made bookable for customers.
+
+## Configuring OSB Services Platforms
+
+OSB Services platforms can only be configured by meshcloud via Dhall. It is not yet available in self-service. Please consult the following example as a reference of possible configuration settings.
 
 ```dhall
 let PermissionReplication = ./PermissionReplication.dhall
