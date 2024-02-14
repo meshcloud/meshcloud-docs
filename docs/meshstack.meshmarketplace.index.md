@@ -55,7 +55,7 @@ At some point along the lifecycle of an OSB service you might want to deprecate 
 remain and keep working but you prevent the booking of new service instances.
 
 You can do so by removing the service definition from the service catalog. meshStack will retain all known information about
-the service and service instances but from there on it will no longer be possible to see the service and book new instances of
+the service and service instances but from there on it will no longer be possible to book new instances of
 the service.
 
 ### Undeprecating an OSB Service
