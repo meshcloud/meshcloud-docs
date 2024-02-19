@@ -22,7 +22,3 @@ The tenant status is one of 'Replication failed', 'Replication in progress' or '
 The tenant control plane provides some general statistics of your meshProject in this cloud platform. Depending on the Cloud Platform type, the sidebar under the **Platform Access** tab on the left provides different options to interact with your cloud resources. The support varies by platform, but always includes a SSO login option to the platform's native CLI or web console.
 
 A [OSB Services](marketplace.service-instances.md) is another type of cloud platform, that allows you to provision different type of services instances.
-
-## CI/CD access to Cloud Platform
-
-Platforms like AWS and Kubernetes provide advanced options to get access for you CI/CD pipelines. In case of OpenStack and Cloud Foundry, we provide the creation of [Service Users](meshcloud.service-user.md) for these purposes.

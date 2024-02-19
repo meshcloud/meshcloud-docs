@@ -11,10 +11,6 @@ to the Cloud Foundry API, which thus needs to allow CORS.
 - Space Summary (start, stop, scale apps, review bindings)
 - Service Marketplace (browse available services and create instances)
 
-## Service Users
-
-meshStack allows creation of [Service Users](meshcloud.service-user.md) for Cloud Foundry.
-
 ## Quota Management
 
 Partners can enforce detailed per-project quotas for Cloud Foundry via meshStack.
