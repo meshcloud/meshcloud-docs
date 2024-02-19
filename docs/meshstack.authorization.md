@@ -166,12 +166,6 @@ The `MC_PROJECTS` claim contains all projects the user has access to in the scop
 
 For platforms that don't support the [Authorization via OIDC](#authorization-via-oidc), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
 
-## Service Users
-
-[Service Users](meshcloud.service-user.md) are technical users, that can be created for individual meshTenants. They are local platform users and can therefore only be used to access a specific project in a specific cloud platform. The password of such a generated user is only downloaded once when a service user is created. meshStack does not store this password. It is the user’s responsibility to safely store it. If the password is somehow compromised, the service user can easily be deleted and replaced by a new service user.
-
-A Service User can be created and deleted by all users assigned to the project. Information about the Service User creator is available in meshStack. The creator is responsible for the secure usage of this Service User.
-
 ## Role Revocation
 
 User role revocation on [meshProject](meshcloud.project.md#unassign-principal-from-a-meshproject) and [meshWorkspace](meshcloud.workspace.md#remove-assigned-meshworkspace-roles) level allow Workspace Managers to always limit access to the meshWorkspace and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshWorkspaces and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
