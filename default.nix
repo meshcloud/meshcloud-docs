@@ -35,7 +35,7 @@ pkgs.mkShell {
   '';
 
   buildInputs = [
-    pkgs.terraform
+    pkgs.opentofu
     pkgs.nodejs-18_x
     (pkgs.yarn.override {
       nodejs = pkgs.nodejs-18_x;
