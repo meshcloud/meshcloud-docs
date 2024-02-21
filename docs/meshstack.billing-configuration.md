@@ -515,7 +515,7 @@ let example
 
 In order to simplify multi-cloud governance, the best practice is to have single chargeback currency. meshStack simplifies the chargeback process with automatic currency conversion capability, namely regardless of the original currency from cloud providers like AWS chargeback statements will be converted to a single currency - Euro. 
 
-You have two options based on your [plan](https://www.meshcloud.io/en/pricing/) to enable currency conversion for chargebacks and usage reports:
+You have two options to enable currency conversion for chargebacks and usage reports:
 
 - For the all Plans default converter is available. For the default converter, we are getting rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates by the European Central Bank.Go to the Financial Tab on the Settings page and simply activate a toggle to use the default converter. 
 - If you are on the Power Plan, you can integrate your own converter via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team. They will support you in connecting your preferred converter with meshStack.
