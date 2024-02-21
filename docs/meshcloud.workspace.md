@@ -76,7 +76,6 @@ The following table provides details about the functionality available to the di
 | [Project&nbsp;Resources](meshcloud.project-resources.md)                                                               |    &#10003;    |    &#10003;    |     &#10003;     |
 | &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;     |
 | &nbsp;&nbsp;[Tenant&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#tenant-control-plane)                      |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Service&nbsp;User](meshcloud.service-user.md)                                                             |    &#10003;    |    &#10003;    |     &#10003;     |
 | &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report)                                         |    &#10003;    |    &#10003;    |     &#10003;     |
 | [Workspace&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                     |    &#10003;    |    &#10003;    |                  |
 | &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                       |    &#10003;    |    &#10003;    |                  |

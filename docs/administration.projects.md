@@ -81,5 +81,3 @@ The following events are available:
 |**EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a tag is edited by a workspace manager.|
 |**PARTNER_EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a partner/admin edits the restricted project tags.|
 |**QUOTA_EDITED**| Quota Settings for the project were changed.|
-|**SERVICE_USER_CREATED**| A Service User was created for the project.|
-|**SERVICE_USER_DELETED**| A Service User was deleted for the project.|

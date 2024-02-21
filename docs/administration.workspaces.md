@@ -36,9 +36,8 @@ Partners can disable meshWorkspaces in case the responsible workspace managers d
 Setting the meshWorkspace status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this workspace:
 
 - users can no longer access [meshTenants](meshcloud.tenant.md) via meshPanel
-- users can no longer create [Service Users](meshcloud.service-user.md)
 
-Disabling a workspace does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, partners must add themselves to the workspace as an admin and manually remove user permissions and service users.
+Disabling a workspace does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, partners must add themselves to the workspace as an admin and manually remove user permissions.
 
 If you want to prevent a workspace from creating new [meshProjects](meshcloud.project.md), you can [adjust the workspace's meshProject quota](#set-workspace-quotas).
 

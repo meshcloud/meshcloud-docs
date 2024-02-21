@@ -3,47 +3,155 @@ id: meshstack.billing-configuration
 title: Configuration
 ---
 
-## Currency Conversion
+## Chargeback
 
-In order to simplify multi-cloud governance, the best practice is to have single chargeback currency. meshStack simplifies the chargeback process with automatic currency conversion capability, namely regardless of the original currency from cloud providers like AWS chargeback statements will be converted to a single currency - Euro. 
+> Chargeback is the process of allocating IT cost to consumers and feeding it into the company-wide finance and controlling processes.
 
-You have two options based on your [plan](https://www.meshcloud.io/en/pricing/) to enable currency conversion for chargebacks and usage reports:
+Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.project-metering.md#chargeback-statements).
 
-- For the all Plans default converter is available. For the default converter, we are getting rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates by the European Central Bank.Go to the Financial Tab on the Settings page and simply activate a toggle to use the default converter. 
-- If you are on the Power Plan, you can integrate your own converter via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team. They will support you in connecting your preferred converter with meshStack.
+The attributes that shall be part of the billing info on the chargeback statements can be configured.
 
-If your meshStack is hosted in a private environment and has permission to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off togle button in the Financial Tab of the Settings page.
+You need to specify a wait-period after which the chargeback statements are finalized. This period exists to allow the public cloud platforms to get all their usage events into the calculation. For private cloud platforms the waiting period is usually a few hours up to a day, but for public cloud providers it can be significantly longer. If you plan to use a public cloud provider, please choose the longest wait period for finalizing your chargeback statements. This ensures that all discounts and events of the month are included in the chargeback statement meshStack generates.
 
-> Please be aware that enabling the default converter or integrating your own one will only affect data moving forward, namely past chargebacks and usage reports won´t retroactively convert to the base currency. 
+| Provider | Suggested Wait Period                                                                                                                                                               |
+| -------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GCP      | 5 Days                                                                                                                                                                              |
+| AWS      | 6 Days                                                                                                                                                                              |
+| Azure    | Depends on the workspaces Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
 
-### Other Supported Currencies 
+### Available metadata keys
 
-Sometimes Cloud Foundation teams encounter situations in which they need to process billing or chargeback in multiple currencies. For example GCP might charge your organization for cloud consumption in EUR while Azure charges consumption in USD.
+The following metadata keys are derived from meshStack metadata and therefore available on every meshStack implementation
 
-In case standardisation on a single currency is not possible, meshStack supports chargeback in multiple currencies. The
-following product funcitonalities fully support multi-currency scenarios:
+| Key                   | Description                                      |
+| --------------------- | :----------------------------------------------- |
+| tenantLandingZone     | Name of the Landing Zone used by the Tenant      |
+| last_modified         | Date when metadata was last modified             |
+| contactMail           | email address of the project owner               |
+| ownerUsername         | Username of the project owner                    |
+| ownerFirstName        | First name of the project owner                  |
+| ownerLastName         | Last name of the project owner                   |
+| tenant_local_id       | The id of the tenant as provided by the platform |
+| paymentName           | Name of the payment method                       |
+| paymentIdentifier     | Identifier of the payment method                 |
+| paymentExpirationDate | Expiration date of the payment method            |
+| paymentAmount         | Amount available for payment method              |
 
-- **Private Cloud billing**: Partners can define products and usage rates in any currency.
-- **Public Cloud billing**: meshStack preserves the original currency when importing cost and consumption data from the cloud provider.
-- *OSB Services** (old meshMarketplace): Service owners can define prices for their services using the OSB Catalog in any currency.
-- **Tenant Usage Reports**: Tenant usage reports support line items in multiple currencies and aggregates net amounts in each currency separately.
-- **Chargeback Statements**: Chargeback statements support multiple currencies and aggregate net amounts in each currency separately.
-- **Tenant Fees**: Partners can define tenant fees in any currency.
-- **Discounts**: Discounts support any currency. Discounts calculated from a source amount (e.g. percentage discounts) use the same currency as the source amount.
+### Available tag keys
 
-The following product functionalitities do currently not support multi-currency scenarios:
+It is also possible to derive [meshTags](meshstack.metadata-tags.md) as metadata keys by using its tag name.
 
-- **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and
-OSB Services) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items
-  are in EUR. This can create confusion if the underlying Tenant Usage Report uses a different or multiple currencies.
-- **Payment Methods**: Amounts specified on payment methods are currently assumed to be in EUR.
+### Configuration example
+
+<!--snippet:mesh.kraken.api.statements-->
+
+The following configuration options are available at `mesh.kraken.api.statements`:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Dhall Type-->
+```dhall
+let Statements =
+    {-
+      relevant-meta-keys:
+        A list of metadata and tag keys that shall appear in chargeback statements as billing info.
+        General payment information can be accessed via paymentName, paymentIdentifier, paymentExpirationDate
+        and paymentAmount. Custom Tags can be referenced via their property name in the according tag JSON schema.
+        Custom Tags are workspace tags, project tags and payment tags.
+
+      period-offset-days:
+        It is the offset of days after which chargeback statements are generated.
+        This time should always be set to a higher value than the finalizeReportsAfterDays
+        that are configured for kraken-worker, as only finalized reports are considered in chargeback statements.
+
+      first-period:
+        Chargeback statement periods will be created monthly starting from this date on (UTC datetime format: yyyy-MM-ddTHH:mm:ssZ)
+    -}
+      { relevant-meta-keys : List Text
+      , period-offset-days : Natural
+      , first-period : Text
+      }
+```
+<!--Example-->
+```dhall
+let example
+    -- these relevant-meta-keys reference all statically available payment information
+    : Statements
+    = { relevant-meta-keys =
+        [ "paymentName"
+        , "paymentIdentifier"
+        , "paymentExpirationDate"
+        , "paymentAmount"
+        ]
+      , period-offset-days = 5
+      , first-period = "2020-01-01T00:00:00Z"
+      }
+
+let example2
+    -- these relevant-meta-keys reference tags that can be defined individually per meshImplementation
+    : Statements
+    = { relevant-meta-keys = [ "customTag1", "customTag2" ]
+      , period-offset-days = 5
+      , first-period = "2020-01-01T00:00:00Z"
+      }
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](./meshcloud.payment-methods.md).
+
+## Setting Internal Prices
+
+In meshStack, you have the flexibility to define prices for [Platform Services](./marketplace.index.md) in addition to usage costs from providers. Configuring your internal prices allows you to account for various expenses such as licensing costs or the effort invested in maintaining and enhancing Platform Services. These internal prices will be displayed on the service details page within the Marketplace.
+
+![Marketplace price](assets/marketplace/marketplace-costs.png)
+
+For Platforms, you can now establish monthly or daily recurring prices per meshTenant, which will be charged only once when a user adds a Platform Tenant. You can configure prices within meshStack by navigating to the Pricing tab of the Platform Settings. Additionally, prices for Platforms per Landing Zone can be set up by contacting the meshcloud support team, among other pricing options.
+
+![platform pricing](assets/marketplace/price-platform.png)
+
+For Building Blocks prices can be configured as recurring monthly or daily fees per Building Block instance. To set prices, navigate to the Pricing tab of the Building Block setting or you can set it during Building Block creation.
+
+![bb pricing](assets/marketplace/price-buildingblock.png)
+
+If you would like to add prices for OSBs, please contact our support team and they will assist you in setting them up.
+
+>Please note that any changes in the price of Platform Services will be reflected in the chargeback statements based on the period in which the change occurred. For instance, a new price set for a Building Block on March 28th will be applied to the March chargeback statement.
 
 
-## Defining a custom Product Catalog
+### Private Platform
 
-The following sections will introduce features of the meshStack product catalog.
+When configuring a product for private cloud billing, Partners need to choose the cloud resource type to target and how the metering engine
+should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
+Traits are a properties of a cloud resource like CPU or RAM. Partners can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
 
-### Core Concepts
+meshMetering supports flexible rules for creating usages, like
+
+- **time**: charge consumption based on the usage of a resource over a time period
+- **quantity**: charge consumption based on a quantity
+- **time-quantity**: charge consumption based on the product of time and quantity
+
+Quantities are represented with prefixable units according to the [UCUM standard](https://ucum.org/ucum.html) inside meshMetering.
+Specifically, meshMetering uses the UCUM "print" formatting where units need to be human readable (e.g. in usage reports).
+In configuration (e.g. when defining a product catalog entry), meshMetering uses the UCUM "case-sensitive" representations.
+This can lead to small differences when describing units. For example, one kilo-byte would be represented as
+
+- `1 kB` in a usage report
+- `1 kBy` in a product catalog entry
+
+When building a product catalog, Partners can define rates to define prices for usages.
+It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
+trait is measured in "MB", Partners can define a price in "GB". meshMetering will automatically apply
+the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules. meshMetering supports the following prefixes, with examples described in bytes
+according to UCUM "case-sensitive" representation.
+
+| Metric Prefix | Example | Binary Prefix | Example |
+| ------------- | ------- | ------------- | ------- |
+| kilo (10^3)   | 1 kBy   | kibi (1024^1) | 1 KiBy  |
+| mega (10^6)   | 1 MBy   | mebi (1024^2) | 1 MiBy  |
+| giga (10^9)   | 1 GBy   | gibi (1024^3) | 1 GiBy  |
+| terra (10^12) | 1 TBy   | tebi (1024^4) | 1 TiBy  |
+| peta (10^15)  | 1 PBy   | pebi (1024^5) | 1 PiBy  |
+
+
+### Other Pricing Concepts
 
 #### Scope Selectors
 
@@ -105,42 +213,7 @@ let example2 =
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-#### Usage Types and Units
-
-When configuring a product for private cloud billing, Partners need to choose the cloud resource type to target and how the metering engine
-should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
-Traits are a properties of a cloud resource like CPU or RAM. Partners can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
-
-meshMetering supports flexible rules for creating usages, like
-
-- **time**: charge consumption based on the usage of a resource over a time period
-- **quantity**: charge consumption based on a quantity
-- **time-quantity**: charge consumption based on the product of time and quantity
-
-Quantities are represented with prefixable units according to the [UCUM standard](https://ucum.org/ucum.html) inside meshMetering.
-Specifically, meshMetering uses the UCUM "print" formatting where units need to be human readable (e.g. in usage reports).
-In configuration (e.g. when defining a product catalog entry), meshMetering uses the UCUM "case-sensitive" representations.
-This can lead to small differences when describing units. For example, one kilo-byte would be represented as
-
-- `1 kB` in a usage report
-- `1 kBy` in a product catalog entry
-
-When building a product catalog, Partners can define rates to define prices for usages.
-It's also possible to define rates with a different prefix, e.g. if the primitive unit of the resource
-trait is measured in "MB", Partners can define a price in "GB". meshMetering will automatically apply
-the necessary conversions so that usage reports are presented in the unit defined in the product catalog. This is useful to provide human-readable and intuitive units for pricing rules. meshMetering supports the following prefixes, with examples described in bytes
-according to UCUM "case-sensitive" representation.
-
-| Metric Prefix | Example | Binary Prefix | Example |
-| ------------- | ------- | ------------- | ------- |
-| kilo (10^3)   | 1 kBy   | kibi (1024^1) | 1 KiBy  |
-| mega (10^6)   | 1 MBy   | mebi (1024^2) | 1 MiBy  |
-| giga (10^9)   | 1 GBy   | gibi (1024^3) | 1 GiBy  |
-| terra (10^12) | 1 TBy   | tebi (1024^4) | 1 TiBy  |
-| peta (10^15)  | 1 PBy   | pebi (1024^5) | 1 PiBy  |
-
-
-### Discounts
+#### Discounts
 
 Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for Platform Operators is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
 
@@ -248,7 +321,7 @@ let DiscountScope =
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-##### Fixed Percentage Discount Rule
+#### Fixed Percentage Discount Rule
 
 The fixed percentage discount rules calculates the fee as a percentage of the total consumption.
 
@@ -295,7 +368,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-##### Fixed percentage per tier
+#### Fixed percentage per tier
 
 The tiered percentage discount rule defines tiers of cloud resource consumption. For each tier a discount percentage is used to calculate the discount to be used.
 
@@ -367,7 +440,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-##### Fixed cost per tier
+#### Fixed cost per tier
 
 The tiered discount rule defines tiers of cloud resource consumption. For each tier a fixed amount is added.
 
@@ -437,128 +510,42 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-### Configuration
+
+## Currency Conversion
+
+In order to simplify multi-cloud governance, the best practice is to have single chargeback currency. meshStack simplifies the chargeback process with automatic currency conversion capability, namely regardless of the original currency from cloud providers like AWS chargeback statements will be converted to a single currency - Euro. 
+
+You have two options to enable currency conversion for chargebacks and usage reports:
+
+- For the all Plans default converter is available. For the default converter, we are getting rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates by the European Central Bank.Go to the Financial Tab on the Settings page and simply activate a toggle to use the default converter. 
+- If you are on the Power Plan, you can integrate your own converter via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team. They will support you in connecting your preferred converter with meshStack.
+
+If your meshStack is hosted in a private environment and has permission to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off togle button in the Financial Tab of the Settings page.
+
+> Please be aware that enabling the default converter or integrating your own one will only affect data moving forward, namely past chargebacks and usage reports won´t retroactively convert to the base currency. 
+
+### Multi-Currency
+
+Sometimes Cloud Foundation teams encounter situations in which they need to process billing or chargeback in multiple currencies. For example GCP might charge your organization for cloud consumption in EUR while Azure charges consumption in USD.
+
+In case standardisation on a single currency is not possible, meshStack supports chargeback in multiple currencies. The
+following product funcitonalities fully support multi-currency scenarios:
+
+- **Private Cloud billing**: Partners can define products and usage rates in any currency.
+- **Public Cloud billing**: meshStack preserves the original currency when importing cost and consumption data from the cloud provider.
+- *OSB Services** (old meshMarketplace): Service owners can define prices for their services using the OSB Catalog in any currency.
+- **Tenant Usage Reports**: Tenant usage reports support line items in multiple currencies and aggregates net amounts in each currency separately.
+- **Chargeback Statements**: Chargeback statements support multiple currencies and aggregate net amounts in each currency separately.
+- **Tenant Fees**: Partners can define tenant fees in any currency.
+- **Discounts**: Discounts support any currency. Discounts calculated from a source amount (e.g. percentage discounts) use the same currency as the source amount.
+
+The following product functionalitities do currently not support multi-currency scenarios:
+
+- **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and
+OSB Services) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items
+  are in EUR. This can create confusion if the underlying Tenant Usage Report uses a different or multiple currencies.
+- **Payment Methods**: Amounts specified on payment methods are currently assumed to be in EUR.
 
 
-<!--snippet:mesh.kraken.productcatalog-->
 
-The following configuration options are available at `mesh.kraken.productcatalog`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-{ discounts : List Discount }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
 
-## Common Chargeable Resources
-
-This section describes the resources that do not strictly belong to a specific cloud platform that can be defined in the catalog.
-Products referring to these resources can be defined for all or multiple cloud platforms.
-
-### meshTenant
-
-Represents a meshTenant. Currently available for Azure, AWS and GCP platforms.
-
-```text
-id: mesh.tenant
-traits:
-  - landingZoneName
-  - platformType
-```
-
-You can define products based on this resource type to charge fees based on the Landing Zone that is in use by a meshTenant
-or to simply charge a fee on the meshTenant itself.
-
-## Chargeback
-
-> Chargeback is the process of allocating IT cost to consumers and feeding it into the company-wide finance and controlling processes.
-
-Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.project-metering.md#chargeback-statements).
-
-The attributes that shall be part of the billing info on the chargeback statements can be configured.
-
-You need to specify a wait-period after which the chargeback statements are finalized. This period exists to allow the public cloud platforms to get all their usage events into the calculation. For private cloud platforms the waiting period is usually a few hours up to a day, but for public cloud providers it can be significantly longer. If you plan to use a public cloud provider, please choose the longest wait period for finalizing your chargeback statements. This ensures that all discounts and events of the month are included in the chargeback statement meshStack generates.
-
-| Provider | Suggested Wait Period                                                                                                                                                               |
-| -------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GCP      | 5 Days                                                                                                                                                                              |
-| AWS      | 6 Days                                                                                                                                                                              |
-| Azure    | Depends on the workspaces Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
-
-### Available metadata keys
-
-The following metadata keys are derived from meshStack metadata and therefore available on every meshStack implementation
-
-| Key                   | Description                                      |
-| --------------------- | :----------------------------------------------- |
-| tenantLandingZone     | Name of the Landing Zone used by the Tenant      |
-| last_modified         | Date when metadata was last modified             |
-| contactMail           | email address of the project owner               |
-| ownerUsername         | Username of the project owner                    |
-| ownerFirstName        | First name of the project owner                  |
-| ownerLastName         | Last name of the project owner                   |
-| tenant_local_id       | The id of the tenant as provided by the platform |
-| paymentName           | Name of the payment method                       |
-| paymentIdentifier     | Identifier of the payment method                 |
-| paymentExpirationDate | Expiration date of the payment method            |
-| paymentAmount         | Amount available for payment method              |
-
-### Available tag keys
-
-It is also possible to derive [meshTags](meshstack.metadata-tags.md) as metadata keys by using its tag name.
-
-### Configuration example
-
-<!--snippet:mesh.kraken.api.statements-->
-
-The following configuration options are available at `mesh.kraken.api.statements`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
-```dhall
-let Statements =
-    {-
-      relevant-meta-keys:
-        A list of metadata and tag keys that shall appear in chargeback statements as billing info.
-        General payment information can be accessed via paymentName, paymentIdentifier, paymentExpirationDate
-        and paymentAmount. Custom Tags can be referenced via their property name in the according tag JSON schema.
-        Custom Tags are workspace tags, project tags and payment tags.
-
-      period-offset-days:
-        It is the offset of days after which chargeback statements are generated.
-        This time should always be set to a higher value than the finalizeReportsAfterDays
-        that are configured for kraken-worker, as only finalized reports are considered in chargeback statements.
-
-      first-period:
-        Chargeback statement periods will be created monthly starting from this date on (UTC datetime format: yyyy-MM-ddTHH:mm:ssZ)
-    -}
-      { relevant-meta-keys : List Text
-      , period-offset-days : Natural
-      , first-period : Text
-      }
-```
-<!--Example-->
-```dhall
-let example
-    -- these relevant-meta-keys reference all statically available payment information
-    : Statements
-    = { relevant-meta-keys =
-        [ "paymentName"
-        , "paymentIdentifier"
-        , "paymentExpirationDate"
-        , "paymentAmount"
-        ]
-      , period-offset-days = 5
-      , first-period = "2020-01-01T00:00:00Z"
-      }
-
-let example2
-    -- these relevant-meta-keys reference tags that can be defined individually per meshImplementation
-    : Statements
-    = { relevant-meta-keys = [ "customTag1", "customTag2" ]
-      , period-offset-days = 5
-      , first-period = "2020-01-01T00:00:00Z"
-      }
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](./meshcloud.payment-methods.md).
