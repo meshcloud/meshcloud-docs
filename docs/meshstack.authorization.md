@@ -141,6 +141,8 @@ There are two different ways how to apply access rights to the Cloud Platforms. 
 
 #### meshIdB Authorization
 
+> Authorization via meshIdB is deprecated and will be removed from meshStack together with support for meshStack-provisioned Identities. See [Identity Federation - Platform Support](./meshstack.identity-federation.md#platform-support) for more details.
+
 In order to provide users access to their cloud resources, all relevant authorization information about a meshUser is stored in the corresponding meshIdB user. To provide the authorization information in the token, the request for the token must be scoped to a specific meshWorkspace role. The tokens provided by Keycloak contain the scoped workspace and the according meshWorkspace role as well as information about the meshProjects the user has access to.
 
 The following claims in the OIDC token represent this information and can be used by the cloud platforms to apply the access rights.
@@ -164,4 +166,5 @@ The `MC_PROJECTS` claim contains all projects the user has access to in the scop
 
 #### Authorization via replication
 
-For platforms that don't support the [Authorization via OIDC](#authorization-via-oidc), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
+For platforms that don't support the [Authorization via meshIdB](#meshidb-authorization), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
+
