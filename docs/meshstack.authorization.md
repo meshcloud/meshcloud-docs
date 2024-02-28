@@ -45,7 +45,7 @@ Users with the right permissions can assign meshWorkspace roles in self-service 
 
 [meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platforms.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
 
-Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshWorkspace that is the owner of that meshProject. Revocation of this meshWorkspace role binding causes revocation of all associated meshProject role bindings.
+Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshWorkspace that is the owner of that meshProject. When a user or group loses access to a workspace, meshStack will automatically remove all associated meshProject role bindings.
 
 ## Configuration Options
 
@@ -165,9 +165,3 @@ The `MC_PROJECTS` claim contains all projects the user has access to in the scop
 #### Authorization via replication
 
 For platforms that don't support the [Authorization via OIDC](#authorization-via-oidc), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
-
-## Role Revocation
-
-User role revocation on [meshProject](meshcloud.project.md#unassign-principal-from-a-meshproject) and [meshWorkspace](meshcloud.workspace.md#remove-assigned-meshworkspace-roles) level allow Workspace Managers to always limit access to the meshWorkspace and meshProjects to the users that actually need access. Users who no longer should have access can easily be revoked access. Administrators also have the possibility to revoke roles for a user to all meshWorkspaces and meshProjects and deactivate this user completely in the complete meshStack via the [delete user](administration.users.md#delete-user) functionality.
-
-Users who e.g. left the company, can automatically be revoked in meshStack as described [here](meshstack.user-revocation.md).
