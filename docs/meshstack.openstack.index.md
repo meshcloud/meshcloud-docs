@@ -31,15 +31,15 @@ This an essential pre-requesite for using meshStack's OpenStack integration.
 
 meshStack also supports the following OpenStack APIs for advanced features
 
-| Service and minimum Version                                                                  | [Resource Checks](meshstack.tenants.md#deprovisioning--deleting-tenants) | [Resource Metering](./meshstack.openstack.metering.md) |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------ |
-| [Nova 2.0](https://docs.openstack.org/nova/latest/reference/api-microversion-history.html)   | Servers                                                                  | Servers                                                |
-| [Cinder 3.0](https://docs.openstack.org/api-ref/block-storage/api_microversion_history.html) | Volumes                                                                  | Volumes<br>Volume Snapshots                            |
-| [Neutron v2](https://docs.openstack.org/api-ref/network/v2/index.html#api-versions)          | Floating IPs<br>Routers<br>LBaasV2<br>Security Groups<br>Networks        | Floating IPs<br>Routers<br>LBaasV2                     |
-| [Glance v2](https://docs.openstack.org/api-ref/image/v2/index.html)                          | Images                                                                   | Images                                                 |
-| [Heat v1](https://docs.openstack.org/api-ref/orchestration/v1/index.html#list-versions)      | Stacks                                                                   |                                                        |
-| [Designate v2](https://docs.openstack.org/api-ref/dns/dns-api-v2-index.html)                 | Zones                                                                    |                                                        |
-| [Swift/radowsgw-swift v1](https://docs.openstack.org/api-ref/object-store/)                  | Containers                                                               |                                                        |
+| Service and minimum Version                                                                  | [Resource Metering](./meshstack.openstack.metering.md) |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| [Nova 2.0](https://docs.openstack.org/nova/latest/reference/api-microversion-history.html)   | Servers                                                |
+| [Cinder 3.0](https://docs.openstack.org/api-ref/block-storage/api_microversion_history.html) | Volumes<br>Volume Snapshots                            |
+| [Neutron v2](https://docs.openstack.org/api-ref/network/v2/index.html#api-versions)          | Floating IPs<br>Routers<br>LBaasV2                     |
+| [Glance v2](https://docs.openstack.org/api-ref/image/v2/index.html)                          | Images                                                 |
+| [Heat v1](https://docs.openstack.org/api-ref/orchestration/v1/index.html#list-versions)      |                                                        |
+| [Designate v2](https://docs.openstack.org/api-ref/dns/dns-api-v2-index.html)                 |                                                        |
+| [Swift/radowsgw-swift v1](https://docs.openstack.org/api-ref/object-store/)                  |                                                        |
 
 > Note: OpenStack integration with meshPanel as an UI for various OpenStack services is no longer available to new meshStack customers.
 
