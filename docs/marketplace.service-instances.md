@@ -1,15 +1,15 @@
 ---
 id: marketplace.service-instances
-title: OSB Servises
+title: OSB Services
 ---
 
 ## Overview
 
-A ****service broker**** is a component that creates an instance of a specific service and allows management of such service instances via the OSB API. An example would be a service broker for MariaDB services which allows you to request a MariaDB instance, potentially from a range of different sizes.
+A **service broker** is a component that creates an instance of a specific service and allows management of such service instances via the OSB API. An example would be a service broker for MariaDB services which allows you to request a MariaDB instance, potentially from a range of different sizes.
 
-A ****service instance**** is a specific deployed service that you can include in your application, e.g. a database created by the service broker.
+A **service instance** is a specific deployed service that you can include in your application, e.g. a database created by the service broker.
 
-A ****service binding**** is a set of credentials you need to access your service instance, e.g. the connection string to access your database instance.
+A **service binding** is a set of credentials you need to access your service instance, e.g. the connection string to access your database instance.
 
 Service bindings can come with an expiration in which case they will be deleted after a set amount of days.
 
