@@ -71,37 +71,35 @@ The following roles are available:
 
 The following table provides details about the functionality available to the different roles.
 
-|                                                                                                                        | Workspace Owner | Workspace Manager | Workspace Member |
-| ---------------------------------------------------------------------------------------------------------------------- | :------------: | :------------: |:----------------:|
-| [Project&nbsp;Resources](meshcloud.project-resources.md)                                                               |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Tenant&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#tenant-control-plane)                      |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report)                                         |    &#10003;    |    &#10003;    |     &#10003;     |
-| [Workspace&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                     |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                       |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects)                                              |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants)                                |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject)   |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject)                    |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Assign&nbsp;Workspace&nbsp;Owner](#assign-meshworkspace-roles)                            |    &#10003;    |                |                  |
-| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment)                           |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement)                                 |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject)                                           |    &#10003;    |    &#10003;    |                  |
-| [Workspace&nbsp;Users](meshcloud.workspace.md)                                                                           |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.workspace.md#invite-users-to-a-meshworkspace-team)                              |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.workspace.md#assign-meshworkspace-roles)                                        |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.workspace.md#remove-assigned-meshworkspace-roles)                             |    &#10003;    |    &#10003;    |                  |
-| [Workspace&nbsp;User&nbsp;Groups](meshcloud.workspace.md#user-groups)                                                    |    &#10003;    |    &#10003;    |                  |
-| [Workspace&nbsp;Settings](#workspace-deletion)                                                                           |    &#10003;    |    &#10003;    |                  |
-| [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                   |    &#10003;    |    &#10003;    |                  |
-| Domains                                                                                                                |    &#10003;    |    &#10003;    |                  |
-| [Marketplace&nbsp;Development](meshstack.meshmarketplace.development.md)                                               |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Service&nbsp;Broker](meshstack.meshmarketplace.development.md#how-to-use-it)                              |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Publish Service Broker](meshstack.meshmarketplace.development.md#publish-your-service-broker) |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Analytics](meshstack.meshmarketplace.development.md#debugging-your-service-broker)            |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;Failed&nbsp;Instances                                                                                |    &#10003;    |    &#10003;    |                  |
+<!-- TODO: we should add a better hierarchy at some point and thin this list down -->
 
-> The roles that are available for Partner and Admin workspaces are described in the [Administration](administration.index.md) section.
+|                                                                                                                      | Workspace Owner | Workspace Manager | Workspace Member |
+|----------------------------------------------------------------------------------------------------------------------| :------------: | :------------: |:----------------:|
+| [Project&nbsp;Resources](meshcloud.project-resources.md)                                                             |    &#10003;    |    &#10003;    |     &#10003;     |
+| &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                  |    &#10003;    |    &#10003;    |     &#10003;     |
+| &nbsp;&nbsp;[Tenant&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#tenant-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;     |
+| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report)                                       |    &#10003;    |    &#10003;    |     &#10003;     |
+| [Workspace&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                  |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                     |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects)                                            |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants)                              |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Delete&nbsp;meshTenants](meshcloud.tenant.md#delete-a-meshtenant)                           |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject)                  |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment)                         |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.project-metering.md#project-statement)                               |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject)                                         |    &#10003;    |    &#10003;    |                  |
+| [Workspace&nbsp;Users](meshcloud.workspace.md)                                                                       |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.workspace.md#invite-users-to-a-meshworkspace-team)                          |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.workspace.md#assign-meshworkspace-roles)                                    |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.workspace.md#remove-assigned-meshworkspace-roles)                         |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Assign&nbsp;Workspace&nbsp;Owner](#assign-meshworkspace-roles)                                          |    &#10003;    |                |                  |
+| [Workspace&nbsp;User&nbsp;Groups](meshcloud.workspace.md#user-groups)                                                |    &#10003;    |    &#10003;    |                  |
+| [Workspace&nbsp;Settings](#workspace-deletion)                                                                       |    &#10003;    |    &#10003;    |                  |
+| [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                 |    &#10003;    |    &#10003;    |                  |
+| [Service&nbsp;Broker&nbsp;Development](meshstack.meshmarketplace.development.md)                                     |    &#10003;    |    &#10003;    |                  |
+
+> The roles that are available meshStack Administrators are described in the [Administration](administration.index.md) section.
 
 meshWorkspace roles grant rights in meshStack only. In order to access cloud resources users need to be [granted a role on a meshProject](meshcloud.project.md#access-control-on-a-meshproject).
 
