@@ -5,7 +5,7 @@ title: Delete Tenants
 
 ## Delete Tenants
 
-The process for [deleting a tenant](meshcloud.tenant.md#delete-a-meshtenant) always starts by putting the tenant on
+The process for [deleting a tenant](meshcloud.tenant.md#delete-a-meshtenant) always starts by putting the tenant in
 the deletion queue.
 
 meshStack will automatically approve and confirm deletion of OSB Marketplace tenants.
@@ -26,7 +26,7 @@ In order to confirm the deletion, you have to first perform the manual deletion 
 
 If you choose to decline the deletion, you can do so by clicking on the decline button. If you decline the deletion, the tenant will be available again on the workspace control plane.
 
-> When a user marked a project for deletion, the project will be automtically deleted once all tenants of that project have been successfully deleted.
+> When a user marks a project for deletion, the project will be automatically deleted once all tenants of that project have been successfully deleted.
 
 
 ### Review Deleted Tenants
