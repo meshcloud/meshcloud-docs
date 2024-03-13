@@ -45,7 +45,7 @@ Users with the right permissions can assign meshWorkspace roles in self-service 
 
 [meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platforms.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
 
-Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshWorkspace that is the owner of that meshProject. When a user or group loses access to a workspace, meshStack will automatically remove all associated meshProject role bindings.
+Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshWorkspace that is the owner of that meshProject. When a user or group loses access to a workspace, meshStack will automatically remove all associated project role bindings.
 
 ## Configuration Options
 
@@ -166,5 +166,5 @@ The `MC_PROJECTS` claim contains all projects the user has access to in the scop
 
 #### Authorization via replication
 
-For platforms that don't support the [Authorization via meshIdB](#meshidb-authorization), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the meshProject. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
+For platforms that don't support the [Authorization via meshIdB](#meshidb-authorization), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the project. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
 
