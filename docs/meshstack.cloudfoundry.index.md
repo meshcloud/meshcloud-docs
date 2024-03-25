@@ -9,6 +9,8 @@ For Cloud Foundry, meshStack provides org and space creation and configuration, 
 
 ## Integration Overview
 
+> The recommended way to set up Cloud Foundry as a meshPlatform is via the public terraform [Cloud Foundry meshPlatform Module](https://github.com/meshcloud/terraform-cloudfoundry-meshplatform).
+
 To enable integration with Cloud Foundry, Platform Operators deploy and configure the meshStack Cloud Foundry connector to make Cloud Foundry platforms available at their meshStack instance.
 
 meshStack provides users access to Cloud Foundry (CF) instances via the OIDC protocol for authentication while it replicates permission rights directly to authorize correct access.

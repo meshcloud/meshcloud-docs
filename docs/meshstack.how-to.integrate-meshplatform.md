@@ -25,6 +25,7 @@ Open the official meshcloud terraform module for the target platform and follow 
 - [Azure meshPlatform Module](https://github.com/meshcloud/terraform-azure-meshplatform)
 - [GCP meshPlatform Module](https://github.com/meshcloud/terraform-gcp-meshplatform)
 - [Kubernetes meshPlatform Module](https://github.com/meshcloud/terraform-kubernetes-meshplatform)
+- [Cloud Foundry meshPlatform Module](https://github.com/meshcloud/terraform-cloudfoundry-meshplatform)
 
 ### Alternative to Step 2: Set up platform permissions manually
 
