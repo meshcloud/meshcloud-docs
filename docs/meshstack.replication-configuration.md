@@ -11,20 +11,21 @@ Some properties for the different platforms allow you to use string templates to
 These string pattern work like the following example:
 
 ```text
-#{customerIdentifier}.#{projectIdentifier:%.7s}-test.#{tenantPlatformNumber:%03d}
+#{workspaceIdentifier}.#{projectIdentifier:%.7s}-test.#{tenantPlatformNumber:%03d}
 ```
 
-The engine will substitute `#{PLACEHOLDER}` with the actual contextual value (see table below). Optionally you can provide a `String.format()` pattern after the `:` which will be used to transform the value provided for the placeholder. In the example `%.7s` will use the first seven characters of the project identifier of the current project. The above string would evaluate into this:
+The engine will substitute `#{PLACEHOLDER}` with the actual contextual value (see table below). Optionally you can provide a `String.format()` pattern after the `:` which will be used to transform the value provided for the placeholder. Consider a case where the workspace ID is 'my-workspace', the project ID is 'my-project', and the tenantPlatformIdentifier is 4. In the example above `%.7s` will use the first seven characters of the project identifier of the current project and pattern `%03d` applied to 4 will produce 004. The above string would evaluate into this:
 
 ```text
-my-customer.my-proj-test.004
+my-workspace.my-proj-test.004
 ```
+For further details on the patterns supported by `String.format()`, please consult the Java official documentation.
 
 The template engine allows you to use the following placeholders if not described otherwise in the corresponding documentation:
 
 | Placeholder          | Type   | Description                                                                                                                            |
 |----------------------| ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| customerIdentifier   | string | Workspace Identifier                                                                                                                    |
+| workspaceIdentifier  | string | Workspace Identifier                                                                                                                    |
 | projectIdentifier    | string | Project Identifier                                                                                                                     |
 | meshProjectId        | number | Internal ID of the meshProject. Every project is guaranteed to have a unique ID, but tenants on different platforms can share this ID. |
 | platform             | string | Platform Identifier                                                                                                                   |
