@@ -14,7 +14,7 @@ These string pattern work like the following example:
 #{workspaceIdentifier}.#{projectIdentifier:%.7s}-test.#{tenantPlatformNumber:%03d}
 ```
 
-The engine will substitute `#{PLACEHOLDER}` with the actual contextual value (see table below). Optionally you can provide a `String.format()` pattern after the `:` which will be used to transform the value provided for the placeholder. Consider a case where the workspace ID is 'my-workspace', the project ID is 'my-project', and the tenantPlatformIdentifier is 4. In the example above `%.7s` will use the first seven characters of the project identifier of the current project and pattern `%03d` applied to 4 will produce 004. The above string would evaluate into this:
+The engine will substitute `#{PLACEHOLDER}` with the actual contextual value (see table below). Optionally you can provide a `String.format()` pattern after the `:` which will be used to transform the value provided for the placeholder. Consider a case where the workspace ID is 'my-workspace', the project ID is 'my-project', and the tenantPlatformNumber is 4. In the example above `%.7s` will use the first seven characters of the project identifier of the current project and pattern `%03d` applied to 4 will produce 004. The above string would evaluate into this:
 
 ```text
 my-workspace.my-proj-test.004
