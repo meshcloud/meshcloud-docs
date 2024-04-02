@@ -48,7 +48,26 @@ to debug any potential issues with the Platform Configuration or Terraform code.
 ![Private](./assets/service-management-area/private.png)
 
 
-<!-- TODO: add approval section when ready -->
+## Publishing
+
+After you are done with the development & testing phase, you can go the control plane of your provided service in the Service Management Area and submit it for publication by clicking the "Submit for publishing" button.
+
+![Publishing](./assets/service-management-area/publish-button.png)
+
+Once approved by your cloud foundation team, it will become accessible to all workspaces within the organization.
+If your publication request gets rejected, you can easily identify the reason by hovering over the rejected label or checking the rejection comment in the history.
+
+![Rejection](./assets/service-management-area/rejection-details.png)
+
+Once you've addressed the identified issues, you can resubmit it for publishing.
 
 
+## Approval
 
+To review a service, go to "Workspaces Services" under "Marketplace" on the left side bar. The "Workspace Services" provides you an overview of all services which are submitted for publishing. 
+
+![Workspace Services](./assets/service-management-area/workspace-services.png)
+
+Upon selecting a service, you will be directed to its control plane. From there, you can either reject the publication request or approve it, making the service accessible to all workspaces within your organization.
+
+![Approval](./assets/service-management-area/service-approval.png)
