@@ -77,3 +77,34 @@ The following configuration options are available at `mesh.meshfed.mail`:
   }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+## FAQ
+
+### Which mails is meshStack sending out and to whom?
+
+Application Team receive mails when
+
+- Workspace created
+- Workspace permissions created, updated or removed
+- Project permissions created, updated or removed
+- Project Payment Method Assignment missing
+- Budget exceeded
+- Executing Building Block succeeded
+
+Platform Operators receive mails when
+
+- Building Block requires input (Recipients are defined per Building Block definition)
+
+Optionally meshStack sends out mails to fixed set of recipients configured in dhall when
+
+- Tenant marked for deletion
+- Tenant created
+- Replication failed
+
+### Can the style of the mails be influenced? For example via HTML?
+
+No. Only content can be customized with the `theme.messages` option.
+
+### Can BCC be added
+
+No. meshStack does not support adding addresses on BCC.
