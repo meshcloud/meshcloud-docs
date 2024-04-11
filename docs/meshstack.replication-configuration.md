@@ -19,6 +19,7 @@ The engine will substitute `#{PLACEHOLDER}` with the actual contextual value (se
 ```text
 my-workspace.my-proj-test.004
 ```
+
 For further details on the patterns supported by `String.format()`, please consult the Java official documentation.
 
 The template engine allows you to use the following placeholders if not described otherwise in the corresponding documentation:
