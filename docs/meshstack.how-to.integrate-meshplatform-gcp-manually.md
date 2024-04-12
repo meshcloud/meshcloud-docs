@@ -55,6 +55,7 @@ The Service Account will be identified by an email address like
 ```text
 meshfed-service@meshstack-root.iam.gserviceaccount.com
 ```
+
 Next, configure either a service account key or wokload identity federation for authentication purposes.
 
 #### Service Account
@@ -66,10 +67,12 @@ Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/
 Setting up [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation) is more involved but allows meshStack to use short lived credentials without explicitly handing over any secrets or requiring manual rotation.
 
 To use Workload Identity Federation you must create a Workload Identity Pool and Provider ([IAM → Workload Identity Federation](https://console.cloud.google.com/iam-admin/workload-identity-pools)) as part of the meshStack root project.
+
 - For the provider, select "OpenID Connect" and add provider details for "Issuer" and "Allowed audiences" as they're specified by the panel when selecting "Workload Identity Federation" as authentication type for a GCP platform.
 - Create an attribute condition to restrict access to replicator and/or metering service accounts: ```google.subject in ['<replicator_subject_from_panel>', '<kraken_subject_from_panel']```. Make sure to replace the placeholders.
 
 After setting up identity pool and provider you need to grant access to the meshStack workload service accounts to access the GCP service accounts.
+
 - Select the workload identity pool and click "grant access".
 - Select the GCP service account (e.g. for replication).
 - Define the appropriate principal by mapping "subject" to the subject name you received from the panel.
