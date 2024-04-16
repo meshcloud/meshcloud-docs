@@ -103,7 +103,7 @@ Optionally meshStack sends out mails to fixed set of recipients configured in dh
 
 ### Can the style of the mails be influenced? For example via HTML?
 
-No. Only content can be customized with the `theme.messages` option.
+Button color and logo are configurable. The `theme.messages` templates support HTML elements like `<br>`.
 
 ### Can BCC be added
 
