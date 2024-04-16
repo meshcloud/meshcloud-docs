@@ -39,7 +39,7 @@ az ad sp create-for-rbac --name ${desired-name-for-your-azure-app}
 8. Click on the app.
 9. Add either a client secret or federated credentials.
     - **Client secret**: generate a client secret and note it down as well.
-    - **Federated credentials**: the `federated credential scenario` should be set to "Other issuer". The values for `Issuer` and `Subject identifier` will be shown py the panel during platform configuration after selecting "Workload Identity Federation" as authentication type.
+    - **Federated credentials**: the `federated credential scenario` should be set to "Other issuer". The values for `Issuer` and `Subject identifier` will be shown by the panel during platform configuration after selecting "Workload Identity Federation" as the authentication type.
 10. Under **API permissions** → **Add a permission** → **Microsoft Graph API** (not Azure AD Graph API) → **Application permissions**:
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
@@ -271,7 +271,7 @@ If your company has a Customer Agreement with Microsoft you can also use an auto
 1. On the tenant that contains your billing account create a new Enterprise Application.
 2. Add either a client secret or federated credentials to it and note down the `Directory (tenant) ID`, `Application (client) ID`, `Object ID`.
     - **Client secret**: generate a client secret and note it down as well.
-    - **Federated credentials**: the `federated credential scenario` should be set to "Other issuer". The values for `Issuer` and `Subject identifier` will be shown py the panel during platform configuration after selecting "Workload Identity Federation" as authentication type.
+    - **Federated credentials**: the `federated credential scenario` should be set to "Other issuer". The values for `Issuer` and `Subject identifier` will be shown by the panel during platform configuration after selecting "Workload Identity Federation" as the authentication type.
 3. Select the billing profile or invoice section under which you want to create the subscriptions by following the [documentation](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement?tabs=rest#find-billing-profiles--invoice-sections-to-create-subscriptions) from Microsoft. Write down the ID that looks something like this `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`.
 4. Go to the billing account and give the newly generated principal one of those roles there: `Owner`, `Contributer`, `Azure Subscription Creator` on an invoice section or `Owner` or `Contributor` on a billing profile or billing account. This allows the principal to generate new Subscriptions.
 
