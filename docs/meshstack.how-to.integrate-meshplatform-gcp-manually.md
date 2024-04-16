@@ -56,9 +56,9 @@ The Service Account will be identified by an email address like
 meshfed-service@meshstack-root.iam.gserviceaccount.com
 ```
 
-Next, configure either a service account key or wokload identity federation for authentication purposes.
+Next, configure either a service account key or workload identity federation for authentication purposes.
 
-#### Service Account
+#### Service Account Key
 
 Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will be used by meshStack.
 

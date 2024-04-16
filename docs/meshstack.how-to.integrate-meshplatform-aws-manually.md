@@ -481,7 +481,7 @@ graph LR;
     replicatorUser--Trusted Entity with External-id-->meshfedAutomationRole
 ```
 
-For the purpose of metering, meshStack requires to a a user created in the `meshcloud` AWS account (same process as [here](#set-up-aws-account-1-meshcloud)).
+For the purpose of metering, meshStack requires a user created in the `meshcloud` AWS account (same process as [here](#set-up-aws-account-1-meshcloud)).
 A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
 1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshWorkspaces buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
