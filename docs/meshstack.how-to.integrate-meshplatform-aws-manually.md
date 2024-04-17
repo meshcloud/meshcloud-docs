@@ -48,6 +48,39 @@ Platform Operators should generate a unique and random value for `EXTERNAL_ID`, 
 
 Platform Operators need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
 
+### Workload Identity Federation
+
+Instead of using explicit credentials you can also configure identity federation to allow specific identities representing meshStack access to the role assumption policy you created in the previous step.
+
+First, setup an identity provider in the meshcloud AWS account (IAM → access management → identity providers).
+Select "OpenID Connect" and enter "provider URL" (issuer) and "audience" values as they are shown by meshStack when selecting "Workload Identity Federation" for authentication during AWS platform config.
+
+Create a role with the role assumption policy from the previous step and assign the following trust policy.
+We'll call it the identity federation role:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "<meshStack identity provider ARN>"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "<meshStack identity provider name>:sub": "<replicator subject from meshStack>",
+                    "<meshStack identity provider name>:aud": "<audience from meshStack>"
+                }
+            }
+        }
+    ]
+}
+```
+
+This allows one specific identity (the replicator subject) with a specific audience to assume this role.
+
 ## Set up AWS Account 2: Management
 
 > Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
@@ -139,6 +172,9 @@ The following trust relationship needs to be attached to the MeshfedServiceRole 
 }
 ```
 
+> When using workload identity federation the principal must be set to the identity federation role instead: `arn:aws:iam::<<MESHCLOUD_ACCOUNT_ID>>:role/<IDENTITY_FEDERATION_ROLE>`
+
+
 Replace `MESHCLOUD_ACCOUNT_ID` with the dedicated meshcloud AWS account id where the `meshfed-service-user` lives. Replace `EXTERNAL_ID` accordingly as well.
 
 > For Enrollment with AWS Control Tower, the `MeshfedServiceRole` needs to have extra permissions to invoke the Account Factory.
@@ -194,6 +230,8 @@ The following policy and trust relationship should be attached to the role so th
 }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+> When using workload identity federation the trusted principal must be set to the identity federation role instead: `arn:aws:iam::<<MESHCLOUD_ACCOUNT_ID>>:role/<IDENTITY_FEDERATION_ROLE>`
 
 In order to roll out CloudFormation Stack Instances in the newly provisioned accounts, create the `AWSCloudFormationStackSetAdministrationRole` as specified in the [documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html) and attach the following policy and trust relationship.
 
@@ -443,7 +481,7 @@ graph LR;
     replicatorUser--Trusted Entity with External-id-->meshfedAutomationRole
 ```
 
-For the purpose of metering, meshStack requires the AWS Access Key and Secret Key of a user created in the `meshcloud` AWS account.
+For the purpose of metering, meshStack requires a user created in the `meshcloud` AWS account (same process as [here](#set-up-aws-account-1-meshcloud)).
 A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
 1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshWorkspaces buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.

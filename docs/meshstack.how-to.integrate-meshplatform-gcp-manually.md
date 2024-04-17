@@ -49,15 +49,38 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 ### Create meshfed-service Service Account
 
 Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/service-accounts) in the `meshstack-root` project.
-
-- Enable the Service Account for “G Suite Domain-wide Delegation” and note the generated `Client Id`
-- Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
-
+Enable the Service Account for “G Suite Domain-wide Delegation” and note the generated `Client Id`.
 The Service Account will be identified by an email address like
 
 ```text
 meshfed-service@meshstack-root.iam.gserviceaccount.com
 ```
+
+Next, configure either a service account key or workload identity federation for authentication purposes.
+
+#### Service Account Key
+
+Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will be used by meshStack.
+
+#### Workload Identity Federation
+
+Setting up [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation) is more involved but allows meshStack to use short lived credentials without explicitly handing over any secrets or requiring manual rotation.
+
+To use Workload Identity Federation you must create a Workload Identity Pool and Provider ([IAM → Workload Identity Federation](https://console.cloud.google.com/iam-admin/workload-identity-pools)) as part of the meshStack root project.
+
+- For the provider, select "OpenID Connect" and add provider details for "Issuer" and "Allowed audiences" as they're specified by the panel when selecting "Workload Identity Federation" as authentication type for a GCP platform.
+- Create an attribute condition to restrict access to replicator and/or metering service accounts: ```google.subject in ['<replicator_subject_from_panel>', '<kraken_subject_from_panel']```. Make sure to replace the placeholders.
+
+After setting up identity pool and provider you need to grant access to the meshStack workload service accounts to access the GCP service accounts.
+
+- Select the workload identity pool and click "grant access".
+- Select the GCP service account (e.g. for replication).
+- Define the appropriate principal by mapping "subject" to the subject name you received from the panel.
+- When prompted, enter anything for OIDC ID token path and download the generated configuration file. Open it to get the `audience` value that is required by meshStack.
+
+In addition to the permissions required to perform resource management or metering the replicator/metering service account must also be permitted to create ID tokens for itself.
+ID tokens must be used when calling cloud functions and authentication via workload identity federation does not automatically create such tokens.
+Add this permissions by assigning the roles `roles/iam.serviceAccountOpenIdTokenCreator` and `roles/iam.serviceAccountTokenCreator` to the the service account.
 
 #### Grant Resource Permissions
 
@@ -95,7 +118,7 @@ Following the principle of least privilege, operators should remove the `billing
 
 In order to perform certain group related administrative tasks the previously created `meshfed-service` service account needs the "Groups Admin" role from the Admin Console (G Suite).
 
-To authorize the Service Account **via the Google Admin Console** navigate to `@Account` in the sidebar and then `Admin Roles -> Groups Admin` and click `Assign Service Accounts`. In the prompt that appears, enter the service account email, which looks like `user@project.iam.gserviceaccount.com`.
+To authorize the Service Account **via the Google Admin Console** navigate to `@Account` in the sidebar and then `Admin Roles → Groups Admin` and click `Assign Service Accounts`. In the prompt that appears, enter the service account email, which looks like `user@project.iam.gserviceaccount.com`.
 
 You can alternatively authorize the Service Account **via the Cloud Identity Groups API**. Please find the instructions in for this in the official [Google guide](https://cloud.google.com/identity/docs/how-to/setup#auth-no-dwd).
 
@@ -160,7 +183,7 @@ under 'Partition Time Column'.
 
 Make sure that the `kraken-service` service account has permission on the table or view as described above.
 Then, enter the BigQuery reference in the GCP meshPlatform configuration in meshStack, which you can find under
-'Metering Configuration' -> 'BigQuery Table'.
+'Metering Configuration' → 'BigQuery Table'.
 
 #### Example: multiple billing accounts for the same GCP organization
 
@@ -224,7 +247,7 @@ The actions of the `meshfed-service` User can be monitored via [Audit Logs](http
 meshcloud recommends to enable Audit Logs on the organizational level for monitoring `meshfed-service` User. This is achivied by following these steps:
 
 1. Navigate to the organizational level in [GCP Cloud Console](https://console.cloud.google.com/)
-2. Navigate to [IAM & Admin --> Audit logs](https://console.cloud.google.com/iam-admin/audit)
+2. Navigate to [IAM & Admin → Audit logs](https://console.cloud.google.com/iam-admin/audit)
 3. Filter the table for `Cloud Resource Manager API` and select the resulting entry
 4. Enable all log types
 
