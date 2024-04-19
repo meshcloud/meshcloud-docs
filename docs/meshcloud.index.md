@@ -73,6 +73,7 @@ This documentation is open source! Please feel free to hit the `Edit` button any
 
 ## Getting Updates
 
-We release on a regular basis and provide weekly updates. If you want to stay on top changes in meshStack please have a look at the roadmap on the webside under [www.meshcloud.io](https://www.meshcloud.io/en/product/) or have a look at the release notes above.
-Follow [release notes](/blog) which provides atom and rss feeds. Or follow either one of [rss](/blog/feed.xml) and [atom](/blog/atom.xml) directly. 
-
+We release regularly and provide weekly updates. If you want to stay on top of changes in meshStack you can use the following: 
+- Have a look at the roadmap on the website under [www.meshcloud.io](https://www.meshcloud.io/en/product/).
+- Subscribe to the [Product Newsletter](https://share.hsforms.com/1AbELCsdRRP6EaCkm1UeATwc0hrp) which is sent out every two weeks summarizing the most important changes.
+- Have a look at the [release notes](/blog) or follow either one of [RSS](/blog/feed.xml) or [atom](/blog/atom.xml) directly. 
