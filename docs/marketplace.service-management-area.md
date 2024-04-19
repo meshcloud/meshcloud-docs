@@ -8,8 +8,8 @@ title: Service Management Area
 
 ## Introduction
 
-The Service Management Area can be used by workspaces to offer their [Platform Services](./marketplace.index.md#platform-services) to the rest of the organization.
-For example, the Azure Team in your organization could set up a workspace to offer their Azure [Platform](./administration.platforms.md) from there to
+The Service Management Area can be used by workspaces to offer their [platform services](./marketplace.index.md#platform-services) to the rest of the organization.
+For example, the Azure team in your organization could set up a workspace to offer their Azure [Platform](./administration.platforms.md) from there to
 the rest of the organization. Or the Networking team might want to offer their best-practice Cloud Network [Building Blocks](./administration.building-blocks.md)
 to Application Teams.
 
@@ -21,7 +21,7 @@ The Service Management Area can at any time be opened up from the Workspace Cont
 
 ![Introduction](assets/service-management-area/introduction.png)
 
-If you would like to go back again to the regular Workspace view, click on "Go to Workspace Management".
+If you would like to go back again to the regular Workspace View, click on "Go to Workspace Management".
 
 ## Types of Platform Services
 
@@ -40,8 +40,9 @@ The following three types of platform services can be created and offered in the
 
 ## Development & Testing
 
-By default, anything that you create in your Service Management Area will not be available to anyone else and requires approval.
-However, for development & testing purposes, you can consume any of your created platform services mentioned above in
+By default, anything that you create in your Service Management Area will be available to you inside the workspace and 
+not directly published in the Service Catalog.
+For development & testing purposes you can consume any of your created platform services mentioned above in
 **your own workspace**. They will be marked as "Private". This will give you an idea of the user experience and allows you
 to debug any potential issues with the Platform Configuration or Terraform code.
 
@@ -50,7 +51,7 @@ to debug any potential issues with the Platform Configuration or Terraform code.
 
 ## Publishing
 
-After you are done with the development & testing phase, you can go the control plane of your provided service in the Service Management Area and submit it for publication by clicking the "Submit for publishing" button.
+After you are done with the development & testing phase, you can go the Control Plane of your provided service in the Service Management Area and submit it for publication by clicking the "Submit for publishing" button.
 
 ![Publishing](./assets/service-management-area/publish-button.png)
 
@@ -61,13 +62,5 @@ If your publication request gets rejected, you can easily identify the reason by
 
 Once you've addressed the identified issues, you can resubmit it for publishing.
 
-
-## Approval
-
-To review a service, go to "Workspaces Services" under "Marketplace" on the left side bar. The "Workspace Services" provides you an overview of all services which are submitted for publishing. 
-
-![Workspace Services](./assets/service-management-area/workspace-services.png)
-
-Upon selecting a service, you will be directed to its control plane. From there, you can either reject the publication request or approve it, making the service accessible to all workspaces within your organization.
-
-![Approval](./assets/service-management-area/service-approval.png)
+> If you are an administrator and want to know how
+> to manage and approve workspaces service you can learn more [here](./administration.workspace-services.md).
