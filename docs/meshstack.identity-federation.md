@@ -123,7 +123,7 @@ architects need to consider the unique capabilities of cloud platform IAM system
 meshStack supports the following identity provisioning strategies:
 
 |               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
-| :-----------: | :------------------------------------------------------------: |:--------------------------------------------------------------------------:|
+| :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
 |   OpenStack   |                               -                                |   [supported](./meshstack.openstack.index.md#access-control-integration)   |
 | Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
 |  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
@@ -313,17 +313,18 @@ In order for the replicator to map the transformed `euid` to a cloud platform's 
 The cloud platforms supported by meshStack have different capabilities to query user attributes via API.
 meshStack can thus only support lookup in one or two platform user attributes.
 
-| Platform          | platform user object attributes supported |
-| ----------------- | ----------------------------------------- |
-| Azure             | `userPrincipalName`, `mail`               |
-| AWS               | `userName`                                |
-| GCP               | `primaryEmail`                            |
-| OpenShift         | `User.metadata.name`                      |
-| Kubernetes        | `User.metadata.name`                      |
-| OpenStack         | `User.federated[].protocols[].uniqueId`   |
-| meshMarketplace\* | `userPrincipalName`, `mail`               |
+| Platform           | platform user object attributes supported |
+| ------------------ | ----------------------------------------- |
+| Azure              | `userPrincipalName`, `mail`               |
+| AWS                | `userName`                                |
+| GCP                | `primaryEmail`                            |
+| OpenShift          | `User.metadata.name`                      |
+| Kubernetes         | `User.metadata.name`                      |
+| OpenStack\*        | `User.federated[].protocols[].name`       |
+| meshMarketplace\** | `userPrincipalName`, `mail`               |
 
-\*_with AAD permission Replication_
+\* In the near future we plan to also provide `uniqueId` and `email`
+\**_with AAD permission Replication_
 
 At the moment only AAD offers a choice of user lookup attributes. Platform Operators can configure these globally for all meshPlatforms.
 
