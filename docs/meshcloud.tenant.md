@@ -32,30 +32,20 @@ Any update to tenant metadata (e.g. a change in payment method) triggers a new m
 
 > Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
-If you would like to delete a meshTenant which is no longer used, open the corresponding meshTenant, navigate to **Deletion**.
+If you would like to delete a meshTenant which is no longer used, open the corresponding meshTenant navigate to **Deletion**.
 
-We distinguish between automatic and non-automatic deletion supported procedures. The deletion procedure depends on the platform of the meshTenant.
+> If you delete the entire meshProject [submitted for deletion](meshcloud.project.md#delete-a-meshproject) instead,
+> the meshProject will be deleted once all meshTenants within the meshProject have been deleted successfully.
 
-### Non-automatic deletion
+Depending on the landing zone you picked and the setup that the platform operator has chosen, your tenant might either
+be deleted automatically by the system, or manually by the platform operator.
 
-For the following platforms automatic deletion is not supported:
+The tenant also requires approval which might either happen automatically or by manual approval by the platform operator.
 
-- AWS
-- GCP
-- Azure
-- Kubernetes
-- OpenShift
+In any case, after deleting the tenant from your project you will not see it anymore and the platform operator has to 
+take care of its deletion. Only in the rare case might the tenant appear again when the platform operator decides to reject
+your tenant deletion request.
 
-A partner or a platform operator will have to perform manual deletion actions in the respective platform, you can provide them with a reason for the deletion. The reason field is currently limited to 255 characters. The reason for deletion will be shown to them when they perform the required deletion actions.
+> If you are a platform operator and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](./administration.delete-tenants.md)
 
-### Automatic deletion
 
-For the following platforms automatic deletion is supported:
-
-- OpenStack
-- Cloud Foundry
-- Marketplace meshTenants
-
-The system will perform a check to see if any resources exist in the tenants being deleted. This check is currently implemented only for OpenStack and Cloud Foundry platforms. If resources do exist in any of those platform tenants, you will be informed about them. You have to manually delete those resources. Once you have performed the manual resource deletion, you can confirm the tenant deletion.
-
-> Your meshProject [submitted for deletion](meshcloud.project.md#delete-a-meshproject) is classified as deleted once all meshTenants within the meshProject have been deleted successfully.
