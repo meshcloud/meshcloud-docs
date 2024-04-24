@@ -149,6 +149,24 @@ This `MeshfedServiceRole` should be created in the management account with the f
 }
 ```
 
+In order to enable meshStack to close AWS accounts as part of [tenant deletion](./administration.delete-tenants.md), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
+
+```json
+{
+    "Action": "organizations:CloseAccount",
+    "Condition": {
+        "ForAnyValue:StringLike": {
+            "aws:ResourceOrgPaths": [
+                "o-orgid/r-rootid/ou-ouid/*"
+            ]
+        }
+    },
+    "Effect": "Allow",
+    "Resource": "arn:aws:organizations::*:account/o-*/*",
+    "Sid": "OrgManagementAccessCloseAccount"
+},
+  ```
+
 The following trust relationship needs to be attached to the MeshfedServiceRole so that the meshfed-service-user can assume the role.
 
 ```json

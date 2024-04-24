@@ -34,6 +34,12 @@ deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
+In order to enable meshStack to delete GCP Projects as part of [tenant deletion](./administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
+
+```text
+resourcemanager.project.delete
+```
+
 ### Configure the Root Project
 
 meshStack requires a project in GCP for some of the resources it uses. It is reserved for use by meshstack and Platform Operators. For this guide, we’ll call the project `meshstack-root`.
