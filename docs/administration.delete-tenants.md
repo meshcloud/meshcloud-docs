@@ -22,6 +22,8 @@ the behavior around approvals.
 
 #### Performing deletions in the cloud platform
 
+> If you have the Open Service Broker marketplace experience enabled, the OSB Marketplace tenants are automatically approved and deleted.
+
 meshStack can also delete the underlying cloud tenant if desired.
 
 This also is defined in the Landing Zone. It can be enabled or disabled by (un)checking the
@@ -31,8 +33,6 @@ If enabled, meshStack will perform a deletion of the cloud tenant as part of the
 
 > **Warning**: meshStack does not delete nor touch any of the cloud resources in the tenant. The platform operator
 > remains responsible for making sure that any remaining resources cause cost after the tenant has been deleted by meshStack.
-
-> If you have the Open Service Broker marketplace experience enabled, the OSB Marketplace tenants are automatically approved and deleted.
 
 ### Processing the Tenant Deletion Queue
 
