@@ -27,7 +27,7 @@ Configuring this setting per landing zone allows you to adapt the tenant deletio
 specific needs. For example, you might not want to be involved with each single deletion request for  a sandbox landing zone that is intended for experimentation. But perhaps your organization requires a more
 careful process for deleting tenants in a landing zone hosting production workloads.
 
-> Once a tenant deletion was approved, it's not possible to abort the tenant deletion process.
+Once a tenant deletion was approved, it's not possible to abort the tenant deletion process.
 
 > If you have the Open Service Broker marketplace experience enabled, the OSB Marketplace tenants are automatically approved and deleted.
 
