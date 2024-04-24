@@ -37,15 +37,12 @@ If you would like to delete a meshTenant which is no longer used, open the corre
 > If you delete the entire meshProject [submitted for deletion](meshcloud.project.md#delete-a-meshproject) instead,
 > the meshProject will be deleted once all meshTenants within the meshProject have been deleted successfully.
 
-Depending on the landing zone you picked and the setup that the platform operator has chosen, your tenant might either
-be deleted automatically by the system, or manually by the platform operator.
+When you delete a tenant it will be removed from the project view and submitted to the tenant deletion queue. You will also immediately loose access to the tenant in the cloud platform.
+You can review the tenant deletion queue on the "Deletion Queue" tab from your Workspace view.
 
-The tenant also requires approval which might either happen automatically or by manual approval by the platform operator.
+Tenant deletion always requires approval. It is possible that an operator will reject the deletion of a tenant, in which case it will be reinstantiated into the project.
 
-In any case, after deleting the tenant from your project you will not see it anymore and the platform operator has to 
-take care of its deletion. Only in the rare case might the tenant appear again when the platform operator decides to reject
-your tenant deletion request.
+Operators can configure how meshStack processes tenants on the deletion queue per landing zone.
+meshStack will update the status of your tenant in the Deletion Queue accordingly and send notifications to keep you updated about deletion progress.
 
 > If you are a platform operator and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](./administration.delete-tenants.md)
-
-
