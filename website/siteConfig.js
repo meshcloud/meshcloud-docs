@@ -38,7 +38,7 @@ const siteConfig = {
     { blog: true, label: 'Release Notes' },
     { doc: 'faq', label: 'FAQ' },
     { page: 'help', label: 'Help' },
-    { href: 'https://meshcloud.canny.io/documentation', label: 'Feedback' }
+    { href: 'https://meshcloud.canny.io', label: 'Feedback' }
   ],
 
   // If you have users set above, you add it here:
