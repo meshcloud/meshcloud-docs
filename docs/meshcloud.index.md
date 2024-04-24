@@ -71,3 +71,10 @@ We are interested to make that work as well!
 
 This documentation is open source! Please feel free to hit the `Edit` button any time and help us [improve](https://github.com/meshcloud/meshcloud-docs/blob/master/CONTRIBUTING.md) the documentation. Your feedback is very welcome.
 
+## Getting Updates
+
+We release regularly and provide weekly updates. If you want to stay on top of changes in meshStack you can use the following: 
+
+- Have a look at the roadmap on the website under [www.meshcloud.io](https://www.meshcloud.io/en/product/).
+- Subscribe to the [Product Newsletter](https://share.hsforms.com/1AbELCsdRRP6EaCkm1UeATwc0hrp) which is sent out every two weeks summarizing the most important changes.
+- Have a look at the [release notes](/blog) or follow either one of [RSS](/blog/feed.xml) or [atom](/blog/atom.xml) directly. 

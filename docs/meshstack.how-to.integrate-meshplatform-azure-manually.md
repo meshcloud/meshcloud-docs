@@ -97,6 +97,13 @@ You must grant the meshcloud Service Principal this access to all [Management Gr
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
+In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](./administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
+
+
+```hcl
+"Microsoft.Subscription/cancel/action"
+```
+
 ### Set up a policy to prevent Privilege Escalation
 
 Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy on a root management group level:
