@@ -125,7 +125,7 @@ meshStack supports the following identity provisioning strategies:
 |               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
 | :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
 |   OpenStack   |                               -                                |   [supported](./meshstack.openstack.index.md#access-control-integration)   |
-| Cloud Foundry | [supported](meshstack.cloudfoundry.index.md#uaa-configuration) |                                 _planned_                                  |
+| Cloud Foundry |                                                                | [supported](meshstack.cloudfoundry.index.md#uaa-configuration)             |
 |  Kubernetes   |                               -                                |  [supported](./meshstack.kubernetes.index.md#access-control-integration)   |
 |   OpenShift   |                               -                                |       [supported](./meshstack.openshift.index.md#idp-configuration)        |
 |      AWS      |   [deprecated](./meshstack.aws.index.md#meshidb-deprecated)    |               [supported](./meshstack.aws.index.md#aws-sso)                |
@@ -320,11 +320,10 @@ meshStack can thus only support lookup in one or two platform user attributes.
 | GCP                | `primaryEmail`                            |
 | OpenShift          | `User.metadata.name`                      |
 | Kubernetes         | `User.metadata.name`                      |
-| OpenStack\*        | `User.federated[].protocols[].name`       |
-| meshMarketplace\** | `userPrincipalName`, `mail`               |
+| OpenStack          | `User.name`                               |
+| meshMarketplace\* | `userPrincipalName`, `mail`               |
 
-\* In the near future we plan to also provide `uniqueId` and `email`
-\**_with AAD permission Replication_
+\*_with AAD permission Replication_
 
 At the moment only AAD offers a choice of user lookup attributes. Platform Operators can configure these globally for all meshPlatforms.
 
