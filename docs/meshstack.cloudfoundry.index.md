@@ -9,7 +9,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with Cloud Foundry, Platform Operators configure one or multiple `meshPlatform`s of `PlatformType` Cloud Foundry in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with Cloud Foundry, Platform Operators configure one or multiple `Platform`s of `PlatformType` Cloud Foundry in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites 
 
@@ -20,7 +20,7 @@ We have officially validated meshStack with support for Cloud Foundry `v3.108.0`
 
 meshStack will identify and assign users to roles in Cloud Foundry based on their `euid` (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
 
-You should set up your Cloud Foundry and UAA UAA so that they store the `euid` value in the `User.userName` field of the [UAA User object](https://docs.cloudfoundry.org/api/uaa/version/77.8.0/index.html#get) and `User.username` field of the [Cloud Foundry user object](http://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#users).
+You should set up your Cloud Foundry and UAA so that they store the `euid` value in the `User.userName` field of the [UAA User object](https://docs.cloudfoundry.org/api/uaa/version/77.8.0/index.html#get) and `User.username` field of the [Cloud Foundry user object](http://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#users).
 
 ## Integration Configuration
 
@@ -35,7 +35,7 @@ users the following [Cloud Foundry roles](https://docs.cloudfoundry.org/concepts
   `Admin` role and additionally needs the `cloud_controller.admin`, `uaa.admin` and  `scim.read` scopes in UAA.
 - the `metering` admin account is used to collect [metering data](./meshstack.cloudfoundry.metering.md). This requires the `Global Auditor`.
 
-The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's meshProject permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
+The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's project permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
 
 ### Spaces & Organizations
 
