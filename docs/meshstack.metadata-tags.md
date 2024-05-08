@@ -10,8 +10,8 @@ Operators can configure meshStack to collect, attach and distribute organization
 
 ## Use Cases for Tags
 
-> meshStack currently supports tags on [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md).
-> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [meshWorkspaceUserGroups](meshstack.workspace-group-sync.md) are freely taggable via the meshStack API.
+> meshStack currently supports tags on [workspaces](meshcloud.workspace.md), [projects](meshcloud.project.md), [landing zones](meshcloud.landing-zones.md), [building block definitions](./administration.building-blocks.md) and [payment methods](meshcloud.payment-methods.md).
+> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [workspace user groups](meshstack.workspace-group-sync.md) are freely taggable via the meshStack API.
 
 meshStack acts as an organization's central registry of cloud environments and services. It therefore needs to cover
 a wide range of use cases for orchestrating organizational processes across multiple clouds, including;
