@@ -321,7 +321,8 @@ meshStack can thus only support lookup in one or two platform user attributes.
 | OpenShift          | `User.metadata.name`                      |
 | Kubernetes         | `User.metadata.name`                      |
 | OpenStack          | `User.name`                               |
-| meshMarketplace\* | `userPrincipalName`, `mail`               |
+| Cloud Foundry      | `User.username`                           |
+| meshMarketplace\*  | `userPrincipalName`, `mail`               |
 
 \*_with AAD permission Replication_
 
