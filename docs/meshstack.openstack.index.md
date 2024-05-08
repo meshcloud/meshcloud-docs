@@ -8,7 +8,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with OpenStack, Platform Operators configure one or multiple `meshPlatform`s of `PlatformType` OpenStack in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with OpenStack, Platform Operators configure one or multiple `Platform`s of `PlatformType` OpenStack in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ During replication, meshStack will make sure that users have access to the OpenS
 If meshStack finds that a user does not exist in OpenStack yet, meshStack will log a replication remark and skip assigning that user's permission. 
 When the user is created in OpenStack at any later time, meshStack will pick up this user to assign him to the according groups in the next replication.
 
-Users will be assigned to the according groups (per meshProject) that meshStack creates in OpenStack.
+Users will be assigned to the according groups (per project in meshStack) that meshStack creates in OpenStack.
 Because OpenStack does only provide the `member` project-level role out of the box, meshStack currently supports only one default mapping of meshStack project roles to OpenStack project roles for all meshStack project roles.
 
 ### Keystone Domains
