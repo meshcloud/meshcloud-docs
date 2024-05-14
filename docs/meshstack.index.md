@@ -15,9 +15,12 @@ It is NOT a meta-layer across clouds. Users access native cloud APIs for their d
 
 ## Central Concepts
 
-meshStack uses the concepts of Workspaces and Projects to represent the structure of existing application teams in the meshStack platform. Application Team can manage Tenants inside Projects. In order to reflect the organization's compliance and security standards in the cloud a Landing Zone is applied to every Tenant. Building Blocks can be leveraged either as part of a modular Landing Zone or additionally on top of a Tenant. Building Blocks are deployed based on the configuration provided in the Building Block definition. 
+meshStack uses the concepts of Workspaces and Projects to represent the structure of existing application teams in the meshStack platform. Application Team can manage Tenants inside Projects. 
+![meshModel](assets/OrgStructure.png)
+
+In order to reflect the organization's compliance and security standards in the cloud a Landing Zone is applied to every Tenant. Building Blocks can be leveraged either as part of a modular Landing Zone or additionally on top of a Tenant. Building Blocks are deployed based on the configuration provided in the Building Block definition. 
 meshStack supports the management of multiple platforms of the same or different type. Below you can see an overview of the relations between the individual elements in meshStack as objects.
-![meshModel](assets/meshModel.png)
+![landingZones](assets/landingZone.png)
 
 ## Integrations
 
