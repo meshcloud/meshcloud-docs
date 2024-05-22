@@ -9,6 +9,7 @@ title: Product Feedback Collection
 ## In-Product Satisfaction Survey
 
 meshStack might show your users a short survey consisting of three questions:
+
 1. How satisfied are you with {meshStack}*
 2. When I perform an action in {meshStack}, it works as expected.
 3. I was able to complete the tasks I needed to using {meshStack}.
@@ -25,7 +26,7 @@ The satisfaction survey will show up under the following conditions:
 
 - The user is **not** a user of the Admin Area.
 - The user has logged in more than three times in the last 30 days.
-- The user has not filled in the survey in the last 30 days.
+- The user has not been shown the survey in the last 30 days. (If a user closes the survey it will only ever show up again after 30 days)
 - The user did not do anything for the last 25 seconds (to prevent interrupting the user in important flows)
 
 Note that the satisfaction survey is not configurable to be turned off. It is always turned on for each meshStack.
@@ -33,7 +34,7 @@ Note that the satisfaction survey is not configurable to be turned off. It is al
 ## Product Usage Data with Plausible
 
 In order to continuously improve our product we collect product usage data and feedback.
-Product usage data collection can be explicitly enabled by an Partner after prior confirmation of the customer.
+Product usage data collection can be explicitly enabled by your Customer Success representative after your confirmation.
 
 meshPanel uses the privacy-preserving and open source web-analytics library plausible.io for collecting anonymous usage data as described in the [plausible data policy](https://plausible.io/data-policy).
 The system we use is operated by meshcloud and the data collected will remain within the secure meshcloud environment and will not be shared or processed externally.
