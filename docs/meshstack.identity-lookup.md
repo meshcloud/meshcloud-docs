@@ -3,6 +3,8 @@ id: meshstack.identity-lookup
 title: Identity Lookup
 ---
 
+> The recommended way to set up [user provisioning via SCIM](./meshstack.user-group-provisioning.md). The instructions below are not needed if users are provisioned via SCIM.
+
 meshStack allows Workspace Managers to [quickly onboard team members](./meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. We call this search process identity lookup.
 
