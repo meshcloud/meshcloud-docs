@@ -9,7 +9,6 @@ How to set it up:
 2. Issue a new API key by clicking "create API key" and provide a name and an authorization scope.
 3. Make sure to save the secret and key ID securely to make the request
 4. Issue an API call towards the backend to receive the bearer token for further requests e.g. https://federation.dev.meshcloud.io/api/ (Provide the following keys in the body of the request in the x-www-form-urlencoded format):
-
-- client_id: This is the key ID
-- client_secret: This is the key secret provided to you
-- grant_type is always specified as: client_credentials
+    - client_id: This is the key ID
+    - client_secret: This is the key secret provided to you
+    - grant_type is always specified as: client_credentials
