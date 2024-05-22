@@ -2,7 +2,7 @@
 id: meshstack.how-to-API-keys
 title: How to use scoped API keys
 ---
-You can issue workspace scoped API Keys via the admin or workspace area. Those API keys authorize only for request towards the meshObject API in scope of the respective workspace. Step by step we will enable the individual endpoints of the meshObject API to allow for more scoped requests.
+You can issue workspace scoped API Keys via the admin or workspace area. Those API keys authorize only for requests towards the meshObject API in scope of the respective workspace. Step by step we will enable the individual endpoints of the meshObject API to allow for more scoped requests.
 
 How to set it up:
 1. Open the respective workspace and go to Workspace Access → API Keys. 
