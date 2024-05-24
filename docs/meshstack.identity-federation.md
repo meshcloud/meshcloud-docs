@@ -61,7 +61,7 @@ The identity provisioning mechanism and the resulting federation setup depends o
 
 ### meshStack-provisioned Identities
 
-In this mode meshStack provisions identities used in meshProjects on the respective cloud platform. The lifecycle of the identity is automatically managed via meshStack, including deprovisioning. In this mode, identity federation involves the meshIdB and meshcloud can provide all necessary configuration and setup assistance. This is only available for Cloud Foundry.
+In this mode meshStack provisions user identities used in meshProjects on the respective cloud platform. Please note that this mode is deprecated and we do not advise new platform integration to be configured this way.
 
 ```mermaid
 graph LR;
