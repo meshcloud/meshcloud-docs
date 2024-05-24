@@ -145,7 +145,10 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 
 ### How to map attributes via expressions
 
-A common patttern we see is that Admin Users do not have email attributes filled. Here is how to create a mapping that sets the email attribute based on an expression.
+In many situations it can be useful to modify user attributes before syncing them to meshStack.
+For example some organizations require the use of dedicated user accounts for administration purposes.
+Unlike "normal users" used for everyday office work, these "admin users" often do not have email attributes.
+Here is how to create a mapping that sets the email attribute based on an expression.
 
 Navigate to the enterprise application and open the expression builder.
 Use the expression builder to build the desired expression.
