@@ -3,7 +3,7 @@ id: meshcloud.policies
 title: meshPolicies
 ---
 
-## Introduction: what are meshPolicies?
+## Introduction: What are meshPolicies?
 
 A meshPolicy describes a restriction between two meshObjects. You can only
 define a meshPolicy on certain meshObjects by using their defined tags. These
@@ -27,7 +27,7 @@ meshSubject or assign a meshSubject to another meshSubject (e.g. assigning a
 meshUser to meshWorkspace in the Workspace Access). How meshPolicies can be
 configured is described [here](administration.mesh-policies.md).
 
-### Authoritative and affected meshSubject
+### Authoritative and Affected meshSubject
 
 The terms authoritative and affected meshSubject shall make clear in which
 direction the meshPolicy will be evaluated.
@@ -35,17 +35,21 @@ direction the meshPolicy will be evaluated.
 We have a limited selection of authoritative and affected meshSubject
 combinations. Valid combinations are
 
-- meshWorkspace -> meshUser/Group
-- meshWorkspace -> meshProject
-- meshProject -> meshUser/Group
-- meshProject -> meshLandingZone
+| authoritative Subject | affected Subject       |
+| --------------------- | ---------------------- |
+| Workspace             | Project                |
+|                       | User/Group (Principal) |
+|                       | LandingZone            |
+|                       | Building Block         |
+| Project               | User/Group (Principal) |
+|                       | LandingZone            |
 
 You can find the authoritative meshSubject on the left side and the affected
 meshSubject on the right side. In general, the authoritative meshSubject
 restricts the affected meshSubject depending on a selected evaluation strategy
 and the chosen tags.
 
-### meshPolicy evaluation strategy
+### meshPolicy Evaluation Strategy
 
 A meshPolicy evaluation strategy describes a strategy how authoritative and
 affected meshSubjects shall be evaluated in the context of a meshPolicy. In that
@@ -58,8 +62,10 @@ are no values, a single value, or multiple values. This means you can also
 create a meshPolicy that evaluates a single-select tag against a multi-select
 tag.
 
-> If **neither** meshSubject has the tag defined in your meshPolicy, your
-> meshSubjects are evaluated as compliant with that meshPolicy.
+> **Null sets rule**: If _neither_ meshSubject has the tag defined in your
+> meshPolicy, your meshSubjects are evaluated as compliant with that meshPolicy.
+> This allows introducing additional tags and policies over existing objects
+> without making them incompliant.
 
 There are two different selectable evaluation options `Subset` and
 `Intersection`.
@@ -67,43 +73,44 @@ There are two different selectable evaluation options `Subset` and
 #### Subset
 
 Describes an evaluation strategy that the tag values of the affected meshSubject
-**must be a subset** of the authoritative meshSubject tag values. The evaluation
-of a `Subset` is successful, if the affected meshSubject is only tagged with
-values which are also present in the tag values of the authoritative
+**must be a non-empty subset** of the authoritative meshSubject tag values. The
+evaluation of a `Subset` is successful, if the affected meshSubject is only
+tagged with values which are also present in the tag values of the authoritative
 meshSubject.
 
-> Recommended for meshPolicy between:
->
-> - meshWorkspace -> meshProject
+> The Subset evaluation strategy is uesful for modelling "clearances" with tags.
+> A common use case is clearing workspaces to allow access to certain
+> environments/stages and landing zone types using a multi-select tag on the
+> workspace level. Policies with subset evaluation strategy to ensure all
+> projects, landing zones, building blocks etc. stay within the bounds of that
+> clearance.
 
-Example:
+**Example:** In this example, we're looking at a meshPolicy between a
+meshProject's `environment` tag, and a meshWorkspace's `environment` tag with
+the following allowed values: `dev`, `qa`, and `prod`. The meshProject is the
+affected meshSubject and the meshWorkspace is the authoritative meshSubject.
 
-In this example, we're looking at a meshPolicy between a meshProject's
-`environment` tag, and a meshWorkspace's `environment` tag with the following
-allowed values: `dev`, `qa`, and `prod`. The meshProject is the affected
-meshSubject and the meshWorkspace is the authoritative meshSubject.
-
-| meshProject  | meshWorkspace | Result | Explanation                                                        |
-| ------------ | ------------- | ------ | ------------------------------------------------------------------ |
-| `prod`       | `prod`        | ✓      | `prod` is present on both meshProject and meshWorkspace            |
-| `prod`       | `dev`, `qa`   | ✖      | meshProject `prod` is not present on meshWorkspace `qa`,`dev`      |
-| < empty >    | `dev`         | ✖      | No overlapping value, the meshProject has no tag values at all     |
-| < empty >    | < empty >     | ✓      | Both tags have no values, which equates to a successful evaluation |
-| `prod`, `qa` | `qa`, `dev`   | ✖      | meshProject `prod` is not present in meshWorkspace `qa`,`dev`      |
-| `dev`, `qa`  | `qa`, `dev`   | ✓      | `dev`, `qa` is present on both meshProject and meshWorkspace       |
+| meshWorkspace<br> _authoritative_ | meshProject<br> _affected_ | Result | Explanation                                                                         |
+| --------------------------------- | -------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| `prod`                            | `prod`                     | ✓      | `prod` is present on both meshProject and meshWorkspace                             |
+| `dev`, `qa`                       | `prod`                     | ✖      | meshProject `prod` is not present on meshWorkspace `qa`,`dev`                       |
+| `dev`                             | < empty >                  | ✖      | meshProject has no tag values, the subset is empty                                  |
+| < empty >                         | `dev`                      | ✖      | meshWorkspace has no tag values, meshProject `dev` is not a subset                  |
+| < empty >                         | < empty >                  | ✓      | Null sets rule: Both subjects have no tag values, the policy passes                 |
+| `qa`, `dev`                       | `prod`, `qa`               | ✖      | meshProject `prod` is not present in meshWorkspace `qa`,`dev`                       |
+| `qa`, `dev`                       | `dev`, `qa`                | ✓      | `dev`, `qa` is present on both meshProject and meshWorkspace, order does not matter |
 
 #### Intersection
 
 Describes an evaluation strategy that the tag values of the affected meshSubject
-**must have an intersection** with the tag values of the authoritative
+**must have a non-empty intersection** with the tag values of the authoritative
 meshSubject tag values. The evaluation of a `Intersection` is successful, if at
-least one tag value is present on both meshSubjects.
+least one tag value is present on both meshSubjects or if both sets are empty.
 
-> Recommended for meshPolicy between:
->
-> - meshWorkspace -> meshUser/Group
-> - meshProject -> meshUser/Group
-> - meshProject -> meshLandingZone
+> The Intersection evaluation strategy is uesful for modelling "compatibilities"
+> with tags. Common use case for this are modelling access to landing
+> zones/services or enforcing use of specific "admin" principals/user groups for
+> prod environments.
 
 Example:
 
@@ -112,28 +119,29 @@ In this example, we're looking at a meshPolicy between a meshUser/Group
 allowed values: `dev`, `qa`, and `prod`. The meshUser/Group is the affected
 meshSubject and the meshWorkspace is the authoritative meshSubject.
 
-| meshUser/Group | meshWorkspace | Result | Explanation                                                        |
-| -------------- | ------------- | ------ | ------------------------------------------------------------------ |
-| `prod`         | `prod`        | ✓      | `prod` is present on meshUser/Group and meshWorkspace              |
-| `prod`         | `dev`, `qa`   | ✖      | meshUser/Group `prod` is not present on meshWorkspace `qa`,`dev`   |
-| < empty >      | `dev`         | ✖      | No overlapping value, the meshUser/Group has no tag values at all  |
-| < empty >      | < empty >     | ✓      | Both tags have no values, which equates to a successful evaluation |
-| `prod`, `qa`   | `qa`, `dev`   | ✓      | meshUser/Group `qa` is present in meshWorkspace `qa`,`dev`         |
-| `dev`, `qa`    | `qa`, `dev`   | ✓      | `dev`, `qa` is present on meshUser/Group and meshWorkspace         |
+| meshWorkspace<br> _authoritative_ | meshUser/Group<br> _affected_ | Result | Explanation                                                         |
+| --------------------------------- | ----------------------------- | ------ | ------------------------------------------------------------------- |
+| `prod`                            | `prod`                        | ✓      | `prod` is present on meshUser/Group and meshWorkspace               |
+| `dev`, `qa`                       | `prod`                        | ✖      | meshUser/Group `prod` is not present on meshWorkspace `qa`,`dev`    |
+| `dev`                             | < empty >                     | ✖      | No overlapping value, the intersection is empty                     |
+| < empty >                         | `dev`                         | ✖      | No overlapping value, the intersection is empty                     |
+| < empty >                         | < empty >                     | ✓      | Null sets rule: Both subjects have no tag values, the policy passes |
+| `qa`, `dev`                       | `prod`, `qa`                  | ✓      | meshUser/Group `qa` is present in meshWorkspace `qa`,`dev`          |
+| `qa`, `dev`                       | `dev`, `qa`                   | ✓      | `dev`, `qa` is present on meshUser/Group and meshWorkspace          |
 
 ### meshPolicies for meshUsers/Groups
 
-meshUsers and meshWorkspaceUserGroups are treated as one when it comes to
-meshPolicies. You can only define a meshPolicy for "meshUser/Group". Those
-meshPolicies will always apply to both meshSubject types. It is not possible to
-define a meshPolicy that only matches meshUsers, but not
-meshWorkspaceUserGroups. The reason for that is, that you can assign both
-meshSubject types (meshUsers and meshWorkspaceUserGroups) to meshWorkspaces and
-meshProjects. If you want to restrict this access to e.g. only allow access to
-production for certain users and groups, the meshPolicy always has to apply to
-both meshSubject types. It wouldn't make sense to restrict only the assignment
-of groups, but you could still assign any user. Because of that, you can only
-select "meshUser/Group" as a meshPolicy subject in a meshPolicy.
+meshUsers and meshWorkspaceUserGroups are treated as a comomn "Principal" object
+when it comes to meshPolicies. You can only define a meshPolicy for
+"meshUser/Group". Those meshPolicies will always apply to both meshSubject
+types. It is not possible to define a meshPolicy that only matches meshUsers,
+but not meshWorkspaceUserGroups. The reason for that is, that you can assign
+both meshSubject types (meshUsers and meshWorkspaceUserGroups) to meshWorkspaces
+and meshProjects. If you want to restrict this access to e.g. only allow access
+to production for certain users and groups, the meshPolicy always has to apply
+to both meshSubject types. It wouldn't make sense to restrict only the
+assignment of groups, but you could still assign any user. Because of that, you
+can only select "meshUser/Group" as a meshPolicy subject in a meshPolicy.
 
 meshUsers exist on a global level and are not related to a specific
 meshWorkspace. If you want to define a meshPolicy to only provide certain
