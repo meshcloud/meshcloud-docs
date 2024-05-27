@@ -36,4 +36,4 @@ For example if you create a meshProject with **environment** tag **dev** then yo
 
 Beside providing valuable metadata, tags can also be used to enforce organizational [policies](meshcloud.policies.md) in your meshstack. A common use case for this is enforcing that a meshWorkspace can only create meshProjects for which it has one of the environment tag values set. If a meshWorkspace has environment `dev` and `qa`, it is possible to enforce that users only create meshProjects for these environments but not for e.g. `prod` projects (until an adminstrator gives the meshWorkspace a `prod` environment tag). The environment tag on the meshWorkspace should also be a restricted tag in this case to ensure only partners can influence this behavior.
 
-To learn more, read the [meshPolicies](./meshcloud.policies.md) page for other use cases and explanations.
+To learn more, read the [policies](./meshcloud.policies.md) page for other use cases and explanations.
