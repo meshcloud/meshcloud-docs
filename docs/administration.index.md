@@ -11,7 +11,7 @@ available to users of the administration area:
 
 - **Partner Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
   administrator/partner account.
-- **Partner Employee**: Has full access to all administration functionality, but **cannot** manage meshPolicies, tag definitions or users of the administrator/partner account.
+- **Partner Employee**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the administrator/partner account.
 - **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
 - **Ops Support**: Not all Ops operations must be executed by Platform Operators. E.g. setting quotas is a task that can also be done by
@@ -19,7 +19,7 @@ available to users of the administration area:
 - **Controller**: A Controller has access to billing and usage information of workspace projects.
 - **Onboarding Support**: A support team in place to help users who want to sign up may also need access to some administration
   functionality which is granted by this role.
-- **Compliance Manager**: Has the rights to manage meshPolicies and tag definitions.
+- **Compliance Manager**: Has the rights to manage policies and tag definitions.
 - **Replication Operator**: A supportive role that can assist by viewing tenants' replication status.
   This role is helpful for meshcloud employees to debug any potential issues with tenant replication.
 
@@ -44,8 +44,8 @@ per meshcloud installation.
 | &nbsp;&nbsp;[Project&nbsp;Export](administration.projects.md#project-export)                                        |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
 | &nbsp;&nbsp;[Quota&nbsp;Export](administration.projects.md#quota-export)                                            |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |                    |                      |
 | Compliance                                                                                                          |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; List [meshPolicies](administration.policies.md)                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; Manage [meshPolicies](administration.policies.md)                                                 |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; List [policies](administration.policies.md)                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; Manage [policies](administration.policies.md)                                                 |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
 | &nbsp;&nbsp; List [Tags](meshstack.metadata-tags.md)                                                                |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
 | &nbsp;&nbsp; Manage [Tags](meshstack.metadata-tags.md)                                                              |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
 | Project Management                                                                                                  |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
