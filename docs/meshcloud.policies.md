@@ -21,7 +21,7 @@ can decide how the policy subjects are evaluated against each other.
 Policies are enforced in various places wherever you edit a tag of a policy
 subject or change a relation to another policy subject like assigning a user to
 a workspace. Operators can learn more about configuring policies
-[here](administration.mesh-policies.md).
+[here](administration.policies.md).
 
 ### Authoritative and Affected Subject
 
