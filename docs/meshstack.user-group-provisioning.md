@@ -143,6 +143,36 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 | Join(" ", [givenName], [surname])                             | name.formatted                             |
 | Attribute which is used as euid in your meshStack             | externalId                                 |
 
+### How to map attributes via expressions
+
+In many situations it can be useful to modify user attributes before syncing them to meshStack.
+For example some organizations require the use of dedicated user accounts for administration purposes.
+Unlike "normal users" used for everyday office work, these "admin users" often do not have email attributes.
+Here is how to create a mapping that sets the email attribute based on an expression.
+
+Navigate to the enterprise application and open the expression builder.
+Use the expression builder to build the desired expression.
+
+![Expression builder](assets/aad_provisioning_scim/mapping-1.png)
+
+In this example, the expression is `IIF(Left ( [userPrincipalNamel, 4) = "sadm", [otherMails], [userPrincipalNamel)`.
+If the userPrincipalName of a user starts with `sadm`, the otherMails attribute is returned. If it doesn't start with `sadm`, the userPrincipalName is returned.
+
+Once you are satisfied with the expression, open the user mapping settings.
+
+![User mapping table](assets/aad_provisioning_scim/mapping-2.png)
+
+Within the user mappings table, edit the attribute you want to modify.
+
+![Edit attribute in user mapping table](assets/aad_provisioning_scim/mapping-3.png)
+
+Choose Mpaping type Expression and insert the expression you have built earlier.
+
+![Insert expression](assets/aad_provisioning_scim/mapping-4.png)
+
+The synchronisation will now use the expression to map values from Entra ID to meshStack users.
+
+
 ## User Lifecycle with AAD and SCIM
 
 The following section describes how users are created and removed from meshStack when you have Azure Active Directory
