@@ -25,13 +25,16 @@ For further details on the patterns supported by `String.format()`, please consu
 The template engine allows you to use the following placeholders if not described otherwise in the corresponding documentation:
 
 | Placeholder          | Type   | Description                                                                                                                            |
-|----------------------| ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| workspaceIdentifier  | string | Workspace Identifier                                                                                                                    |
+| -------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| workspaceIdentifier  | string | Workspace Identifier                                                                                                                   |
 | projectIdentifier    | string | Project Identifier                                                                                                                     |
 | meshProjectId        | number | Internal ID of the meshProject. Every project is guaranteed to have a unique ID, but tenants on different platforms can share this ID. |
-| platform             | string | Platform Identifier                                                                                                                   |
+| platform             | string | Platform Identifier                                                                                                                    |
 | rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
 | tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
 
 Note that you can also use tags! The placeholders for these are generated automatically. For example, if you have a tag
 in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`.
+
+> **Attention** For some cloud platforms certain strings must be globally unique (for example the AWS account alias). The `projectIdentifier` is not unique in meshstack. A combination of at least the `workspaceIdentifier` and `projectIdentifier`
+> is highly recommended to avoid name collisions. For platforms with globally unique requirements like GCP or AWS a randomized part or a unique static prefix can also help to prevent sporadic replication problems.
