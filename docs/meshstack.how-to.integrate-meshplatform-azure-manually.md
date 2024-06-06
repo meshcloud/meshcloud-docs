@@ -271,8 +271,6 @@ In contrast to other provisioning methods, EA provisioning will not retain a def
 
 If your company has a Customer Agreement with Microsoft you can also use an automatic REST API in order to create new subscriptions. It is a very similiar process to the [Enterprise Agreement](#set-up-enterprise-agreement-provisioning) variant. The difference is you need two principals, one on the Billing Account tenant that creates the subscription and another one on the target AAD tenant that receives its ownership.
 
-> Currently meshStack only supports the MCA tenant creation across different AAD tenants. See [Microsofts documentation](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement-across-tenants) about it.
-
 #### Create Source Tenant Principal
 
 1. On the tenant that contains your billing account create a new Enterprise Application.
