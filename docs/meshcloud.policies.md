@@ -1,6 +1,6 @@
 ---
 id: meshcloud.policies
-title: policies
+title: Policies
 ---
 
 ## Introduction: What are Policies?
