@@ -18,6 +18,7 @@ Once you have settled on a `$domain`, we recommend to use:
 - `$domain`
 - `api.$domain` (API of the meshStack)
 - `kraken.$domain` (Cost collection component)
+- `sso.$domain` (Identity broker component)
 - `sonar.$domain` (Monitoring component; used by meshcloud to monitor your meshStack)
 
 The DNS records needed for those domains are provided to you by meshcloud during the setup of your meshStack.

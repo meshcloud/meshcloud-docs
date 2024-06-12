@@ -16,3 +16,5 @@ How to set it up:
     - grant_type is always specified as: client_credentials
       
 5. Use the token in further request by specifying it in the authorization header
+
+If you want to disable the creation of API keys in self service via the workspace area please reach out to support@meshcloud.io. By default this functionality is enabled. 
