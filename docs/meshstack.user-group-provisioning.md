@@ -145,20 +145,17 @@ To set up the provisioning on AAD side, have a look at [Microsoft's guideline](h
 
 ### How to map attributes via expressions
 
-In many situations it can be useful to modify user attributes before syncing them to meshStack.
-For example some organizations require the use of dedicated user accounts for administration purposes.
-Unlike "normal users" used for everyday office work, these "admin users" often do not have email attributes.
-Here is how to create a mapping that sets the email attribute based on an expression.
+In various scenarios, modifying user attributes before synchronizing them with meshStack can be beneficial. For instance, certain organizations require the utilization of specialized user accounts for administrative tasks. These "admin users," in contrast to "normal users" employed for daily office activities, frequently lack email attributes. The following is a method to establish a mapping that assigns the email attribute using an expression.
 
 Navigate to the enterprise application and open the expression builder.
 Use the expression builder to build the desired expression.
 
 ![Expression builder](assets/aad_provisioning_scim/mapping-1.png)
 
-In this example, the expression is `IIF(Left ( [userPrincipalNamel, 4) = "sadm", [otherMails], [userPrincipalNamel)`.
-If the userPrincipalName of a user starts with `sadm`, the otherMails attribute is returned. If it doesn't start with `sadm`, the userPrincipalName is returned.
+In this example, the expression is `IIF(Left([userPrincipalName], 4) = "sadm", [otherMails], [userPrincipalName])`.
+When a user's userPrincipalName begins with `sadm`, the otherMails attribute is retrieved. If it does not begin with `sadm`, then the userPrincipalName itself is returned.
 
-Once you are satisfied with the expression, open the user mapping settings.
+After finalizing the expression, proceed to open the user mapping settings.
 
 ![User mapping table](assets/aad_provisioning_scim/mapping-2.png)
 
@@ -215,7 +212,7 @@ SCIM is disabled, because previous versions of meshStack did not support deletio
 meshStack, deletion is supported. If you have previously disabled user deletion and now want to enable it, please
 proceed as follows:
 
-In the Azure portal, visit the service "Azure Active Directory" and the section "Enterprise Application". Then, go to
+In the Azure portal, visit the service "Azure Active Directory" and the section "Enterprise Application". Then, navigate to
 "Provisioning" → "Edit attribute mappings" to see the user mapping. Below "Target Object Actions", three checkboxes are
 displayed: "Create", "Update" and "Delete". Ensure that all three checkboxes are checked.
 
