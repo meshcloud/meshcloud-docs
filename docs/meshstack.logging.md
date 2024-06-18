@@ -10,45 +10,44 @@ provide central access to the log files for meshcloud operators, a central
 logging system build around Loki and Grafana is used to collect logs and make
 them available for error analysis.
 
-For meshStack administrators certain events are logged for auditing purposes.
-The events can be used to answer e.g. the following questions:
+meshStack keep track of events for auditing and monitoring purposes. You can find these events in the Event Logs page under the Compliance section in the Admin area. These logs help answer questions like:
 
-- Who created a certain project?
-- Who gave or revoked a certain user access to a project/workspace?
-- Who updated the payment information on a project?
+- Who created a Project? (by typing the Project name under the Event table and selecting 'created' in the Type column)
+- Who granted or revoked access in a Workspace for a user? (by typing the user's name or email in the Change column, the Workspace name in the Workspace column, and selecting 'remove' in the Type column)
+- What changes were made to Landing Zone settings? (by typing 'Landing Zone' in the Event column, selecting 'change' in the Type column, and the Landing Zone name in the Change column)"
 
-The event tables always contain timestamps and references to the responsible
-users.
+and more
 
-## Logging of User and Data Access
+Application team could find Event logs for dedicated Workspaces under the Compliance section, specifically in the Event Logs subsection. This allows Workspace Owners and Managers to easily access and review relevant activity within their dedicated Workspace.
+
+## Logging Actions on meshObjects and Users
 
 Changes (add, change, delete) to data are logged to provide traceability.
 Regarding logging of personal user data, meshStack only logs the Username or the
 Keycloak Id of the user. No further personal information is logged.
 
-| Event (What?)                                                                   | Accessible (Where)                 |
-| ------------------------------------------------------------------------------- | ---------------------------------- |
-| Create/Edit/Delete Project, Add/Remove Tenant from Project                      | Project History (Administration)   |
-| Edit Project (Assign/Unassign users, edit user roles, edit billing information) | Project history (Administration)   |
-| Replication to cloud platform                                                   | Tenant details (Administration)    |
-| Register Workspace, Edit Workspace Master Data (Payment Info)                   | Workspace history (Administration) |
-| Invite/Remove/Update users in workspace                                         | Workspace history (Administration) |
-| Authentication ((invalid) Logins, Logout, Timeout of session, …)                | On request                         |
-| Interactions with Service Brokers (create/update/delete instance & bindings)    | On request                         |
+| Event                                                                           | meshStack page (Where)                 |
+| ------------------------------------------------------------------------------- | ---------------------------------------|
+| Created / Changed / Deleted for Workspaces; Projects; Platforms                 | Event Logs (Admin Area & in Workspace) |
+| Created / Deletion Requested / Deleted for Tenants                              | Event Logs (Admin Area & in Workspace) |
+| Replication to cloud platform                                                   | Tenant Details (Admin Area)            |
+| Created / Changed / Deleted for Landing Zones                                   | Event Logs (Admin Area)                |
+| Added / Changed / Removed for Users in Workspaces and Projects                  | Event Logs (Admin Area & in Workspace) |
+| Authentication ((invalid) Logins, Logout, Timeout of session, …)                | On request                             |
+| Interactions with Service Brokers (create/update/delete instance & bindings)    | On request                             |
 
 ## Logging of Business-Related Administrative Access
 
-Administrators and meshPartner have access rights, that exceed the normal user’s
+Administrators have access rights, that exceed the normal user’s
 capabilities. Therefore administrative actions require special control and
 traceability.
 
-| Event (What?)                                  | Log-File / DB-Table (Where)                      |
-| ---------------------------------------------- | ------------------------------------------------ |
-| Assign yourself to a workspace                 | User Event table, Customer Event Table, mesh.log |
-| Change project quota                           | Project Event table, mesh.log                    |
-| Update financial information of a project      | Project Event table, mesh.log                    |
-| Send message to workspace                      | mesh.log                                         |
-| Change status of workspace (Disabled/Verified) | Customer Event table, mesh.log                   |
+| Event                                          | meshStack page / DB-Table (Where)                |
+| ---------------------------------------------- | -------------------------------------------------|
+| Assign yourself to a Workspace                 | Event Logs (Admin Area & in Workspace)           |
+| Change Workspace and Platform quota            | Event Logs (Admin Area & in Workspace), mesh.log |
+| Update financial information of a Project      | Event Logs (Admin Area & in Workspace), mesh.log |
+| Send message to Workspace                      | mesh.log                                         |
 | Deletion of a user                             | User table in deletedOn and deletedBy fields     |
 
 ## Security Relevant Events
@@ -57,15 +56,15 @@ This section overlaps in some parts with the previously mentioned log files, but
 it summarizes all logs that are written for security related actions, like
 giving and revoking access.
 
-| Event (What?)                                                         | Log-File / DB-Table (Where)                   |
-| --------------------------------------------------------------------- | --------------------------------------------- |
-| Successful and denied login attempts, as well as logouts              | Keycloak Events, events.log                   |
-| Create, change, lock, unlock and delete accounts and roles            | Customer/Project Event table, mesh.log        |
-| Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log         |
-| Password changes - Authorization via federated IdP                    | Federated IdP                                 |
-| Access Right changes (i.e. user rights)                               | Customer/Project Event table, mesh.log        |
-| Changes to logging configuration (especially deactivation of logging) | Can only be done by meshcloud, no logging atm |
-| Start and stop administrative processes (Batch-Jobs)                  | mesh.log                                      |
+| Event (What?)                                                         | meshStack page / Log-File / DB-Table (Where)     |
+| --------------------------------------------------------------------- | ---------------------------------------------    |
+| Successful and denied login attempts, as well as logouts              | Keycloak Events, events.log                      |
+| Created, changed, deleted Workspaces                                  | Event Logs (Admin Area & in Workspace), mesh.log |
+| Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log            |
+| Password changes - Authorization via federated IdP                    | Federated IdP                                    |
+| Access Right changes (i.e. user rights)                               | Event Logs (Admin Area & in Workspace), mesh.log |
+| Changes to logging configuration (especially deactivation of logging) | Can only be done by meshcloud, no logging atm    |
+| Start and stop administrative processes (Batch-Jobs)                  | mesh.log                                         |
 
 ## Structure / Content, Format and Retention
 
