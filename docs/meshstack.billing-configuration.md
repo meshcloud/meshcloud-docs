@@ -516,7 +516,7 @@ In order to simplify multi-cloud governance, the best practice is to have a sing
 You have two options to enable currency conversion for chargebacks and usage reports:
 
 1. **Default converter** fetches rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates from the European Central Bank. To enable the default converter, simply activate the toggle in the Financial Tab on the Settings page
-2. If your organization has its own rates, you can utilize **Own converter**, which sends rates to meshStack via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team support@meshcloud.io. They will support you in connecting your own converter with meshStack.
+2. If your organization has its own rates, you can utilize your **Own converter**, which sends rates to meshStack via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team support@meshcloud.io. We will support you in connecting your own converter to meshStack.
 
 For chargebacks, we use the daily exchange rate from the day your statement is finalized, regardless of whether you're using your own converter or the default one. For example,  your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargebacks in USD will be converted and finilized at this rate.
 
