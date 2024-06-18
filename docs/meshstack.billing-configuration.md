@@ -531,7 +531,7 @@ If you decide not to use currency conversion and prefer to have multiple currenc
 
 The following product functionalitities do currently not support multi-currency scenarios:
 
-- **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and OSB Services) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items are in EUR. This can create confusion if the underlying Tenant Usage Report uses a different or multiple currencies.
+- **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and OSB Services) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items are in EUR. This can create confusion if the underlying Tenant Usage Report uses different or multiple currencies.
 - **Payment Methods**: Amounts specified on payment methods are currently only in EUR.
 
 
