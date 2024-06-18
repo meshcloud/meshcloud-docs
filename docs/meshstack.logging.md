@@ -10,7 +10,7 @@ provide central access to the log files for meshcloud operators, a central
 logging system build around Loki and Grafana is used to collect logs and make
 them available for error analysis.
 
-meshStack keep track of events for auditing and monitoring purposes. You can find these events in the Event Logs page under the Compliance section in the Admin area. These logs help answer questions like:
+meshStack keeps track of events for auditing and monitoring purposes. You can find these events in the Event Logs page under the Compliance section in the Admin Area. These logs help answer questions like:
 
 - Who created a Project? (by typing the Project name under the Event table and selecting 'created' in the Type column)
 - Who granted or revoked access in a Workspace for a user? (by typing the user's name or email in the Change column, the Workspace name in the Workspace column, and selecting 'remove' in the Type column)
