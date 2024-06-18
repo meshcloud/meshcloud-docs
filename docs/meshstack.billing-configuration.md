@@ -511,7 +511,7 @@ let example
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-In order to simplify multi-cloud governance, the best practice is to have single chargeback currency. meshStack simplifies the chargeback process with automatic currency conversion capability, namely regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. Please be aware that by now we are supporting converison of different currencies such as USD, CNY, TWD, CAD, INR to **Euro** only.
+In order to simplify multi-cloud governance, the best practice is to have a single chargeback currency. meshStack simplifies the chargeback process with it's automatic currency conversion capability. Regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. Please be aware that by now we are supporting conversion of different currencies such as USD, CNY, TWD, CAD, INR to **Euro** only.
 
 You have two options to enable currency conversion for chargebacks and usage reports:
 
