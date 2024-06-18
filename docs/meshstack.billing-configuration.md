@@ -522,7 +522,7 @@ For chargebacking, we use the daily exchange rate from the day your statement is
 
 > Please be aware that activating the default converter or adding your own will only impact future data. Past finalized chargeback statements and usage reports won't be retroactively converted to the single currency. So, if you want to enable currency conversion for the current month, make sure to connect or activate it before finalizing chargebacks for that month.
 
-If your meshStack is hosted in a private environment and has permission to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off togle button in the Financial Tab of the Settings page.
+If your meshStack is hosted in a private environment and has permissions to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off toggle button in the Financial tab of the Settings page.
 
 
 ### Multi-Currency
