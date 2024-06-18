@@ -527,7 +527,7 @@ If your meshStack is hosted in a private environment and has permission to make 
 
 ### Multi-Currency
 
-If you decide not to use currency conversion and prefer to have multi-currency in chargebacks, simply disable the toggle on the Financial Tab in the Settings page.
+If you decide not to use currency conversion and prefer to have multiple currencies in chargeback statements, simply disable the toggle on the Financial Tab in the Settings page.
 
 The following product functionalitities do currently not support multi-currency scenarios:
 
