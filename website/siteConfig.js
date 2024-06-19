@@ -46,7 +46,7 @@ const siteConfig = {
 
   /* path to images for header/footer */
   headerIcon: 'img/favicon.png',
-  footerIcon: 'img/meshcloud_white.svg',
+  footerIcon: 'img/favicon.png',
   favicon: 'img/favicon.png',
 
   /* colors for website */
