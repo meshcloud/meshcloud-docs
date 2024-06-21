@@ -111,7 +111,7 @@ This export will contain the line items (see above) of all the chargeback statem
 The line item data is suitable for feeding into chargeback processing, e.g. importing it to an ERP System to transfer
 budgets between cost centers.
 
-Chargeback Statements also contain billing information per line item. Your Cloud Foundation team can [configure](meshstack.billing.md#chargeback)
+Chargeback Statements also contain billing information per line item. Your Cloud Foundation team can [configure](meshstack.billing-configuration.md)
 which information meshStack should include as billing information in chargeback statements.
 
 > Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any workspace tags, project tags and payment method tags.
