@@ -47,11 +47,13 @@ Tenants that are assigned into meshStack are removed from the unmanaged tenants 
 Alternatively, if you prefer building an automation or an "as Code"-approach, you can use the [meshTenant API Import](https://docs.meshcloud.io/api/#_meshtenant).
 
 ### Unmanaged AWS tenants
+
 To import an unmanaged AWS account into a Workspace and Project, the account must be configured for meshStack integration. This configuration involves setting up an IAM role with a trust relationship to the root or master account of the AWS organization to which the account belongs.
 
 Create the IAM role named `MeshstackAccountAccessRole` in the unmanaged account and assign the AWS managed IAM Policy `AdministratorAccess` to it. Once the account import is complete, the IAM role's permissions will be reduced to the required level.
 
 Add the following trust relationship to the IAM role `MeshstackAccountAccessRole`, substituting `ROOT_ACCOUNT_ID` with the AWS account ID of the organization's master or root account.
+
 ```json
 {
   "Version": "2012-10-17",
@@ -66,4 +68,5 @@ Add the following trust relationship to the IAM role `MeshstackAccountAccessRole
   ]
 }
 ```
+
 Once the role is established, the unmanaged AWS account can be assigned to a project, allowing you to proceed with the steps outlined above.
