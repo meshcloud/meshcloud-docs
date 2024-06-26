@@ -114,9 +114,23 @@ The inputs' behavior can be further decided:
   shown to any users. Also meshStack only has very limited access to this secret. Only once Terraform gets executed,
   the secret is decrypted.
 
-We support different types of inputs, the basic types are STRING, NUMBER and BOOLEAN. There will be more complex types 
-like LIST and MAP coming as well. For now, there is an exception for the source "User Permissions". It already provides
-a LIST of objects to the Building Block, with a JSON structure that looks like this:
+#### Input Types
+
+We support the following types of inputs:
+
+- String
+- Number
+- Boolean
+- Single Select
+- File (this will place a file in the working directory of Terraform. The name of the input will be used as the filename. Usually you can use a relative path to access the provided file like ./FILENAME.)
+
+In the future we also plan to have more complex types such as LIST and MAP as well.
+
+#### User Permissions
+
+On top of all the input types described above there is also a special kind of input where you receive all assigned project users & roles.
+This input is called "User Permissions" and it has to be selected under "Source -> User Permissions". This can be useful to provide users with access to certain resources in a 
+platform. It provides a list of objects to the Building Block, with a JSON structure that looks like this:
 
 ```json
 [
@@ -140,7 +154,6 @@ a LIST of objects to the Building Block, with a JSON structure that looks like t
   }
 ]
 ```
-
 
 ### Building Block Outputs
 
