@@ -582,7 +582,7 @@ Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
@@ -601,7 +601,7 @@ Content-Length: 2627
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2024-06-19T13:03:12.868470453Z"
+        "createdOn" : "2024-07-02T13:52:29.894734567Z"
       },
       "spec" : {
         "displayName" : "parent block",
@@ -629,7 +629,7 @@ Content-Length: 2627
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2024-06-19T13:03:12.879624543Z"
+        "createdOn" : "2024-07-02T13:52:29.906560204Z"
       },
       "spec" : {
         "displayName" : "child block",
@@ -819,7 +819,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of inputs, which are set on the Building Block.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of parent building blocks, which are set on the Building Block.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[].buildingBlockUuid</code></p></td>
@@ -896,7 +896,7 @@ Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
@@ -913,7 +913,7 @@ Content-Length: 1186
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2024-06-19T13:03:12.879624543Z"
+    "createdOn" : "2024-07-02T13:52:29.906560204Z"
   },
   "spec" : {
     "displayName" : "child block",
@@ -997,7 +997,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "e3867023-79e1-4e32-be15-11f89b1b0524"
+      "buildingBlockUuid": "29a68f19-35d0-4de3-8fcc-1b57368f8c00"
     }]
   }
 }</code></pre>
@@ -1025,14 +1025,14 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "e3867023-79e1-4e32-be15-11f89b1b0524"
+      "buildingBlockUuid": "29a68f19-35d0-4de3-8fcc-1b57368f8c00"
     }]
   }
 } '</code></pre>
 </div>
 </div>
-<table id="mesh_buildingblock_create_response_fields" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Response Fields</caption>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Request Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1059,12 +1059,7 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'uuid' to uniquely identify the Building Block. It also contains additional meta information like the Building Block creation date.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID to uniquely identify the Building Block.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed fields that help identify the Building Block.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.definitionUuid</code></p></td>
@@ -1080,26 +1075,6 @@ Host: mesh-backend-url
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.tenantIdentifier</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The full identifier of the tenant, this Building Block is created in.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.forcePurge</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set to true, if an operator explicitly requested this Building Block to be purged.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.createdOn</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Building Block has been created at this <a href="#data_types">date</a> (e.g. <code>2020-12-22T09:37:43Z</code>).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.markedForDeletionOn</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the Building Block has been marked for deletion, the <a href="#data_types">date</a> when a user requested the deletion is provided via this field. e.g. <code>2020-12-22T09:37:43Z</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.markedForDeletionBy</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the Building Block has already been deleted, the username of the user who triggered the deletion is provided here.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
@@ -1134,7 +1109,7 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of inputs, which are set on the Building Block.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of parent building blocks, which are required for the Building Block. If none given, an empty list needs to be provided.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[].buildingBlockUuid</code></p></td>
@@ -1146,44 +1121,9 @@ Host: mesh-backend-url
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the Building Block Definition of the parent Building Block.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the current status of the Building Block.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.status</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The status of the Building Block. One of WAITING_FOR_DEPENDENT_INPUT, WAITING_FOR_OPERATOR_INPUT, PENDING, IN_PROGRESS, SUCCEEDED, FAILED.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of outputs, which are set on the Building Block.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].key</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The key of the output as set on the related Building Block Definition.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].value</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The value, which is set on this output.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].valueType</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, FILE, LIST, SINGLE_SELECT.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Available <a href="#mesh_buildingblock_links">links</a> on a Building Block.</p></td>
-</tr>
 </tbody>
 </table>
-<table id="mesh_buildingblock_create_links" class="tableblock frame-all grid-all stretch">
+<table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 9. Building Block Links</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -1211,7 +1151,7 @@ Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/hal+json
 X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
@@ -1223,12 +1163,12 @@ Content-Length: 1173
   "apiVersion" : "v1",
   "kind" : "meshBuildingBlock",
   "metadata" : {
-    "uuid" : "9f16fd08-c275-439b-95ab-052ea2ed2477",
+    "uuid" : "93fdc4e7-b145-4dec-bec1-fa1d95b890c1",
     "definitionUuid" : "ef6aaf87-3f8c-477c-94f4-f3cf509728ca",
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2024-06-19T13:03:14.191347544Z",
+    "createdOn" : "2024-07-02T13:52:31.546168931Z",
     "markedForDeletionOn" : null,
     "markedForDeletionBy" : null
   },
@@ -1240,7 +1180,7 @@ Content-Length: 1173
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "e3867023-79e1-4e32-be15-11f89b1b0524",
+      "buildingBlockUuid" : "29a68f19-35d0-4de3-8fcc-1b57368f8c00",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -1250,7 +1190,7 @@ Content-Length: 1173
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9f16fd08-c275-439b-95ab-052ea2ed2477"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/93fdc4e7-b145-4dec-bec1-fa1d95b890c1"
     },
     "meshtenant" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
@@ -1268,7 +1208,7 @@ Content-Length: 1173
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/9f16fd08-c275-439b-95ab-052ea2ed2477 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/93fdc4e7-b145-4dec-bec1-fa1d95b890c1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1276,7 +1216,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9f16fd08-c275-439b-95ab-052ea2ed2477' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/93fdc4e7-b145-4dec-bec1-fa1d95b890c1' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1287,7 +1227,7 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
@@ -1300,7 +1240,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-06-19 12:58:18 UTC
+Last updated 2024-07-02 13:48:25 UTC
 </div>
 </div>
 </body>
