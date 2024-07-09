@@ -135,36 +135,6 @@ do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 
-There are two different ways how to apply access rights to the Cloud Platforms. Some Platforms can use the rights that are set in the OIDC or SAML token provided by the [meshIdB](meshstack.identity-federation.md). However, not all cloud platforms support this approach. Therefore the second option is the [replication](./meshcloud.tenant.md) of authorization attributes during meshTenant replication.
+meshStack [replication](./meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a Platform Operator on the platform or landing zone level.
 
 > Please consult the documentation for the different cloud platforms for more details on the supported authorization mechanisms and their configuration.
-
-#### meshIdB Authorization
-
-> Authorization via meshIdB is deprecated and will be removed from meshStack together with support for meshStack-provisioned Identities. See [Identity Federation - Platform Support](./meshstack.identity-federation.md#platform-support) for more details.
-
-In order to provide users access to their cloud resources, all relevant authorization information about a meshUser is stored in the corresponding meshIdB user. To provide the authorization information in the token, the request for the token must be scoped to a specific meshWorkspace role. The tokens provided by Keycloak contain the scoped workspace and the according meshWorkspace role as well as information about the meshProjects the user has access to.
-
-The following claims in the OIDC token represent this information and can be used by the cloud platforms to apply the access rights.
-
-```json
-{
-  "MC_PROJECTS": [
-    "project1-noadmin",
-    "project2-noadmin"
-  ],
-  "MC_CUSTOMER": "my-workspace",
-  "MC_GROUPS": [
-    "Workspace Manager"
-  ],
-  "preferred_username": "user@meshcloud.io",
-  "email": "user@meshcloud.io",
-}
-```
-
-The `MC_PROJECTS` claim contains all projects the user has access to in the scoped meshWorkspace. The `MC_GROUPS` also contain only the meshWorkspace roles the user is assigned to in the current workspace. This claim is currently defined as an array for future flexibility. Currently a user can only have one role assigned per meshWorkspace.
-
-#### Authorization via replication
-
-For platforms that don't support the [Authorization via meshIdB](#meshidb-authorization), access rights are replicated during project replication. Cloud platforms provide their own ACL system and meshStack configures it as defined in the project. E.g. this could be an assignment of certain roles for a certain project in the cloud platform.
-
