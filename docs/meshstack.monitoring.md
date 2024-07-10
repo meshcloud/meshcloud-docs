@@ -34,7 +34,7 @@ meshcloud transmits and processes metrics data to a central monitoring system op
 
 Customers can find more details including a full list of metrics transmitted in meshStack's security documentation.
 
-When enabled, [product usage data](#product-usage-data) is relayed from meshPanel's web server to a central plausible server instance operated by meshcloud.
+When enabled, collected [product feedback and usage data](administration.product-feedback-collection.md) is relayed from meshPanel's web server to a central plausible server instance operated by meshcloud.
 
 ## Health endpoint
 
