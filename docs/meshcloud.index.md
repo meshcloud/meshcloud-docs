@@ -5,76 +5,93 @@ title: Overview
 
 ## Introduction
 
-Welcome to the meshStack documentation! This part of the documentation is intended for end users
-of the meshStack platform. Be aware that meshStack might be rebranded in your organization and has a different name,
-but everything you find in the documentation will apply to the meshStack you are using as well.
+meshStack is a SaaS service that aids organizations in establishing cloud governance across heterogeneous environments, whether they are operating in public or private clouds. Cloud governance refers to a process of defining and implementing compliance rules, tools, and best practices to ensure efficient usage of cloud resources. This encompasses security, cost, and operations.
 
-meshStack is useful for anyone who wants to use platform services in their organization and manage their costs.
-Maybe you are an Application team that wants to create a few cloud projects in Microsoft Azure or Google Cloud,
-use an organization-specific service like an On-Premise network connector, or maybe you are a Project Manager that
-wants to manage the budget of a cloud project.
+The target personas for meshStack include application teams, cloud architects, engineers, Heads of IT, and IT directors. The summary below outlines the benefits of meshStack for these personas.
 
-The actual cloud platforms and services that are available to you depend on the setup of the meshStack and your organization.
-One organization might only offer Microsoft Azure, but another might offer all major cloud providers. Your meshStack will automatically
-reflect whatever is available in your case.
+For cloud architects and engineers:
 
-## Concepts
+- Provide application teams with compliant cloud platforms, ensuring that business applications run in an optimal environment following the best practices and rules established by the IT team.
+- Offer IT services via the meshStack Marketplace to increase automation in IT resource management and empower application teams with self-service options.
 
-To work with meshStack, the following concepts are of importance:
+For the Head of IT and IT Directors:
 
-- [Workspace](./meshcloud.workspace.md): The workspace is the highest level that you will work with. In here, you will invite
-  your entire team of managers, developers and more. In the workspace you will create one or more projects.
-- [Project](./meshcloud.project.md): The project is a cloud-agnostic concept which usually maps to an environment of an application
-  that you and your team are developing. The project will have a payment method assigned that acts as the budget. On the project
-  you invite team members that are needed for that environment, e.g. for a production project you will invite your SRES. Within
-  the project, you will have one or more cloud tenants.
-- [Tenant](./meshcloud.tenant.md): The tenant is an isolated and tangible place in an actual cloud provider. It depends on what cloud
-  you use what this maps to. For example for AWS this maps to an `Account`, for Azure this is a `Subscription` and for Google Cloud
-  it is a `Project`. meshStack can easily let you log in and redirect you to the tenant in the respective cloud provider.
-- [Landing Zone](./meshcloud.landing-zones.md): The landing zone is a template created by your organization that you pick
-  when you create a new tenant. It cannot be changed afterward. The idea of the landing zone is that you already get a set
-  of policies and perhaps resources to start using the cloud right away according to the compliance and best practices
-  of your organization.
-- [Building Blocks](./administration.building-blocks.md): A building block is a piece of infrastructure that can be booked
-  by you on top of a tenant. The library of Building Blocks is fully maintained by your administration team, so it depends on
-  what is available to you. You can view the library in the meshPanel.
-- [Platform](./meshcloud.platforms.md): The platform is the actual cloud platform that you can use to create a new tenant
-  and start consuming the cloud. When you create a new project, you can select which platform(s) you want to use and the
-  respective tenants will be created in the background.
+- Oversee expenditures across different cloud platforms within a single application
+- Access detailed billing reports, aggregated by cloud provider, applications, etc.
+- Improve efficiency with self-service options and automation
 
-## meshPanel
+For the Application Team:
 
-The meshPanel is the self-service user interface for meshStack and provides different control planes to manage various aspects of your meshObjects depending on your rights:
+- Manage cloud resources in a self-service
+- Request and utilize cloud resources within minutes
+- Onboard team members and manage their access to the cloud.
+- Consolidate costs across cloud resources running on AWS, Azure, GCP, etc.
+- Attribute costs to specific projects and teams
 
-- [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): Manage the access of your team members in your [meshWorkspace](./meshcloud.workspace.md), change the tags or check the available payment methods for your meshWorkspace.
 
-- [project control plane](./meshcloud.project-resources.md#project-control-plane): Get an overview of all tenants of your [meshProject](./meshcloud.project.md). Add new team members to it or change the payment methods of your project.
+[![meshcloud live demo](https://img.youtube.com/vi/JADj3zgB2QA/hqdefault.jpg)](https://www.youtube.com/watch?v=JADj3zgB2QA)
 
-- [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane): Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
+## meshStack Concepts
 
-The above description serves as an example what you are able to do as Workspace Manager. Workspace Members will have a lot less
-access rights. Check out [Workspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.
+### Cloud resources
 
-> If you are an administrator, please be aware that there are a lot more user interfaces available
-> to you. Read more in the [Admin Docs](./meshstack.index.md)
+meshStack organizes cloud environments using a comprehensive structure consisting of following objects:
 
-### Supported Browsers
+- A **Tenant**, which is essentially a cloud environment where run your application resources. Tenant examples include an AWS account, a GCP project, an Azure subscription, Kubernetes namespaces, and so on.
+- A **Platform** is an computational environment that hosts Tenants and offers cloud services and resources. For instance, AWS organization, GCP organization, Azure Tenant, or Openshift cluster are examples of a Platform.
+- A **Landing Zone** is a set of rules and policies meant to organize platform resources into various domains, like "production", "development", or "regulated environment". Any Tenant operating within a Landing Zone will automatically have the rules of that Landing Zone applied, enforcing existing standards and compliance. Practical examples of Landing Zones include AWS Organizational Unit (OU) having set of guardrails, GCP Folder with services policies and so on.
+- A **Project** brings together one or more Tenants from various clouds. The purpose of Projects is to logically organize your application resources into units such as "production", "sandbox", and so on.
+- A **Workspace** typically represents one or multiple business applications that are overseen by an application management team. Each Workspace can contain one or more Projects, with an application team assigned to each Workspace.
+- An **Application team** is granted access to a Workspace and various related Projects. Their objective is to manage the cloud environments of application(s).
 
-- Firefox ESR
-- last 2 Firefox versions
-- last 2 Chrome versions
+The illustration provides a concise summary of the key concepts presented above.
+![](assets/meshcloud.index.keyconcept.svg)
 
-If you experience problems with other browsers like Edge (Chromium), Safari or with mobile browser let us know.
-We are interested to make that work as well!
+### Payment method
+
+A payment method represents a budget allocated to an application or a department for their cloud spending. Each payment method may have an amount and an expiration date, and it is always assigned to a single Workspace. However, a Workspace can support multiple payment methods. These methods can be used by Workspace projects to monitor their cloud expenditure.
+
+![](assets/meshcloud.index.payment.png)
+
+### Tags
+
+Tags offer a powerful way to add metadata to meshStack objects. These tags can be used for inventory purposes and to enforce compliance rules, ensuring that cloud applications run in a safe environment. Currently, meshStack allows tag assignments to a workspace, a project, a payment method, and a landing zone.
+
+![](assets/meshcloud.index.tags.png)
+
+### Building blocks
+
+mehStack offers a service called Building Block, which automates resource provisioning. End-users can use Building Block to self-deploy essential cloud resources, such as "Create a VPC" or "Establish on premise connection". In other scenarios, Building Block can automatically run for each newly created tenant, ensuring they have the necessary infrastructure prerequisites in place. Building Block supports Terraform to automate infrastructure provisioning.
+
+[![meshcloud live demo](https://img.youtube.com/vi/mQkD_VXLe5I/hqdefault.jpg)](https://www.youtube.com/watch?v=mQkD_VXLe5I)
+
+## Policies
+
+How to ensure that application tenants are operating on the appropriate cloud platform or Landing Zone? For instance, within a specific organization, how to verify that applications managed by a particular business unit are only running on the platform belonging to that unit? This might be necessary due to legal or financial requirements.
+
+meshStack policies use tags to establish policies. For example, by applying a "BusinessUnit" tag to both a Landing Zone and a Project, policies can be set to only allow a Project to be deployed in a Landing Zone if their tags match, meaning they have the same value.
+
+## Marketplace
+
+meshStack not only simplifies cloud management but also provides a Marketplace service. This solution connects end-users with platform engineers and service providers. In this Marketplace, engineers can offer reliable IT services called Building Blocks, while platform providers can offer their custom platforms. Additionally, both platform providers and Building Block owners can choose to charge recurring fees for their services.
+
+![](assets/meshcloud.index.marketplace.png)
+
+## FinOps
+
+meshStack provides the crucial feature of automatically collecting cloud costs for a multi-cloud environment and mapping them to the relevant internal cost centers providing full cost transparency. The meshStack UI allows users, like Workspace owners, to oversee the total cost of cloud resource usage for all underlying projects. It also provides a user interface to display a detailed view of the costs for each tenant, project, and workspace, categorized by time period.
+
+![](assets/meshcloud.index.finops.png)
+
 
 ## Contributing
 
-This documentation is open source! Please feel free to hit the `Edit` button any time and help us [improve](https://github.com/meshcloud/meshcloud-docs/blob/master/CONTRIBUTING.md) the documentation. Your feedback is very welcome.
+This documentation is open source! You are encouraged to click the `Edit` button at any time to help us [enhance](https://github.com/meshcloud/meshcloud-docs/blob/master/CONTRIBUTING.md) the documentation. We welcome your feedback.
 
 ## Getting Updates
 
-We release regularly and provide weekly updates. If you want to stay on top of changes in meshStack you can use the following: 
+We regularly release updates and provide weekly summaries. To stay informed about the latest changes in meshStack, you can: 
 
-- Have a look at the roadmap on the website under [www.meshcloud.io](https://www.meshcloud.io/en/product/).
-- Subscribe to the [Product Newsletter](https://share.hsforms.com/1AbELCsdRRP6EaCkm1UeATwc0hrp) which is sent out every two weeks summarizing the most important changes.
-- Have a look at the [release notes](/blog) or follow either one of [RSS](/blog/feed.xml) or [atom](/blog/atom.xml) directly. 
+- View the roadmap on our website at [www.meshcloud.io](https://www.meshcloud.io/en/product/).
+- Sign up for the [Product Newsletter](https://share.hsforms.com/1AbELCsdRRP6EaCkm1UeATwc0hrp) which is distributed biweekly and summarizes the key updates.
+- Check the  [release notes](/blog) or subscribe to either the [RSS](/blog/feed.xml) or [atom](/blog/atom.xml) feeds for direct updates.
