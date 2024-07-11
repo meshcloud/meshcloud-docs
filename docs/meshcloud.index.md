@@ -45,19 +45,19 @@ meshStack organizes cloud environments using a comprehensive structure consistin
 - An **Application team** is granted access to a Workspace and various related Projects. Their objective is to manage the cloud environments of application(s).
 
 The illustration provides a concise summary of the key concepts presented above.
-![](assets/meshcloud.index.keyconcept.svg)
+![Key concepts](assets/meshcloud.index.keyconcept.svg)
 
 ### Payment method
 
 A payment method represents a budget allocated to an application or a department for their cloud spending. Each payment method may have an amount and an expiration date, and it is always assigned to a single Workspace. However, a Workspace can support multiple payment methods. These methods can be used by Workspace projects to monitor their cloud expenditure.
 
-![](assets/meshcloud.index.payment.png)
+![Payment method](assets/meshcloud.index.payment.png)
 
 ### Tags
 
 Tags offer a powerful way to add metadata to meshStack objects. These tags can be used for inventory purposes and to enforce compliance rules, ensuring that cloud applications run in a safe environment. Currently, meshStack allows tag assignments to a workspace, a project, a payment method, and a landing zone.
 
-![](assets/meshcloud.index.tags.png)
+![Tags](assets/meshcloud.index.tags.png)
 
 ### Building blocks
 
@@ -75,13 +75,13 @@ meshStack policies use tags to establish policies. For example, by applying a "B
 
 meshStack not only simplifies cloud management but also provides a Marketplace service. This solution connects end-users with platform engineers and service providers. In this Marketplace, engineers can offer reliable IT services called Building Blocks, while platform providers can offer their custom platforms. Additionally, both platform providers and Building Block owners can choose to charge recurring fees for their services.
 
-![](assets/meshcloud.index.marketplace.png)
+![Marketplace](assets/meshcloud.index.marketplace.png)
 
 ## FinOps
 
 meshStack provides the crucial feature of automatically collecting cloud costs for a multi-cloud environment and mapping them to the relevant internal cost centers providing full cost transparency. The meshStack UI allows users, like Workspace owners, to oversee the total cost of cloud resource usage for all underlying projects. It also provides a user interface to display a detailed view of the costs for each tenant, project, and workspace, categorized by time period.
 
-![](assets/meshcloud.index.finops.png)
+![Finops](assets/meshcloud.index.finops.png)
 
 
 ## Contributing
