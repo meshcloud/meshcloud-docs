@@ -30,9 +30,7 @@ Any update to tenant metadata (e.g. a change in payment method) triggers a new m
 
 > Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
-If you would like to delete a meshTenant which is no longer used, open the corresponding meshTenant navigate to 
-
-**Deletion**.
+If you would like to delete a meshTenant that is no longer used, open the corresponding meshTenant and navigate to **Deletion**.
 
 > If you delete the entire meshProject [submitted for deletion](meshcloud.project.md#delete-a-meshproject) instead,
 > the meshProject will be deleted once all meshTenants within the meshProject have been deleted successfully.
@@ -49,7 +47,7 @@ meshStack will update the status of your tenant in the Deletion Queue accordingl
 
 ## Reuse of an existing tenant
 
-meshStack does not support reusing platformTenants. Imagine a meshProject has been set as [deleted by a platform operator](administration.projects.md#delete-projects), but the underlying platform tenant has not been deleted by the platform operator. You may think of reusing this tenant in another project by using the [meshObject Import](/api/#mesh_object_declarative_import). This is not supported by meshStack and will lead to an error during import. The reason for this current limitation is handling such a reuse of a tenant in meshMetering. Having the same tenant being used by different projects (perhaps even within the same month), makes it hard or in some cases even impossible to decide which project to charge for this tenant. Therefore reusing platformTenants is currently not supported by meshStack.
+meshStack does not support reusing platform tenants. Imagine a tenant has been deleted, but the underlying platform tenant has not been deleted by the platform operator. You may think of reusing this tenant in another project. This is not supported by meshStack and will lead to an error during import. The reason for this current limitation is handling the reuse of tenants in the metering system. Having the same tenant being used by different projects (perhaps even within the same month), makes it hard or in some cases even impossible to decide which project to charge for this tenant. Therefore reusing platform tenants is currently not supported by meshStack.
 
 > Read best practices on building a solid tenant management in your cloud foundation on the [cloud foundation website](https://cloudfoundation.org/maturity-model/tenant-management/).
 
@@ -59,8 +57,8 @@ Before a meshTenant can be [automatically deleted](meshcloud.tenant.md#automatic
 
 This security check is currently supported for the platforms:
 
-* CloudFoundry
-* OpenStack
-* OSB Services
+- CloudFoundry
+- OpenStack
+- OSB Services
 
 > Since this security measure is very important, fully automated deprovisioning of projects from other platforms is currently not supported and requires [manual intervention](administration.projects.md#delete-tenants). We are looking into extending support for further automating this process in the future.
