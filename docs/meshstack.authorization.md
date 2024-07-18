@@ -135,6 +135,6 @@ do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 
-meshStack [replication](./meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a Platform Operator on the platform or landing zone level.
+meshStack [replicates](./meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a Platform Operator on the platform or landing zone level.
 
 > Please consult the documentation for the different cloud platforms for more details on the supported authorization mechanisms and their configuration.
