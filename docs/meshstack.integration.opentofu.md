@@ -20,6 +20,6 @@ Platforms teams are increasingly offering on-demand services via API and UI to a
 ## How
 
 If you are starting out with a new platform, we recommend to use the built-in platform support for managing the lifecycle of tenants. To use a built-in platform, follow our [platform integration guide](meshstack.how-to.integrate-meshplatform.md).
-Once a platform is integrated, you can define building blocks to expand additional services.
+Once a platform is integrated, you can define building blocks with OpenTofu to expand additional services.
 
-If you have existing automation or want to integrate a platform for which meshStack does not offer built-in support we recommend to create your own platform. To get started, follow our [guide](meshstack.how-to.create-your-own-platform.md).
+If you have existing OpenTofu automation or want to integrate a platform for which meshStack does not offer built-in support using OpenTofu we recommend to create your own platform. To get started, follow our [guide](meshstack.how-to.create-your-own-platform.md).
