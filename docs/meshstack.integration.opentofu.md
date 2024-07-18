@@ -15,7 +15,7 @@ meshStack enables platform teams to define building blocks. Application teams or
 
 ## Why
 
-Platforms teams are increasinbly offering on-demand services via API and UI avoid waiting times for their customers and tedious manual tasks for themselves.
+Platforms teams are increasingly offering on-demand services via API and UI to avoid waiting times for their customers and tedious manual tasks for themselves.
 
 ## How
 
