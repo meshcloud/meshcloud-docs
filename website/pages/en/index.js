@@ -107,7 +107,7 @@ class Index extends React.Component {
                     content:
                       `DevOps Teams use meshStack to setup and [configure a team](${docUrl('meshcloud.workspace.html', language)}),
                        [create projects](${docUrl('meshcloud.project.html', language)}) and provision managed cloud environments using [Landing Zones](${docUrl('meshcloud.landing-zones.html', language)}).
-                       Once setup you can [manage resources](${docUrl('meshcloud.project-resources.html', language)}), [review costs](${docUrl('meshcloud.project-metering.html', language)})
+                       Once setup you can [enter the cloud[${docUrl('meshcloud.tenant.html')} [review costs](${docUrl('meshcloud.project-metering.html', language)})
                        and [consume marketplace services](${docUrl('marketplace.index.html', language)}).`,
                     image: `${imgUrl('persona_devops.png')}`,
                     imageAlign: 'top',
