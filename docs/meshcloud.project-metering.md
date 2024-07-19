@@ -13,7 +13,7 @@ Project owners associate their projects with payment information. This is used f
 
 ### Payment Methods
 
-External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](./meshstack.api.md).
+External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](/api/).
 Partners can also provide payment methods for a workspace via [`Create/Edit Payment Methods`](meshcloud.payment-methods.md#creating-a-payment-method-via-the-meshpanel) button on the workspace in the **Admin Area** > **Workspaces**.
 
 [Metadata](./meshcloud.metadata-tags.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
