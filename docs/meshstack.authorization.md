@@ -15,7 +15,7 @@ meshStack includes **meshObject roles** that manage permissions on different [me
 
 ### Role Bindings
 
-**Role bindings** assign a meshUser or meshWorkspaceUserGroup a meshObject role on specific meshObject. Role bindings are also exposed via the [meshObject API](meshstack.api.md#meshobject-api). For example, a `meshProjectUserBinding` associates a meshUser with a meshProject and a meshProject Role.
+**Role bindings** assign a meshUser or meshWorkspaceUserGroup a meshObject role on specific meshObject. Role bindings are also exposed via the [meshStack API](/api/). For example, a `meshProjectUserBinding` associates a meshUser with a meshProject and a meshProject Role.
 
 Role bindings can also have a managed expiry date after which meshStack will automatically revoke the role.
 
