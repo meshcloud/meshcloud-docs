@@ -48,9 +48,9 @@ The meshPanel is the self-service user interface for meshStack and provides diff
 
 - [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): Manage the access of your team members in your [meshWorkspace](./meshcloud.workspace.md), change the tags or check the available payment methods for your meshWorkspace.
 
-- project control plane: Get an overview of all tenants of your [meshProject](./meshcloud.project.md). Add new team members to it or change the payment methods of your project.
+- [project control plane](./meshcloud.project.md#manage-meshprojects): Get an overview of all tenants of your [meshProject](./meshcloud.project.md). Add new team members to it or change the payment methods of your project.
 
-- tenant control plane: Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
+- [tenant control plane](./meshcloud.tenant.md#using-your-tenant): Access the platform of your [meshTenant](./meshcloud.tenant.md), request Quotas for it or check the [usage reports](./meshcloud.project-metering.md#tenant-usage-reports).
 
 The above description serves as an example what you are able to do as Workspace Manager. Workspace Members will have a lot less
 access rights. Check out [Workspace Roles](./meshcloud.workspace.md#meshworkspace-roles) for more details.

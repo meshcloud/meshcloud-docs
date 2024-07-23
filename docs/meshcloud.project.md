@@ -13,7 +13,14 @@ We wrote an extensive guide on how to create a new meshProject [here](./meshstac
 
 ## Manage meshProjects
 
-In your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) under **Projects** all meshProjects of your meshWorkspace are listed. To manage a project, click the name of the meshProject. You can edit the assigned tenants, payment information and the assigned users and groups of the project.
+In your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) under the **Projects** tab you will find all meshProjects of your meshWorkspace.
+To manage a project, click the name of the meshProject to open the project control plane.
+
+![Project Control Plane](assets/project/control-plane.png)
+
+In the project control plane you can manage your tenants, payment information and the assigned users and groups of the project.
+
+## Replication of Project Users
 
 The following diagram shows how access rights and project [replication](./meshcloud.tenant.md) result in the correct project access for your users.
 

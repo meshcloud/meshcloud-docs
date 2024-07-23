@@ -13,6 +13,14 @@ meshTenants are isolated cloud environments protected by multi-tenant mechanisms
 - Projects in OpenStack
 - Spaces in CloudFoundry
 
+## Using your Tenant
+
+To use your tenant, open the tenant control plane by going to the [project control plane](./meshcloud.project.md#manage-meshprojects) and opening one of its tenants.
+
+![Tenant Control Plane](assets/tenants/control-plane.png)
+
+In the tenant control plane you can log in to the cloud platform, manage your Building Blocks, view costs associated to the tenant and book additional services for the tenant from the [marketplace](./marketplace.index.md).
+
 ## Replication and Reconciliation
 
 meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](./meshcloud.workspace.md) admins), the [Landing Zone](./meshcloud.landing-zones.md) and [meshPlatform](./meshcloud.platforms.md) configuration (managed by the platform operator) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](./meshcloud.tenant-quota.md) to your meshTenant.
