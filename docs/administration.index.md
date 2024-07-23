@@ -1,13 +1,16 @@
 ---
 id: administration.index
-title: Overview
+title: Admin Area
 ---
 
-Partners Users have access to the so called **Administration Area**. The administration area enables partner users to manage their child [meshWorkspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
-Assigning Partner Users can only be done by Partner Admins.
-
-Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
+The Admin Area is the central place for administrators to manage everything in their meshStack.
+Different groups of people may need access to the different Admin Area functionality. Therefore, the following administrative roles are currently
 available to users of the administration area:
+
+> Please note that only Partner Admins can manage which users have access to the Admin Area. They can do so by opening up the Admin Area
+> and navigating to "Access Control" -> "Admin Access" on the left-hand side of the Admin Area.
+
+## Available Roles
 
 - **Partner Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
   administrator/partner account.
@@ -23,10 +26,9 @@ available to users of the administration area:
 - **Replication Operator**: A supportive role that can assist by viewing tenants' replication status.
   This role is helpful for meshcloud employees to debug any potential issues with tenant replication.
 
-See the [meshWorkspace](meshcloud.workspace.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable by adding roles to reflect individual access requirements of your organization.
+### Role Permission List
 
-The following table provides details about the functionality available to the different roles by default. The Access rights can also be adapted individually
-per meshcloud installation.
+The following table provides details about the functionality available to the different roles.
 
 |                                                                                                                     | Partner Admin        | Partner Employee     | Platform Operator | Ops Support | Controller | Onboarding Support | Compliance Manager | Replication Operator |
 |---------------------------------------------------------------------------------------------------------------------| :------------------: | :------------------: | :---------------: |:-----------:| :--------: | :----------------: | :----------------: | :------------------: |
@@ -71,8 +73,7 @@ per meshcloud installation.
 | &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |             | | | |                    
 
 
-
-Please review [meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) for roles available to end-users of your meshStack implementation.
+Please have a look at the [meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) for available roles to end-users of your meshStack.
 
 ## Admin Groups
 
