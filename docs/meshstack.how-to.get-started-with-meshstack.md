@@ -25,7 +25,7 @@ To experience what this feels like, create your first workspace via the panel. T
 
 ![Create meshWorkspace](assets/create-workspace.png)
 
-Of course, this can also be achieved via API. Take a look at our [short API intro](./meshstack.how-to.create-workspace-via-api.md).
+Of course, this can also be achieved via API. Take a look at our [workspace API](/api/index.html#_meshworkspace) to learn more.
 
 ## Step 3: Create your first meshPlatform
 
