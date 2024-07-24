@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_index">Index</h3>
 <div class="paragraph">
-<p>This is the entry point to navigate through the API of meshStack. Starting from here you will be able to
+<p>This is the entry point to navigate through the API of meshStack Metering. Starting from here you will be able to
 find all endpoints your <a href="#authentication">authenticated</a> user has access to.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -471,13 +471,13 @@ find all endpoints your <a href="#authentication">authenticated</a> user has acc
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.v1.hal+json
-Host: mesh-backend-url</code></pre>
+Host: mesh-billing-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-billing-url/api' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.v1.hal+json'</code></pre>
 </div>
 </div>
@@ -521,12 +521,12 @@ get a subset of the links mentioned here.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#metadata">Metadata API</a> to retrieve metadata from meshStack.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudresources</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#cloud_resources">Cloud Resources API</a> to retrieve cloud resources from meshStack.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshobjects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get, create, update and delete meshObjects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get meshObjects.</p></td>
 </tr>
 </tbody>
 </table>
@@ -545,18 +545,19 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 257
+Content-Length: 366
 
 {
   "_links" : {
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
+    "cloudresources" : {
+      "href" : "https://mesh-billing-url/external/resources/v2{?customer,project,platform,displayName,resourceType,resourceStatus}",
+      "templated" : true
     },
-    "metadata" : {
-      "href" : "https://mesh-backend-url/api/metadata"
+    "meshobjects" : {
+      "href" : "https://mesh-billing-url/api/meshobjects"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api"
+      "href" : "https://mesh-billing-url/api"
     }
   }
 }</code></pre>
@@ -566,7 +567,7 @@ Content-Length: 257
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-24 12:32:17 UTC
+Last updated 2024-07-24 12:32:20 UTC
 </div>
 </div>
 </body>

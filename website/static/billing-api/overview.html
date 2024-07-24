@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Index</title>
+<title>HTTP verbs</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,73 +440,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="_index">Index</h3>
+<div class="sect1">
+<h2 id="overview-http-verbs">HTTP verbs</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>This is the entry point to navigate through the API of meshStack. Starting from here you will be able to
-find all endpoints your <a href="#authentication">authenticated</a> user has access to.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.v1.hal+json
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.v1.hal+json'</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All available <a href="#index_links">Top-Level Links</a> for the authenticated user.</p></td>
-</tr>
-</tbody>
-</table>
-<div id="index_links" class="paragraph">
-<div class="title">Links</div>
-<p>List of all top-level endpoints the authenticated user has access to. Depending on your rights, you will only
-get a subset of the links mentioned here.</p>
+<p>meshStack tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -515,58 +454,135 @@ get a subset of the links mentioned here.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Relation</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Verb</th>
+<th class="tableblock halign-left valign-top">Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#metadata">Metadata API</a> to retrieve metadata from meshStack.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to retrieve a resource</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshobjects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get, create, update and delete meshObjects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to create a new resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PATCH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to update an existing resource, including partial updates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PUT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to update an existing resource, full updates only</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DELETE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to delete an existing resource</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-http-status-codes">HTTP status codes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>meshStack tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Status code</th>
+<th class="tableblock halign-left valign-top">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>200 OK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard response for successful HTTP requests.<br>
+  The actual response will depend on the request method used.<br>
+  In a GET request, the response will contain an entity corresponding to the requested resource.<br>
+  In a POST request, the response will contain an entity describing or containing the result of the action.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>201 Created</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request has been fulfilled and resulted in a new resource being created.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>204 No Content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server successfully processed the request, but is not returning any content.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>400 Bad Request</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>401 Unauthorized</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server cannot authorize the request. Check the Basic Auth credentials used for the request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>403 Forbidden</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request is not allowed for the authorized user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>404 Not Found</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>409 Conflict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request leads to a conflict. A resource or a unique identifier used in the request already exists.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-authentication">Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All endpoints are secured via HTTP Basic Auth. To retrieve credentials, you can either create a new API User in panel if
+you have partner admin rights or use the credentials of an already existing API User. For Basic Auth you have to set the Authorization HTTP Header with
+your requested credentials like this:</p>
+</div>
 <div class="listingblock">
-<div class="title">Example Response</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.v1.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 257
-
-{
-  "_links" : {
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
-    },
-    "metadata" : {
-      "href" : "https://mesh-backend-url/api/metadata"
-    },
-    "self" : {
-      "href" : "https://mesh-backend-url/api"
-    }
-  }
-}</code></pre>
+<pre class="highlight"><code>Authorization: Basic &lt;base64 encoded username:password&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encryption">Encryption</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All endpoints are encrypted via SSL. The endpoints can only be called via HTTPS.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_types">Data Types</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Dates are always handled as UTC dates and formatted to ISO 8601 standard.</p>
+</li>
+<li>
+<p>String fields are usually limited to 255 characters</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-24 12:32:17 UTC
+Last updated 2024-07-24 12:32:20 UTC
 </div>
 </div>
 </body>

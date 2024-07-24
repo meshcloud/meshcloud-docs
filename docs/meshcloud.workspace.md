@@ -16,7 +16,7 @@ and any additional [metadata specific to your organization](meshstack.metadata-t
 
 ## Managing your meshWorkspace
 
-Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate to various control planes like the [project control plane](./meshcloud.project-resources.md#project-control-plane) or the [tenant control plane](./meshcloud.project-resources.md#tenant-control-plane). Each control plane has a similar scheme. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
+Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate down to the [project control plane](./meshcloud.project.md#manage-meshprojects) & [tenant control plane](./meshcloud.tenant.md#using-your-tenant). Each control plane has a similar layout. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
 
 ![Workspace Control Plane User Interface](assets/Workspace-overview.png)
 
@@ -51,7 +51,7 @@ If 4 eyes-principle is active, the user or group will not be assigned directly t
 For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshWorkspace. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
 You can view user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
-Currently, creating a group is only supported via [meshObject API](meshstack.api.md) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
+Currently, creating a group is only supported via the [meshStack API](/api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
 ![workspace-identifier](assets/workspace-identifier.png)
 
 ## Assign meshWorkspace Roles
@@ -75,10 +75,7 @@ The following table provides details about the functionality available to the di
 
 |                                                                                                                      | Workspace Owner | Workspace Manager | Workspace Member |
 |----------------------------------------------------------------------------------------------------------------------| :------------: | :------------: |:----------------:|
-| [Project&nbsp;Resources](meshcloud.project-resources.md)                                                             |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Project&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#project-control-plane)                  |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Tenant&nbsp;Control&nbsp;Plane](meshcloud.project-resources.md#tenant-control-plane)                    |    &#10003;    |    &#10003;    |     &#10003;     |
-| &nbsp;&nbsp;[Usage Reports](meshcloud.project-metering.md#tenant-usage-report)                                       |    &#10003;    |    &#10003;    |     &#10003;     |
+| View Projects                                                                                                        |    &#10003;    |    &#10003;    |  (if assigned)   |
 | [Workspace&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                  |    &#10003;    |    &#10003;    |                  |
 | &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                     |    &#10003;    |    &#10003;    |                  |
 | &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects)                                            |    &#10003;    |    &#10003;    |                  |

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Index</title>
+<title>Technical Specification</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,73 +440,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="_index">Index</h3>
+<div class="sect1">
+<h2 id="_technical_specification">Technical Specification</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>This is the entry point to navigate through the API of meshStack. Starting from here you will be able to
-find all endpoints your <a href="#authentication">authenticated</a> user has access to.</p>
+<p>This section describes technical details of the meshStack API, such as the exact data types it provides or HTTP specifics.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.v1.hal+json
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.v1.hal+json'</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All available <a href="#index_links">Top-Level Links</a> for the authenticated user.</p></td>
-</tr>
-</tbody>
-</table>
-<div id="index_links" class="paragraph">
-<div class="title">Links</div>
-<p>List of all top-level endpoints the authenticated user has access to. Depending on your rights, you will only
-get a subset of the links mentioned here.</p>
+<div class="sect2">
+<h3 id="_http_verbs">HTTP verbs</h3>
+<div class="paragraph">
+<p>meshStack tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -515,58 +459,175 @@ get a subset of the links mentioned here.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Relation</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Verb</th>
+<th class="tableblock halign-left valign-top">Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#metadata">Metadata API</a> to retrieve metadata from meshStack.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to retrieve a resource</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshobjects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get, create, update and delete meshObjects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to create a new resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PATCH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to update an existing resource, including partial updates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PUT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to update an existing resource, full updates only</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DELETE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to delete an existing resource</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_http_status_codes">HTTP status codes</h3>
+<div class="paragraph">
+<p>meshStack tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Status code</th>
+<th class="tableblock halign-left valign-top">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>200 OK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard response for successful HTTP requests.<br>
+  The actual response will depend on the request method used.<br>
+  In a GET request, the response will contain an entity corresponding to the requested resource.<br>
+  In a POST request, the response will contain an entity describing or containing the result of the action.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>201 Created</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request has been fulfilled and resulted in a new resource being created.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>204 No Content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server successfully processed the request, but is not returning any content.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>400 Bad Request</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>401 Unauthorized</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server cannot authorize the request. Check the Basic Auth credentials used for the request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>403 Forbidden</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request is not allowed for the authorized user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>404 Not Found</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>409 Conflict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request leads to a conflict. A resource or a unique identifier used in the request already exists.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="data_types">Data Types</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Dates are always handled as UTC dates and formatted to ISO 8601 standard (e.g. <code>2020-12-22T09:37:43Z</code>).</p>
+</li>
+<li>
+<p>String fields are usually limited to 255 characters</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hypermedia">Hypermedia</h3>
+<div class="paragraph">
+<p>meshStack uses <a href="https://en.wikipedia.org/wiki/HATEOAS">hypermedia</a>. Resources include links to other
+resources in their responses. Responses are in
+<a href="https://github.com/mikekelly/hal_specification">Hypertext Application Language (HAL)</a> format. Links can
+be found beneath the <code>_links</code> key. Users of the API should not create URIs themselves, instead they
+should use the above-described links to navigate from resource to resource.</p>
+</div>
+<div class="paragraph">
+<p>Notice that HAL hrefs can be templated: For example, if an endpoint requires
+a path variable, the <code>_links</code> array may include an entry like the following:</p>
+</div>
 <div class="listingblock">
-<div class="title">Example Response</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.v1.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 257
-
-{
+<pre class="highlight"><code>{
   "_links" : {
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
-    },
-    "metadata" : {
-      "href" : "https://mesh-backend-url/api/metadata"
-    },
-    "self" : {
-      "href" : "https://mesh-backend-url/api"
+    "users" : {
+      "href" : "https://example-url.org/api/users/{username}",
+      "templated" : true
     }
   }
 }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please refer to the HAL specification for more details about template URIs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="versioning">Versioning</h3>
+<div class="paragraph">
+<p>meshStack applies versioning via custom Media Types. This allows custom versioning per resource.
+As meshStack is developed and deployed continuously, this custom versioning per resource is the best
+way for applying versioning. If e.g. the meshWorkspace response is modified in an incompatible way,
+a new version will be provided for meshWorkspaces and all other resources are untouched.</p>
+</div>
+<div class="paragraph">
+<p>If using a request body, such as when inserting a new meshProject via a POST endpoint,
+the custom media type must be provided in the <code>Content-Type</code> header. In case of a response body,
+such as when requesting a list of all meshWorkspaces via a GET endpoint, the client should send
+the custom media type in the <code>Accept</code> header.</p>
+</div>
+<div class="paragraph">
+<p>Examples for these headers are:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Accept: application/vnd.meshcloud.api.meshworkspace.v1.hal+json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Content-Type: application/vnd.meshcloud.api.meshobjectcollection.v1+json;charset=UTF-8</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which Media Type is required for which resource is described in the according Resource section.
+If a request body is required and a different <code>Content-Type</code> like simple <code>application/json</code> is requested,
+the endpoint will return an error.</p>
+</div>
+<div class="paragraph">
+<p>If the <code>Accept</code> header is not provided, you may get the response of any version. Therefore please always
+provide the <code>Accept</code> header so you are guaranteed to get the resource in the expected format.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-24 12:32:17 UTC
+Last updated 2024-07-24 12:32:20 UTC
 </div>
 </div>
 </body>

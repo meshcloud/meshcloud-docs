@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>meshProjectUserBinding</title>
+<title>meshResourceUsageReports</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,38 +441,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="mesh_project_bindings">meshProjectUserBinding</h4>
+<h4 id="mesh_resourceUsageReports">meshResourceUsageReports</h4>
 <div class="paragraph">
-<p>A meshProjectUserBinding is an assignment of users to a project with a specified project role.
-These project roles grant users a specific set of permissions within the cloud platforms used by the project.
-The actual permissions that the role have within the platform tenant are determined by the policies set by your cloud foundation team.</p>
+<p>All endpoints on meshResourceUsageReports.</p>
 </div>
 <div class="sect4">
-<h5 id="_list_meshprojectuserbindings">List meshProjectUserBindings</h5>
+<h5 id="_put_meshresourceusagereports">Put meshResourceUsageReports</h5>
 <div class="paragraph">
-<p>Provides a paged list of meshProjectUserBindings.</p>
+<p>Use this endpoint to provide cost data from external systems to meshStack. A meshResourceUsageReport
+will be picked up by the billing system of meshStack and subsequently included into regular
+meshTenantUsageReports.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshobjects.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Request Parameters</caption>
+<caption class="title">Table 1. /api/meshobjects/meshresourceusagereports/{tenantIdentifier}/{period}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -485,148 +466,17 @@ The actual permissions that the role have within the platform tenant are determi
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace the project with the bindings belongs to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tenantIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A unique identifier for the tenant causing the costs.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The project identifier of the project that contains the requested bindings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>period</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The month during which the costs have occurred, e.g. 2023-05-01Z for May 2023.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project-1 HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project-1' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json'</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of meshProjectUserBindings.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].roleRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this user.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].targetRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user is assigned to.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].targetRef.ownedByWorkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].subject.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the referenced user.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 940
-
-{
-  "_embedded" : {
-    "meshProjectUserBindings" : [ {
-      "apiVersion" : "v3",
-      "metadata" : {
-        "name" : "66ac6325-856c-4351-9a48-43b2ae19883a"
-      },
-      "kind" : "meshProjectUserBinding",
-      "roleRef" : {
-        "name" : "Project User"
-      },
-      "targetRef" : {
-        "name" : "test-project-1",
-        "ownedByWorkspace" : "test-workspace"
-      },
-      "subject" : {
-        "name" : "username1"
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/66ac6325-856c-4351-9a48-43b2ae19883a"
-        }
-      }
-    } ]
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project-1"
-    }
-  },
-  "page" : {
-    "size" : 1,
-    "totalElements" : 1,
-    "totalPages" : 1,
-    "number" : 0
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_post_meshprojectuserbinding">Post meshProjectUserBinding</h5>
-<div class="paragraph">
-<p>Creating a meshProjectUserBinding assigns the users to a project with a specified project role,
-which grants them the corresponding permissions within the cloud platform. Before users can be assigned to a project, they must first be added to the workspace that owns that project.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Request Headers</caption>
+<caption class="title">Table 2. Request Headers</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -639,86 +489,13 @@ which grants them the corresponding permissions within the cloud platform. Befor
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject Import is <a href="#versioning">versioned</a> and <code>application/vnd.meshcloud.api.meshobjects.v1+yaml</code> or <code>application/vnd.meshcloud.api.meshobjects.v1+json</code> can be used as a <code>Content-Type</code>.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<div class="title">Request Body</div>
-<p>The fields have the same meaning as the response fields.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-  "apiVersion": "v3",
-  "kind": "meshProjectUserBinding",
-  "metadata": {
-    "name": "user-binding-name"
-  },
-  "targetRef": {
-    "name": "test-project-1",
-    "ownedByWorkspace": "test-workspace"
-  },
-  "roleRef": { "name": "Project Reader" },
-  "subject": {
-    "name" : "username3"
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshprojectbindings/userbindings HTTP/1.1
-Content-Type: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json;charset=UTF-8
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
-Content-Length: 296
-Host: mesh-backend-url
-
-{
-  "apiVersion": "v3",
-  "kind": "meshProjectUserBinding",
-  "metadata": {
-    "name": "user-binding-name"
-  },
-  "targetRef": {
-    "name": "test-project-1",
-    "ownedByWorkspace": "test-workspace"
-  },
-  "roleRef": { "name": "Project Reader" },
-  "subject": {
-    "name" : "username3"
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings' -i -u 'valid_username:valid_password' -X POST \
-    -H 'Content-Type: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json;charset=UTF-8' \
-    -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json' \
-    -d '{
-  "apiVersion": "v3",
-  "kind": "meshProjectUserBinding",
-  "metadata": {
-    "name": "user-binding-name"
-  },
-  "targetRef": {
-    "name": "test-project-1",
-    "ownedByWorkspace": "test-workspace"
-  },
-  "roleRef": { "name": "Project Reader" },
-  "subject": {
-    "name" : "username3"
-  }
-}  '</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Response Fields</caption>
+<caption class="title">Table 3. Request Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -735,417 +512,158 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of this object</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this user.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user should get assigned to.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of this binding which later can be used to refer to it</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the referenced user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required for backwards compatibility. v1 is the only supported version at the moment.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the returned meshObject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always set this to meshResourceUsageReport.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 460
-
-{
-  "apiVersion" : "v3",
-  "metadata" : {
-    "name" : "user-binding-name"
-  },
-  "kind" : "meshProjectUserBinding",
-  "roleRef" : {
-    "name" : "Project Reader"
-  },
-  "targetRef" : {
-    "name" : "test-project-1",
-    "ownedByWorkspace" : "test-workspace"
-  },
-  "subject" : {
-    "name" : "username3"
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/user-binding-name"
-    }
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_update_meshprojectuserbindings">Update meshProjectUserBindings</h5>
-<div class="paragraph">
-<p>An update is currently not possible. To change a user binding, you must first delete the existing binding and then re-create it,
-for example, with the updated role.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_delete_meshprojectuserbinding">Delete meshProjectUserBinding</h5>
-<div class="paragraph">
-<p>Deleting a meshProjectUserBinding removes the assignment of a user from a project and revokes their associated project role.
-This action effectively withdraws the permissions granted to the user within the cloud platforms linked to the project.</p>
-</div>
-<div class="paragraph">
-<div class="title">Request Headers</div>
-<p>There are no special headers required.</p>
-</div>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/userbindings/user-binding-name HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/user-binding-name' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">Example Response</div>
-<p>The response is just an empty HTTP 204.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 204 No Content
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_meshprojectgroupbinding">meshProjectGroupBinding</h4>
-<div class="paragraph">
-<p>A meshProjectUserBinding is an assignment of groups to a project with a specified project role.
-These project roles grant groups a specific set of permissions within the cloud platforms used by the project.
-The actual permissions that the role have within the platform tenant are determined by the policies set by your cloud foundation team.</p>
-</div>
-<div class="sect4">
-<h5 id="_list_meshprojectgroupbindings">List meshProjectGroupBindings</h5>
-<div class="paragraph">
-<p>Provides a paged list of meshProjectGroupBindings.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshobjects.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Request Parameters</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace containing the project with the requested bindings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fullPlatformIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier in the format $platformInstance.$location, where $platformInstance refers to the identifier of the meshPlatform, and $location refers to the identifier of the meshLocation.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The project identifier of the project that contains the requested bindings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>source</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the system where this ResourceUsageReport originates from.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].productName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the product.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].usageQuantity</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The usage quantity, for example, 48 if a product was used for 48 hours.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].usageType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To elaborate on the usageUnit, this field is used to describe what exactly is consumed and billed, for example, 'hours of CPU/RAM usage'.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].usageCost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The cost per consumed usageUnit. usageQuantity multiplied by usageCost should always equal totalCost.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].currency</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ISO-4217 compliant currency code, e.g. EUR or USD.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].usageUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unit of the given usageQuantity, for example, h for hours or d for days.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].totalCost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">totalCost equals usageQuantity multiplied by usageCost.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project-1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshresourceusagereports/12345/2023-01-01Z HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project-1' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json'</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectGroupBindings[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of meshProjectGroupBindings.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectGroupBindings[].roleRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this group.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectGroupBindings[].targetRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the group is assigned to.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectGroupBindings[].targetRef.ownedByWorkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectGroupBindings[].subject.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of this user group.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 944
+Content-Length: 755
+Host: mesh-billing-url
 
 {
-  "_embedded" : {
-    "meshProjectGroupBindings" : [ {
-      "apiVersion" : "v3",
-      "metadata" : {
-        "name" : "5d1b4410-b78f-40ed-8985-a08d4b021882"
-      },
-      "kind" : "meshProjectGroupBinding",
-      "roleRef" : {
-        "name" : "Project User"
-      },
-      "targetRef" : {
-        "name" : "test-project-1",
-        "ownedByWorkspace" : "test-workspace"
-      },
-      "subject" : {
-        "name" : "testgroup"
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/5d1b4410-b78f-40ed-8985-a08d4b021882"
+    "apiVersion": "v1",
+    "kind": "meshResourceUsageReport",
+    "fullPlatformIdentifier": "my-platform-instance.my-location",
+    "source": "Name of Source System",
+    "lineItems": [
+        {
+            "productName": "Virtual Machine",
+            "usageQuantity": 48,
+            "usageType": "Hours of CPU/RAM usage",
+            "usageCost": 1.2,
+            "currency": "USD",
+            "usageUnit": "h",
+            "totalCost": 57.6
+        },
+        {
+            "productName": "SSD storage",
+            "usageQuantity": 480,
+            "usageType": "Hours of usage multiplied by amounts of GB",
+            "usageCost": 0.05,
+            "currency": "USD",
+            "usageUnit": "h",
+            "totalCost": 24
         }
-      }
-    } ]
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project-1"
-    }
-  },
-  "page" : {
-    "size" : 1,
-    "totalElements" : 1,
-    "totalPages" : 1,
-    "number" : 0
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_post_meshprojectgroupbindings">Post meshProjectGroupBindings</h5>
-<div class="paragraph">
-<p>This creates a new group binding and associates a user group together with a role to a project.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<div class="title">Request Body</div>
-<p>The fields have the same meaning as the response fields.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-  "apiVersion": "v3",
-  "kind": "meshProjectGroupBinding",
-  "metadata": {
-    "name": "group-binding-name"
-  },
-  "targetRef": {
-    "name": "test-project-1",
-    "ownedByWorkspace": "test-workspace"
-  },
-  "roleRef": { "name": "Project Reader" },
-  "subject": {
-    "name" : "testgroup"
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshprojectbindings/groupbindings HTTP/1.1
-Content-Type: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json;charset=UTF-8
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
-Content-Length: 298
-Host: mesh-backend-url
-
-{
-  "apiVersion": "v3",
-  "kind": "meshProjectGroupBinding",
-  "metadata": {
-    "name": "group-binding-name"
-  },
-  "targetRef": {
-    "name": "test-project-1",
-    "ownedByWorkspace": "test-workspace"
-  },
-  "roleRef": { "name": "Project Reader" },
-  "subject": {
-    "name" : "testgroup"
-  }
+    ]
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings' -i -u 'valid_username:valid_password' -X POST \
-    -H 'Content-Type: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json;charset=UTF-8' \
-    -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-billing-url/api/meshobjects/meshresourceusagereports/12345/2023-01-01Z' -i -u 'valid_username:valid_password' -X PUT \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8' \
     -d '{
-  "apiVersion": "v3",
-  "kind": "meshProjectGroupBinding",
-  "metadata": {
-    "name": "group-binding-name"
-  },
-  "targetRef": {
-    "name": "test-project-1",
-    "ownedByWorkspace": "test-workspace"
-  },
-  "roleRef": { "name": "Project Reader" },
-  "subject": {
-    "name" : "testgroup"
-  }
-}  '</code></pre>
+    "apiVersion": "v1",
+    "kind": "meshResourceUsageReport",
+    "fullPlatformIdentifier": "my-platform-instance.my-location",
+    "source": "Name of Source System",
+    "lineItems": [
+        {
+            "productName": "Virtual Machine",
+            "usageQuantity": 48,
+            "usageType": "Hours of CPU/RAM usage",
+            "usageCost": 1.2,
+            "currency": "USD",
+            "usageUnit": "h",
+            "totalCost": 57.6
+        },
+        {
+            "productName": "SSD storage",
+            "usageQuantity": 480,
+            "usageType": "Hours of usage multiplied by amounts of GB",
+            "usageCost": 0.05,
+            "currency": "USD",
+            "usageUnit": "h",
+            "totalCost": 24
+        }
+    ]
+}'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshobjects.v1+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 133
+
+{
+  "meshObject" : "meshResourceUsageReport",
+  "status" : "SUCCESS",
+  "resultCode" : null,
+  "message" : null,
+  "remarks" : null
+}</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Response Fields</caption>
+<caption class="title">Table 4. Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1160,145 +678,39 @@ Host: mesh-backend-url
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshObject</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of this object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the meshObject (this is always set to meshResourceUsageReport)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The import result status for this meshResourceUsageReport. (SUCCESS or FAILED)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the group should get assigned to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resultCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specific result code for this import result.</p>
+<p class="tableblock">If no error has occurred, it&#8217;s set to null. Otherwise, it&#8217;s set to, SERVER_ERROR, as this is is the only possible error code at the moment.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A user readable message with more details. (might be null)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of this binding which later can be used to refer to it</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the referenced group.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the returned meshObject</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>remarks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;String&gt;?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User readable remarks on this import result. (might be null)</p></td>
 </tr>
 </tbody>
 </table>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 464
-
-{
-  "apiVersion" : "v3",
-  "metadata" : {
-    "name" : "group-binding-name"
-  },
-  "kind" : "meshProjectGroupBinding",
-  "roleRef" : {
-    "name" : "Project Reader"
-  },
-  "targetRef" : {
-    "name" : "test-project-1",
-    "ownedByWorkspace" : "test-workspace"
-  },
-  "subject" : {
-    "name" : "testgroup"
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/group-binding-name"
-    }
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_update_meshprojectuserbinding">Update meshProjectUserBinding</h5>
-<div class="paragraph">
-<p>An update is currently not possible. You must first delete an existing group binding and then
-re-create it with for example a changed role.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_delete_meshprojectuserbinding_2">Delete meshProjectUserBinding</h5>
-<div class="paragraph">
-<p>Deleting a meshProjectUserBinding removes the assignment of a group from a project and revokes their associated project role.
-This action effectively withdraws the permissions granted to the group within the cloud platforms linked to the project.</p>
-</div>
-<div class="paragraph">
-<div class="title">Request Headers</div>
-<p>There are no special headers required.</p>
-</div>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/5d1b4410-b78f-40ed-8985-a08d4b021882 HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/5d1b4410-b78f-40ed-8985-a08d4b021882' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">Example Response</div>
-<p>The response is just an empty HTTP 204.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 204 No Content
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY</code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-24 12:32:17 UTC
+Last updated 2024-07-24 12:32:20 UTC
 </div>
 </div>
 </body>
