@@ -486,11 +486,11 @@ The actual permissions that the role have within the platform tenant are determi
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The workspace identifier of the project that contains the requested bindings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace the project with the bindings belongs to.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The project identifier of the project that contains the requested bindings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The project identifier of the project that contains the requested bindings.</p></td>
 </tr>
 </tbody>
 </table>
@@ -538,7 +538,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].targetRef.name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user should get assigned to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user is assigned to.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].targetRef.ownedByWorkspace</code></p></td>
@@ -584,7 +584,7 @@ Content-Length: 940
     "meshProjectUserBindings" : [ {
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "7e264c07-bf2e-4b86-815a-e0c4036b40b8"
+        "name" : "66ac6325-856c-4351-9a48-43b2ae19883a"
       },
       "kind" : "meshProjectUserBinding",
       "roleRef" : {
@@ -599,7 +599,7 @@ Content-Length: 940
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/7e264c07-bf2e-4b86-815a-e0c4036b40b8"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/66ac6325-856c-4351-9a48-43b2ae19883a"
         }
       }
     } ]
@@ -620,7 +620,7 @@ Content-Length: 940
 </div>
 </div>
 <div class="sect4">
-<h5 id="_create_meshprojectuserbinding">Create meshProjectUserBinding</h5>
+<h5 id="_post_meshprojectuserbinding">Post meshProjectUserBinding</h5>
 <div class="paragraph">
 <p>Creating a meshProjectUserBinding assigns the users to a project with a specified project role,
 which grants them the corresponding permissions within the cloud platform. Before users can be assigned to a project, they must first be added to the workspace that owns that project.</p>
@@ -914,7 +914,7 @@ The actual permissions that the role have within the platform tenant are determi
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The workspace identifier of the project that contains the requested bindings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace containing the project with the requested bindings.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
@@ -1012,7 +1012,7 @@ Content-Length: 944
     "meshProjectGroupBindings" : [ {
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "da0ecf03-91ee-4915-9034-27a595bce06c"
+        "name" : "5d1b4410-b78f-40ed-8985-a08d4b021882"
       },
       "kind" : "meshProjectGroupBinding",
       "roleRef" : {
@@ -1027,7 +1027,7 @@ Content-Length: 944
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/da0ecf03-91ee-4915-9034-27a595bce06c"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/5d1b4410-b78f-40ed-8985-a08d4b021882"
         }
       }
     } ]
@@ -1048,7 +1048,7 @@ Content-Length: 944
 </div>
 </div>
 <div class="sect4">
-<h5 id="_create_meshproject_group_bindings">Create meshProject Group Bindings</h5>
+<h5 id="_post_meshprojectgroupbindings">Post meshProjectGroupBindings</h5>
 <div class="paragraph">
 <p>This creates a new group binding and associates a user group together with a role to a project.</p>
 </div>
@@ -1263,7 +1263,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/da0ecf03-91ee-4915-9034-27a595bce06c HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/5d1b4410-b78f-40ed-8985-a08d4b021882 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1271,7 +1271,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/da0ecf03-91ee-4915-9034-27a595bce06c' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/5d1b4410-b78f-40ed-8985-a08d4b021882' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1298,7 +1298,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-10 13:07:14 UTC
+Last updated 2024-07-24 12:32:17 UTC
 </div>
 </div>
 </body>
