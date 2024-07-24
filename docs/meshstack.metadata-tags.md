@@ -181,25 +181,25 @@ Every platform might have different limitations about the tag names and values, 
 The tag definition configuration describes on a per-platform basis how these tags are extracted and transformed into cloud platform tags.
 The following extra metadata can be used in such a tag definition configuration:
 
-| Tag Key                       | Description                                                                                                                                                         |
-| ----------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `${projectIdentifier}`        | The meshProject identifier                                                                                                                                          |
-| `${workspaceIdentifier}`      | The meshProject's workspace identifier                                                                                                                              |
-| `${projectName}`              | The meshProject display name                                                                                                                                        |
-| `${workspaceName}`            | The meshProject's workspace name                                                                                                                                    |
-| `${landingzone}`              | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied       |
-| `${landingzoneIdentifier}`    | The identifier of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the meshProject does not have a Landing Zone applied |
-| `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the meshProject                                                                                            |
-| `${paymentName}`              | The display name of the payment method that is assigned to the meshProject                                                                                          |
-| `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the meshProject. It contains `none` if no expiration date is set for the payment method               |
-| `${paymentAmount}`            | The amounf of the assigned payment method. It is `none` if no payment method is set                                                                                 |
-| `${contactMail}`              | Contains the owners email for this workspace. It is `none` if no owner is set                                                                                       |
-| `${ownerUsername}`            | The username of the owner of this meshProjects's workspace. It is `none` if no owner is set                                                                         |
-| `${ownerFirstName}`           | The first name of the owner of this meshProjects's workspace. It is `none` if no owner is set                                                                       |
-| `${ownerLastName}`            | The last name of the owner of this meshProjects's workspace. It is `none` if no owner is set                                                                        |
-| `${additionalOwnerUsername}`  | The username of the additional owner of this meshProjects's workspace. It is `none` if no additional owner is set                                                   |
-| `${additionalOwnerFirstName}` | The first name of the additional owner of this meshProjects's workspace. It is `none` if no additional owner is set                                                 |
-| `${additionalOwnerLastName}`  | The last name of the additional owner of this meshProjects's workspace. It is `none` if no additional owner is set                                                  |
+| Tag Key                       | Description                                                                                                                                                     |
+| ----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `${projectIdentifier}`        | The project identifier                                                                                                                                          |
+| `${workspaceIdentifier}`      | The project's workspace identifier                                                                                                                              |
+| `${workspaceName}`            | The projects's workspace name                                                                                                                                   |
+| `${projectName}`              | The project display name                                                                                                                                        |
+| `${landingzone}`              | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the project does not have a Landing Zone applied       |
+| `${landingzoneIdentifier}`    | The identifier of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the project does not have a Landing Zone applied |
+| `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the project                                                                                            |
+| `${paymentName}`              | The display name of the payment method that is assigned to the project                                                                                          |
+| `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the project. It contains `none` if no expiration date is set for the payment method               |
+| `${paymentAmount}`            | The amount of the assigned payment method. It is `none` if no payment method is set                                                                             |
+| `${contactMail}`              | The email of workspace owner of this project. It is `none` if no owner is set                                                                                   |
+| `${ownerUsername}`            | The username of the workspace owner of this project. It is `none` if no owner is set                                                                            |
+| `${ownerFirstName}`           | The first name of the workspace owner of this project. It is `none` if no owner is set                                                                          |
+| `${ownerLastName}`            | The last name of the workspace owner of this project. It is `none` if no owner is set                                                                           |
+| `${additionalOwnerUsername}`  | The username of the additional workspace owner of this project. It is `none` if no additional owner is set                                                      |
+| `${additionalOwnerFirstName}` | The first name of the additional workspace owner of this project. It is `none` if no additional owner is set                                                    |
+| `${additionalOwnerLastName}`  | The last name of the additional workspace owner of this project. It is `none` if no additional owner is set                                                     |
 
 ### Tag sanitization
 
