@@ -13,7 +13,7 @@ If the meshWorkspace has two Workspace Owners set, you need to follow all three 
 
 ## Step 1: Create a meshObjectCollection
 
-Follow [API docs]((api/#mesh_object_collection_create) to create a meshObjectCollection.
+Follow [API docs](/api/#mesh_object_collection_create) to create a meshObjectCollection.
 
 ```sh
 curl --location --request POST 'https://backend-url/api/meshobjectcollections' \
