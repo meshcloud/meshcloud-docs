@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>meshWorkspaceUserGroup</title>
+<title>API Keys</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,360 +440,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect3">
-<h4 id="mesh_workspaceusergroup">meshWorkspaceUserGroup</h4>
+<div class="sect2">
+<h3 id="api_keys">API Keys</h3>
 <div class="paragraph">
-<p>All endpoints on meshWorkspaceUserGroups.</p>
+<p>API keys authorize requests towards the meshObject API within the scope of the respective workspace.
+To issue workspace-scoped API Keys, navigate to the admin or workspace area. Follow these steps:</p>
 </div>
-<div class="sect4">
-<h5 id="_list_meshworkspaceusergroups">List meshWorkspaceUserGroups</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the respective workspace.</p>
+</li>
+<li>
+<p>Go to Workspace Access &gt; API Keys.</p>
+</li>
+<li>
+<p>Issue a new API key by clicking <code>+ Create API Key</code>.</p>
+</li>
+<li>
+<p>Provide a name and the permissions the API key shall get.</p>
+</li>
+<li>
+<p>Save the secret and key ID securely to make requests.</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
-<p>Provides a paged list of meshWorkspaceUserGroups.</p>
+<p>The permissions you can set in 4. do not include all endpoints of this API. So via API Keys you can
+currently only get access to a limited amount of endpoints. You can identify which ones these are via the naming
+of these permissions inside meshStack.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Request Parameters</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshWorkspaceUserGroups that belong to the meshWorkspace with given identifier. (optional)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>username</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshWorkspaceUserGroups that belong to the meshUser with given username. (optional)</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshworkspaceusergroups?username=sample-user&amp;page=0&amp;size=3 HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=sample-user&amp;page=0&amp;size=3' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json'</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshWorkspaceUserGroups[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_workspaceUserGroup_response_fields">meshWorkspaceUserGroup</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 1088
-
-{
-  "_embedded" : {
-    "meshWorkspaceUserGroups" : [ {
-      "apiVersion" : "v1",
-      "kind" : "meshWorkspaceUserGroup",
-      "metadata" : {
-        "name" : "my-user-group",
-        "ownedByWorkspace" : "sample-workspace"
-      },
-      "spec" : {
-        "displayName" : "My User Group",
-        "members" : [ "sample-user" ],
-        "tags" : { }
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups/sample-workspace.my-user-group"
-        },
-        "meshworkspace" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/sample-workspace"
-        },
-        "meshusers" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceUserGroupIdentifier=my-user-group"
-        }
-      }
-    } ]
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=sample-user&amp;page=0&amp;size=3"
-    }
-  },
-  "page" : {
-    "size" : 3,
-    "totalElements" : 1,
-    "totalPages" : 1,
-    "number" : 0
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_get_meshworkspaceusergroup">Get meshWorkspaceUserGroup</h5>
 <div class="paragraph">
-<p>Get a single meshWorkspaceUserGroup by a composed identifier
-containing workspace-identifier and group-identifier connected with a dot
-(e.g. "workspace-identifier.group-identifier"). For global groups, the workspace
-identifier is always "meshcloud-global-partner".</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshworkspaceusergroups/sample-workspace.my-user-group HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json
-Host: mesh-backend-url</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups/sample-workspace.my-user-group' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json'</code></pre>
-</div>
-</div>
-<table id="mesh_workspaceusergroup_response_fields" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshWorkspaceUserGroup datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshWorkspaceUserGroup' for this endpoint.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshWorkspaceUserGroup. It also contains the workspace name that owns this WorkspaceUserGroup.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The workspaceUserGroupIdentifier as 'name' to uniquely identify the meshWorkspaceUserGroup.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace that owns this WorkspaceUserGroup.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the meshWorkspaceUserGroup.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the meshWorkspaceUserGroup as it is shown in meshPanel.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.egid</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">External Group Identifier, this is an optional field.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.members</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of usernames</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.tags</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Key/Value pairs of tags set on the meshWorkspaceUserGroup. Keep in mind, that values are an array. Also see our general section about <a href="#tags">[tags]</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Available <a href="#mesh_workspaceusergroup_links">links</a> on a meshWorkspaceUserGroup.</p></td>
-</tr>
-</tbody>
-</table>
-<table id="mesh_workspaceusergroup_links" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. WorkspaceUserGroup Links</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Relation</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshworkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Link to fetch meshWorkspace that owns this WorkspaceUserGroup.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshusers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Link to fetch all meshUsers being part of this WorkspaceUserGroup.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Disposition: inline;filename=f.txt
-Content-Type: application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 678
-
-{
-  "apiVersion" : "v1",
-  "kind" : "meshWorkspaceUserGroup",
-  "metadata" : {
-    "name" : "my-user-group",
-    "ownedByWorkspace" : "sample-workspace"
-  },
-  "spec" : {
-    "displayName" : "My User Group",
-    "members" : [ "sample-user" ],
-    "tags" : { }
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups/sample-workspace.my-user-group"
-    },
-    "meshworkspace" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/sample-workspace"
-    },
-    "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceUserGroupIdentifier=my-user-group"
-    }
-  }
-}</code></pre>
-</div>
-</div>
+<p>The login endpoint is described <a href="#api_key_login">here</a>.</p>
 </div>
 </div>
 </div>
