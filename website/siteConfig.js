@@ -36,8 +36,6 @@ const siteConfig = {
     { doc: 'meshstack.index', label: 'Administrator Docs' },
     { doc: 'apis.index', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
-    { doc: 'faq', label: 'FAQ' },
-    { page: 'help', label: 'Help' },
     { href: 'https://meshcloud.canny.io', label: 'Feedback' }
   ],
 
@@ -51,8 +49,8 @@ const siteConfig = {
 
   /* colors for website */
   colors: {
-    primaryColor: '#7B89C3',
-    secondaryColor: '#408FCD',
+    primaryColor: '#5ECEE8',
+    secondaryColor: '#F7F533',
   },
 
   /* custom fonts for website */

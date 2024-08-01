@@ -41,32 +41,29 @@ class Footer extends React.Component {
             <a href={this.docUrl('meshstack.index.html')}>
               Administrator Documentation
             </a>
+            <a href={this.docUrl('faq.html')}>
+              Security FAQ
+            </a>
           </div>
           <div>
-            <h5>Community &amp; Follow us</h5>
+            <h5>Get in Touch</h5>
             <a
-              href="https://twitter.com/meshstack"
-              target="_blank"
-              rel="noreferrer noopener">
-              Twitter
+                href="https://support.meshcloud.io"
+                target="_blank"
+                rel="noreferrer noopener">
+              Support
             </a>
             <a
-              href="https://www.facebook.com/meshstack/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Facebook
+                href="https://meshcloud.io"
+                target="_blank"
+                rel="noreferrer noopener">
+              Website
             </a>
             <a
-              href="https://www.linkedin.com/company/meshcloud"
-              target="_blank"
-              rel="noreferrer noopener">
+                href="https://www.linkedin.com/company/meshcloud"
+                target="_blank"
+                rel="noreferrer noopener">
               LinkedIn
-            </a>
-            <a
-              href="https://www.xing.com/companies/meshcloud"
-              target="_blank"
-              rel="noreferrer noopener">
-              XING
             </a>
           </div>
           <div>
