@@ -601,7 +601,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2024-08-01T11:25:27.254595144Z"
+        "createdOn" : "2024-08-07T11:57:47.328682315Z"
       },
       "spec" : {
         "displayName" : "parent block",
@@ -632,7 +632,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2024-08-01T11:25:27.278257164Z"
+        "createdOn" : "2024-08-07T11:57:47.341037385Z"
       },
       "spec" : {
         "displayName" : "child block",
@@ -923,7 +923,7 @@ Content-Length: 1334
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2024-08-01T11:25:27.278257164Z"
+    "createdOn" : "2024-08-07T11:57:47.341037385Z"
   },
   "spec" : {
     "displayName" : "child block",
@@ -980,7 +980,11 @@ Content-Length: 1334
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshobjects.v1+json</code> as an <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -988,8 +992,9 @@ Content-Length: 1334
 <div class="title">Example Request</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshbuildingblocks HTTP/1.1
-Content-Type: application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8
+Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 Content-Length: 599
 Host: mesh-backend-url
 
@@ -1010,7 +1015,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "fde91819-1f15-43f7-b39c-b710c304fec0"
+      "buildingBlockUuid": "3bdfadfd-4953-4dea-8f42-492aacb59718"
     }]
   }
 }</code></pre>
@@ -1020,7 +1025,8 @@ Host: mesh-backend-url
 <div class="title">Example Curl Request</div>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks' -i -u 'valid_username:valid_password' -X POST \
-    -H 'Content-Type: application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8' \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json' \
     -d '{
   "apiVersion" : "v1",
   "kind" : "meshBuildingBlock",
@@ -1038,7 +1044,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "fde91819-1f15-43f7-b39c-b710c304fec0"
+      "buildingBlockUuid": "3bdfadfd-4953-4dea-8f42-492aacb59718"
     }]
   }
 } '</code></pre>
@@ -1166,7 +1172,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Type: application/hal+json
+Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -1174,20 +1180,18 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1321
+Content-Length: 1253
 
 {
   "apiVersion" : "v1",
   "kind" : "meshBuildingBlock",
   "metadata" : {
-    "uuid" : "cedd5681-2582-40a7-bb83-28f41e39be9e",
+    "uuid" : "9765d8ae-3c18-40f5-b597-8a426f8ca499",
     "definitionUuid" : "ef6aaf87-3f8c-477c-94f4-f3cf509728ca",
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2024-08-01T11:25:29.206893378Z",
-    "markedForDeletionOn" : null,
-    "markedForDeletionBy" : null
+    "createdOn" : "2024-08-07T11:57:48.657677341Z"
   },
   "spec" : {
     "displayName" : "New BuildingBlock",
@@ -1197,7 +1201,7 @@ Content-Length: 1321
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "fde91819-1f15-43f7-b39c-b710c304fec0",
+      "buildingBlockUuid" : "3bdfadfd-4953-4dea-8f42-492aacb59718",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -1207,13 +1211,13 @@ Content-Length: 1321
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/cedd5681-2582-40a7-bb83-28f41e39be9e"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9765d8ae-3c18-40f5-b597-8a426f8ca499"
     },
     "meshtenant" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/cedd5681-2582-40a7-bb83-28f41e39be9e/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9765d8ae-3c18-40f5-b597-8a426f8ca499/purge"
     }
   }
 }</code></pre>
@@ -1230,7 +1234,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/cedd5681-2582-40a7-bb83-28f41e39be9e HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/9765d8ae-3c18-40f5-b597-8a426f8ca499 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1238,7 +1242,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/cedd5681-2582-40a7-bb83-28f41e39be9e' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9765d8ae-3c18-40f5-b597-8a426f8ca499' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1268,7 +1272,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/cedd5681-2582-40a7-bb83-28f41e39be9e/purge HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/9765d8ae-3c18-40f5-b597-8a426f8ca499/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1276,7 +1280,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/cedd5681-2582-40a7-bb83-28f41e39be9e/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9765d8ae-3c18-40f5-b597-8a426f8ca499/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1300,7 +1304,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-01 11:22:50 UTC
+Last updated 2024-08-07 11:55:40 UTC
 </div>
 </div>
 </body>

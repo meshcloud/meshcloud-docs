@@ -590,12 +590,12 @@ Content-Length: 1984
         "ownedByProject" : "test-project",
         "ownedByWorkspace" : "test-workspace",
         "platformIdentifier" : "aws.aws-meshstack-dev",
-        "deletedOn" : "2024-08-02T11:25:42.559055518Z",
+        "deletedOn" : "2024-08-08T11:57:57.468035124Z",
         "assignedTags" : { },
         "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
       },
       "spec" : {
-        "localId" : "a60c9121-bcf3-4cf3-a35a-5f72cd645176",
+        "localId" : "ed9f96ce-61c0-4b32-87f3-279df8058bf0",
         "landingZoneIdentifier" : "stage-dev",
         "quotas" : [ {
           "key" : "limits.cpu",
@@ -791,12 +791,12 @@ Content-Length: 872
     "ownedByProject" : "test-project",
     "ownedByWorkspace" : "test-workspace",
     "platformIdentifier" : "aws.aws-meshstack-dev",
-    "deletedOn" : "2024-08-02T11:25:42.559055518Z",
+    "deletedOn" : "2024-08-08T11:57:57.468035124Z",
     "assignedTags" : { },
     "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
   },
   "spec" : {
-    "localId" : "a60c9121-bcf3-4cf3-a35a-5f72cd645176",
+    "localId" : "ed9f96ce-61c0-4b32-87f3-279df8058bf0",
     "landingZoneIdentifier" : "stage-dev",
     "quotas" : [ {
       "key" : "limits.cpu",
@@ -838,7 +838,11 @@ Content-Length: 872
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshobjects.v1+json</code> as an <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -848,6 +852,7 @@ Content-Length: 872
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshtenants HTTP/1.1
 Content-Type: application/vnd.meshcloud.api.meshtenant.v3.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshtenant.v3.hal+json
 Content-Length: 292
 Host: mesh-backend-url
 
@@ -871,6 +876,7 @@ Host: mesh-backend-url
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants' -i -u 'valid_username:valid_password' -X POST \
     -H 'Content-Type: application/vnd.meshcloud.api.meshtenant.v3.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshtenant.v3.hal+json' \
     -d '{
     "apiVersion": "v3",
     "kind": "meshTenant",
@@ -1051,7 +1057,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-01 11:22:50 UTC
+Last updated 2024-08-07 11:55:40 UTC
 </div>
 </div>
 </body>
