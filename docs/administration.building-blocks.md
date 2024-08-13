@@ -14,18 +14,18 @@ Building Blocks are instantiated from so-called Definitions. These Building Bloc
 in the Admin Area by the Cloud Foundation Team. Read more below on how you can create and deploy a new Building Block
 Definition.
 
+## Collie Hub
+
+[Collie-Hub](https://github.com/meshcloud/collie-hub/) serves as a central hub for building block modules.
+We invite you to explore and take advantage of the existing modules, or even contribute your own if you have created any.
+Our modules are conveniently organized by cloud providers, making it easy for you to quickly find what you need in the respective folders.
+
 ## Creating a new Building Block Definition
 
 In the Admin Area, click on the "Building Block" item in the sidebar under "Platforms". On this page, click
 "Create new Definition". A wizard opens that guides you through the creation of the entire Building Block Definition.
 
-> While our current support covers Terraform up to version 1.5.5, we're actively investigating the possibility of extending our support to upcoming Terraform versions. We're excited to share that we're also exploring the potential support for openTF. This initiative seeks to provide an open-source alternative to the official HashiCorp Terraform provider.
-
-### Building Blocks Repository
-
-The [Building Blocks Repository](https://github.com/meshcloud/building-blocks) serves as a central hub for building block modules. We invite you to explore and take advantage of the existing modules, or even contribute your own if you have created any. Our modules are conveniently organized by cloud providers, making it easy for you to quickly find what you need in the respective folders. 
-
-Additionally, our [Wiki](https://github.com/meshcloud/building-blocks/wiki) offers a wealth of valuable resources on how to create Terraform modules, craft building blocks based on them, and access a multitude of examples to spark your inspiration. The Wiki is designed to facilitate your Building Block journey and empower your infrastructure development. We hope you will find it to be a valuable resource in your work.
+> meshStack supports Terraform up to version 1.5.5 and supports OpenTofu versions starting with 1.6.0.
 
 ### General Building Block Definition Information
 
