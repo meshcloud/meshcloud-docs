@@ -16,7 +16,7 @@ Definition.
 
 ## Collie Hub
 
-[Collie-Hub](https://github.com/meshcloud/collie-hub/) serves as a central hub for building block modules.
+[Collie Hub](https://github.com/meshcloud/collie-hub/) serves as a central hub for building block modules.
 We invite you to explore and take advantage of the existing modules, or even contribute your own if you have created any.
 Our modules are conveniently organized by cloud providers, making it easy for you to quickly find what you need in the respective folders.
 
