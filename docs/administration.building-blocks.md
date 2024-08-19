@@ -199,7 +199,7 @@ To properly make changes to your Building Block Definition and also upgrade the 
 3. Your Building Block Definition is now in draft state. While in draft state, you can make any changes that you like
    such as removing inputs, adding inputs, or changing the Git commit hash.
 4. When you are happy with your changes, publish the new version. On the right-hand side, next to the version dropdown, click on "Publish".
-5. The new version is now published! This also means that any workspace users that create new Building Blocks will use that version by default
+5. The new version is now published! This also means that any workspace users that create new Building Blocks will use that version by default.
 
 At this point, any existing Building Blocks still use the old version. To make sure that these are also upgraded to the latest version do the following:
 
@@ -210,4 +210,6 @@ At this point, any existing Building Blocks still use the old version. To make s
 5. That's it! The Building Block is now upgraded! A new run has also started in the meantime so that any changes to the
    Terraform are applied as soon as possible.
 
+## Updating a Building Block Definition
 
+If you are an admin or owner of a Building Block Definition, you can select one or more Building Blocks and click "Actions -> Update" at the top of the screen to update to the newest version. However, as an application team, you currently do not have permission to perform this action.
