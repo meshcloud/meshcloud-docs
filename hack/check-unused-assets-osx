@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+# Define the directory where your markdown files and assets folder are located
+MARKDOWN_DIR="./docs"
+ASSETS_DIR="./docs/assets"
+
+# Find all files in the ASSETS_DIR recursively
+find "$ASSETS_DIR" -type f | while IFS= read -r ASSET_FILE; do
+    # Check if the asset file is referenced in any markdown file
+    if ! grep -q -r "$(basename "$ASSET_FILE")" "$MARKDOWN_DIR"/*.md; then
+        echo "$ASSET_FILE"
+    fi
+done
+
+# note: you can run this via
+#   ./hack/check-unused-assets-osx | xargs rm
+# this will remove unused files automatically

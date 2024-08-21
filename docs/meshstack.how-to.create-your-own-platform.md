@@ -17,7 +17,7 @@ Automated platform integrations have the following requirements:
 - The above can be created & automated with Terraform.
 - (optional) Users and groups can be assigned to the tenant via Terraform (this allows you to do permission management as well)
 
-> **💡Tip**: we already built some cloud platform integrations with Terraform that we open sourced. You can find them [here](https://github.com/meshcloud/building-blocks)!
+> **💡Tip**: we already built some cloud platform integrations with Terraform that we open sourced. You can find them in [Collie Hub](https://github.com/meshcloud/collie-hub)!
 
 On a high level, you need the following and your platform integration is done:
 
@@ -27,9 +27,9 @@ On a high level, you need the following and your platform integration is done:
 
 In this guide, you will read step-by-step how you can achieve the above.
 
-> If you want to have a real-world Terraform example at hand throughout this guide, you can have a look at the
-> [GitHub Repository example](https://github.com/meshcloud/building-blocks/tree/main/other-providers/github/github-repo)
-> that can roll out a GitHub repository.
+> If you want to have a real-world Terraform example at hand throughout this guide, have a look
+> [here](https://github.com/meshcloud/collie-hub/tree/main/kit/github/repository/). 
+> This module manages GitHub repositories as a tenant in meshStack.
 
 ## Step 1: Create a platform
 
