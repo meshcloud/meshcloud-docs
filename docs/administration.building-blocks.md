@@ -210,4 +210,6 @@ At this point, any existing Building Blocks still use the old version. To make s
 5. That's it! The Building Block is now upgraded! A new run has also started in the meantime so that any changes to the
    Terraform are applied as soon as possible.
 
+## Updating a Building Block Definition
 
+As an admin or owner of the Building Block Definition, you can select one or more Building Blocks and click “Actions -> Update” at the top of the screen to update to the newest version. Application teams do not have permission to update Building Block Definitions.
