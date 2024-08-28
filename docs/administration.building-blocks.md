@@ -183,7 +183,6 @@ using Terraform-based Building Blocks in meshStack:
 
 ### Configure remote backend
 
-
 1. Copy one of these examples into a file named `backend.tf` and adopt the parameters.
 2. Either put this backend.tf file inside your terraform module folder or upload it as a static file input along with the other inputs inside your Building Block definition. 
 3. Make sure to include the necessary credentials required for accessing the storage account. For instance, for a storage account in Azure, you can add "ARM_CLIENT_ID" and "ARM_CLIENT_SECRET" of the Service Principal as an Environment Variable.
