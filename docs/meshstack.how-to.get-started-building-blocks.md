@@ -114,7 +114,7 @@ A Building Block input is used to supply configuration parameters to Terraform c
 
 In most cases, Terraform code requires credentials to provision the infrastructure. Consider an example of a Terraform building block for AWS. The AWS provider typically looks as follows, assuming credentials are provided by an AWS profile named `demo-profile` stored on the same device where Terraform operates:
 
-```
+```json
 provider "aws" {
 	profile    = "demo-profile"
 }
@@ -124,7 +124,7 @@ However this code cannot run on the meshStack Terraform runner for clear reasons
 
 More optimal solution would be to rely on environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In that case the Terraform configuration for AWS provider could look like: 
 
-```
+```json
 provider "aws" {}
 ```
 
