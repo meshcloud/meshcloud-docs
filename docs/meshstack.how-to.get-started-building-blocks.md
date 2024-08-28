@@ -116,16 +116,16 @@ In most cases, Terraform code requires credentials to provision the infrastructu
 
 ```json
 provider "aws" {
-	profile    = "demo-profile"
+ profile    = "demo-profile"
 }
 ```
 
 However this code cannot run on the meshStack Terraform runner for clear reasons. The runner starts from a fresh environment and does not have any preconfigured AWS profiles.
 
-More optimal solution would be to rely on environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In that case the Terraform configuration for AWS provider could look like: 
+More optimal solution would be to rely on environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In that case the Terraform configuration for AWS provider could look like:
 
 ```json
-provider "aws" {}
+ provider "aws" {}
 ```
 
 These variables must be passed by meshStack to the Terraform runner as input variables created in the Building Block definition as following:
@@ -231,7 +231,6 @@ The example below demonstrates an output variable `tenant_id`. It will be initia
 
 ![Output UI](assets/bb-howto-8.png)
 
-
 ### Pricing
 
 Recurring fees, which can be set on a monthly or daily basis, are an option. These fees will be charged to each project that has a Building Block assignment.
@@ -262,7 +261,7 @@ To apply changes to an existing Building Block, navigate to the Building Block d
 
 ![Create building block draft](assets/bb-howto-12.png)
 
-After applying the changes, select "Release" to publish a new version of the building block. This latest version will now be the default for users selecting this building block from the Marketplace. Users who have previously selected that building block continue to rely on the prior version. 
+After applying the changes, select "Release" to publish a new version of the building block. This latest version will now be the default for users selecting this building block from the Marketplace. Users who have previously selected that building block continue to rely on the prior version.
 
 The current instances of Building Blocks are not impacted by updates to the Building Block definition; thus, the provisioned resources stay unchanged. If necessary, you can force an upgrade of the instances. To do this, navigate to the Admin Area, then go to "Marketplace > Building Blocks". From the list of Building Blocks, check the box next to the ones you want to upgrade. Then, select “Upgrade,” as shown in the image below. This action will upgrade the selected Building Block definitions and **force a new run**, ensuring that end-users are using the latest version.
 
