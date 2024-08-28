@@ -3,13 +3,13 @@ id: meshstack.how-to.get-started-building-blocks
 title: How to setup and manage a Building block
 ---
 
-# Introduction
+## Introduction
 
 Building Block is a feature of meshStack that enables end users to automate resource provisioning through self-services. It also assists cloud engineers in creating pre-configured cloud resources by enforcing the use of Building Blocks assigned to Landing Zones. This document provides a step-by-step guide for users on the efficient setup of meshStack Building Blocks.
 
 Building block definition is a template that specify details such as type of Implementation, user expected inputs and outputs, recurrent fees, etc. A Building Block is an *instance* of a Building Block Definition. When a user select and run a Building Block from the Marketplace he creates an instance of that Building Block.
 
-# Terminology
+## Terminology
 
 The Building Block Definition is the template/blueprint of Building Blocks. It describes what piece of e.g. Terraform or other infrastructure has to be rolled out.
 
@@ -17,7 +17,7 @@ A Building Block is an *instance* of a Building Block Definition.
 
 In the marketplace, users can find *building block definitions,* and based on these, they can add them as a *building block* to their tenants.
 
-# Overview
+## Overview
 
 The diagram below illustrates the key components addressed in this document:
 
@@ -30,13 +30,13 @@ The diagram below illustrates the key components addressed in this document:
 
 ![Building block key components](assets/bb-howto-1.png)
 
-# Setup
+## Setup
 
 To create a new Building Block definition, from Admin Area navigate to “Marketplace > Building Block definitions” and then select “Create new Definition”. The configuration process is divided in multiple steps as outlined below.
 
 Alternatively, you can switch to “Service Management” UI and navigate to “Building Blocks > Definitions” and then select “Create new Definition”.
 
-## General
+### General
 
 In the initial user interface for Building Block definition, the user is required to assign a **Definition name** to the Building Block, which will be displayed in the Marketplace. The **Description** field offers more detailed information about the Building Block, assisting users in comprehending its purpose and advantages.
 
@@ -48,27 +48,27 @@ The **Support** and **Documentation** fields are designed to direct Building Blo
 
 ![Building block configuration UI](assets/bb-howto-2.png)
 
-## Tags
+### Tags
 
 Like other meshStack objects, tags could be assigned to Building Block definitions. These tags can be used to establish compliance rules, for example, allowing only users from specific Workspaces to execute the Building Block. Matching values for Building Block and Workspace tags facilitate such scenarios.
 
-## Implementation
+### Implementation
 
-### Supported platforms
+#### Supported platforms
 
 A Building Block is created to operate on one or several Platforms. This selection allows users to determine which Platforms qualify for the Building Block. Only projects with tenants on the corresponding platform will qualify for Building Block assignment.
 
-### Assignment
+#### Assignment
 
 How often can the same Building Block be allocated to a particular project? Choose "One" for a single assignment, or "Multiple" for more than one.
 
-### Terraform vs manual
+#### Terraform vs manual
 
 The building block definition has two implementation types: Terraform and manual. Using Terraform, the building block can automatically provision the infrastructure resources. This gives engineers and DevOps the ability to use the full power of IaC (Infrastructure as Code) to create self-service products available in the Marketplace.
 
 Manual implementation is beneficial when the Building Block provider wants to gather end-user information (through inputs) and process it outside of meshStack.
 
-### Git repository authentication
+#### Git repository authentication
 
 When the implementation type is configured as Terraform, meshStack offers two methods for retrieving your code from a remote Git repository of your choice:
 
@@ -93,11 +93,11 @@ Paste the command output into the text fields below.
 
 ![Known host setup](assets/bb-howto-3.png)
 
-## Dependencies
+### Dependencies
 
 Optionally, a user can specify relationships between the Building Blocks, making sure that Building Blocks designated as “pre-requisites” are assigned to the Tenant prior to assignment of the that current Building Block. By chaining the Building Blocks it is possible to use Building Block outputs as inputs for the dependant Building Block.
 
-## Input
+### Input
 
 A Building Block input is used to supply configuration parameters to Terraform code. Each input has following settings:
 
@@ -110,7 +110,7 @@ A Building Block input is used to supply configuration parameters to Terraform c
 - **Provide as** feature enables users to specify the method of input delivery to the Terraform code, either as an environment variable or as a regular variable (typically defined in the `variables.tf` file)
 - Finally, users can choose to encrypt the input's value by toggling the corresponding switch on, which is particularly useful when supplying credentials to Terraform.
 
-### Credentials management
+#### Credentials management
 
 In most cases, Terraform code requires credentials to provision the infrastructure. Consider an example of a Terraform building block for AWS. The AWS provider typically looks as follows, assuming credentials are provided by an AWS profile named `demo-profile` stored on the same device where Terraform operates:
 
@@ -151,7 +151,7 @@ It will automatically generate two inputs corresponding to the AWS credentials. 
 
 ![Generates AWS credetials input](assets/bb-howto-7.png)
 
-### User permissions
+#### User permissions
 
 User permissions is a special type of input. It provides to the Terraform runner the list of all users assigned to the project including their mail address, first/last name and respective roles. The permissions are passed as JSON list as shown on the example below:
 
@@ -220,7 +220,7 @@ data "project_users" "admins" {
 }
 ```
 
-## Output
+### Output
 
 Generally, any output generated by Terraform code can be accessed by meshStack if required. A common example might be when Terraform creates a resource on a custom platform, which is considered a tenant for meshStack. In such a case, meshStack would need to know the tenant's ID. This can be done by creating a new output with the name that match Terraform output variable and having the following characteristics:
 
@@ -231,13 +231,12 @@ The example below demonstrates an output variable `tenant_id`. It will be initia
 
 ![Output UI](assets/bb-howto-8.png)
 
-Output
 
-## Pricing
+### Pricing
 
 Recurring fees, which can be set on a monthly or daily basis, are an option. These fees will be charged to each project that has a Building Block assignment.
 
-## Publish Building Block definition
+### Publish Building Block definition
 
 Once you select "Create definition," the building block is recorded as a draft and is not yet eligible for the Marketplace.
 
@@ -249,7 +248,7 @@ To alter this status, meshStack users with the Admin role must review the new de
 
 The status of the definition will be set to “in review”. Once approved, the status will change to “Published”.
 
-# Building Block instances
+## Building Block instances
 
 meshStack enables Administrators and Platform owners to identify the tenants to which a Building Block has been added, that includes the versions used and the status of the Building Block, such as whether the run was successful or failed.
 
@@ -257,7 +256,7 @@ To view this, from the Admin View, go to “Marketplace > Building Blocks” and
 
 ![Building block instances](assets/bb-howto-11.png)
 
-# Change management
+## Change management
 
 To apply changes to an existing Building Block, navigate to the Building Block definitions and select the required Building Block. Select "Create draft" to generate a new version of the building block. Afterward, the Building Block definition will switch to edit mode, allowing you to apply the necessary changes.
 
@@ -273,7 +272,7 @@ The diagram illustrates the lifecycle of a Building Block definition. It indicat
 
 ![Building block lifecycle](assets/bb-howto-14.png)
 
-# Execution logs
+## Execution logs
 
 Building Blocks with "Terraform" as the implementation type produce logs when they are added to a project by an end-user. These logs provide details on the resources provisioned or any errors if the execution is unsuccessful. Both Admins and owners of the Building Block definitions can access these logs. As an Admin, you can view them by going to the Admin Area, proceeding to "Marketplace > Building Block overview," and choosing the desired Building Block from the list of executed instances. On the next screen, you will find one or more "Runs," depending on the number of times the user has executed this specific Building Block. By selecting a Run, you can inspect the associated Terraform logs.
 
