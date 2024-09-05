@@ -181,6 +181,53 @@ using Terraform-based Building Blocks in meshStack:
    By using a single storage per Building Block Definition you keep a clear separation of your state.
 3. Apply backup best practices to your remote backend so you can restore your state in case you run into an issue.
 
+### Configure remote backend
+
+1. Copy one of these examples into a file named `backend.tf` and adopt the parameters.
+2. Either put this backend.tf file inside your terraform module folder or upload it as a static file input along with the other inputs inside your Building Block definition. 
+3. Make sure to include the necessary credentials required for accessing the storage account. For instance, for a storage account in Azure, you can add "ARM_CLIENT_ID" and "ARM_CLIENT_SECRET" of the Service Principal as an Environment Variable.
+
+**Important:** When making use of an input parameter of type "File," it's important to note that the "Name" you assign to the input parameter will be used as the filename for the uploaded file. For example, if your Terraform code references a credential file as "key.json" in your terraform code, you should use the exact same name in your input "Name" field.
+
+#### AWS S3 Bucket
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "<bucket name>"
+    key    = "<Prefix of the state file name>"
+    region = "<Location name>"
+  }
+}
+```
+
+#### Azure storage account
+
+```hcl
+terraform {
+  backend "azurerm" {
+    tenant_id            = "<Tenant ID>"
+    subscription_id      = "<Subscription ID>"
+    resource_group_name  = "<Name of the resource group holding the state file>"
+    storage_account_name = "<Name of the Storage account holding the state file>"
+    container_name       = "<Name of the Container holding the state file>"
+    key                  = "<Prefix of the state file name>"
+  }
+}
+```
+
+#### GCS Bucket
+
+```hcl
+terraform {
+  backend "gcs" {
+    bucket  = "<Name of the bucket holding the state file>"
+    credentials = Local path to Google Cloud Platform account credentials in JSON format
+    prefix  = "<Prefix of the state file name>"
+  }
+}
+```
+
 ### How to debug
 
 You can view the logs of meshStack running the Terraform files. To do so, go to the Tenant Overview in the Admin Area
