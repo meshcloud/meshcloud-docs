@@ -7,11 +7,9 @@ title: How to setup and manage a Building block
 
 Building Block is a feature of meshStack that enables end users to automate resource provisioning through self-services. It also assists cloud engineers in creating pre-configured cloud resources by enforcing the use of Building Blocks assigned to Landing Zones. This document provides a step-by-step guide for users on the efficient setup of meshStack Building Blocks.
 
-Building block definition is a template that specify details such as type of Implementation, user expected inputs and outputs, recurrent fees, etc. A Building Block is an *instance* of a Building Block Definition. When a user select and run a Building Block from the Marketplace he creates an instance of that Building Block.
-
 ## Terminology
 
-The Building Block Definition is the template/blueprint of Building Blocks. It describes what piece of e.g. Terraform or other infrastructure has to be rolled out.
+The Building Block *definition* is the template/blueprint of Building Blocks. It describes what piece of e.g. Terraform or other infrastructure has to be rolled out.
 
 A Building Block is an *instance* of a Building Block Definition.
 
@@ -22,7 +20,7 @@ In the marketplace, users can find *building block definitions,* and based on th
 The diagram below illustrates the key components addressed in this document:
 
 - A Provider oversees the management of Building Block definitions that are made available to users through the Marketplace.
-- A User add Building Blocks to existing or new projects.
+- A User adds Building Blocks to existing or new projects.
 - The meshStack front end offers a user interface for both Providers and Users, enabling Providers to create and maintain Building Block definitions, and Users to add these Building Blocks to their projects.
 - The terraform runner executes the code defined in the Building Block, thereby provisioning platform resources.
 - A GIT repository contains the terraform code, which is maintained by the provider and utilized in the Building Block definition. This code specifies the resources that need to be provisioned on the platform.
@@ -32,7 +30,7 @@ The diagram below illustrates the key components addressed in this document:
 
 ## Setup
 
-To create a new Building Block definition, from Admin Area navigate to “Marketplace > Building Block definitions” and then select “Create new Definition”. The configuration process is divided in multiple steps as outlined below.
+To create a new Building Block definition, from Admin Area navigate to “Marketplace > Building Block definitions” and then select “Create new Definition”. The configuration process is divided into multiple steps as outlined below.
 
 Alternatively, you can switch to “Service Management” UI and navigate to “Building Blocks > Definitions” and then select “Create new Definition”.
 
@@ -42,7 +40,7 @@ In the initial user interface for Building Block definition, the user is require
 
 In certain cases, newly created Tenants may require the automatic execution of a configuration routine, like setting up a VPN connection to an on-premises network. For these situations, a Building Block assigned to a Landing Zone can be utilized. This Building Block will execute each time a tenant is established in the Landing Zone, carrying out the required updates. To enable use of Building Block in a Landing Zone, toggle the switch “**Use in Landing Zone only**”. Subsequently, the Building Block will not be available in the Marketplace.
 
-**Notification User** field let you define mail addresses to send a notification in case of failed Building Block execution or whenever a Building Block requires platform operator input.
+**Notification User** field lets you define mail addresses to send a notification in case of failed Building Block execution or whenever a Building Block requires platform operator input.
 
 The **Support** and **Documentation** fields are designed to direct Building Block users to supplementary documentation, providing them with additional information and support.
 
@@ -95,7 +93,7 @@ Paste the command output into the text fields below.
 
 ### Dependencies
 
-Optionally, a user can specify relationships between the Building Blocks, making sure that Building Blocks designated as “pre-requisites” are assigned to the Tenant prior to assignment of the that current Building Block. By chaining the Building Blocks it is possible to use Building Block outputs as inputs for the dependant Building Block.
+Optionally, a user can specify relationships between the Building Blocks, making sure that Building Blocks designated as “prerequisites” are assigned to the Tenant prior to assignment of the current Building Block. By chaining the Building Blocks it is possible to use Building Block outputs as inputs for the dependent Building Block.
 
 ### Input
 
@@ -120,7 +118,7 @@ provider "aws" {
 }
 ```
 
-However this code cannot run on the meshStack Terraform runner for clear reasons. The runner starts from a fresh environment and does not have any preconfigured AWS profiles.
+However this code cannot run on the meshStack Terraform runner for clear reasons. The runner starts from a fresh environment and does not have any pre configured AWS profiles.
 
 More optimal solution would be to rely on environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In that case the Terraform configuration for AWS provider could look like:
 
@@ -143,11 +141,11 @@ The screenshots below provide examples of Building Block Input configurations.
 
 This concept is not only limited to AWS, but applies to many Terraform providers that can use environment variables as credentials. Another example is the Datadog provider, which is configured similarly. The credentials are passed to the Terraform runner as Building Block Input environment variables, `DD_API_KEY` and `DD_APP_KEY`. Please refer to [https://registry.terraform.io/providers/DataDog/datadog/latest/docs](https://registry.terraform.io/providers/DataDog/datadog/latest/docs) for more details.
 
-For implementing Terraform, meshStack will provide preconfigured inputs for setting up credentials, depending on the platform you've chosen for the Building block. For instance, if your building block runs on the AWS platform, select "Generate AWS auth inputs" from the "Generate Input" menu, as shown.
+For implementing Terraform, meshStack will provide pre configured inputs for setting up credentials, depending on the platform you've chosen for the Building block. For instance, if your building block runs on the AWS platform, select "Generate AWS auth inputs" from the "Generate Input" menu, as shown.
 
 ![Generate AWS credetials input](assets/bb-howto-6.png)
 
-It will automatically generate two inputs corresponding to the AWS credentials. You only need to assign the appropriate static values to these inputs or or allow the end user to supply them at runtime as “User input”. Similar applies to GCP and Azure.
+It will automatically generate two inputs corresponding to the AWS credentials. You only need to assign the appropriate static values to these inputs or allow the end user to supply them at runtime as “User input”. Similar applies to GCP and Azure.
 
 ![Generates AWS credetials input](assets/bb-howto-7.png)
 
