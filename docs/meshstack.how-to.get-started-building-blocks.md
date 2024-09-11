@@ -9,7 +9,7 @@ Building Blocks are a feature in meshStack that enables end users to automate re
 
 ## Terminology
 
-The Building Block *definition* is the template/blueprint of Building Blocks. It describes what piece of e.g. Terraform or other infrastructure has to be rolled out.
+The Building Block *Definition* is the template/blueprint of Building Blocks. It describes what piece of e.g. Terraform or other infrastructure has to be rolled out.
 
 A Building Block is an *instance* of a Building Block Definition.
 
