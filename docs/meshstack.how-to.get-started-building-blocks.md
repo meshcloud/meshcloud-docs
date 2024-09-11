@@ -118,7 +118,7 @@ provider "aws" {
 }
 ```
 
-However this code cannot run on the meshStack Terraform runner for clear reasons. The runner starts from a fresh environment and does not have any pre configured AWS profiles.
+However this code cannot run on the meshStack Terraform runner for clear reasons. The runner starts from a fresh environment and does not have any preconfigured AWS profiles.
 
 More optimal solution would be to rely on environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In that case the Terraform configuration for AWS provider could look like:
 
