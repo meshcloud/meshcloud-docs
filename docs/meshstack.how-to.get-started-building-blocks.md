@@ -5,7 +5,7 @@ title: How to setup and manage a Building block
 
 ## Introduction
 
-Building Block is a feature of meshStack that enables end users to automate resource provisioning through self-services. It also assists cloud engineers in creating pre-configured cloud resources by enforcing the use of Building Blocks assigned to Landing Zones. This document provides a step-by-step guide for users on the efficient setup of meshStack Building Blocks.
+Building Blocks are a feature in meshStack that enables end users to automate resource provisioning through self-service. It also assists cloud engineers in creating pre-configured cloud resources by enforcing the use of Building Blocks assigned to Landing Zones. This document provides a step-by-step guide for users on the efficient setup of meshStack Building Blocks.
 
 ## Terminology
 
