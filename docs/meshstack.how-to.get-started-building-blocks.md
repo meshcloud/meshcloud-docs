@@ -30,7 +30,7 @@ The diagram below illustrates the key components addressed in this document:
 
 ## Setup
 
-To create a new Building Block definition, from Admin Area navigate to “Marketplace > Building Block definitions” and then select “Create new Definition”. The configuration process is divided into multiple steps as outlined below.
+To create a new Building Block definition, from Admin Area navigate to “Marketplace > Building Block Definitions” and then select “Create new Definition”. The configuration process is divided into multiple steps as outlined below.
 
 Alternatively, you can switch to “Service Management” UI and navigate to “Building Blocks > Definitions” and then select “Create new Definition”.
 
