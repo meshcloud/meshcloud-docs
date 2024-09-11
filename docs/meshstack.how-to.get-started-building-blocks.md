@@ -141,7 +141,7 @@ The screenshots below provide examples of Building Block Input configurations.
 
 This concept is not only limited to AWS, but applies to many Terraform providers that can use environment variables as credentials. Another example is the Datadog provider, which is configured similarly. The credentials are passed to the Terraform runner as Building Block Input environment variables, `DD_API_KEY` and `DD_APP_KEY`. Please refer to [https://registry.terraform.io/providers/DataDog/datadog/latest/docs](https://registry.terraform.io/providers/DataDog/datadog/latest/docs) for more details.
 
-For implementing Terraform, meshStack will provide pre configured inputs for setting up credentials, depending on the platform you've chosen for the Building block. For instance, if your building block runs on the AWS platform, select "Generate AWS auth inputs" from the "Generate Input" menu, as shown.
+For implementing Terraform, meshStack will provide preconfigured inputs for setting up credentials, depending on the platform you've chosen for the Building block. For instance, if your building block runs on the AWS platform, select "Generate AWS auth inputs" from the "Generate Input" menu, as shown.
 
 ![Generate AWS credetials input](assets/bb-howto-6.png)
 
