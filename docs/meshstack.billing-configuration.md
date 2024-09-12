@@ -25,13 +25,11 @@ The following metadata keys are derived from meshStack metadata and therefore av
 
 | Key                   | Description                                      |
 | --------------------- | :----------------------------------------------- |
-| tenantLandingZone     | Name of the Landing Zone used by the Tenant      |
 | last_modified         | Date when metadata was last modified             |
 | contactMail           | email address of the project owner               |
 | ownerUsername         | Username of the project owner                    |
 | ownerFirstName        | First name of the project owner                  |
 | ownerLastName         | Last name of the project owner                   |
-| tenant_local_id       | The id of the tenant as provided by the platform |
 | paymentName           | Name of the payment method                       |
 | paymentIdentifier     | Identifier of the payment method                 |
 | paymentExpirationDate | Expiration date of the payment method            |
