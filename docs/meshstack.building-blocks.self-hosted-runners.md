@@ -1,6 +1,6 @@
 ---
 id: meshstack.building-blocks.self-hosted-runners
-title: About self-hosted runners
+title: Self-Hosted Runners
 ---
 
 > Self-hosted runners are not GA yet. This documentation is an early draft until self-hosted runners are GA.
