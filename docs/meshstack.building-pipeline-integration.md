@@ -12,21 +12,18 @@ In this section you may find information about how to:
 
 Please find below the steps that are required to trigger an external automation via meshStack.
 
-### 1.Preparation
+### 1. Preparation
 
 At the moment we don't provide a native integration into any CI/CD tooling but we offer a neat way to trigger external systems via Building Blocks. In order to trigger a pipeline you may use the Terraform Building Block template below as a place to start. The module below can be used to trigger Github actions, we call this module "Trigger Module".
 
 The strucutre of the module is as follows:
 
-- **main**: Calls webhooks that are used to trigger Github actions via terraform apply and terraform destroy
-- **variables**: Variables necessary for the integration with GitHub
-
-[main](./assets/terraform_examples/pipeline_main)
-[variables](./assets/terraform_examples/pipeline_main)
+- [**main.tf**](./assets/terraform_examples/pipeline_main): Calls webhooks that are used to trigger Github actions via terraform apply and terraform destroy
+- [**variables.tf**](./assets/terraform_examples/pipeline_var): Variables necessary for the integration with GitHub
 
 Host your version of the module in a repository of your choice.
 
-### 2.Creating the Building Block Definition
+### 2. Creating the Building Block Definition
 
 In order to provide an existing automation you already got covered in a pipeline triggered by meshStack you need to prepare a Building Block Definition. We advise to create this Definition in one of the workspaces that have "service management" enabled. Make sure to use the Building Block Definition of type Terraform/OpenTofu and provide the information for the repository hosting your version of the "Trigger Module".
 
