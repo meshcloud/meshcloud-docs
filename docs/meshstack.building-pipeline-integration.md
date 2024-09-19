@@ -21,6 +21,9 @@ The strucutre of the module is as follows:
 - **main**: Calls webhooks that are used to trigger Github actions via terraform apply and terraform destroy
 - **variables**: Variables necessary for the integration with GitHub
 
+[main](./assets/terraform_examples/pipeline_main)
+[variables](./assets/terraform_examples/pipeline_main)
+
 Host your version of the module in a repository of your choice.
 
 ### 2.Creating the Building Block Definition
@@ -31,7 +34,7 @@ We advise to use a distinct name for the Building Block Definition that describe
 
 ### 3. Publish to the Marketplace
 
-Now you may [publish](marketplace.service-management-area#publishing) the Building Block to the **marketplace**. Now a new service will appear in the marketplace that when ordered will trigger your pipeline.
+Now you may [publish](./marketplace.service-management-area.md#publishing) the Building Block to the **marketplace**. Now a new service will appear in the marketplace that when ordered will trigger your pipeline.
 
 ## Update Status of a Building Block
 
@@ -41,7 +44,7 @@ With meshStack you have the ability to provide custom status to you users to upd
 
 ### Building Block Run and Steps
 
-In meshStack the execution of a Building Block is called a **run**. A single run can have multiple **steps**. You have complete freedom about the granularity of information you share with your users.
+In meshStack the execution of a Building Block from beginning till end is called a **run**. A run can have multiple **steps**. You have complete freedom about the granularity of information you share with your users.
 
 We have issued API documentation [here](./apis.index.md).
 
