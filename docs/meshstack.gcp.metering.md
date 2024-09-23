@@ -41,3 +41,11 @@ If you would like to see the GCP costs attributed to a seller in the [chargeback
     }
 }
 ```
+
+## Additional Filter
+
+Filter the costs meshStack collect via the `Additional Filter` option.
+
+Example for a filter for projects in organization `632614034120` and folder `493343334220`:
+
+`and STARTS_WITH(project.ancestry_numbers, '/632614034120/493343334220')`
