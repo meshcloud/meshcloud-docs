@@ -36,15 +36,12 @@ let example = { requirePayment = True } : Registration
 
 ### Additional Approval Flows
 
-Additional configuration options control backend behavior in `meshfed.web.register` as follows:
+Additional configuration option control backend behavior in `meshfed.web.register` as follows:
 
 ```dhall
 
 { {- Allow sign up only if valid payment information was provided during registration  -}
 , requirePayment : Optional Bool
-  {- Require manual approval of new meshWorkspaces by a partner before they can use cloud resources.
-     This is useful when you do not (yet) want your users to onboard in self-service. -}
-, approvalRequired : Optional Bool
 }
 ```
 
