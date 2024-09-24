@@ -6,7 +6,7 @@ title: Managed Service
 meshcloud will operate your meshStack as a managed service for you.
 Some aspects of the managed service operation apply to all meshStacks (mentioned under [meshStack General](#meshstack-general)),
 but other aspects apply only to specific plans. Please have a look at the dedicated section of your plan,
-which can be either [meshStack SaaS](#meshstack-saas) or [meshStack Enterprise](#meshstack-enterprise).
+which can be either [meshStack SaaS](#meshstack-saas) or [meshStack SaaS On-Prem](#meshstack-saas-on-prem).
 
 ## meshStack General
 
@@ -54,7 +54,7 @@ do not support (nor require) rollbacks. Any release is generally considered "End
 with a higher version number becomes available. meshcloud's managed service supports operation for EOL releases for
 a limited time period (upgrade window) before the customer is expected to approve an update to the next release.
 
-For meshStack Enterprise users, meshcloud can offer extended support for feature releases that have officially
+For meshStack SaaS On-Prem users, meshcloud can offer extended support for feature releases that have officially
 reached end of life as part of an individual managed service agreement. Extended support covers managed operation
 of an EOL release as well as a commitment to providing further patch releases for critical bugs and security
 issues found in a given feature release.
@@ -74,7 +74,7 @@ and [monitoring](./meshstack.monitoring.md) infrastructure. meshcloud uses these
 to monitor system availability and diagnose any possible issues.
 
 The monitoring infrastructure of your installations can be made available to your own operations teams on request.
-For meshStack Enterprise users, it is also possible to integrate meshStack with a Security Operations Center (SOC).
+For meshStack SaaS On-Prem users, it is also possible to integrate meshStack with a Security Operations Center (SOC).
 For more details, please contact our experts.
 
 ## meshStack SaaS
@@ -85,7 +85,7 @@ This agreement will be provided upon purchasing a meshStack SaaS plan.
 ### SaaS: Infrastructure
 
 Each meshStack SaaS installation is managed in a standardized way, and it is not possible to deviate from this
-standard unless the installation is upgraded to the [meshStack Enterprise plan](#meshstack-enterprise).
+standard unless the installation is upgraded to the [meshStack SaaS On-Prem plan](#meshstack-saas-on-prem).
 
 meshStack SaaS is hosted on a Google Cloud-managed kubernetes cluster (this service is known as GKE).
 Each individual meshStack SaaS environment is hosted in its own so-called Kubernetes namespace, secured
@@ -106,40 +106,40 @@ The rollout of these updates can be one of the following:
 - Weekly, on Mondays between 5 PM and 9 PM CEST.
 - Weekly, on Thursdays between 5 PM and 9 PM CEST.
 
-## meshStack Enterprise
+## meshStack SaaS On-Prem
 
-The meshStack Enterprise plan comes with an individual customer agreement.
-This agreement will be created and provided when signing up for a meshStack Enterprise plan.
+The meshStack SaaS On-Prem plan comes with an individual customer agreement.
+This agreement will be created and provided when signing up for a meshStack SaaS On-Prem plan.
 
-### Enterprise: Infrastructure
+### SaaS On-Prem: Infrastructure
 
-The infrastructure of a meshStack Enterprise installation always depends on what is agreed upon with the customer.
+The infrastructure of a meshStack SaaS On-Prem installation always depends on what is agreed upon with the customer.
 
 meshcloud supports both on-premise installations and public cloud (AWS, Azure & Google Cloud) installations
 that are owned by the customer. meshcloud's operations team will need access to the environment and will fully
 manage the meshStack installation from there.
 
-### Enterprise: Artifact Delivery
+### SaaS On-Prem: Artifact Delivery
 
 It is possible for meshcloud to push artifacts for new meshStack releases to a customer-provided artifact store.
 This enables meshcloud to fulfill software admission/delivery and archival requirements that you might have.
 
-### Enterprise: Environments
+### SaaS On-Prem: Environments
 
 #### Staging / QA Environment
 
-When on the meshStack Enterprise plan, it is possible to get a staging environment (on top of a production environment)
+When on the meshStack SaaS On-Prem plan, it is possible to get a staging environment (on top of a production environment)
 for quality checks & testing purposes, which is useful for testing new releases or new integrations.
 The staging environment will be automatically managed by meshcloud.
 
 #### Production Environment
 
-The production environment of meshStack Enterprise is the real environment where all your users will be consuming
+The production environment of meshStack SaaS On-Prem is the real environment where all your users will be consuming
 your cloud foundation services.
 The production environment is managed by meshcloud.
 The timeline of rolling out new releases can be decided by the customer (more on that below).
 
-### Enterprise: Rollouts
+### SaaS On-Prem: Rollouts
 
 #### Rolling out Staging Environment
 
@@ -152,7 +152,7 @@ e.g. as soon as possible or at a certain time window.
 Production releases are also automated via a CI/CD pipeline but rollouts are typically not automatically triggered by meshcloud.
 Instead, you can provide a manual approval or gating process before updates are rolled out to the production environment.
 
-### Enterprise: Configuration Copy
+### SaaS On-Prem: Configuration Copy
 
-For meshStack Enterprise plans we offer the possibility to get a copy of the configuration as code repository.
+For meshStack SaaS On-Prem plans we offer the possibility to get a copy of the configuration as code repository.
 This might be useful for e.g. auditing reasons. Contact support@meshcloud.io to get this set up.
