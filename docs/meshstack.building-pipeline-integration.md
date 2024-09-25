@@ -18,8 +18,8 @@ At the moment we don't provide a native integration into any CI/CD tooling but w
 
 The strucutre of the module is as follows:
 
-- [**main.tf**](./assets/terraform_examples/pipeline_main): Calls webhooks that are used to trigger Github actions via `terraform apply` and `terraform destroy`
-- [**variables.tf**](./assets/terraform_examples/pipeline_var): Variables necessary for the integration with GitHub
+- [**main.tf**](./assets/terraform_examples/pipeline_main.tf): Calls webhooks that are used to trigger Github actions via `terraform apply` and `terraform destroy`
+- [**variables.tf**](./assets/terraform_examples/pipeline_var.tf): Variables necessary for the integration with GitHub
 
 Host your version of the module in a repository of your choice.
 
