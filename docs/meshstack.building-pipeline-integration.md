@@ -25,7 +25,7 @@ Host your version of the module in a repository of your choice.
 
 ### 2. Creating the Building Block Definition
 
-In order to provide an existing automation you already got covered in a pipeline triggered by meshStack you need to prepare a Building Block Definition. We advise to create this Definition in one of the workspaces that have "service management" enabled. Make sure to use the Building Block Definition of type Terraform/OpenTofu and provide the information for the repository hosting your version of the "Trigger Module".
+In order to provide an existing automation you already got covered in a pipeline triggered by meshStack you need to prepare a Building Block Definition. You have to create this Definition in one of the workspaces that have "service management" enabled. Make sure to use the Building Block Definition of type Terraform/OpenTofu and provide the information for the repository hosting your version of the "Trigger Module".
 
 We advise to use a distinct name for the Building Block Definition that describes the outcome of the automation in the pipeline.
 
