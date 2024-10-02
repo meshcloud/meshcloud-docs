@@ -637,7 +637,8 @@ Content-Length: 274
 WORKSPACE_NOT_FOUND
 , CUSTOMER_NOT_FOUND
 , PROJECT_NOT_FOUND
-, SERVER_ERROR</p>
+, SERVER_ERROR
+, INVALID_MESH_OBJECT</p>
 <p class="tableblock">(might be null)</p></td>
 </tr>
 <tr>
@@ -1145,7 +1146,8 @@ spec:
 <div class="sect4">
 <h5 id="_meshworkspaceuserbinding">meshWorkspaceUserBinding</h5>
 <div class="paragraph">
-<p>A meshWorkspaceUserBinding is an assignment of users to a meshWorkspace/meshPartner.</p>
+<p>A meshWorkspaceUserBinding is an assignment of users to a meshWorkspace/meshPartner.
+The subjects array contains a list of users, where each name represents the username of an user assigned to the workspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1156,8 +1158,8 @@ roleRef:
 targetRef:
   name: my-mobile-app-team
 subjects:
-  - name: john-doe
-  - name: jane-doe</code></pre>
+  - name: john-doe # Username of the user
+  - name: jane-doe # Username of the user</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1187,6 +1189,7 @@ subjects:
 <h5 id="_meshworkspacegroupbinding">meshWorkspaceGroupBinding</h5>
 <div class="paragraph">
 <p>Assigns a meshWorkspaceUserGroup to a meshWorkspace/meshPartner with the specified role. All users in the group will receive the rights from the role.
+The subjects array contains a list of groups, where each name represents the group identifier of a group assigned to the workspace.
 The Workspace Owner role cannot be assigned to groups. It is only possible to assign users directly to that role.
 4-eye-principle is not supported when creating a meshWorkspaceGroupBinding via this API.</p>
 </div>
@@ -1199,8 +1202,8 @@ roleRef:
 targetRef:
   name: my-mobile-app-team
 subjects:
-  - name: my-user-group
-  - name: and-another-user-group</code></pre>
+  - name: my-user-group # Group Identifier
+  - name: and-another-user-group # Group Identifier</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1374,7 +1377,7 @@ kind: meshServiceInstance
 metadata:
   ownedByProject: mobile-app-prod
   ownedByWorkspace: my-mobile-app-team
-  marketplaceIdentifier: global # You can find the marketplace identifier in the meshCustomer service brokers list in the meshPanel
+  marketplaceIdentifier: global # You can find the marketplace identifier in the meshWorkspace service brokers list in the meshPanel
   instanceId: f78ab615-75a4-446f-b8fe-a6db672c039a  # will be used when creating bindings (see meshServiceBinding example below)
 spec:
   displayName: My Service Instance
@@ -1523,7 +1526,7 @@ rates:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-25 12:46:01 UTC
+Last updated 2024-10-02 13:35:23 UTC
 </div>
 </div>
 </body>
