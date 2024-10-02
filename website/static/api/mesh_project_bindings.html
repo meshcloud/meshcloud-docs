@@ -541,6 +541,11 @@ Host: mesh-backend-url</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user is assigned to.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the user is assigned to.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshProjectUserBindings[].targetRef.ownedByWorkspace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
@@ -577,7 +582,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 940
+Content-Length: 982
 
 {
   "_embedded" : {
@@ -585,13 +590,14 @@ Content-Length: 940
       "kind" : "meshProjectUserBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "8a8c3239-01bb-4426-b73b-ada8158819db"
+        "name" : "67c245ed-addd-46ff-9418-9ccad694bc34"
       },
       "roleRef" : {
         "name" : "Project User"
       },
       "targetRef" : {
         "name" : "test-project-1",
+        "displayName" : "Test Project 1",
         "ownedByWorkspace" : "test-workspace"
       },
       "subject" : {
@@ -599,7 +605,7 @@ Content-Length: 940
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8a8c3239-01bb-4426-b73b-ada8158819db"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/67c245ed-addd-46ff-9418-9ccad694bc34"
         }
       }
     } ]
@@ -749,7 +755,12 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user should get assigned to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user was assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the user was assigned to.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
@@ -793,7 +804,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 460
+Content-Length: 498
 
 {
   "kind" : "meshProjectUserBinding",
@@ -806,6 +817,7 @@ Content-Length: 460
   },
   "targetRef" : {
     "name" : "test-project-1",
+    "displayName" : "Test Project 1",
     "ownedByWorkspace" : "test-workspace"
   },
   "subject" : {
@@ -875,7 +887,7 @@ X-Frame-Options: DENY</code></pre>
 <div class="sect3">
 <h4 id="_meshprojectgroupbinding">meshProjectGroupBinding</h4>
 <div class="paragraph">
-<p>A meshProjectUserBinding is an assignment of groups to a project with a specified project role.
+<p>A meshProjectGroupBinding is an assignment of groups to a project with a specified project role.
 These project roles grant groups a specific set of permissions within the cloud platforms used by the project.
 The actual permissions that the role have within the platform tenant are determined by the policies set by your cloud foundation team.</p>
 </div>
@@ -1009,7 +1021,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 944
+Content-Length: 986
 
 {
   "_embedded" : {
@@ -1017,13 +1029,14 @@ Content-Length: 944
       "kind" : "meshProjectGroupBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "064f69f3-9eb0-4667-8401-d6ca652a5161"
+        "name" : "9bcb623a-8805-433f-908e-e4ce419f78a7"
       },
       "roleRef" : {
         "name" : "Project User"
       },
       "targetRef" : {
         "name" : "test-project-1",
+        "displayName" : "Test Project 1",
         "ownedByWorkspace" : "test-workspace"
       },
       "subject" : {
@@ -1031,7 +1044,7 @@ Content-Length: 944
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/064f69f3-9eb0-4667-8401-d6ca652a5161"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7"
         }
       }
     } ]
@@ -1183,6 +1196,11 @@ Host: mesh-backend-url
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the group should get assigned to.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the group should get assigned to.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
@@ -1224,7 +1242,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 464
+Content-Length: 502
 
 {
   "kind" : "meshProjectGroupBinding",
@@ -1237,6 +1255,7 @@ Content-Length: 464
   },
   "targetRef" : {
     "name" : "test-project-1",
+    "displayName" : "Test Project 1",
     "ownedByWorkspace" : "test-workspace"
   },
   "subject" : {
@@ -1271,7 +1290,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/064f69f3-9eb0-4667-8401-d6ca652a5161 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1279,7 +1298,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/064f69f3-9eb0-4667-8401-d6ca652a5161' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1306,7 +1325,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-25 12:46:01 UTC
+Last updated 2024-10-02 13:35:23 UTC
 </div>
 </div>
 </body>
