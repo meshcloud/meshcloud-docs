@@ -590,7 +590,7 @@ Content-Length: 982
       "kind" : "meshProjectUserBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "67c245ed-addd-46ff-9418-9ccad694bc34"
+        "name" : "8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -605,7 +605,7 @@ Content-Length: 982
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/67c245ed-addd-46ff-9418-9ccad694bc34"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
         }
       }
     } ]
@@ -626,13 +626,163 @@ Content-Length: 982
 </div>
 </div>
 <div class="sect4">
+<h5 id="_get_meshprojectuserbinding">Get meshProjectUserBinding</h5>
+<div class="paragraph">
+<p>Get a single meshProjectUserBinding.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshProjectUserBinding datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshProjectUserBinding' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshProjectUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshProjectUserBinding identifier as 'name' to uniquely identify the meshProjectUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the referenced user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 534
+
+{
+  "kind" : "meshProjectUserBinding",
+  "apiVersion" : "v3",
+  "metadata" : {
+    "name" : "8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
+  },
+  "roleRef" : {
+    "name" : "Project User"
+  },
+  "targetRef" : {
+    "name" : "test-project-1",
+    "displayName" : "Test Project 1",
+    "ownedByWorkspace" : "test-workspace"
+  },
+  "subject" : {
+    "name" : "username1"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_post_meshprojectuserbinding">Post meshProjectUserBinding</h5>
 <div class="paragraph">
 <p>Creating a meshProjectUserBinding assigns the users to a project with a specified project role,
 which grants them the corresponding permissions within the cloud platform. Before users can be assigned to a project, they must first be added to the workspace that owns that project.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Request Headers</caption>
+<caption class="title">Table 6. Request Headers</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -728,7 +878,7 @@ Host: mesh-backend-url
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Response Fields</caption>
+<caption class="title">Table 7. Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -897,7 +1047,7 @@ The actual permissions that the role have within the platform tenant are determi
 <p>Provides a paged list of meshProjectGroupBindings.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Request Headers</caption>
+<caption class="title">Table 8. Request Headers</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -911,12 +1061,12 @@ The actual permissions that the role have within the platform tenant are determi
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Request Parameters</caption>
+<caption class="title">Table 9. Request Parameters</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -955,7 +1105,7 @@ Host: mesh-backend-url</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Response Fields</caption>
+<caption class="title">Table 10. Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1029,7 +1179,7 @@ Content-Length: 986
       "kind" : "meshProjectGroupBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "9bcb623a-8805-433f-908e-e4ce419f78a7"
+        "name" : "a1229375-0758-4293-a3e5-1876b4fe336e"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -1044,7 +1194,7 @@ Content-Length: 986
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e"
         }
       }
     } ]
@@ -1065,12 +1215,162 @@ Content-Length: 986
 </div>
 </div>
 <div class="sect4">
+<h5 id="_get_meshprojectgroupbinding">Get meshProjectGroupBinding</h5>
+<div class="paragraph">
+<p>Get a single meshProjectGroupBinding.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshProjectGroupBinding datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshProjectGroupBinding' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshProjectGroupBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshProjectGroupBinding identifier as 'name' to uniquely identify the meshProjectGroupBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this group.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the group is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the group is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of this user group.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 536
+
+{
+  "kind" : "meshProjectGroupBinding",
+  "apiVersion" : "v3",
+  "metadata" : {
+    "name" : "a1229375-0758-4293-a3e5-1876b4fe336e"
+  },
+  "roleRef" : {
+    "name" : "Project User"
+  },
+  "targetRef" : {
+    "name" : "test-project-1",
+    "displayName" : "Test Project 1",
+    "ownedByWorkspace" : "test-workspace"
+  },
+  "subject" : {
+    "name" : "testgroup"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_post_meshprojectgroupbindings">Post meshProjectGroupBindings</h5>
 <div class="paragraph">
 <p>This creates a new group binding and associates a user group together with a role to a project.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Request Headers</caption>
+<caption class="title">Table 13. Request Headers</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1166,7 +1466,7 @@ Host: mesh-backend-url
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Response Fields</caption>
+<caption class="title">Table 14. Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1271,16 +1571,16 @@ Content-Length: 502
 </div>
 </div>
 <div class="sect4">
-<h5 id="_update_meshprojectuserbinding">Update meshProjectUserBinding</h5>
+<h5 id="_update_meshprojectgroupbinding">Update meshProjectGroupBinding</h5>
 <div class="paragraph">
 <p>An update is currently not possible. You must first delete an existing group binding and then
 re-create it with for example a changed role.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_meshprojectuserbinding_2">Delete meshProjectUserBinding</h5>
+<h5 id="_delete_meshprojectgroupbinding">Delete meshProjectGroupBinding</h5>
 <div class="paragraph">
-<p>Deleting a meshProjectUserBinding removes the assignment of a group from a project and revokes their associated project role.
+<p>Deleting a meshProjectGroupBinding removes the assignment of a group from a project and revokes their associated project role.
 This action effectively withdraws the permissions granted to the group within the cloud platforms linked to the project.</p>
 </div>
 <div class="paragraph">
@@ -1290,7 +1590,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1298,7 +1598,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1325,7 +1625,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-02 13:35:23 UTC
+Last updated 2024-10-09 09:23:15 UTC
 </div>
 </div>
 </body>
