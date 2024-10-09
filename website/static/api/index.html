@@ -505,6 +505,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#mesh_project_bindings">meshProjectUserBinding</a>
 <ul class="sectlevel4">
 <li><a href="#_list_meshprojectuserbindings">List meshProjectUserBindings</a></li>
+<li><a href="#_get_meshprojectuserbinding">Get meshProjectUserBinding</a></li>
 <li><a href="#_post_meshprojectuserbinding">Post meshProjectUserBinding</a></li>
 <li><a href="#_update_meshprojectuserbindings">Update meshProjectUserBindings</a></li>
 <li><a href="#_delete_meshprojectuserbinding">Delete meshProjectUserBinding</a></li>
@@ -513,9 +514,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_meshprojectgroupbinding">meshProjectGroupBinding</a>
 <ul class="sectlevel4">
 <li><a href="#_list_meshprojectgroupbindings">List meshProjectGroupBindings</a></li>
+<li><a href="#_get_meshprojectgroupbinding">Get meshProjectGroupBinding</a></li>
 <li><a href="#_post_meshprojectgroupbindings">Post meshProjectGroupBindings</a></li>
-<li><a href="#_update_meshprojectuserbinding">Update meshProjectUserBinding</a></li>
-<li><a href="#_delete_meshprojectuserbinding_2">Delete meshProjectUserBinding</a></li>
+<li><a href="#_update_meshprojectgroupbinding">Update meshProjectGroupBinding</a></li>
+<li><a href="#_delete_meshprojectgroupbinding">Delete meshProjectGroupBinding</a></li>
+</ul>
+</li>
+<li><a href="#mesh_workspaceuserbinding">meshWorkspaceUserBinding</a>
+<ul class="sectlevel4">
+<li><a href="#_list_meshworkspaceuserbindings">List meshWorkspaceUserBindings</a></li>
+<li><a href="#_get_meshworkspaceuserbinding">Get meshWorkspaceUserBinding</a></li>
+<li><a href="#_post_meshworkspaceuserbinding">Post meshWorkspaceUserBinding</a></li>
+<li><a href="#_update_meshworkspaceuserbindings">Update meshWorkspaceUserBindings</a></li>
+<li><a href="#_delete_meshworkspaceuserbinding">Delete meshWorkspaceUserBinding</a></li>
 </ul>
 </li>
 <li><a href="#mesh_tenant">meshTenant</a>
@@ -1412,6 +1423,10 @@ get a subset of the links mentioned here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gets meshProjectUserBindings for this meshProject.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshworkspaceuserbindings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_workspaceuserbinding">meshWorkspaceUserBinding</a>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshtenants</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_tenant">meshTenants</a>.</p></td>
 </tr>
@@ -1452,10 +1467,18 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 2344
+Content-Length: 2551
 
 {
   "_links" : {
+    "meshtenants" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+      "templated" : true
+    },
+    "meshpaymentmethods" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
+      "templated" : true
+    },
     "meshserviceinstances" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
       "templated" : true
@@ -1472,32 +1495,28 @@ Content-Length: 2344
       "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
       "templated" : true
     },
-    "meshbuildingblockruns" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
-      "templated" : true
-    },
     "meshbuildingblocks" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks{?workspaceIdentifier,customerIdentifier,projectIdentifier,platformIdentifier,name,definitionName,versionNumber,status}",
       "templated" : true
     },
-    "meshworkspaces" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces"
-    },
-    "meshworkspaceusergroups" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups{?workspaceIdentifier,username}",
+    "meshbuildingblockruns" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
       "templated" : true
     },
     "meshusers" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
       "templated" : true
     },
-    "meshpaymentmethods" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
+    "meshworkspaceuserbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings{?username,workspaceRole,workspaceIdentifier}",
       "templated" : true
     },
-    "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+    "meshworkspaceusergroups" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups{?workspaceIdentifier,username}",
       "templated" : true
+    },
+    "meshworkspaces" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces"
     },
     "self" : {
       "href" : "https://mesh-backend-url/api/meshobjects"
@@ -1635,7 +1654,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "admin-customer",
-        "createdOn" : "2024-10-02T13:36:36Z"
+        "createdOn" : "2024-10-09T09:24:30Z"
       },
       "spec" : {
         "displayName" : "admin-customer",
@@ -1666,7 +1685,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-customer",
-        "createdOn" : "2024-10-02T13:36:36Z"
+        "createdOn" : "2024-10-09T09:24:30Z"
       },
       "spec" : {
         "displayName" : "demo-customer",
@@ -1697,7 +1716,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-partner",
-        "createdOn" : "2024-10-02T13:36:36Z"
+        "createdOn" : "2024-10-09T09:24:30Z"
       },
       "spec" : {
         "displayName" : "demo-partner",
@@ -1913,7 +1932,7 @@ Content-Length: 1055
   "apiVersion" : "v1",
   "metadata" : {
     "name" : "admin-customer",
-    "createdOn" : "2024-10-02T13:36:36Z"
+    "createdOn" : "2024-10-09T09:24:30Z"
   },
   "spec" : {
     "displayName" : "admin-customer",
@@ -2007,7 +2026,7 @@ Content-Length: 1055
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects?workspaceIdentifier=kkmt3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects?workspaceIdentifier=ie7u4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2016,7 +2035,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=kkmt3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ie7u4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -2081,8 +2100,8 @@ Content-Length: 2283
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-project-1",
-        "ownedByWorkspace" : "kkmt3mpdsv2",
-        "createdOn" : "2024-10-02T13:37:26.216265954Z"
+        "ownedByWorkspace" : "ie7u4mpdsv2",
+        "createdOn" : "2024-10-09T09:25:23.092404195Z"
       },
       "spec" : {
         "displayName" : "Test Project 1",
@@ -2091,38 +2110,38 @@ Content-Length: 2283
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-1"
         },
         "meshtenants" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshusers" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "activePaymentMethod" : {
           "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
         },
         "meshprojectuserbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshprojectgroupbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
         }
       }
     } ]
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=kkmt3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ie7u4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=kkmt3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ie7u4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=kkmt3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ie7u4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=kkmt3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ie7u4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     }
   },
   "page" : {
@@ -2163,7 +2182,7 @@ Deleted meshProjects can also be requested via this endpoint.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2172,7 +2191,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -2320,9 +2339,9 @@ Content-Length: 1354
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-1",
-    "ownedByWorkspace" : "kkmt3mpdsv2",
-    "createdOn" : "2024-10-02T13:37:26.216265954Z",
-    "deletedOn" : "2024-10-02T13:37:27.473229621Z"
+    "ownedByWorkspace" : "ie7u4mpdsv2",
+    "createdOn" : "2024-10-09T09:25:23.092404195Z",
+    "deletedOn" : "2024-10-09T09:25:24.354668559Z"
   },
   "spec" : {
     "displayName" : "Test Project 1",
@@ -2331,22 +2350,22 @@ Content-Length: 1354
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-1"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-1"
     }
   }
 }</code></pre>
@@ -2397,7 +2416,7 @@ Content-Length: 1354
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "kkmt3mpdsv2"
+    "ownedByWorkspace" : "ie7u4mpdsv2"
   }
 }</code></pre>
 </div>
@@ -2422,7 +2441,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "kkmt3mpdsv2"
+    "ownedByWorkspace" : "ie7u4mpdsv2"
   }
 }</code></pre>
 </div>
@@ -2443,7 +2462,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "kkmt3mpdsv2"
+    "ownedByWorkspace" : "ie7u4mpdsv2"
   }
 }'</code></pre>
 </div>
@@ -2537,8 +2556,8 @@ Content-Length: 1302
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "kkmt3mpdsv2",
-    "createdOn" : "2024-10-02T13:37:26.637921473Z"
+    "ownedByWorkspace" : "ie7u4mpdsv2",
+    "createdOn" : "2024-10-09T09:25:23.518765089Z"
   },
   "spec" : {
     "displayName" : "Test Project 3",
@@ -2547,22 +2566,22 @@ Content-Length: 1302
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-3"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=kkmt3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=ie7u4mpdsv2&amp;projectIdentifier=test-project-3"
     }
   }
 }</code></pre>
@@ -2619,7 +2638,7 @@ If one tenant still has such active services the project deletion will fail.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2628,7 +2647,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/kkmt3mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/ie7u4mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -2800,7 +2819,7 @@ Content-Length: 982
       "kind" : "meshProjectUserBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "67c245ed-addd-46ff-9418-9ccad694bc34"
+        "name" : "8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -2815,7 +2834,7 @@ Content-Length: 982
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/67c245ed-addd-46ff-9418-9ccad694bc34"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
         }
       }
     } ]
@@ -2830,6 +2849,156 @@ Content-Length: 982
     "totalElements" : 1,
     "totalPages" : 1,
     "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshprojectuserbinding"><a class="link" href="#_get_meshprojectuserbinding">Get meshProjectUserBinding</a></h5>
+<div class="paragraph">
+<p>Get a single meshProjectUserBinding.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshProjectUserBinding datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshProjectUserBinding' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshProjectUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshProjectUserBinding identifier as 'name' to uniquely identify the meshProjectUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the referenced user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 534
+
+{
+  "kind" : "meshProjectUserBinding",
+  "apiVersion" : "v3",
+  "metadata" : {
+    "name" : "8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
+  },
+  "roleRef" : {
+    "name" : "Project User"
+  },
+  "targetRef" : {
+    "name" : "test-project-1",
+    "displayName" : "Test Project 1",
+    "ownedByWorkspace" : "test-workspace"
+  },
+  "subject" : {
+    "name" : "username1"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8c29fc76-a99c-4a28-bfa3-55808fa4ea7f"
+    }
   }
 }</code></pre>
 </div>
@@ -3121,7 +3290,7 @@ The actual permissions that the role have within the platform tenant are determi
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3239,7 +3408,7 @@ Content-Length: 986
       "kind" : "meshProjectGroupBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "9bcb623a-8805-433f-908e-e4ce419f78a7"
+        "name" : "a1229375-0758-4293-a3e5-1876b4fe336e"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -3254,7 +3423,7 @@ Content-Length: 986
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e"
         }
       }
     } ]
@@ -3269,6 +3438,156 @@ Content-Length: 986
     "totalElements" : 1,
     "totalPages" : 1,
     "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshprojectgroupbinding"><a class="link" href="#_get_meshprojectgroupbinding">Get meshProjectGroupBinding</a></h5>
+<div class="paragraph">
+<p>Get a single meshProjectGroupBinding.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshProjectGroupBinding datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshProjectGroupBinding' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshProjectGroupBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshProjectGroupBinding identifier as 'name' to uniquely identify the meshProjectGroupBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this group.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the group is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project the group is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace which contains the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of this user group.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 536
+
+{
+  "kind" : "meshProjectGroupBinding",
+  "apiVersion" : "v3",
+  "metadata" : {
+    "name" : "a1229375-0758-4293-a3e5-1876b4fe336e"
+  },
+  "roleRef" : {
+    "name" : "Project User"
+  },
+  "targetRef" : {
+    "name" : "test-project-1",
+    "displayName" : "Test Project 1",
+    "ownedByWorkspace" : "test-workspace"
+  },
+  "subject" : {
+    "name" : "testgroup"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e"
+    }
   }
 }</code></pre>
 </div>
@@ -3481,16 +3800,16 @@ Content-Length: 502
 </div>
 </div>
 <div class="sect4">
-<h5 id="_update_meshprojectuserbinding"><a class="link" href="#_update_meshprojectuserbinding">Update meshProjectUserBinding</a></h5>
+<h5 id="_update_meshprojectgroupbinding"><a class="link" href="#_update_meshprojectgroupbinding">Update meshProjectGroupBinding</a></h5>
 <div class="paragraph">
 <p>An update is currently not possible. You must first delete an existing group binding and then
 re-create it with for example a changed role.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_meshprojectuserbinding_2"><a class="link" href="#_delete_meshprojectuserbinding_2">Delete meshProjectUserBinding</a></h5>
+<h5 id="_delete_meshprojectgroupbinding"><a class="link" href="#_delete_meshprojectgroupbinding">Delete meshProjectGroupBinding</a></h5>
 <div class="paragraph">
-<p>Deleting a meshProjectUserBinding removes the assignment of a group from a project and revokes their associated project role.
+<p>Deleting a meshProjectGroupBinding removes the assignment of a group from a project and revokes their associated project role.
 This action effectively withdraws the permissions granted to the group within the cloud platforms linked to the project.</p>
 </div>
 <div class="paragraph">
@@ -3500,7 +3819,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -3508,7 +3827,567 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/9bcb623a-8805-433f-908e-e4ce419f78a7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a1229375-0758-4293-a3e5-1876b4fe336e' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Example Response</div>
+<p>The response is just an empty HTTP 204.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mesh_workspaceuserbinding"><a class="link" href="#mesh_workspaceuserbinding">meshWorkspaceUserBinding</a></h4>
+<div class="paragraph">
+<p>A meshWorkspaceUserBinding is an assignment of users to a workspace with a specified workspace role.
+Please note that this endpoint can only be used with API users for now. Support for API keys will
+be added in the future.</p>
+</div>
+<div class="sect4">
+<h5 id="_list_meshworkspaceuserbindings"><a class="link" href="#_list_meshworkspaceuserbindings">List meshWorkspaceUserBindings</a></h5>
+<div class="paragraph">
+<p>Provides a paged list of meshWorkspaceUserBindings.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Parameters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>username</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for user bindings associated to the given user (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceRole</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for user bindings with the given workspace role (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for user bindings associated to the given workspace (optional)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshworkspacebindings/userbindings?username=username1&amp;workspaceRole=Workspace%20Manager&amp;workspaceIdentifier=test-workspace HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings?username=username1&amp;workspaceRole=Workspace%20Manager&amp;workspaceIdentifier=test-workspace' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshWorkspaceUserBindings[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_workspaceUserBinding_response_fields">meshWorkspaceUserBinding</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 941
+
+{
+  "_embedded" : {
+    "meshWorkspaceUserBindings" : [ {
+      "kind" : "meshWorkspaceUserBinding",
+      "apiVersion" : "v2",
+      "metadata" : {
+        "name" : "user-binding-name"
+      },
+      "roleRef" : {
+        "name" : "Workspace Manager"
+      },
+      "targetRef" : {
+        "name" : "test-workspace",
+        "displayName" : "test-workspace Workspace"
+      },
+      "subject" : {
+        "name" : "username1"
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings/user-binding-name"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings?username=username1&amp;workspaceRole=Workspace%20Manager&amp;workspaceIdentifier=test-workspace"
+    }
+  },
+  "page" : {
+    "size" : 50,
+    "totalElements" : 1,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshworkspaceuserbinding"><a class="link" href="#_get_meshworkspaceuserbinding">Get meshWorkspaceUserBinding</a></h5>
+<div class="paragraph">
+<p>Get a single meshWorkspaceUserBinding.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshworkspacebindings/userbindings/user-binding-name HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings/user-binding-name' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json'</code></pre>
+</div>
+</div>
+<table id="mesh_workspaceUserBinding_response_fields" class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshWorkspaceUserBinding datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshWorkspaceUserBinding' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshWorkspaceUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshWorkspaceUserBinding identifier as 'name' to uniquely identify the meshWorkspaceUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the workspace the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the referenced user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 472
+
+{
+  "kind" : "meshWorkspaceUserBinding",
+  "apiVersion" : "v2",
+  "metadata" : {
+    "name" : "user-binding-name"
+  },
+  "roleRef" : {
+    "name" : "Workspace Manager"
+  },
+  "targetRef" : {
+    "name" : "test-workspace",
+    "displayName" : "test-workspace Workspace"
+  },
+  "subject" : {
+    "name" : "username1"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings/user-binding-name"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_post_meshworkspaceuserbinding"><a class="link" href="#_post_meshworkspaceuserbinding">Post meshWorkspaceUserBinding</a></h5>
+<div class="paragraph">
+<p>Creating a meshWorkspaceUserBinding assigns the user to a workspace with a specified workspace role.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="title">Request Body</div>
+<p>The fields have the same meaning as the response fields.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="json" class="language-json hljs">{
+  "apiVersion": "v2",
+  "kind": "meshWorkspaceUserBinding",
+  "metadata": {
+    "name": "another-user-binding-name"
+  },
+  "targetRef": {
+    "name": "test-workspace"
+  },
+  "roleRef": { "name": "Workspace Member" },
+  "subject": {
+    "name" : "username1"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/meshobjects/meshworkspacebindings/userbindings HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json
+Content-Length: 266
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v2",
+  "kind": "meshWorkspaceUserBinding",
+  "metadata": {
+    "name": "another-user-binding-name"
+  },
+  "targetRef": {
+    "name": "test-workspace"
+  },
+  "roleRef": { "name": "Workspace Member" },
+  "subject": {
+    "name" : "username1"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json' \
+    -d '{
+  "apiVersion": "v2",
+  "kind": "meshWorkspaceUserBinding",
+  "metadata": {
+    "name": "another-user-binding-name"
+  },
+  "targetRef": {
+    "name": "test-workspace"
+  },
+  "roleRef": { "name": "Workspace Member" },
+  "subject": {
+    "name" : "username1"
+  }
+}  '</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshWorkspaceUserBinding datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshWorkspaceUserBinding' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshWorkspaceUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshWorkspaceUserBinding identifier as 'name' to uniquely identify the meshWorkspaceUserBinding.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roleRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the referenced role for this user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetRef.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the workspace the user is assigned to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>subject.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the referenced user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 487
+
+{
+  "kind" : "meshWorkspaceUserBinding",
+  "apiVersion" : "v2",
+  "metadata" : {
+    "name" : "another-user-binding-name"
+  },
+  "roleRef" : {
+    "name" : "Workspace Member"
+  },
+  "targetRef" : {
+    "name" : "test-workspace",
+    "displayName" : "test-workspace Workspace"
+  },
+  "subject" : {
+    "name" : "username1"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings/another-user-binding-name"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_update_meshworkspaceuserbindings"><a class="link" href="#_update_meshworkspaceuserbindings">Update meshWorkspaceUserBindings</a></h5>
+<div class="paragraph">
+<p>An update is currently not possible. To change a user binding, you must first delete the existing binding and then re-create it,
+for example, with the updated role.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshworkspaceuserbinding"><a class="link" href="#_delete_meshworkspaceuserbinding">Delete meshWorkspaceUserBinding</a></h5>
+<div class="paragraph">
+<p>Deleting a meshWorkspaceUserBinding removes the assignment of a user from a workspace and revokes their associated workspace role.</p>
+</div>
+<div class="paragraph">
+<div class="title">Request Headers</div>
+<p>There are no special headers required.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshworkspacebindings/userbindings/another-user-binding-name HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings/another-user-binding-name' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3682,12 +4561,12 @@ Content-Length: 2091
         "ownedByProject" : "test-project",
         "ownedByWorkspace" : "test-workspace",
         "platformIdentifier" : "aws.aws-meshstack-dev",
-        "deletedOn" : "2024-10-03T13:37:29.122543861Z",
+        "deletedOn" : "2024-10-10T09:25:25.939844289Z",
         "assignedTags" : { },
         "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
       },
       "spec" : {
-        "localId" : "cc53d937-a5a9-4727-944e-766f7c4cccb2",
+        "localId" : "87646ea8-e562-4d61-9672-a2a14f4b767f",
         "landingZoneIdentifier" : "stage-dev",
         "quotas" : [ {
           "key" : "limits.cpu",
@@ -3883,12 +4762,12 @@ Content-Length: 979
     "ownedByProject" : "test-project",
     "ownedByWorkspace" : "test-workspace",
     "platformIdentifier" : "aws.aws-meshstack-dev",
-    "deletedOn" : "2024-10-03T13:37:29.122543861Z",
+    "deletedOn" : "2024-10-10T09:25:25.939844289Z",
     "assignedTags" : { },
     "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
   },
   "spec" : {
-    "localId" : "cc53d937-a5a9-4727-944e-766f7c4cccb2",
+    "localId" : "87646ea8-e562-4d61-9672-a2a14f4b767f",
     "landingZoneIdentifier" : "stage-dev",
     "quotas" : [ {
       "key" : "limits.cpu",
@@ -4307,7 +5186,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2024-10-02T13:37:19.109095919Z"
+        "createdOn" : "2024-10-09T09:25:15.594148629Z"
       },
       "spec" : {
         "displayName" : "parent block",
@@ -4338,7 +5217,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2024-10-02T13:37:19.152938013Z"
+        "createdOn" : "2024-10-09T09:25:15.641835679Z"
       },
       "spec" : {
         "displayName" : "child block",
@@ -4629,7 +5508,7 @@ Content-Length: 1334
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2024-10-02T13:37:19.152938013Z"
+    "createdOn" : "2024-10-09T09:25:15.641835679Z"
   },
   "spec" : {
     "displayName" : "child block",
@@ -4721,7 +5600,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "14e4d128-2030-43a1-9b4a-50de246805b7"
+      "buildingBlockUuid": "e4494392-ceaa-44c2-8196-3a240897b847"
     }]
   }
 }</code></pre>
@@ -4750,7 +5629,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "14e4d128-2030-43a1-9b4a-50de246805b7"
+      "buildingBlockUuid": "e4494392-ceaa-44c2-8196-3a240897b847"
     }]
   }
 } '</code></pre>
@@ -4892,12 +5771,12 @@ Content-Length: 1253
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v1",
   "metadata" : {
-    "uuid" : "0e43cd26-fae0-44be-8159-c78a33b5537e",
+    "uuid" : "39858fb1-d993-4417-9cf2-6529666ec879",
     "definitionUuid" : "ef6aaf87-3f8c-477c-94f4-f3cf509728ca",
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2024-10-02T13:37:20.491905118Z"
+    "createdOn" : "2024-10-09T09:25:16.982669862Z"
   },
   "spec" : {
     "displayName" : "New BuildingBlock",
@@ -4907,7 +5786,7 @@ Content-Length: 1253
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "14e4d128-2030-43a1-9b4a-50de246805b7",
+      "buildingBlockUuid" : "e4494392-ceaa-44c2-8196-3a240897b847",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -4917,13 +5796,13 @@ Content-Length: 1253
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/0e43cd26-fae0-44be-8159-c78a33b5537e"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/39858fb1-d993-4417-9cf2-6529666ec879"
     },
     "meshtenant" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/0e43cd26-fae0-44be-8159-c78a33b5537e/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/39858fb1-d993-4417-9cf2-6529666ec879/purge"
     }
   }
 }</code></pre>
@@ -4940,7 +5819,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/0e43cd26-fae0-44be-8159-c78a33b5537e HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/39858fb1-d993-4417-9cf2-6529666ec879 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -4948,7 +5827,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/0e43cd26-fae0-44be-8159-c78a33b5537e' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/39858fb1-d993-4417-9cf2-6529666ec879' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4978,7 +5857,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/0e43cd26-fae0-44be-8159-c78a33b5537e/purge HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/39858fb1-d993-4417-9cf2-6529666ec879/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -4986,7 +5865,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/0e43cd26-fae0-44be-8159-c78a33b5537e/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/39858fb1-d993-4417-9cf2-6529666ec879/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5434,7 +6313,7 @@ Host: mesh-backend-url
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=kkmt3mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=ie7u4mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -5443,7 +6322,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=kkmt3mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ie7u4mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -5508,7 +6387,7 @@ Content-Length: 1949
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-payment-method-1",
-        "ownedByWorkspace" : "kkmt3mpmdsv2"
+        "ownedByWorkspace" : "ie7u4mpmdsv2"
       },
       "spec" : {
         "displayName" : "Test Payment Method 1",
@@ -5527,7 +6406,7 @@ Content-Length: 1949
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-payment-method-2",
-        "ownedByWorkspace" : "kkmt3mpmdsv2"
+        "ownedByWorkspace" : "ie7u4mpmdsv2"
       },
       "spec" : {
         "displayName" : "Test Payment Method 2",
@@ -5545,16 +6424,16 @@ Content-Length: 1949
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=kkmt3mpmdsv2&amp;page=0&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ie7u4mpmdsv2&amp;page=0&amp;size=2"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=kkmt3mpmdsv2&amp;page=0&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ie7u4mpmdsv2&amp;page=0&amp;size=2"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=kkmt3mpmdsv2&amp;page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ie7u4mpmdsv2&amp;page=1&amp;size=2"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=kkmt3mpmdsv2&amp;page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ie7u4mpmdsv2&amp;page=1&amp;size=2"
     }
   },
   "page" : {
@@ -5720,7 +6599,7 @@ Content-Length: 518
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-payment-method-1",
-    "ownedByWorkspace" : "kkmt3mpmdsv2"
+    "ownedByWorkspace" : "ie7u4mpmdsv2"
   },
   "spec" : {
     "displayName" : "Test Payment Method 1",
@@ -5927,7 +6806,7 @@ Content-Length: 1557
         "email" : "john-doe@example.com",
         "firstName" : "John",
         "lastName" : "Doe",
-        "euid" : "a4511176-05de-49a9-9911-49681e5399c2",
+        "euid" : "d2d891b6-604f-417c-a061-adebf8d38bdb",
         "tags" : {
           "environment" : [ "dev", "test", "qa" ]
         }
@@ -6124,7 +7003,7 @@ Content-Length: 579
     "email" : "john-doe@example.com",
     "firstName" : "John",
     "lastName" : "Doe",
-    "euid" : "a4511176-05de-49a9-9911-49681e5399c2",
+    "euid" : "d2d891b6-604f-417c-a061-adebf8d38bdb",
     "tags" : {
       "environment" : [ "dev", "test", "qa" ]
     }
@@ -6646,20 +7525,20 @@ Content-Length: 1388
       "kind" : "meshServiceInstance",
       "apiVersion" : "v2",
       "metadata" : {
-        "ownedByProject" : "kkmt3mtdg10",
+        "ownedByProject" : "ie7u4mtdg10",
         "ownedByWorkspace" : "my-mobile-app-team",
-        "marketplaceIdentifier" : "kkmt3mtdg1",
-        "instanceId" : "kkmt3mtdg11"
+        "marketplaceIdentifier" : "ie7u4mtdg1",
+        "instanceId" : "ie7u4mtdg11"
       },
       "spec" : {
-        "displayName" : "kkmt3mtdg12",
-        "serviceId" : "kkmt3mtdg5",
-        "planId" : "kkmt3mtdg7",
+        "displayName" : "ie7u4mtdg12",
+        "serviceId" : "ie7u4mtdg5",
+        "planId" : "ie7u4mtdg7",
         "creator" : "Unknown"
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/kkmt3mtdg11"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/ie7u4mtdg11"
         }
       }
     } ]
@@ -6826,15 +7705,15 @@ Content-Length: 535
   "kind" : "meshServiceInstance",
   "apiVersion" : "v2",
   "metadata" : {
-    "ownedByProject" : "kkmt3smsids-1",
+    "ownedByProject" : "ie7u4smsids-1",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "kkmt3mtdg21",
+    "marketplaceIdentifier" : "ie7u4mtdg21",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "kkmt3mtdg25",
-    "planId" : "kkmt3mtdg27",
+    "serviceId" : "ie7u4mtdg25",
+    "planId" : "ie7u4mtdg27",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -6888,15 +7767,15 @@ Host: mesh-backend-url
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "kkmt3smsids-1",
+    "ownedByProject" : "ie7u4smsids-1",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "kkmt3mtdg21",
+    "marketplaceIdentifier" : "ie7u4mtdg21",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "kkmt3mtdg25",
-    "planId" : "kkmt3mtdg27",
+    "serviceId" : "ie7u4mtdg25",
+    "planId" : "ie7u4mtdg27",
     "creator" : "admin@meshcloud.io"
   }
 }</code></pre>
@@ -6912,15 +7791,15 @@ Host: mesh-backend-url
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "kkmt3smsids-1",
+    "ownedByProject" : "ie7u4smsids-1",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "kkmt3mtdg21",
+    "marketplaceIdentifier" : "ie7u4mtdg21",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "kkmt3mtdg25",
-    "planId" : "kkmt3mtdg27",
+    "serviceId" : "ie7u4mtdg25",
+    "planId" : "ie7u4mtdg27",
     "creator" : "admin@meshcloud.io"
   }
 }'</code></pre>
@@ -7024,15 +7903,15 @@ Content-Length: 527
   "kind" : "meshServiceInstance",
   "apiVersion" : "v2",
   "metadata" : {
-    "ownedByProject" : "kkmt3smsids-1",
+    "ownedByProject" : "ie7u4smsids-1",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "kkmt3mtdg21",
+    "marketplaceIdentifier" : "ie7u4mtdg21",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "kkmt3mtdg25",
-    "planId" : "kkmt3mtdg27",
+    "serviceId" : "ie7u4mtdg25",
+    "planId" : "ie7u4mtdg27",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -7086,15 +7965,15 @@ Host: mesh-backend-url
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "kkmt3smsids-1",
+    "ownedByProject" : "ie7u4smsids-1",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "kkmt3mtdg21",
+    "marketplaceIdentifier" : "ie7u4mtdg21",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "kkmt3mtdg25",
-    "planId" : "kkmt3mtdg27",
+    "serviceId" : "ie7u4mtdg25",
+    "planId" : "ie7u4mtdg27",
     "creator" : "admin@meshcloud.io"
   }
 }</code></pre>
@@ -7110,15 +7989,15 @@ Host: mesh-backend-url
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "kkmt3smsids-1",
+    "ownedByProject" : "ie7u4smsids-1",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "kkmt3mtdg21",
+    "marketplaceIdentifier" : "ie7u4mtdg21",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "kkmt3mtdg25",
-    "planId" : "kkmt3mtdg27",
+    "serviceId" : "ie7u4mtdg25",
+    "planId" : "ie7u4mtdg27",
     "creator" : "admin@meshcloud.io"
   }
 }'</code></pre>
@@ -7678,7 +8557,7 @@ of meshPolicies on these two types of objects.</p>
 <p>See attribute definitions in <a href="#mesh_workspace_response_fields">GET endpoint section</a>.</p>
 </div>
 <div class="paragraph">
-<p>We strongly recommend assigning a single Workspace Owner when importing a meshWorkspace. You can assign a Workspace Owner via the <a href="#_meshworkspaceuserbinding">meshWorkspaceUserBinding</a>.
+<p>We strongly recommend assigning a single Workspace Owner when importing a meshWorkspace. You can assign a Workspace Owner via the <a href="#mesh_workspaceuserbinding">meshWorkspaceUserBinding</a>.
 Having a Workspace Owner is a best practice advocated by meshcloud. It allows you to have a clear responsibility and ownership of the meshWorkspace. This is useful when you want to get in touch with someone from a particular meshWorkspace and you need a clear contact person.</p>
 </div>
 <div class="listingblock">
@@ -7973,23 +8852,27 @@ subjects:
 <h5 id="_meshprojectuserbinding"><a class="link" href="#_meshprojectuserbinding">meshProjectUserBinding</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">apiVersion: v2
+<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">apiVersion: v3
 kind: meshProjectUserBinding
+metadata:
+  name: user-binding-name
 roleRef:
   name: Project Admin
 targetRef:
   name: mobile-app-prod
   ownedByWorkspace: my-mobile-app-team
-subjects:
-  - name: john-doe
-  - name: jane-doe</code></pre>
+subject:
+  name: jane-doe</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="json" class="language-json hljs">{
-  "apiVersion": "v2",
+  "apiVersion": "v3",
   "kind": "meshProjectUserBinding",
+  "metadata": {
+    "name": "user-binding-name"
+  },
   "roleRef": {
     "name": "Project Admin"
   },
@@ -7997,14 +8880,9 @@ subjects:
     "name": "mobile-app-prod",
     "ownedByWorkspace": "my-mobile-app-team"
   },
-  "subjects": [
-    {
-      "name": "john-doe"
-    },
-    {
-      "name": "jane-doe"
-    }
-  ]
+  "subject": {
+    "name": "jane-doe"
+  }
 }</code></pre>
 </div>
 </div>
@@ -8013,23 +8891,27 @@ subjects:
 <h5 id="_meshprojectgroupbinding_2"><a class="link" href="#_meshprojectgroupbinding_2">meshProjectGroupBinding</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">apiVersion: v2
+<pre class="highlightjs highlight"><code data-lang="yaml" class="language-yaml hljs">apiVersion: v3
 kind: meshProjectGroupBinding
+metadata:
+  name: group-binding-name
 roleRef:
   name: Project Employee
 targetRef:
   name: mobile-app-prod
   ownedByWorkspace: my-mobile-app-team
-subjects:
-  - name: my-user-group
-  - name: and-another-user-group</code></pre>
+subject:
+  name: my-user-group</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="json" class="language-json hljs">{
-  "apiVersion": "v2",
+  "apiVersion": "v3",
   "kind": "meshProjectGroupBinding",
+  "metadata": {
+    "name": "group-binding-name"
+  },
   "roleRef": {
     "name": "Project Employee"
   },
@@ -8037,14 +8919,9 @@ subjects:
     "name": "mobile-app-prod",
     "ownedByWorkspace": "my-mobile-app-team"
   },
-  "subjects": [
-    {
-      "name": "my-user-group"
-    },
-    {
-      "name": "and-another-user-group"
-    }
-  ]
+  "subject": {
+    "name": "my-user-group"
+  }
 }</code></pre>
 </div>
 </div>
@@ -8496,12 +9373,12 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 171
+Content-Length: 162
 
 {
-  "error" : "MeshBadRequestException",
   "message" : "MeshObjectCollection not-empty-collection cannot be deleted, because it is not empty",
-  "errorId" : "xJuvU5XOjd"
+  "errorCode" : "BadRequest",
+  "errorId" : "2XuJfXBPy7"
 }</code></pre>
 </div>
 </div>
@@ -8763,7 +9640,7 @@ Content-Length: 280
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-02 13:35:23 UTC
+Last updated 2024-10-09 09:23:15 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
