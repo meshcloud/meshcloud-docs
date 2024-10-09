@@ -1233,23 +1233,27 @@ subjects:
 <h5 id="_meshprojectuserbinding">meshProjectUserBinding</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v2
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v3
 kind: meshProjectUserBinding
+metadata:
+  name: user-binding-name
 roleRef:
   name: Project Admin
 targetRef:
   name: mobile-app-prod
   ownedByWorkspace: my-mobile-app-team
-subjects:
-  - name: john-doe
-  - name: jane-doe</code></pre>
+subject:
+  name: jane-doe</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-  "apiVersion": "v2",
+  "apiVersion": "v3",
   "kind": "meshProjectUserBinding",
+  "metadata": {
+    "name": "user-binding-name"
+  },
   "roleRef": {
     "name": "Project Admin"
   },
@@ -1257,14 +1261,9 @@ subjects:
     "name": "mobile-app-prod",
     "ownedByWorkspace": "my-mobile-app-team"
   },
-  "subjects": [
-    {
-      "name": "john-doe"
-    },
-    {
-      "name": "jane-doe"
-    }
-  ]
+  "subject": {
+    "name": "jane-doe"
+  }
 }</code></pre>
 </div>
 </div>
@@ -1273,23 +1272,27 @@ subjects:
 <h5 id="_meshprojectgroupbinding">meshProjectGroupBinding</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v2
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v3
 kind: meshProjectGroupBinding
+metadata:
+  name: group-binding-name
 roleRef:
   name: Project Employee
 targetRef:
   name: mobile-app-prod
   ownedByWorkspace: my-mobile-app-team
-subjects:
-  - name: my-user-group
-  - name: and-another-user-group</code></pre>
+subject:
+  name: my-user-group</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-  "apiVersion": "v2",
+  "apiVersion": "v3",
   "kind": "meshProjectGroupBinding",
+  "metadata": {
+    "name": "group-binding-name"
+  },
   "roleRef": {
     "name": "Project Employee"
   },
@@ -1297,14 +1300,9 @@ subjects:
     "name": "mobile-app-prod",
     "ownedByWorkspace": "my-mobile-app-team"
   },
-  "subjects": [
-    {
-      "name": "my-user-group"
-    },
-    {
-      "name": "and-another-user-group"
-    }
-  ]
+  "subject": {
+    "name": "my-user-group"
+  }
 }</code></pre>
 </div>
 </div>
@@ -1526,7 +1524,7 @@ rates:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-02 13:35:23 UTC
+Last updated 2024-10-09 09:23:15 UTC
 </div>
 </div>
 </body>

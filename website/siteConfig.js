@@ -43,8 +43,8 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/favicon.png',
-  footerIcon: 'img/favicon.png',
+  headerIcon: 'img/meshstack_logo.png',
+  footerIcon: 'img/meshstack_logo.png',
   favicon: 'img/favicon.png',
 
   /* colors for website */
@@ -122,8 +122,8 @@ const siteConfig = {
   enableUpdateTime: true,
 
   /* Open Graph and Twitter card images */
-  ogImage: 'img/favicon.png',
-  twitterImage: 'img/favicon.png',
+  ogImage: 'img/meshstack_logo.png',
+  twitterImage: 'img/meshstack_logo.png',
 
   scrollToTop: true,
   scrollToTopOptions: {
