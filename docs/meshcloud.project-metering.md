@@ -1,13 +1,13 @@
 ---
-id: meshcloud.project-metering
-title: Project Metering
+id: meshcloud.cost-management
+title: Cost Management
 ---
 
 meshStack provides central [multi-cloud billing](meshstack.billing.md). It can automatically collect usage information from all your cloud platforms and provides central access to cost and usage data.
 
 This information will be consolidated by project, providing an overview of resource usage, including detailed insights into when and how long your resources were running, along with the associated costs.
 
-## Project Payment Information
+## Payment Information
 
 Project owners associate their projects with payment information. This is used for the chargeback process.
 
