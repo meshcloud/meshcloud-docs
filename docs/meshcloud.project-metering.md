@@ -5,7 +5,7 @@ title: Project Metering
 
 meshStack provides central [multi-cloud billing](meshstack.billing.md). It can automatically collect usage information from all your cloud platforms and provides central access to cost and usage data.
 
-Project owners can get a detailed overview of when and how long your resources were running and how much this costs.
+This information will be consolidated by project, providing an overview of resource usage, including detailed insights into when and how long your resources were running, along with the associated costs.
 
 ## Project Payment Information
 
@@ -121,4 +121,3 @@ Users can review this billing information in meshPanel when opening chargeback s
 #### Retroactive Chargeback Statements
 
 When no payment method is active on a meshProject, chargeback statements are not created at the end of a month. Only when an active payment method is applied at a later point in time does the chargeback statements generation resume. For missing months, where no payment method was applied the next chargeback statement with a valid payment method will contain the usage reports of the missing months.
-
