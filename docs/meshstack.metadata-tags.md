@@ -187,8 +187,8 @@ The following extra metadata can be used in such a tag definition configuration:
 | `${workspaceIdentifier}`      | The project's workspace identifier                                                                                                                              |
 | `${workspaceName}`            | The projects's workspace name                                                                                                                                   |
 | `${projectName}`              | The project display name                                                                                                                                        |
-| `${landingzone}`              | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the project does not have a Landing Zone applied       |
-| `${landingzoneIdentifier}`    | The identifier of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the project does not have a Landing Zone applied |
+| `${landingZoneName}`          | The name of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the project does not have a Landing Zone applied       |
+| `${landingZoneIdentifier}`    | The identifier of the applied [Landing Zone](meshcloud.landing-zones.md). It contains `no-landingzone` in case the project does not have a Landing Zone applied |
 | `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the project                                                                                            |
 | `${paymentName}`              | The display name of the payment method that is assigned to the project                                                                                          |
 | `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the project. It contains `none` if no expiration date is set for the payment method               |
