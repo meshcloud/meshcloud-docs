@@ -450,188 +450,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Provides a paged list of meshPaymentMethods. Deleted meshPaymentMethods are not provided via this endpoint.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Request Parameters</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshPaymentMethods that belong to the meshWorkspace with given identifier. (optional)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div class="paragraph">
+<div class="title">Request Headers</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodListV2/request-headers.adoc[]</p>
+</div>
+<div class="paragraph">
+<div class="title">Request Parameters</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodListV2/query-parameters.adoc[]</p>
+</div>
+<div class="paragraph">
 <div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=ezth6mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
-Host: mesh-backend-url</code></pre>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodListV2/http-request.adoc[]</p>
 </div>
-</div>
-<div class="listingblock">
+<div class="paragraph">
 <div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ezth6mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json'</code></pre>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodListV2/curl-request.adoc[]</p>
 </div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodListV2/response-fields.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshPaymentMethods[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_paymentmethods_response_fields">meshPaymentMethod</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div class="paragraph">
 <div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 1999
-
-{
-  "_embedded" : {
-    "meshPaymentMethods" : [ {
-      "kind" : "meshPaymentMethod",
-      "apiVersion" : "v2",
-      "metadata" : {
-        "name" : "test-payment-method-1",
-        "ownedByWorkspace" : "ezth6mpmdsv2"
-      },
-      "spec" : {
-        "displayName" : "Test Payment Method 1",
-        "tags" : { },
-        "amount" : 1000
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1"
-        },
-        "meshprojects" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-1"
-        }
-      }
-    }, {
-      "kind" : "meshPaymentMethod",
-      "apiVersion" : "v2",
-      "metadata" : {
-        "name" : "test-payment-method-2",
-        "ownedByWorkspace" : "ezth6mpmdsv2"
-      },
-      "spec" : {
-        "displayName" : "Test Payment Method 2",
-        "tags" : { },
-        "amount" : 1000
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-2"
-        },
-        "meshprojects" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-2"
-        }
-      }
-    } ]
-  },
-  "_links" : {
-    "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ezth6mpmdsv2&amp;page=0&amp;size=2"
-    },
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ezth6mpmdsv2&amp;page=0&amp;size=2"
-    },
-    "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ezth6mpmdsv2&amp;page=1&amp;size=2"
-    },
-    "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ezth6mpmdsv2&amp;page=1&amp;size=2"
-    }
-  },
-  "page" : {
-    "size" : 2,
-    "totalElements" : 3,
-    "totalPages" : 2,
-    "number" : 0
-  }
-}</code></pre>
-</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodListV2/http-response.adoc[]</p>
 </div>
 </div>
 <div class="sect4">
@@ -639,178 +480,36 @@ Content-Length: 1999
 <div class="paragraph">
 <p>Get a single meshPaymentMethod. Deleted meshPaymentMethods can also be requested via this endpoint.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div class="paragraph">
+<div class="title">Request Headers</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodV2/request-headers.adoc[]</p>
+</div>
+<div class="paragraph">
 <div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshpaymentmethods/test-payment-method-1 HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
-Host: mesh-backend-url</code></pre>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodV2/http-request.adoc[]</p>
 </div>
-</div>
-<div class="listingblock">
+<div class="paragraph">
 <div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json'</code></pre>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodV2/curl-request.adoc[]</p>
 </div>
+<div id="mesh_paymentmethod_response_fields" class="paragraph">
+<div class="title">Response Fields</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodV2/response-fields.adoc[]</p>
 </div>
-<table id="mesh_paymentmethod_response_fields" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshPaymentMethod datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshPaymentMethod' for this endpoint.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' and (optional) 'ownedByWorkspace' to uniquely identify the meshPaymentMethod.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The paymentMethodIdentifier as 'name'.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The workspaceIdentifier as 'ownedByWorkspace'.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the meshPaymentMethod.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the meshPaymentMethod as it is shown in meshPanel.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.tags</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Key/Value pairs of tags set on the meshPaymentMethod. Keep in mind, that values are an array. Also see our general section about <a href="#tags">[tags]</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.amount</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of the meshPaymentMethod.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.expirationDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The expiration date <a href="#data_types">date</a> of the meshPaymentMethod.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Available <a href="#mesh_paymentmethod_links">links</a> on a meshPaymentMethod.</p></td>
-</tr>
-</tbody>
-</table>
-<table id="mesh_paymentmethod_links" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. PaymentMethod Links</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Relation</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshprojects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_project">meshProjects</a>, that are assigned to this payment method. Substitute Payment Methods on meshProjects are not considered!</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div id="mesh_paymentmethod_links" class="paragraph">
+<div class="title">PaymentMethod Links</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodV2/links.adoc[]</p>
+</div>
+<div class="paragraph">
 <div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 539
-
-{
-  "kind" : "meshPaymentMethod",
-  "apiVersion" : "v2",
-  "metadata" : {
-    "name" : "test-payment-method-1",
-    "ownedByWorkspace" : "ezth6mpmdsv2"
-  },
-  "spec" : {
-    "displayName" : "Test Payment Method 1",
-    "tags" : { },
-    "amount" : 1000
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1"
-    },
-    "meshprojects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-1"
-    }
-  }
-}</code></pre>
-</div>
+<p>Unresolved directive in mesh_paymentmethod.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/meshPaymentMethodV2/http-response.adoc[]</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-16 10:31:54 UTC
+Last updated 2024-10-18 09:54:21 UTC
 </div>
 </div>
 </body>
