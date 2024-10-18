@@ -446,127 +446,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>This is the entry point to navigate through the API of meshStack. Starting from here you will be able to
 find all endpoints your <a href="#authentication">authenticated</a> user has access to.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div class="paragraph">
+<div class="title">Request Headers</div>
+<p>Unresolved directive in api_index.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/apiRoot/request-headers.adoc[]</p>
+</div>
+<div class="paragraph">
 <div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.v1.hal+json
-Host: mesh-backend-url</code></pre>
+<p>Unresolved directive in api_index.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/apiRoot/http-request.adoc[]</p>
 </div>
-</div>
-<div class="listingblock">
+<div class="paragraph">
 <div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.v1.hal+json'</code></pre>
+<p>Unresolved directive in api_index.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/apiRoot/curl-request.adoc[]</p>
 </div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>Unresolved directive in api_index.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/apiRoot/response-fields.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Response Fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All available <a href="#index_links">Top-Level Links</a> for the authenticated user.</p></td>
-</tr>
-</tbody>
-</table>
 <div id="index_links" class="paragraph">
 <div class="title">Links</div>
 <p>List of all top-level endpoints the authenticated user has access to. Depending on your rights, you will only
-get a subset of the links mentioned here.</p>
+get a subset of the links mentioned here.
+Unresolved directive in api_index.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/apiRoot/links.adoc[]</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Relation</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#metadata">Metadata API</a> to retrieve metadata from meshStack.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshobjects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get, create, update and delete meshObjects.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div class="paragraph">
 <div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.v1.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 257
-
-{
-  "_links" : {
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
-    },
-    "metadata" : {
-      "href" : "https://mesh-backend-url/api/metadata"
-    },
-    "self" : {
-      "href" : "https://mesh-backend-url/api"
-    }
-  }
-}</code></pre>
-</div>
+<p>Unresolved directive in api_index.adoc - include::/__w/meshfed-release/meshfed-release/meshfed/api/build/generated-snippets/apiRoot/http-response.adoc[]</p>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-16 10:31:54 UTC
+Last updated 2024-10-18 09:54:21 UTC
 </div>
 </div>
 </body>
