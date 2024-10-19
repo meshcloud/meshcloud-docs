@@ -20,18 +20,16 @@ The first step in reaping the benefits of payment methods is creating them. A fe
 1. A payment method is **always** scoped to a single meshWorkspace. This means it is not possible to create a global payment method that can be used for all meshWorkspaces. It is also not possible to re-use a single payment method across multiple meshWorkspaces.
 2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshWorkspaces. Make sure to use an identifier that will not collide in other meshWorkspaces.
 
+>Please note that payment methods by now are supporting only EUR amounts.
+
 ### Creating a Payment Method via the meshPanel
 
 One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the 'Partner Admin' role. Navigate to the Admin area and follow these steps:
 
-1. Click on 'Workspaces' on the left.
-2. Find a workspace you want to create a payment method for and click on the 'Create/Edit Payment methods' icon on the right.
-
-    ![List Payment Methods](assets/payment_methods/workspace_list_payment_methods.png)
-
-3. Click on 'Create Payment Method' at the top right.
+1. Go to 'Payment Method' page under the FinOps section.
+2.  Click on 'Create Payment Method' at the top right.
 4. Enter a name and identifier for the new payment method.
-5. (This is optional) Set a maximum amount of EUR on the payment method to indicate the remaining budget of this payment method.
+5. (This is optional) Set an amount of EUR on the payment method to indicate the budget of this payment method.
 6. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
 7. Additionally, you can enter tags for the payment method, which are custom for your meshStack (also see [meshTags](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
 8. Click 'Save' and your new payment method will be available to the meshWorkspace it was created in!
@@ -55,6 +53,8 @@ In the [workspace control plane](./meshcloud.workspace.md#managing-your-meshwork
 ![Set Payment Method in project control plane](assets/payment_methods/payment_method_selection_project_edit.png)
 
 Select the Active Payment Method of choice, and optionally a Substitute Payment Method if that is desired. Save the meshProject and the payment method(s) will be assigned to the meshProject.
+
+> Please not expired payment methods can not be assigned to projects anymore and are removed from project when expired.
 
 ### Applying a Payment Method to a new meshProject
 
