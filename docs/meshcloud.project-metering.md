@@ -9,18 +9,10 @@ This information will be consolidated by project, providing an overview of resou
 
 ## Payment Information
 
-Project owners associate their projects with payment information. This is used for the chargeback process.
+A payment method is used to ensure transperent budget management and allocate costs back to the responsible team within your organization. One common example of a payment method is a cost center, which helps categorize and track expenses specific to team or projects. Please find more detailed information about payment methods and how they could be used [here](meshcloud.payment-methods.md).
 
-### Payment Methods
+As the cost and usage data are consolidated by project, payment methods will be also created in Workspace and assigned per project in meshStack.
 
-External systems which are responsible for financial information can provide payment methods that carry metadata information via the [meshStack API](/api/).
-Partners can also provide payment methods for a workspace via [`Create/Edit Payment Methods`](meshcloud.payment-methods.md#creating-a-payment-method-via-the-meshpanel) button on the workspace in the **Admin Area** > **Workspaces**.
-
-[Metadata](./meshcloud.metadata-tags.md) on the payment method is helpful to e.g. provide contract or budget numbers to chargeback cloud costs.
-
-Payment Methods can have an expiration date set. Expired payment methods can not be assigned to meshProjects anymore and are removed from meshProject when expired. (see [payment method handling on meshProjects](meshcloud.project.md#editing-payment-and-project-settings)).
-
-Additionally an amount can be set on the payment method, which indicates how much money is available on that payment method (e.g. to represent a budget).
 
 ## Reviewing Metering Data
 
@@ -47,62 +39,35 @@ Note that unit costs for Azure and GCP services are not supported.
 Therefore, the unit costs are not available in the Tenant Usage Reports for those platforms.
 
 ### Chargeback Statements
+As an analogy from banking, you can think of a chargeback statement like a credit card statement you receive at the end of the month about your usage charged to your payment method.
 
-Each project in meshStack is associated with a Chargeback Account. Tenant Usage Reports are booked into these
-Chargeback Accounts as soon as they are processed by meshStack. meshStack periodically generates chargeback account
-statements, called chargeback statements. A chargeback statement includes booking entries on the chargeback account for
-usage reports that were entered before the end of the chargeback period and have not been included in a previous
-chargeback statement.
+This chargeback statement is attached to each project and each chargeback is composed of tenant usage reports, which are reports for each tenant. For example, if your project uses both AWS and GCP, you will have one chargeback that combines two tenant usage reports. To check your chargebacks go to **Financials** > **Chargeback Statements** in your workspace. Or as admin go to **Chargebacks Statements** page under FinOps section.
 
-> meshStack defines the **chargeback period** as a monthly period with a configurable offset (e.g. 6 days)
-> allowing cloud providers to finish processing of usage reports for the usage period.
 
-As an analogy from banking, you can think of a chargeback account like a credit account and the chargeback statement like
-a credit card statement you receive at the end of the month about all transactions charged to the card. Credit card
-statements do as well show charges with a booking and valuta date.
-
-> Note that chargeback statements list usage reports by their **entry date** when they were booked to the chargeback
-> account. This date is typically after the **report date** (i.e. time when the report was generated) of the usage
-> reports booked. It's therefore possible that the chargeback statement for the month of June includes usage reports
-> for the month of May etc.
-
-#### Tags and Payment Methods
-
-Chargeback statements capture the billing information associated with the chargeback account at the end of the report period
-of its line items. This implies that the payment method that is active on the project at the
-end of the report period of a line item will be set for the according line item.
-The same also applies to tags (i.e. meshProject and meshWorkspace tags). For example, a June 2022 chargeback statement line item
-will always have the tags and metadata set that were present at the end of June 30th.
-
-Always using the project metadata and tags that were set at the end of the report period (usually end of a month) allows easy
-handling of payment method expiration and usage of tags that were set in the according report period. If e.g. a
-payment method expires on the 1st of January 2022 it shall be used for the December chargeback statement no matter when
-the chargeback statement is generated.
-
-> Controllers should consider this when defining an expiration date of a [payment method](meshcloud.payment-methods.md).
-> For example, a payment method valid for the year of 2021 should expire on the 1st of January 2022, not on the 31st of December.
-
-#### Chargeback Statement Previews
-
-meshStack also generates and updates a preview of the next chargeback statement. This preview includes all tenant usage
-reports, including tenant usage report previews, that meshStack expects to be finalized before the end of the chargeback
-period. This preview is periodically updated and contains only reports available up until that point.
-
-> Note that meshStack currently only generates a preview for the currently active chargeback period.
-> A tenant usage report that will finalize in the next chargeback period will not be included in the current period's
-> preview.
-
-#### Viewing Chargeback Statements
-
-A chart under **Financials** > **Chargeback Statements** in the project control plane shows the total amount charged as of the last chargeback statements to get a quick overview of your project cost.
+> Chargebacks are finalized at the beginning of each month for the previous usage period to allow cloud providers to complete their reports. However, each chargeback only includes data from the month it was used. For example, an October chargeback, that was finalized on November 6th, will only include cloud usage from October.
 
 Chargeback statements consist of **line items** showing the individual booking entries made into a chargeback account.
 When booking a tenant usage report, meshStack splits up the report's `netAmount` by seller and product group into
 individual entries. This split allows cloud foundation teams to process chargeback for different kinds of usage
 like cloud provider cost vs. internal overhead fees.
 
-Workspace Managers also have access to an overview of the chargeback statements of all their projects in the workspace control plane via  **Financials** > **Chargeback Statements**.
-Also Partner accounts can access the chargeback statements for all their assigned meshWorkspaces in the Administration Area via **Projects** > **Chargeback Statements**.
+#### Chargeback Statement Previews 
+
+meshStack also regularly generates a preview of the chargeback statement for the current month, providing real-time cost data. This preview includes all tenant usage reports that meshStack expects to be finalized before the end of the chargeback period. The chargeback statement preview is available on the Chargeback Statements page, where it will be marked with an `Open` status label in the Status column.
+
+> Please note ote that meshStack currently only generates a preview for the currently active chargeback period.
+> A tenant usage report that will finalize in the next chargeback period will not be included in the current period's
+> preview.
+
+
+#### Tags and Payment Methods
+
+The active payment method at the end of the reporting period will appear on the chargeback statement, so your organization's accountant will know whom to send the bill to. Tags associated with this payment method will also be included in the chargeback statement for easier financial management. So chargeback statement for June 2024 will show the tags and payment method that were set as on the last day of the month in this case June 30th. 
+
+
+> When setting a payment method for the entire year, accountants should ensure that a payment method valid for the year 2022, for example, has an expiration date of January 1, 2023, rather than December 31, 2022. This ensures the payment method remains valid throughout the entire year.
+
+
 
 #### Exporting Chargeback Statements
 
@@ -116,7 +81,21 @@ which information meshStack should include as billing information in chargeback 
 
 > Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any workspace tags, project tags and payment method tags.
 
-Users can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
+You can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
+
+### Late Bills From Providers
+
+Late bills from the provider or any other corrections that arrive after the chargeback statement finalization date will still be included in the month when the usage occurred. This means finalized chargebacks will be updated. For example, if the September 2024 chargeback statement is finalized on October 6th 2024, but Azure generated another expence for September usage on October 10th, you will see this change clearly in the September chargeback statement. The chargeback will habe ´updated´ label in status columm on the Chargeback Statements page and in generation at column you can see when last change happened. 
+
+![Late Bills](assets/late-bills1.png)
+
+
+When you open the dedicated chargeback statement, you can also identify what exactly changed by navigating down below the chargeback statement, opening an old one, and comparing it with a new one.
+
+![Late Bills](assets/late-bills2.png)
+
+
+Transparency around updates in finalized chargeback statements extends in CSV exports, which always reflects the latest data as well as in API.
 
 #### Retroactive Chargeback Statements
 
