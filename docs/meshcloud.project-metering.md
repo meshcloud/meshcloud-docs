@@ -39,6 +39,7 @@ Note that unit costs for Azure and GCP services are not supported.
 Therefore, the unit costs are not available in the Tenant Usage Reports for those platforms.
 
 ### Chargeback Statements
+
 As an analogy from banking, you can think of a chargeback statement like a credit card statement you receive at the end of the month about your usage charged to your payment method.
 
 This chargeback statement is attached to each project and each chargeback is composed of tenant usage reports, which are reports for each tenant. For example, if your project uses both AWS and GCP, you will have one chargeback that combines two tenant usage reports. To check your chargebacks go to **Financials** > **Chargeback Statements** in your workspace. Or as admin go to **Chargebacks Statements** page under FinOps section.
