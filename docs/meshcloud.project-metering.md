@@ -86,7 +86,9 @@ You can review this billing information in meshPanel when opening chargeback sta
 
 #### Late Bills From Providers
 
-Late bills from the provider or any other corrections that arrive after the chargeback statement finalization date will still be included in the month when the usage occurred. This means finalized chargebacks will be updated. For example, if the September 2024 chargeback statement is finalized on October 6th 2024, but Azure generated another expence for September usage on October 10th, you will see this change clearly in the September chargeback statement. The chargeback will habe ´updated´ label in status columm on the Chargeback Statements page and in generation at column you can see when last change happened. 
+Late bills from providers or any other corrections that arrive after the chargeback statement has been finalized will still be attributed to the month in which the usage occurred. This means that finalized chargebacks will be updated accordingly.
+
+For example, if the September 2024 chargeback statement is finalized on October 6, 2024, but Azure generates an additional expense for September usage on October 10, the September chargeback statement will be updated to reflect this change. The statement will display an "Updated" label in the status column on the Chargeback Statements page. Additionally, the "Generation Date" column will indicate the most recent update to the statement.
 
 ![Late Bills](assets/late-bills1.png)
 
