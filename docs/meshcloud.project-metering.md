@@ -42,7 +42,7 @@ Therefore, the unit costs are not available in the Tenant Usage Reports for thos
 
 As an analogy from banking, you can think of a chargeback statement like a credit card statement you receive at the end of the month about your usage charged to your payment method.
 
-This chargeback statement is attached to each project and each chargeback is composed of tenant usage reports, which are reports for each tenant. For example, if your project uses both AWS and GCP, you will have one chargeback that combines two tenant usage reports. To check your chargebacks go to **Financials** > **Chargeback Statements** in your workspace. Or as admin go to **Chargebacks Statements** page under FinOps section.
+This chargeback statement is attached to each project and each chargeback is composed of tenant usage reports, which are reports for each tenant. For example, if your project uses both AWS and GCP, you will have one chargeback that combines two tenant usage reports. To check your chargebacks go to **Financials** > **Chargeback Statements** in your workspace. Or as admin go to **Chargebacks Statements** page under the FinOps section.
 
 
 > Chargebacks are finalized at the beginning of each month for the previous usage period to allow cloud providers to complete their reports. However, each chargeback only includes data from the month it was used. For example, an October chargeback, that was finalized on November 6th, will only include cloud usage from October.
@@ -56,7 +56,7 @@ like cloud provider cost vs. internal overhead fees.
 
 meshStack also regularly generates a preview of the chargeback statement for the current month, providing real-time cost data. This preview includes all tenant usage reports that meshStack expects to be finalized before the end of the chargeback period. The chargeback statement preview is available on the Chargeback Statements page, where it will be marked with an `Open` status label in the Status column.
 
-> Please note ote that meshStack currently only generates a preview for the currently active chargeback period.
+> Please note that meshStack currently only generates a preview for the currently active chargeback period.
 > A tenant usage report that will finalize in the next chargeback period will not be included in the current period's
 > preview.
 

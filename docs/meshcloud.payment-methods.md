@@ -20,7 +20,7 @@ The first step in reaping the benefits of payment methods is creating them. A fe
 1. A payment method is **always** scoped to a single meshWorkspace. This means it is not possible to create a global payment method that can be used for all meshWorkspaces. It is also not possible to re-use a single payment method across multiple meshWorkspaces.
 2. A payment method's identifier is globally unique. This means you cannot create a payment method with the same identifier for multiple meshWorkspaces. Make sure to use an identifier that will not collide in other meshWorkspaces.
 
->Please note that payment methods by now are supporting only EUR amounts.
+> Please note that as of today payment methods only support EUR amounts. 
 
 ### Creating a Payment Method via the meshPanel
 
@@ -54,7 +54,7 @@ In the [workspace control plane](./meshcloud.workspace.md#managing-your-meshwork
 
 Select the Active Payment Method of choice, and optionally a Substitute Payment Method if that is desired. Save the meshProject and the payment method(s) will be assigned to the meshProject.
 
-> Please not expired payment methods can not be assigned to projects anymore and are removed from project when expired.
+> Please note that expired payment methods are removed from all projects automatically upon expiration and can no longer be assigned to any projects.
 
 ### Applying a Payment Method to a new meshProject
 

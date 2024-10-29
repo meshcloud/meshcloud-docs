@@ -3,7 +3,7 @@ id: meshstack.billing
 title: Cost Management
 ---
 
-meshStack's cost management functionaloty enable developers to track resource usage, while platform teams can monitor overall costs and allocate them to specific teams. These cost management capabilities can be broken down into three key sections: metering, billing, and chargeback.
+meshStack's cost management functionality enables developers to track resource usage, while platform teams can monitor overall costs and allocate them to specific teams. These cost management capabilities can be broken down into three key sections: metering, billing, and chargeback.
 
 
 > Learn more about how your cloud foundation team can enable cloud cost management in
@@ -16,7 +16,7 @@ meshStack's cost management functionaloty enable developers to track resource us
 
 meshStack collects all usage information from public cloud providers, each of which has its own metering processes. For private clouds like OpenStack, OpenShift, and Cloud Foundry, meshStack has its own metering system to for example accurately calculate how many RAM hours and vCPU hours a virtual machine consumes over a given period.
 
-Cloud resources exhibit various traits. For instance, a virtual machine typically includes both RAM and vCPU. A crucial component of meshStack is the Product Catalog, which is a list of traits that are relevant for you and prices for them. With Product Catalof you can set not only usage prices but also additional prices to cover licensing costs and maintenance of Platform. Please read more information about the Product Catalog [here](meshstack.billing-configuration.md#setting-internal-prices).
+Cloud resources exhibit various traits. For instance, a virtual machine typically includes both RAM and vCPU. A crucial component of meshStack is the Product Catalog, which is a list of traits that are relevant for you and prices for them. With the Product Catalog, you can set not only usage prices but also additional prices to cover licensing costs and maintenance of a Platform. Please read more information about the Product Catalog [here](meshstack.billing-configuration.md#setting-internal-prices).
 
 
 ## Billing
@@ -25,7 +25,7 @@ Cloud resources exhibit various traits. For instance, a virtual machine typicall
 
 meshStack is creating monthly [Tenant Usage Reports](meshcloud.project-metering.md) that aggregate cloud resource usage data for each tenant over a specific period. These reports not only summarize resource consumption but can also include additional pricing information, as mentioned earlier, along with discounts, such as volume discounts.
 
-Furthermore, instead of providing a single, large invoice as cloud providers do, meshStack prepares invoices tailored to dedicated teams based on their usage, so that they will have a clear overview of cloud costs. This invoce called chargeaback statment, which is aslo used to correctly allocate costs to teams. 
+Furthermore, instead of providing a single, large invoice as cloud providers do, meshStack prepares invoices tailored to dedicated teams based on their usage, so that they will have a clear overview of cloud costs. This invoice is called a chargeback statement, which is also used to correctly allocate costs to teams. 
 
 
 > To learn more about enabling a solid private cloud billing process, check [private cloud pay-per-use chargeback](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/private-cloud-pay-per-use-chargeback.html) section in the Cloud Foundation Maturity Model
