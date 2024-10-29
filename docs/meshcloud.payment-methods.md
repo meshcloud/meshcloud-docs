@@ -28,11 +28,12 @@ One way of creating payment methods is via the meshPanel. To do so, make sure th
 
 1. Go to 'Payment Method' page under the FinOps section.
 2. Click on 'Create Payment Method' at the top right.
-3. Enter a name and identifier for the new payment method.
-4. (This is optional) Set an amount of EUR on the payment method to indicate the budget of this payment method.
-5. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
-6. Additionally, you can enter tags for the payment method, which are custom for your meshStack (also see [meshTags](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
-7. Click 'Save' and your new payment method will be available to the meshWorkspace it was created in!
+3. Select the workspace for which a new payment method should be created.
+4. Enter a name and identifier for the new payment method.
+5. (This is optional) Set an amount of EUR on the payment method to indicate the budget of this payment method.
+6. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
+7. Additionally, you can enter tags for the payment method, which are custom for your meshStack (also see [meshTags](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
+8. Click 'Save' and your new payment method will be available to the meshWorkspace it was created in!
 
 ### Creating a Payment Method via the meshObject API
 
