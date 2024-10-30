@@ -1,63 +1,37 @@
 ---
 id: meshstack.billing
-title: Architecture
+title: Cost Management
 ---
 
-Pay-per-use is a core principle of cloud computing. Without pay-per-use, there's no incentive for developer times to elastically scale their resource consumption with demand.
+meshStack's cost management functionality enables developers to track resource usage, while platform teams can monitor overall costs and allocate them to specific teams. These cost management capabilities can be broken down into three key sections: metering, billing, and chargeback.
 
-meshStack includes sophisticated metering & billing capabilities to help developers, platform operators and controllers monitor resource consumption for their multi-cloud setup managed by meshStack. We divide these capabilities into three sections of a end-to-end
-integrated process that serves all stakeholders (platform owners, project owners, controllers).
-
-```text
-Metering ⟶ Billing ⟶ Chargeback
-```
 
 > Learn more about how your cloud foundation team can enable cloud cost management in
 > the [Cloud Foundation Maturity Model](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/)
+
 
 ## Metering
 
 > Metering is the process of collecting and calculating cloud resource usage. Metering also involves pricing this resource usage to calculate cost.
 
-Cloud Platforms record events and other information about deployed cloud resources. Some of these events are relevant
-for metering. For example, starting and stopping a virtual machine may generate a corresponding stream of events that describes how long the virtual machine was running. For example, we can use data from the cloud platform to calculate how much RAM-hours and vCPU-hours a virtual machine consumed in a given period.
+meshStack collects all usage information from public cloud providers, each of which has its own metering processes. For private clouds like OpenStack, OpenShift, and Cloud Foundry, meshStack has its own metering system to for example accurately calculate how many RAM hours and vCPU hours a virtual machine consumes over a given period.
 
-Cloud resources have many different traits, i.e. we saw that a virtual machine has RAM and vCPU.
-A Product Catalog defines which of these traits are relevant for metering and how their usage is calculated. Typically
-usage is the product of a quantity and a duration, i.e. a single vCPU used for an hour. But their may be other usage units as well that consist only of quantities (i.e. bytes transferred over the network) or a duration (i.e. resource usage hour).
+Cloud resources exhibit various traits. For instance, a virtual machine typically includes both RAM and vCPU. A crucial component of meshStack is the Product Catalog, which is a list of traits that are relevant for you and prices for them. With the Product Catalog, you can set not only usage prices but also additional prices to cover licensing costs and maintenance of a Platform. Please read more information about the Product Catalog [here](meshstack.billing-configuration.md#setting-internal-prices).
 
-A product catalog also contains pricing rules that determine the cost for a particular resource usage.
 
 ## Billing
 
 > Billing is the process of attributing resource usage to cloud tenants and creating appropriate invoices.
 
-There are two principal steps to the billing process. The first is creating periodic (e.g. monthly) [Tenant Usage Reports](meshcloud.project-metering.md) that
-aggregate cloud resource usage data for tenants. meshStack makes [Tenant Usage Reports](meshcloud.project-metering.md) available to all
-involved users, i.e. workspace & project owners, platform operators and partners.
+meshStack is creating monthly [Tenant Usage Reports](meshcloud.project-metering.md) that aggregate cloud resource usage data for each tenant over a specific period. These reports not only summarize resource consumption but can also include additional pricing information, as mentioned earlier, along with discounts, such as volume discounts.
 
-The second is invoicing the application team (represented by a meshWorkspace) according to agreed terms for this usage. This may also involve applying additional
-pricing and discount rules to aggregated usage reports, i.e. volume discounts.
+Furthermore, instead of providing a single, large invoice as cloud providers do, meshStack prepares invoices tailored to dedicated teams based on their usage, so that they will have a clear overview of cloud costs. This invoice is called a chargeback statement, which is also used to correctly allocate costs to teams. 
 
-### Public cloud billing with meshcloud
 
-Public cloud providers like AWS, Azure and GCP provide their own metering and billing processes. These can be very intricate
-and involve complex pricing rules. However, a common theme is that they all provide the enterprise with a single invoice
-for its aggregated cloud spend. These invoices list the cloud spend by individual cloud tenants. Putting all tenants on
- a single invoice leads to attractive volume discounts, however it necessitates breaking down that invoice into
- different Tenant Usage Reports and feeding them to a [chargeback](#chargeback)
- process to correctly attribute costs to the individual cloud consumers.
+> To learn more about enabling a solid private cloud billing process, check [private cloud pay-per-use chargeback](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/private-cloud-pay-per-use-chargeback.html) section in the Cloud Foundation Maturity Model
 
-### Private cloud billing with meshcloud
+## Chargeback 
 
-Private cloud platforms like OpenStack, OpenShift and Cloud Foundry usually do not provide built-in metering and billing capabilities.
-While they may have APIs or facilities to expose basic usage information, they do not come with metering and pricing capabilities
-that match the expectations developers and project managers have grown accustomed to from public cloud billing.
+> Chargeback is the process of distributing cloud costs from a consolidated bill to the specific teams or departments that incurred those expenses. This ensures that each team is accurately charged for the resources they consumed, promoting cost accountability.
 
-One core aspect is that metering data must be made plausible for the consumers. Consumers demand resource-level usage
-reporting so that they can verify how each of their deployed cloud resources contributes to the total usage.
-meshStack includes a sophisticated private-cloud metering engine that allows Partners to define their own product catalogs
-and create accurate metering data.
-
-> To learn more about enabling a solid private cloud billing process, read the Cloud Foundation Building Block
-> on [private cloud pay-per-use chargeback](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/private-cloud-pay-per-use-chargeback.html).
+This chargeback statement is attached to each project in meshStack and each chargeback statement is composed of tenant usage reports. For example, if your project uses both AWS and GCP, you will have one chargeback that combines two tenant usage reports. If you would liket o learn more about chargeback, check [here](meshcloud.project-metering.md)
