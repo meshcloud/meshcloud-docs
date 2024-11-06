@@ -470,7 +470,7 @@ set up via meshPanel have read access to meshTagDefinitions by default.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -501,7 +501,7 @@ set up via meshPanel have read access to meshTagDefinitions by default.</p>
 <div class="title">Example Request</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtagdefinitions?page=0&amp;size=2 HTTP/1.1
-Authorization: Basic bm9fcmlnaHRzOm5vX3JpZ2h0cw==
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
@@ -509,7 +509,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=0&amp;size=2' -i -u 'no_rights:no_rights' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json'</code></pre>
 </div>
 </div>
@@ -669,7 +669,26 @@ Content-Length: 2173
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. /api/meshobjects/meshtagdefinitions/{name}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>metadata.name</code> of the meshTagDefinition.</p></td>
 </tr>
 </tbody>
 </table>
@@ -677,7 +696,7 @@ Content-Length: 2173
 <div class="title">Example Request</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter HTTP/1.1
-Authorization: Basic bm9fcmlnaHRzOm5vX3JpZ2h0cw==
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
@@ -685,12 +704,12 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'no_rights:no_rights' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json'</code></pre>
 </div>
 </div>
 <table id="mesh_tag_definition_response_fields" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Response Fields</caption>
+<caption class="title">Table 6. meshTagDefinition Object Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -788,7 +807,8 @@ Host: mesh-backend-url</code></pre>
 </table>
 <div id="mesh_tag_definition_response_fields_tag_value_type" class="paragraph">
 <div class="title">Response Fields - TagValueType Schema</div>
-<p>This object describes the value type for a tag.</p>
+<p>This object describes the value type for a tag. Exactly one of the supported type options must be set. If the desired
+option has only optional fields, set this to an empty object or explicitly set the optional fields to <code>null</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -935,11 +955,427 @@ Content-Length: 650
 </div>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_post_meshtagdefinition">Post meshTagDefinition</h5>
+<div class="paragraph">
+<p>Create a new meshTagDefinition.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshtagdefinitions HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Content-Length: 523
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v1",
+  "kind": "meshTagDefinition",
+  "metadata": {
+    "name": "meshProject.environment"
+  },
+  "spec": {
+    "targetKind": "meshProject",
+    "key": "environment",
+    "valueType": {
+      "singleSelect": {
+        "options": [ "dev", "test", "qa", "production" ],
+        "defaultValue": "dev"
+      }
+    },
+    "description": "The environment the project runs in.",
+    "displayName": "Environment",
+    "sortOrder": 9999,
+    "mandatory": true,
+    "immutable": false,
+    "restricted": false
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json' \
+    -d '{
+  "apiVersion": "v1",
+  "kind": "meshTagDefinition",
+  "metadata": {
+    "name": "meshProject.environment"
+  },
+  "spec": {
+    "targetKind": "meshProject",
+    "key": "environment",
+    "valueType": {
+      "singleSelect": {
+        "options": [ "dev", "test", "qa", "production" ],
+        "defaultValue": "dev"
+      }
+    },
+    "description": "The environment the project runs in.",
+    "displayName": "Environment",
+    "sortOrder": 9999,
+    "mandatory": true,
+    "immutable": false,
+    "restricted": false
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Request Fields</div>
+<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Location: https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshProject.environment
+Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 682
+
+{
+  "kind" : "meshTagDefinition",
+  "apiVersion" : "v1",
+  "metadata" : {
+    "name" : "meshProject.environment"
+  },
+  "spec" : {
+    "targetKind" : "meshProject",
+    "key" : "environment",
+    "valueType" : {
+      "singleSelect" : {
+        "options" : [ "dev", "test", "qa", "production" ],
+        "defaultValue" : "dev"
+      }
+    },
+    "description" : "The environment the project runs in.",
+    "displayName" : "Environment",
+    "sortOrder" : 9999,
+    "mandatory" : true,
+    "immutable" : false,
+    "restricted" : false
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshProject.environment"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_put_meshtagdefinition">Put meshTagDefinition</h5>
+<div class="paragraph">
+<p>Create or update an existing meshTagDefinition.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. /api/meshobjects/meshtagdefinitions/{name}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>metadata.name</code> of the meshTagDefinition.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Content-Length: 684
+Host: mesh-backend-url
+
+{
+  "kind" : "meshTagDefinition",
+  "apiVersion" : "v1",
+  "metadata" : {
+    "name" : "meshWorkspace.costCenter"
+  },
+  "spec" : {
+    "targetKind" : "meshWorkspace",
+    "key" : "costCenter",
+    "valueType" : {
+      "string" : {
+        "defaultValue" : "1001",
+        "validationRegex" : "^\\d{4}$"
+      },
+      "email" : null,
+      "integer" : null,
+      "number" : null,
+      "singleSelect" : null,
+      "multiSelect" : null
+    },
+    "description" : "Updated description",
+    "displayName" : "Updated display name",
+    "sortOrder" : 9999,
+    "mandatory" : true,
+    "immutable" : false,
+    "restricted" : false,
+    "replicationKey" : "updatedReplicationKey"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'valid_username:valid_password' -X PUT \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json' \
+    -d '{
+  "kind" : "meshTagDefinition",
+  "apiVersion" : "v1",
+  "metadata" : {
+    "name" : "meshWorkspace.costCenter"
+  },
+  "spec" : {
+    "targetKind" : "meshWorkspace",
+    "key" : "costCenter",
+    "valueType" : {
+      "string" : {
+        "defaultValue" : "1001",
+        "validationRegex" : "^\\d{4}$"
+      },
+      "email" : null,
+      "integer" : null,
+      "number" : null,
+      "singleSelect" : null,
+      "multiSelect" : null
+    },
+    "description" : "Updated description",
+    "displayName" : "Updated display name",
+    "sortOrder" : 9999,
+    "mandatory" : true,
+    "immutable" : false,
+    "restricted" : false,
+    "replicationKey" : "updatedReplicationKey"
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Request Fields</div>
+<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.
+Note that the API does not allow changing the <code>key</code> or <code>valueType</code> of an existing meshTagDefinition.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Disposition: inline;filename=f.txt
+Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 701
+
+{
+  "kind" : "meshTagDefinition",
+  "apiVersion" : "v1",
+  "metadata" : {
+    "name" : "meshWorkspace.costCenter"
+  },
+  "spec" : {
+    "targetKind" : "meshWorkspace",
+    "key" : "costCenter",
+    "valueType" : {
+      "string" : {
+        "defaultValue" : "1001",
+        "validationRegex" : "^\\d{4}$"
+      }
+    },
+    "description" : "Updated description",
+    "displayName" : "Updated display name",
+    "sortOrder" : 9999,
+    "mandatory" : true,
+    "immutable" : false,
+    "restricted" : false,
+    "replicationKey" : "updatedReplicationKey"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshtagdefinition">Delete meshTagDefinition</h5>
+<div class="paragraph">
+<p>Delete an existing meshTagDefinition. Please note that deleting a meshTagDefinition will also remove all tag values
+for the <code>key</code> from all meshObjects specified by its <code>targetKind</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. /api/meshobjects/meshtagdefinitions/{name}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>metadata.name</code> of the meshTagDefinition.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'valid_username:valid_password' -X DELETE \
+    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>If successful, this request returns an empty response.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 204 No Content
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-30 17:46:54 UTC
+Last updated 2024-11-06 13:33:16 UTC
 </div>
 </div>
 </body>
