@@ -256,7 +256,7 @@ let example =
       The following example takes the 'cn' attribute and if the attribute matches the first rule,
       will assign whatever follows the "MESHCLOUD-ROLE-" as the value of the meshObject field. If the attribute matches
       the second rule, will assign the value "Platform Operator" and if none of the rules match, assigns the
-      value "Workspace Manager".
+      value "Workspace Member".
     -}
       { attribute = "cn"
       , postProcessor = None PostProcessor
@@ -267,7 +267,7 @@ let example =
           }
         ]
       , template = None Text
-      , otherwise = Some "Workspace Manager"
+      , otherwise = Some "Workspace Member"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -310,7 +310,7 @@ let GroupAttributesTransformations =
          The 'distinguished name' attribute key for a user entity in LDAP. This attribute value should match the users
          referred to in the 'members' attribute of the groupAttributesTransformations.
 
-      name, ownedByCustomer, displayName, egid
+      name, ownedByWorkspace, displayName, egid
          For each of these meshUser fields, specify which LDAP attribute should be transformed and assigned to the field.
 
       tags:
@@ -319,7 +319,7 @@ let GroupAttributesTransformations =
     -}
       { membersAttribute : Text
       , name : AttributeTransformation
-      , ownedByCustomer : AttributeTransformation
+      , ownedByWorkspace : AttributeTransformation
       , displayName : AttributeTransformation
       , egid : AttributeTransformation
       , tags : List TagMapping
@@ -392,7 +392,7 @@ let example
               { attribute = "cn"
               , postProcessor = Some PostProcessor.LOWERCASE
               }
-        , ownedByCustomer =
+        , ownedByWorkspace =
             AttributeTransformation.Regex
               { attribute = "cn"
               , postProcessor = None PostProcessor
@@ -439,7 +439,7 @@ let example
                 }
               ]
             , template = None Text
-            , otherwise = Some "Workspace Manager"
+            , otherwise = Some "Workspace Member"
             }
       }
 ```
@@ -491,7 +491,7 @@ let example
             Secret.Raw "EXTERNAL_IDENTITYCONNECTOR_MESH_API_PASSWORD"
         , authorities =
           [ Authority.EXTERNAL_MESH_OBJECT_IMPORT
-          , Authority.CUSTOMEROWNER_ASSIGN
+          , Authority.WORKSPACEOWNER_ASSIGN
           ]
         }
       }
