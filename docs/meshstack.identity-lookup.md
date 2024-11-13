@@ -22,7 +22,7 @@ let IdentityLookup =
             Configure the identity provider to use as a source for identity lookup.
 
         deny-assigning-other-users:
-            Controls the behavior of self-service user invitations (e.g. meshWorkspace role assignments from meshPanel).
+            Controls the behavior of self-service user invitations (e.g. workspace role assignments from meshPanel).
             When true, users can only invite other users listed in the identity provider.
             When false, users can create invitations also for users not listed in the identity provider.
     -}
@@ -116,7 +116,7 @@ let example
     : AzureCreds
     = { aad-tenant = "devmeshcloud.onmicrosoft.com"
       , client-id = "f112f31-248a-4461-1269-0f13164acb95"
-      , client-secret = Secret.fromAnsible "client_secret"
+      , client-secret = Secret.fromTerraform "client_secret"
       , guestLookup = None AzureGuestDetection
       , euidSchemaExtensionUpdate = None AzureEuidExtensionSchema
       , euidUserAttributeUpdate = None AzureEuidUserAttribute
@@ -348,7 +348,7 @@ let example
     = { domain = "example.com"
       , customer-id = "customer-id"
       , service-account-credentials-b64 =
-          Secret.fromAnsible "gcp_credentials"
+          Secret.fromTerraform "gcp_credentials"
       }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
