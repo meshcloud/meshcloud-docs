@@ -45,4 +45,70 @@ To make a GitHub Action Workflow trigger available in the marketplace, create a 
     - Choose **Pipeline Automation** in the **Implementation Type** dropdown.
     - Ensure you configure any necessary input fields to support the automation.
 
+The dispatch event meshStack sends to GitHub in order to trigger the workflow will look like this:
+```json
+{
+   "ref": "<ref>",
+   "inputs": {
+      "buildingBlockRun": "<encodedRun>"
+   }
+}
+```
+The value for `<ref>` is the Git reference specified in the configuration, e.g. the branch name or a commit hash.\
+The value for `<encodedRun>` is a Base64 encoded version of a building block run object.\
+Please consider the following example for a run:
+```json
+{
+  "kind": "meshBuildingBlockRun",
+  "apiVersion": "v1",
+  "metadata": {
+    "uuid": "19fe93f0-36d0-4019-9453-7f6f4ce490b4"
+  },
+  "spec": {
+    "runNumber": 7,
+    "buildingBlock": {
+      "uuid": "3f7ee35a-a1d0-43d1-8ca7-dedbf9fd44b6",
+      "spec": {
+        "displayName": "name-of-buildingBlock",
+        "workspaceIdentifier": "workspace-identifier",
+        "projectIdentifier": "project-identifier",
+        "fullPlatformIdentifier": "full-tenant-identifier",
+        "inputs": [
+          {
+            "key": "input-key",
+            "value": "test",
+            "type": "STRING",
+            "isSensitive": false,
+            "isEnvironment": false
+          }
+        ],
+        "parentBuildingBlocks": []
+      }
+    },
+    "buildingBlockDefinition": {
+      "uuid": "4334947b-f48f-4cf2-bb75-0f24b2ada6e0",
+      "spec": {
+        "version": 6,
+        "implementation": {
+          "type": "GITHUB_WORKFLOW"
+        }
+      }
+    },
+    "behavior": "APPLY"
+  },
+  "status": "IN_PROGRESS",
+  "_links": {
+    "registerSource": {
+      "href": "https://federation.dev.meshcloud.io/api/meshobjects/meshbuildingblockruns/19fe93f0-36d0-4019-9453-7f6f4ce490b4/status/source"
+    },
+    "updateSource": {
+      "href": "https://federation.dev.meshcloud.io/api/meshobjects/meshbuildingblockruns/19fe93f0-36d0-4019-9453-7f6f4ce490b4/status/source/{sourceId}"
+    },
+    "meshstackBaseUrl": {
+      "href": "https://federation.dev.meshcloud.io"
+    }
+  }
+}
+```
+
 This setup allows application teams to quickly and efficiently access automation workflows from the marketplace, enhancing their productivity and reducing the need for Git expertise.
