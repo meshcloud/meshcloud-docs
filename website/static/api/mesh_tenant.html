@@ -590,12 +590,12 @@ Content-Length: 2091
         "ownedByProject" : "test-project",
         "ownedByWorkspace" : "test-workspace",
         "platformIdentifier" : "aws.aws-meshstack-dev",
-        "deletedOn" : "2024-11-07T13:36:29.657329297Z",
+        "deletedOn" : "2024-11-29T07:11:44.848738022Z",
         "assignedTags" : { },
         "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
       },
       "spec" : {
-        "localId" : "8c2d3c5e-b543-46d0-a4fc-1e966df246b5",
+        "localId" : "5d0c2a4d-6ebb-451b-910c-22a0e64c06a2",
         "landingZoneIdentifier" : "stage-dev",
         "quotas" : [ {
           "key" : "limits.cpu",
@@ -791,12 +791,12 @@ Content-Length: 979
     "ownedByProject" : "test-project",
     "ownedByWorkspace" : "test-workspace",
     "platformIdentifier" : "aws.aws-meshstack-dev",
-    "deletedOn" : "2024-11-07T13:36:29.657329297Z",
+    "deletedOn" : "2024-11-29T07:11:44.848738022Z",
     "assignedTags" : { },
     "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
   },
   "spec" : {
-    "localId" : "8c2d3c5e-b543-46d0-a4fc-1e966df246b5",
+    "localId" : "5d0c2a4d-6ebb-451b-910c-22a0e64c06a2",
     "landingZoneIdentifier" : "stage-dev",
     "quotas" : [ {
       "key" : "limits.cpu",
@@ -950,7 +950,7 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.localId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The localId (platform tenant id) assigned with this meshTenant. If it is set, meshStack will attempt to import an existing tenant instead of creating a new one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The localId (platform tenant id) assigned by the platform for this meshTenant. If set, meshStack will import an existing tenant from the cloud platform instead of creating a new one. Only API Keys or API Users with admin permissions for saving tenants can set this field.</p></td>
 </tr>
 </tbody>
 </table>
@@ -976,10 +976,11 @@ Host: mesh-backend-url
 <div class="listingblock">
 <div class="title">Example Response</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
+Location: https://mesh-backend-url/api/meshobjects/meshtenants/test-workspace.test-project.azure.meshcloud-azure-dev
 Content-Type: application/vnd.meshcloud.api.meshtenant.v3.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -1057,7 +1058,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-06 13:33:16 UTC
+Last updated 2024-11-28 07:09:15 UTC
 </div>
 </div>
 </body>
