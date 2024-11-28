@@ -269,9 +269,9 @@ Some common cloud IAM architectures require using different user account for tes
 
 <!--snippet:meshfed.platform#type-->
 
+
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-
 ```dhall
 let Platform =
       let Platform =
@@ -300,7 +300,6 @@ let Platform =
 
       in  Platform
 ```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 #### Looking up transformed euids
@@ -331,10 +330,8 @@ At the moment only AAD offers a choice of user lookup attributes. Platform Opera
 <!--snippet:mesh.replicator-->
 
 The following configuration options are available at `mesh.replicator`:
-
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-
 ```dhall
 let Replicator =
     {-
@@ -345,14 +342,13 @@ let Replicator =
     -}
       { aadUserLookupStrategy : Platform.Azure.AzureLookupStrategy }
 ```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <!--snippet:replicator.platform.azure.AzureLookupStrategy#type-->
 
+
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Dhall Type-->
-
 ```dhall
 let AzureLookupStrategy =
     {-
@@ -368,7 +364,6 @@ let AzureLookupStrategy =
     -}
       < UserByMailLookupStrategy | UserByUsernameLookupStrategy >
 ```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Group Cleanup
