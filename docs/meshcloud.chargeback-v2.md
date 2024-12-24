@@ -16,15 +16,13 @@ Historically, any late bills or corrections (e.g., from cloud providers) arrivin
 1. **Inclusion of Late Cost Data**
 
 Late bills or other corrections will now be **included in the month they apply to**, even after the chargeback statement has been finalized. Previously, late charges were carried over to the next period, leading to potential confusion and delayed visibility.
-
-**Example:**
-If an Azure charge for September 2024 usage is received after the chargeback statement has been finalized on October 6, 2024, this charge will be reflected in the **September chargeback statement**. The statement will show an **"Updated"** label to indicate that changes have been applied.
+For instance, if an Azure charge for September 2024 usage is received after the chargeback statement has been finalized on October 6, 2024, this charge will be reflected in the **September chargeback statement**. The statement will show an **"Updated"** label to indicate that changes have been applied.
 
 2. **Transparency in meshStack**
 
 In the **meshStack**, updates to finalized chargeback statements will be marked. When corrections are made, you will see an **"Updated" label** in the status column of the **Chargeback Statements page**. The **Generation Date** column will show the latest update date.
 
-**What this means for you:**
+What this means for you:
 
 - Changes will be highlighted directly in meshStack for quick identification.
 - You can view in meshStack all ****updates that happened from your previous data retrieval by navigating to the Chargeback page, sorting generated at the column, and choosing only **updated** status chargeback statements.
