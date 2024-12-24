@@ -1,5 +1,5 @@
 ---
-id: meshstack.aws.index
+id: meshstack.chargeback-v2
 title: Chargeback 2.0 Key Changes and Limitations
 ---
 
