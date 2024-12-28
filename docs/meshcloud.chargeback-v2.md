@@ -59,7 +59,7 @@ While Chargeback 2.0 significantly improves the transparency and accuracy of cha
 
 ### Cost Backward approach in meshstack UI
 
-As mentioned earlier, you can use the API to collect costs that changed after the finalization date and apply corrections to future periods. However, in the **meshStack UI**, we use the cost-backward approach, so chargebacks and TUPRs are updated for the original usage month. Late bills and other corrections are now reflected in the correct month, with their status updated, even after the chargeback statement is finalized.
+As mentioned earlier, you can use the API to collect costs that changed after the finalization date and apply corrections to future periods. However, in the panel, we use the cost-backward approach, so chargebacks and TUPRs are updated for the original usage month. Late bills and other corrections are now reflected in the correct month, with their status updated, even after the chargeback statement is finalized.
 
 For example, in the screenshot below, costs were updated on 20.11.2024 for the October chargeback. These updates were applied to the October period and not carried over to the November chargeback.
 
