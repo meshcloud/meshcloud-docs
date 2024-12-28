@@ -5,7 +5,7 @@ title: Chargeback 2.0 Key Changes and Limitations
 
 ## Overview
 
-This documentation provides an overview of the changes introduced with **Chargeback 2.0**, detailing the reasons for the update, key improvements, required actions, and limitations. The transition to Chargeback 2.0 will take effect by **the end of January 2024 (calendar week 4)**, with the January chargeback finalized under the new system.
+This documentation provides an overview of the changes introduced with **Chargeback 2.0**, detailing the reasons for the update, key improvements, required actions, and limitations. The transition to Chargeback 2.0 will take effect by **the end of January 2025 (calendar week 4)**, with the January chargeback finalized under the new system.
 
 ## Why the Change Was Needed
 
