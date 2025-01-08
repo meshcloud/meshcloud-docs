@@ -445,6 +445,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>All endpoints on meshChargebacks.</p>
 </div>
+<div class="paragraph">
+<p><strong>Info</strong>: The <a href="#mesh_tenantUsageReports">meshTenantUsageReport</a> endpoints are the preferred endpoints to get
+cost data from meshStack. The meshTenantUsageReport endpoints provide more detailed information and more filter
+options than the chargeback statements. They contain basically the same information as a chargeback, but only
+per tenant, not per project.</p>
+</div>
 <div class="sect4">
 <h5 id="_list_meshchargebacks">List meshChargebacks</h5>
 <div class="paragraph">
@@ -512,7 +518,7 @@ these parameters. By default, meshChargebacks are sorted descending by period.</
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A custom order for sorting the results (optional). For meshChargebacks it is possible to filter by the following fields: name, customerIdentifier, projectIdentifier, period, partnerIdentifier. Possible directions are 'asc' or 'desc'. (e.g. sort=name,desc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A custom order for sorting the results (optional). For meshChargebacks it is possible to filter by the following fields: <code>name</code>, <code>customerIdentifier</code>, <code>projectIdentifier</code>, <code>period</code>, <code>partnerIdentifier</code>. Possible directions are 'asc' or 'desc'. (e.g. sort=name,desc)</p></td>
 </tr>
 </tbody>
 </table>
@@ -592,13 +598,13 @@ Content-Length: 3377
       "kind" : "meshChargeback",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2024-12-18T15:57:53.024736400Z",
+        "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
+        "createdOn" : "2025-01-08T08:42:10.403495900Z",
         "finalized" : true
       },
       "spec" : {
         "projectIdentifier" : "testProject",
-        "period" : "2024-12-01Z",
+        "period" : "2025-01-01Z",
         "tags" : {
           "paymentIdentifier" : [ "123" ]
         },
@@ -606,8 +612,8 @@ Content-Length: 3377
       },
       "status" : {
         "timeframe" : {
-          "from" : "2024-12-01T00:00:00Z",
-          "to" : "2025-01-01T00:00:00Z"
+          "from" : "2025-01-01T00:00:00Z",
+          "to" : "2025-02-01T00:00:00Z"
         },
         "lineItems" : [ {
           "reportCategory" : "BILLING",
@@ -647,27 +653,27 @@ Content-Length: 3377
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%3AtestWorkspace%3AtestProject"
+          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%3AtestWorkspace%3AtestProject"
         }
       }
     }, {
       "kind" : "meshChargeback",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "2024-11-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2024-12-18T15:57:53.026423600Z",
+        "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
+        "createdOn" : "2025-01-08T08:42:10.405079500Z",
         "finalized" : true
       },
       "spec" : {
         "projectIdentifier" : "testProject",
-        "period" : "2024-11-01Z",
+        "period" : "2024-12-01Z",
         "tags" : { },
         "workspaceIdentifier" : "testWorkspace"
       },
       "status" : {
         "timeframe" : {
-          "from" : "2024-11-01T00:00:00Z",
-          "to" : "2024-12-01T00:00:00Z"
+          "from" : "2024-12-01T00:00:00Z",
+          "to" : "2025-01-01T00:00:00Z"
         },
         "lineItems" : [ ],
         "netAmounts" : [ {
@@ -679,7 +685,7 @@ Content-Length: 3377
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-11-01Z/testPartner%3AtestWorkspace%3AtestProject"
+          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%3AtestWorkspace%3AtestProject"
         }
       }
     } ]
@@ -726,7 +732,7 @@ Content-Length: 3377
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%253AtestWorkspace%253AtestProject HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%253AtestWorkspace%253AtestProject HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshchargeback.v3.hal+json
 Host: mesh-billing-url</code></pre>
@@ -735,7 +741,7 @@ Host: mesh-billing-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%253AtestWorkspace%253AtestProject' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%253AtestWorkspace%253AtestProject' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshchargeback.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -947,13 +953,13 @@ Content-Length: 1852
   "kind" : "meshChargeback",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
-    "createdOn" : "2024-12-18T15:57:53.024736400Z",
+    "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
+    "createdOn" : "2025-01-08T08:42:10.403495900Z",
     "finalized" : true
   },
   "spec" : {
     "projectIdentifier" : "testProject",
-    "period" : "2024-12-01Z",
+    "period" : "2025-01-01Z",
     "tags" : {
       "paymentIdentifier" : [ "123" ]
     },
@@ -961,8 +967,8 @@ Content-Length: 1852
   },
   "status" : {
     "timeframe" : {
-      "from" : "2024-12-01T00:00:00Z",
-      "to" : "2025-01-01T00:00:00Z"
+      "from" : "2025-01-01T00:00:00Z",
+      "to" : "2025-02-01T00:00:00Z"
     },
     "lineItems" : [ {
       "reportCategory" : "BILLING",
@@ -1002,7 +1008,7 @@ Content-Length: 1852
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%3AtestWorkspace%3AtestProject"
+      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%3AtestWorkspace%3AtestProject"
     }
   }
 }</code></pre>
@@ -1013,7 +1019,7 @@ Content-Length: 1852
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-18 15:56:31 UTC
+Last updated 2025-01-08 08:40:45 UTC
 </div>
 </div>
 </body>
