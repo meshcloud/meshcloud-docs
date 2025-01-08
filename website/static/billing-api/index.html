@@ -745,8 +745,8 @@ provide the <code>Accept</code> header so you are guaranteed to get the resource
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}).
-<strong>Note</strong>: You can size up to {max-page-size}. Greater values will be automatically lowered to this value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default=20).
+<strong>Note</strong>: You can size up to 200. Greater values will be automatically lowered to this value.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1044,7 +1044,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 578
+Content-Length: 673
 
 {
   "_links" : {
@@ -1053,7 +1053,7 @@ Content-Length: 578
       "templated" : true
     },
     "meshtenantusagereports" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?workspaceIdentifier,projectIdentifier,platformFullIdentifier,period,reportCategory,paymentIdentifier}",
+      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}",
       "templated" : true
     },
     "self" : {
@@ -1066,7 +1066,9 @@ Content-Length: 578
 <div class="sect3">
 <h4 id="mesh_tenantUsageReports"><a class="link" href="#mesh_tenantUsageReports">meshTenantUsageReports</a></h4>
 <div class="paragraph">
-<p>All endpoints on meshTenantUsageReports.</p>
+<p>A meshTenantUsageReport contains all cost and payment information as well as tags for one tenant in one period (month).
+Via the API, you receive more detailed information than via the UI. Besides tags and payment information, you also get
+the seller information separated via line items in the meshTenantUsageReport.</p>
 </div>
 <div class="sect4">
 <h5 id="_list_meshtenantusagereports"><a class="link" href="#_list_meshtenantusagereports">List meshTenantUsageReports</a></h5>
@@ -1074,8 +1076,10 @@ Content-Length: 578
 <p>Provides a paged list of meshTenantUsageReports.</p>
 </div>
 <div class="paragraph">
-<p><strong>Note</strong>: If no request parameters for filtering are specified, all meshTenantUsageReports are returned independently of
-these parameters. By default, meshTenantUsageReports are sorted descending by period.</p>
+<p><strong>Note</strong>: If no request parameters for filtering are specified, all meshTenantUsageReports, except for cancelled ones,
+are returned. A meshTenantUsageReport gets cancelled, if any changes occur after finalization of it. A new
+meshTenantUsageReport with an incremented version gets created in case of such an update. So the old one is available
+as cancelled, and the new as finalized. By default, meshTenantUsageReports are sorted descending by period.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Request Headers</caption>
@@ -1092,7 +1096,7 @@ these parameters. By default, meshTenantUsageReports are sorted descending by pe
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1110,32 +1114,56 @@ these parameters. By default, meshTenantUsageReports are sorted descending by pe
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>partnerIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the partner with given identifier. (optional)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ownedByWorkspace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the meshWorkspace with given identifier. (optional)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the meshProject with given identifier. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ownedByProject</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the meshProject with given identifier. Make sure to also filter for ownedByWorkspace, as a project identifier is only unique inside a workspace! (optional)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformFullIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided platform in the format '&lt;platform&gt;.&lt;location&gt;' (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>isManaged</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that are either managed or not managed by meshStack! meshStack collects all cost information from the cloud platform for all tenants. If a tenant is not managed by meshStack, it is an unmanaged tenant. If you provide <code>true</code> for this filter parameter, you only get meshTenantUsageReports for tenants that are managed by meshStack. If you provide <code>false</code>, you only get meshTenantUsageReports of unmanaged tenants. (optional)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>paymentIdentifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that have the meshPaymentMethod with given identifier assigned. Use an empty or blank value to filter for meshTenantUsageReports without an assigned meshPaymentMethod. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platform</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided platform in the format <code>&lt;platformIdentifier&gt;.&lt;locationIdentifier&gt;</code> (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided platform type. Must be one of: <code>Azure</code>, <code>Aws</code>, <code>Gcp</code>, <code>AzureResourceGroup</code>, <code>AzureKubernetesService</code>, <code>Kubernetes</code>, <code>OpenShift</code>, <code>OpenStack</code>, <code>CloudFoundry</code>, <code>MeshMarketplace</code>, <code>GitHub</code>, <code>Custom</code> (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformTenantId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to a certain tenant that can be identified via platform tenant ID (optional)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>period</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided period, e.g. '2022-01-06Z' (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided period in format YYYY-MM, e.g. <code>2025-01</code> (optional)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>reportCategory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided reportCategory, 'BILLING' or 'ENVIRONMENTAL'. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that belong to the provided reportCategory, <code>BILLING</code> or <code>ENVIRONMENTAL</code>. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>paymentMethodIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that have the meshPaymentMethod with given identifier assigned. Use an empty or blank value to filter for meshTenantUsageReports without an assigned meshPaymentMethod. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>finalizedAfter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that were finalized after the provided <a href="#data_types">date</a> (e.g. <code>2025-06-01T00:00:00Z</code>). You can use this filter to retrieve all meshTenantUsageReports finalized after your last request for processing them in your billing system. You can e.g. provide the latest finalizationDate you received in your last request. You may then receive the newly finalized usage reports of the new period and probably updated usage reports of previous periods. This filter parameter is exclusive, meaning it will only match reports that were finalized after the given date. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cancelledAfter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that were cancelled after the provided <a href="#data_types">date</a> (e.g. 2025-06-01T00:00:00Z). When you apply this filter is provided, you will only get cancelled usage reports, meaning outdated data that was already updated. This filter parameter is exclusive, meaning it will only match reports that were cancelled after the given date. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showCancelled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By default, cancelled meshTenantUsageReports are not included in the response. If you want to include them, you can set this parameter to <code>true</code>. This is not required when you already filter for cancelledAfter. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that are in the given state <code>OPEN</code>, <code>FINALIZED</code> or <code>UPDATED</code>. You can e.g. use this filter to exclude meshTenantUsageReports that have never been finalized yet (e.g. preview usage reports of the current month) or to get all usage reports that were UPDATED at least once. You can provide this parameter multiple times, e.g. to get only FINALIZED and UPDATED usage reports: <code>?status=FINALIZED&amp;status=UPDATED</code>. (optional)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
@@ -1143,28 +1171,28 @@ these parameters. By default, meshTenantUsageReports are sorted descending by pe
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default=20). See <a href="#paging">Paging information</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A custom order for sorting the results (optional). For meshTenantUsageReports it is possible to filter by the following fields: workspaceIdentifier, customerIdentifier, projectIdentifier, platformFullIdentifier, period, reportCategory. Possible directions are 'asc' or 'desc'. (e.g. sort=workspaceIdentifier,desc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A custom order for sorting the results (optional). For meshTenantUsageReports it is possible to filter by the following fields: <code>platform</code>, <code>platformType</code>, <code>platformTenantId</code>, <code>ownedByWorkspace</code>, <code>ownedByProject</code>, <code>total</code>, <code>generatedAt</code>, <code>reportCategory</code>, <code>paymentMethodIdentifier</code>, <code>finalizedAt</code>, <code>cancelledAt</code>. Possible directions are 'asc' or 'desc'. (e.g. sort=platform,desc)</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshtenantusagereports?workspaceIdentifier=testWorkspace&amp;page=0&amp;size=10&amp;sort=period,desc HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshtenantusagereports?ownedByWorkspace=test-workspace-2&amp;showCancelled=true&amp;page=0&amp;size=10&amp;sort=period,desc HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json
+Accept: application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json
 Host: mesh-billing-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-billing-url/api/meshobjects/meshtenantusagereports?workspaceIdentifier=testWorkspace&amp;page=0&amp;size=10&amp;sort=period,desc' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-billing-url/api/meshobjects/meshtenantusagereports?ownedByWorkspace=test-workspace-2&amp;showCancelled=true&amp;page=0&amp;size=10&amp;sort=period,desc' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json'</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1211,7 +1239,7 @@ Host: mesh-billing-url</code></pre>
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json
+Content-Type: application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -1219,54 +1247,123 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1383
+Content-Length: 3609
 
 {
   "_embedded" : {
     "meshTenantUsageReports" : [ {
       "kind" : "meshTenantUsageReport",
-      "apiVersion" : "v2",
+      "apiVersion" : "v3",
       "metadata" : {
-        "name" : "gcp1.gcp-ffm:project:2018-01-01Z",
-        "lastModified" : "2024-12-18T15:57:55.476548100Z",
-        "finalized" : true
+        "uuid" : "720f8801-d500-4ff3-bdc2-aae5d6c1e2df",
+        "ownedByWorkspace" : "test-workspace-2",
+        "ownedByProject" : "test-project",
+        "createdAt" : "2025-01-07T01:00:00Z"
       },
       "spec" : {
-        "period" : "2018-01-01Z",
+        "period" : "2024-12",
         "reportCategory" : "BILLING",
-        "platformType" : "Gcp",
-        "platformFullIdentifier" : "gcp1.gcp-ffm",
-        "platformTenantId" : "project"
+        "platformType" : "Azure",
+        "platform" : "azure.prod",
+        "platformTenantId" : "7f8a4a09-dd69-40d9-b796-e309ce5d2489",
+        "version" : 2
       },
       "status" : {
-        "projectIdentifier" : "testProject",
+        "generatedAt" : "2025-01-07T01:00:00Z",
+        "finalizedAt" : "2025-01-07T01:00:00Z",
+        "paymentMethod" : {
+          "identifier" : "test-payment-method",
+          "name" : "Test Payment Method",
+          "amount" : 100,
+          "expirationDate" : "2025-06-01T00:00:00Z"
+        },
         "timeframe" : {
           "from" : "2024-12-01T00:00:00Z",
           "to" : "2025-01-01T00:00:00Z"
         },
-        "netAmounts" : [ {
-          "currency" : "EUR",
-          "amount" : 128,
-          "baseCurrency" : "EUR",
-          "baseAmount" : 0
-        } ],
-        "workspaceIdentifier" : "testWorkspace"
+        "tags" : {
+          "env" : [ "prod" ],
+          "costCenter" : [ "4058" ]
+        },
+        "lineItems" : [ {
+          "netAmount" : {
+            "amount" : 50.0,
+            "currency" : "EUR",
+            "baseAmount" : 40.0,
+            "baseCurrency" : "USD",
+            "exchangeRate" : 1.1
+          },
+          "sellerId" : "Platform Team",
+          "sellerProductGroup" : "Azure"
+        } ]
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports/gcp1.gcp-ffm%3Aproject/2018-01-01Z"
+          "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df"
+        }
+      }
+    }, {
+      "kind" : "meshTenantUsageReport",
+      "apiVersion" : "v3",
+      "metadata" : {
+        "uuid" : "ec072338-4703-437b-8f9e-2f3d3b7b27b3",
+        "ownedByWorkspace" : "test-workspace-2",
+        "ownedByProject" : "test-project",
+        "createdAt" : "2025-01-05T01:00:00Z"
+      },
+      "spec" : {
+        "period" : "2024-12",
+        "reportCategory" : "BILLING",
+        "platformType" : "Azure",
+        "platform" : "azure.prod",
+        "platformTenantId" : "26baed78-1a35-47d4-9399-e3a2a4744078",
+        "version" : 1
+      },
+      "status" : {
+        "generatedAt" : "2025-01-05T01:00:00Z",
+        "finalizedAt" : "2025-01-05T01:00:00Z",
+        "cancelledAt" : "2025-01-07T01:00:00Z",
+        "paymentMethod" : {
+          "identifier" : "test-payment-method",
+          "name" : "Test Payment Method",
+          "amount" : 100,
+          "expirationDate" : "2025-06-01T00:00:00Z"
+        },
+        "timeframe" : {
+          "from" : "2024-12-01T00:00:00Z",
+          "to" : "2025-01-01T00:00:00Z"
+        },
+        "tags" : {
+          "env" : [ "prod" ],
+          "costCenter" : [ "4058" ]
+        },
+        "lineItems" : [ {
+          "netAmount" : {
+            "amount" : 40.0,
+            "currency" : "EUR",
+            "baseAmount" : 32.0,
+            "baseCurrency" : "USD",
+            "exchangeRate" : 1.1
+          },
+          "sellerId" : "Platform Team",
+          "sellerProductGroup" : "Azure"
+        } ]
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports/ec072338-4703-437b-8f9e-2f3d3b7b27b3"
         }
       }
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports?workspaceIdentifier=testWorkspace&amp;page=0&amp;size=10&amp;sort=period,desc"
+      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports?ownedByWorkspace=test-workspace-2&amp;showCancelled=true&amp;page=0&amp;size=10&amp;sort=period,desc"
     }
   },
   "page" : {
     "size" : 10,
-    "totalElements" : 1,
+    "totalElements" : 2,
     "totalPages" : 1,
     "number" : 0
   }
@@ -1294,24 +1391,24 @@ Content-Length: 1383
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshtenantusagereports/gcp1.gcp-ffm%253Aproject/2018-01-01Z HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json
+Accept: application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json
 Host: mesh-billing-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-billing-url/api/meshobjects/meshtenantusagereports/gcp1.gcp-ffm%253Aproject/2018-01-01Z' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json'</code></pre>
 </div>
 </div>
 <table id="mesh_tenantUsageReport_response_fields" class="tableblock frame-all grid-all stretch">
@@ -1342,22 +1439,27 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains attributes to identify a meshTenantUsageReport.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains common attributes of a meshTenantUsageReport, that also exist on other meshObjects.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A name a meshTenantUsageReport can be uniquely identified with.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A uuid that identifies a meshTenantUsageReport uniquely.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.lastModified</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date of last update to the meshTenantUsageReport.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace the meshTenantUsageReport belongs to or null if the tenant is not managed by meshStack. (optional)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.finalized</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicator whether the meshTenantUsageReport was finalized already or not.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByProject</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the project the meshTenantUsageReport belongs to or null if the tenant is not managed by meshStack. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The date the meshTenantUsageReport was created in the system that serves the API.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
@@ -1367,22 +1469,22 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformType</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The platformType of the platform the meshTenantUsageReport belongs to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The platformType of the platform the meshTenantUsageReport belongs to. One of: <code>Azure</code>, <code>Aws</code>, <code>Gcp</code>, <code>AzureResourceGroup</code>, <code>AzureKubernetesService</code>, <code>Kubernetes</code>, <code>OpenShift</code>, <code>OpenStack</code>, <code>CloudFoundry</code>, <code>MeshMarketplace</code>, <code>GitHub</code>, <code>Custom</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformFullIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platform</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The platformFullIdentifier of the platform the meshTenantUsageReport belongs to.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.period</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The period of the meshTenantUsageReport, e.g. '2022-01-06Z'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The period of the meshTenantUsageReport, e.g. <code>2025-01</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.reportCategory</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reportCategory of the meshTenantUsageReport, possible options are 'BILLING' or 'ENVIRONMENTAL'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reportCategory of the meshTenantUsageReport, possible options are <code>BILLING</code> or <code>ENVIRONMENTAL</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformTenantId</code></p></td>
@@ -1390,24 +1492,34 @@ Host: mesh-billing-url</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The platformTenantId that the meshTenantUsageReport belongs to.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When a TenantUsageReport is updated after it was already finalized, the version is always increased by 1.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section provide detailed content of the meshTenantUsageReport.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.workspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.generatedAt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshWorkspace the meshTenantUsageReport belongs to. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the meshTenantUsageReport was generated initially.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.projectIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.finalizedAt</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshProject the meshTenantUsageReport belongs to. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the meshTenantUsageReport was finalized.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.cancelledAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the meshTenantUsageReport was cancelled and replaced by a new meshTenantUsageReport.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.timeframe</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This provides actual details about the period the meshTenantUsageReport was generated for.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This provides details about the period the meshTenantUsageReport was generated for.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.timeframe.from</code></p></td>
@@ -1420,34 +1532,84 @@ Host: mesh-billing-url</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Before which point in time the period ended (usually beginning of next month).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.netAmounts[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.tags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The related tags, that were inherited for the given period to the related tenant. This includes <code>workspace</code>, <code>project</code> and <code>payment method</code> tags. The values are provided as an array,as multiple values can be set for some tags.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.paymentMethod</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The payment method that was assigned to the project the related tenant belongs to in the given period.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.paymentMethod.identifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the related payment method.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.paymentMethod.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the related payment method.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.paymentMethod.amount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of the related payment method, if set. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.paymentMethod.expirationDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The expiration date of the related payment method, if set. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Top-Level line items of the TenantUsageReport. Separate line items are created by sellerId, sellerProductGroup and currency.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].sellerId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seller information can be provided in the Product Catalog of meshStack. You can e.g. use the sellerId to separate costs coming from the cloud platform and additional fees that are applied by your company&#8217;s platform team.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].sellerProductGroup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sellerProductGroup can specify the seller information to a more detailed level. It is for example used to provide the service broker name in case of a meshMarketplace usage report. The sellerId is set to the workspace identifier in that case.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A list of total reported amounts separated by currency.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.netAmounts[].currency</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount.amount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The concrete amount of reported costs in the original currency.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount.currency</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The currency used for the corresponding amount.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.netAmounts[].baseCurrency</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currency for the baseAmount. This value is either null or EUR.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.netAmounts[].amount</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The concrete amount of reported costs in the corresponding currency.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.netAmounts[].baseAmount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount.baseAmount</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The converted amount. For example, if currency is USD and baseCurrency is EUR, this will be the amount resulting from conversion from USD to EUR.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount.baseCurrency</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currency for the baseAmount. This value is either null or EUR.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount.exchangeRate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The actual exchange rate that was used for conversion to the base currency.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Available links <a href="#links">[links]</a> on a meshTenantUsageReport.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshTenantUsageReports currently only provide a self link.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1458,7 +1620,7 @@ Host: mesh-billing-url</code></pre>
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshtenantusagereport.v2.hal+json
+Content-Type: application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -1466,40 +1628,57 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 899
+Content-Length: 1392
 
 {
   "kind" : "meshTenantUsageReport",
-  "apiVersion" : "v2",
+  "apiVersion" : "v3",
   "metadata" : {
-    "name" : "gcp1.gcp-ffm:project:2018-01-01Z",
-    "lastModified" : "2024-12-18T15:57:55.476548100Z",
-    "finalized" : true
+    "uuid" : "720f8801-d500-4ff3-bdc2-aae5d6c1e2df",
+    "ownedByWorkspace" : "test-workspace-2",
+    "ownedByProject" : "test-project",
+    "createdAt" : "2025-01-07T01:00:00Z"
   },
   "spec" : {
-    "period" : "2018-01-01Z",
+    "period" : "2024-12",
     "reportCategory" : "BILLING",
-    "platformType" : "Gcp",
-    "platformFullIdentifier" : "gcp1.gcp-ffm",
-    "platformTenantId" : "project"
+    "platformType" : "Azure",
+    "platform" : "azure.prod",
+    "platformTenantId" : "7f8a4a09-dd69-40d9-b796-e309ce5d2489",
+    "version" : 2
   },
   "status" : {
-    "projectIdentifier" : "testProject",
+    "generatedAt" : "2025-01-07T01:00:00Z",
+    "finalizedAt" : "2025-01-07T01:00:00Z",
+    "paymentMethod" : {
+      "identifier" : "test-payment-method",
+      "name" : "Test Payment Method",
+      "amount" : 100,
+      "expirationDate" : "2025-06-01T00:00:00Z"
+    },
     "timeframe" : {
       "from" : "2024-12-01T00:00:00Z",
       "to" : "2025-01-01T00:00:00Z"
     },
-    "netAmounts" : [ {
-      "currency" : "EUR",
-      "amount" : 128,
-      "baseCurrency" : "EUR",
-      "baseAmount" : 0
-    } ],
-    "workspaceIdentifier" : "testWorkspace"
+    "tags" : {
+      "env" : [ "prod" ],
+      "costCenter" : [ "4058" ]
+    },
+    "lineItems" : [ {
+      "netAmount" : {
+        "amount" : 50.0,
+        "currency" : "EUR",
+        "baseAmount" : 40.0,
+        "baseCurrency" : "USD",
+        "exchangeRate" : 1.1
+      },
+      "sellerId" : "Platform Team",
+      "sellerProductGroup" : "Azure"
+    } ]
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports/gcp1.gcp-ffm%3Aproject/2018-01-01Z"
+      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df"
     }
   }
 }</code></pre>
@@ -1511,6 +1690,12 @@ Content-Length: 899
 <h4 id="mesh_chargeback"><a class="link" href="#mesh_chargeback">meshChargebacks</a></h4>
 <div class="paragraph">
 <p>All endpoints on meshChargebacks.</p>
+</div>
+<div class="paragraph">
+<p><strong>Info</strong>: The <a href="#mesh_tenantUsageReports">meshTenantUsageReport</a> endpoints are the preferred endpoints to get
+cost data from meshStack. The meshTenantUsageReport endpoints provide more detailed information and more filter
+options than the chargeback statements. They contain basically the same information as a chargeback, but only
+per tenant, not per project.</p>
 </div>
 <div class="sect4">
 <h5 id="_list_meshchargebacks"><a class="link" href="#_list_meshchargebacks">List meshChargebacks</a></h5>
@@ -1575,11 +1760,11 @@ these parameters. By default, meshChargebacks are sorted descending by period.</
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default=20). See <a href="#paging">Paging information</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A custom order for sorting the results (optional). For meshChargebacks it is possible to filter by the following fields: name, customerIdentifier, projectIdentifier, period, partnerIdentifier. Possible directions are 'asc' or 'desc'. (e.g. sort=name,desc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A custom order for sorting the results (optional). For meshChargebacks it is possible to filter by the following fields: <code>name</code>, <code>customerIdentifier</code>, <code>projectIdentifier</code>, <code>period</code>, <code>partnerIdentifier</code>. Possible directions are 'asc' or 'desc'. (e.g. sort=name,desc)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1659,13 +1844,13 @@ Content-Length: 3377
       "kind" : "meshChargeback",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2024-12-18T15:57:53.024736400Z",
+        "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
+        "createdOn" : "2025-01-08T08:42:10.403495900Z",
         "finalized" : true
       },
       "spec" : {
         "projectIdentifier" : "testProject",
-        "period" : "2024-12-01Z",
+        "period" : "2025-01-01Z",
         "tags" : {
           "paymentIdentifier" : [ "123" ]
         },
@@ -1673,8 +1858,8 @@ Content-Length: 3377
       },
       "status" : {
         "timeframe" : {
-          "from" : "2024-12-01T00:00:00Z",
-          "to" : "2025-01-01T00:00:00Z"
+          "from" : "2025-01-01T00:00:00Z",
+          "to" : "2025-02-01T00:00:00Z"
         },
         "lineItems" : [ {
           "reportCategory" : "BILLING",
@@ -1714,27 +1899,27 @@ Content-Length: 3377
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%3AtestWorkspace%3AtestProject"
+          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%3AtestWorkspace%3AtestProject"
         }
       }
     }, {
       "kind" : "meshChargeback",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "2024-11-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2024-12-18T15:57:53.026423600Z",
+        "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
+        "createdOn" : "2025-01-08T08:42:10.405079500Z",
         "finalized" : true
       },
       "spec" : {
         "projectIdentifier" : "testProject",
-        "period" : "2024-11-01Z",
+        "period" : "2024-12-01Z",
         "tags" : { },
         "workspaceIdentifier" : "testWorkspace"
       },
       "status" : {
         "timeframe" : {
-          "from" : "2024-11-01T00:00:00Z",
-          "to" : "2024-12-01T00:00:00Z"
+          "from" : "2024-12-01T00:00:00Z",
+          "to" : "2025-01-01T00:00:00Z"
         },
         "lineItems" : [ ],
         "netAmounts" : [ {
@@ -1746,7 +1931,7 @@ Content-Length: 3377
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-11-01Z/testPartner%3AtestWorkspace%3AtestProject"
+          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%3AtestWorkspace%3AtestProject"
         }
       }
     } ]
@@ -1793,7 +1978,7 @@ Content-Length: 3377
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%253AtestWorkspace%253AtestProject HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%253AtestWorkspace%253AtestProject HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshchargeback.v3.hal+json
 Host: mesh-billing-url</code></pre>
@@ -1802,7 +1987,7 @@ Host: mesh-billing-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%253AtestWorkspace%253AtestProject' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%253AtestWorkspace%253AtestProject' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshchargeback.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -2014,13 +2199,13 @@ Content-Length: 1852
   "kind" : "meshChargeback",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
-    "createdOn" : "2024-12-18T15:57:53.024736400Z",
+    "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
+    "createdOn" : "2025-01-08T08:42:10.403495900Z",
     "finalized" : true
   },
   "spec" : {
     "projectIdentifier" : "testProject",
-    "period" : "2024-12-01Z",
+    "period" : "2025-01-01Z",
     "tags" : {
       "paymentIdentifier" : [ "123" ]
     },
@@ -2028,8 +2213,8 @@ Content-Length: 1852
   },
   "status" : {
     "timeframe" : {
-      "from" : "2024-12-01T00:00:00Z",
-      "to" : "2025-01-01T00:00:00Z"
+      "from" : "2025-01-01T00:00:00Z",
+      "to" : "2025-02-01T00:00:00Z"
     },
     "lineItems" : [ {
       "reportCategory" : "BILLING",
@@ -2069,7 +2254,7 @@ Content-Length: 1852
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2024-12-01Z/testPartner%3AtestWorkspace%3AtestProject"
+      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-01-01Z/testPartner%3AtestWorkspace%3AtestProject"
     }
   }
 }</code></pre>
@@ -2356,7 +2541,7 @@ Content-Length: 133
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-18 15:56:31 UTC
+Last updated 2025-01-08 08:40:45 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
