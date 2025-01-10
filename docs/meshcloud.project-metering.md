@@ -75,6 +75,13 @@ This export will contain the line items (see above) of all the chargeback statem
 The line item data is suitable for feeding into chargeback processing, e.g. importing it to an ERP System to transfer
 budgets between cost centers.
 
+For customers that export chargeback statements on a monthly basis, the following recommendation applies:
+Chargeback statements of the previous month should be processed not earlier than the `finalizeReportsAfterDays` setting,
+plus 2 days, at 7 am (German local time). For example, if `finalizeReportsAfterDays` is set to 4
+(which is the default), then chargeback statements of May can be processed starting at June 6th, 7am.
+If you don't know the configuration of the `finalizeReportsAfterDays` setting in your meshStack, please contact your
+platform team.
+
 Chargeback Statements also contain billing information per line item. Your platform team can 
 [configure](meshstack.billing-configuration.md)
 which information meshStack should include as billing information in chargeback statements.
@@ -83,13 +90,6 @@ which information meshStack should include as billing information in chargeback 
 > expiration date and amount as well as any workspace tags, project tags and payment method tags.
 
 You can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
-
-For customers that export chargeback statements on a monthly basis, the following recommendation applies:
-Chargeback statements of the previous month should be processed not earlier than the `finalizeReportsAfterDays` setting,
-plus 2 days, at 7 am (German local time). For example, if `finalizeReportsAfterDays` is set to 4 
-(which is the default), then chargeback statements of May can be processed starting at June 6th, 7am.
-If you don't know the configuration of the `finalizeReportsAfterDays` setting in your meshStack, please contact your
-platform team.
 
 #### Late Bills From Providers
 
