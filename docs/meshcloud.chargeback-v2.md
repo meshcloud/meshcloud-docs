@@ -20,6 +20,12 @@ Late bills or other corrections will now be **included in the month they apply t
 **Example:**
 If an Azure charge for September 2024 usage is received after the chargeback statement has been finalized on October 6, 2024, this charge will be reflected in the **September chargeback statement**. The statement will show an **"Updated"** label to indicate that changes have been applied.
 
+- **Applying Payment Methods Retroactively**
+
+If a project doesn’t have a payment method because the previous one expired and no new method has been set, chargeback statements will not be generated for that project. However, tenant usage reports will still be created. Once you set a new payment method, the system retroactively generates chargeback statements for all the months that were missing them, using the newly added payment method.
+
+For example, let’s say it’s February 2025, and your payment method for 2024 expired. If you haven’t added a new one yet, no chargeback statements will be generated for January and February 2025, but tenant usage reports will still be available without an associated payment method. Now imagine you add a new payment method at the end of March 2025. In this case, the system will regenerate tenant usage reports and produce chargeback statements for January, February, and March 2025, applying the new payment method to those months.
+
 - **Transparency in meshStack**
 
 In the **meshStack**, updates to finalized chargeback statements will be marked. When corrections are made, you will see an **"Updated" label** in the status column of the **Chargeback Statements page**. The **Generation Date** column will show the latest update date.
