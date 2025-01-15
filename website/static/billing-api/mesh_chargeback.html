@@ -451,6 +451,13 @@ cost data from meshStack. The meshTenantUsageReport endpoints provide more detai
 options than the chargeback statements. They contain basically the same information as a chargeback, but only
 per tenant, not per project.</p>
 </div>
+<div class="paragraph">
+<p>For customers who export chargeback statements on a monthly basis, the following recommendation applies:
+chargeback statements of the previous month should be processed no earlier than one day after the configured finalization date,
+at 7 a.m. (German local time). By default, chargeback statements are finalized at the 6th of a month, therefore,
+they can be processed starting at the 7th of a month at 7 a.m.
+If you are unsure about the configuration of the finalization day of chargebacks in your meshStack, please contact our support team.</p>
+</div>
 <div class="sect4">
 <h5 id="_list_meshchargebacks">List meshChargebacks</h5>
 <div class="paragraph">
@@ -502,7 +509,7 @@ these parameters. By default, meshChargebacks are sorted descending by period.</
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>period</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshChargebacks that belong to the provided period, e.g. '2022-01-06Z' (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshChargebacks that belong to the provided period, e.g. '2022-01-01Z' (optional)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>finalized</code></p></td>
@@ -599,7 +606,7 @@ Content-Length: 3377
       "apiVersion" : "v3",
       "metadata" : {
         "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-01-08T08:42:10.403495900Z",
+        "createdOn" : "2025-01-15T14:01:55.062973900Z",
         "finalized" : true
       },
       "spec" : {
@@ -661,7 +668,7 @@ Content-Length: 3377
       "apiVersion" : "v3",
       "metadata" : {
         "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-01-08T08:42:10.405079500Z",
+        "createdOn" : "2025-01-15T14:01:55.064383800Z",
         "finalized" : true
       },
       "spec" : {
@@ -808,7 +815,7 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.period</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The period of the meshChargeback, e.g. '2022-01-06Z'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The period of the meshChargeback, e.g. '2022-01-01Z'.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.tags</code></p></td>
@@ -954,7 +961,7 @@ Content-Length: 1852
   "apiVersion" : "v3",
   "metadata" : {
     "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
-    "createdOn" : "2025-01-08T08:42:10.403495900Z",
+    "createdOn" : "2025-01-15T14:01:55.062973900Z",
     "finalized" : true
   },
   "spec" : {
@@ -1019,7 +1026,7 @@ Content-Length: 1852
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-01-08 08:40:45 UTC
+Last updated 2025-01-15 14:00:43 UTC
 </div>
 </div>
 </body>
