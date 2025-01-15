@@ -75,10 +75,18 @@ This export will contain the line items (see above) of all the chargeback statem
 The line item data is suitable for feeding into chargeback processing, e.g. importing it to an ERP System to transfer
 budgets between cost centers.
 
-Chargeback Statements also contain billing information per line item. Your Cloud Foundation team can [configure](meshstack.billing-configuration.md)
+For customers who export chargeback statements on a monthly basis, the following recommendation applies:
+chargeback statements of the previous month should be processed no earlier than one day after the configured finalization date,
+at 7 a.m. (German local time). By default, chargeback statements are finalized at the 6th of a month, therefore,
+they can be processed starting at the 7th of a month at 7 a.m.
+If you are unsure about the configuration of the finalization day of chargebacks in your meshStack, please contact our support team.
+
+Chargeback Statements also contain billing information per line item. Your platform team can 
+[configure](meshstack.billing-configuration.md)
 which information meshStack should include as billing information in chargeback statements.
 
-> Cloud Foundation teams typically configure billing information to payment method name, identifier, expiration date and amount as well as any workspace tags, project tags and payment method tags.
+> Platform teams typically configure billing information to payment method name, identifier, 
+> expiration date and amount as well as any workspace tags, project tags and payment method tags.
 
 You can review this billing information in meshPanel when opening chargeback statement. CSV Exports of chargeback statements also include the configured billing information.
 
@@ -96,6 +104,13 @@ When you open the dedicated chargeback statement, you can also identify what exa
 
 Transparency around updates in finalized chargeback statements in CSV exports and API will follow soon. Currently only the latest data is reflected in CSV export and via the API.
 
-#### Retroactive Chargeback Statements
+#### Retroactive Payment Methods
 
-When no payment method is active on a meshProject, chargeback statements are not created at the end of a month. Only when an active payment method is applied at a later point in time the chargeback statement generation resumes. The Chargeback Statement will then be created at the point in time where the payment method is set and also past months will be generated accordingly, if the payment method was applied retroactively. Supporting these retroactive payment methods in self-service will be available soon.
+The following only applies, if payment methods are [configured](meshstack.billing-configuration.md#available-metadata-keys) to be required for chargeback statements (you can request this via [meshcloud support](mailto:support@meshcloud.io)). If a project doesn’t have a payment method because the previous one expired and no new method has been set, chargeback statements will not be generated. Tenant usage reports, however, will still be created and finalized without a payment method.
+When a new payment method is added, the system retroactively generates chargeback statements for all missing months, applying the newly added payment method. Tenant usage reports for the affected months are updated to include the new payment method, resulting in updated labels for these reports. Additionally, via the meshTenantUsageReport API, you can check the updated reports by using the finalizedAfter parameter with the date when the payment method expired.
+
+**Example:**
+
+- Let’s say it’s February 2025, and your payment method for 2024 expired. If you haven’t added a new one yet, no chargeback statements will be generated for January and February 2025, but tenant usage reports will still be available without an associated payment method.
+- Now, imagine you add a new payment method at the end of March 2025. In this case, the system will regenerate tenant usage reports and generate chargeback statements for January, February, and March 2025, applying the new payment method to those months.
+- The regenerated tenant usage reports and chargeback statements with the added payment method will display an updated label under the "Status" column on the chargeback and tenant usage reports pages. You can also identify these updates via the meshTenantUsageReport API by specifying the finalizedAfter parameter with the date when the payment method expired.
