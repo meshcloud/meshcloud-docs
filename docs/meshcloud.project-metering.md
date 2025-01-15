@@ -76,11 +76,10 @@ The line item data is suitable for feeding into chargeback processing, e.g. impo
 budgets between cost centers.
 
 For customers who export chargeback statements on a monthly basis, the following recommendation applies:
-Chargeback statements of the previous month should be processed no earlier than the `finalizeReportsAfterDays` setting
-plus 2 days, at 7 a.m. (German local time). For example, if `finalizeReportsAfterDays` is set to 4
-(the default), then chargeback statements of May can be processed starting on June 6th, 7 a.m.
-If you are unsure about the configuration of the `finalizeReportsAfterDays` setting in your meshStack, please contact your
-platform team.
+chargeback statements of the previous month should be processed no earlier than one day after the configured finalization date,
+at 7 a.m. (German local time). By default, chargeback statements are finalized at the 6th of a month, therefore,
+they can be processed starting at the 7th of a month at 7 a.m.
+If you are unsure about the configuration of the finalization day of chargebacks in your meshStack, please contact our support team.
 
 Chargeback Statements also contain billing information per line item. Your platform team can 
 [configure](meshstack.billing-configuration.md)
