@@ -73,7 +73,14 @@ For example, in the screenshot below, costs were updated on 20.11.2024 for the O
 
 ### **Period for meshTenantUsageReport and meshChargeback APIs**
 
-The **meshChargeback** and **meshTenantUsageReport APIs** will no longer use **specific dates** within the **period parameter** or in the response. Instead, the period will be displayed in a simplified monthly format (e.g., **2024-12**) for your convenience.
+The **meshTenantUsageReport API v3** will no longer use **specific dates** (e.g. `2024-12-01Z`) within the **period
+parameter** or in the response. Instead, the period will be displayed in a simplified monthly format (e.g., `2024-12`)
+for your convenience.
+
+For the **meshChargeback API**, the day of the month remains a part of the period both in the API response and in
+the query parameter, which means you'll have to specify the period parameter as e.g. `2024-10-01Z`. Please note,
+however, that the day always has to be specified as `01`, whereas previously, the finalization date (e.g. `2024-10-06Z`) was
+specified.
 
 ### **Environmental Data Reporting**
 
