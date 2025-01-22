@@ -54,7 +54,7 @@ A new version of the **meshTenantUsageReport API (v3)** will be released, provid
 ### **Update Your Integration**
 
 - **API Update**: If you use the **meshTenantUsageReport API**, switch to the new **v3 API** to take advantage of expanded data fields and enhanced features. Also starting from March 1, 2025 v2 will not be available for usage anymore. 
-- **Late Bills via API**: To track changes made to past periods after your last financial reports use **meshTenantUsageReport API by** specifying the **period** and using the **finalizedAfter** parameter to identify any updates that occurred after your last financial reports. For example, if your chargeback finalization date is on the 6th of the month and you have done your report on 07.11.2024 by collecting data via API, then you can next time specify the period 2024-11 and finalizedAfter 07.11.2024, so that you will have all data for November that finalized after your report. So data from **meshTenantUsageReport API** works can be used for further processing with both, the cost-forward method, where you apply corrections to future months, and the cost-backward method, where you apply corrections to the period in which the costs were originally incurred.
+- **Late Bills via API**: To track changes made to past periods after your last financial reports use **meshTenantUsageReport API by** specifying the **period** and using the **finalizedAfter** parameter to identify any updates that occurred after your last financial reports. For example, if your chargeback finalization date is on the 6th of the month and you have done your report on 07.11.2024 by collecting data via API, then you can next time specify the period 2024-11 and finalizedAfter 07.11.2024, so that you will have all data for November that finalized after your report. So data from **meshTenantUsageReport API** can be used for further processing with both, the cost-forward method, where you apply corrections to future months, and the cost-backward method, where you apply corrections to the period in which the costs were originally incurred.
 
 > Please note that you can switch back to Chargeback 1.0 by navigating to the **Settings** and then the **Configuration** page. However, starting **March 1, 2025**, Chargeback 2.0 will become the default version, and the option to revert to Chargeback 1.0 will no longer be available.
 > 
@@ -73,7 +73,14 @@ For example, in the screenshot below, costs were updated on 20.11.2024 for the O
 
 ### **Period for meshTenantUsageReport and meshChargeback APIs**
 
-The **meshChargeback** and **meshTenantUsageReport APIs** will no longer use **specific dates** within the **period parameter** or in the response. Instead, the period will be displayed in a simplified monthly format (e.g., **2024-12**) for your convenience.
+The **meshTenantUsageReport API v3** will no longer use **specific dates** (e.g. `2024-12-01Z`) within the **period
+parameter** or in the response. Instead, the period will be displayed in a simplified monthly format (e.g., `2024-12`)
+for your convenience.
+
+For the **meshChargeback API**, the day of the month remains a part of the period both in the API response and in
+the query parameter, which means you'll have to specify the period parameter as e.g. `2024-10-01Z`. Please note,
+however, that the day always has to be specified as `01`, whereas previously, the finalization date (e.g. `2024-10-06Z`) was
+specified.
 
 ### **Environmental Data Reporting**
 
