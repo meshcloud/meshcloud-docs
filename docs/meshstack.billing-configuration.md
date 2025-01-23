@@ -526,9 +526,10 @@ Navigate to the  Financials tab of the Settings Page in the Admin area to choose
   - If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed).  
 - If external access is restricted and configuration is not done in meshStack, **currency conversion will not apply**.
 
- #### Custom API Exchange Rates
-- Organizations can use their own rates via API.
-- **To enable**:
+#### Custom API Exchange Rates
+You can provide exchange rates of your company via API.
+
+**To enable**:
   - Go to the Financials tab and select **Custom API Exchange Rates**.
   - Contact **support@meshcloud.io** early to set this up before chargeback finalization.  
   - If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
@@ -545,19 +546,15 @@ By default, the currency converter is **off**, meaning all chargebacks and usage
 If you turn on the currency converter and later decide to turn it off, all future chargebacks, as well as past finalized chargebacks, will revert to being displayed in their original currency.
 
 #### Limitation
-1. **Future-only impact**:  
-   Currency conversion only applies to data after activation. Past finalized chargebacks and usage reports remain in their original currency.
-2. **Euro-only conversion**:  
-   Currently, conversion supports **only to Euro** but we plan to support other currencies in the future.
+
+1. **Future-only impact**: Currency conversion only applies to data after activation. Past finalized chargebacks and usage reports remain in their original currency.
+2. **Euro-only conversion**: Currently, conversion supports **only to Euro**but we plan to support other currencies in the future.
 3. **Payment Methods**: 
     Payment method amounts are currently limited to EUR, but we plan to support additional currencies in the future.
-4. **Prices for Platforms and Building Blocks** 
-    Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
-5. **Known Issue with Timing**:  
-   If a tenant has costs in a month **before activation** and no further costs are recorded afterward, those costs will remain in the original currency.  
+4. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
+5. **Known Issue with Timing**: If a tenant has costs in a month **before activation** and no further costs are recorded afterward, those costs will remain in the original currency.  
    - **Example**: Tenant incurs USD costs on March 7. The converter is turned ON on March 10 and no additional costs occur for this tenant before the finalization date. Tenant ABC’s costs stay in USD.
-6. **Known Issue Detailed Tenant Usage Report**:
-   Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
+6. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
 
 
 
