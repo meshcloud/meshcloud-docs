@@ -519,14 +519,14 @@ In order to simplify multi-cloud governance, the best practice is to have a sing
 
 Navigate to the  Financials tab of the Settings Page in the Admin area to choose currency conversion type for chargebacks and usage reports:
 
-**meshStack Default Exchange Rates**
+#### meshStack Default Exchange Rates
 - Fetches rates from [frankfurter.app](https://www.frankfurter.app/), using exchange rates from the European Central Bank.  
 - **To enable**:
   - Go to the Financials tab and select **meshStack default exchange rates**.  
   - If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed).  
 - If external access is restricted and configuration is not done in meshStack, **currency conversion will not apply**.
 
- **Custom API Exchange Rates**
+ #### Custom API Exchange Rates
 - Organizations can use their own rates via API.
 - **To enable**:
   - Go to the Financials tab and select **Custom API Exchange Rates**.
