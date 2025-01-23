@@ -544,7 +544,7 @@ When you choose the currency converter type and **turn it ON** then you will hav
 By default, the currency converter is **off**, meaning all chargebacks and usage reports are in their original cloud provider currency. 
 If you turn on the currency converter and later decide to turn it off, all future chargebacks, as well as past finalized chargebacks, will revert to being displayed in their original currency.
 
-**Limitation**
+#### Limitation
 1. **Future-only impact**:  
    Currency conversion only applies to data after activation. Past finalized chargebacks and usage reports remain in their original currency.
 2. **Euro-only conversion**:  
