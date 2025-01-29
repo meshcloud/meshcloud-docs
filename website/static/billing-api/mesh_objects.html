@@ -548,12 +548,12 @@ Content-Length: 673
 
 {
   "_links" : {
-    "meshchargebacks" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,legacy,finalizedSince,cancelledSince}",
-      "templated" : true
-    },
     "meshtenantusagereports" : {
       "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}",
+      "templated" : true
+    },
+    "meshchargebacks" : {
+      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,legacy,finalizedSince,cancelledSince}",
       "templated" : true
     },
     "self" : {
@@ -765,7 +765,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "3f9a0968-0403-45df-a75b-1b28c163f1d1",
+        "platformTenantId" : "26911025-b14f-4fe5-8aa5-1c7d4dedab64",
         "version" : 2
       },
       "status" : {
@@ -816,7 +816,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "d77757c3-3883-42c1-aa33-341edef8beb2",
+        "platformTenantId" : "235fdeb9-bb47-494b-88ba-f87a14aaf570",
         "version" : 1
       },
       "status" : {
@@ -1144,7 +1144,7 @@ Content-Length: 1392
     "reportCategory" : "BILLING",
     "platformType" : "Azure",
     "platform" : "azure.prod",
-    "platformTenantId" : "3f9a0968-0403-45df-a75b-1b28c163f1d1",
+    "platformTenantId" : "26911025-b14f-4fe5-8aa5-1c7d4dedab64",
     "version" : 2
   },
   "status" : {
@@ -1343,7 +1343,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 3377
+Content-Length: 3374
 
 {
   "_embedded" : {
@@ -1352,7 +1352,7 @@ Content-Length: 3377
       "apiVersion" : "v3",
       "metadata" : {
         "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-01-22T14:05:52.551000600Z",
+        "createdOn" : "2025-01-29T13:38:58.602826Z",
         "finalized" : true
       },
       "spec" : {
@@ -1414,7 +1414,7 @@ Content-Length: 3377
       "apiVersion" : "v3",
       "metadata" : {
         "name" : "2024-12-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-01-22T14:05:52.551923400Z",
+        "createdOn" : "2025-01-29T13:38:58.603682500Z",
         "finalized" : true
       },
       "spec" : {
@@ -1566,7 +1566,7 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.tags</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Key/Value pairs associated with this meshChargeback. This includes meshWorkspace, meshProject &amp; meshPaymentMethod tags. Additionally metadata like paymentMethod attributes are provided. Keep in mind, that values are represented as an array to be consistent with other meshObjects. But at themoment, if multiple values are set for a certain tag, only the first value is available on a meshChargeback.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Key/Value pairs associated with this meshChargeback. This includes meshWorkspace, meshProject &amp; meshPaymentMethod tags. Additionally metadata like paymentMethod attributes are provided. Keep in mind, that values are represented as an array to be consistent with other meshObjects. But at the moment, if multiple values are set for a certain tag, only the first value is available on a meshChargeback.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
@@ -1576,7 +1576,7 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.timeframe</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This provides actual details about the period the meshCHargeback was generated for.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This provides actual details about the period the meshChargeback was generated for.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.timeframe.from</code></p></td>
@@ -1621,7 +1621,7 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].period</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Report Period in which the usage for this line item actually occurred. If for some reason a usage report was not finalized before the related chargeback period ended, it will beadded to a later meshChargeback. So meshChargebacks can contain line items from differentreporting periods.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Report Period in which the usage for this line item actually occurred. If for some reason a usage report was not finalized before the related chargeback period ended, it will be added to a later meshChargeback. So meshChargebacks can contain line items from different reporting periods.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.lineItems[].netAmount</code></p></td>
@@ -1700,14 +1700,14 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1852
+Content-Length: 1849
 
 {
   "kind" : "meshChargeback",
   "apiVersion" : "v3",
   "metadata" : {
     "name" : "2025-01-01Z/testPartner:testWorkspace:testProject",
-    "createdOn" : "2025-01-22T14:05:52.551000600Z",
+    "createdOn" : "2025-01-29T13:38:58.602826Z",
     "finalized" : true
   },
   "spec" : {
@@ -2046,7 +2046,7 @@ Content-Length: 133
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-01-22 14:03:37 UTC
+Last updated 2025-01-29 13:37:32 UTC
 </div>
 </div>
 </body>
