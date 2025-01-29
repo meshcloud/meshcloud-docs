@@ -131,6 +131,10 @@ The meshProject roles must be mapped to Azure specific roles. You can control th
 
 The Azure Role Definition is the RBAC ID of the Azure role you want to use. You can either create your own roles or use the [predefined global IDs](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) from Azure.
 
+If you like you can also add an ABAC condition to role assignments done by meshStack as part of the role mapping configuration.
+Azure allows for all kinds of advanced conditions on these role assignments.
+For more information on this topic please refer to the [Azure documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview).
+
 ### Azure Function Invocation
 
 Platform Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the Subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
