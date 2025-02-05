@@ -1484,6 +1484,20 @@ spec:
 </div>
 <div class="sect4">
 <h5 id="_meshexchangerate">meshExchangeRate</h5>
+<div class="paragraph">
+<p>This API is used when you intend to provide your own exchange rates, instead of using the exchange rates
+from <a href="https://frankfurter.dev/">Frankfurter API</a> which meshStack uses by default.</p>
+</div>
+<div class="paragraph">
+<p>If you choose to use this API to provide your own exchange rates, it is <strong>your responsibility</strong> to ensure that
+meshStack always has up-to-date exchange rates available. When TenantUsageReports for a given period are created, meshStack
+looks for the most recent exchange rate within that monthly period. For example, if a TenantUsageReport
+has a period of 2025-05, and you have previously provided exchange rates dated 2025-05-01 and 2025-05-02,
+meshStack will use the exchange rates dated on 2025-05-02. However, if the most recent exchange
+rate is dated 2025-04-30, then no suitable exchange rate for 2025-05 will be found, and meshStack will apply
+a fallback exchange rate of 1:1. Therefore, it is important to always provide up-to-date exchange rates to prevent
+the fallback rate from being applied.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v1
@@ -1524,7 +1538,7 @@ rates:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-01-29 13:37:34 UTC
+Last updated 2025-02-05 14:30:13 UTC
 </div>
 </div>
 </body>
