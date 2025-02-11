@@ -283,6 +283,8 @@ When creating a new platform configuration in the meshPanels admin section, choo
 
 The `Destination AAD ID` must be an ID. Please don't use the domain name variant of it e.g. `*.onmicrosoft.com` but use its UUID form. The principal data in the **Access Configuration** part refers to the target tenant AAD service principal.
 
+> If the source AAD tenant is the same as the destination AAD tenant, ensure to use an ID and not the domain name variant for the source AAD tenant as well.
+
 ### Use pre-provisioned Subscriptions
 
 If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
