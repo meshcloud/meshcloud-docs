@@ -40,6 +40,9 @@ Via the `pen` icon you can edit the service instance. Changing the name is alway
 
 ### Tenant Bindings
 
+> ⚠️ This feature is deprecated and will be removed in a future release.
+> Please use [Building Blocks](./administration.building-blocks.md) with Platform Tenant Identifiers as inputs instead!
+
 Some services require to bind a meshTenant. In that case you have to select one of your meshTenants when creating a binding.
 
 If the service is located in the "Global" meshLocation, you can select all meshTenants of your meshProject. If the service is located in a Location-specific OSB Services, you can only select tenants of this meshLocation.
@@ -47,6 +50,9 @@ If the service is located in the "Global" meshLocation, you can select all meshT
 It is not possible to select the same meshTenant for multiple bindings of the same service instance.
 
 ### Share Service Instance
+
+> ⚠️ This feature is deprecated and will be removed in a future release.
+> Please use [Building Blocks](./administration.building-blocks.md) for Workspaces instead!
 
 If the Service Broker [supports](meshstack.meshmarketplace.profile.md#sharable-service-instances) it, service Instances can be shared between meshProjects of the same meshWorkspace. It is only sharable to projects, if the meshLocation the Service Instance relates to exists in the meshProject the instance shall be shared with. This is currently only supported for the global OSB Services.
 
