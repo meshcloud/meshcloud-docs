@@ -21,16 +21,14 @@ this assignment will remain, but workspace managers can no longer create new pro
 
 Platform Operators can configure a custom Landing Zone [meshTag](./meshstack.metadata-tags.md). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
 
-## Include Platform Services as part of the Landing Zone
+## Include Building Blocks as part of the Landing Zone
 
-For all types of platforms it is possible to include some Platform Services, namely OSB Services and Building Blokcs as part of the Landing Zone. These Platform Services can be configured to be either:
+For all types of platforms it is possible to include Building Blocks as part of the Landing Zone. These Building Blocks can be configured to be either:
 
-- Required: this means the Platform Service has to be booked by the Workspace user. This is useful when you want to enforce
-  the usage of a particular Platform Service in combination with the Landing Zone.
-- Optional: this means the Platform Service can be optionally added by the Workspace user, but they are not required to
+- Required: this means the Building Block has to be booked by the Workspace user. This is useful when you want to enforce
+  the usage of a particular Building Block in combination with the Landing Zone.
+- Optional: this means the Building Block can be optionally added by the Workspace user, but they are not required to
   do so and they could decide not to add it
-
-Building Blocks and OSB Services could be added to the Landing Zone as part of the Project (see an example of step 6 for OSB Services and step 6 for Building Blocks [here](./meshstack.how-to.create-project.md) as well as from the Marketplace Catalog (see example here)
 
 ## Defining Quotas
 
