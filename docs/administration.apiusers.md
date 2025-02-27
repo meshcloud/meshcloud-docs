@@ -9,7 +9,8 @@ API Users can consume several APIs provided by meshStack. You can provide your A
 
 ## API Key Limits
 
-Each workspace in meshStack has its own quota for the number of API keys, and there is a default quota that can be configured in the settings.
+Default Quota: Can be configured in the settings in the admin area and is applied to all workspaces
+Workspace Quota: Can be configured per workspace in the admin area
 
 ## Create API Users
 
