@@ -531,7 +531,7 @@ To enable this go to the Financials tab and select **Custom API Exchange Rates**
 
 ### Key Points: Currency Converter Usage & Limitations
 
-When you choose the currency converter type and **turn it ON** then you will have all your open chargebacks and usage reports converter to euro. if you choose your own API exchange rate 
+When you choose the currency converter type and **turn it ON** then you will have all your open chargebacks and usage reports converted to euro. if you choose your own API exchange rate 
 
 By default, the currency converter is **off**, meaning all chargebacks and usage reports are in their original cloud provider currency. 
 If you turn on the currency converter and later decide to turn it off, all future chargebacks, as well as past finalized chargebacks, will revert to being displayed in their original currency.
