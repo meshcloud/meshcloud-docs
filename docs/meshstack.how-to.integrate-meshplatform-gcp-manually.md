@@ -121,7 +121,7 @@ Following the principle of least privilege, operators should remove the `billing
 #### Optional: Using Different Billing Accounts for Different Google Cloud Projects
 
 By default, meshStack will associate all created Google Cloud projects with the same billing account. If you want to use different
-billing accounts for different projects, you can do so by doing the following:
+billing accounts for different projects, you can do so via the following steps:
 
 1. Create a dedicated tag in meshStack with the exact name `billingAcc` to track custom billing account IDs.
    This has to be a tag on either the workspace, project or payment method.
