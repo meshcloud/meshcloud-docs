@@ -3,17 +3,20 @@ id: meshstack.building-blocks.meshStack-http-backend
 title: Terraform/OpenTofu state managed by meshStack
 ---
 
-> Please make sure to properly read and understand the [limitations](#limitations) before using the state management of meshStack.
+Terraform and OpenTofu use state files to store infrastructure configuration details and access this information every time there are configuration changes. Please refer to the respective docs here:
 
-Terraform and OpenTofu use state files to store infrastructure configuration details and access those information every time there are configuration changes. Please refer to the respective docs here:\
-[OpenTofu](https://opentofu.org/docs/language/settings/backends/http/) \
-[Terraform](https://developer.hashicorp.com/terraform/language/backend/http)
+- [OpenTofu](https://opentofu.org/docs/language/settings/backends/configuration)
+- [Terraform](https://developer.hashicorp.com/terraform/language/backend)
 
 
-meshStack accesses building block state with every new run or on deletion. With a remote http backend, you can store the state file within meshStack. This means it won't be necessary to configure an extra backend within your Terraform/OpenTofu sources. In this case meshStack automatically takes care of the state of the building block.
+meshStack accesses building block state with every new run or on deletion. With the built-in http backend, you can store the state file within meshStack. This means it won't be necessary to configure an extra backend within your Terraform/OpenTofu sources. In this case meshStack automatically takes care of the state of the building block.
 It is of course possible to also access and manipulate the state with [API Keys](./meshstack.how-to-API-keys.md). 
 
-## Automatically use the meshStack http backend for a Building Block
+## Enabling the meshStack http backend for a Building Block
+
+> In case your building block sources contain an explicitly defined backend configuration, this will always take precedence.
+> This means that meshStack won't use its built-in http backend, even if enabled, in case it finds a backend configuration within
+> the Terraform/OpenTofu code.
 
 When creating a building block definition you can specify to use the built-in http backend for all building blocks of this definition by enabling the `Use meshStack's Http backend` - option within the `Implementation` part of the configuration.
 The component running the building block will now configure Terraform/OpenTofu to use meshStack's http backend, but only in case no other backend configuration was found in the building block sources.
@@ -28,7 +31,7 @@ terraform {
 }
 ```
 
-> In case the building block sources contain an explicitly defined backend configuration, the option described above will not take effect.
+Please note that including a configuration for meshStack's http backend in your source as shown above will not work, because we do not support the configuration of basic authentication values here. 
 
 ## API key access to the state
 
@@ -38,8 +41,14 @@ Once you got a Bearer Token with your API key, the state of a building block can
 
 ## Limitations
 
-There are currently a few limitations around meshStack's http backend:
+There are currently two main limitations around meshStack's http backend:
 
-1. Locking of the state is not yet supported, meaning you cannot configure a lock- or unlock - URL can need to avoid parallel write access to the state.
-2. The backend detection within meshStack is currently limited to hcl syntax. This means meshStack does not detect an existing backend configuration in case you are using JSON with Terraform.
-3. meshStack will not perform a state transfer in case you run a building block first with the automatically configured http backend and later with an explicitly defined backend.
+1. Locking of the state is not yet supported, meaning you cannot configure a lock- or unlock - URL. Please make sure to avoid parallel write access to the state. Parallel access won't happen within meshStack but only in case you want to manipulate the state while a building block run is in progress.
+2. meshStack will not perform a state transfer in case you run a building block first with the automatically configured http backend and later with an explicitly defined backend. State migration from a previous backend towards meshStack is currently not possible. If you want to migrate the state from meshStack towards a new remote backend, this can be achieved by following these steps:
+
+   1) Create the infrastructure for your new backend
+   2) Retrieve the current state from meshStack with help of an API key
+   3) Update your Terraform/OpenTofu code to use the new backend
+   4) Run Terraform/OpenTofu manually once and use the `-migrate-state` flag during [init with OpenTofu](https://opentofu.org/docs/cli/commands/init/) or [init with Terraform](https://developer.hashicorp.com/terraform/cli/commands/init)
+   5) Update the respective building block definition
+   6) Upgrade all building blocks for the definition
