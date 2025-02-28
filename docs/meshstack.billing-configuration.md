@@ -509,42 +509,39 @@ let example
 
 ## Currency Conversion
 
-In order to simplify multi-cloud governance, the best practice is to have a single chargeback currency. meshStack simplifies the chargeback process with it's automatic currency conversion capability. Regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. For chargeback, we use the daily exchange rate from the day your statement is finalized, regardless of whether you're using your own converter or the default one. For example, if your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
+The best practice is to have a single chargeback currency for all cloud environments internally. meshStack simplifies the chargeback process with it's currency conversion capability. Regardless of the original currency from the cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. For chargeback, we use the daily exchange rate from the day your statement is finalized. For example, if your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
 
 >Note: Currently, currency conversion supports various currencies (USD, CNY, TWD, CAD, INR) but converts **to Euro only**.
 
 ### How to Set Up Currency Conversion
 
-Navigate to the  Financials tab of the Settings Page in the Admin area to choose currency conversion type for chargebacks and usage reports:
+Navigate to the  Financials tab of the Settings Page in the Admin area to configure currency conversion.
 
 #### meshStack Default Exchange Rates
 
-Fetches rates from [frankfurter.app](https://www.frankfurter.app/), using exchange rates from the European Central Bank.  
-To enable this:
-- Go to the Financials tab and select **meshStack default exchange rates**.  
-- If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed)
+This option fetches rates from [frankfurter.app](https://www.frankfurter.app/), using exchange rates from the European Central Bank.  
+To enable this select **meshStack default exchange rates**.  
+
+If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed).
+
+When currency conversion is turned on: All financial data will be presented in Euro starting with the current month
+When currency conversion is turned off: All financial information will be show the amount of the original currency
+When currency conversion is switched on and off mulitple times: Then the financial data once converted will also be shown for previous months
 
 #### Custom API Exchange Rates
 
-You can provide exchange rates of your company via API. If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
+With this second option you can provide your own exchange rates via API. If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
 To enable this go to the Financials tab and select **Custom API Exchange Rates**.
 
-### Key Points: Currency Converter Usage & Limitations
+### Limitation
 
-When you choose the currency converter type and **turn it ON** then you will have all your open chargebacks and usage reports converted to euro. if you choose your own API exchange rate 
-
-By default, the currency converter is **off**, meaning all chargebacks and usage reports are in their original cloud provider currency. 
-If you turn on the currency converter and later decide to turn it off, all future chargebacks, as well as past finalized chargebacks, will revert to being displayed in their original currency.
-
-#### Limitation
-
-1. **Future-only impact**: Currency conversion only applies to data after activation. Past finalized chargebacks and usage reports remain in their original currency.
-2. **Euro-only conversion**: Currently, conversion supports **only to Euro**but we plan to support other currencies in the future.
-3. **Payment Methods**: 
+1. **Euro-only conversion**: Currently, conversion is supports **only to Euro**but we plan to support other currencies in the future.
+2. **Payment Methods**: 
     Payment method amounts are currently limited to EUR, but we plan to support additional currencies in the future.
-4. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
-5. **Known Issue with Timing**: If a tenant has costs in a month **before activation** and no further costs are recorded afterward, those costs will remain in the original currency.  
+3. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
+4. **Known Issue with Timing**: If a tenant has costs in a month **before activation** and no further costs are recorded afterward, those costs will remain in the original currency.  
    - **Example**: Tenant incurs USD costs on March 7. The converter is turned ON on March 10 and no additional costs occur for this tenant before the finalization date. Tenant ABC’s costs stay in USD.
-6. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
+5. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
+6. If you want to show a different currency besides Euro you have to reach out to support@meshcloud.io
 
 
