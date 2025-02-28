@@ -3,14 +3,14 @@ id: meshstack.meshmarketplace.tenant-services
 title: Tenant Services
 ---
 
+> **The Tenant Services feature is deprecated! Please do not use this anymore.**
+> **We recommend the usage of [Tenant Building Blocks](administration.building-blocks.md) for additional services for your tenants.**
+
 Tenant Services provide a convenient way for cloud foundation teams to provide "foundational" services such as virtual
 networks with intranet connectivity, CI/CD platform integration and similar scenarios. Tenant services are Open Service Broker
 (OSB) API compatible services that are flagged as "tenant-aware" services in the OSB Services platform. Service consumers
 can then bind their [meshTenants](./meshcloud.tenant.md) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
 consumer wants the service to be provisioned.
-
-It is possible to provide tenant services as part of a landing zone.
-Read [here](./administration.landing-zones.md#include-tenant-services-as-part-of-the-landing-zone) how you can do this.
 
 ## Service Broker Categories
 
