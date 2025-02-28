@@ -113,7 +113,6 @@ If you would like to add prices for OSBs, please contact our support team and th
 
 >Please note that any changes in the price of Platform Services will be reflected in the chargeback statements based on the period in which the change occurred. For instance, a new price set for a Building Block on March 28th will be applied to the March chargeback statement.
 
-
 ### Private Platform
 
 When configuring a product for private cloud billing, Partners need to choose the cloud resource type to target and how the metering engine
@@ -512,13 +511,11 @@ let example
 
 In order to simplify multi-cloud governance, the best practice is to have a single chargeback currency. meshStack simplifies the chargeback process with it's automatic currency conversion capability. Regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. 
 
->Note: Currently, currency conversion supports various currencies (USD, CNY, TWD, CAD, INR, etc.) but converts **to Euro only**.
+>Note: Currently, currency conversion supports various currencies (USD, CNY, TWD, CAD, INR) but converts **to Euro only**.
 
 ### How to Set Up Currency Conversion
 
-
 Navigate to the  Financials tab of the Settings Page in the Admin area to choose currency conversion type for chargebacks and usage reports:
-
 
 #### meshStack Default Exchange Rates
 
@@ -530,12 +527,9 @@ Fetches rates from [frankfurter.app](https://www.frankfurter.app/), using exchan
 - If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed). 
 - If external access is restricted and configuration is not done in meshStack, **currency conversion will not apply**.
 
-
-
 #### Custom API Exchange Rates
 
 You can provide exchange rates of your company via API.
-
 
 **To enable**:
 
@@ -543,11 +537,7 @@ You can provide exchange rates of your company via API.
 - Contact **support@meshcloud.io** early to set this up before chargeback finalization.  
 - If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
 
-  
-
-
 For chargeback, we use the daily exchange rate from the day your statement is finalized, regardless of whether you're using your own converter or the default one. For example, if your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
-
 
 ### Key Points: Currency Converter Usage & Limitations
 
@@ -566,8 +556,5 @@ If you turn on the currency converter and later decide to turn it off, all futur
 5. **Known Issue with Timing**: If a tenant has costs in a month **before activation** and no further costs are recorded afterward, those costs will remain in the original currency.  
    - **Example**: Tenant incurs USD costs on March 7. The converter is turned ON on March 10 and no additional costs occur for this tenant before the finalization date. Tenant ABC’s costs stay in USD.
 6. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
-
-
-
 
 
