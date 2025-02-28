@@ -509,7 +509,7 @@ let example
 
 ## Currency Conversion
 
-In order to simplify multi-cloud governance, the best practice is to have a single chargeback currency. meshStack simplifies the chargeback process with it's automatic currency conversion capability. Regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. 
+In order to simplify multi-cloud governance, the best practice is to have a single chargeback currency. meshStack simplifies the chargeback process with it's automatic currency conversion capability. Regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. For chargeback, we use the daily exchange rate from the day your statement is finalized, regardless of whether you're using your own converter or the default one. For example, if your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
 
 >Note: Currently, currency conversion supports various currencies (USD, CNY, TWD, CAD, INR) but converts **to Euro only**.
 
@@ -520,24 +520,14 @@ Navigate to the  Financials tab of the Settings Page in the Admin area to choose
 #### meshStack Default Exchange Rates
 
 Fetches rates from [frankfurter.app](https://www.frankfurter.app/), using exchange rates from the European Central Bank.  
-
-**To enable**:
-
+To enable this:
 - Go to the Financials tab and select **meshStack default exchange rates**.  
-- If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed). 
-- If external access is restricted and configuration is not done in meshStack, **currency conversion will not apply**.
+- If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed)
 
 #### Custom API Exchange Rates
 
-You can provide exchange rates of your company via API.
-
-**To enable**:
-
-- Go to the Financials tab and select **Custom API Exchange Rates**.
-- Contact **support@meshcloud.io** early to set this up before chargeback finalization.  
-- If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
-
-For chargeback, we use the daily exchange rate from the day your statement is finalized, regardless of whether you're using your own converter or the default one. For example, if your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
+You can provide exchange rates of your company via API. If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
+To enable this go to the Financials tab and select **Custom API Exchange Rates**.
 
 ### Key Points: Currency Converter Usage & Limitations
 
