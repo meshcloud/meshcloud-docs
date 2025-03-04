@@ -23,12 +23,12 @@ Platform Operators can configure a custom Landing Zone [meshTag](./meshstack.met
 
 ## Include Building Blocks as part of the Landing Zone
 
-For all types of platforms it is possible to include Building Blocks as part of the Landing Zone. These Building Blocks can be configured to be either:
+For all types of platforms it is possible to include building blocks as part of the landing zone. These building blocks can be configured to be either:
 
-- Required: this means the Building Block has to be booked by the Workspace user. This is useful when you want to enforce
-  the usage of a particular Building Block in combination with the Landing Zone.
-- Optional: this means the Building Block can be optionally added by the Workspace user, but they are not required to
-  do so and they could decide not to add it
+- Required: this means the building block has to be booked by the workspace user. This is useful when you want to enforce
+  the usage of a particular building block in combination with the landing zone.
+- Optional: this means the building block can be optionally added by the workspace user, but they are not required to
+  do so and they could decide not to add it.
 
 ## Defining Quotas
 
