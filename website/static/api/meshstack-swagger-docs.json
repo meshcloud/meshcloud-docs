@@ -24,7 +24,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.v1.hal+json" : "{\n  \"_links\" : {\n    \"metadata\" : {\n      \"href\" : \"https://mesh-backend-url/api/metadata\"\n    },\n    \"meshobjects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.v1.hal+json" : "{\n  \"_links\" : {\n    \"meshobjects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects\"\n    },\n    \"metadata\" : {\n      \"href\" : \"https://mesh-backend-url/api/metadata\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/apiRoot"
@@ -151,12 +151,12 @@
     "/api/meshobjects" : {
       "get" : {
         "tags" : [ "api" ],
-        "operationId" : "meshObjectsRootV1",
-        "produces" : [ "application/vnd.meshcloud.api.meshobjects.v1.hal+json", "application/vnd.meshcloud.api.meshobjects.v2.hal+json" ],
+        "operationId" : "meshObjectsRootV2",
+        "produces" : [ "application/vnd.meshcloud.api.meshobjects.v2.hal+json", "application/vnd.meshcloud.api.meshobjects.v1.hal+json" ],
         "parameters" : [ {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshobjects.v1.hal+json` as an `Accept` header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.",
+          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshobjects.v2.hal+json` as an `Accept` header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -164,10 +164,10 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshobjects.v1.hal+json" : "{\n  \"_links\" : {\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers{?customerIdentifier,projectIdentifier,platformIdentifier,customerUserGroupIdentifier,projectRole,customerRole,email,firstName,lastName,username,euid}\",\n      \"templated\" : true\n    },\n    \"meshserviceinstances\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances\"\n    },\n    \"meshprojects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects{?customerIdentifier,paymentIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshpaymentmethods\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?customerIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshcustomers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshcustomers\"\n    },\n    \"meshcustomerusergroups\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshcustomerusergroups{?customerIdentifier,username}\",\n      \"templated\" : true\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants{?customerIdentifier,projectIdentifier,platformIdentifier}\",\n      \"templated\" : true\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshobjects.v2.hal+json" : "{\n  \"_links\" : {\n    \"meshserviceinstances\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshbuildingblocks\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks{?workspaceIdentifier,customerIdentifier,projectIdentifier,platformIdentifier,name,definitionName,definitionUuid,versionNumber,status}\",\n      \"templated\" : true\n    },\n    \"meshbuildingblockruns\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&selector}\",\n      \"templated\" : true\n    },\n    \"meshprojectgroupbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier={workspaceIdentifier}&projectIdentifier={projectIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshprojectuserbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier={workspaceIdentifier}&projectIdentifier={projectIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshprojects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshworkspaceuserbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings{?username,workspaceRole,workspaceIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshworkspacegroupbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings{?username,workspaceRole}\",\n      \"templated\" : true\n    },\n    \"meshworkspaces\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces\"\n    },\n    \"meshworkspaceusergroups\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups{?workspaceIdentifier,username}\",\n      \"templated\" : true\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}\",\n      \"templated\" : true\n    },\n    \"meshpaymentmethods\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}\",\n      \"templated\" : true\n    },\n    \"meshtagdefinitions\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtagdefinitions\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}\",\n      \"templated\" : true\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects\"\n    }\n  }\n}"
             },
             "schema" : {
-              "$ref" : "#/definitions/meshObjectsRootV1"
+              "$ref" : "#/definitions/meshObjectsRootV2"
             }
           }
         },
@@ -284,7 +284,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json" : "{\n  \"kind\" : \"meshBuildingBlockRun\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"uuid\" : \"b3116611-e08b-4b00-91c5-10365b25a6ef\"\n  },\n  \"spec\" : {\n    \"runNumber\" : 1,\n    \"buildingBlock\" : {\n      \"uuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n      \"spec\" : {\n        \"displayName\" : \"block\",\n        \"workspaceIdentifier\" : \"workspace\",\n        \"projectIdentifier\" : \"project\",\n        \"fullPlatformIdentifier\" : \"azure\",\n        \"inputs\" : [ {\n          \"key\" : \"variable-name\",\n          \"value\" : \"some-value\",\n          \"type\" : \"STRING\",\n          \"isSensitive\" : false,\n          \"isEnvironment\" : false\n        } ],\n        \"parentBuildingBlocks\" : [ ]\n      }\n    },\n    \"buildingBlockDefinition\" : {\n      \"uuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\",\n      \"spec\" : {\n        \"version\" : 1,\n        \"implementation\" : {\n          \"type\" : \"TERRAFORM\",\n          \"terraformVersion\" : \"v1\",\n          \"repositoryUrl\" : \"https://example.com\",\n          \"async\" : true\n        }\n      }\n    },\n    \"behavior\" : \"APPLY\"\n  },\n  \"status\" : \"IN_PROGRESS\",\n  \"_links\" : {\n    \"registerSource\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblockruns/b3116611-e08b-4b00-91c5-10365b25a6ef/status/source\"\n    },\n    \"updateSource\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblockruns/b3116611-e08b-4b00-91c5-10365b25a6ef/status/source/{sourceId}\",\n      \"templated\" : true\n    },\n    \"meshstackBaseUrl\" : {\n      \"href\" : \"https://mesh-backend-url\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json" : "{\n  \"kind\" : \"meshBuildingBlockRun\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"uuid\" : \"b3116611-e08b-4b00-91c5-10365b25a6ef\"\n  },\n  \"spec\" : {\n    \"runNumber\" : 1,\n    \"buildingBlock\" : {\n      \"uuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n      \"spec\" : {\n        \"displayName\" : \"block\",\n        \"workspaceIdentifier\" : \"workspace\",\n        \"projectIdentifier\" : \"project\",\n        \"fullPlatformIdentifier\" : \"azure\",\n        \"inputs\" : [ {\n          \"key\" : \"variable-name\",\n          \"value\" : \"some-value\",\n          \"type\" : \"STRING\",\n          \"isSensitive\" : false,\n          \"isEnvironment\" : false\n        } ],\n        \"parentBuildingBlocks\" : [ ]\n      }\n    },\n    \"buildingBlockDefinition\" : {\n      \"uuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\",\n      \"spec\" : {\n        \"version\" : 1,\n        \"implementation\" : {\n          \"type\" : \"TERRAFORM\",\n          \"terraformVersion\" : \"v1\",\n          \"repositoryUrl\" : \"https://example.com\",\n          \"async\" : true,\n          \"useMeshHttpBackendFallback\" : false\n        }\n      }\n    },\n    \"behavior\" : \"APPLY\"\n  },\n  \"status\" : \"IN_PROGRESS\",\n  \"_links\" : {\n    \"registerSource\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblockruns/b3116611-e08b-4b00-91c5-10365b25a6ef/status/source\"\n    },\n    \"updateSource\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblockruns/b3116611-e08b-4b00-91c5-10365b25a6ef/status/source/{sourceId}\",\n      \"templated\" : true\n    },\n    \"meshstackBaseUrl\" : {\n      \"href\" : \"https://mesh-backend-url\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshBuildingBlockRunCreate"
@@ -372,7 +372,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json" : "{\n  \"_embedded\" : {\n    \"meshBuildingBlocks\" : [ {\n      \"kind\" : \"meshBuildingBlock\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"uuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n        \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\",\n        \"definitionVersion\" : 1,\n        \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n        \"forcePurge\" : false,\n        \"createdOn\" : \"2025-02-26T14:01:34.454871211Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"parent block\",\n        \"inputs\" : [ ],\n        \"parentBuildingBlocks\" : [ ]\n      },\n      \"status\" : {\n        \"status\" : \"SUCCEEDED\",\n        \"outputs\" : [ ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/68ce5455-2a4a-4a4b-a324-6a6c18cab85a\"\n        },\n        \"meshtenant\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n        },\n        \"forcePurge\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/68ce5455-2a4a-4a4b-a324-6a6c18cab85a/purge\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshBuildingBlock\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"uuid\" : \"5646eafe-5d56-43e5-84fe-329bb050d720\",\n        \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n        \"definitionVersion\" : 1,\n        \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n        \"forcePurge\" : false,\n        \"createdOn\" : \"2025-02-26T14:01:34.504935151Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"child block\",\n        \"inputs\" : [ {\n          \"key\" : \"resourceName\",\n          \"value\" : \"My Test Resource\",\n          \"valueType\" : \"STRING\"\n        } ],\n        \"parentBuildingBlocks\" : [ {\n          \"buildingBlockUuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n          \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\"\n        } ]\n      },\n      \"status\" : {\n        \"status\" : \"SUCCEEDED\",\n        \"outputs\" : [ {\n          \"key\" : \"resourceId\",\n          \"value\" : \"id-123\",\n          \"valueType\" : \"STRING\"\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720\"\n        },\n        \"meshtenant\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n        },\n        \"forcePurge\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720/purge\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks?projectIdentifier=my-project&page=0&size=10\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 10,\n    \"totalElements\" : 2,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json" : "{\n  \"_embedded\" : {\n    \"meshBuildingBlocks\" : [ {\n      \"kind\" : \"meshBuildingBlock\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"uuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n        \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\",\n        \"definitionVersion\" : 1,\n        \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n        \"forcePurge\" : false,\n        \"createdOn\" : \"2025-03-03T16:42:21.029108061Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"parent block\",\n        \"inputs\" : [ ],\n        \"parentBuildingBlocks\" : [ ]\n      },\n      \"status\" : {\n        \"status\" : \"SUCCEEDED\",\n        \"outputs\" : [ ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/68ce5455-2a4a-4a4b-a324-6a6c18cab85a\"\n        },\n        \"meshtenant\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n        },\n        \"forcePurge\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/68ce5455-2a4a-4a4b-a324-6a6c18cab85a/purge\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshBuildingBlock\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"uuid\" : \"5646eafe-5d56-43e5-84fe-329bb050d720\",\n        \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n        \"definitionVersion\" : 1,\n        \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n        \"forcePurge\" : false,\n        \"createdOn\" : \"2025-03-03T16:42:21.078786672Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"child block\",\n        \"inputs\" : [ {\n          \"key\" : \"resourceName\",\n          \"value\" : \"My Test Resource\",\n          \"valueType\" : \"STRING\"\n        } ],\n        \"parentBuildingBlocks\" : [ {\n          \"buildingBlockUuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n          \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\"\n        } ]\n      },\n      \"status\" : {\n        \"status\" : \"SUCCEEDED\",\n        \"outputs\" : [ {\n          \"key\" : \"resourceId\",\n          \"value\" : \"id-123\",\n          \"valueType\" : \"STRING\"\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720\"\n        },\n        \"meshtenant\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n        },\n        \"forcePurge\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720/purge\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks?projectIdentifier=my-project&page=0&size=10\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 10,\n    \"totalElements\" : 2,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshBuildingBlockList"
@@ -405,17 +405,17 @@
           "name" : "",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/api_meshobjects_meshbuildingblocks-1119936397"
+            "$ref" : "#/definitions/api_meshobjects_meshbuildingblocks1468732726"
           },
           "x-examples" : {
-            "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v1\",\n  \"kind\" : \"meshBuildingBlock\",\n  \"metadata\" : {\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New BuildingBlock\",\n    \"inputs\" : [{\n      \"key\": \"resourceName\",\n      \"value\": \"buildingBlock-for-docs\",\n      \"valueType\": \"STRING\"\n    }],\n    \"parentBuildingBlocks\" : [{\n      \"definitionUuid\": \"b23cfb9a-6974-444f-9d33-62134a632373\",\n      \"buildingBlockUuid\": \"d85f164d-dbd2-4ab0-add1-1b5faca19765\"\n    }]\n  }\n} "
+            "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v1\",\n  \"kind\" : \"meshBuildingBlock\",\n  \"metadata\" : {\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New BuildingBlock\",\n    \"inputs\" : [{\n      \"key\": \"resourceName\",\n      \"value\": \"buildingBlock-for-docs\",\n      \"valueType\": \"STRING\"\n    }],\n    \"parentBuildingBlocks\" : [{\n      \"definitionUuid\": \"b23cfb9a-6974-444f-9d33-62134a632373\",\n      \"buildingBlockUuid\": \"d68e13c5-7181-4dfe-8b3f-d6060c120845\"\n    }]\n  }\n} "
           }
         } ],
         "responses" : {
           "201" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json" : "{\n  \"kind\" : \"meshBuildingBlock\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"uuid\" : \"af8c5ba0-d690-4553-97fb-1d7ce2b2d71c\",\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n    \"forcePurge\" : false,\n    \"createdOn\" : \"2025-02-26T14:01:35.566007469Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New BuildingBlock\",\n    \"inputs\" : [ {\n      \"key\" : \"resourceName\",\n      \"value\" : \"buildingBlock-for-docs\",\n      \"valueType\" : \"STRING\"\n    } ],\n    \"parentBuildingBlocks\" : [ {\n      \"buildingBlockUuid\" : \"d85f164d-dbd2-4ab0-add1-1b5faca19765\",\n      \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\"\n    } ]\n  },\n  \"status\" : {\n    \"status\" : \"PENDING\",\n    \"outputs\" : [ ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/af8c5ba0-d690-4553-97fb-1d7ce2b2d71c\"\n    },\n    \"meshtenant\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n    },\n    \"forcePurge\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/af8c5ba0-d690-4553-97fb-1d7ce2b2d71c/purge\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json" : "{\n  \"kind\" : \"meshBuildingBlock\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"uuid\" : \"062bcaa7-c57b-47f8-b949-538dc4d6b5aa\",\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n    \"forcePurge\" : false,\n    \"createdOn\" : \"2025-03-03T16:42:22.158391501Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New BuildingBlock\",\n    \"inputs\" : [ {\n      \"key\" : \"resourceName\",\n      \"value\" : \"buildingBlock-for-docs\",\n      \"valueType\" : \"STRING\"\n    } ],\n    \"parentBuildingBlocks\" : [ {\n      \"buildingBlockUuid\" : \"d68e13c5-7181-4dfe-8b3f-d6060c120845\",\n      \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\"\n    } ]\n  },\n  \"status\" : {\n    \"status\" : \"PENDING\",\n    \"outputs\" : [ ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/062bcaa7-c57b-47f8-b949-538dc4d6b5aa\"\n    },\n    \"meshtenant\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n    },\n    \"forcePurge\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/062bcaa7-c57b-47f8-b949-538dc4d6b5aa/purge\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshBuildingBlockPost"
@@ -461,7 +461,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshPaymentMethods\" : [ {\n      \"kind\" : \"meshPaymentMethod\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"test-payment-method-1\",\n        \"ownedByWorkspace\" : \"jkmy5mpmdsv2\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"Test Payment Method 1\",\n        \"tags\" : { },\n        \"amount\" : 1000\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-1\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshPaymentMethod\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"test-payment-method-2\",\n        \"ownedByWorkspace\" : \"jkmy5mpmdsv2\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"Test Payment Method 2\",\n        \"tags\" : { },\n        \"amount\" : 1000\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-2\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-2\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jkmy5mpmdsv2&page=0&size=2\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jkmy5mpmdsv2&page=0&size=2\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jkmy5mpmdsv2&page=1&size=2\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jkmy5mpmdsv2&page=1&size=2\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 2,\n    \"totalElements\" : 3,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshPaymentMethods\" : [ {\n      \"kind\" : \"meshPaymentMethod\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"test-payment-method-1\",\n        \"ownedByWorkspace\" : \"dck98mpmdsv2\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"Test Payment Method 1\",\n        \"tags\" : { },\n        \"amount\" : 1000\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-1\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshPaymentMethod\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"test-payment-method-2\",\n        \"ownedByWorkspace\" : \"dck98mpmdsv2\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"Test Payment Method 2\",\n        \"tags\" : { },\n        \"amount\" : 1000\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-2\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-2\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=dck98mpmdsv2&page=0&size=2\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=dck98mpmdsv2&page=0&size=2\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=dck98mpmdsv2&page=1&size=2\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=dck98mpmdsv2&page=1&size=2\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 2,\n    \"totalElements\" : 3,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshPaymentMethodListV2"
@@ -513,7 +513,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshproject.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshProjects\" : [ {\n      \"kind\" : \"meshProject\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"test-project-1\",\n        \"ownedByWorkspace\" : \"jkmy5mpdsv2\",\n        \"createdOn\" : \"2024-01-01T00:00:00Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"Test Project 1\",\n        \"tags\" : { },\n        \"paymentMethodIdentifier\" : \"test-payment\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects/jkmy5mpdsv2.test-project-1\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n        },\n        \"activePaymentMethod\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment\"\n        },\n        \"meshprojectuserbindings\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n        },\n        \"meshprojectgroupbindings\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jkmy5mpdsv2&paymentIdentifier=test-payment&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jkmy5mpdsv2&paymentIdentifier=test-payment&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jkmy5mpdsv2&paymentIdentifier=test-payment&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jkmy5mpdsv2&paymentIdentifier=test-payment&page=1&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 2,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshproject.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshProjects\" : [ {\n      \"kind\" : \"meshProject\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"test-project-1\",\n        \"ownedByWorkspace\" : \"dck98mpdsv2\",\n        \"createdOn\" : \"2024-01-01T00:00:00Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"Test Project 1\",\n        \"tags\" : { },\n        \"paymentMethodIdentifier\" : \"test-payment\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects/dck98mpdsv2.test-project-1\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n        },\n        \"activePaymentMethod\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment\"\n        },\n        \"meshprojectuserbindings\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n        },\n        \"meshprojectgroupbindings\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=dck98mpdsv2&paymentIdentifier=test-payment&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=dck98mpdsv2&paymentIdentifier=test-payment&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=dck98mpdsv2&paymentIdentifier=test-payment&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=dck98mpdsv2&paymentIdentifier=test-payment&page=1&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 2,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectListV2"
@@ -546,17 +546,17 @@
           "name" : "",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/api_meshobjects_meshprojects1708621869"
+            "$ref" : "#/definitions/api_meshobjects_meshprojects-1344402806"
           },
           "x-examples" : {
-            "application/vnd.meshcloud.api.meshproject.v2.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\": \"meshProject\",\n  \"spec\" : {\n    \"displayName\" : \"Test Project 3\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"metadata\" : {\n    \"name\" : \"test-project-3\",\n    \"ownedByWorkspace\" : \"jkmy5mpdsv2\"\n  }\n}"
+            "application/vnd.meshcloud.api.meshproject.v2.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\": \"meshProject\",\n  \"spec\" : {\n    \"displayName\" : \"Test Project 3\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"metadata\" : {\n    \"name\" : \"test-project-3\",\n    \"ownedByWorkspace\" : \"dck98mpdsv2\"\n  }\n}"
           }
         } ],
         "responses" : {
           "201" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshproject.v2.hal+json" : "{\n  \"kind\" : \"meshProject\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"test-project-3\",\n    \"ownedByWorkspace\" : \"jkmy5mpdsv2\",\n    \"createdOn\" : \"2025-02-26T14:01:42.646136374Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"Test Project 3\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects/jkmy5mpdsv2.test-project-3\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-3\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-3\"\n    },\n    \"activePaymentMethod\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment\"\n    },\n    \"meshprojectuserbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-3\"\n    },\n    \"meshprojectgroupbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-3\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshproject.v2.hal+json" : "{\n  \"kind\" : \"meshProject\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"test-project-3\",\n    \"ownedByWorkspace\" : \"dck98mpdsv2\",\n    \"createdOn\" : \"2025-03-03T16:42:29.493833852Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"Test Project 3\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects/dck98mpdsv2.test-project-3\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-3\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-3\"\n    },\n    \"activePaymentMethod\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment\"\n    },\n    \"meshprojectuserbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-3\"\n    },\n    \"meshprojectgroupbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-3\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectPost"
@@ -626,7 +626,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshServiceInstances\" : [ {\n      \"kind\" : \"meshServiceInstance\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"ownedByProject\" : \"jkmy5mtdg11\",\n        \"ownedByWorkspace\" : \"my-mobile-app-team\",\n        \"marketplaceIdentifier\" : \"jkmy5mtdg1\",\n        \"instanceId\" : \"jkmy5mtdg9\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"jkmy5mtdg12\",\n        \"serviceId\" : \"jkmy5mtdg5\",\n        \"planId\" : \"jkmy5mtdg7\",\n        \"creator\" : \"Unknown\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances/jkmy5mtdg9\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=2&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 3,\n    \"totalPages\" : 3,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshServiceInstances\" : [ {\n      \"kind\" : \"meshServiceInstance\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"ownedByProject\" : \"dck98mtdg11\",\n        \"ownedByWorkspace\" : \"my-mobile-app-team\",\n        \"marketplaceIdentifier\" : \"dck98mtdg1\",\n        \"instanceId\" : \"dck98mtdg9\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"dck98mtdg12\",\n        \"serviceId\" : \"dck98mtdg5\",\n        \"planId\" : \"dck98mtdg7\",\n        \"creator\" : \"Unknown\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances/dck98mtdg9\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances?workspaceIdentifier=my-mobile-app-team&page=2&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 3,\n    \"totalPages\" : 3,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshServiceInstanceListV2"
@@ -659,17 +659,17 @@
           "name" : "",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/api_meshobjects_meshserviceinstances-542336464"
+            "$ref" : "#/definitions/api_meshobjects_meshserviceinstances2008525732"
           },
           "x-examples" : {
-            "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"jkmy5smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"jkmy5mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI\",\n    \"serviceId\" : \"jkmy5mtdg25\",\n    \"planId\" : \"jkmy5mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
+            "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"dck98smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"dck98mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI\",\n    \"serviceId\" : \"dck98mtdg25\",\n    \"planId\" : \"dck98mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
           }
         } ],
         "responses" : {
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json" : "{\n  \"kind\" : \"meshServiceInstance\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"jkmy5smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"jkmy5mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI\",\n    \"serviceId\" : \"jkmy5mtdg25\",\n    \"planId\" : \"jkmy5mtdg27\",\n    \"creator\" : \"Unknown\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances/serviceInstanceId\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json" : "{\n  \"kind\" : \"meshServiceInstance\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"dck98smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"dck98mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI\",\n    \"serviceId\" : \"dck98mtdg25\",\n    \"planId\" : \"dck98mtdg27\",\n    \"creator\" : \"Unknown\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances/serviceInstanceId\"\n    }\n  }\n}"
             },
             "headers" : {
               "Content-Type" : {
@@ -819,7 +819,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshtenant.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshTenants\" : [ {\n      \"kind\" : \"meshTenant\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"ownedByProject\" : \"test-project\",\n        \"ownedByWorkspace\" : \"test-workspace\",\n        \"platformIdentifier\" : \"aws.aws-meshstack-dev\",\n        \"deletedOn\" : \"2025-02-27T14:01:46.398641877Z\",\n        \"assignedTags\" : { },\n        \"tenantIdentifier\" : \"test-workspace.test-project.aws.aws-meshstack-dev\"\n      },\n      \"spec\" : {\n        \"localId\" : \"75b569a5-7074-448e-818f-d9bd21600984\",\n        \"landingZoneIdentifier\" : \"stage-dev\",\n        \"quotas\" : [ {\n          \"key\" : \"limits.cpu\",\n          \"value\" : 2000\n        }, {\n          \"key\" : \"limits.memory\",\n          \"value\" : 10000\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/test-workspace.test-project.aws.aws-meshstack-dev\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&projectIdentifier=test-project&platformIdentifier=aws.aws-meshstack-dev\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=1&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 2,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshtenant.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshTenants\" : [ {\n      \"kind\" : \"meshTenant\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"ownedByProject\" : \"test-project\",\n        \"ownedByWorkspace\" : \"test-workspace\",\n        \"platformIdentifier\" : \"aws.aws-meshstack-dev\",\n        \"deletedOn\" : \"2025-03-04T16:42:33.177215372Z\",\n        \"assignedTags\" : { },\n        \"tenantIdentifier\" : \"test-workspace.test-project.aws.aws-meshstack-dev\"\n      },\n      \"spec\" : {\n        \"localId\" : \"d34e5333-4465-4254-b41d-a8bb361627a9\",\n        \"landingZoneIdentifier\" : \"stage-dev\",\n        \"quotas\" : [ {\n          \"key\" : \"limits.cpu\",\n          \"value\" : 2000\n        }, {\n          \"key\" : \"limits.memory\",\n          \"value\" : 10000\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/test-workspace.test-project.aws.aws-meshstack-dev\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&projectIdentifier=test-project&platformIdentifier=aws.aws-meshstack-dev\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&projectIdentifier=test-project&deletionState=MARKED_FOR_DELETION&page=1&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 2,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshTenantListV3"
@@ -974,7 +974,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshuser.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshUsers\" : [ {\n      \"kind\" : \"meshUser\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"john-doe\"\n      },\n      \"spec\" : {\n        \"email\" : \"john-doe@example.com\",\n        \"firstName\" : \"John\",\n        \"lastName\" : \"Doe\",\n        \"euid\" : \"91fd46bd-a4e8-412a-b78b-8d4cf5c05373\",\n        \"tags\" : {\n          \"environment\" : [ \"dev\", \"test\", \"qa\" ]\n        }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers/john-doe\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=john-doe\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=1&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 2,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshuser.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshUsers\" : [ {\n      \"kind\" : \"meshUser\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"john-doe\"\n      },\n      \"spec\" : {\n        \"email\" : \"john-doe@example.com\",\n        \"firstName\" : \"John\",\n        \"lastName\" : \"Doe\",\n        \"euid\" : \"6959a271-5bd0-4fcc-940f-56b56d93d845\",\n        \"tags\" : {\n          \"environment\" : [ \"dev\", \"test\", \"qa\" ]\n        }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers/john-doe\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=john-doe\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=0&size=1\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=0&size=1\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=1&size=1\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&workspaceRole=Workspace%20Manager&page=1&size=1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 2,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshUserListV2"
@@ -1014,7 +1014,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshworkspace.v1.hal+json" : "{\n  \"_embedded\" : {\n    \"meshWorkspaces\" : [ {\n      \"kind\" : \"meshWorkspace\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"name\" : \"admin-customer\",\n        \"createdOn\" : \"2025-02-26T14:00:50Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"admin-customer\",\n        \"tags\" : { }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/admin-customer\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=admin-customer\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=admin-customer\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=admin-customer\"\n        },\n        \"meshpaymentmethods\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=admin-customer\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=admin-customer\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshWorkspace\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"name\" : \"demo-customer\",\n        \"createdOn\" : \"2025-02-26T14:00:50Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"demo-customer\",\n        \"tags\" : { }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/demo-customer\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=demo-customer\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=demo-customer\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=demo-customer\"\n        },\n        \"meshpaymentmethods\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=demo-customer\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=demo-customer\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshWorkspace\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"name\" : \"demo-partner\",\n        \"createdOn\" : \"2025-02-26T14:00:50Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"demo-partner\",\n        \"tags\" : { }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/demo-partner\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=demo-partner\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=demo-partner\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=demo-partner\"\n        },\n        \"meshpaymentmethods\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=demo-partner\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=demo-partner\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=0&size=3\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=0&size=3\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=1&size=3\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=1&size=3\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 3,\n    \"totalElements\" : 6,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshworkspace.v1.hal+json" : "{\n  \"_embedded\" : {\n    \"meshWorkspaces\" : [ {\n      \"kind\" : \"meshWorkspace\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"name\" : \"admin-customer\",\n        \"createdOn\" : \"2025-03-03T16:41:23Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"admin-customer\",\n        \"tags\" : { }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/admin-customer\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=admin-customer\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=admin-customer\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=admin-customer\"\n        },\n        \"meshpaymentmethods\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=admin-customer\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=admin-customer\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshWorkspace\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"name\" : \"demo-customer\",\n        \"createdOn\" : \"2025-03-03T16:41:23Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"demo-customer\",\n        \"tags\" : { }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/demo-customer\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=demo-customer\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=demo-customer\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=demo-customer\"\n        },\n        \"meshpaymentmethods\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=demo-customer\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=demo-customer\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshWorkspace\",\n      \"apiVersion\" : \"v1\",\n      \"metadata\" : {\n        \"name\" : \"demo-partner\",\n        \"createdOn\" : \"2025-03-03T16:41:23Z\"\n      },\n      \"spec\" : {\n        \"displayName\" : \"demo-partner\",\n        \"tags\" : { }\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/demo-partner\"\n        },\n        \"meshtenants\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=demo-partner\"\n        },\n        \"meshprojects\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=demo-partner\"\n        },\n        \"meshusers\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=demo-partner\"\n        },\n        \"meshpaymentmethods\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=demo-partner\"\n        },\n        \"meshworkspaceusergroups\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=demo-partner\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"first\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=0&size=3\"\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=0&size=3\"\n    },\n    \"next\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=1&size=3\"\n    },\n    \"last\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces?page=1&size=3\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 3,\n    \"totalElements\" : 6,\n    \"totalPages\" : 2,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshWorkspaceList"
@@ -1083,7 +1083,7 @@
         "tags" : [ "api" ],
         "operationId" : "openStackProjectMetadata",
         "consumes" : [ "application/json;charset=UTF-8" ],
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/hal+json" ],
         "parameters" : [ {
           "in" : "body",
           "name" : "",
@@ -1099,11 +1099,26 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/json" : "{\n  \"project-identifier\" : \"test-project-identifier\",\n  \"project-display-name\" : \"test-project\",\n  \"customer-identifier\" : \"test-customer-identifier\",\n  \"customer-display-name\" : \"test-customer\",\n  \"tags\" : {\n    \"costCenter\" : [ \"1235\" ],\n    \"customNumber\" : [ \"1645789\" ]\n  }\n}"
+              "application/hal+json" : "{\n  \"project-identifier\" : \"test-project-identifier\",\n  \"project-display-name\" : \"test-project\",\n  \"customer-identifier\" : \"test-customer-identifier\",\n  \"customer-display-name\" : \"test-customer\",\n  \"tags\" : {\n    \"costCenter\" : [ \"1235\" ],\n    \"customNumber\" : [ \"1645789\" ]\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/openStackProjectMetadata"
             }
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ]
+      }
+    },
+    "/api/meshobjects/meshbuildingblocks/062bcaa7-c57b-47f8-b949-538dc4d6b5aa" : {
+      "delete" : {
+        "tags" : [ "api" ],
+        "operationId" : "meshBuildingBlockDelete",
+        "responses" : {
+          "202" : {
+            "description" : "",
+            "examples" : { }
           }
         },
         "security" : [ {
@@ -1127,26 +1142,11 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json" : "{\n  \"kind\" : \"meshBuildingBlock\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"uuid\" : \"5646eafe-5d56-43e5-84fe-329bb050d720\",\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n    \"forcePurge\" : false,\n    \"createdOn\" : \"2025-02-26T14:01:34.504935151Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"child block\",\n    \"inputs\" : [ {\n      \"key\" : \"resourceName\",\n      \"value\" : \"My Test Resource\",\n      \"valueType\" : \"STRING\"\n    } ],\n    \"parentBuildingBlocks\" : [ {\n      \"buildingBlockUuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n      \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\"\n    } ]\n  },\n  \"status\" : {\n    \"status\" : \"SUCCEEDED\",\n    \"outputs\" : [ {\n      \"key\" : \"resourceId\",\n      \"value\" : \"id-123\",\n      \"valueType\" : \"STRING\"\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720\"\n    },\n    \"meshtenant\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n    },\n    \"forcePurge\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720/purge\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json" : "{\n  \"kind\" : \"meshBuildingBlock\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"uuid\" : \"5646eafe-5d56-43e5-84fe-329bb050d720\",\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\",\n    \"forcePurge\" : false,\n    \"createdOn\" : \"2025-03-03T16:42:21.078786672Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"child block\",\n    \"inputs\" : [ {\n      \"key\" : \"resourceName\",\n      \"value\" : \"My Test Resource\",\n      \"valueType\" : \"STRING\"\n    } ],\n    \"parentBuildingBlocks\" : [ {\n      \"buildingBlockUuid\" : \"68ce5455-2a4a-4a4b-a324-6a6c18cab85a\",\n      \"definitionUuid\" : \"b23cfb9a-6974-444f-9d33-62134a632373\"\n    } ]\n  },\n  \"status\" : {\n    \"status\" : \"SUCCEEDED\",\n    \"outputs\" : [ {\n      \"key\" : \"resourceId\",\n      \"value\" : \"id-123\",\n      \"valueType\" : \"STRING\"\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720\"\n    },\n    \"meshtenant\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location\"\n    },\n    \"forcePurge\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720/purge\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshBuildingBlock"
             }
-          }
-        },
-        "security" : [ {
-          "basic" : [ ]
-        } ]
-      }
-    },
-    "/api/meshobjects/meshbuildingblocks/af8c5ba0-d690-4553-97fb-1d7ce2b2d71c" : {
-      "delete" : {
-        "tags" : [ "api" ],
-        "operationId" : "meshBuildingBlockDelete",
-        "responses" : {
-          "202" : {
-            "description" : "",
-            "examples" : { }
           }
         },
         "security" : [ {
@@ -1170,7 +1170,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json" : "{\n  \"kind\" : \"meshPaymentMethod\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"test-payment-method-1\",\n    \"ownedByWorkspace\" : \"jkmy5mpmdsv2\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"Test Payment Method 1\",\n    \"tags\" : { },\n    \"amount\" : 1000\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1\"\n    },\n    \"meshprojects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-1\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json" : "{\n  \"kind\" : \"meshPaymentMethod\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"test-payment-method-1\",\n    \"ownedByWorkspace\" : \"dck98mpmdsv2\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"Test Payment Method 1\",\n    \"tags\" : { },\n    \"amount\" : 1000\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment-method-1\"\n    },\n    \"meshprojects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?paymentIdentifier=test-payment-method-1\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshPaymentMethodV2"
@@ -1210,7 +1210,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshProjectGroupBindings\" : [ {\n      \"kind\" : \"meshProjectGroupBinding\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"name\" : \"ebd81e64-5c46-4361-9145-50c904c65b0f\"\n      },\n      \"roleRef\" : {\n        \"name\" : \"Project User\"\n      },\n      \"targetRef\" : {\n        \"name\" : \"test-project-1\",\n        \"displayName\" : \"Test Project 1\",\n        \"ownedByWorkspace\" : \"test-workspace\"\n      },\n      \"subject\" : {\n        \"name\" : \"testgroup\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/ebd81e64-5c46-4361-9145-50c904c65b0f\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=test-workspace&projectIdentifier=test-project-1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 1,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshProjectGroupBindings\" : [ {\n      \"kind\" : \"meshProjectGroupBinding\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"name\" : \"3f119ddb-84f7-4b6b-acf7-ab2c48e9b932\"\n      },\n      \"roleRef\" : {\n        \"name\" : \"Project User\"\n      },\n      \"targetRef\" : {\n        \"name\" : \"test-project-1\",\n        \"displayName\" : \"Test Project 1\",\n        \"ownedByWorkspace\" : \"test-workspace\"\n      },\n      \"subject\" : {\n        \"name\" : \"testgroup\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/3f119ddb-84f7-4b6b-acf7-ab2c48e9b932\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=test-workspace&projectIdentifier=test-project-1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 1,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectGroupBindingListV3"
@@ -1293,7 +1293,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshProjectUserBindings\" : [ {\n      \"kind\" : \"meshProjectUserBinding\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"name\" : \"8ef6f1a5-7e94-425e-aa7b-71cbb393b53b\"\n      },\n      \"roleRef\" : {\n        \"name\" : \"Project User\"\n      },\n      \"targetRef\" : {\n        \"name\" : \"test-project-1\",\n        \"displayName\" : \"Test Project 1\",\n        \"ownedByWorkspace\" : \"test-workspace\"\n      },\n      \"subject\" : {\n        \"name\" : \"username1\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8ef6f1a5-7e94-425e-aa7b-71cbb393b53b\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=test-workspace&projectIdentifier=test-project-1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 1,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshProjectUserBindings\" : [ {\n      \"kind\" : \"meshProjectUserBinding\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"name\" : \"51b37aed-311e-479c-bf9c-e5630bae9909\"\n      },\n      \"roleRef\" : {\n        \"name\" : \"Project User\"\n      },\n      \"targetRef\" : {\n        \"name\" : \"test-project-1\",\n        \"displayName\" : \"Test Project 1\",\n        \"ownedByWorkspace\" : \"test-workspace\"\n      },\n      \"subject\" : {\n        \"name\" : \"username1\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/51b37aed-311e-479c-bf9c-e5630bae9909\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=test-workspace&projectIdentifier=test-project-1\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 1,\n    \"totalElements\" : 1,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectUserBindingListV3"
@@ -1348,7 +1348,7 @@
         } ]
       }
     },
-    "/api/meshobjects/meshprojects/jkmy5mpdsv2.test-project-1" : {
+    "/api/meshobjects/meshprojects/dck98mpdsv2.test-project-1" : {
       "get" : {
         "tags" : [ "api" ],
         "operationId" : "meshProjectV2",
@@ -1364,7 +1364,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshproject.v2.hal+json" : "{\n  \"kind\" : \"meshProject\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"test-project-1\",\n    \"ownedByWorkspace\" : \"jkmy5mpdsv2\",\n    \"createdOn\" : \"2024-01-01T00:00:00Z\",\n    \"deletedOn\" : \"2025-02-26T14:01:43.188533744Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"Test Project 1\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects/jkmy5mpdsv2.test-project-1\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n    },\n    \"activePaymentMethod\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment\"\n    },\n    \"meshprojectuserbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n    },\n    \"meshprojectgroupbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=jkmy5mpdsv2&projectIdentifier=test-project-1\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshproject.v2.hal+json" : "{\n  \"kind\" : \"meshProject\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"test-project-1\",\n    \"ownedByWorkspace\" : \"dck98mpdsv2\",\n    \"createdOn\" : \"2024-01-01T00:00:00Z\",\n    \"deletedOn\" : \"2025-03-03T16:42:30.041649272Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"Test Project 1\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects/dck98mpdsv2.test-project-1\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n    },\n    \"activePaymentMethod\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment\"\n    },\n    \"meshprojectuserbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n    },\n    \"meshprojectgroupbindings\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=dck98mpdsv2&projectIdentifier=test-project-1\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectV2"
@@ -1392,7 +1392,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json" : "{\n  \"kind\" : \"meshServiceInstance\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"jkmy5smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"jkmy5mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI updated\",\n    \"serviceId\" : \"jkmy5mtdg25\",\n    \"planId\" : \"jkmy5mtdg27\",\n    \"creator\" : \"Unknown\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances/serviceInstanceId\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json" : "{\n  \"kind\" : \"meshServiceInstance\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"dck98smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"dck98mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI updated\",\n    \"serviceId\" : \"dck98mtdg25\",\n    \"planId\" : \"dck98mtdg27\",\n    \"creator\" : \"Unknown\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshserviceinstances/serviceInstanceId\"\n    }\n  }\n}"
             },
             "headers" : {
               "Content-Type" : {
@@ -1430,10 +1430,10 @@
           "name" : "",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/api_meshobjects_meshserviceinstances_serviceInstanceId1064069131"
+            "$ref" : "#/definitions/api_meshobjects_meshserviceinstances_serviceInstanceId-1371283585"
           },
           "x-examples" : {
-            "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"jkmy5smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"jkmy5mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI updated\",\n    \"serviceId\" : \"jkmy5mtdg25\",\n    \"planId\" : \"jkmy5mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
+            "application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json;charset=UTF-8" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"dck98smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"dck98mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI updated\",\n    \"serviceId\" : \"dck98mtdg25\",\n    \"planId\" : \"dck98mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
           }
         } ],
         "responses" : {
@@ -1582,7 +1582,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshtenant.v3.hal+json" : "{\n  \"kind\" : \"meshTenant\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"test-project\",\n    \"ownedByWorkspace\" : \"test-workspace\",\n    \"platformIdentifier\" : \"aws.aws-meshstack-dev\",\n    \"deletedOn\" : \"2025-02-27T14:01:46.398641877Z\",\n    \"assignedTags\" : { },\n    \"tenantIdentifier\" : \"test-workspace.test-project.aws.aws-meshstack-dev\"\n  },\n  \"spec\" : {\n    \"localId\" : \"75b569a5-7074-448e-818f-d9bd21600984\",\n    \"landingZoneIdentifier\" : \"stage-dev\",\n    \"quotas\" : [ {\n      \"key\" : \"limits.cpu\",\n      \"value\" : 2000\n    }, {\n      \"key\" : \"limits.memory\",\n      \"value\" : 10000\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/test-workspace.test-project.aws.aws-meshstack-dev\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&projectIdentifier=test-project&platformIdentifier=aws.aws-meshstack-dev\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshtenant.v3.hal+json" : "{\n  \"kind\" : \"meshTenant\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"test-project\",\n    \"ownedByWorkspace\" : \"test-workspace\",\n    \"platformIdentifier\" : \"aws.aws-meshstack-dev\",\n    \"deletedOn\" : \"2025-03-04T16:42:33.177215372Z\",\n    \"assignedTags\" : { },\n    \"tenantIdentifier\" : \"test-workspace.test-project.aws.aws-meshstack-dev\"\n  },\n  \"spec\" : {\n    \"localId\" : \"d34e5333-4465-4254-b41d-a8bb361627a9\",\n    \"landingZoneIdentifier\" : \"stage-dev\",\n    \"quotas\" : [ {\n      \"key\" : \"limits.cpu\",\n      \"value\" : 2000\n    }, {\n      \"key\" : \"limits.memory\",\n      \"value\" : 10000\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants/test-workspace.test-project.aws.aws-meshstack-dev\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&projectIdentifier=test-project&platformIdentifier=aws.aws-meshstack-dev\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshTenantV3"
@@ -1625,7 +1625,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshuser.v1.hal+json" : "{\n  \"kind\" : \"meshUser\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"name\" : \"john-doe\"\n  },\n  \"spec\" : {\n    \"email\" : \"john-doe@example.com\",\n    \"firstName\" : \"John\",\n    \"lastName\" : \"Doe\",\n    \"euid\" : \"b8961424-0625-4965-abb3-0e99ba1141e2\",\n    \"tags\" : {\n      \"environment\" : [ \"dev\", \"test\", \"qa\" ]\n    }\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers/john-doe\"\n    },\n    \"meshcustomerusergroups\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshcustomerusergroups?username=john-doe\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshuser.v1.hal+json" : "{\n  \"kind\" : \"meshUser\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"name\" : \"john-doe\"\n  },\n  \"spec\" : {\n    \"email\" : \"john-doe@example.com\",\n    \"firstName\" : \"John\",\n    \"lastName\" : \"Doe\",\n    \"euid\" : \"75f27f7f-afce-4052-b27e-6f7d619fda75\",\n    \"tags\" : {\n      \"environment\" : [ \"dev\", \"test\", \"qa\" ]\n    }\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers/john-doe\"\n    },\n    \"meshcustomerusergroups\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshcustomerusergroups?username=john-doe\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshUserV1"
@@ -1665,7 +1665,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshWorkspaceGroupBindings\" : [ {\n      \"kind\" : \"meshWorkspaceGroupBinding\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"a61b3db2-4354-40f8-89c2-a153a33a649f\"\n      },\n      \"roleRef\" : {\n        \"name\" : \"Workspace Manager\"\n      },\n      \"targetRef\" : {\n        \"name\" : \"test-workspace\",\n        \"displayName\" : \"test-workspace Workspace\"\n      },\n      \"subject\" : {\n        \"name\" : \"testgroup\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/a61b3db2-4354-40f8-89c2-a153a33a649f\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings?username=john.doe49a0&workspaceRole=Workspace%20Manager\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 50,\n    \"totalElements\" : 1,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json" : "{\n  \"_embedded\" : {\n    \"meshWorkspaceGroupBindings\" : [ {\n      \"kind\" : \"meshWorkspaceGroupBinding\",\n      \"apiVersion\" : \"v2\",\n      \"metadata\" : {\n        \"name\" : \"566ac5f7-9376-456d-81b1-4a2f06674e2e\"\n      },\n      \"roleRef\" : {\n        \"name\" : \"Workspace Manager\"\n      },\n      \"targetRef\" : {\n        \"name\" : \"test-workspace\",\n        \"displayName\" : \"test-workspace Workspace\"\n      },\n      \"subject\" : {\n        \"name\" : \"testgroup\"\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/566ac5f7-9376-456d-81b1-4a2f06674e2e\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings?username=john.doe49a0&workspaceRole=Workspace%20Manager\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 50,\n    \"totalElements\" : 1,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshWorkspaceGroupBindingList"
@@ -1825,7 +1825,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshworkspace.v1.hal+json" : "{\n  \"kind\" : \"meshWorkspace\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"name\" : \"admin-customer\",\n    \"createdOn\" : \"2025-02-26T14:00:50Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"admin-customer\",\n    \"tags\" : { }\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/admin-customer\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=admin-customer\"\n    },\n    \"meshprojects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=admin-customer\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=admin-customer\"\n    },\n    \"meshpaymentmethods\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=admin-customer\"\n    },\n    \"meshworkspaceusergroups\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=admin-customer\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshworkspace.v1.hal+json" : "{\n  \"kind\" : \"meshWorkspace\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"name\" : \"admin-customer\",\n    \"createdOn\" : \"2025-03-03T16:41:23Z\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"admin-customer\",\n    \"tags\" : { }\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaces/admin-customer\"\n    },\n    \"meshtenants\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=admin-customer\"\n    },\n    \"meshprojects\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=admin-customer\"\n    },\n    \"meshusers\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=admin-customer\"\n    },\n    \"meshpaymentmethods\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=admin-customer\"\n    },\n    \"meshworkspaceusergroups\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?workspaceIdentifier=admin-customer\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshWorkspace"
@@ -1865,7 +1865,7 @@
         } ]
       }
     },
-    "/api/meshobjects/meshbuildingblocks/af8c5ba0-d690-4553-97fb-1d7ce2b2d71c/purge" : {
+    "/api/meshobjects/meshbuildingblocks/062bcaa7-c57b-47f8-b949-538dc4d6b5aa/purge" : {
       "delete" : {
         "tags" : [ "api" ],
         "operationId" : "meshBuildingBlockForcePurge",
@@ -1880,7 +1880,7 @@
         } ]
       }
     },
-    "/api/meshobjects/meshprojectbindings/groupbindings/ebd81e64-5c46-4361-9145-50c904c65b0f" : {
+    "/api/meshobjects/meshprojectbindings/groupbindings/3f119ddb-84f7-4b6b-acf7-ab2c48e9b932" : {
       "get" : {
         "tags" : [ "api" ],
         "operationId" : "meshProjectGroupBindingV3",
@@ -1896,7 +1896,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json" : "{\n  \"kind\" : \"meshProjectGroupBinding\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"name\" : \"ebd81e64-5c46-4361-9145-50c904c65b0f\"\n  },\n  \"roleRef\" : {\n    \"name\" : \"Project User\"\n  },\n  \"targetRef\" : {\n    \"name\" : \"test-project-1\",\n    \"displayName\" : \"Test Project 1\",\n    \"ownedByWorkspace\" : \"test-workspace\"\n  },\n  \"subject\" : {\n    \"name\" : \"testgroup\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/ebd81e64-5c46-4361-9145-50c904c65b0f\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json" : "{\n  \"kind\" : \"meshProjectGroupBinding\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"name\" : \"3f119ddb-84f7-4b6b-acf7-ab2c48e9b932\"\n  },\n  \"roleRef\" : {\n    \"name\" : \"Project User\"\n  },\n  \"targetRef\" : {\n    \"name\" : \"test-project-1\",\n    \"displayName\" : \"Test Project 1\",\n    \"ownedByWorkspace\" : \"test-workspace\"\n  },\n  \"subject\" : {\n    \"name\" : \"testgroup\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/3f119ddb-84f7-4b6b-acf7-ab2c48e9b932\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectGroupBindingV3"
@@ -1921,7 +1921,7 @@
         } ]
       }
     },
-    "/api/meshobjects/meshprojectbindings/userbindings/8ef6f1a5-7e94-425e-aa7b-71cbb393b53b" : {
+    "/api/meshobjects/meshprojectbindings/userbindings/51b37aed-311e-479c-bf9c-e5630bae9909" : {
       "get" : {
         "tags" : [ "api" ],
         "operationId" : "meshProjectUserBindingV3",
@@ -1937,7 +1937,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json" : "{\n  \"kind\" : \"meshProjectUserBinding\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"name\" : \"8ef6f1a5-7e94-425e-aa7b-71cbb393b53b\"\n  },\n  \"roleRef\" : {\n    \"name\" : \"Project User\"\n  },\n  \"targetRef\" : {\n    \"name\" : \"test-project-1\",\n    \"displayName\" : \"Test Project 1\",\n    \"ownedByWorkspace\" : \"test-workspace\"\n  },\n  \"subject\" : {\n    \"name\" : \"username1\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8ef6f1a5-7e94-425e-aa7b-71cbb393b53b\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json" : "{\n  \"kind\" : \"meshProjectUserBinding\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"name\" : \"51b37aed-311e-479c-bf9c-e5630bae9909\"\n  },\n  \"roleRef\" : {\n    \"name\" : \"Project User\"\n  },\n  \"targetRef\" : {\n    \"name\" : \"test-project-1\",\n    \"displayName\" : \"Test Project 1\",\n    \"ownedByWorkspace\" : \"test-workspace\"\n  },\n  \"subject\" : {\n    \"name\" : \"username1\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/51b37aed-311e-479c-bf9c-e5630bae9909\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshProjectUserBindingV3"
@@ -1964,7 +1964,7 @@
         } ]
       }
     },
-    "/api/meshobjects/meshworkspacebindings/groupbindings/a61b3db2-4354-40f8-89c2-a153a33a649f" : {
+    "/api/meshobjects/meshworkspacebindings/groupbindings/566ac5f7-9376-456d-81b1-4a2f06674e2e" : {
       "get" : {
         "tags" : [ "api" ],
         "operationId" : "meshWorkspaceGroupBinding",
@@ -1980,7 +1980,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json" : "{\n  \"kind\" : \"meshWorkspaceGroupBinding\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"a61b3db2-4354-40f8-89c2-a153a33a649f\"\n  },\n  \"roleRef\" : {\n    \"name\" : \"Workspace Manager\"\n  },\n  \"targetRef\" : {\n    \"name\" : \"test-workspace\",\n    \"displayName\" : \"test-workspace Workspace\"\n  },\n  \"subject\" : {\n    \"name\" : \"testgroup\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/a61b3db2-4354-40f8-89c2-a153a33a649f\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json" : "{\n  \"kind\" : \"meshWorkspaceGroupBinding\",\n  \"apiVersion\" : \"v2\",\n  \"metadata\" : {\n    \"name\" : \"566ac5f7-9376-456d-81b1-4a2f06674e2e\"\n  },\n  \"roleRef\" : {\n    \"name\" : \"Workspace Manager\"\n  },\n  \"targetRef\" : {\n    \"name\" : \"test-workspace\",\n    \"displayName\" : \"test-workspace Workspace\"\n  },\n  \"subject\" : {\n    \"name\" : \"testgroup\"\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/566ac5f7-9376-456d-81b1-4a2f06674e2e\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshWorkspaceGroupBinding"
@@ -2086,7 +2086,7 @@
     "/api/meshobjects/meshbuildingblockruns/b3116611-e08b-4b00-91c5-10365b25a6ef/status/source/github" : {
       "patch" : {
         "tags" : [ "api" ],
-        "operationId" : "meshBuildingBlockRunAbort",
+        "operationId" : "meshBuildingBlockRunSourceUpdate",
         "consumes" : [ "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json;charset=UTF-8" ],
         "produces" : [ "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json" ],
         "parameters" : [ {
@@ -2100,10 +2100,10 @@
           "name" : "",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/api_meshobjects_meshbuildingblockruns_b3116611-e08b-4b00-91c5-10365b25a6ef_status_source_github-1040792853"
+            "$ref" : "#/definitions/api_meshobjects_meshbuildingblockruns_b3116611-e08b-4b00-91c5-10365b25a6ef_status_source_github-1048375341"
           },
           "x-examples" : {
-            "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json;charset=UTF-8" : "{\n  \"status\": \"IN_PROGRESS\",\n  \"summary\": \"A summary of the run.\",\n  \"steps\": [{\n    \"id\": \"step1\",\n    \"status\": \"SUCCEEDED\",\n    \"userMessage\": \"Step was successful.\",\n    \"systemMessage\": \"Step was successful.\",\n    \"outputs\": {\n      \"outputName\": {\n        \"value\": \"hello-world\",\n        \"type\": \"STRING\",\n        \"isSensitive\": false\n      }\n    }\n  },\n  {\n    \"id\": \"step2\",\n    \"status\": \"IN_PROGRESS\"\n  }]\n}  "
+            "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json;charset=UTF-8" : "{\n  \"status\": \"ABORTED\"           \n}  "
           }
         } ],
         "responses" : {
@@ -2111,6 +2111,9 @@
             "description" : "",
             "examples" : {
               "application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json" : "{\n  \"runAborted\" : false\n}"
+            },
+            "schema" : {
+              "$ref" : "#/definitions/meshBuildingBlockRunSourceUpdate"
             }
           }
         },
@@ -2835,6 +2838,67 @@
         }
       }
     },
+    "api_meshobjects_meshserviceinstances2008525732" : {
+      "type" : "object",
+      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
+      "properties" : {
+        "metadata" : {
+          "type" : "object",
+          "description" : "Metadata and more fields to identify the Service Instance.",
+          "properties" : {
+            "ownedByProject" : {
+              "type" : "string",
+              "description" : "The project that this Service Instance belongs to."
+            },
+            "marketplaceIdentifier" : {
+              "type" : "string",
+              "description" : "The identifier of the marketplace that this Service Instance belongs to."
+            },
+            "instanceId" : {
+              "type" : "string",
+              "description" : "The instance id this Service Instance should use."
+            },
+            "ownedByWorkspace" : {
+              "type" : "string",
+              "description" : "The workspace that this Service Instance belongs to."
+            }
+          },
+          "required" : [ "instanceId", "marketplaceIdentifier", "ownedByProject", "ownedByWorkspace" ]
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "description" : "Version of Service Instance datatype. Matches the version part provided within the `Accept` request header."
+        },
+        "kind" : {
+          "type" : "string",
+          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint."
+        },
+        "spec" : {
+          "type" : "object",
+          "description" : "Specifications for the Service Instance.",
+          "properties" : {
+            "creator" : {
+              "type" : "string",
+              "description" : "The creator's username that creates this Service Instance"
+            },
+            "displayName" : {
+              "type" : "string",
+              "description" : "The display name of the Service Instance."
+            },
+            "planId" : {
+              "type" : "string",
+              "description" : "The id of the plan for this Service Instance"
+            },
+            "serviceId" : {
+              "type" : "string",
+              "description" : "The id of the service for the Service Instance"
+            }
+          },
+          "required" : [ "creator", "displayName", "planId", "serviceId" ]
+        }
+      },
+      "example" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"dck98smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"dck98mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI\",\n    \"serviceId\" : \"dck98mtdg25\",\n    \"planId\" : \"dck98mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
+    },
     "openStackProjectMetadata" : {
       "type" : "object",
       "required" : [ "customer-display-name", "customer-identifier", "project-display-name", "project-identifier", "tags" ],
@@ -3001,127 +3065,16 @@
       },
       "example" : "{\n  \"apiVersion\": \"v3\",\n  \"kind\": \"meshProjectUserBinding\",\n  \"metadata\": {\n    \"name\": \"user-binding-name\"\n  },\n  \"targetRef\": {\n    \"name\": \"test-project-1\",\n    \"ownedByWorkspace\": \"test-workspace\"\n  },\n  \"roleRef\": { \"name\": \"Project Reader\" },\n  \"subject\": {\n    \"name\" : \"username3\"\n  }\n}  "
     },
-    "api_meshobjects_meshserviceinstances-542336464" : {
+    "meshObjectsRootV2" : {
       "type" : "object",
-      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
+      "required" : [ "_links" ],
       "properties" : {
-        "metadata" : {
+        "_links" : {
           "type" : "object",
-          "description" : "Metadata and more fields to identify the Service Instance.",
-          "properties" : {
-            "ownedByProject" : {
-              "type" : "string",
-              "description" : "The project that this Service Instance belongs to."
-            },
-            "marketplaceIdentifier" : {
-              "type" : "string",
-              "description" : "The identifier of the marketplace that this Service Instance belongs to."
-            },
-            "instanceId" : {
-              "type" : "string",
-              "description" : "The instance id this Service Instance should use."
-            },
-            "ownedByWorkspace" : {
-              "type" : "string",
-              "description" : "The workspace that this Service Instance belongs to."
-            }
-          },
-          "required" : [ "instanceId", "marketplaceIdentifier", "ownedByProject", "ownedByWorkspace" ]
-        },
-        "apiVersion" : {
-          "type" : "string",
-          "description" : "Version of Service Instance datatype. Matches the version part provided within the `Accept` request header."
-        },
-        "kind" : {
-          "type" : "string",
-          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint."
-        },
-        "spec" : {
-          "type" : "object",
-          "description" : "Specifications for the Service Instance.",
-          "properties" : {
-            "creator" : {
-              "type" : "string",
-              "description" : "The creator's username that creates this Service Instance"
-            },
-            "displayName" : {
-              "type" : "string",
-              "description" : "The display name of the Service Instance."
-            },
-            "planId" : {
-              "type" : "string",
-              "description" : "The id of the plan for this Service Instance"
-            },
-            "serviceId" : {
-              "type" : "string",
-              "description" : "The id of the service for the Service Instance"
-            }
-          },
-          "required" : [ "creator", "displayName", "planId", "serviceId" ]
+          "description" : "All available <<mesh_object_links,meshObject Links>> for the authenticated user.",
+          "properties" : { }
         }
-      },
-      "example" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"jkmy5smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"jkmy5mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI\",\n    \"serviceId\" : \"jkmy5mtdg25\",\n    \"planId\" : \"jkmy5mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
-    },
-    "api_meshobjects_meshbuildingblockruns_b3116611-e08b-4b00-91c5-10365b25a6ef_status_source_github-1040792853" : {
-      "type" : "object",
-      "properties" : {
-        "summary" : {
-          "type" : "string",
-          "description" : "A short summary of the execution and its result. This is shown to the user. It should not exceed more than 300 characters. (Optional)"
-        },
-        "steps" : {
-          "type" : "array",
-          "description" : "Can contain updates to the steps. (Optional)",
-          "items" : {
-            "type" : "object",
-            "properties" : {
-              "outputs" : {
-                "type" : "object",
-                "description" : "Contains any output this step has provided. (Optional)",
-                "properties" : {
-                  "outputName" : {
-                    "type" : "object",
-                    "properties" : {
-                      "isSensitive" : {
-                        "description" : "Flag if the variable content is sensitive and encrypted. The runner must decrypt this variable content first before it can be used. Information on how to do this will provided in the future."
-                      },
-                      "type" : {
-                        "description" : "The type of the variable. It can be one of <<mesh_buildingblockrun_iotype,those>>"
-                      },
-                      "value" : {
-                        "description" : "The name of the input variable."
-                      }
-                    },
-                    "required" : [ "isSensitive", "type", "value" ]
-                  }
-                }
-              },
-              "userMessage" : {
-                "type" : "string",
-                "description" : "A message which is displayed to the user. It should not exceed more than 500 characters. (Optional)"
-              },
-              "systemMessage" : {
-                "type" : "string",
-                "description" : "A message which is displayed only to the operators. It should not exceed more than 500 characters. (Optional) "
-              },
-              "id" : {
-                "type" : "string",
-                "description" : "The ID of the step which should get updates."
-              },
-              "status" : {
-                "type" : "string",
-                "description" : "The execution status of this step. Can be `PENDING`, `IN_PROGRESS`, `SUCCEEDED`, `ABORTED` or `FAILED`. (Optional)"
-              }
-            },
-            "required" : [ "id" ]
-          }
-        },
-        "status" : {
-          "type" : "string",
-          "description" : "The execution status of the building block as whole. Can be any of `PENDING`, `IN_PROGRESS`, `SUCCEEDED`, `ABORTED` or `FAILED`. (Optional)"
-        }
-      },
-      "example" : "{\n  \"status\": \"IN_PROGRESS\",\n  \"summary\": \"A summary of the run.\",\n  \"steps\": [{\n    \"id\": \"step1\",\n    \"status\": \"SUCCEEDED\",\n    \"userMessage\": \"Step was successful.\",\n    \"systemMessage\": \"Step was successful.\",\n    \"outputs\": {\n      \"outputName\": {\n        \"value\": \"hello-world\",\n        \"type\": \"STRING\",\n        \"isSensitive\": false\n      }\n    }\n  },\n  {\n    \"id\": \"step2\",\n    \"status\": \"IN_PROGRESS\"\n  }]\n}  "
+      }
     },
     "api_meshobjects_meshtagdefinitions_name5593675" : {
       "example" : "{\n  \"kind\" : \"meshTagDefinition\",\n  \"apiVersion\" : \"v1\",\n  \"metadata\" : {\n    \"name\" : \"meshWorkspace.costCenter\"\n  },\n  \"spec\" : {\n    \"targetKind\" : \"meshWorkspace\",\n    \"key\" : \"costCenter\",\n    \"valueType\" : {\n      \"string\" : {\n        \"defaultValue\" : \"1001\",\n        \"validationRegex\" : \"^\\\\d{4}$\"\n      },\n      \"email\" : null,\n      \"integer\" : null,\n      \"number\" : null,\n      \"singleSelect\" : null,\n      \"multiSelect\" : null\n    },\n    \"description\" : \"Updated description\",\n    \"displayName\" : \"Updated display name\",\n    \"sortOrder\" : 9999,\n    \"mandatory\" : true,\n    \"immutable\" : false,\n    \"restricted\" : false,\n    \"replicationKey\" : \"updatedReplicationKey\"\n  }\n}"
@@ -3286,33 +3239,6 @@
         }
       }
     },
-    "meshWorkspaceUserBindingList" : {
-      "type" : "object",
-      "required" : [ "_links", "page" ],
-      "properties" : {
-        "_links" : {
-          "type" : "object",
-          "description" : "Currently only contains the self link and <<paging,pagination>> links.",
-          "properties" : { }
-        },
-        "_embedded" : {
-          "type" : "object",
-          "properties" : {
-            "meshWorkspaceUserBindings" : {
-              "type" : "array",
-              "description" : "List of <<mesh_workspaceUserBinding_response_fields,meshWorkspaceUserBinding>>.",
-              "items" : { }
-            }
-          },
-          "required" : [ "meshWorkspaceUserBindings" ]
-        },
-        "page" : {
-          "type" : "object",
-          "description" : "See <<paging,Paging information>>.",
-          "properties" : { }
-        }
-      }
-    },
     "meshProjectV2" : {
       "type" : "object",
       "required" : [ "_links", "apiVersion", "kind", "metadata", "spec" ],
@@ -3376,6 +3302,33 @@
             }
           },
           "required" : [ "displayName", "tags" ]
+        }
+      }
+    },
+    "meshWorkspaceUserBindingList" : {
+      "type" : "object",
+      "required" : [ "_links", "page" ],
+      "properties" : {
+        "_links" : {
+          "type" : "object",
+          "description" : "Currently only contains the self link and <<paging,pagination>> links.",
+          "properties" : { }
+        },
+        "_embedded" : {
+          "type" : "object",
+          "properties" : {
+            "meshWorkspaceUserBindings" : {
+              "type" : "array",
+              "description" : "List of <<mesh_workspaceUserBinding_response_fields,meshWorkspaceUserBinding>>.",
+              "items" : { }
+            }
+          },
+          "required" : [ "meshWorkspaceUserBindings" ]
+        },
+        "page" : {
+          "type" : "object",
+          "description" : "See <<paging,Paging information>>.",
+          "properties" : { }
         }
       }
     },
@@ -3645,6 +3598,67 @@
     "api_meshobjects2145858653" : {
       "example" : "[\n  {\n    \"apiVersion\": \"v1\",\n    \"kind\": \"meshUser\",\n    \"metadata\": {\n      \"name\": \"test-user\"\n    },\n    \"spec\": {\n      \"email\": \"test1-user@meshcloud.io\",\n      \"firstName\": \"test-user-first-name\",\n      \"lastName\": \"test-user-last-name\",\n      \"euid\": \"test-euid\"\n    }\n  },\n  {\n    \"apiVersion\": \"v1\",\n    \"kind\": \"meshWorkspace\",\n    \"metadata\": {\n      \"name\": \"test-workspace\"\n    },\n    \"spec\": {\n      \"displayName\": \"test-display-name\",            \n      \"tags\": {\n        \"environment\": [\n          \"dev\",\n          \"qa\",\n          \"prod\"\n        ],\n        \"anotherTag\": [\n          \"myValue\"\n        ]\n      }\n    }\n  }\n]"
     },
+    "api_meshobjects_meshserviceinstances_serviceInstanceId-1371283585" : {
+      "type" : "object",
+      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
+      "properties" : {
+        "metadata" : {
+          "type" : "object",
+          "description" : "Metadata and more fields to identify the Service Instance.",
+          "properties" : {
+            "ownedByProject" : {
+              "type" : "string",
+              "description" : "The project that this Service Instance belongs to."
+            },
+            "marketplaceIdentifier" : {
+              "type" : "string",
+              "description" : "The identifier of the marketplace that this Service Instance belongs to."
+            },
+            "instanceId" : {
+              "type" : "string",
+              "description" : "The instance id this Service Instance should use."
+            },
+            "ownedByWorkspace" : {
+              "type" : "string",
+              "description" : "The workspace that this Service Instance belongs to."
+            }
+          },
+          "required" : [ "instanceId", "marketplaceIdentifier", "ownedByProject", "ownedByWorkspace" ]
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "description" : "Version of Service Instance datatype. Matches the version part provided within the `Accept` request header."
+        },
+        "kind" : {
+          "type" : "string",
+          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint."
+        },
+        "spec" : {
+          "type" : "object",
+          "description" : "Specifications for the Service Instance.",
+          "properties" : {
+            "creator" : {
+              "type" : "string",
+              "description" : "The creator's username that creates this Service Instance"
+            },
+            "displayName" : {
+              "type" : "string",
+              "description" : "The display name of the Service Instance."
+            },
+            "planId" : {
+              "type" : "string",
+              "description" : "The id of the plan for this Service Instance"
+            },
+            "serviceId" : {
+              "type" : "string",
+              "description" : "The id of the service for the Service Instance"
+            }
+          },
+          "required" : [ "creator", "displayName", "planId", "serviceId" ]
+        }
+      },
+      "example" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"dck98smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"dck98mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI updated\",\n    \"serviceId\" : \"dck98mtdg25\",\n    \"planId\" : \"dck98mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
+    },
     "api_meshobjects_meshbuildingblockruns_b3116611-e08b-4b00-91c5-10365b25a6ef_status_source1178004746" : {
       "type" : "object",
       "required" : [ "steps" ],
@@ -3691,6 +3705,91 @@
         }
       },
       "example" : "{\n  \"source\": {\n    \"id\": \"github\",\n    \"externalRunId\": \"12345\",\n    \"externalRunUrl\": \"https://github.com/meshcloud/example/actions/runs/12345678\"\n  },\n  \"steps\": [{\n    \"id\": \"step1\",\n    \"displayName\": \"Init\",\n    \"status\": \"IN_PROGRESS\"\n  },\n  {\n    \"id\": \"step2\",\n    \"displayName\": \"Pipeline\"\n  }]\n}  "
+    },
+    "api_meshobjects_meshbuildingblocks1468732726" : {
+      "type" : "object",
+      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
+      "properties" : {
+        "metadata" : {
+          "type" : "object",
+          "description" : "Fixed fields that help identify the Building Block.",
+          "properties" : {
+            "definitionVersion" : {
+              "type" : "number",
+              "description" : "The version number of the Building Block Definition this Building Block is based on."
+            },
+            "definitionUuid" : {
+              "type" : "string",
+              "description" : "The UUID of the Building Block Definition this Building Block is based on."
+            },
+            "tenantIdentifier" : {
+              "type" : "string",
+              "description" : "The full identifier of the tenant, this Building Block is created in."
+            }
+          },
+          "required" : [ "definitionUuid", "definitionVersion", "tenantIdentifier" ]
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "description" : "Version of Building Block datatype. Matches the version part provided within the `Accept` request header."
+        },
+        "kind" : {
+          "type" : "string",
+          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint."
+        },
+        "spec" : {
+          "type" : "object",
+          "description" : "All fields in this section describe the Building Block.",
+          "properties" : {
+            "parentBuildingBlocks" : {
+              "type" : "array",
+              "description" : "List of parent building blocks, which are required for the Building Block. If none given, an empty list needs to be provided.",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "buildingBlockUuid" : {
+                    "type" : "string",
+                    "description" : "The UUID of the parent Building Block."
+                  },
+                  "definitionUuid" : {
+                    "type" : "string",
+                    "description" : "The UUID of the Building Block Definition of the parent Building Block."
+                  }
+                },
+                "required" : [ "buildingBlockUuid", "definitionUuid" ]
+              }
+            },
+            "inputs" : {
+              "type" : "array",
+              "description" : "List of inputs, which are set on the Building Block.",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "valueType" : {
+                    "type" : "string",
+                    "description" : "The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT."
+                  },
+                  "value" : {
+                    "type" : "string",
+                    "description" : "The value, which is set on this input."
+                  },
+                  "key" : {
+                    "type" : "string",
+                    "description" : "The key of the input as set on the related Building Block Definition."
+                  }
+                },
+                "required" : [ "key", "value", "valueType" ]
+              }
+            },
+            "displayName" : {
+              "type" : "string",
+              "description" : "The display name of the Building Block as it is shown in meshPanel."
+            }
+          },
+          "required" : [ "displayName", "inputs", "parentBuildingBlocks" ]
+        }
+      },
+      "example" : "{\n  \"apiVersion\" : \"v1\",\n  \"kind\" : \"meshBuildingBlock\",\n  \"metadata\" : {\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New BuildingBlock\",\n    \"inputs\" : [{\n      \"key\": \"resourceName\",\n      \"value\": \"buildingBlock-for-docs\",\n      \"valueType\": \"STRING\"\n    }],\n    \"parentBuildingBlocks\" : [{\n      \"definitionUuid\": \"b23cfb9a-6974-444f-9d33-62134a632373\",\n      \"buildingBlockUuid\": \"d68e13c5-7181-4dfe-8b3f-d6060c120845\"\n    }]\n  }\n} "
     },
     "meshProjectUserBindingListV3" : {
       "type" : "object",
@@ -4010,90 +4109,120 @@
         }
       }
     },
-    "api_meshobjects_meshbuildingblocks-1119936397" : {
+    "api_meshobjects_meshbuildingblockruns_b3116611-e08b-4b00-91c5-10365b25a6ef_status_source_github-1048375341" : {
+      "type" : "object",
+      "properties" : {
+        "summary" : {
+          "type" : "string",
+          "description" : "A short summary of the execution and its result. This is shown to the user. It should not exceed more than 300 characters. (Optional)"
+        },
+        "steps" : {
+          "type" : "array",
+          "description" : "Can contain updates to the steps. (Optional)",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "outputs" : {
+                "type" : "object",
+                "description" : "Contains any output this step has provided. (Optional)",
+                "properties" : {
+                  "outputName" : {
+                    "type" : "object",
+                    "properties" : {
+                      "isSensitive" : {
+                        "description" : "Flag if the variable content is sensitive and encrypted. The runner must decrypt this variable content first before it can be used. Information on how to do this will provided in the future."
+                      },
+                      "type" : {
+                        "description" : "The type of the variable. It can be one of <<mesh_buildingblockrun_iotype,those>>"
+                      },
+                      "value" : {
+                        "description" : "The name of the input variable."
+                      }
+                    },
+                    "required" : [ "isSensitive", "type", "value" ]
+                  }
+                }
+              },
+              "userMessage" : {
+                "type" : "string",
+                "description" : "A message which is displayed to the user. It should not exceed more than 500 characters. (Optional)"
+              },
+              "systemMessage" : {
+                "type" : "string",
+                "description" : "A message which is displayed only to the operators. It should not exceed more than 500 characters. (Optional) "
+              },
+              "id" : {
+                "type" : "string",
+                "description" : "The ID of the step which should get updates."
+              },
+              "status" : {
+                "type" : "string",
+                "description" : "The execution status of this step. Can be `PENDING`, `IN_PROGRESS`, `SUCCEEDED`, `ABORTED` or `FAILED`. (Optional)"
+              }
+            },
+            "required" : [ "id" ]
+          }
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "The execution status of the building block as whole. Can be any of `PENDING`, `IN_PROGRESS`, `SUCCEEDED`, `ABORTED` or `FAILED`. (Optional)"
+        }
+      },
+      "example" : "{\n  \"status\": \"ABORTED\"           \n}  "
+    },
+    "api_meshobjects_meshprojects-1344402806" : {
       "type" : "object",
       "required" : [ "apiVersion", "kind", "metadata", "spec" ],
       "properties" : {
         "metadata" : {
           "type" : "object",
-          "description" : "Fixed fields that help identify the Building Block.",
+          "description" : "Fixed fields that help to identify the meshProject.",
           "properties" : {
-            "definitionVersion" : {
-              "type" : "number",
-              "description" : "The version number of the Building Block Definition this Building Block is based on."
-            },
-            "definitionUuid" : {
+            "name" : {
               "type" : "string",
-              "description" : "The UUID of the Building Block Definition this Building Block is based on."
+              "description" : "The identifier that should be unique within a workspace"
             },
-            "tenantIdentifier" : {
+            "ownedByWorkspace" : {
               "type" : "string",
-              "description" : "The full identifier of the tenant, this Building Block is created in."
+              "description" : "The identifier of the workspace that the project should belong to."
             }
           },
-          "required" : [ "definitionUuid", "definitionVersion", "tenantIdentifier" ]
+          "required" : [ "name", "ownedByWorkspace" ]
         },
         "apiVersion" : {
           "type" : "string",
-          "description" : "Version of Building Block datatype. Matches the version part provided within the `Accept` request header."
+          "description" : "Version of meshProject datatype. Matches the version part provided within the `Accept` request header."
         },
         "kind" : {
           "type" : "string",
-          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint."
+          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshProject' for this endpoint."
         },
         "spec" : {
           "type" : "object",
-          "description" : "All fields in this section describe the Building Block.",
+          "description" : "All fields in this section describe the project.",
           "properties" : {
-            "parentBuildingBlocks" : {
-              "type" : "array",
-              "description" : "List of parent building blocks, which are required for the Building Block. If none given, an empty list needs to be provided.",
-              "items" : {
-                "type" : "object",
-                "properties" : {
-                  "buildingBlockUuid" : {
-                    "type" : "string",
-                    "description" : "The UUID of the parent Building Block."
-                  },
-                  "definitionUuid" : {
-                    "type" : "string",
-                    "description" : "The UUID of the Building Block Definition of the parent Building Block."
-                  }
-                },
-                "required" : [ "buildingBlockUuid", "definitionUuid" ]
-              }
+            "substitutePaymentMethodIdentifier" : {
+              "type" : "string",
+              "description" : "The substitute payment method of the project."
             },
-            "inputs" : {
-              "type" : "array",
-              "description" : "List of inputs, which are set on the Building Block.",
-              "items" : {
-                "type" : "object",
-                "properties" : {
-                  "valueType" : {
-                    "type" : "string",
-                    "description" : "The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT."
-                  },
-                  "value" : {
-                    "type" : "string",
-                    "description" : "The value, which is set on this input."
-                  },
-                  "key" : {
-                    "type" : "string",
-                    "description" : "The key of the input as set on the related Building Block Definition."
-                  }
-                },
-                "required" : [ "key", "value", "valueType" ]
-              }
+            "paymentMethodIdentifier" : {
+              "type" : "string",
+              "description" : "The payment method of the project."
             },
             "displayName" : {
               "type" : "string",
-              "description" : "The display name of the Building Block as it is shown in meshPanel."
+              "description" : "The display name of the project as it is shown in meshPanel."
+            },
+            "tags" : {
+              "type" : "object",
+              "description" : "Key/Value pairs of tags set on the project. Keep in mind, that values are an array. Also see our general section about <<tags>>",
+              "properties" : { }
             }
           },
-          "required" : [ "displayName", "inputs", "parentBuildingBlocks" ]
+          "required" : [ "displayName", "tags" ]
         }
       },
-      "example" : "{\n  \"apiVersion\" : \"v1\",\n  \"kind\" : \"meshBuildingBlock\",\n  \"metadata\" : {\n    \"definitionUuid\" : \"ef6aaf87-3f8c-477c-94f4-f3cf509728ca\",\n    \"definitionVersion\" : 1,\n    \"tenantIdentifier\" : \"my-workspace.my-project.my-platform.my-location\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New BuildingBlock\",\n    \"inputs\" : [{\n      \"key\": \"resourceName\",\n      \"value\": \"buildingBlock-for-docs\",\n      \"valueType\": \"STRING\"\n    }],\n    \"parentBuildingBlocks\" : [{\n      \"definitionUuid\": \"b23cfb9a-6974-444f-9d33-62134a632373\",\n      \"buildingBlockUuid\": \"d85f164d-dbd2-4ab0-add1-1b5faca19765\"\n    }]\n  }\n} "
+      "example" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\": \"meshProject\",\n  \"spec\" : {\n    \"displayName\" : \"Test Project 3\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"metadata\" : {\n    \"name\" : \"test-project-3\",\n    \"ownedByWorkspace\" : \"dck98mpdsv2\"\n  }\n}"
     },
     "api_login-371819773" : {
       "example" : "client_id=8a616394-98ad-4541-a0e9-e280f5d92249&client_secret=abcdefghijklmnopqrstuvwxyz0123456789&grant_type=client_credentials"
@@ -4542,66 +4671,15 @@
         }
       }
     },
-    "api_meshobjects_meshserviceinstances_serviceInstanceId1064069131" : {
+    "meshBuildingBlockRunSourceUpdate" : {
       "type" : "object",
-      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
+      "required" : [ "runAborted" ],
       "properties" : {
-        "metadata" : {
-          "type" : "object",
-          "description" : "Metadata and more fields to identify the Service Instance.",
-          "properties" : {
-            "ownedByProject" : {
-              "type" : "string",
-              "description" : "The project that this Service Instance belongs to."
-            },
-            "marketplaceIdentifier" : {
-              "type" : "string",
-              "description" : "The identifier of the marketplace that this Service Instance belongs to."
-            },
-            "instanceId" : {
-              "type" : "string",
-              "description" : "The instance id this Service Instance should use."
-            },
-            "ownedByWorkspace" : {
-              "type" : "string",
-              "description" : "The workspace that this Service Instance belongs to."
-            }
-          },
-          "required" : [ "instanceId", "marketplaceIdentifier", "ownedByProject", "ownedByWorkspace" ]
-        },
-        "apiVersion" : {
-          "type" : "string",
-          "description" : "Version of Service Instance datatype. Matches the version part provided within the `Accept` request header."
-        },
-        "kind" : {
-          "type" : "string",
-          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint."
-        },
-        "spec" : {
-          "type" : "object",
-          "description" : "Specifications for the Service Instance.",
-          "properties" : {
-            "creator" : {
-              "type" : "string",
-              "description" : "The creator's username that creates this Service Instance"
-            },
-            "displayName" : {
-              "type" : "string",
-              "description" : "The display name of the Service Instance."
-            },
-            "planId" : {
-              "type" : "string",
-              "description" : "The id of the plan for this Service Instance"
-            },
-            "serviceId" : {
-              "type" : "string",
-              "description" : "The id of the service for the Service Instance"
-            }
-          },
-          "required" : [ "creator", "displayName", "planId", "serviceId" ]
+        "runAborted" : {
+          "type" : "boolean",
+          "description" : "Indicates if the run has been aborted. In this case the run status is locked\nand the caller should refrain from sending more subsequent updates."
         }
-      },
-      "example" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\" : \"meshServiceInstance\",\n  \"metadata\" : {\n    \"ownedByProject\" : \"jkmy5smsids-1\",\n    \"ownedByWorkspace\" : \"my-mobile-app-team\",\n    \"marketplaceIdentifier\" : \"jkmy5mtdg21\",\n    \"instanceId\" : \"serviceInstanceId\"\n  },\n  \"spec\" : {\n    \"displayName\" : \"New SI updated\",\n    \"serviceId\" : \"jkmy5mtdg25\",\n    \"planId\" : \"jkmy5mtdg27\",\n    \"creator\" : \"admin@meshcloud.io\"\n  }\n}"
+      }
     },
     "meshUserV1" : {
       "type" : "object",
@@ -4661,17 +4739,6 @@
         }
       }
     },
-    "metadataRoot" : {
-      "type" : "object",
-      "required" : [ "_links" ],
-      "properties" : {
-        "_links" : {
-          "type" : "object",
-          "description" : "All available <<metadata_links,Metadata Links>> for the authenticated user.",
-          "properties" : { }
-        }
-      }
-    },
     "meshUserListV2" : {
       "type" : "object",
       "required" : [ "_embedded", "_links", "page" ],
@@ -4700,6 +4767,17 @@
         }
       }
     },
+    "metadataRoot" : {
+      "type" : "object",
+      "required" : [ "_links" ],
+      "properties" : {
+        "_links" : {
+          "type" : "object",
+          "description" : "All available <<metadata_links,Metadata Links>> for the authenticated user.",
+          "properties" : { }
+        }
+      }
+    },
     "meshWorkspaceUserGroupList" : {
       "type" : "object",
       "required" : [ "_embedded", "_links", "page" ],
@@ -4724,17 +4802,6 @@
         "page" : {
           "type" : "object",
           "description" : "See <<paging,Paging information>>.",
-          "properties" : { }
-        }
-      }
-    },
-    "meshObjectsRootV1" : {
-      "type" : "object",
-      "required" : [ "_links" ],
-      "properties" : {
-        "_links" : {
-          "type" : "object",
-          "description" : "All available <<mesh_object_links,meshObject Links>> for the authenticated user.",
           "properties" : { }
         }
       }
@@ -4979,60 +5046,6 @@
         }
       },
       "example" : "\n      {\n        \"project-id\": \"d3fc4451-f555-44f2-b651-c8062d21d0e3\"\n      }\n    "
-    },
-    "api_meshobjects_meshprojects1708621869" : {
-      "type" : "object",
-      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
-      "properties" : {
-        "metadata" : {
-          "type" : "object",
-          "description" : "Fixed fields that help to identify the meshProject.",
-          "properties" : {
-            "name" : {
-              "type" : "string",
-              "description" : "The identifier that should be unique within a workspace"
-            },
-            "ownedByWorkspace" : {
-              "type" : "string",
-              "description" : "The identifier of the workspace that the project should belong to."
-            }
-          },
-          "required" : [ "name", "ownedByWorkspace" ]
-        },
-        "apiVersion" : {
-          "type" : "string",
-          "description" : "Version of meshProject datatype. Matches the version part provided within the `Accept` request header."
-        },
-        "kind" : {
-          "type" : "string",
-          "description" : "As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshProject' for this endpoint."
-        },
-        "spec" : {
-          "type" : "object",
-          "description" : "All fields in this section describe the project.",
-          "properties" : {
-            "substitutePaymentMethodIdentifier" : {
-              "type" : "string",
-              "description" : "The substitute payment method of the project."
-            },
-            "paymentMethodIdentifier" : {
-              "type" : "string",
-              "description" : "The payment method of the project."
-            },
-            "displayName" : {
-              "type" : "string",
-              "description" : "The display name of the project as it is shown in meshPanel."
-            },
-            "tags" : {
-              "type" : "object",
-              "description" : "Key/Value pairs of tags set on the project. Keep in mind, that values are an array. Also see our general section about <<tags>>",
-              "properties" : { }
-            }
-          },
-          "required" : [ "displayName", "tags" ]
-        }
-      },
-      "example" : "{\n  \"apiVersion\" : \"v2\",\n  \"kind\": \"meshProject\",\n  \"spec\" : {\n    \"displayName\" : \"Test Project 3\",\n    \"tags\" : { },\n    \"paymentMethodIdentifier\" : \"test-payment\"\n  },\n  \"metadata\" : {\n    \"name\" : \"test-project-3\",\n    \"ownedByWorkspace\" : \"jkmy5mpdsv2\"\n  }\n}"
     },
     "api_meshobjectcollections1183613170" : {
       "type" : "object",

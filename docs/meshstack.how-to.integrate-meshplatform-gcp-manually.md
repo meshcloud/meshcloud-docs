@@ -118,6 +118,17 @@ The `meshfed-service` user needs to be granted the `meshfed-billing-creator` rol
 
 Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#set-up-the-service-account-for-replication).
 
+#### Optional: Using Different Billing Accounts for Different Google Cloud Projects
+
+By default, meshStack will associate all created Google Cloud projects with the same billing account. If you want to use different
+billing accounts for different projects, you can do so via the following steps:
+
+1. Create a dedicated tag in meshStack with the exact name `billingAcc` to track custom billing account IDs.
+   This has to be a tag on either the workspace, project or payment method.
+2. You can now use this tag to explicitly set the billing account ID. Upon tenant replication, it will set the 
+   billing account ID to the value given inside the tag. If no tag is set on the
+   object in meshStack, it will default to the default billing account ID from the platform configuration.
+
 ## Set up Cloud Identity
 
 ### Authorize the Service Account

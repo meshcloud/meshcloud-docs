@@ -7,6 +7,10 @@ API Users can consume several APIs provided by meshStack. You can provide your A
 
 > Only users with the role [Partner Admin](administration.index.md) have access to the administrative functionality described in this section.
 
+## API Key Limits
+
+Default Quota: Can be configured in the settings in the admin area and is applied to all workspaces
+Workspace Quota: Can be configured per workspace in the admin area
 
 ## Create API Users
 
