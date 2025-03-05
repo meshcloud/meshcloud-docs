@@ -64,6 +64,10 @@ Also see [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md#
 
 ### Sensitive Services
 
+> ⚠️ This feature is deprecated and will be removed in a future release.
+> Please use [Building Blocks](./administration.building-blocks.md) with sensitive inputs instead!
+> For more information, please see the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-sensitive-services).
+
 Usually the OSB Services platform shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the `sensitive` metadata for the according service in the OSB catalog.
 
 ```json
@@ -81,6 +85,10 @@ Usually the OSB Services platform shows credentials of a Service Binding to the 
 The OSB Services platform does not store any credentials provided by bindings on sensitive services. Instead, the meshMarketplace will only offer the credentials for download during the initial creation of the binding. The precondition for this to work is, that the creation of the binding is synchronous. Async bindings are not supported for sensitive services.
 
 ### Tenant-Aware Services
+
+> ⚠️ This feature is deprecated and will be removed in a future release.
+> Please use [Building Blocks](./administration.building-blocks.md) with Platform Tenant Identifiers as inputs instead!
+> For more information, have a look at the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-tenant-bindings)
 
 A Service Broker can define its services to be tenant-aware by providing a `tenantAware` flag in service metadata of the service definition. Tenant-aware Services can receive special Service Bindings that provide the meshTenant context to the Service Broker using a special [Bind Resource Object](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#bind-resource-object). When users create a tenant service binding in the OSB Services platform, they have to select a meshTenant. Only the meshTenants of the meshProject, which contains the Service Instance, can be selected.
 
@@ -102,6 +110,11 @@ Please review the [Tenant Services documentation](./meshstack.meshmarketplace.te
 
 ### Sharable Service Instances
 
+> ⚠️ This feature is deprecated and will be removed in a future release.
+> Please use [Building Blocks](./administration.building-blocks.md) for Workspaces instead!
+> For more information, have a look at the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-service-instance-sharing)
+
+
 [Service Instance Sharing](marketplace.service-instances.md#share-service-instance) must be activated by Service Broker via `shareable` flag on metadata of the service definition.
 
 ```json
@@ -117,6 +130,9 @@ Please review the [Tenant Services documentation](./meshstack.meshmarketplace.te
 ```
 
 ### Expiring Service Bindings
+
+> ⚠️ This feature is deprecated and will be removed in a future release.
+> Please use [Building Blocks](./administration.building-blocks.md) instead!
 
 Additionally, the OSB Services platform supports expiring service bindings which can be used to force credential rolling. Service catalogs can specify service plans with expiring bindings by settings `metadata.expiryDays` to the number of days after which a service binding for a service instance based on this plan should be deleted.
 The meshStack regularly checks expiring service bindings, notifies users about upcoming expiration dates through the OSB Services dashboard and enforces their deletion once they are expired.
