@@ -30,6 +30,10 @@ such metadata include:
 - Data Confidentiality Levels
 - Project Staging Environment, e.g. QA or production
 
+## Maximum Length for Tag Values
+
+The maximum length for string/text in our tag values is restricted to 255 characters.
+
 ## How to view and define available tags?
 
 > All actions below will require the partner role.
