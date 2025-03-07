@@ -32,7 +32,7 @@ such metadata include:
 
 ## Maximum Length for Tag Values
 
-The maximum length for tag values managed in meshStack is restricted to 255 characters. Please make sure that all platforms support the length of tags you want to replicate to the platform as they all have different restrictions on amount, supported characters and length of tags.
+Tag values in meshStack can be up to 255 characters long. Different platforms have their own limits on tag length, character support, and quantity, so ensure they support the tags you want to replicate.
 
 ## How to view and define available tags?
 
