@@ -30,6 +30,10 @@ such metadata include:
 - Data Confidentiality Levels
 - Project Staging Environment, e.g. QA or production
 
+## Maximum Length for Tag Values
+
+Tag values in meshStack can be up to 255 characters long. Different platforms have their own limits on tag length, character support, and quantity, so ensure they support the tags you want to replicate.
+
 ## How to view and define available tags?
 
 > All actions below will require the partner role.
