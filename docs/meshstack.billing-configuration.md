@@ -535,7 +535,7 @@ To enable this go to the Financials tab and select **Custom API Exchange Rates**
 
 ### Limitation
 
-1. **Euro-only conversion**: Currently, conversion is supports **only to Euro**but we plan to support other currencies in the future.
+1. **Euro-only conversion**: Currently, only conversion to Euro is supported. We plan to support other currencies in the future.
 2. **Payment Methods**: 
     Payment method amounts are currently limited to EUR, but we plan to support additional currencies in the future.
 3. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
