@@ -549,7 +549,7 @@ Project Admin, Project User and Project Reader. (optional)</p></td>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshusers?workspaceIdentifier=mobile-app&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -558,7 +558,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=mobile-app&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -614,7 +614,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1557
+Content-Length: 1451
 
 {
   "_embedded" : {
@@ -625,13 +625,11 @@ Content-Length: 1557
         "name" : "john-doe"
       },
       "spec" : {
-        "email" : "john-doe@example.com",
+        "email" : "jdoe@example.com",
         "firstName" : "John",
         "lastName" : "Doe",
-        "euid" : "da6f6d65-787e-4670-aec7-bbea60dcca91",
-        "tags" : {
-          "environment" : [ "dev", "test", "qa" ]
-        }
+        "euid" : "a966ca40-e1e9-40ba-a416-cb72c304b7b7",
+        "tags" : { }
       },
       "_links" : {
         "self" : {
@@ -645,16 +643,16 @@ Content-Length: 1557
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=mobile-app&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=mobile-app&amp;workspaceRole=Workspace%20Manager&amp;page=0&amp;size=1"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&amp;workspaceRole=Workspace%20Manager&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=mobile-app&amp;workspaceRole=Workspace%20Manager&amp;page=1&amp;size=1"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=%20my-mobile-app-team&amp;workspaceRole=Workspace%20Manager&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=mobile-app&amp;workspaceRole=Workspace%20Manager&amp;page=1&amp;size=1"
     }
   },
   "page" : {
@@ -707,8 +705,49 @@ Host: mesh-backend-url</code></pre>
     -H 'Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json'</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshuser.v2.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 525
+
+{
+  "kind" : "meshUser",
+  "apiVersion" : "v2",
+  "metadata" : {
+    "name" : "john-doe"
+  },
+  "spec" : {
+    "email" : "jdoe@example.com",
+    "firstName" : "John",
+    "lastName" : "Doe",
+    "euid" : "a966ca40-e1e9-40ba-a416-cb72c304b7b7",
+    "tags" : { }
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers/john-doe"
+    },
+    "meshworkspaceusergroups" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=john-doe"
+    }
+  }
+}</code></pre>
+</div>
+</div>
 <table id="mesh_user_response_fields" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Response Fields</caption>
+<caption class="title">Table 5. meshUser Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -740,7 +779,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The userIdentifier as 'name' to uniquely identify the meshUser.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username as 'name' to uniquely identify the meshUser.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
@@ -780,7 +819,7 @@ Host: mesh-backend-url</code></pre>
 </tbody>
 </table>
 <table id="mesh_user_links" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. User Links</caption>
+<caption class="title">Table 6. meshUser Links</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -798,6 +837,258 @@ Host: mesh-backend-url</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect4">
+<h5 id="_post_meshuser">Post meshUser</h5>
+<div class="paragraph">
+<p>Create a new meshUser.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This endpoint is only available when SCIM provisioning is disabled for this meshStack and will otherwise
+reject all requests.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You should consider updating these attributes as a measure of last resort to resolve IAM consistency issues
+in your specific setup of meshStack and connected systems. We recommend deleting the meshUser and creating a new one as
+a much safer alternative.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshusers HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshuser.v2.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json
+Content-Length: 219
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v2",
+  "kind": "meshUser",
+  "metadata": {
+    "name": "new"
+  },
+  "spec": {
+    "email": "new@example.com",
+    "euid": "new123",
+    "firstName": "New",
+    "lastName": "User",
+    "tags": {}
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshusers' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshuser.v2.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json' \
+    -d '{
+  "apiVersion": "v2",
+  "kind": "meshUser",
+  "metadata": {
+    "name": "new"
+  },
+  "spec": {
+    "email": "new@example.com",
+    "euid": "new123",
+    "firstName": "New",
+    "lastName": "User",
+    "tags": {}
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Request Fields</div>
+<p>A meshUser object. See <a href="#mesh_user_response_fields">meshUser Response Fields</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Location: https://mesh-backend-url/api/meshobjects/meshusers/new
+Content-Type: application/vnd.meshcloud.api.meshuser.v2.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 529
+
+{
+  "kind" : "meshUser",
+  "apiVersion" : "v2",
+  "metadata" : {
+    "name" : "new"
+  },
+  "spec" : {
+    "email" : "new@example.com",
+    "firstName" : "New",
+    "lastName" : "User",
+    "euid" : "new123",
+    "tags" : {
+      "environment" : [ "dev", "test", "qa" ]
+    }
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers/new"
+    },
+    "meshworkspaceusergroups" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=new"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>A meshUser object. See <a href="#mesh_user_response_fields">meshUser Response Fields</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_put_meshuser">Put meshUser</h5>
+<div class="paragraph">
+<p>Create or update a single meshUser.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This endpoint is only available when SCIM provisioning is disabled for this meshStack and will otherwise
+reject all requests.</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please note that changing attributes like <code>metadata.name</code> (also referred to as <code>username</code>) and <code>euid</code> can have
+serious consequences for cloud platforms and building blocks consuming these attributes. Proceed only with extreme
+caution.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You should consider updating these attributes as a measure of last resort to resolve IAM consistency issues
+in your specific setup of meshStack and connected systems. We recommend deleting the meshUser and creating a new one as
+a much safer alternative.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshusers/samira-johnson HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshuser.v2.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json
+Content-Length: 271
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v2",
+  "kind": "meshUser",
+  "metadata": {
+    "name": "samira-johnson"
+  },
+  "spec": {
+    "email": "sjohnson@example.com",
+    "euid": "bbf4c233-8883-482b-80bd-a3d91193778d",
+    "firstName": "Samira",
+    "lastName": "Johnson",
+    "tags": {}
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshusers/samira-johnson' -i -u 'valid_username:valid_password' -X PUT \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshuser.v2.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json' \
+    -d '{
+  "apiVersion": "v2",
+  "kind": "meshUser",
+  "metadata": {
+    "name": "samira-johnson"
+  },
+  "spec": {
+    "email": "sjohnson@example.com",
+    "euid": "bbf4c233-8883-482b-80bd-a3d91193778d",
+    "firstName": "Samira",
+    "lastName": "Johnson",
+    "tags": {}
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Request Fields</div>
+<p>A meshUser object. See <a href="#mesh_user_response_fields">meshUser Response Fields</a>.</p>
+</div>
 <div class="listingblock">
 <div class="title">Example Response</div>
 <div class="content">
@@ -813,32 +1104,93 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 579
+Content-Length: 603
 
 {
   "kind" : "meshUser",
   "apiVersion" : "v2",
   "metadata" : {
-    "name" : "john-doe"
+    "name" : "samira-johnson"
   },
   "spec" : {
-    "email" : "john-doe@example.com",
-    "firstName" : "John",
-    "lastName" : "Doe",
-    "euid" : "da6f6d65-787e-4670-aec7-bbea60dcca91",
+    "email" : "sjohnson@example.com",
+    "firstName" : "Samira",
+    "lastName" : "Johnson",
+    "euid" : "bbf4c233-8883-482b-80bd-a3d91193778d",
     "tags" : {
       "environment" : [ "dev", "test", "qa" ]
     }
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers/john-doe"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers/samira-johnson"
     },
     "meshworkspaceusergroups" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=john-doe"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups?username=samira-johnson"
     }
   }
 }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>A meshUser object. See <a href="#mesh_user_response_fields">meshUser Response Fields</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshuser">Delete meshUser</h5>
+<div class="paragraph">
+<p>Delete a single meshUser.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshusers/john-doe HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshusers/john-doe' -i -u 'valid_username:valid_password' -X DELETE \
+    -H 'Accept: application/vnd.meshcloud.api.meshuser.v2.hal+json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 204 No Content
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
 </div>
 </div>
 </div>
@@ -846,7 +1198,7 @@ Content-Length: 579
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-03-13 14:13:35 UTC
+Last updated 2025-03-19 14:11:07 UTC
 </div>
 </div>
 </body>
