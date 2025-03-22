@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>meshObjects</title>
+<title>meshObjects API</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,11 +441,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="mesh_objects">meshObjects</h3>
+<h3 id="mesh_objects">meshObjects API</h3>
 <div class="paragraph">
-<p>Via this API you can get, create, update and delete meshObjects. For creating, updating and deleting
-meshObjects either use the imperative endpoints for a meshObject or the
-<a href="#mesh_object_declarative_import">declarative import</a>.</p>
+<p>meshObjects represent the core data model of meshStack.
+The meshObject API is a REST API that allows you to get, create, update and delete meshObjects.</p>
+</div>
+<div class="paragraph">
+<p>Depending on your use case you can consider the <a href="#mesh_object_declarative_import">declarative import</a> API as an alternative
+to the REST API.</p>
+</div>
+<div class="sect3">
+<h4 id="mesh_root">Index</h4>
+<div class="paragraph">
+<p>The root endpoint of the meshObject API provides links to all other meshObject endpoints in the API.
+You can use this endpoint to discover all available meshObject endpoints your authenticated user has access to.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Request Headers</caption>
@@ -462,7 +471,7 @@ meshObjects either use the imperative endpoints for a meshObject or the
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshobjects.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshobjects.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -598,8 +607,8 @@ Content-Length: 2868
 
 {
   "_links" : {
-    "meshprojects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
+    "meshusers" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
       "templated" : true
     },
     "meshprojectgroupbindings" : {
@@ -610,31 +619,8 @@ Content-Length: 2868
       "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
       "templated" : true
     },
-    "meshtagdefinitions" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
-    },
-    "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
-      "templated" : true
-    },
-    "meshpaymentmethods" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
-      "templated" : true
-    },
-    "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
-      "templated" : true
-    },
-    "meshbuildingblocks" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks{?workspaceIdentifier,customerIdentifier,projectIdentifier,platformIdentifier,name,definitionName,definitionUuid,versionNumber,status}",
-      "templated" : true
-    },
-    "meshbuildingblockruns" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
-      "templated" : true
-    },
-    "meshserviceinstances" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
+    "meshprojects" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
       "templated" : true
     },
     "meshworkspaceuserbindings" : {
@@ -652,11 +638,35 @@ Content-Length: 2868
     "meshworkspaces" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces"
     },
+    "meshtenants" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+      "templated" : true
+    },
+    "meshpaymentmethods" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
+      "templated" : true
+    },
+    "meshbuildingblocks" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks{?workspaceIdentifier,customerIdentifier,projectIdentifier,platformIdentifier,name,definitionName,definitionUuid,versionNumber,status}",
+      "templated" : true
+    },
+    "meshbuildingblockruns" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
+      "templated" : true
+    },
+    "meshtagdefinitions" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
+    },
+    "meshserviceinstances" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
+      "templated" : true
+    },
     "self" : {
       "href" : "https://mesh-backend-url/api/meshobjects"
     }
   }
 }</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -684,7 +694,7 @@ Content-Length: 2868
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspace.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspace.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -788,7 +798,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "admin-customer",
-        "createdOn" : "2025-03-19T14:12:39Z"
+        "createdOn" : "2025-03-22T06:01:27Z"
       },
       "spec" : {
         "displayName" : "admin-customer",
@@ -819,7 +829,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-customer",
-        "createdOn" : "2025-03-19T14:12:39Z"
+        "createdOn" : "2025-03-22T06:01:27Z"
       },
       "spec" : {
         "displayName" : "demo-customer",
@@ -850,7 +860,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-partner",
-        "createdOn" : "2025-03-19T14:12:39Z"
+        "createdOn" : "2025-03-22T06:01:27Z"
       },
       "spec" : {
         "displayName" : "demo-partner",
@@ -922,7 +932,7 @@ Content-Length: 4124
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspace.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspace.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1066,7 +1076,7 @@ Content-Length: 1055
   "apiVersion" : "v1",
   "metadata" : {
     "name" : "admin-customer",
-    "createdOn" : "2025-03-19T14:12:39Z"
+    "createdOn" : "2025-03-22T06:01:27Z"
   },
   "spec" : {
     "displayName" : "admin-customer",
@@ -1122,7 +1132,7 @@ Content-Length: 1055
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1160,7 +1170,7 @@ Content-Length: 1055
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects?workspaceIdentifier=i9ma3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects?workspaceIdentifier=jx696mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -1169,7 +1179,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=i9ma3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jx696mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -1234,7 +1244,7 @@ Content-Length: 2273
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-project-1",
-        "ownedByWorkspace" : "i9ma3mpdsv2",
+        "ownedByWorkspace" : "jx696mpdsv2",
         "createdOn" : "2024-01-01T00:00:00Z"
       },
       "spec" : {
@@ -1244,38 +1254,38 @@ Content-Length: 2273
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/jx696mpdsv2.test-project-1"
         },
         "meshtenants" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshusers" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "activePaymentMethod" : {
           "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
         },
         "meshprojectuserbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshprojectgroupbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
         }
       }
     } ]
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=i9ma3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jx696mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=i9ma3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jx696mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=i9ma3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jx696mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=i9ma3mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=jx696mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     }
   },
   "page" : {
@@ -1309,14 +1319,14 @@ Deleted meshProjects can also be requested via this endpoint.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects/jx696mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -1325,7 +1335,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/jx696mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -1473,9 +1483,9 @@ Content-Length: 1344
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-1",
-    "ownedByWorkspace" : "i9ma3mpdsv2",
+    "ownedByWorkspace" : "jx696mpdsv2",
     "createdOn" : "2024-01-01T00:00:00Z",
-    "deletedOn" : "2025-03-19T14:13:39.056178156Z"
+    "deletedOn" : "2025-03-22T06:02:19.872322730Z"
   },
   "spec" : {
     "displayName" : "Test Project 1",
@@ -1484,22 +1494,22 @@ Content-Length: 1344
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/jx696mpdsv2.test-project-1"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-1"
     }
   }
 }</code></pre>
@@ -1526,11 +1536,11 @@ Content-Length: 1344
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">You should use <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> as an Content-Type header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1550,7 +1560,7 @@ Content-Length: 1344
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "i9ma3mpdsv2"
+    "ownedByWorkspace" : "jx696mpdsv2"
   }
 }</code></pre>
 </div>
@@ -1575,7 +1585,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "i9ma3mpdsv2"
+    "ownedByWorkspace" : "jx696mpdsv2"
   }
 }</code></pre>
 </div>
@@ -1596,7 +1606,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "i9ma3mpdsv2"
+    "ownedByWorkspace" : "jx696mpdsv2"
   }
 }'</code></pre>
 </div>
@@ -1675,7 +1685,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-3
+Location: https://mesh-backend-url/api/meshobjects/meshprojects/jx696mpdsv2.test-project-3
 Content-Type: application/vnd.meshcloud.api.meshproject.v2.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -1691,8 +1701,8 @@ Content-Length: 1302
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "i9ma3mpdsv2",
-    "createdOn" : "2025-03-19T14:13:38.516448385Z"
+    "ownedByWorkspace" : "jx696mpdsv2",
+    "createdOn" : "2025-03-22T06:02:19.334110651Z"
   },
   "spec" : {
     "displayName" : "Test Project 3",
@@ -1701,22 +1711,22 @@ Content-Length: 1302
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/jx696mpdsv2.test-project-3"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=i9ma3mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=jx696mpdsv2&amp;projectIdentifier=test-project-3"
     }
   }
 }</code></pre>
@@ -1747,7 +1757,7 @@ If one tenant still has such active services the project deletion will fail.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshproject.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1773,7 +1783,7 @@ If one tenant still has such active services the project deletion will fail.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojects/jx696mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -1782,7 +1792,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/i9ma3mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/jx696mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -1831,7 +1841,7 @@ The actual permissions that the role have within the platform tenant are determi
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1954,7 +1964,7 @@ Content-Length: 982
       "kind" : "meshProjectUserBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "4725f740-6dfe-41bb-9ad5-ee0e4874bf09"
+        "name" : "dfd6c417-9eeb-4d48-864f-dbc9673abc28"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -1969,7 +1979,7 @@ Content-Length: 982
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/4725f740-6dfe-41bb-9ad5-ee0e4874bf09"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/dfd6c417-9eeb-4d48-864f-dbc9673abc28"
         }
       }
     } ]
@@ -2009,14 +2019,14 @@ Content-Length: 982
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/userbindings/4725f740-6dfe-41bb-9ad5-ee0e4874bf09 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/userbindings/dfd6c417-9eeb-4d48-864f-dbc9673abc28 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2025,7 +2035,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/4725f740-6dfe-41bb-9ad5-ee0e4874bf09' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/dfd6c417-9eeb-4d48-864f-dbc9673abc28' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -2117,7 +2127,7 @@ Content-Length: 534
   "kind" : "meshProjectUserBinding",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "4725f740-6dfe-41bb-9ad5-ee0e4874bf09"
+    "name" : "dfd6c417-9eeb-4d48-864f-dbc9673abc28"
   },
   "roleRef" : {
     "name" : "Project User"
@@ -2132,7 +2142,7 @@ Content-Length: 534
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/4725f740-6dfe-41bb-9ad5-ee0e4874bf09"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/dfd6c417-9eeb-4d48-864f-dbc9673abc28"
     }
   }
 }</code></pre>
@@ -2160,11 +2170,11 @@ which grants them the corresponding permissions within the cloud platform. Befor
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2425,7 +2435,7 @@ The actual permissions that the role have within the platform tenant are determi
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2543,7 +2553,7 @@ Content-Length: 986
       "kind" : "meshProjectGroupBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "abfd1809-48d5-401f-961d-7b1d2d5ffa46"
+        "name" : "8373bc7c-96b5-49d2-ac34-10e444157ec6"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -2558,7 +2568,7 @@ Content-Length: 986
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/abfd1809-48d5-401f-961d-7b1d2d5ffa46"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/8373bc7c-96b5-49d2-ac34-10e444157ec6"
         }
       }
     } ]
@@ -2598,14 +2608,14 @@ Content-Length: 986
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/groupbindings/abfd1809-48d5-401f-961d-7b1d2d5ffa46 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/groupbindings/8373bc7c-96b5-49d2-ac34-10e444157ec6 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2614,7 +2624,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/abfd1809-48d5-401f-961d-7b1d2d5ffa46' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/8373bc7c-96b5-49d2-ac34-10e444157ec6' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -2706,7 +2716,7 @@ Content-Length: 536
   "kind" : "meshProjectGroupBinding",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "abfd1809-48d5-401f-961d-7b1d2d5ffa46"
+    "name" : "8373bc7c-96b5-49d2-ac34-10e444157ec6"
   },
   "roleRef" : {
     "name" : "Project User"
@@ -2721,7 +2731,7 @@ Content-Length: 536
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/abfd1809-48d5-401f-961d-7b1d2d5ffa46"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/8373bc7c-96b5-49d2-ac34-10e444157ec6"
     }
   }
 }</code></pre>
@@ -2748,11 +2758,11 @@ Content-Length: 536
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2954,7 +2964,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/abfd1809-48d5-401f-961d-7b1d2d5ffa46 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/8373bc7c-96b5-49d2-ac34-10e444157ec6 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -2962,7 +2972,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/abfd1809-48d5-401f-961d-7b1d2d5ffa46' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/8373bc7c-96b5-49d2-ac34-10e444157ec6' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3013,7 +3023,7 @@ be added in the future.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3169,7 +3179,7 @@ Content-Length: 947
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3313,11 +3323,11 @@ Content-Length: 475
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspaceuserbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3572,7 +3582,7 @@ X-Frame-Options: DENY</code></pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3670,7 +3680,7 @@ Content-Length: 951
       "kind" : "meshWorkspaceGroupBinding",
       "apiVersion" : "v2",
       "metadata" : {
-        "name" : "65c35e00-69a8-44a3-861f-db54fe191a19"
+        "name" : "b82a6724-18b2-4abb-a615-4bc89e704a38"
       },
       "roleRef" : {
         "name" : "Workspace Manager"
@@ -3684,7 +3694,7 @@ Content-Length: 951
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/65c35e00-69a8-44a3-861f-db54fe191a19"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/b82a6724-18b2-4abb-a615-4bc89e704a38"
         }
       }
     } ]
@@ -3724,14 +3734,14 @@ Content-Length: 951
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshworkspacebindings/groupbindings/65c35e00-69a8-44a3-861f-db54fe191a19 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshworkspacebindings/groupbindings/b82a6724-18b2-4abb-a615-4bc89e704a38 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -3740,7 +3750,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/65c35e00-69a8-44a3-861f-db54fe191a19' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/b82a6724-18b2-4abb-a615-4bc89e704a38' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -3827,7 +3837,7 @@ Content-Length: 512
   "kind" : "meshWorkspaceGroupBinding",
   "apiVersion" : "v2",
   "metadata" : {
-    "name" : "65c35e00-69a8-44a3-861f-db54fe191a19"
+    "name" : "b82a6724-18b2-4abb-a615-4bc89e704a38"
   },
   "roleRef" : {
     "name" : "Workspace Manager"
@@ -3841,7 +3851,7 @@ Content-Length: 512
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/65c35e00-69a8-44a3-861f-db54fe191a19"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/b82a6724-18b2-4abb-a615-4bc89e704a38"
     }
   }
 }</code></pre>
@@ -3868,11 +3878,11 @@ Content-Length: 512
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4130,7 +4140,7 @@ X-Frame-Options: DENY</code></pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4252,12 +4262,12 @@ Content-Length: 2091
         "ownedByProject" : "test-project",
         "ownedByWorkspace" : "test-workspace",
         "platformIdentifier" : "aws.aws-meshstack-dev",
-        "deletedOn" : "2025-03-20T14:13:42.083052016Z",
+        "deletedOn" : "2025-03-23T06:02:22.995302891Z",
         "assignedTags" : { },
         "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
       },
       "spec" : {
-        "localId" : "03c08747-f1ab-498d-add2-2ead0c5c9c7d",
+        "localId" : "408291d1-930e-46aa-875d-ca21eebcb813",
         "landingZoneIdentifier" : "stage-dev",
         "quotas" : [ {
           "key" : "limits.cpu",
@@ -4321,7 +4331,7 @@ Content-Length: 2091
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4453,12 +4463,12 @@ Content-Length: 979
     "ownedByProject" : "test-project",
     "ownedByWorkspace" : "test-workspace",
     "platformIdentifier" : "aws.aws-meshstack-dev",
-    "deletedOn" : "2025-03-20T14:13:42.083052016Z",
+    "deletedOn" : "2025-03-23T06:02:22.995302891Z",
     "assignedTags" : { },
     "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
   },
   "spec" : {
-    "localId" : "03c08747-f1ab-498d-add2-2ead0c5c9c7d",
+    "localId" : "408291d1-930e-46aa-875d-ca21eebcb813",
     "landingZoneIdentifier" : "stage-dev",
     "quotas" : [ {
       "key" : "limits.cpu",
@@ -4500,11 +4510,11 @@ Content-Length: 979
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtenant.v3.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4742,7 +4752,7 @@ X-Frame-Options: DENY</code></pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4882,7 +4892,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2025-03-19T14:13:28.569557344Z"
+        "createdOn" : "2025-03-22T06:02:09.418643487Z"
       },
       "spec" : {
         "displayName" : "parent block",
@@ -4913,7 +4923,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2025-03-19T14:13:28.618582143Z"
+        "createdOn" : "2025-03-22T06:02:09.459990244Z"
       },
       "spec" : {
         "displayName" : "child block",
@@ -4983,7 +4993,7 @@ Content-Length: 2947
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5204,7 +5214,7 @@ Content-Length: 1334
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2025-03-19T14:13:28.618582143Z"
+    "createdOn" : "2025-03-22T06:02:09.459990244Z"
   },
   "spec" : {
     "displayName" : "child block",
@@ -5261,11 +5271,11 @@ Content-Length: 1334
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5296,7 +5306,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "1b2b59a4-15d8-4f1b-8af1-29f270381c4c"
+      "buildingBlockUuid": "ede1ee28-5c3f-4fe2-91db-1e2e53b3149a"
     }]
   }
 }</code></pre>
@@ -5325,7 +5335,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "1b2b59a4-15d8-4f1b-8af1-29f270381c4c"
+      "buildingBlockUuid": "ede1ee28-5c3f-4fe2-91db-1e2e53b3149a"
     }]
   }
 } '</code></pre>
@@ -5453,7 +5463,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -5468,12 +5478,12 @@ Content-Length: 1253
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v1",
   "metadata" : {
-    "uuid" : "10c3e102-bb48-48bd-a709-195f122933a8",
+    "uuid" : "9508d947-06cd-4de8-8abb-9308efbac64e",
     "definitionUuid" : "ef6aaf87-3f8c-477c-94f4-f3cf509728ca",
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2025-03-19T14:13:29.680114825Z"
+    "createdOn" : "2025-03-22T06:02:10.531378023Z"
   },
   "spec" : {
     "displayName" : "New BuildingBlock",
@@ -5483,7 +5493,7 @@ Content-Length: 1253
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "1b2b59a4-15d8-4f1b-8af1-29f270381c4c",
+      "buildingBlockUuid" : "ede1ee28-5c3f-4fe2-91db-1e2e53b3149a",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -5493,13 +5503,13 @@ Content-Length: 1253
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e"
     },
     "meshtenant" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e/purge"
     }
   }
 }</code></pre>
@@ -5516,7 +5526,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -5524,7 +5534,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5554,7 +5564,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8/purge HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -5562,7 +5572,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/10c3e102-bb48-48bd-a709-195f122933a8/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/9508d947-06cd-4de8-8abb-9308efbac64e/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5620,7 +5630,7 @@ a consistent display and ordering of steps, it is highly advised to pre-register
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5771,7 +5781,7 @@ which will potentially be used as inputs of other dependent building blocks.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblockrun.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6015,7 +6025,7 @@ Host: mesh-backend-url
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6049,7 +6059,7 @@ Host: mesh-backend-url
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=i9ma3mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=jx696mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -6058,7 +6068,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=i9ma3mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jx696mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -6123,7 +6133,7 @@ Content-Length: 1999
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-payment-method-1",
-        "ownedByWorkspace" : "i9ma3mpmdsv2"
+        "ownedByWorkspace" : "jx696mpmdsv2"
       },
       "spec" : {
         "displayName" : "Test Payment Method 1",
@@ -6143,7 +6153,7 @@ Content-Length: 1999
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-payment-method-2",
-        "ownedByWorkspace" : "i9ma3mpmdsv2"
+        "ownedByWorkspace" : "jx696mpmdsv2"
       },
       "spec" : {
         "displayName" : "Test Payment Method 2",
@@ -6162,16 +6172,16 @@ Content-Length: 1999
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=i9ma3mpmdsv2&amp;page=0&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jx696mpmdsv2&amp;page=0&amp;size=2"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=i9ma3mpmdsv2&amp;page=0&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jx696mpmdsv2&amp;page=0&amp;size=2"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=i9ma3mpmdsv2&amp;page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jx696mpmdsv2&amp;page=1&amp;size=2"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=i9ma3mpmdsv2&amp;page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=jx696mpmdsv2&amp;page=1&amp;size=2"
     }
   },
   "page" : {
@@ -6204,7 +6214,7 @@ Content-Length: 1999
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6337,7 +6347,7 @@ Content-Length: 539
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-payment-method-1",
-    "ownedByWorkspace" : "i9ma3mpmdsv2"
+    "ownedByWorkspace" : "jx696mpmdsv2"
   },
   "spec" : {
     "displayName" : "Test Payment Method 1",
@@ -6395,7 +6405,7 @@ For that purpose several requests are required to cover direct user bindings and
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6545,7 +6555,7 @@ Content-Length: 1451
         "email" : "jdoe@example.com",
         "firstName" : "John",
         "lastName" : "Doe",
-        "euid" : "a966ca40-e1e9-40ba-a416-cb72c304b7b7",
+        "euid" : "09832198-32e4-43f8-9e2d-050feda0af8e",
         "tags" : { }
       },
       "_links" : {
@@ -6602,7 +6612,7 @@ Content-Length: 1451
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6649,7 +6659,7 @@ Content-Length: 525
     "email" : "jdoe@example.com",
     "firstName" : "John",
     "lastName" : "Doe",
-    "euid" : "a966ca40-e1e9-40ba-a416-cb72c304b7b7",
+    "euid" : "09832198-32e4-43f8-9e2d-050feda0af8e",
     "tags" : { }
   },
   "_links" : {
@@ -6769,9 +6779,8 @@ reject all requests.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You should consider updating these attributes as a measure of last resort to resolve IAM consistency issues
-in your specific setup of meshStack and connected systems. We recommend deleting the meshUser and creating a new one as
-a much safer alternative.</p>
+<p>We recommend creating meshUsers using SCIM provisioning from an authoritative IAM system like Entra Id.
+As an alternative you can provision users via meshObject API using this endpoint.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 80. Request Headers</caption>
@@ -6788,11 +6797,11 @@ a much safer alternative.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6946,11 +6955,11 @@ a much safer alternative.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObject API is <a href="#versioning">versioned</a>. Use`application/vnd.meshcloud.api.meshuser.v2.hal+json` for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -6972,7 +6981,7 @@ Host: mesh-backend-url
   },
   "spec": {
     "email": "sjohnson@example.com",
-    "euid": "bbf4c233-8883-482b-80bd-a3d91193778d",
+    "euid": "b9680b2a-89bf-4cd6-bd48-c3f262ddaad3",
     "firstName": "Samira",
     "lastName": "Johnson",
     "tags": {}
@@ -6994,7 +7003,7 @@ Host: mesh-backend-url
   },
   "spec": {
     "email": "sjohnson@example.com",
-    "euid": "bbf4c233-8883-482b-80bd-a3d91193778d",
+    "euid": "b9680b2a-89bf-4cd6-bd48-c3f262ddaad3",
     "firstName": "Samira",
     "lastName": "Johnson",
     "tags": {}
@@ -7033,7 +7042,7 @@ Content-Length: 603
     "email" : "sjohnson@example.com",
     "firstName" : "Samira",
     "lastName" : "Johnson",
-    "euid" : "bbf4c233-8883-482b-80bd-a3d91193778d",
+    "euid" : "b9680b2a-89bf-4cd6-bd48-c3f262ddaad3",
     "tags" : {
       "environment" : [ "dev", "test", "qa" ]
     }
@@ -7074,7 +7083,7 @@ Content-Length: 603
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshuser.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7137,7 +7146,7 @@ X-Frame-Options: DENY</code></pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7307,7 +7316,7 @@ identifier is always "meshcloud-global-partner".</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshworkspaceusergroup.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7493,7 +7502,7 @@ Content-Length: 678
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> as an <code>Accept</code> header to be guaranteed the V2 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7616,20 +7625,20 @@ Content-Length: 1386
       "kind" : "meshServiceInstance",
       "apiVersion" : "v2",
       "metadata" : {
-        "ownedByProject" : "i9ma3mtdg11",
+        "ownedByProject" : "jx696mtdg11",
         "ownedByWorkspace" : "my-mobile-app-team",
-        "marketplaceIdentifier" : "i9ma3mtdg1",
-        "instanceId" : "i9ma3mtdg9"
+        "marketplaceIdentifier" : "jx696mtdg1",
+        "instanceId" : "jx696mtdg9"
       },
       "spec" : {
-        "displayName" : "i9ma3mtdg12",
-        "serviceId" : "i9ma3mtdg5",
-        "planId" : "i9ma3mtdg7",
+        "displayName" : "jx696mtdg12",
+        "serviceId" : "jx696mtdg5",
+        "planId" : "jx696mtdg7",
         "creator" : "Unknown"
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/i9ma3mtdg9"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/jx696mtdg9"
         }
       }
     } ]
@@ -7678,7 +7687,7 @@ Content-Length: 1386
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7771,7 +7780,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.creator</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The creator&#8217;s username that creates this Service Instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshUser <code>username</code> recorded as the creator of this Service Instance.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7790,21 +7799,21 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 535
+Content-Length: 530
 
 {
   "kind" : "meshServiceInstance",
   "apiVersion" : "v2",
   "metadata" : {
-    "ownedByProject" : "i9ma3smsids-1",
+    "ownedByProject" : "production",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "i9ma3mtdg21",
+    "marketplaceIdentifier" : "eu-west-1",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "i9ma3mtdg25",
-    "planId" : "i9ma3mtdg27",
+    "serviceId" : "jx696mtdg24",
+    "planId" : "jx696mtdg26",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -7836,11 +7845,11 @@ Content-Length: 535
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> as an <code>Accept</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7851,23 +7860,23 @@ Content-Length: 535
 Content-Type: application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json
-Content-Length: 400
+Content-Length: 394
 Host: mesh-backend-url
 
 {
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "i9ma3smsids-1",
+    "ownedByProject" : "production",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "i9ma3mtdg21",
+    "marketplaceIdentifier" : "eu-west-1",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "i9ma3mtdg25",
-    "planId" : "i9ma3mtdg27",
-    "creator" : "admin@meshcloud.io"
+    "serviceId" : "jx696mtdg24",
+    "planId" : "jx696mtdg26",
+    "creator" : "alice@example.com"
   }
 }</code></pre>
 </div>
@@ -7882,16 +7891,16 @@ Host: mesh-backend-url
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "i9ma3smsids-1",
+    "ownedByProject" : "production",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "i9ma3mtdg21",
+    "marketplaceIdentifier" : "eu-west-1",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "i9ma3mtdg25",
-    "planId" : "i9ma3mtdg27",
-    "creator" : "admin@meshcloud.io"
+    "serviceId" : "jx696mtdg24",
+    "planId" : "jx696mtdg26",
+    "creator" : "alice@example.com"
   }
 }'</code></pre>
 </div>
@@ -7969,7 +7978,7 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.creator</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The creator&#8217;s username that creates this Service Instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The meshUser&#8217;s <code>username</code> that should be passed to the Open Service Broker via the <code>X-Broker-API-Originating-Identity</code> header.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7988,21 +7997,21 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 527
+Content-Length: 522
 
 {
   "kind" : "meshServiceInstance",
   "apiVersion" : "v2",
   "metadata" : {
-    "ownedByProject" : "i9ma3smsids-1",
+    "ownedByProject" : "production",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "i9ma3mtdg21",
+    "marketplaceIdentifier" : "eu-west-1",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "i9ma3mtdg25",
-    "planId" : "i9ma3mtdg27",
+    "serviceId" : "jx696mtdg24",
+    "planId" : "jx696mtdg26",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -8034,11 +8043,11 @@ Content-Length: 527
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> as an <code>Accept</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8049,23 +8058,23 @@ Content-Length: 527
 Content-Type: application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshserviceinstance.v2.hal+json
-Content-Length: 408
+Content-Length: 402
 Host: mesh-backend-url
 
 {
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "i9ma3smsids-1",
+    "ownedByProject" : "production",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "i9ma3mtdg21",
+    "marketplaceIdentifier" : "eu-west-1",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "i9ma3mtdg25",
-    "planId" : "i9ma3mtdg27",
-    "creator" : "admin@meshcloud.io"
+    "serviceId" : "jx696mtdg24",
+    "planId" : "jx696mtdg26",
+    "creator" : "alice@example.com"
   }
 }</code></pre>
 </div>
@@ -8080,16 +8089,16 @@ Host: mesh-backend-url
   "apiVersion" : "v2",
   "kind" : "meshServiceInstance",
   "metadata" : {
-    "ownedByProject" : "i9ma3smsids-1",
+    "ownedByProject" : "production",
     "ownedByWorkspace" : "my-mobile-app-team",
-    "marketplaceIdentifier" : "i9ma3mtdg21",
+    "marketplaceIdentifier" : "eu-west-1",
     "instanceId" : "serviceInstanceId"
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "i9ma3mtdg25",
-    "planId" : "i9ma3mtdg27",
-    "creator" : "admin@meshcloud.io"
+    "serviceId" : "jx696mtdg24",
+    "planId" : "jx696mtdg26",
+    "creator" : "alice@example.com"
   }
 }'</code></pre>
 </div>
@@ -8180,7 +8189,7 @@ set up via meshPanel have read access to meshTagDefinitions by default.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8379,7 +8388,7 @@ Content-Length: 2173
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8685,11 +8694,11 @@ Content-Length: 650
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8836,11 +8845,11 @@ Content-Length: 682
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -9021,7 +9030,7 @@ for the <code>key</code> from all meshObjects specified by its <code>targetKind<
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshObjectApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -10181,7 +10190,7 @@ rates:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-03-19 14:11:07 UTC
+Last updated 2025-03-22 06:00:06 UTC
 </div>
 </div>
 </body>
