@@ -540,6 +540,6 @@ To enable this go to the Financials tab and select **Custom API Exchange Rates**
     Payment method amounts are currently limited to EUR, but we plan to support additional currencies in the future.
 3. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
 4. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
-5. **Presenting other Currencie: If you want to show a different currency besides Euro you have to reach out to support@meshcloud.io
+5. **Presenting other Currencies: If you want to show a different currency besides Euro you have to reach out to support@meshcloud.io
 
 
