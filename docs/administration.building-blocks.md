@@ -37,12 +37,13 @@ There are currently two options for a building block type.
 A Workspace Building Block is created under a workspace and is globally available to the entire workspace to all projects.  
 Use this type when the service does **not need to be tied to a specific cloud tenant**—for example, project tooling or a central identity service.
 Workspace building blocks dont have prerequisites such as platform type, platform, landing zone or a tenant. They have an individual
-life cycle.
+life cycle. Furthermore their consumption can be restricted via policies.
 
 ### Tenant Building Block
 
 A Tenant Building Block is tied directly to a specific cloud tenant, such as a virtual network or database within an AWS Account or Azure Subscription.  
-When the tenant is deleted, the building block **must also be deleted**.
+When the tenant is deleted, the building block **must also be deleted**. Tenant building blocks can have a price setup for them that is added to 
+the tenant usage report and chargeback statement. Furthermore they can be restricted via policies.
 
 
 ### General Building Block Definition Information
