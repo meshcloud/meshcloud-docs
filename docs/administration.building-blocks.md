@@ -27,17 +27,23 @@ In the Admin Area, click on the "Building Block" item in the sidebar under "Plat
 
 > meshStack supports Terraform up to version 1.5.5 and supports OpenTofu versions starting with 1.6.0.
 
-### Building Block Types
+## Building Block Types
 
-There are currently two options for a building block type.
-Please note that this decision is important and cannot be changed later on.
+There are currently two options for a building block type.  
+**Important:** This decision is crucial and **cannot be changed later**.
 
-- **Workspace Building Block**: This is a building block that is established under a workspace. It is globally available
-  to the entire workspace it was created in. We recommend using this if you have a service that does not need to be tied
-  to a certain cloud tenant. For example, project tooling or a central identity service.
-- **Tenant Building Block**: This is a building block that is tied to a cloud tenant.
-  For example, a virtual network or a database that lives in an AWS Account or an Azure Subscription. The building block
-  will have to be deleted when deleting the tenant.
+### **Workspace Building Block**
+
+A Workspace Building Block is created under a workspace and is globally available to the entire workspace to all projects.  
+Use this type when the service does **not need to be tied to a specific cloud tenant**—for example, project tooling or a central identity service.
+Workspace building blocks dont have prerequisites such as platform type, platform, landing zone or a tenant. They have an individual
+life cycle.
+
+### **Tenant Building Block**
+
+A Tenant Building Block is tied directly to a specific cloud tenant, such as a virtual network or database within an AWS Account or Azure Subscription.  
+When the tenant is deleted, the building block **must also be deleted**.
+
 
 ### General Building Block Definition Information
 
