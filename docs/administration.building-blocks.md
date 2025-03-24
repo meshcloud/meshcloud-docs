@@ -43,7 +43,7 @@ life cycle. Furthermore, their consumption can be restricted via policies.
 
 A Tenant Building Block is tied directly to a specific cloud tenant, such as a virtual network or database within an AWS Account or Azure Subscription.  
 When the tenant is deleted, the building block **must also be deleted**. Tenant building blocks can have a price setup for them that is added to 
-the tenant usage report and chargeback statement. Furthermore they can be restricted via policies.
+the tenant usage report and chargeback statement. Furthermore, they can be restricted via policies.
 
 
 ### General Building Block Definition Information
