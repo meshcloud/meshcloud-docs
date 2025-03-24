@@ -36,7 +36,7 @@ There are currently two options for a building block type.
 
 A Workspace Building Block is created under a workspace and is globally available to the entire workspace to all projects.  
 Use this type when the service does **not need to be tied to a specific cloud tenant**—for example, project tooling or a central identity service.
-Workspace building blocks dont have prerequisites such as platform type, platform, landing zone or a tenant. They have an individual
+Workspace building blocks don't have prerequisites such as platform type, platform, landing zone or a tenant. They have an individual
 life cycle. Furthermore their consumption can be restricted via policies.
 
 ### Tenant Building Block
