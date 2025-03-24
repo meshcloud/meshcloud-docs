@@ -32,14 +32,14 @@ In the Admin Area, click on the "Building Block" item in the sidebar under "Plat
 There are currently two options for a building block type.  
 **Important:** This decision is crucial and **cannot be changed later**.
 
-### **Workspace Building Block**
+### Workspace Building Block
 
 A Workspace Building Block is created under a workspace and is globally available to the entire workspace to all projects.  
 Use this type when the service does **not need to be tied to a specific cloud tenant**—for example, project tooling or a central identity service.
 Workspace building blocks dont have prerequisites such as platform type, platform, landing zone or a tenant. They have an individual
 life cycle.
 
-### **Tenant Building Block**
+### Tenant Building Block
 
 A Tenant Building Block is tied directly to a specific cloud tenant, such as a virtual network or database within an AWS Account or Azure Subscription.  
 When the tenant is deleted, the building block **must also be deleted**.
