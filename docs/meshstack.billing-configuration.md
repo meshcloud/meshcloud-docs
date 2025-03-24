@@ -526,7 +526,7 @@ If meshStack is hosted privately, ensure it can make external requests (configur
 
 When currency conversion is turned on: Financial data will be presented in Euro starting with the current month
 When currency conversion is turned off: Financial data will be presented in the original currency
-When currency conversion is switched on and off mulitple times: Then the financial data once converted will also be shown for previous months
+When currency conversion is switched on and off multiple times: Then the financial data once converted will also be shown for previous months
 
 #### Custom API Exchange Rates
 
