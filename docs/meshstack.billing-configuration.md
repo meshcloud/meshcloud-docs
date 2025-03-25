@@ -113,7 +113,6 @@ If you would like to add prices for OSBs, please contact our support team and th
 
 >Please note that any changes in the price of Platform Services will be reflected in the chargeback statements based on the period in which the change occurred. For instance, a new price set for a Building Block on March 28th will be applied to the March chargeback statement.
 
-
 ### Private Platform
 
 When configuring a product for private cloud billing, Partners need to choose the cloud resource type to target and how the metering engine
@@ -510,29 +509,37 @@ let example
 
 ## Currency Conversion
 
-In order to simplify multi-cloud governance, the best practice is to have a single chargeback currency. meshStack simplifies the chargeback process with it's automatic currency conversion capability. Regardless of the original currency from cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. Please be aware that by now we are supporting conversion of different currencies such as USD, CNY, TWD, CAD, INR to **Euro** only.
+The best practice is to have a single chargeback currency for all cloud environments internally. meshStack simplifies the chargeback process with it's currency conversion capability. Regardless of the original currency from the cloud providers (e.g. AWS in USD) chargeback statements will be converted to a single currency. For chargeback, we use the daily exchange rate from the day your statement is finalized. For example, if your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
 
-You have two options to enable currency conversion for chargebacks and usage reports:
+>Note: Currently, currency conversion supports various currencies (USD, CNY, TWD, CAD, INR) but converts **to Euro only**.
 
-1. **Default converter** fetches rates from [frankfurter.app](https://www.frankfurter.app/), which publishes exchange rates from the European Central Bank. To enable the default converter, simply activate the toggle in the Financial Tab on the Settings page
-2. If your organization has its own rates, you can utilize your **Own converter**, which sends rates to meshStack via API. Simply turn off the toggle button in the Financial Tab of the Settings page and reach out to our support team support@meshcloud.io. We will support you in connecting your own converter to meshStack.
+### How to Set Up Currency Conversion
 
-For chargebacking, we use the daily exchange rate from the day your statement is finalized, regardless of whether you're using your own converter or the default one. For example,  your chargeback finalization day is March 31st, and the USD to Euro rate on that day is 0.93, then all March chargeback statements in USD will be converted and finalized at this rate.
+Navigate to the  Financials tab of the Settings Page in the Admin area to configure currency conversion.
 
-> Please be aware that activating the default converter or adding your own will only impact future data. Past finalized chargeback statements and usage reports won't be retroactively converted to the single currency. So, if you want to enable currency conversion for the current month, make sure to connect or activate it before finalizing chargebacks for that month.
+#### meshStack Default Exchange Rates
 
-If your meshStack is hosted in a private environment and has permissions to make external requests, you can activate the default converter using the toggle button on the Settings page, as mentioned earlier. If external requests are restricted, you have the option to enable meshStack to communicate with the Frankfurter API through Firewall rules. Alternatively, if no conversion is desired for chargebacks, you can choose not to apply any conversion by simply turning off toggle button in the Financial tab of the Settings page.
+This option fetches rates from [frankfurter.app](https://www.frankfurter.app/), using exchange rates from the European Central Bank.  
+To enable this select **meshStack default exchange rates**.  
 
+If meshStack is hosted privately, ensure it can make external requests (configure firewall rules if needed).
 
-### Multi-Currency
+When currency conversion is turned on: Financial data will be presented in Euro starting with the current month
+When currency conversion is turned off: Financial data will be presented in the original currency
+When currency conversion is switched on and off multiple times: Then the financial data once converted will also be shown for previous months
 
-If you decide not to use currency conversion and prefer to have multiple currencies in chargeback statements, simply disable the toggle on the Financial Tab in the Settings page.
+#### Custom API Exchange Rates
 
-The following product functionalitities do currently not support multi-currency scenarios:
+With this second option you can provide your own exchange rates via API. If no rates are provided by the finalization date and the currency converter is turned on, **meshStack default exchange rates** will apply for that month.
+To enable this go to the Financials tab and select **Custom API Exchange Rates**.
 
-- **Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry and OSB Services) offer additional detail on a Tenant Usage Report. However, the net amount aggregation assumes all line items are in EUR. This can create confusion if the underlying Tenant Usage Report uses different or multiple currencies.
-- **Payment Methods**: Amounts specified on payment methods are currently only in EUR.
+### Limitation
 
-
+1. **Euro-only conversion**: Currently, only conversion to Euro is supported. We plan to support other currencies in the future.
+2. **Payment Methods**: 
+    Payment method amounts are currently limited to EUR, but we plan to support additional currencies in the future.
+3. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
+4. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
+5. **Presenting other Currencies: If you want to show a different currency besides Euro you have to reach out to support@meshcloud.io
 
 
