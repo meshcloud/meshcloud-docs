@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>meshTagDefinitions</title>
+<title>meshBuildingBlock (v2-preview)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,19 +441,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="mesh_tag_definition">meshTagDefinitions</h4>
+<h4 id="mesh_buildingblockV2">meshBuildingBlock (v2-preview)</h4>
 <div class="paragraph">
-<p>A meshTagDefinition defines additional metadata (tags) attached to all meshObjects of a specific kind.
-The meshTagDefinition describes a schema for this metadata.</p>
-</div>
-<div class="paragraph">
-<p><strong>Note</strong>: Reading meshTagDefinitions does not require any special permissions. All API Keys and API Users
-set up via meshPanel have read access to meshTagDefinitions by default.</p>
+<p>All endpoints on meshBuildingBlocks (v2-preview).</p>
 </div>
 <div class="sect4">
-<h5 id="_list_meshtagdefinitions">List meshTagDefinitions</h5>
+<h5 id="_list_meshbuildingblocks">List meshBuildingBlocks</h5>
 <div class="paragraph">
-<p>Provides a paged list of all meshTagDefinitions defined by meshStack administrators.</p>
+<p>Provides a paged list of meshBuildingBlocks (v2-preview).</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Request Headers</caption>
@@ -470,7 +465,7 @@ set up via meshPanel have read access to meshTagDefinitions by default.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
@@ -488,6 +483,38 @@ set up via meshPanel have read access to meshTagDefinitions by default.</p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that belong to the meshWorkspace with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that belong to the meshProject with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that belong to the meshPlatform with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks with the given display name. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>definitionName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that belong to the definition with the given name. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>definitionUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that belong to the definition with the given uuid. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>versionNumber</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that use a certain version number. Can be the number or only 'v2', etc. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that have a certain status. One of WAITING_FOR_DEPENDENT_INPUT, WAITING_FOR_OPERATOR_INPUT, PENDING, IN_PROGRESS, SUCCEEDED, FAILED, ABORTED. (optional)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
 </tr>
@@ -500,17 +527,17 @@ set up via meshPanel have read access to meshTagDefinitions by default.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtagdefinitions?page=0&amp;size=2 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshbuildingblocks?projectIdentifier=my-project&amp;page=0&amp;size=10 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Accept: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks?projectIdentifier=my-project&amp;page=0&amp;size=10' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json'</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -534,9 +561,9 @@ Host: mesh-backend-url</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshTagDefinitions[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshBuildingBlocks[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_tag_definition_response_fields">meshTagDefinition</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_buildingblock_response_fields">meshBuildingBlocks</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
@@ -546,7 +573,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the self link, a link to the related tenant and <a href="#paging">pagination</a> links.</p></td>
 </tr>
 </tbody>
 </table>
@@ -557,7 +584,7 @@ Host: mesh-backend-url</code></pre>
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -565,84 +592,106 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 2173
+Content-Length: 3293
 
 {
   "_embedded" : {
-    "meshTagDefinitions" : [ {
-      "kind" : "meshTagDefinition",
-      "apiVersion" : "v1",
+    "meshBuildingBlocks" : [ {
+      "kind" : "meshBuildingBlock",
+      "apiVersion" : "v2-preview",
       "metadata" : {
-        "name" : "meshWorkspace.costCenter"
+        "uuid" : "68ce5455-2a4a-4a4b-a324-6a6c18cab85a",
+        "ownedByWorkspace" : "my-workspace",
+        "createdOn" : "2025-03-26T14:53:52.268682114Z"
       },
       "spec" : {
-        "targetKind" : "meshWorkspace",
-        "key" : "costCenter",
-        "valueType" : {
-          "string" : {
-            "defaultValue" : "1001",
-            "validationRegex" : "^\\d{4}$"
-          }
+        "buildingBlockDefinitionVersionRef" : {
+          "uuid" : "316e192f-e484-40a7-b8bd-14a139b02843",
+          "kind" : "meshBuildingBlockDefinitionVersion"
         },
-        "description" : "Must be exactly 4 digits.",
-        "displayName" : "Cost Center",
-        "sortOrder" : 9999,
-        "mandatory" : true,
-        "immutable" : false,
-        "restricted" : false
+        "targetRef" : {
+          "kind" : "meshTenant",
+          "uuid" : "3ffeac21-7868-4b55-87d8-18261fafd7c5"
+        },
+        "displayName" : "parent block",
+        "inputs" : [ ],
+        "parentBuildingBlocks" : [ ]
+      },
+      "status" : {
+        "status" : "SUCCEEDED",
+        "outputs" : [ ],
+        "forcePurge" : false
       },
       "_links" : {
+        "meshtenant" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
+        },
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/68ce5455-2a4a-4a4b-a324-6a6c18cab85a"
+        },
+        "forcePurge" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/68ce5455-2a4a-4a4b-a324-6a6c18cab85a/purge"
         }
       }
     }, {
-      "kind" : "meshTagDefinition",
-      "apiVersion" : "v1",
+      "kind" : "meshBuildingBlock",
+      "apiVersion" : "v2-preview",
       "metadata" : {
-        "name" : "meshWorkspace.workspaceOwner"
+        "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
+        "ownedByWorkspace" : "my-workspace",
+        "createdOn" : "2025-03-26T14:53:52.273613654Z"
       },
       "spec" : {
-        "targetKind" : "meshWorkspace",
-        "key" : "workspaceOwner",
-        "valueType" : {
-          "string" : {
-            "defaultValue" : "Anna Admin"
-          }
+        "buildingBlockDefinitionVersionRef" : {
+          "uuid" : "5abb3c30-ef0a-46d7-90a2-7df001e4cde3",
+          "kind" : "meshBuildingBlockDefinitionVersion"
         },
-        "description" : "Person responsible for this workspace.",
-        "displayName" : "Workspace Owner",
-        "sortOrder" : 9999,
-        "mandatory" : false,
-        "immutable" : false,
-        "restricted" : false,
-        "replicationKey" : "owner"
+        "targetRef" : {
+          "kind" : "meshTenant",
+          "uuid" : "3ffeac21-7868-4b55-87d8-18261fafd7c5"
+        },
+        "displayName" : "child block",
+        "inputs" : [ {
+          "key" : "resourceName",
+          "value" : "My Test Resource",
+          "valueType" : "STRING"
+        } ],
+        "parentBuildingBlocks" : [ {
+          "buildingBlockUuid" : "68ce5455-2a4a-4a4b-a324-6a6c18cab85a",
+          "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
+        } ]
+      },
+      "status" : {
+        "status" : "SUCCEEDED",
+        "outputs" : [ {
+          "key" : "resourceId",
+          "value" : "id-123",
+          "valueType" : "STRING"
+        } ],
+        "forcePurge" : false
       },
       "_links" : {
+        "meshtenant" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
+        },
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.workspaceOwner"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720"
+        },
+        "forcePurge" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720/purge"
         }
       }
     } ]
   },
   "_links" : {
-    "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=0&amp;size=2"
-    },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=0&amp;size=2"
-    },
-    "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=1&amp;size=2"
-    },
-    "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions?page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks?projectIdentifier=my-project&amp;page=0&amp;size=10"
     }
   },
   "page" : {
-    "size" : 2,
-    "totalElements" : 3,
-    "totalPages" : 2,
+    "size" : 10,
+    "totalElements" : 2,
+    "totalPages" : 1,
     "number" : 0
   }
 }</code></pre>
@@ -650,9 +699,9 @@ Content-Length: 2173
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_meshtagdefinition">Get meshTagDefinition</h5>
+<h5 id="_get_meshbuildingblock">Get meshBuildingBlock</h5>
 <div class="paragraph">
-<p>Get a single meshTagDefinition.</p>
+<p>Get a single meshBuildingBlock (v2-preview).</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. Request Headers</caption>
@@ -669,47 +718,28 @@ Content-Length: 2173
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. /api/meshobjects/meshtagdefinitions/{name}</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>metadata.name</code> of the meshTagDefinition.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Accept: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json'</code></pre>
 </div>
 </div>
-<table id="mesh_tag_definition_response_fields" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. meshTagDefinition Object Response Fields</caption>
+<table id="mesh_buildingblock_response_fields" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -726,183 +756,180 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of <code>meshTagDefinition</code> datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of Building Block datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a <code>kind</code>. This is always <code>meshTagDefinition</code> for this endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'name' to uniquely identify the meshTagDefinition.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'uuid' to uniquely identify the Building Block. It also contains additional meta information like the Building Block creation date.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be of the form <code>$targetKind.$key</code> since tag definitions must be non-conflicting.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID to uniquely identify the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshWorkspace the Building Blocks belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.createdOn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Building Block has been created at this <a href="#data_types">date</a> (e.g. <code>2020-12-22T09:37:43Z</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.markedForDeletionOn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the Building Block has been marked for deletion, the <a href="#data_types">date</a> when a user requested the deletion is provided via this field. e.g. <code>2020-12-22T09:37:43Z</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.markedForDeletionBy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the Building Block has already been deleted, the username of the user who triggered the deletion is provided here.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specification for the meshTagDefinition.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the <code>self</code> link.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.key</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The key of the tag. This key must be unique for all tags defined for the same <code>targetKind</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the Building Block.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the tag.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the Building Block as it is shown in meshPanel.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.buildingBlockDefinitionVersionRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reference to the meshBuildingBlockDefinitionVersion for this Building Block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.buildingBlockDefinitionVersionRef.kind</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The detailed description of the tag.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a fixed value "meshBuildingBlockDefinitionVersion"</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetKind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.buildingBlockDefinitionVersionRef.uuid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The kind of meshObject this tag is defined for. At this moment only the following kinds are supported by meshStack: <code>meshWorkspace, meshProject, meshLandingZone, meshPaymentMethod, meshBuildingBlockDefinition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The uuid of the meshBuildingBlockDefinitionVersion for this Building Block</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.sortOrder</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The sort order for this tag when displayed in the UI. meshPanel sorts tags in ascending order.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reference to either a tenant or workspace the Building Block is located on. (see <a href="#meshBuildingBlock_targetRef">meshBuildingBlock targetRef</a>)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.mandatory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether the tag is mandatory.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.immutable</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether the tag value is not editable after initially set.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.restricted</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether only admins can edit this tag.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.replicationKey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetRef.kind</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The key for this tag when replicated to cloud platforms. If null, replication is disabled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a fixed value "meshTenant"</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.valueType</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TagValueType</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_tag_definition_response_fields_tag_value_type">TagValueType</a> of the tag. Must define exactly one of the available types.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetRef.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The uuid of the tenant for this Building Block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of inputs, which are set on the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The key of the input as set on the related Building Block Definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value, which is set on this input.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].valueType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of parent Building Blocks, which are set on the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[].buildingBlockUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the parent Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[].definitionUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the Building Block Definition of the parent Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the current status of the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The status of the Building Block. One of WAITING_FOR_DEPENDENT_INPUT, WAITING_FOR_OPERATOR_INPUT, PENDING, IN_PROGRESS, SUCCEEDED, FAILED, ABORTED.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of outputs, which are set on the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.forcePurge</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether this building block was marked to be purged.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The key of the output as set on the related Building Block Definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value, which is set on this output.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].valueType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Available <a href="#mesh_buildingblock_links">links</a> on a Building Block.</p></td>
 </tr>
 </tbody>
 </table>
-<div id="mesh_tag_definition_response_fields_tag_value_type" class="paragraph">
-<div class="title">Response Fields - TagValueType Schema</div>
-<p>This object describes the value type for a tag. Exactly one of the supported type options must be set. If the desired
-option has only optional fields, set this to an empty object or explicitly set the optional fields to <code>null</code>.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="mesh_buildingblock_links" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Building Block Links</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Relation</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string, represented as JSON string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshtenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to fetch the related meshTenant.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string.defaultValue</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default value of the tag.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string.validationRegex</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The regex pattern that the tag value must match.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">email address, represented as JSON string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email.defaultValue</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default value of the tag.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email.validationRegex</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The regex pattern that the tag value must match.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">an integer, represented as a JSON number</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>integer.defaultValue</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default value of the tag.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">a decimal number, represented a JSON number</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number.defaultValue</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default value of the tag.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>singleSelect</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">a string from a list of options, represented as a JSON string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>singleSelect.options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The allowed options for the tag as a string[]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>singleSelect.defaultValue</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default value of the tag.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>multiSelect</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">one or multiple strings from a list of option, represented as a JSON array</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>multiSelect.options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The allowed options for the tag as a string[]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>multiSelect.defaultValue</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default value of the tag.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>forcePurge</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to purge this meshBuildingBlock. This is not available for workspace scoped access.</p></td>
 </tr>
 </tbody>
 </table>
@@ -913,8 +940,7 @@ option has only optional fields, set this to an empty object or explicitly set t
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Disposition: inline;filename=f.txt
-Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -922,33 +948,54 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 650
+Content-Length: 1483
 
 {
-  "kind" : "meshTagDefinition",
-  "apiVersion" : "v1",
+  "kind" : "meshBuildingBlock",
+  "apiVersion" : "v2-preview",
   "metadata" : {
-    "name" : "meshWorkspace.costCenter"
+    "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
+    "ownedByWorkspace" : "my-workspace",
+    "createdOn" : "2025-03-26T14:53:52.273613654Z"
   },
   "spec" : {
-    "targetKind" : "meshWorkspace",
-    "key" : "costCenter",
-    "valueType" : {
-      "string" : {
-        "defaultValue" : "1001",
-        "validationRegex" : "^\\d{4}$"
-      }
+    "buildingBlockDefinitionVersionRef" : {
+      "uuid" : "5abb3c30-ef0a-46d7-90a2-7df001e4cde3",
+      "kind" : "meshBuildingBlockDefinitionVersion"
     },
-    "description" : "Must be exactly 4 digits.",
-    "displayName" : "Cost Center",
-    "sortOrder" : 9999,
-    "mandatory" : true,
-    "immutable" : false,
-    "restricted" : false
+    "targetRef" : {
+      "kind" : "meshTenant",
+      "uuid" : "3ffeac21-7868-4b55-87d8-18261fafd7c5"
+    },
+    "displayName" : "child block",
+    "inputs" : [ {
+      "key" : "resourceName",
+      "value" : "My Test Resource",
+      "valueType" : "STRING"
+    } ],
+    "parentBuildingBlocks" : [ {
+      "buildingBlockUuid" : "68ce5455-2a4a-4a4b-a324-6a6c18cab85a",
+      "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
+    } ]
+  },
+  "status" : {
+    "status" : "SUCCEEDED",
+    "outputs" : [ {
+      "key" : "resourceId",
+      "value" : "id-123",
+      "valueType" : "STRING"
+    } ],
+    "forcePurge" : false
   },
   "_links" : {
+    "meshtenant" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
+    },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720"
+    },
+    "forcePurge" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5646eafe-5d56-43e5-84fe-329bb050d720/purge"
     }
   }
 }</code></pre>
@@ -956,9 +1003,9 @@ Content-Length: 650
 </div>
 </div>
 <div class="sect4">
-<h5 id="_post_meshtagdefinition">Post meshTagDefinition</h5>
+<h5 id="_post_meshbuildingblock">Post meshBuildingBlock</h5>
 <div class="paragraph">
-<p>Create a new meshTagDefinition.</p>
+<p>Create a new meshBuildingBlock (v2-preview).</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 7. Request Headers</caption>
@@ -974,46 +1021,47 @@ Content-Length: 650
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshtagdefinitions HTTP/1.1
-Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshbuildingblocks HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
-Content-Length: 523
+Accept: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
+Content-Length: 683
 Host: mesh-backend-url
 
 {
-  "apiVersion": "v1",
-  "kind": "meshTagDefinition",
-  "metadata": {
-    "name": "meshProject.environment"
-  },
-  "spec": {
-    "targetKind": "meshProject",
-    "key": "environment",
-    "valueType": {
-      "singleSelect": {
-        "options": [ "dev", "test", "qa", "production" ],
-        "defaultValue": "dev"
-      }
+  "apiVersion" : "v2-preview",
+  "kind" : "meshBuildingBlock",
+  "spec" : {
+    "buildingBlockDefinitionVersionRef": {
+      "kind": "meshBuildingBlockDefinitionVersion",
+      "uuid": "5abb3c30-ef0a-46d7-90a2-7df001e4cde3"
     },
-    "description": "The environment the project runs in.",
-    "displayName": "Environment",
-    "sortOrder": 9999,
-    "mandatory": true,
-    "immutable": false,
-    "restricted": false
+    "targetRef": {
+      "kind": "meshTenant",
+      "uuid": "3ffeac21-7868-4b55-87d8-18261fafd7c5"
+    },
+    "displayName" : "New BuildingBlock v2",
+    "inputs" : [{
+      "key": "resourceName",
+      "value": "buildingBlock-for-docs",
+      "valueType": "STRING"
+    }],
+    "parentBuildingBlocks" : [{
+      "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
+      "buildingBlockUuid": "e5fdb74e-b5f4-4b19-9cfa-283048936a22"
+    }]
   }
 }</code></pre>
 </div>
@@ -1021,38 +1069,165 @@ Host: mesh-backend-url
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions' -i -u 'valid_username:valid_password' -X POST \
-    -H 'Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8' \
-    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json' \
     -d '{
-  "apiVersion": "v1",
-  "kind": "meshTagDefinition",
-  "metadata": {
-    "name": "meshProject.environment"
-  },
-  "spec": {
-    "targetKind": "meshProject",
-    "key": "environment",
-    "valueType": {
-      "singleSelect": {
-        "options": [ "dev", "test", "qa", "production" ],
-        "defaultValue": "dev"
-      }
+  "apiVersion" : "v2-preview",
+  "kind" : "meshBuildingBlock",
+  "spec" : {
+    "buildingBlockDefinitionVersionRef": {
+      "kind": "meshBuildingBlockDefinitionVersion",
+      "uuid": "5abb3c30-ef0a-46d7-90a2-7df001e4cde3"
     },
-    "description": "The environment the project runs in.",
-    "displayName": "Environment",
-    "sortOrder": 9999,
-    "mandatory": true,
-    "immutable": false,
-    "restricted": false
+    "targetRef": {
+      "kind": "meshTenant",
+      "uuid": "3ffeac21-7868-4b55-87d8-18261fafd7c5"
+    },
+    "displayName" : "New BuildingBlock v2",
+    "inputs" : [{
+      "key": "resourceName",
+      "value": "buildingBlock-for-docs",
+      "valueType": "STRING"
+    }],
+    "parentBuildingBlocks" : [{
+      "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
+      "buildingBlockUuid": "e5fdb74e-b5f4-4b19-9cfa-283048936a22"
+    }]
   }
-}'</code></pre>
+} '</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">Request Fields</div>
-<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Request Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of Building Block datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshBuildingBlock' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.buildingBlockDefinitionVersionRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reference to the meshBuildingBlockDefinitionVersion for this Building Block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.buildingBlockDefinitionVersionRef.kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a fixed value "meshBuildingBlockDefinitionVersion"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.buildingBlockDefinitionVersionRef.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The uuid of the meshBuildingBlockDefinitionVersion for this Building Block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reference to either a tenant or workspace the Building Block is located on. (see <a href="#meshBuildingBlock_targetRef">meshBuildingBlock targetRef</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetRef.kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a fixed value "meshTenant"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetRef.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The uuid of the tenant for this Building Block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the Building Block as it is shown in meshPanel.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the Building Block as it is shown in meshPanel.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of inputs, which are set on the Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The key of the input as set on the related Building Block Definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value, which is set on this input.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].valueType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of parent Building Blocks, which are required for the Building Block. If none given, an empty list needs to be provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[].buildingBlockUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the parent Building Block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[].definitionUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the Building Block Definition of the parent Building Block.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Building Block Links</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Relation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshtenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to fetch the related meshTenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>forcePurge</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to purge this meshBuildingBlock. This is not available for workspace scoped access.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="listingblock">
 <div class="title">Example Response</div>
 <div class="content">
@@ -1060,8 +1235,8 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshProject.environment
-Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/75ed51f9-378e-4c3c-8f6e-086cfc45108e
+Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -1069,295 +1244,81 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 682
+Content-Length: 1405
 
 {
-  "kind" : "meshTagDefinition",
-  "apiVersion" : "v1",
+  "kind" : "meshBuildingBlock",
+  "apiVersion" : "v2-preview",
   "metadata" : {
-    "name" : "meshProject.environment"
+    "uuid" : "75ed51f9-378e-4c3c-8f6e-086cfc45108e",
+    "ownedByWorkspace" : "my-workspace",
+    "createdOn" : "2025-03-26T14:53:53.127708914Z"
   },
   "spec" : {
-    "targetKind" : "meshProject",
-    "key" : "environment",
-    "valueType" : {
-      "singleSelect" : {
-        "options" : [ "dev", "test", "qa", "production" ],
-        "defaultValue" : "dev"
-      }
+    "buildingBlockDefinitionVersionRef" : {
+      "uuid" : "5abb3c30-ef0a-46d7-90a2-7df001e4cde3",
+      "kind" : "meshBuildingBlockDefinitionVersion"
     },
-    "description" : "The environment the project runs in.",
-    "displayName" : "Environment",
-    "sortOrder" : 9999,
-    "mandatory" : true,
-    "immutable" : false,
-    "restricted" : false
+    "targetRef" : {
+      "kind" : "meshTenant",
+      "uuid" : "3ffeac21-7868-4b55-87d8-18261fafd7c5"
+    },
+    "displayName" : "New BuildingBlock v2",
+    "inputs" : [ {
+      "key" : "resourceName",
+      "value" : "buildingBlock-for-docs",
+      "valueType" : "STRING"
+    } ],
+    "parentBuildingBlocks" : [ {
+      "buildingBlockUuid" : "e5fdb74e-b5f4-4b19-9cfa-283048936a22",
+      "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
+    } ]
+  },
+  "status" : {
+    "status" : "PENDING",
+    "outputs" : [ ],
+    "forcePurge" : false
   },
   "_links" : {
+    "meshtenant" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
+    },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshProject.environment"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/75ed51f9-378e-4c3c-8f6e-086cfc45108e"
+    },
+    "forcePurge" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/75ed51f9-378e-4c3c-8f6e-086cfc45108e/purge"
     }
   }
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">Response Fields</div>
-<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.</p>
-</div>
 </div>
 <div class="sect4">
-<h5 id="_put_meshtagdefinition">Put meshTagDefinition</h5>
+<h5 id="_delete_meshbuildingblock">Delete meshBuildingBlock</h5>
 <div class="paragraph">
-<p>Create or update an existing meshTagDefinition.</p>
+<p>Remove an existing meshBuildingBlock. Depending on the deletion mode of the
+meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
+(including potential cloud resources) or purged (removed from meshStack only).</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. /api/meshobjects/meshtagdefinitions/{name}</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>metadata.name</code> of the meshTagDefinition.</p></td>
-</tr>
-</tbody>
-</table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter HTTP/1.1
-Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/5d62043f-6ee2-4b3b-a415-7d41cf9d7f1d HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
-Content-Length: 684
-Host: mesh-backend-url
-
-{
-  "kind" : "meshTagDefinition",
-  "apiVersion" : "v1",
-  "metadata" : {
-    "name" : "meshWorkspace.costCenter"
-  },
-  "spec" : {
-    "targetKind" : "meshWorkspace",
-    "key" : "costCenter",
-    "valueType" : {
-      "string" : {
-        "defaultValue" : "1001",
-        "validationRegex" : "^\\d{4}$"
-      },
-      "email" : null,
-      "integer" : null,
-      "number" : null,
-      "singleSelect" : null,
-      "multiSelect" : null
-    },
-    "description" : "Updated description",
-    "displayName" : "Updated display name",
-    "sortOrder" : 9999,
-    "mandatory" : true,
-    "immutable" : false,
-    "restricted" : false,
-    "replicationKey" : "updatedReplicationKey"
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example Curl Request</div>
-<div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'valid_username:valid_password' -X PUT \
-    -H 'Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json;charset=UTF-8' \
-    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json' \
-    -d '{
-  "kind" : "meshTagDefinition",
-  "apiVersion" : "v1",
-  "metadata" : {
-    "name" : "meshWorkspace.costCenter"
-  },
-  "spec" : {
-    "targetKind" : "meshWorkspace",
-    "key" : "costCenter",
-    "valueType" : {
-      "string" : {
-        "defaultValue" : "1001",
-        "validationRegex" : "^\\d{4}$"
-      },
-      "email" : null,
-      "integer" : null,
-      "number" : null,
-      "singleSelect" : null,
-      "multiSelect" : null
-    },
-    "description" : "Updated description",
-    "displayName" : "Updated display name",
-    "sortOrder" : 9999,
-    "mandatory" : true,
-    "immutable" : false,
-    "restricted" : false,
-    "replicationKey" : "updatedReplicationKey"
-  }
-}'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">Request Fields</div>
-<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.
-Note that the API does not allow changing the <code>key</code> or <code>valueType</code> of an existing meshTagDefinition.</p>
-</div>
-<div class="listingblock">
-<div class="title">Example Response</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Disposition: inline;filename=f.txt
-Content-Type: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
-X-Frame-Options: DENY
-Content-Length: 701
-
-{
-  "kind" : "meshTagDefinition",
-  "apiVersion" : "v1",
-  "metadata" : {
-    "name" : "meshWorkspace.costCenter"
-  },
-  "spec" : {
-    "targetKind" : "meshWorkspace",
-    "key" : "costCenter",
-    "valueType" : {
-      "string" : {
-        "defaultValue" : "1001",
-        "validationRegex" : "^\\d{4}$"
-      }
-    },
-    "description" : "Updated description",
-    "displayName" : "Updated display name",
-    "sortOrder" : 9999,
-    "mandatory" : true,
-    "immutable" : false,
-    "restricted" : false,
-    "replicationKey" : "updatedReplicationKey"
-  },
-  "_links" : {
-    "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter"
-    }
-  }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">Response Fields</div>
-<p>A meshTagDefinition object. See <a href="#mesh_tag_definition_response_fields">meshTagDefinition Object Response Fields</a>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_delete_meshtagdefinition">Delete meshTagDefinition</h5>
-<div class="paragraph">
-<p>Delete an existing meshTagDefinition. Please note that deleting a meshTagDefinition will also remove all tag values
-for the <code>key</code> from all meshObjects specified by its <code>targetKind</code>.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Request Headers</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json</code> for this version of the endpoint.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. /api/meshobjects/meshtagdefinitions/{name}</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>metadata.name</code> of the meshTagDefinition.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">Example Request</div>
-<div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter HTTP/1.1
-Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtagdefinitions/meshWorkspace.costCenter' -i -u 'valid_username:valid_password' -X DELETE \
-    -H 'Accept: application/vnd.meshcloud.api.meshtagdefinition.v1.hal+json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5d62043f-6ee2-4b3b-a415-7d41cf9d7f1d' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<div class="title">Response Fields</div>
-<p>If successful, this request returns an empty response.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Response</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 204 No Content
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 202 Accepted
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
@@ -1368,6 +1329,67 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_purge_meshbuildingblock">Purge meshBuildingBlock</h5>
+<div class="paragraph">
+<p>With administration rights it is also possible to force the purging
+of a meshBuildingBlock. That way, the deletion mode of the meshBuildingBlock&#8217;s version
+is ignored and the meshBuildingBlock is deleted from meshStack.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/5d62043f-6ee2-4b3b-a415-7d41cf9d7f1d/purge HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5d62043f-6ee2-4b3b-a415-7d41cf9d7f1d/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 202 Accepted
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="meshBuildingBlock_targetRef">meshBuildingBlock targetRef</h5>
+<div class="paragraph">
+<p>A target reference is a reference to either the tenant or the workspace the Building Block is located on.
+It looks like one of the examples below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "kind": "meshWorkspace",
+  "identifier": "workspaceIdentifier"
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "kind": "meshTenant",
+  "uuid": "uuid-of-the-tenant"
+}</code></pre>
 </div>
 </div>
 </div>
