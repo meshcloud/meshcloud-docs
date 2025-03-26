@@ -440,11 +440,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="_index">Index</h3>
+<div class="sect3">
+<h4 id="mesh_root">Index</h4>
 <div class="paragraph">
-<p>This is the entry point to navigate through the API of meshStack. Starting from here you will be able to
-find all endpoints your <a href="#authentication">authenticated</a> user has access to.</p>
+<p>The root endpoint of the meshObject API provides links to all other meshObject endpoints in the API.
+You can use this endpoint to discover all available meshObject endpoints your authenticated user has access to.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Request Headers</caption>
@@ -461,24 +461,24 @@ find all endpoints your <a href="#authentication">authenticated</a> user has acc
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.v1.hal+json</code> for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshobjects.v2.hal+json</code> for this version of the endpoint.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.v1.hal+json
+Accept: application/vnd.meshcloud.api.meshobjects.v2.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.v1.hal+json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshobjects.v2.hal+json'</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -499,13 +499,13 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All available <a href="#index_links">Top-Level Links</a> for the authenticated user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All available <a href="#mesh_object_links">meshObject Links</a> for the authenticated user.</p></td>
 </tr>
 </tbody>
 </table>
-<div id="index_links" class="paragraph">
+<div id="mesh_object_links" class="paragraph">
 <div class="title">Links</div>
-<p>List of all top-level endpoints the authenticated user has access to. Depending on your rights, you will only
+<p>List of all meshObject endpoints the authenticated user has access to. Depending on your rights, you will only
 get a subset of the links mentioned here.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -521,12 +521,60 @@ get a subset of the links mentioned here.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#metadata">Metadata API</a> to retrieve metadata from meshStack.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshworkspaces</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_workspace">meshWorkspaces</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshobjects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get, create, update and delete meshObjects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshworkspaceusergroups</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_workspaceusergroup">meshWorkspaceUserGroups</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshprojects</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_project">meshProjects</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshprojectgroupbindings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gets meshProjectGroupBindings for this meshProject.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshprojectuserbindings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gets meshProjectUserBindings for this meshProject.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshworkspaceuserbindings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_workspaceuserbinding">meshWorkspaceUserBinding</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshworkspacegroupbindings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_workspacegroupbinding">meshWorkspaceGroupBinding</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshtenants</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_tenant">meshTenants</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshpaymentmethods</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_paymentmethod">meshPaymentMethods</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshusers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_user">meshUsers</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshserviceinstances</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_serviceinstance">meshServiceInstances</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshbuildingblocks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_buildingblock">meshBuildingBlocks</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshbuildingblockruns</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_buildingblock">meshBuildingBlockRuns</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshtagdefinitions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_tag_definition">meshTagDefinitions</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -537,7 +585,7 @@ get a subset of the links mentioned here.</p>
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.v1.hal+json
+Content-Type: application/vnd.meshcloud.api.meshobjects.v2.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -545,18 +593,66 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 257
+Content-Length: 2849
 
 {
   "_links" : {
-    "metadata" : {
-      "href" : "https://mesh-backend-url/api/metadata"
+    "meshserviceinstances" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
+      "templated" : true
     },
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
+    "meshtagdefinitions" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
+    },
+    "meshbuildingblocks" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks{?workspaceIdentifier,projectIdentifier,platformIdentifier,name,definitionName,definitionUuid,versionNumber,status}",
+      "templated" : true
+    },
+    "meshbuildingblockruns" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
+      "templated" : true
+    },
+    "meshtenants" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+      "templated" : true
+    },
+    "meshprojectgroupbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
+      "templated" : true
+    },
+    "meshprojectuserbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
+      "templated" : true
+    },
+    "meshprojects" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
+      "templated" : true
+    },
+    "meshworkspaceusergroups" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups{?workspaceIdentifier,username}",
+      "templated" : true
+    },
+    "meshworkspaceuserbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings{?username,workspaceRole,workspaceIdentifier}",
+      "templated" : true
+    },
+    "meshworkspacegroupbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings{?username,workspaceRole}",
+      "templated" : true
+    },
+    "meshworkspaces" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces"
+    },
+    "meshpaymentmethods" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
+      "templated" : true
+    },
+    "meshusers" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
+      "templated" : true
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api"
+      "href" : "https://mesh-backend-url/api/meshobjects"
     }
   }
 }</code></pre>

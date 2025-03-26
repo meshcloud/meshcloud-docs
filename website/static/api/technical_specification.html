@@ -604,9 +604,19 @@ a path variable, the <code>_links</code> array may include an entry like the fol
 <div class="sect2">
 <h3 id="versioning">Versioning</h3>
 <div class="paragraph">
-<p>meshStack&#8217;s meshObject API uses custom media types for versioning each resource individually.
-For example, when we introduce a new version of the <code>meshWorkspace</code> resource that contains a breaking change,
-all other resources will be untouched.</p>
+<p>meshStack&#8217;s meshObject API uses custom media types in the <code>Accept</code> and <code>Content-Type</code> headers for versioning.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>meshObject API versions each resource like <code>meshWorkspace</code> or <code>meshProject</code> <strong>individually</strong>. This means
+you need to specify the specific media type corresponding to the endpoint you are calling.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, when meshStack introduces a new version of the <code>meshWorkspace</code> resource, this has no effect on other
+resources like the <code>meshProject</code>. This allows the API to evolve in a granular way.</p>
 </div>
 <div class="paragraph">
 <p>API clients must always set an <code>Accept</code> header with the explicitly versioned resource media type.
@@ -621,15 +631,15 @@ For example, this is the media type required to access the <code>v1</code> versi
 </div>
 <div class="paragraph">
 <p>Requests that need to send a body like <code>POST</code> or <code>PUT</code> must also set the <code>Content-Type</code> header with the correct media
-type. For example, this is the media type required to send a <code>meshObjectCollection</code>:</p>
+type. For example, this is the media type required to POST a <code>meshProject</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Content-Type: application/vnd.meshcloud.api.meshobjectcollection.v1+json;charset=UTF-8</code></pre>
+<pre class="highlight"><code>Content-Type: application/vnd.meshcloud.api.meshproject.v2.hal+json</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If a request body is required and a different <code>Content-Type</code> like simple <code>application/json</code> is requested,
+<p>If a request contains a body and you specify an unsupported or unversioned <code>Content-Type</code> like <code>application/json</code>,
 the endpoint will return an error.</p>
 </div>
 </div>
@@ -648,12 +658,12 @@ Deprecating old endpoints is important to ensure the health and maintainability 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>outdated</strong>: As soon as a new version of an endpoint becomes available, the old version is considered outdated.
-API clients are advised to migrate to newer versions at their earliest convenience.</p>
+<p><strong>outdated</strong>: As soon as a new version of an endpoint becomes available, the old version is considered outdated but
+remains fully functional. API clients are advised to migrate to newer versions at their earliest convenience.</p>
 </li>
 <li>
 <p><strong>deprecated</strong>: We have announced an end of life (EoL) date when the endpoint will be removed from the API.
-API clients must migrate to newer versions before this date.</p>
+API clients must migrate to newer versions before this date. Until this date, the endpoint remains fully functional.</p>
 </li>
 <li>
 <p><strong>retired</strong>: After the scheduled removal date, the endpoint is removed from the API and no longer available in meshStack.
@@ -699,7 +709,7 @@ If you have any questions or concerns about API performance, please contact the 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-03-19 14:11:07 UTC
+Last updated 2025-03-26 14:51:43 UTC
 </div>
 </div>
 </body>
