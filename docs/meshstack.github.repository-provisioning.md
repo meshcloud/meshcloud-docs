@@ -19,7 +19,7 @@ After creating the GitHub platform, access the platform configuration by navigat
 
 ## 1. Create a Building Block Definition
 
-Define a building block that provides meshStack with the necessary information to create new GitHub repositories when users initiate the process. We already have prepared a template that you can use [here](https://github.com/meshcloud/collie-hub/tree/main/kit/github/repository/).
+Define a building block that provides meshStack with the necessary information to create new GitHub repositories when users initiate the process. We already have prepared a template that you can use [here](https://github.com/meshcloud/meshstack-hub/tree/main/modules/github/repository/buildingblock).
 
 ## 2. Create a Landing Zone
 
