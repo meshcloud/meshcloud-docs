@@ -8,7 +8,7 @@ Terraform and OpenTofu use state files to store infrastructure configuration det
 - [OpenTofu](https://opentofu.org/docs/language/settings/backends/configuration)
 - [Terraform](https://developer.hashicorp.com/terraform/language/backend)
 
-meshStack accesses building block state with every new run or on deletion. With the built-in http backend, you can store the state file within meshStack. This means it won't be necessary to configure an extra backend within your Terraform/OpenTofu sources. In this case meshStack automatically takes care of the state of the building block. 
+meshStack accesses the building block state with every new run or on deletion. With the built-in http backend, you can store the state file within meshStack. This means it won't be necessary to configure an extra backend within your Terraform/OpenTofu sources. In this case meshStack automatically takes care of the state of the building block. 
 
 > Additionally, you can also use the natively supported Terraform backend for remote state management if you prefer implementing that configuration. 
 
