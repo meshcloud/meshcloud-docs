@@ -33,7 +33,7 @@ terraform {
 }
 ```
 
-Please note that including a configuration for meshStack's http backend in your source as shown above will not work, because we do not support the configuration of basic authentication values here.
+Please note that including a configuration for meshStack's http backend in your source, as shown above, will not work because basic authentication values are not supported in this context.
 
 ## API key access to the state
 
