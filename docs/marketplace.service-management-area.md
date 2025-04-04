@@ -23,6 +23,14 @@ The Service Management Area can at any time be opened up from the Workspace Cont
 
 If you would like to go back again to the regular Workspace View, click on "Go to Workspace Management".
 
+## Getting Access
+
+If you do not see the button to open the Service Management Area your workspace most likely does not 
+have it activated yet. As can be seen in the screenshot, open your Workspace Settings and toggle "Enable Service Management Area".
+Hit "Save" and you should see the "Go to Services Management" button now.
+
+[!Getting Access](assets/service-management-area/getting-access.png)
+
 ## Types of Platform Services
 
 The following three types of platform services can be created and offered in the Service Management Area:
