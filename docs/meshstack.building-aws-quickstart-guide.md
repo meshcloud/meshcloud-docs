@@ -21,8 +21,8 @@ By the end of this guide, you will have achieved:
 Before starting, ensure you have the following:
 
 - An AWS account with a service user that has permission to manage S3 buckets.
-  - Tip: have a look at our [Terraform code](https://github.com/meshcloud/collie-hub/tree/main/kit/aws/buildingblocks/s3_bucket/backplane) for defining a service user to learn more.
-- Terraform code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/collie-hub/tree/main/kit/aws/buildingblocks/s3_bucket/buildingblock) to get started.
+  - Tip: have a look at our [Terraform code](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/backplane) for defining a service user to learn more.
+- Terraform code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/buildingblock) to get started.
 - Access to a meshStack workspace that has the [service management area enabled](./marketplace.service-management-area.md).  
   If you do not see the service management area, go to settings -> general in your workspace and enable the service management area.
 
@@ -75,8 +75,8 @@ Before starting, ensure you have the following:
    - Enable the option “Use meshStack’s Http Backend” if using our template.
      Learn more about how this meshStack backend works [here](./meshstack.building-blocks.meshStack-http-backend.md).
    - Enter a git repository URL. You can either enter your own or use our template, for which the git repository URL
-     is `https://github.com/meshcloud/collie-hub.git`
-       - The AWS Bucket Terraform code is under folder `kit/aws/buildingblocks/s3_bucket/buildingblock`.
+     is `https://github.com/meshcloud/meshstack-hub.git`
+       - The AWS Bucket Terraform code is under folder `modules/aws/s3_bucket/buildingblock`.
          Make sure to enter this folder under "Git Repository Path".
    - You can leave "Git Reference" empty for now. With this field, you can pin the used Terraform files to a certain
      git tag, branch, or commit.
@@ -108,7 +108,7 @@ Before starting, ensure you have the following:
    are needed to manage resources in AWS. Let’s fill those in:
 
    (If you are unsure what rights are needed, take a look at our
-   [Terraform IAM definition](https://github.com/meshcloud/collie-hub/blob/main/kit/aws/buildingblocks/s3_bucket/backplane/iam.tf)
+   [Terraform IAM definition](https://github.com/meshcloud/meshstack-hub/blob/main/modules/aws/s3_bucket/backplane/iam.tf)
    for this quickstart guide)
 
    - For `AWS_ACCESS_KEY_ID` add the ID of an access key in AWS that has the right to manage S3 resources in the “Static Value” field.
