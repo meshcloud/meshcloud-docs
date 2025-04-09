@@ -452,6 +452,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#data_types">Data Types</a></li>
 <li><a href="#hypermedia">Hypermedia</a></li>
 <li><a href="#versioning">Versioning</a></li>
+<li><a href="#deprecations">Deprecation Policy</a></li>
 </ul>
 </li>
 <li><a href="#_common_data_formats">Common Data Formats</a>
@@ -680,38 +681,92 @@ a path variable, the <code>_links</code> array may include an entry like the fol
 <div class="sect2">
 <h3 id="versioning"><a class="link" href="#versioning">Versioning</a></h3>
 <div class="paragraph">
-<p>meshStack applies versioning via custom Media Types. This allows custom versioning per resource.
-As meshStack is developed and deployed continuously, this custom versioning per resource is the best
-way for applying versioning. If e.g. the meshWorkspace response is modified in an incompatible way,
-a new version will be provided for meshWorkspaces and all other resources are untouched.</p>
+<p>meshStack&#8217;s meshObject API uses custom media types in the <code>Accept</code> and <code>Content-Type</code> headers for versioning.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>meshObject API versions each resource like <code>meshWorkspace</code> or <code>meshProject</code> <strong>individually</strong>. This means
+you need to specify the specific media type corresponding to the endpoint you are calling.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>If using a request body, such as when inserting a new meshProject via a POST endpoint,
-the custom media type must be provided in the <code>Content-Type</code> header. In case of a response body,
-such as when requesting a list of all meshWorkspaces via a GET endpoint, the client should send
-the custom media type in the <code>Accept</code> header.</p>
+<p>For example, when meshStack introduces a new version of the <code>meshWorkspace</code> resource, this has no effect on other
+resources like the <code>meshProject</code>. This allows the API to evolve in a granular way.</p>
 </div>
 <div class="paragraph">
-<p>Examples for these headers are:</p>
+<p>API clients must always set an <code>Accept</code> header with the explicitly versioned resource media type.
+meshObject API will reject requests without an <code>Accept</code> header using a <code>406 Not Acceptable</code> status code.
+The correct media type required for a resource is described in the corresponding Resource section in this documentation.
+For example, this is the media type required to access the <code>v1</code> version of a <code>meshWorkspace</code> resource:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">Accept: application/vnd.meshcloud.api.meshworkspace.v1.hal+json</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Requests that need to send a body like <code>POST</code> or <code>PUT</code> must also set the <code>Content-Type</code> header with the correct media
+type. For example, this is the media type required to POST a <code>meshProject</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">Content-Type: application/vnd.meshcloud.api.meshobjectcollection.v1+json;charset=UTF-8</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">Content-Type: application/vnd.meshcloud.api.meshproject.v2.hal+json</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Which Media Type is required for which resource is described in the according Resource section.
-If a request body is required and a different <code>Content-Type</code> like simple <code>application/json</code> is requested,
+<p>If a request contains a body and you specify an unsupported or unversioned <code>Content-Type</code> like <code>application/json</code>,
 the endpoint will return an error.</p>
 </div>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>If the <code>Accept</code> header is not provided, you may get the response of any version. Therefore please always
-provide the <code>Accept</code> header so you are guaranteed to get the resource in the expected format.</p>
+<p>Endpoints that are documented as <code>preview</code> endpoints in this documentation
+are subject to change and we are planning to introduce a new version <strong>without support for backwards compatibility</strong>,
+meaning, the preview version will disappear without prior notice!</p>
+</div>
+<div class="paragraph">
+<p>These endpoints have a media type with a <code>-preview</code> suffix (for example,
+<code>application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json</code>).</p>
+</div>
+<div class="paragraph">
+<p>You are free to try those endpoints out, but we recommend to wait until the final (non-preview) endpoints are released
+before you integrate such endpoints with your infrastructure.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deprecations"><a class="link" href="#deprecations">Deprecation Policy</a></h3>
+<div class="paragraph">
+<p>As we introduce new features and enhance existing functionalities, some API endpoints may become obsolete or outdated.
+Deprecating old endpoints is important to ensure the health and maintainability of the API.</p>
+</div>
+<div class="paragraph">
+<p>Explicit <a href="#versioning">Versioning</a> provides API clients time to transition to newer versions of endpoints in a controlled manner.</p>
+</div>
+<div class="paragraph">
+<p>Deprecation follows a phased approach.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>outdated</strong>: As soon as a new version of an endpoint becomes available, the old version is considered outdated but
+remains fully functional. API clients are advised to migrate to newer versions at their earliest convenience.</p>
+</li>
+<li>
+<p><strong>deprecated</strong>: We have announced an end of life (EoL) date when the endpoint will be removed from the API.
+API clients must migrate to newer versions before this date. Until this date, the endpoint remains fully functional.</p>
+</li>
+<li>
+<p><strong>retired</strong>: After the scheduled removal date, the endpoint is removed from the API and no longer available in meshStack.
+API clients using the old endpoint will receive an HTTP 406, HTTP 415 or HTTP 404 response as appropriate for the request.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please refer to the <a href="#deprecated-resources">Deprecated Resources</a> section for a list of deprecated and outdated endpoints.</p>
 </div>
 </div>
 </div>
@@ -1048,12 +1103,12 @@ Content-Length: 673
 
 {
   "_links" : {
-    "meshchargebacks" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,legacy,finalizedSince,cancelledSince}",
-      "templated" : true
-    },
     "meshtenantusagereports" : {
       "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}",
+      "templated" : true
+    },
+    "meshchargebacks" : {
+      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,legacy,finalizedSince,cancelledSince}",
       "templated" : true
     },
     "self" : {
@@ -1265,7 +1320,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "9611a4d2-0b3a-4c6d-82bf-c3483f276a47",
+        "platformTenantId" : "3ce47185-bb38-4da7-99eb-cb69e72c65dd",
         "version" : 2
       },
       "status" : {
@@ -1316,7 +1371,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "c3c820b9-bd40-47ea-a4cf-86ebb85cb3dd",
+        "platformTenantId" : "ff73e596-f784-4984-bad6-c99507cc30ad",
         "version" : 1
       },
       "status" : {
@@ -1644,7 +1699,7 @@ Content-Length: 1392
     "reportCategory" : "BILLING",
     "platformType" : "Azure",
     "platform" : "azure.prod",
-    "platformTenantId" : "9611a4d2-0b3a-4c6d-82bf-c3483f276a47",
+    "platformTenantId" : "3ce47185-bb38-4da7-99eb-cb69e72c65dd",
     "version" : 2
   },
   "status" : {
@@ -1852,7 +1907,7 @@ Content-Length: 3377
       "apiVersion" : "v3",
       "metadata" : {
         "name" : "2025-04-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-04-02T12:09:54.593505400Z",
+        "createdOn" : "2025-04-09T12:08:16.210065300Z",
         "finalized" : true
       },
       "spec" : {
@@ -1914,7 +1969,7 @@ Content-Length: 3377
       "apiVersion" : "v3",
       "metadata" : {
         "name" : "2025-03-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-04-02T12:09:54.594497500Z",
+        "createdOn" : "2025-04-09T12:08:16.210990500Z",
         "finalized" : true
       },
       "spec" : {
@@ -2207,7 +2262,7 @@ Content-Length: 1852
   "apiVersion" : "v3",
   "metadata" : {
     "name" : "2025-04-01Z/testPartner:testWorkspace:testProject",
-    "createdOn" : "2025-04-02T12:09:54.593505400Z",
+    "createdOn" : "2025-04-09T12:08:16.210065300Z",
     "finalized" : true
   },
   "spec" : {
@@ -2548,7 +2603,7 @@ Content-Length: 133
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-02 12:08:26 UTC
+Last updated 2025-04-09 12:06:25 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
