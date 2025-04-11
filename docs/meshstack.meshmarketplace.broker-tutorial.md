@@ -34,7 +34,7 @@ To get started with existing projects.
 
 - We provide an example implementation of a Service broker called [Unipipe Service Broker](https://github.com/meshcloud/unipipe-service-broker). It connects to a git repository that holds the catalog. The git repository is also used to store information about services instances and their bindings. Unipipe service broker relies on a CI/CD pipeline for managing service instances. Experimental CI/CD pipelines that integrate with Unipipe Service Broker can be found in the example section of the [Unipipe Service Broker repository](https://github.com/meshcloud/unipipe-service-broker).
 
-- [Open Service Broker API based on Spring Boot & Groovy](https://github.com/swisscom/open-service-broker): It enables platforms such as Cloud Foundry & Kubernetes to provision and manage services.
+- [Open Service Broker API based on Spring Boot & Groovy](https://github.com/openservicebrokerapi/servicebroker): It enables platforms such as Cloud Foundry & Kubernetes to provision and manage services.
 
 - [osb-service-broker-example](https://github.com/evoila/osb-example):
 An empty Cloud Foundry Service Broker missing concrete implementation of a distinct service.
@@ -105,7 +105,7 @@ This section has some implementation recommendations based on experience:
 
 - Define and manage the catalog. Service Broker authors are expected to be cautious when removing Service Offerings and Service Plans from their catalogs, as Platforms might have provisioned Service Instances of these Service Plans. For example, Platforms might restrict the actions that users can perform on existing Service Instances if the associated Service Offering or Service Plan is deleted. Consider your deprecation strategy.
 
-- Service broker authors should also be aware of all the possible scenarios to maintain the service broker and should provide extra endpoints to handle erroneous states of the service broker. Some example scenarios can be found [here](https://github.com/swisscom/open-service-broker) under admin actions section.
+- Service broker authors should also be aware of all the possible scenarios to maintain the service broker and should provide extra endpoints to handle erroneous states of the service broker. Some example scenarios can be found [here](https://github.com/openservicebrokerapi/servicebroker) under admin actions section.
 
 ## OSBAPI Compliant Products
 
