@@ -102,6 +102,12 @@ groups called "global groups". Those are not owned by a meshWorkspace but are ra
 They cannot be modified manually or programmatically but are synced only via an external system, in this case an Azure AD.
 Assignment of global groups to meshWorkspaces and meshProjects within the meshPanel works the same way as it does for meshWorkspaceUserGroups.
 
+## Creating Groups in meshStack
+
+You can create groups directly in meshStack using the `meshWorkspaceUserGroup` declarative API endpoint. This API allows you to create workspace-specific groups, add users to these groups, and remove users. 
+
+However, be aware that whenever you update the group, you must send the full list of members, as this API will replace the existing members with the list you provide.
+
 ## AAD Configuration
 
 The following guide shows how an AAD can be configured to enable SCIM user and group provisioning to meshStack. In order
