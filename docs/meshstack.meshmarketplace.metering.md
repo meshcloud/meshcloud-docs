@@ -63,16 +63,6 @@ meshStack interprets the `costs` property for each plan and automatically mainta
 
 The following sections detail how meshStack interprets OSB API plan [cost objects](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#cost-object) to create meshStack metering product catalog entries.
 
-### Metrics-based Metering
-
-See [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md) for details about how to charge your services usage-based. This could be relevant for you if you want to charge e.g. based on actual storage or memory used by the service. Further use-cases are mentioned in the linked chapter.
-
-> You have to make sure that the metric endpoints are available reliably. When Tenant Usage Reports are
-> finalized, metrics that haven't been received until that point in time for the previous month won't be
-> considered in the Usage Reports and Chargeback Statements. Finalization of Usage Reports usually happens
-> four days after the end of the month. Please contact your Cloud Foundation team to find out how this offset
-> is configured in your meshStack.
-
 ### Supported Unit Types
 
 [Cost objects](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#cost-object) in the OSB API specification support only a single `unit` field. However, service owners can specify multiple cost objects
@@ -107,8 +97,7 @@ Service instances are charged for each started hour using the normalized hourly 
 
 #### Quantity-based Units
 
-Support for charging services based on quantity units like "GB of messages stored" is forthcomming as part of our Metrics-Based Marketplace Metering feature.
-Please consult meshcloud's [public roadmap](https://www.meshcloud.io/product/) for more details.
+Direct support for charging based on quantity units (e.g., "GB of messages stored") is not available. However, you can report custom cost data using the [meshResourceUsageReports API](https://docs.meshcloud.io/billing-api/index.html#_put_meshresourceusagereports) to meshStack.
 
 #### Setup Fees
 
