@@ -60,8 +60,6 @@ by [meshStack metering](meshstack.billing.md). That means cost information provi
 
 Please review the [meshMarketplace Metering documentation](meshstack.meshmarketplace.metering.md) for more details.
 
-Also see [Metrics-based Metering](meshstack.meshmarketplace.metrics-metering.md#cost-information-in-catalog) for details about how to charge your services usage-based.
-
 ### Sensitive Services
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
