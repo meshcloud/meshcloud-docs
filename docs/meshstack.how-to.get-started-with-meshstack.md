@@ -3,39 +3,29 @@ id: meshstack.how-to.get-started-with-meshstack
 title: How to get started with meshStack
 ---
 
-This how-to guide is targeted at Cloud Foundation Partners that are starting out with a brand new meshStack. It is intended to be the first resource you read. You need to be able to log into your meshStack to follow this guide.
+This guide accompanies you to get started setting up a Internal Developer Platform with meshStack.
 
-## Step 1: Log into your meshStack
+> **Prerequisites:**
+> Your new meshStack is set up and the link to the meshPanel was provided to you.
+> You need to be able to log into your meshStack and have admin area access.
 
-As a Cloud Foundation Partner you are directly forwarded to the admin area of meshStack. This is the cockpit that helps you stay in control of everything happening in meshStack.
+## Step 1: Access the Admin Area of Your meshStack
 
-This it what it looks like.
+The Admin Area is the central place to setup, customize and operate your very own Internal Developer Platform via meshStack.
+To return to this view at a later point in time, you can always press the "Admin Area" button in the top bar.
 
-![Admin Area](assets/admin-area.png)
+## Step 2: Create Your First Workspace
 
-To return to this view, you can always press the "Admin Area" button in the top bar.
+Workspaces provide you the opportunity to onboard and structure your use cases. Those workspaces can act as consumers and/or providers of services within the marketplace. The marketplace is 
+the central place in meshStack to offer services that others consume. 
 
-If you are not able to see this screen, you are missing partner rights. This can be fixed by any other partner user.
-
-## Step 2: Create your first meshWorkspace
-
-The workspaces of your Cloud Foundation are represented by meshStack as meshWorkspaces.
-
-To experience what this feels like, create your first workspace via the panel. To open the wizard, click on "Create Workspace +" as shown in the picture below.
+Now lets get started by creating the first workspace in your meshStack. To open the wizard, click on "Create Workspace +" as shown in the picture below.
 
 ![Create meshWorkspace](assets/create-workspace.png)
 
-Of course, this can also be achieved via API. Take a look at our [workspace API](/api/index.html#_meshworkspace) to learn more.
+## Step 3: Create your First Service 
 
-## Step 3: Create your first meshPlatform
+The most central aspect of an Internal Developer Platform is offering services to other teams in your organization to jumpstart their projects, secure their application or extend their environments with additional resources.
 
-As a Cloud Foundation Platform, meshStack allows you to offer self-service tenant management, chargeback and much more to your workspaces.
-
-To start managing a cloud platform with meshStack, follow [How to integrate a meshPlatform into meshStack](./meshstack.how-to.integrate-meshplatform.md).
-
-
-## Step 4: Create your first meshProject
-
-After you onboarded your first meshPlatform, your Cloud Foundations' workspaces can manage their cloud tenants (Azure Subscriptions, GCP Projects, AWS Accounts) in meshProjects.
-
-To experience how smooth the self-service experience is, create your first project via the panel. You might want to check out the [user guide](./meshstack.how-to.create-project.md) or a less than 4 minute [tutorial video](https://www.youtube.com/watch?v=NYQa-WVtfDM).
+In order to start the step by step guide for you first building block, access the created workspace and click on Platform Builder on the top right corner.
+To offer your first service with meshStack, follow [AWS S3 Quickstart Guide](./meshstack.building-aws-quickstart-guide.md).

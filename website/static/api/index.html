@@ -611,6 +611,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_delete_meshtagdefinition">Delete meshTagDefinition</a></li>
 </ul>
 </li>
+<li><a href="#mesh_communication_definition">meshCommunicationDefinition (preview)</a>
+<ul class="sectlevel4">
+<li><a href="#_list_meshcommunicationdefinitions">List meshCommunicationDefinitions</a></li>
+<li><a href="#_get_meshcommunicationdefinition">Get meshCommunicationDefinition</a></li>
+<li><a href="#_post_meshcommunicationdefinition">Post meshCommunicationDefinition</a></li>
+<li><a href="#_patch_meshcommunicationdefinition">Patch meshCommunicationDefinition</a></li>
+<li><a href="#_delete_meshcommunicationdefinition">Delete meshCommunicationDefinition</a></li>
+</ul>
+</li>
+<li><a href="#mesh_communication">meshCommunication (preview)</a>
+<ul class="sectlevel4">
+<li><a href="#_list_meshcommunications">List meshCommunications</a></li>
+<li><a href="#_get_meshcommunication">Get meshCommunication</a></li>
+<li><a href="#_post_meshcommunication">Post meshCommunication</a></li>
+<li><a href="#_delete_meshcommunication">Delete meshCommunication</a></li>
+</ul>
+</li>
 <li><a href="#mesh_object_declarative_import">meshObject Declarative Import</a>
 <ul class="sectlevel4">
 <li><a href="#_meshuser">meshUser</a></li>
@@ -1269,11 +1286,11 @@ Content-Length: 257
 
 {
   "_links" : {
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
-    },
     "metadata" : {
       "href" : "https://mesh-backend-url/api/metadata"
+    },
+    "meshobjects" : {
+      "href" : "https://mesh-backend-url/api/meshobjects"
     },
     "self" : {
       "href" : "https://mesh-backend-url/api"
@@ -1577,6 +1594,14 @@ get a subset of the links mentioned here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshtagdefinitions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_tag_definition">meshTagDefinitions</a>.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshcommunicationdefinitions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_communicationdefinition">meshCommunicationDefinitions</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshcommunications</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get <a href="#mesh_communication">meshCommunications</a>.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="listingblock">
@@ -1594,37 +1619,10 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 2857
+Content-Length: 3227
 
 {
   "_links" : {
-    "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
-      "templated" : true
-    },
-    "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
-      "templated" : true
-    },
-    "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
-      "templated" : true
-    },
-    "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
-      "templated" : true
-    },
-    "meshprojects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
-      "templated" : true
-    },
-    "meshtagdefinitions" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
-    },
-    "meshpaymentmethods" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
-      "templated" : true
-    },
     "meshworkspaceuserbindings" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/userbindings{?username,workspaceRole,workspaceIdentifier}",
       "templated" : true
@@ -1648,9 +1646,44 @@ Content-Length: 2857
       "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
       "templated" : true
     },
+    "meshusers" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
+      "templated" : true
+    },
+    "meshprojectgroupbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
+      "templated" : true
+    },
+    "meshprojectuserbindings" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
+      "templated" : true
+    },
+    "meshprojects" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
+      "templated" : true
+    },
+    "meshtenants" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+      "templated" : true
+    },
+    "meshpaymentmethods" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
+      "templated" : true
+    },
+    "meshcommunications" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications{?communicationDefinitionUuid,resolutionStatus,communicationType}",
+      "templated" : true
+    },
+    "meshcommunicationdefinitions" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions{?type}",
+      "templated" : true
+    },
     "meshserviceinstances" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
       "templated" : true
+    },
+    "meshtagdefinitions" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
     },
     "self" : {
       "href" : "https://mesh-backend-url/api/meshobjects"
@@ -1789,7 +1822,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "admin-customer",
-        "createdOn" : "2025-04-09T12:08:17Z"
+        "createdOn" : "2025-04-16T13:42:43Z"
       },
       "spec" : {
         "displayName" : "admin-customer",
@@ -1820,7 +1853,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-customer",
-        "createdOn" : "2025-04-09T12:08:17Z"
+        "createdOn" : "2025-04-16T13:42:43Z"
       },
       "spec" : {
         "displayName" : "demo-customer",
@@ -1851,7 +1884,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-partner",
-        "createdOn" : "2025-04-09T12:08:17Z"
+        "createdOn" : "2025-04-16T13:42:43Z"
       },
       "spec" : {
         "displayName" : "demo-partner",
@@ -2067,7 +2100,7 @@ Content-Length: 1055
   "apiVersion" : "v1",
   "metadata" : {
     "name" : "admin-customer",
-    "createdOn" : "2025-04-09T12:08:17Z"
+    "createdOn" : "2025-04-16T13:42:43Z"
   },
   "spec" : {
     "displayName" : "admin-customer",
@@ -2161,7 +2194,7 @@ Content-Length: 1055
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects?workspaceIdentifier=ynuf4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects?workspaceIdentifier=eidq6mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2170,7 +2203,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ynuf4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eidq6mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -2235,7 +2268,7 @@ Content-Length: 2273
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-project-1",
-        "ownedByWorkspace" : "ynuf4mpdsv2",
+        "ownedByWorkspace" : "eidq6mpdsv2",
         "createdOn" : "2024-01-01T00:00:00Z"
       },
       "spec" : {
@@ -2245,38 +2278,38 @@ Content-Length: 2273
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/eidq6mpdsv2.test-project-1"
         },
         "meshtenants" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshusers" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "activePaymentMethod" : {
           "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
         },
         "meshprojectuserbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshprojectgroupbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
         }
       }
     } ]
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ynuf4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eidq6mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ynuf4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eidq6mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ynuf4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eidq6mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=ynuf4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eidq6mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     }
   },
   "page" : {
@@ -2317,7 +2350,7 @@ Deleted meshProjects can also be requested via this endpoint.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojects/eidq6mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2326,7 +2359,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/eidq6mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -2474,9 +2507,9 @@ Content-Length: 1344
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-1",
-    "ownedByWorkspace" : "ynuf4mpdsv2",
+    "ownedByWorkspace" : "eidq6mpdsv2",
     "createdOn" : "2024-01-01T00:00:00Z",
-    "deletedOn" : "2025-04-09T12:09:13.447529173Z"
+    "deletedOn" : "2025-04-16T13:43:42.494888290Z"
   },
   "spec" : {
     "displayName" : "Test Project 1",
@@ -2485,22 +2518,22 @@ Content-Length: 1344
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/eidq6mpdsv2.test-project-1"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-1"
     }
   }
 }</code></pre>
@@ -2551,7 +2584,7 @@ Content-Length: 1344
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "ynuf4mpdsv2"
+    "ownedByWorkspace" : "eidq6mpdsv2"
   }
 }</code></pre>
 </div>
@@ -2576,7 +2609,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "ynuf4mpdsv2"
+    "ownedByWorkspace" : "eidq6mpdsv2"
   }
 }</code></pre>
 </div>
@@ -2597,7 +2630,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "ynuf4mpdsv2"
+    "ownedByWorkspace" : "eidq6mpdsv2"
   }
 }'</code></pre>
 </div>
@@ -2676,7 +2709,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-3
+Location: https://mesh-backend-url/api/meshobjects/meshprojects/eidq6mpdsv2.test-project-3
 Content-Type: application/vnd.meshcloud.api.meshproject.v2.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -2692,8 +2725,8 @@ Content-Length: 1302
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "ynuf4mpdsv2",
-    "createdOn" : "2025-04-09T12:09:12.906181834Z"
+    "ownedByWorkspace" : "eidq6mpdsv2",
+    "createdOn" : "2025-04-16T13:43:41.942569882Z"
   },
   "spec" : {
     "displayName" : "Test Project 3",
@@ -2702,22 +2735,22 @@ Content-Length: 1302
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/eidq6mpdsv2.test-project-3"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=ynuf4mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=eidq6mpdsv2&amp;projectIdentifier=test-project-3"
     }
   }
 }</code></pre>
@@ -2774,7 +2807,7 @@ If one tenant still has such active services the project deletion will fail.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojects/eidq6mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -2783,7 +2816,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/ynuf4mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/eidq6mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -2955,7 +2988,7 @@ Content-Length: 982
       "kind" : "meshProjectUserBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "1ea4b8ed-cce2-4138-af50-5e9ae0cff5e3"
+        "name" : "486a9639-e304-4da7-bbac-dd8414b7bde4"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -2970,7 +3003,7 @@ Content-Length: 982
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/1ea4b8ed-cce2-4138-af50-5e9ae0cff5e3"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/486a9639-e304-4da7-bbac-dd8414b7bde4"
         }
       }
     } ]
@@ -3017,7 +3050,7 @@ Content-Length: 982
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojectbindings/userbindings/1ea4b8ed-cce2-4138-af50-5e9ae0cff5e3 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojectbindings/userbindings/486a9639-e304-4da7-bbac-dd8414b7bde4 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
 Host: mesh-backend-url</code></pre>
@@ -3026,7 +3059,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/1ea4b8ed-cce2-4138-af50-5e9ae0cff5e3' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/486a9639-e304-4da7-bbac-dd8414b7bde4' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -3118,7 +3151,7 @@ Content-Length: 534
   "kind" : "meshProjectUserBinding",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "1ea4b8ed-cce2-4138-af50-5e9ae0cff5e3"
+    "name" : "486a9639-e304-4da7-bbac-dd8414b7bde4"
   },
   "roleRef" : {
     "name" : "Project User"
@@ -3133,7 +3166,7 @@ Content-Length: 534
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/1ea4b8ed-cce2-4138-af50-5e9ae0cff5e3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/486a9639-e304-4da7-bbac-dd8414b7bde4"
     }
   }
 }</code></pre>
@@ -3544,7 +3577,7 @@ Content-Length: 986
       "kind" : "meshProjectGroupBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "600f4a35-9c43-4aca-8641-5d7a98dddcc6"
+        "name" : "e7e50f5a-ae43-4821-b994-f62a8db3c018"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -3559,7 +3592,7 @@ Content-Length: 986
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/600f4a35-9c43-4aca-8641-5d7a98dddcc6"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/e7e50f5a-ae43-4821-b994-f62a8db3c018"
         }
       }
     } ]
@@ -3606,7 +3639,7 @@ Content-Length: 986
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojectbindings/groupbindings/600f4a35-9c43-4aca-8641-5d7a98dddcc6 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshprojectbindings/groupbindings/e7e50f5a-ae43-4821-b994-f62a8db3c018 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
 Host: mesh-backend-url</code></pre>
@@ -3615,7 +3648,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/600f4a35-9c43-4aca-8641-5d7a98dddcc6' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/e7e50f5a-ae43-4821-b994-f62a8db3c018' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -3707,7 +3740,7 @@ Content-Length: 536
   "kind" : "meshProjectGroupBinding",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "600f4a35-9c43-4aca-8641-5d7a98dddcc6"
+    "name" : "e7e50f5a-ae43-4821-b994-f62a8db3c018"
   },
   "roleRef" : {
     "name" : "Project User"
@@ -3722,7 +3755,7 @@ Content-Length: 536
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/600f4a35-9c43-4aca-8641-5d7a98dddcc6"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/e7e50f5a-ae43-4821-b994-f62a8db3c018"
     }
   }
 }</code></pre>
@@ -3955,7 +3988,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojectbindings/groupbindings/600f4a35-9c43-4aca-8641-5d7a98dddcc6 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshprojectbindings/groupbindings/e7e50f5a-ae43-4821-b994-f62a8db3c018 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -3963,7 +3996,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/600f4a35-9c43-4aca-8641-5d7a98dddcc6' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/e7e50f5a-ae43-4821-b994-f62a8db3c018' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4671,7 +4704,7 @@ Content-Length: 951
       "kind" : "meshWorkspaceGroupBinding",
       "apiVersion" : "v2",
       "metadata" : {
-        "name" : "9a7bda54-dee4-44ae-9dae-da921989f32e"
+        "name" : "78a9fd7c-d687-4ad2-90aa-2d7cdfb3b1b4"
       },
       "roleRef" : {
         "name" : "Workspace Manager"
@@ -4685,7 +4718,7 @@ Content-Length: 951
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/9a7bda54-dee4-44ae-9dae-da921989f32e"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/78a9fd7c-d687-4ad2-90aa-2d7cdfb3b1b4"
         }
       }
     } ]
@@ -4732,7 +4765,7 @@ Content-Length: 951
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshworkspacebindings/groupbindings/9a7bda54-dee4-44ae-9dae-da921989f32e HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshworkspacebindings/groupbindings/78a9fd7c-d687-4ad2-90aa-2d7cdfb3b1b4 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -4741,7 +4774,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/9a7bda54-dee4-44ae-9dae-da921989f32e' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/78a9fd7c-d687-4ad2-90aa-2d7cdfb3b1b4' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -4828,7 +4861,7 @@ Content-Length: 512
   "kind" : "meshWorkspaceGroupBinding",
   "apiVersion" : "v2",
   "metadata" : {
-    "name" : "9a7bda54-dee4-44ae-9dae-da921989f32e"
+    "name" : "78a9fd7c-d687-4ad2-90aa-2d7cdfb3b1b4"
   },
   "roleRef" : {
     "name" : "Workspace Manager"
@@ -4842,7 +4875,7 @@ Content-Length: 512
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/9a7bda54-dee4-44ae-9dae-da921989f32e"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/78a9fd7c-d687-4ad2-90aa-2d7cdfb3b1b4"
     }
   }
 }</code></pre>
@@ -5253,12 +5286,12 @@ Content-Length: 2091
         "ownedByProject" : "test-project",
         "ownedByWorkspace" : "test-workspace",
         "platformIdentifier" : "aws.aws-meshstack-dev",
-        "deletedOn" : "2025-04-10T12:09:16.618832994Z",
+        "deletedOn" : "2025-04-17T13:43:45.937857996Z",
         "assignedTags" : { },
         "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
       },
       "spec" : {
-        "localId" : "2cacb38c-45c9-4c36-b5d4-6b3ae8a98992",
+        "localId" : "b2d14043-4396-4689-b168-c7d5e58ebd5b",
         "landingZoneIdentifier" : "stage-dev",
         "quotas" : [ {
           "key" : "limits.cpu",
@@ -5454,12 +5487,12 @@ Content-Length: 979
     "ownedByProject" : "test-project",
     "ownedByWorkspace" : "test-workspace",
     "platformIdentifier" : "aws.aws-meshstack-dev",
-    "deletedOn" : "2025-04-10T12:09:16.618832994Z",
+    "deletedOn" : "2025-04-17T13:43:45.937857996Z",
     "assignedTags" : { },
     "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
   },
   "spec" : {
-    "localId" : "2cacb38c-45c9-4c36-b5d4-6b3ae8a98992",
+    "localId" : "b2d14043-4396-4689-b168-c7d5e58ebd5b",
     "landingZoneIdentifier" : "stage-dev",
     "quotas" : [ {
       "key" : "limits.cpu",
@@ -5870,7 +5903,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 2944
+Content-Length: 2947
 
 {
   "_embedded" : {
@@ -5883,7 +5916,7 @@ Content-Length: 2944
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2025-04-09T12:09:01.928942Z"
+        "createdOn" : "2025-04-16T13:43:27.419880140Z"
       },
       "spec" : {
         "displayName" : "parent block",
@@ -5914,7 +5947,7 @@ Content-Length: 2944
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2025-04-09T12:09:01.970535022Z"
+        "createdOn" : "2025-04-16T13:43:27.468108600Z"
       },
       "spec" : {
         "displayName" : "child block",
@@ -6205,7 +6238,7 @@ Content-Length: 1334
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2025-04-09T12:09:01.970535022Z"
+    "createdOn" : "2025-04-16T13:43:27.468108600Z"
   },
   "spec" : {
     "displayName" : "child block",
@@ -6297,7 +6330,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "a9edc601-d570-4e1d-aa7d-eda4f023cd16"
+      "buildingBlockUuid": "1cdf7b1b-00e4-4e98-84cd-f91ee5342114"
     }]
   }
 }</code></pre>
@@ -6326,7 +6359,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "a9edc601-d570-4e1d-aa7d-eda4f023cd16"
+      "buildingBlockUuid": "1cdf7b1b-00e4-4e98-84cd-f91ee5342114"
     }]
   }
 } '</code></pre>
@@ -6454,7 +6487,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -6469,12 +6502,12 @@ Content-Length: 1253
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v1",
   "metadata" : {
-    "uuid" : "b35be30f-8af2-4a5f-b0ae-60beaa16a700",
+    "uuid" : "a09b8620-80d8-419c-9c2f-03a9f1314ce7",
     "definitionUuid" : "ef6aaf87-3f8c-477c-94f4-f3cf509728ca",
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2025-04-09T12:09:03.038133505Z"
+    "createdOn" : "2025-04-16T13:43:28.651697605Z"
   },
   "spec" : {
     "displayName" : "New BuildingBlock",
@@ -6484,7 +6517,7 @@ Content-Length: 1253
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "a9edc601-d570-4e1d-aa7d-eda4f023cd16",
+      "buildingBlockUuid" : "1cdf7b1b-00e4-4e98-84cd-f91ee5342114",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -6494,13 +6527,13 @@ Content-Length: 1253
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7"
     },
     "meshtenant" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7/purge"
     }
   }
 }</code></pre>
@@ -6517,7 +6550,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -6525,7 +6558,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6555,7 +6588,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700/purge HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -6563,7 +6596,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7157,16 +7190,16 @@ Content-Length: 3293
       "metadata" : {
         "uuid" : "68ce5455-2a4a-4a4b-a324-6a6c18cab85a",
         "ownedByWorkspace" : "my-workspace",
-        "createdOn" : "2025-04-09T12:09:04.784587808Z"
+        "createdOn" : "2025-04-16T13:43:30.487759588Z"
       },
       "spec" : {
         "buildingBlockDefinitionVersionRef" : {
-          "uuid" : "80eb2c08-7489-4bc5-a134-83686c3deb63",
+          "uuid" : "a4ce4fdd-b1e8-439d-9e18-c08df89f001f",
           "kind" : "meshBuildingBlockDefinitionVersion"
         },
         "targetRef" : {
           "kind" : "meshTenant",
-          "uuid" : "f60d9316-b92d-4db6-81dd-514827bec0c3"
+          "uuid" : "6fa91d9d-5735-420d-9bb0-37fcf0e980ec"
         },
         "displayName" : "parent block",
         "inputs" : [ ],
@@ -7194,16 +7227,16 @@ Content-Length: 3293
       "metadata" : {
         "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
         "ownedByWorkspace" : "my-workspace",
-        "createdOn" : "2025-04-09T12:09:04.789277460Z"
+        "createdOn" : "2025-04-16T13:43:30.494995188Z"
       },
       "spec" : {
         "buildingBlockDefinitionVersionRef" : {
-          "uuid" : "c21f4d9a-12d5-41cc-84d4-62598a678869",
+          "uuid" : "c786c04b-6ad1-46e6-8e82-38f5d4046647",
           "kind" : "meshBuildingBlockDefinitionVersion"
         },
         "targetRef" : {
           "kind" : "meshTenant",
-          "uuid" : "f60d9316-b92d-4db6-81dd-514827bec0c3"
+          "uuid" : "6fa91d9d-5735-420d-9bb0-37fcf0e980ec"
         },
         "displayName" : "child block",
         "inputs" : [ {
@@ -7511,16 +7544,16 @@ Content-Length: 1483
   "metadata" : {
     "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
     "ownedByWorkspace" : "my-workspace",
-    "createdOn" : "2025-04-09T12:09:04.789277460Z"
+    "createdOn" : "2025-04-16T13:43:30.494995188Z"
   },
   "spec" : {
     "buildingBlockDefinitionVersionRef" : {
-      "uuid" : "c21f4d9a-12d5-41cc-84d4-62598a678869",
+      "uuid" : "c786c04b-6ad1-46e6-8e82-38f5d4046647",
       "kind" : "meshBuildingBlockDefinitionVersion"
     },
     "targetRef" : {
       "kind" : "meshTenant",
-      "uuid" : "f60d9316-b92d-4db6-81dd-514827bec0c3"
+      "uuid" : "6fa91d9d-5735-420d-9bb0-37fcf0e980ec"
     },
     "displayName" : "child block",
     "inputs" : [ {
@@ -7601,11 +7634,11 @@ Host: mesh-backend-url
   "spec" : {
     "buildingBlockDefinitionVersionRef": {
       "kind": "meshBuildingBlockDefinitionVersion",
-      "uuid": "c21f4d9a-12d5-41cc-84d4-62598a678869"
+      "uuid": "c786c04b-6ad1-46e6-8e82-38f5d4046647"
     },
     "targetRef": {
       "kind": "meshTenant",
-      "uuid": "f60d9316-b92d-4db6-81dd-514827bec0c3"
+      "uuid": "6fa91d9d-5735-420d-9bb0-37fcf0e980ec"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [{
@@ -7615,7 +7648,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "6163dcdc-4a92-4e74-ac2e-540f554634ed"
+      "buildingBlockUuid": "6c9b6cad-e58e-4d15-95ea-f2a018e0c6f6"
     }]
   }
 }</code></pre>
@@ -7633,11 +7666,11 @@ Host: mesh-backend-url
   "spec" : {
     "buildingBlockDefinitionVersionRef": {
       "kind": "meshBuildingBlockDefinitionVersion",
-      "uuid": "c21f4d9a-12d5-41cc-84d4-62598a678869"
+      "uuid": "c786c04b-6ad1-46e6-8e82-38f5d4046647"
     },
     "targetRef": {
       "kind": "meshTenant",
-      "uuid": "f60d9316-b92d-4db6-81dd-514827bec0c3"
+      "uuid": "6fa91d9d-5735-420d-9bb0-37fcf0e980ec"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [{
@@ -7647,7 +7680,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "6163dcdc-4a92-4e74-ac2e-540f554634ed"
+      "buildingBlockUuid": "6c9b6cad-e58e-4d15-95ea-f2a018e0c6f6"
     }]
   }
 } '</code></pre>
@@ -7790,7 +7823,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/527e0483-46ab-4c9a-97d9-4f703d97c55f
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/6aba2e41-fbc5-430f-9bc5-8fd3708dd451
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -7805,18 +7838,18 @@ Content-Length: 1405
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v2-preview",
   "metadata" : {
-    "uuid" : "527e0483-46ab-4c9a-97d9-4f703d97c55f",
+    "uuid" : "6aba2e41-fbc5-430f-9bc5-8fd3708dd451",
     "ownedByWorkspace" : "my-workspace",
-    "createdOn" : "2025-04-09T12:09:05.653388743Z"
+    "createdOn" : "2025-04-16T13:43:31.355065174Z"
   },
   "spec" : {
     "buildingBlockDefinitionVersionRef" : {
-      "uuid" : "c21f4d9a-12d5-41cc-84d4-62598a678869",
+      "uuid" : "c786c04b-6ad1-46e6-8e82-38f5d4046647",
       "kind" : "meshBuildingBlockDefinitionVersion"
     },
     "targetRef" : {
       "kind" : "meshTenant",
-      "uuid" : "f60d9316-b92d-4db6-81dd-514827bec0c3"
+      "uuid" : "6fa91d9d-5735-420d-9bb0-37fcf0e980ec"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [ {
@@ -7825,7 +7858,7 @@ Content-Length: 1405
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "6163dcdc-4a92-4e74-ac2e-540f554634ed",
+      "buildingBlockUuid" : "6c9b6cad-e58e-4d15-95ea-f2a018e0c6f6",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -7839,10 +7872,10 @@ Content-Length: 1405
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/527e0483-46ab-4c9a-97d9-4f703d97c55f"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/6aba2e41-fbc5-430f-9bc5-8fd3708dd451"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/527e0483-46ab-4c9a-97d9-4f703d97c55f/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/6aba2e41-fbc5-430f-9bc5-8fd3708dd451/purge"
     }
   }
 }</code></pre>
@@ -7859,7 +7892,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -7867,7 +7900,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7897,7 +7930,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700/purge HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -7905,7 +7938,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/b35be30f-8af2-4a5f-b0ae-60beaa16a700/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/a09b8620-80d8-419c-9c2f-03a9f1314ce7/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8008,7 +8041,7 @@ It looks like one of the examples below:</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=ynuf4mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshpaymentmethods?workspaceIdentifier=eidq6mpmdsv2&amp;page=0&amp;size=2 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -8017,7 +8050,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ynuf4mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=eidq6mpmdsv2&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshpaymentmethod.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -8082,7 +8115,7 @@ Content-Length: 1999
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-payment-method-1",
-        "ownedByWorkspace" : "ynuf4mpmdsv2"
+        "ownedByWorkspace" : "eidq6mpmdsv2"
       },
       "spec" : {
         "displayName" : "Test Payment Method 1",
@@ -8102,7 +8135,7 @@ Content-Length: 1999
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-payment-method-2",
-        "ownedByWorkspace" : "ynuf4mpmdsv2"
+        "ownedByWorkspace" : "eidq6mpmdsv2"
       },
       "spec" : {
         "displayName" : "Test Payment Method 2",
@@ -8121,16 +8154,16 @@ Content-Length: 1999
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ynuf4mpmdsv2&amp;page=0&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=eidq6mpmdsv2&amp;page=0&amp;size=2"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ynuf4mpmdsv2&amp;page=0&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=eidq6mpmdsv2&amp;page=0&amp;size=2"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ynuf4mpmdsv2&amp;page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=eidq6mpmdsv2&amp;page=1&amp;size=2"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=ynuf4mpmdsv2&amp;page=1&amp;size=2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods?workspaceIdentifier=eidq6mpmdsv2&amp;page=1&amp;size=2"
     }
   },
   "page" : {
@@ -8296,7 +8329,7 @@ Content-Length: 539
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-payment-method-1",
-    "ownedByWorkspace" : "ynuf4mpmdsv2"
+    "ownedByWorkspace" : "eidq6mpmdsv2"
   },
   "spec" : {
     "displayName" : "Test Payment Method 1",
@@ -8504,7 +8537,7 @@ Content-Length: 1451
         "email" : "jdoe@example.com",
         "firstName" : "John",
         "lastName" : "Doe",
-        "euid" : "938bcec3-606f-4a3c-b900-e57ec205dd17",
+        "euid" : "5295ab99-4684-4f12-9389-bd33d9c16ba2",
         "tags" : { }
       },
       "_links" : {
@@ -8608,7 +8641,7 @@ Content-Length: 525
     "email" : "jdoe@example.com",
     "firstName" : "John",
     "lastName" : "Doe",
-    "euid" : "938bcec3-606f-4a3c-b900-e57ec205dd17",
+    "euid" : "5295ab99-4684-4f12-9389-bd33d9c16ba2",
     "tags" : { }
   },
   "_links" : {
@@ -8930,7 +8963,7 @@ Host: mesh-backend-url
   },
   "spec": {
     "email": "sjohnson@example.com",
-    "euid": "aabd11e2-9d25-48dc-b793-d0dba69aa874",
+    "euid": "d63a8595-c01f-4742-ad84-553591396ca0",
     "firstName": "Samira",
     "lastName": "Johnson",
     "tags": {}
@@ -8952,7 +8985,7 @@ Host: mesh-backend-url
   },
   "spec": {
     "email": "sjohnson@example.com",
-    "euid": "aabd11e2-9d25-48dc-b793-d0dba69aa874",
+    "euid": "d63a8595-c01f-4742-ad84-553591396ca0",
     "firstName": "Samira",
     "lastName": "Johnson",
     "tags": {}
@@ -8991,7 +9024,7 @@ Content-Length: 603
     "email" : "sjohnson@example.com",
     "firstName" : "Samira",
     "lastName" : "Johnson",
-    "euid" : "aabd11e2-9d25-48dc-b793-d0dba69aa874",
+    "euid" : "d63a8595-c01f-4742-ad84-553591396ca0",
     "tags" : {
       "environment" : [ "dev", "test", "qa" ]
     }
@@ -9574,20 +9607,20 @@ Content-Length: 1386
       "kind" : "meshServiceInstance",
       "apiVersion" : "v2",
       "metadata" : {
-        "ownedByProject" : "ynuf4mtdg11",
+        "ownedByProject" : "eidq6mtdg11",
         "ownedByWorkspace" : "my-mobile-app-team",
-        "marketplaceIdentifier" : "ynuf4mtdg1",
-        "instanceId" : "ynuf4mtdg9"
+        "marketplaceIdentifier" : "eidq6mtdg1",
+        "instanceId" : "eidq6mtdg9"
       },
       "spec" : {
-        "displayName" : "ynuf4mtdg12",
-        "serviceId" : "ynuf4mtdg5",
-        "planId" : "ynuf4mtdg7",
+        "displayName" : "eidq6mtdg12",
+        "serviceId" : "eidq6mtdg5",
+        "planId" : "eidq6mtdg7",
         "creator" : "Unknown"
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/ynuf4mtdg9"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/eidq6mtdg9"
         }
       }
     } ]
@@ -9761,8 +9794,8 @@ Content-Length: 530
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "ynuf4mtdg24",
-    "planId" : "ynuf4mtdg26",
+    "serviceId" : "eidq6mtdg24",
+    "planId" : "eidq6mtdg26",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -9823,8 +9856,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "ynuf4mtdg24",
-    "planId" : "ynuf4mtdg26",
+    "serviceId" : "eidq6mtdg24",
+    "planId" : "eidq6mtdg26",
     "creator" : "alice@example.com"
   }
 }</code></pre>
@@ -9847,8 +9880,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "ynuf4mtdg24",
-    "planId" : "ynuf4mtdg26",
+    "serviceId" : "eidq6mtdg24",
+    "planId" : "eidq6mtdg26",
     "creator" : "alice@example.com"
   }
 }'</code></pre>
@@ -9959,8 +9992,8 @@ Content-Length: 522
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "ynuf4mtdg24",
-    "planId" : "ynuf4mtdg26",
+    "serviceId" : "eidq6mtdg24",
+    "planId" : "eidq6mtdg26",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -10021,8 +10054,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "ynuf4mtdg24",
-    "planId" : "ynuf4mtdg26",
+    "serviceId" : "eidq6mtdg24",
+    "planId" : "eidq6mtdg26",
     "creator" : "alice@example.com"
   }
 }</code></pre>
@@ -10045,8 +10078,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "ynuf4mtdg24",
-    "planId" : "ynuf4mtdg26",
+    "serviceId" : "eidq6mtdg24",
+    "planId" : "eidq6mtdg26",
     "creator" : "alice@example.com"
   }
 }'</code></pre>
@@ -11021,6 +11054,1441 @@ Host: mesh-backend-url</code></pre>
 <div class="paragraph">
 <div class="title">Response Fields</div>
 <p>If successful, this request returns an empty response.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mesh_communication_definition"><a class="link" href="#mesh_communication_definition">meshCommunicationDefinition (preview)</a></h4>
+<div class="paragraph">
+<p>All endpoints on meshCommunicationDefinitions.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>the meshCommunicationDefinition endpoint is still in preview mode, which means it is subject to change and we are planning
+to introduce a new version <strong>without support for backwards compatibility</strong>, meaning, the preview version will disappear
+without prior warning!
+If this is not acceptable, please wait until the final meshCommunicationDefinition endpoints are announced in the release notes.
+These endpoints will be released in the next few weeks.
+From then on, we will provide backwards-compatible communication definition endpoints, meaning, once new versions
+are introduced, you can continue to use older versions by setting the correct <code>Accept</code> header.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The meshCommunicationDefinition endpoints are only available if the developer engagement module is activated in your meshStack.
+If you would like to enable this feature, please contact us at <a href="mailto:support@meshcloud.io">support@meshcloud.io</a></p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_list_meshcommunicationdefinitions"><a class="link" href="#_list_meshcommunicationdefinitions">List meshCommunicationDefinitions</a></h5>
+<div class="paragraph">
+<p>Fetch a paginated list of meshCommunicationDefinitions. Supports optional filtering by type.</p>
+</div>
+<div class="ulist">
+<div class="title">Query Parameters</div>
+<ul>
+<li>
+<p><code>page</code> (optional): The page index, starting at 0.</p>
+</li>
+<li>
+<p><code>size</code> (optional): The number of elements per page.</p>
+</li>
+<li>
+<p><code>type</code> (optional): Filter by communication type. Valid values are <code>NOTIFICATION</code> and <code>ACTION_REQUIRED</code>.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The mesh API is <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json</code> as an <code>Accept</code> header to get the V1 response format.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshcommunicationdefinitions?page=0&amp;size=5 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions?page=0&amp;size=5' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshCommunicationDefinitions[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_communication_definition_response_fields">meshCommunicationDefinition</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the self and pagination links.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 2922
+
+{
+  "_embedded" : {
+    "meshCommunicationDefinitions" : [ {
+      "kind" : "meshCommunicationDefinition",
+      "apiVersion" : "v1-preview",
+      "metadata" : {
+        "uuid" : "c87c731e-44d4-4397-94ba-043b86b2cf53"
+      },
+      "spec" : {
+        "displayName" : "Communication definition 1 Title",
+        "communication" : {
+          "title" : "Communication definition 1 Title",
+          "message" : "Message for Communication definition 1. Use [this guide](http://example.com/1) for reference.",
+          "dueDate" : "2025-04-17",
+          "type" : "ACTION_REQUIRED"
+        }
+      },
+      "status" : {
+        "communicationsTotal" : 0,
+        "communicationsResolved" : 0,
+        "communicationsOpen" : 0
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53"
+        }
+      }
+    }, {
+      "kind" : "meshCommunicationDefinition",
+      "apiVersion" : "v1-preview",
+      "metadata" : {
+        "uuid" : "1a556acb-8df3-494e-a5ef-30817283a803"
+      },
+      "spec" : {
+        "displayName" : "Communication definition 2 Title",
+        "communication" : {
+          "title" : "Communication definition 2 Title",
+          "message" : "Message for Communication definition 2. Use [this guide](http://example.com/2) for reference.",
+          "dueDate" : "2025-04-18",
+          "type" : "ACTION_REQUIRED"
+        }
+      },
+      "status" : {
+        "communicationsTotal" : 0,
+        "communicationsResolved" : 0,
+        "communicationsOpen" : 0
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/1a556acb-8df3-494e-a5ef-30817283a803"
+        }
+      }
+    }, {
+      "kind" : "meshCommunicationDefinition",
+      "apiVersion" : "v1-preview",
+      "metadata" : {
+        "uuid" : "17124598-0d9e-4d0a-869d-816ceb0c6499"
+      },
+      "spec" : {
+        "displayName" : "Communication definition 3 Title",
+        "communication" : {
+          "title" : "Communication definition 3 Title",
+          "message" : "Message for Communication definition 3. Use [this guide](http://example.com/3) for reference.",
+          "dueDate" : "2025-04-19",
+          "type" : "ACTION_REQUIRED"
+        }
+      },
+      "status" : {
+        "communicationsTotal" : 0,
+        "communicationsResolved" : 0,
+        "communicationsOpen" : 0
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/17124598-0d9e-4d0a-869d-816ceb0c6499"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions{?type}",
+      "templated" : true
+    }
+  },
+  "page" : {
+    "size" : 5,
+    "totalElements" : 3,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshcommunicationdefinition"><a class="link" href="#_get_meshcommunicationdefinition">Get meshCommunicationDefinition</a></h5>
+<div class="paragraph">
+<p>Get a single meshCommunicationDefinition.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Media type for the response.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json'</code></pre>
+</div>
+</div>
+<table id="mesh_communication_definition_response_fields" class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API version.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource kind, always 'meshCommunicationDefinition'.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title of the communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message content.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.dueDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Due date (ISO format).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of communication (e.g. ACTION_REQUIRED).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HAL links.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.communicationsTotal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the total amount of communications associated to this definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.communicationsResolved</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the amount of resolved communications. This field is only present for communication definitions of type ACTION_REQUIRED, because other types of communications are not meant to be resolved.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.communicationsOpen</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the amount of open (unresolved) communications. This field is only present for communication definitions of type ACTION_REQUIRED, because other types of communications are not meant to be resolved.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 764
+
+{
+  "kind" : "meshCommunicationDefinition",
+  "apiVersion" : "v1-preview",
+  "metadata" : {
+    "uuid" : "c87c731e-44d4-4397-94ba-043b86b2cf53"
+  },
+  "spec" : {
+    "displayName" : "Communication definition 1 Title",
+    "communication" : {
+      "title" : "Communication definition 1 Title",
+      "message" : "Message for Communication definition 1. Use [this guide](http://example.com/1) for reference.",
+      "dueDate" : "2025-04-17",
+      "type" : "ACTION_REQUIRED"
+    }
+  },
+  "status" : {
+    "communicationsTotal" : 0,
+    "communicationsResolved" : 0,
+    "communicationsOpen" : 0
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_post_meshcommunicationdefinition"><a class="link" href="#_post_meshcommunicationdefinition">Post meshCommunicationDefinition</a></h5>
+<div class="paragraph">
+<p>Create a new meshCommunicationDefinition. A meshCommunicationDefinition defines a group of meshCommunications
+with a common purpose and target audience. Each definition includes a communication message and metadata like
+due date.
+Notice that separate API calls to the meshCommunication API have to be made in order for recipients to receive the message.
+Therefore, you&#8217;ll usually want to fetch the <code>metadata.uuid</code> returned by this API call
+and subsequently put that UUID into the <code>metadata.definitionUuid</code> field when creating a
+communication via the meshCommunication API endpoint.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be <code>application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be <code>application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API version of the resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kind of mesh object, always 'meshCommunicationDefinition'.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the communication definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title of the communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content of the message.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of communication: ACTION_REQUIRED or NOTIFICATION.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.dueDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Due date in ISO 8601 format.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/meshobjects/meshcommunicationdefinitions HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+Content-Length: 319
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v1-preview",
+  "kind": "meshCommunicationDefinition",
+  "spec": {
+    "displayName": "Test Communication Definition",
+    "communication": {
+      "title": "Important Update",
+      "message": "This is a test communication.",
+      "type": "ACTION_REQUIRED",
+      "dueDate": "2099-04-30"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json' \
+    -d '{
+  "apiVersion": "v1-preview",
+  "kind": "meshCommunicationDefinition",
+  "spec": {
+    "displayName": "Test Communication Definition",
+    "communication": {
+      "title": "Important Update",
+      "message": "This is a test communication.",
+      "type": "ACTION_REQUIRED",
+      "dueDate": "2099-04-30"
+    }
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>The fields have the same meaning as the request fields, with the exception of the following fields, which are absent
+from the request fields:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.communicationsTotal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the total amount of communications associated to this definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.communicationsResolved</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the amount of resolved communications. This field is only present for communication definitions of type ACTION_REQUIRED, because other types of communications are not meant to be resolved.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.communicationsOpen</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the amount of open (unresolved) communications. This field is only present for communication definitions of type ACTION_REQUIRED, because other types of communications are not meant to be resolved.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The amount of communications shown in the response will be 0 after a communication definition was
+created. You have to explicitly create new meshCommunications via separate API requests on the
+meshCommunication endpoint.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Location: https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c2f2a381-9f16-4320-997e-1a2a122625fa
+Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 668
+
+{
+  "kind" : "meshCommunicationDefinition",
+  "apiVersion" : "v1-preview",
+  "metadata" : {
+    "uuid" : "c2f2a381-9f16-4320-997e-1a2a122625fa"
+  },
+  "spec" : {
+    "displayName" : "Important Update",
+    "communication" : {
+      "title" : "Important Update",
+      "message" : "This is a test communication.",
+      "dueDate" : "2099-04-30",
+      "type" : "ACTION_REQUIRED"
+    }
+  },
+  "status" : {
+    "communicationsTotal" : 0,
+    "communicationsResolved" : 0,
+    "communicationsOpen" : 0
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c2f2a381-9f16-4320-997e-1a2a122625fa"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_patch_meshcommunicationdefinition"><a class="link" href="#_patch_meshcommunicationdefinition">Patch meshCommunicationDefinition</a></h5>
+<div class="paragraph">
+<p>Update an existing meshCommunicationDefinition. Only the title, message and due date of a
+communication definition can be updated.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json</code> to request the correct API version.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be <code>application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new title of the communication definition. Can be null or absent in case the title should not change.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new message of the communication. Can be null or absent if the message should not change.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.communication.dueDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new due date in ISO 8601 format. Can be null or absent if the due date should not change.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53 HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.patch.v1-preview.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+Content-Length: 144
+Host: mesh-backend-url
+
+{
+  "spec": {
+    "communication": {
+      "title": "my-new-title",
+      "message": "my-new-message",
+      "dueDate": "2099-05-31"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53' -i -u 'valid_username:valid_password' -X PATCH \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.patch.v1-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json' \
+    -d '{
+  "spec": {
+    "communication": {
+      "title": "my-new-title",
+      "message": "my-new-message",
+      "dueDate": "2099-05-31"
+    }
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>a meshCommunicationDefinition object. See <a href="#mesh_communication_definition_response_fields">Response Fields</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 645
+
+{
+  "kind" : "meshCommunicationDefinition",
+  "apiVersion" : "v1-preview",
+  "metadata" : {
+    "uuid" : "c87c731e-44d4-4397-94ba-043b86b2cf53"
+  },
+  "spec" : {
+    "displayName" : "my-new-title",
+    "communication" : {
+      "title" : "my-new-title",
+      "message" : "my-new-message",
+      "dueDate" : "2099-05-31",
+      "type" : "ACTION_REQUIRED"
+    }
+  },
+  "status" : {
+    "communicationsTotal" : 0,
+    "communicationsResolved" : 0,
+    "communicationsOpen" : 0
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshcommunicationdefinition"><a class="link" href="#_delete_meshcommunicationdefinition">Delete meshCommunicationDefinition</a></h5>
+<div class="paragraph">
+<p>Deletes a meshCommunicationDefinition and all associated meshCommunications.
+Requires <code>ADM_COMMUNICATIONDEFINITION_DELETE</code> authority.</p>
+</div>
+<div class="ulist">
+<div class="title">Request Parameters</div>
+<ul>
+<li>
+<p><code>message</code> (optional): A reason or explanation for the deletion. Included in the deletion event.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json</code> to request the correct API version.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/c87c731e-44d4-4397-94ba-043b86b2cf53' -i -u 'valid_username:valid_password' -X DELETE \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 204 No Content
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mesh_communication"><a class="link" href="#mesh_communication">meshCommunication (preview)</a></h4>
+<div class="paragraph">
+<p>All endpoints on meshCommunications.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>the meshCommunication endpoint is still in preview mode, which means it is subject to change and we are planning
+to introduce a new version <strong>without support for backwards compatibility</strong>, meaning, the preview version will disappear
+without prior warning!
+If this is not acceptable, please wait until the final meshCommunication endpoints are announced in the release notes.
+These endpoints will be released in the next few weeks.
+From then on, we will provide backwards-compatible communication endpoints, meaning, once new versions
+are introduced, you can continue to use older versions by setting the correct <code>Accept</code> header.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The meshCommunication endpoints are only available if the developer engagement module is activated in your meshStack.
+If you would like to enable this feature, please contact us at <a href="mailto:support@meshcloud.io">support@meshcloud.io</a></p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_list_meshcommunications"><a class="link" href="#_list_meshcommunications">List meshCommunications</a></h5>
+<div class="paragraph">
+<p>Provides a paged list of meshCommunications.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use <code>application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Parameters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default=50). See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshcommunications?page=0&amp;size=3 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications?page=0&amp;size=3' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshCommunications[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_communication_response_fields">meshCommunication</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 1197
+
+{
+  "_embedded" : {
+    "meshCommunications" : [ {
+      "kind" : "meshCommunication",
+      "apiVersion" : "v1-preview",
+      "metadata" : {
+        "uuid" : "c65d85b1-5d58-446b-9b9b-fcff922b0837",
+        "definitionUuid" : "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9",
+        "ownedByWorkspace" : "demo-customer"
+      },
+      "spec" : {
+        "targetMeshObjectRef" : {
+          "kind" : "meshWorkspace",
+          "name" : "demo-customer"
+        }
+      },
+      "status" : {
+        "resolutionStatus" : "OPEN",
+        "meshCommunicationDefinition" : {
+          "uuid" : "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9",
+          "title" : "Communication definition 1 Title",
+          "dueDate" : "2025-04-17",
+          "communicationType" : "ACTION_REQUIRED"
+        }
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/c65d85b1-5d58-446b-9b9b-fcff922b0837"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications?page=0&amp;size=3"
+    }
+  },
+  "page" : {
+    "size" : 3,
+    "totalElements" : 1,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshcommunication"><a class="link" href="#_get_meshcommunication">Get meshCommunication</a></h5>
+<div class="paragraph">
+<p>Get a single meshCommunication.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json</code> as an <code>Accept</code> header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/meshobjects/meshcommunications/c65d85b1-5d58-446b-9b9b-fcff922b0837 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications/c65d85b1-5d58-446b-9b9b-fcff922b0837' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json'</code></pre>
+</div>
+</div>
+<table id="mesh_communication_response_fields" class="tableblock frame-all grid-all stretch">
+<caption class="title">Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshCommunication datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshCommunication' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always contains the 'uuid' to uniquely identify the communication. It also contains additional meta information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID to uniquely identify the communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.definitionUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID that uniquely identifies the associated communication definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace that owns the communication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetMeshObjectRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Describes the meshObject that is targeted by this communication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetMeshObjectRef.kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What kind of meshObject is targeted (e.g. meshWorkspace)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetMeshObjectRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An name or identifier to uniquely identify the targeted meshObject</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">contains the current status as well as the associated meshCommunicationDefinition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.resolutionStatus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">only present if the associated communication definition is of type ACTION_REQUIRED. Either OPEN or RESOLVED.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.meshCommunicationDefinition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the communication definition associated to this communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.meshCommunicationDefinition.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID that uniquely identifies the meshCommunicationDefinition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.meshCommunicationDefinition.title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The title of the meshCommunicationDefinition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.meshCommunicationDefinition.communicationType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Either NOTIFICATION or ACTION_REQUIRED.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.meshCommunicationDefinition.dueDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The due date of the meshCommunicationDefinition in ISO 8601 format (YYYY-MM-DD). Only present if a due date was specified for the communication definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 798
+
+{
+  "kind" : "meshCommunication",
+  "apiVersion" : "v1-preview",
+  "metadata" : {
+    "uuid" : "c65d85b1-5d58-446b-9b9b-fcff922b0837",
+    "definitionUuid" : "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9",
+    "ownedByWorkspace" : "demo-customer"
+  },
+  "spec" : {
+    "targetMeshObjectRef" : {
+      "kind" : "meshWorkspace",
+      "name" : "demo-customer"
+    }
+  },
+  "status" : {
+    "resolutionStatus" : "OPEN",
+    "meshCommunicationDefinition" : {
+      "uuid" : "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9",
+      "title" : "Communication definition 1 Title",
+      "dueDate" : "2025-04-17",
+      "communicationType" : "ACTION_REQUIRED"
+    }
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/c65d85b1-5d58-446b-9b9b-fcff922b0837"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_post_meshcommunication"><a class="link" href="#_post_meshcommunication">Post meshCommunication</a></h5>
+<div class="paragraph">
+<p>Create a new meshCommunication. A meshCommunication is attached to a meshCommunicationDefinition,
+therefore, a meshCommunicationDefinition must exist before you can create a meshCommunication.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/meshobjects/meshcommunications HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+Content-Length: 268
+Host: mesh-backend-url
+
+{
+  "kind": "meshCommunication",
+  "apiVersion": "v1-preview",
+  "metadata": {
+    "definitionUuid": "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9"
+  },
+  "spec": {
+    "targetMeshObjectRef": {
+      "kind": "meshWorkspace",
+      "name": "my-workspace-identifier"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json' \
+    -d '{
+  "kind": "meshCommunication",
+  "apiVersion": "v1-preview",
+  "metadata": {
+    "definitionUuid": "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9"
+  },
+  "spec": {
+    "targetMeshObjectRef": {
+      "kind": "meshWorkspace",
+      "name": "my-workspace-identifier"
+    }
+  }
+}'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Request Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of Communication datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshCommunication' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed fields that help identify the Communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.definitionUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the Communication Definition this Communication should be associated to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the Communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetMeshObjectRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">describes which meshObject is targeted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetMeshObjectRef.kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">describes which type of meshObject is targeted. At the moment, only meshWorkspace is supported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.targetMeshObjectRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier or UUID that uniquely identifies the given meshObject. For example, for meshWorkspaces, the name is the workspace identifier.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Location: https://mesh-backend-url/api/meshobjects/meshcommunications/911f9a98-5c81-4e94-a0b7-de37b5456758
+Content-Type: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 818
+
+{
+  "kind" : "meshCommunication",
+  "apiVersion" : "v1-preview",
+  "metadata" : {
+    "uuid" : "911f9a98-5c81-4e94-a0b7-de37b5456758",
+    "definitionUuid" : "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9",
+    "ownedByWorkspace" : "my-workspace-identifier"
+  },
+  "spec" : {
+    "targetMeshObjectRef" : {
+      "kind" : "meshWorkspace",
+      "name" : "my-workspace-identifier"
+    }
+  },
+  "status" : {
+    "resolutionStatus" : "OPEN",
+    "meshCommunicationDefinition" : {
+      "uuid" : "a6b0f4af-0d7d-4ede-8d66-0312b8962fc9",
+      "title" : "Communication definition 1 Title",
+      "dueDate" : "2025-04-17",
+      "communicationType" : "ACTION_REQUIRED"
+    }
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/911f9a98-5c81-4e94-a0b7-de37b5456758"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshcommunication"><a class="link" href="#_delete_meshcommunication">Delete meshCommunication</a></h5>
+<div class="paragraph">
+<p>Remove an existing meshCommunication.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/meshobjects/meshcommunications/911f9a98-5c81-4e94-a0b7-de37b5456758 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications/911f9a98-5c81-4e94-a0b7-de37b5456758' -i -u 'valid_username:valid_password' -X DELETE \
+    -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json'</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Example Response</div>
@@ -12374,7 +13842,7 @@ Content-Length: 162
 {
   "message" : "MeshObjectCollection not-empty-collection cannot be deleted, because it is not empty",
   "errorCode" : "BadRequest",
-  "errorId" : "xpC1f38YyR"
+  "errorId" : "2GCAU5xjR6"
 }</code></pre>
 </div>
 </div>
@@ -12702,13 +14170,13 @@ Content-Length: 280
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-03-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshcustomerusergroups/{fullCustomerUserGroupIdentifier}</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshcustomerusergroups</code><br>
 <code>meshCustomerUserGroup.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Replace all uses of <code>meshCustomerUserGroup</code> object with <code>meshWorkspaceUserGroup</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-03-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshcustomerusergroups</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshcustomerusergroups/{fullCustomerUserGroupIdentifier}</code><br>
 <code>meshCustomerUserGroup.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Replace all uses of <code>meshCustomerUserGroup</code> object with <code>meshWorkspaceUserGroup</code>.</p></td>
 </tr>
@@ -12726,25 +14194,25 @@ Content-Length: 280
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshprojects</code><br>
-<code>meshProject.vv1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Please use <code>meshProject.v2</code>, which is owned by a <code>meshWorkspace</code> instead of a <code>meshCustomer</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshprojects/{fullProjectIdentifier}</code><br>
 <code>meshProject.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Please use <code>meshProject.v2</code>, which is owned by a <code>meshWorkspace</code> instead of a <code>meshCustomer</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenants</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshprojects</code><br>
+<code>meshProject.vv1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Please use <code>meshProject.v2</code>, which is owned by a <code>meshWorkspace</code> instead of a <code>meshCustomer</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenants/{tenantIdentifier}</code><br>
 <code>meshTenant.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Please upgrade to <code>meshTenant.v3</code>, which is owned by a <code>meshWorkspace</code> instead of a <code>meshCustomer</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenants/{tenantIdentifier}</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenants</code><br>
 <code>meshTenant.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Please upgrade to <code>meshTenant.v3</code>, which is owned by a <code>meshWorkspace</code> instead of a <code>meshCustomer</code>.</p></td>
 </tr>
@@ -12762,13 +14230,13 @@ Content-Length: 280
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /api/meshobjects/meshbuildingblocks</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshbuildingblocks/{buildingBlockUuid}</code><br>
 <code>meshBuildingBlock.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Please use <code>meshBuildingBlock.v2</code>, which supports building blocks on workspace level as well.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2025-07-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshbuildingblocks/{buildingBlockUuid}</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /api/meshobjects/meshbuildingblocks</code><br>
 <code>meshBuildingBlock.vv1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Please use <code>meshBuildingBlock.v2</code>, which supports building blocks on workspace level as well.</p></td>
 </tr>
@@ -12813,30 +14281,6 @@ Content-Length: 280
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshchargebacks/{name}</code><br>
 <code>meshChargeback.vv3</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Please migrate to <code>meshTenantUsageReport.v3</code> which now contains usage and chargeback data for every report. The meshChargeback object as an aggregation of different usage reports will be removed from the meshObject API.Just like the <code>meshChargeback</code> object, the <code>meshTenantUsageReport.v3</code> contains line item data at seller-product-group level aggregation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-10-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenantusagereports</code><br>
-<code>meshTenantUsageReport.vv1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Please upgrade to <code>meshTenantUsageReport.v3</code> which includes line items in seller-product-group level aggregation and supports report versioning and cancellation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-10-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenantusagereports/{uuid}</code><br>
-<code>meshTenantUsageReport.vv1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Please upgrade to <code>meshTenantUsageReport.v3</code> which includes line items in seller-product-group level aggregation and supports report versioning and cancellation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-10-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenantusagereports</code><br>
-<code>meshTenantUsageReport.vv2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Please upgrade to <code>meshTenantUsageReport.v3</code> which includes line items in seller-product-group level aggregation and supports report versioning and cancellation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-10-01</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /api/meshobjects/meshtenantusagereports/{uuid}</code><br>
-<code>meshTenantUsageReport.vv2</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Please upgrade to <code>meshTenantUsageReport.v3</code> which includes line items in seller-product-group level aggregation and supports report versioning and cancellation.</p></td>
 </tr>
 </tbody>
 </table>
@@ -12948,7 +14392,7 @@ longer be used with <a href="#mesh_object_declarative_import">meshObject Declara
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-09 12:07:01 UTC
+Last updated 2025-04-16 13:39:50 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

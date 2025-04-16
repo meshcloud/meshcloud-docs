@@ -27,7 +27,7 @@ representation in the different cloud platforms. You are however able to change 
 
 If configured by your Cloud Foundation team, you may also be able to edit additional workspace [metadata tags](./meshcloud.metadata-tags.md) in the Settings Tab.
 
-## Invite users to a meshWorkspace team
+## Invite Users to a Workspace Team
 
 If you would like to give others access to your meshWorkspace and the related meshProjects, go to your **Workspace Access** tab.
 You can access them by pressing the settings icon on the top right of the meshPanel.
@@ -46,15 +46,21 @@ that they have been granted access to your meshWorkspace.
 Assigning a meshWorkspace role is necessary in order to give access to [meshProjects](meshcloud.project.md) insight the meshWorkspace.
 If 4 eyes-principle is active, the user or group will not be assigned directly to your meshWorkspace. Another Workspace Manager has to approve this role assignment first. Therefore the user or group will appear in the "Pending Requests" section.
 
-## User Groups
+## Workspace User Groups
 
-For not having to assign multiple users individually to your projects, you can also group them in a user group. The user group is only available inside your meshWorkspace. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
+For not having to assign multiple users individually to your projects, you can also group them in a user group. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
-You can view user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
+You can view workspace user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
 Currently, creating a group is only supported via the [meshStack API](/api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
 ![workspace-identifier](assets/workspace-identifier.png)
 
-## Assign meshWorkspace Roles
+### Creating Groups in meshStack
+
+You can create groups directly in meshStack using the `meshWorkspaceUserGroup` declarative API endpoint. This API allows you to create workspace-specific groups, add users to these groups, and remove users. 
+
+However, be aware that whenever you update the group, you must send the full list of members, as this API will replace the existing members with the list you provide.
+
+## Assign Workspace Roles
 
 You can change the role assigned to each user or group on the current meshWorkspace.
 To change the assigned role choose a new role from the dropdown.
@@ -67,7 +73,7 @@ The following roles are available:
 - **Workspace Manager**: Has full access to the meshWorkspace and its projects and can manage access to the meshWorkspace.
 - **Workspace Member**: Has full access to project resources, but **cannot** manage access, create projects, etc. of the meshWorkspace.
 
-### meshWorkspace Roles
+### Workspace Roles
 
 The following table provides details about the functionality available to the different roles.
 
@@ -100,7 +106,7 @@ The following table provides details about the functionality available to the di
 
 meshWorkspace roles grant rights in meshStack only. In order to access cloud resources users need to be [granted a role on a meshProject](meshcloud.project.md#access-control-on-a-meshproject).
 
-## Remove assigned meshWorkspace Roles
+## Remove assigned Workspace Roles
 
 If you would like to remove a user or group from your meshWorkspace go to the **Workspace Access** tab and select **Current Access**. You can click the "trash" icon in the **Current Access** section to remove the user or group from your meshWorkspace. If 4-AP is active in your meshInstallation and the role request has not been approved by another Workspace Manager yet, click the "trash" icon in the "Access Requests" section. When removing someone from the meshWorkspace, the user or group is automatically removed from all projects it has access to. All users won't be able to access cloud resources of your projects anymore, if they are not assigned via another role binding anymore. The users or members of the group will be informed via email, that their access to the meshWorkspace was revoked.
 

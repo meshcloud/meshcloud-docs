@@ -10,6 +10,8 @@ Platform engineers can offer "Pipeline Building Blocks" to trigger GitHub Action
 ## Getting Started
 
 > Prerequisites: Your organization should be using GitHub SaaS, GitHub Enterprise, or GitHub Enterprise Server.
+> Furthermore in order to integrate the GitHub Platform and execute this guide you need organization owner rights within GitHub.
+> Additionally, to add individual GitHub Action workflows, you need Read and Write access for Actions and Workflows under the repository permissions.
 
 **Note:** Follow Steps 1 and 2 only the first time you set up a GitHub Action Workflow integration. After the initial setup, you can go directly to Step 3 for additional triggers.
 
