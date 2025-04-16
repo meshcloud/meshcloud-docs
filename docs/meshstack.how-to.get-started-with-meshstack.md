@@ -25,7 +25,7 @@ Now lets get started by creating the first workspace in your meshStack. To open 
 
 Of course, this can also be achieved via API. Take a look at our [workspace API](/api/index.html#_meshworkspace) to learn more.
 
-## Step 2: Create your First Service 
+## Step 3: Create your First Service 
 
 The most central aspect of a Internal Developer Platform is offering services to other teams in your organization to jump start their projects, secure their application or extent their environments with additional ressources.
 In order to create, test and publish your first service in form of a workspace level building block please follow this guide.
