@@ -28,7 +28,6 @@ Of course, this can also be achieved via API. Take a look at our [workspace API]
 ## Step 3: Create your First Service 
 
 The most central aspect of an Internal Developer Platform is offering services to other teams in your organization to jumpstart their projects, secure their application or extend their environments with additional resources.
-In order to create, test and publish your first service in form of a workspace level building block please follow this guide.
 
 In order to start the step by step guide for you first building block access the workspace and click on Service Management or Platform Builder on the top right corner.
 To offer your first service with meshStack, follow [AWS S3 Quickstart Guide](./meshstack.building-aws-quickstart-guide.md).
