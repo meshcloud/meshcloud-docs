@@ -6,7 +6,7 @@ title: How to get started with meshStack
 This guide accompanies you to get started setting up a Internal Developer Platform with meshStack.
 
 > **Prerequisites:**
-> 1. Your new meshStack was setup and the link to the meshPanel was provided to you.
+> 1. Your new meshStack is set up and the link to the meshPanel was provided to you.
 > 2. You need to be able to log into your meshStack to follow this guide.
 
 ## Step 1: Access the Admin Area of Your meshStack
