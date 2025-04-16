@@ -16,7 +16,7 @@ To return to this view at a later point in time, you can always press the "Admin
 
 ## Step 2: Create Your First Workspace
 
-Workspaces provide you the opportunity to onboard and structure your use cases. Those workspaces can act as consumers and providers of services within the marketplace. The marketplace is 
+Workspaces provide you the opportunity to onboard and structure your use cases. Those workspaces can act as consumers and/or providers of services within the marketplace. The marketplace is 
 the central place in meshStack to offer services that others consume. 
 
 Now lets get started by creating the first workspace in your meshStack. To open the wizard, click on "Create Workspace +" as shown in the picture below.
