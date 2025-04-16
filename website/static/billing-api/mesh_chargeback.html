@@ -597,7 +597,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 3377
+Content-Length: 1984
 
 {
   "_embedded" : {
@@ -605,13 +605,15 @@ Content-Length: 3377
       "kind" : "meshChargeback",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "2025-04-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-04-09T12:08:16.210065300Z",
-        "finalized" : true
+        "name" : "2025-02-01Z/testPartner:testWorkspace:testProject",
+        "createdOn" : "2025-03-02T00:00:00Z",
+        "finalized" : true,
+        "finalizationDate" : "2025-03-02T00:00:00Z",
+        "version" : 1
       },
       "spec" : {
         "projectIdentifier" : "testProject",
-        "period" : "2025-04-01Z",
+        "period" : "2025-02-01Z",
         "tags" : {
           "paymentIdentifier" : [ "123" ]
         },
@@ -619,80 +621,34 @@ Content-Length: 3377
       },
       "status" : {
         "timeframe" : {
-          "from" : "2025-04-01T00:00:00Z",
-          "to" : "2025-05-01T00:00:00Z"
+          "from" : "2025-02-01T00:00:00Z",
+          "to" : "2025-03-01T00:00:00Z"
         },
         "lineItems" : [ {
           "reportCategory" : "BILLING",
-          "platformTenantId" : "test1-localProjectId",
-          "platformFullIdentifier" : "test1-instance.test1-location",
-          "reportId" : "test1-reportId",
-          "entryDate" : "2019-08-03T00:07:01.289Z",
-          "period" : "2019-07-01Z",
+          "platformTenantId" : "test1-id",
+          "platformFullIdentifier" : "test1-platform.location",
+          "reportId" : "TenantUsageReports/test1-platform.location:test1-id:2025-02-01Z:1",
+          "entryDate" : "2025-03-02T00:00:00Z",
+          "period" : "2025-02-01Z",
           "netAmount" : 1.65,
-          "baseNetAmount" : 1.65,
+          "baseNetAmount" : 1.815,
           "baseCurrency" : "EUR",
-          "exchangeRate" : 1,
-          "currency" : "EUR",
-          "sellerId" : "Operations",
-          "sellerProductGroup" : "Platform Team"
-        }, {
-          "reportCategory" : "BILLING",
-          "platformTenantId" : "test2-localProjectId",
-          "platformFullIdentifier" : "test2-instance.test2-location",
-          "reportId" : "test2-reportId",
-          "entryDate" : "2019-08-03T00:07:01.289Z",
-          "period" : "2019-07-01Z",
-          "netAmount" : 3.12,
-          "baseNetAmount" : 3.12,
-          "baseCurrency" : "EUR",
-          "exchangeRate" : 1,
-          "currency" : "EUR",
+          "exchangeRate" : 1.1,
+          "currency" : "USD",
           "sellerId" : "Operations",
           "sellerProductGroup" : "Platform Team"
         } ],
         "netAmounts" : [ {
-          "currency" : "EUR",
-          "amount" : 4.77,
+          "currency" : "USD",
+          "amount" : 1.65,
           "baseCurrency" : "EUR",
-          "baseNetAmount" : 4.77
+          "baseNetAmount" : 1.815
         } ]
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-04-01Z/testPartner%3AtestWorkspace%3AtestProject"
-        }
-      }
-    }, {
-      "kind" : "meshChargeback",
-      "apiVersion" : "v3",
-      "metadata" : {
-        "name" : "2025-03-01Z/testPartner:testWorkspace:testProject",
-        "createdOn" : "2025-04-09T12:08:16.210990500Z",
-        "finalized" : true
-      },
-      "spec" : {
-        "projectIdentifier" : "testProject",
-        "period" : "2025-03-01Z",
-        "tags" : { },
-        "workspaceIdentifier" : "testWorkspace"
-      },
-      "status" : {
-        "timeframe" : {
-          "from" : "2025-03-01T00:00:00Z",
-          "to" : "2025-04-01T00:00:00Z"
-        },
-        "lineItems" : [ ],
-        "netAmounts" : [ {
-          "currency" : "EUR",
-          "amount" : 0,
-          "baseCurrency" : "EUR",
-          "baseNetAmount" : 0
-        } ]
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-03-01Z/testPartner%3AtestWorkspace%3AtestProject"
+          "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-02-01Z/testPartner%3AtestWorkspace%3AtestProject%3A1"
         }
       }
     } ]
@@ -704,7 +660,7 @@ Content-Length: 3377
   },
   "page" : {
     "size" : 10,
-    "totalElements" : 2,
+    "totalElements" : 1,
     "totalPages" : 1,
     "number" : 0
   }
@@ -739,7 +695,7 @@ Content-Length: 3377
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshchargebacks/2025-04-01Z/testPartner%253AtestWorkspace%253AtestProject HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshchargebacks/2025-02-01Z/testPartner%253AtestWorkspace%253AtestProject%253A1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshchargeback.v3.hal+json
 Host: mesh-billing-url</code></pre>
@@ -748,7 +704,7 @@ Host: mesh-billing-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-04-01Z/testPartner%253AtestWorkspace%253AtestProject' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-02-01Z/testPartner%253AtestWorkspace%253AtestProject%253A1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshchargeback.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -796,6 +752,21 @@ Host: mesh-billing-url</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.finalized</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Finalization state of the meshChargeback. Value is 'true' for finalized and 'false' for preview meshChargebacks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.finalizationDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The date when the meshChargeback was finalized. Can be null in case of preview meshChargebacks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.cancellationDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If an update to an already finalized meshChargeback comes in, the old meshChargeback gets cancelled. The cancellationDate provides the date at which this cancellation happened.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If an update to an already finalized meshChargeback comes in, the old meshChargeback gets cancelled and a new meshChargeback is created. The version is incremented in that case. For an initial or a preview meshChargeback, the version is 1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
@@ -954,19 +925,21 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1852
+Content-Length: 1452
 
 {
   "kind" : "meshChargeback",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "2025-04-01Z/testPartner:testWorkspace:testProject",
-    "createdOn" : "2025-04-09T12:08:16.210065300Z",
-    "finalized" : true
+    "name" : "2025-02-01Z/testPartner:testWorkspace:testProject",
+    "createdOn" : "2025-03-02T00:00:00Z",
+    "finalized" : true,
+    "finalizationDate" : "2025-03-02T00:00:00Z",
+    "version" : 1
   },
   "spec" : {
     "projectIdentifier" : "testProject",
-    "period" : "2025-04-01Z",
+    "period" : "2025-02-01Z",
     "tags" : {
       "paymentIdentifier" : [ "123" ]
     },
@@ -974,48 +947,34 @@ Content-Length: 1852
   },
   "status" : {
     "timeframe" : {
-      "from" : "2025-04-01T00:00:00Z",
-      "to" : "2025-05-01T00:00:00Z"
+      "from" : "2025-02-01T00:00:00Z",
+      "to" : "2025-03-01T00:00:00Z"
     },
     "lineItems" : [ {
       "reportCategory" : "BILLING",
-      "platformTenantId" : "test1-localProjectId",
-      "platformFullIdentifier" : "test1-instance.test1-location",
-      "reportId" : "test1-reportId",
-      "entryDate" : "2019-08-03T00:07:01.289Z",
-      "period" : "2019-07-01Z",
+      "platformTenantId" : "test1-id",
+      "platformFullIdentifier" : "test1-platform.location",
+      "reportId" : "TenantUsageReports/test1-platform.location:test1-id:2025-02-01Z:1",
+      "entryDate" : "2025-03-02T00:00:00Z",
+      "period" : "2025-02-01Z",
       "netAmount" : 1.65,
-      "baseNetAmount" : 1.65,
+      "baseNetAmount" : 1.815,
       "baseCurrency" : "EUR",
-      "exchangeRate" : 1,
-      "currency" : "EUR",
-      "sellerId" : "Operations",
-      "sellerProductGroup" : "Platform Team"
-    }, {
-      "reportCategory" : "BILLING",
-      "platformTenantId" : "test2-localProjectId",
-      "platformFullIdentifier" : "test2-instance.test2-location",
-      "reportId" : "test2-reportId",
-      "entryDate" : "2019-08-03T00:07:01.289Z",
-      "period" : "2019-07-01Z",
-      "netAmount" : 3.12,
-      "baseNetAmount" : 3.12,
-      "baseCurrency" : "EUR",
-      "exchangeRate" : 1,
-      "currency" : "EUR",
+      "exchangeRate" : 1.1,
+      "currency" : "USD",
       "sellerId" : "Operations",
       "sellerProductGroup" : "Platform Team"
     } ],
     "netAmounts" : [ {
-      "currency" : "EUR",
-      "amount" : 4.77,
+      "currency" : "USD",
+      "amount" : 1.65,
       "baseCurrency" : "EUR",
-      "baseNetAmount" : 4.77
+      "baseNetAmount" : 1.815
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-04-01Z/testPartner%3AtestWorkspace%3AtestProject"
+      "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks/2025-02-01Z/testPartner%3AtestWorkspace%3AtestProject%3A1"
     }
   }
 }</code></pre>
@@ -1026,7 +985,7 @@ Content-Length: 1852
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-09 12:06:25 UTC
+Last updated 2025-04-16 13:39:55 UTC
 </div>
 </div>
 </body>
