@@ -3,10 +3,10 @@ id: meshcloud.workspace
 title: Workspace
 ---
 
-A workspace in meshStack is a defined area that represents an organizational unit within your organization. It serves as the central place where you can manage multiple environments—called projects as well as the associated services, financials, and user access for those environments. A workspace can act both as a consumer of platforms and services and, through the integrated Platform Builder and the Platform Ecosystem module, as a provider of platforms and services.
+A workspace is a defined area within meshStack that represents an organizational unit within your organization. It serves as the central place where you can manage multiple related environments called projects as well as the financials and user access for those environments. A workspace can act both as a consumer of platforms and services and, through the integrated Platform Builder and the Platform Ecosystem module, as a provider of platforms and services.
 
 > Best Practice
-> Usually a workspace represents a distinct application or platform team. If the responsibilities within the teams are clearly distinguishable we recommend to use a workspace for each use cases e.g. individual application or platform.
+> Usually a workspace represents a distinct application or platform team. If the responsibilities within the teams are clearly distinguishable we recommend to use a workspace for each use case e.g. individual application or platform.
 
 ## Workspace Creation
 
