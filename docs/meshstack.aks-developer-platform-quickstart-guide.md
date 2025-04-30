@@ -5,7 +5,7 @@ title: AKS Developer Platform Guide
 
 ## Introduction
 
-Welcome to the **First Developer Platform guide**! This guide provides step-by-step instructions to help you set up your first developer platform experience incorporating AKS, GitHub & GitHub Actions to deliver an easy-to-use starter kit to your application teams.
+Welcome to the **First Developer Platform Guide**! This guide provides step-by-step instructions to help you set up your first developer platform experience incorporating AKS, GitHub & GitHub Actions to deliver an easy-to-use starter kit to your application teams.
 
 ## Goals
 
@@ -13,22 +13,22 @@ By the end of this guide, you will have built a complete starter kit for your us
 
 - A new GitHub repository
 - A “dev” project with:
-    - an AKS namespace
-    - a GitHub actions workflow with credentials to the AKS namespace
+  - an AKS namespace
+  - a GitHub actions workflow with credentials to the AKS namespace
 - A “prod” project with:
-    - an AKS namespace
-    - a GitHub actions workflow with credentials to the AKS namespace
+  - an AKS namespace
+  - a GitHub actions workflow with credentials to the AKS namespace
 
 ## Prerequisites
 
 Before starting, ensure you have the following:
 
 - You have a basic understanding of building blocks in meshStack.
-    - *If you don’t, we recommend running through the [AWS S3 guide](./meshstack.building-aws-quickstart-guide.md) to learn how building blocks work.*
+  - *If you don’t, we recommend running through the [AWS S3 guide](./meshstack.building-aws-quickstart-guide.md) to learn how building blocks work.*
 - You have integrated an AKS cluster into meshStack.
-    - *If you don’t, we recommend running through the [First Platform guide for AKS](./meshstack.aks-platform-quickstart-guide.md) where you are guided to integrate an AKS cluster as a platform in meshStack*
+  - *If you don’t, we recommend running through the [First Platform guide for AKS](./meshstack.aks-platform-quickstart-guide.md) where you are guided to integrate an AKS cluster as a platform in meshStack*
 
-## What will we do in this guide?
+## What Will We Do in This Guide?
 
 Shortly put, we will set up the following in this guide:
 
@@ -38,7 +38,7 @@ Shortly put, we will set up the following in this guide:
 
 ## 1. GitHub Repository
 
-### Preparation
+### Preparing GitHub Repository
 
 The GitHub Repository building block definition needs access to your GitHub organization.
 Follow the following steps to create a GitHub App that will be used to manage the repositories.
@@ -56,25 +56,25 @@ Follow the following steps to create a GitHub App that will be used to manage th
 3. [**Create a GitHub App Private Key**](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps)
     1. Save this file somewhere convenient as we will also need it later.
 
-### Creating the Building Block Definition
+### Creating the Repository Building Block Definition
 
 To make things easy, we will use the [meshStack Hub](https://hub.meshcloud.io) to create the new building block definition.
 
-1. Open the Github Repository Creation Definition in the hub [here](https://hub.meshcloud.io/definitions/github-repository).
+1. Open the Github Repository Creation Definition in the meshStack hub [here](https://hub.meshcloud.io/definitions/github-repository).
 2. Click on “Add to meshStack” and enter your meshStack URL (if not given already).
 3. Continue the flow in meshStack.
     1. Right away you will be asked for a “Type”. Pick “Workspace Building Block” here.
     2. Continue until you reach the “Inputs” page. On this page you will be forced to fill in the following:
         1. `GITHUB_APP_ID` - This is the value saved under “Preparation” step 1b.
         2. `GITHUB_APP_INSTALLATION_ID` - This is the value saved under “Preparation” step 2b.
-        3. `GITHUB_APP_PEM_FILE` - This is the value saved under “Preparation” step 3a.
+        3. `GITHUB_APP_PEM_FILE` - This is the value saved under “Preparation” step 3a. Take the entire content of the file and paste it in here.
 4. Finish the flow and create the building block definition.
 
 🎉 The GitHub Repository Building Block Definition is ready!
 
 ## 2. GitHub Actions Connector
 
-### Preparation
+### Preparing the GitHub Actions Connector
 
 This building block definition will interact with both GitHub & AKS, so we need authorization for both.
 
@@ -84,11 +84,11 @@ For AKS, you will need to run the Terraform code in the backplane that will set 
 
 Make sure you save the `config_tf` output and save it as a file called `config.tf`. We will use it later.
 
-### Creating the Building Block Definition
+### Creating the GitHub Actions Connector Building Block Definition
 
 We will again use the [meshStack Hub](https://hub.meshcloud.io) to create the new building block definition.
 
-1. Open the Github Actions Integration with AKS definition in the hub [here](https://hub.meshcloud.io/definitions/aks-github-connector).
+1. Open the Github Actions Integration with AKS definition in the meshStack hub [here](https://hub.meshcloud.io/definitions/aks-github-connector).
 2. Click on “Add to meshStack” and enter your meshStack URL (if not given already).
 3. Continue the flow in meshStack.
     1. Right away you will be asked for a “Type”. Pick “Tenant Building Block” here and select “AKS” as the supported platform.
@@ -98,8 +98,8 @@ We will again use the [meshStack Hub](https://hub.meshcloud.io) to create the ne
         2. `github_repo` - This refers to the GitHub repository to connect to. Open this up and set the “Source” to “Parent Building Block Output” and set the corresponding output to “repo_name”.
         3. `GITHUB_APP_ID` - This is the value saved under “Preparation” step 1b from the previous building block definition
         4. `GITHUB_APP_INSTALLATION_ID` - This is the value saved under “Preparation” step 2b from the previous building block definition
-        5. `GITHUB_APP_PEM_FILE` - This is the value saved under “Preparation” step 3a from the previous building block definition
-        6. Create a new input called [`config.tf`](http://config.tf) and set the Source to “Static” and the Type to “File”. Mark the input as encrypted and upload the config.tf file from the preparation step.
+        5. `GITHUB_APP_PEM_FILE` - This is the value saved under “Preparation” step 3a from the previous building block definition. Take the entire content of the file and paste it in here.
+        6. Create a new input called `config.tf` and set the Source to “Static” and the Type to “File”. Mark the input as encrypted and upload the config.tf file from the preparation step.
 4. Finish the flow and create the building block definition.
 
 🎉 The GitHub Actions Connector Building Block Definition is ready!
@@ -114,12 +114,12 @@ We will create resources within meshStack. This means we need an API Key to inte
 
 - Create a new API Key in meshStack in the Admin Area. Make sure you save the **API key ID** & **API key secret** somewhere, as you’ll need it later.
 - Give it the following permissions:
-    - “Admin: Create and Update Building Blocks in any Workspace”
-    - “Admin: List Building Blocks in any Workspace”
-    - “Admin: Create and Update Projects in any Workspace”
-    - “Admin: List Projects in any Workspace”
-    - “Admin: Create and update Tenants in any Workspace as well as import existing platform tenants”
-    - “Admin: List Tenants in any Workspace”
+  - “Admin: Create and Update Building Blocks in any Workspace”
+  - “Admin: List Building Blocks in any Workspace”
+  - “Admin: Create and Update Projects in any Workspace”
+  - “Admin: List Projects in any Workspace”
+  - “Admin: Create and update Tenants in any Workspace as well as import existing platform tenants”
+  - “Admin: List Tenants in any Workspace”
 
 ### Creating the Building Block Definition
 
@@ -290,10 +290,10 @@ You can also change the behavior if you want in this starter kit. In its current
     ```
 
 - Create a new building block definition in meshStack. Make sure you set the following:
-    - Type = Workspace Building Block
-    - Implementation Type = Terraform
-    - For the inputs you will have to enter an API key ID & API key secret for the meshStack API user you created before.
+  - Type = Workspace Building Block
+  - Implementation Type = Terraform
+  - For the inputs you will have to enter an API key ID & API key secret for the meshStack API user you created before.
 
-## What’s next?
+## What’s Next?
 
 - [Publish all building blocks](./marketplace.service-management-area.md#publishing) so anyone in the organization can use it and provision namespaces in self-service.
