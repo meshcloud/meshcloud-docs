@@ -220,5 +220,7 @@ We will now use the same workspace to test the flow of creating a new namespace 
 ## What’s next?
 
 - [Publish the platform](./marketplace.service-management-area.md#publishing) so anyone in the organization can use it and provision namespaces in self-service.
+- [Build a developer platform](./meshstack.aks-developer-platform-quickstart-guide.md) on top of the AKS platform.
+  This can be a developer platform that contains all the tools your developers need to build applications on top of Kubernetes.
 - Build your own building blocks on top of the platform for commonly used services in Kubernetes.
 - [Integrate more platforms](./meshstack.how-to.integrate-meshplatform.md) such as AWS, Azure or GCP.
