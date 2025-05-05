@@ -101,6 +101,7 @@ The following table provides details about the functionality available to the di
 | [Workspace&nbsp;Settings](#workspace-deletion)                                                                       |    &#10003;    |    &#10003;    |                  |
 | [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                 |    &#10003;    |    &#10003;    |                  |
 | [Service&nbsp;Broker&nbsp;Development](meshstack.meshmarketplace.development.md)                                     |    &#10003;    |    &#10003;    |                  |
+| Delete Workspace                                                                                                     |    &#10003;    |                |                  |
 
 > The roles that are available meshStack Administrators are described in the [Administration](administration.index.md) section.
 
