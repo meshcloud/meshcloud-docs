@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+# Generate llms.txt file for AI-based search and content generation features.
+# 
+# This script processes all markdown files in the docs directory and generates:
+# llms.txt: Contains the full content of all markdown files concatenated
+# 
+# Usage: bash generate-llms-txt
+
+# Define directories
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SITE_DIR="$(dirname "$SCRIPT_DIR")"
+CONTENT_DIR="$SITE_DIR/docs"
+OUT_DIR="$SITE_DIR/website/static"
+
+echo "Starting to generate llms.txt file..."
+echo "Reading markdown files from: $CONTENT_DIR"
+
+# Create output directory if it doesn't exist
+mkdir -p "$OUT_DIR"
+
+# Temporary file to collect all markdown content
+TEMP_FILE=$(mktemp)
+
+# Find all markdown files and concatenate their content
+find "$CONTENT_DIR" -type f -name "*.md" | while read -r file; do
+  echo -e "\n\n---\n\n" >> "$TEMP_FILE"
+  cat "$file" >> "$TEMP_FILE"
+done
+
+# Remove the first separator (three dashes)
+sed '1,3d' "$TEMP_FILE" > "$OUT_DIR/llms.txt"
+
+# Count the number of files processed
+FILE_COUNT=$(find "$CONTENT_DIR" -type f -name "*.md" | wc -l)
+echo "Found $FILE_COUNT markdown files"
+echo "Generated $OUT_DIR/llms.txt"
+echo "Successfully generated llms.txt file!"
+
+# Clean up
+rm "$TEMP_FILE"
