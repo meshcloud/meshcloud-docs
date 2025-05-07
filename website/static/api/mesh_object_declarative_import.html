@@ -1313,7 +1313,7 @@ subject:
 <p>See attribute definitions in <a href="#mesh_tenant_response_fields">GET endpoint section</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>localId</strong> property is optional. This means that a new tenant will be created within the specific platform if no localId was specified.
+<p>The <strong>platformTenantId</strong> property is optional. This means that a new tenant will be created within the specific platform if no platformTenantId was specified.
 The <strong>landingZone</strong> property may be skipped, e.g., for platforms that do not support landing zones.</p>
 </div>
 <div class="paragraph">
@@ -1361,6 +1361,54 @@ spec:
         "value": 100000
       }
     ]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the v4-preview API, if you want to try it out. Be aware, that incompatible changes can still be applied
+to the preview version.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: v4-preview
+kind: meshTenant
+metadata:
+  uuid: b7a77a7f-4579-42fc-b39a-462fe596063f
+  ownedByWorkspace: my-mobile-app-team
+  ownedByProject: mobile-app-prod
+spec:
+  platformIdentifier: aws.aws-meshstack-dev
+  platformTenantId: 2f3561e8-51f4-451f-bc92-9e5c8c6dd98f # (optional) e.g. AWS account id or Azure subscription id.
+  landingZoneIdentifier: test-landing-zone-id # (optional) The identifier of the landing zone.
+  quotas: # Only for platforms that support quotas
+    - key: limits.cpu
+      value: 2000
+    - key: limits.memory
+      value: 100000</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "kind" : "meshTenant",
+  "apiVersion" : "v4-preview",
+  "metadata" : {
+    "uuid" : "b7a77a7f-4579-42fc-b39a-462fe596063f",
+    "ownedByWorkspace" : "my-mobile-app-team",
+    "ownedByProject" : "mobile-app-prod"
+  },
+  "spec" : {
+    "platformIdentifier" : "aws.aws-meshstack-dev",
+    "landingZoneIdentifier" : "test-landing-zone-id",
+    "platformTenantId" : "2f3561e8-51f4-451f-bc92-9e5c8c6dd98f",
+    "quotas" : [ {
+      "key" : "limits.cpu",
+      "value" : 2000
+    }, {
+      "key" : "limits.memory",
+      "value" : 10000
+    } ]
   }
 }</code></pre>
 </div>
@@ -1538,7 +1586,7 @@ rates:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-30 13:37:33 UTC
+Last updated 2025-05-07 08:57:41 UTC
 </div>
 </div>
 </body>
