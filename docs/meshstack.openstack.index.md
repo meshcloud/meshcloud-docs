@@ -8,7 +8,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with OpenStack, Platform Operators configure one or multiple `Platform`s of `PlatformType` OpenStack in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with OpenStack, Platform Engineers configure one or multiple `Platform`s of `PlatformType` OpenStack in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 

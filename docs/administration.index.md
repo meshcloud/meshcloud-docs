@@ -3,20 +3,20 @@ id: administration.index
 title: Administration Roles
 ---
 
-Partners Users have access to the so called **Administration Area**. The administration area enables partner users to manage their child [meshWorkspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
-Assigning Partner Users can only be done by Partner Admins.
+Admin Users have access to the so called **Administration Area**. The administration area enables admin users to manage their child [meshWorkspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
+Assigning Admin Users can only be done by Organization Admins.
 
 Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
 available to users of the administration area:
 
-- **Partner Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
-  administrator/partner account.
-- **Partner Employee**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the administrator/partner account.
-- **Platform Operator**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
+- **Organization Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
+  administrator/organization account.
+- **Organization User**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the administrator/organization account.
+- **Platform Engineer**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
-- **Ops Support**: Not all Ops operations must be executed by Platform Operators. E.g. setting quotas is a task that can also be done by
+- **Ops Support**: Not all Ops operations must be executed by Platform Engineers. E.g. setting quotas is a task that can also be done by
   a separate Ops Support team.
-- **Controller**: A Controller has access to billing and usage information of workspace projects.
+- **FinOps Manager**: A FinOps Manager has access to billing and usage information of workspace projects.
 - **Onboarding Support**: A support team in place to help users who want to sign up may also need access to some administration
   functionality which is granted by this role.
 - **Compliance Manager**: Has the rights to manage policies and tag definitions.
@@ -28,7 +28,7 @@ See the [meshWorkspace](meshcloud.workspace.md) documentation for details about 
 The following table provides details about the functionality available to the different roles by default. The Access rights can also be adapted individually
 per meshcloud installation.
 
-|                                                                                                                     | Partner Admin        | Partner Employee     | Platform Operator | Ops Support | Controller | Onboarding Support | Compliance Manager | Replication Operator |
+|                                                                                                                     | Organization Admin        | Organization User     | Platform Engineer | Ops Support | FinOps Manager | Onboarding Support | Compliance Manager | Replication Operator |
 |---------------------------------------------------------------------------------------------------------------------| :------------------: | :------------------: | :---------------: |:-----------:| :--------: | :----------------: | :----------------: | :------------------: |
 | [Workspace&nbsp;List](administration.workspaces.md)                                                                 |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
 | &nbsp;&nbsp;Payment&nbsp;Methods&nbsp;List                                                                          |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |

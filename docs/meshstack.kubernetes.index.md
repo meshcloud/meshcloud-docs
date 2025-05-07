@@ -5,7 +5,7 @@ title: Integration
 
 meshStack supports namespace creation, configuration, access control, quota management and billing for Kubernetes.
 
-Our Kubernetes integration is generally distribution-independent and is purely based on "vanilla" upstream Kubernetes services. Platform Operators should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
+Our Kubernetes integration is generally distribution-independent and is purely based on "vanilla" upstream Kubernetes services. Platform Engineers should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
 required APIs (described below) and configuration options available.
 
 The following Kubernetes distributions are supported and covered on this page:
@@ -17,7 +17,7 @@ The following Kubernetes distributions are supported and covered on this page:
 
 ## Integration Overview
 
-To enable integration with Kubernetes, Platform Operators configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with Kubernetes, Platform Engineers configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 
@@ -216,7 +216,7 @@ kubectl get serviceaccount meshfed-service -n meshcloud -o json | jq '.secrets[]
 kubectl get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs kubectl describe secret -n meshcloud
 ```
 
-Platform Operators need to securely inject these access token into the configuration of the Kubernetes modules.
+Platform Engineers need to securely inject these access token into the configuration of the Kubernetes modules.
 
 ### Custom meshProject Roles
 

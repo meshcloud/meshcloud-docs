@@ -7,7 +7,7 @@ title: meshProjects
 
 ### Edit Workspace Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshProjects**.
+Admin users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshProjects**.
 
 1. Login to the meshPanel with your administrator credentials.
 2. Navigate to the **Administration** via the settings button on the top right.
@@ -65,19 +65,19 @@ The following events are available:
 | **PROJECT_CREATED**| A new meshProject was created |
 | **PROJECT_PROJECT_MARKED_FOR_DELETION**<br>`since v7.141.0`| A meshProject was deleted by a workspace manager.|
 |**PROJECT_DELETED**| `since v7.141.0` When the meshProject was submitted for deletion by a workspace manager and the deletion of all tenants is successful, this event is written.<br>`until v7.141.0`A meshProject was deleted by a workspace manager.|
-|**PROJECT_DELETION_CONFIRMED**<br>`deprecated`| A partner or platform operator confirmed a meshProject deletion that required manual deletion of platform tenants|
-|**PROJECT_DELETION_DECLINED**| `since v7.141.0` When the project has been deleted by a workspace manager and the deletion of any tenant requiring manual deletion has been declined by a partner or platform operator, this event is written.<br>`until v7.141.0`A partner or platform operator declined a meshProject deletion that required manual deletion of platform tenants.|
+|**PROJECT_DELETION_CONFIRMED**<br>`deprecated`| A partner or platform engineer confirmed a meshProject deletion that required manual deletion of platform tenants|
+|**PROJECT_DELETION_DECLINED**| `since v7.141.0` When the project has been deleted by a workspace manager and the deletion of any tenant requiring manual deletion has been declined by a admin or platform engineer, this event is written.<br>`until v7.141.0`A admin or platform engineer declined a meshProject deletion that required manual deletion of platform tenants.|
 |**ALL_PROJECT_TENANTS_DELETED**<br>`deprecated`| Tenants of a meshProject are deleted asynchronously after the user deleted the project. When this deletion is successful, this event is written.
 |**TENANT_ADDED**| A tenant was added to a project.|
 |**TENANT_MARKED_FOR_DELETION**<br>`since v7.141.0`| A tenant was submitted for deletion by a workspace manager.
 |**TENANT_REMOVED**| A tenant was removed from a project by a successful deletion in the corresponding platform.
-|**TENANT_DELETION_CONFIRMED**<br>`since v7.141.0`| A partner or platform operator confirmed a tenant deletion that required manual deletion in the corresponding platform.
-|**TENANT_DELETION_DECLINED**<br>`since v7.141.0`| A partner or platform operator declined a tenant deletion that required manual deletion in the corresponding platform.
+|**TENANT_DELETION_CONFIRMED**<br>`since v7.141.0`| A admin or platform engineer confirmed a tenant deletion that required manual deletion in the corresponding platform.
+|**TENANT_DELETION_DECLINED**<br>`since v7.141.0`| A admin or platform engineer declined a tenant deletion that required manual deletion in the corresponding platform.
 |**USER_ASSIGNED**| A user was assigned to the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.|
 |**USER_UNASSIGNED**| A user was removed from the project.|
 |**PROJECT_ROLE_CHANGED**| The user role was changed on the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.|
 |**PROJECT_ROLE_APPROVED**| If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written for every approval.|
 |**PROJECT_ROLE_REJECTED**| If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written when a role request is rejected.|
 |**EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a tag is edited by a workspace manager.|
-|**PARTNER_EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a partner/admin edits the restricted project tags.|
+|**ADMIN_EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a partner/admin edits the restricted project tags.|
 |**QUOTA_EDITED**| Quota Settings for the project were changed.|

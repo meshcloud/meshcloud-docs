@@ -10,7 +10,7 @@ meshStack allows Partners to customise the user experience according to the need
 Partners can configure an optional "message of the day" to be displayed in meshPanel.
 This is useful to communicate important information such as newly available cloud platforms or known issues to every user visiting meshPanel.
 
-Note that Platform Operators can also use [platform notifications](./administration.platforms.md#platform-notifications) as an alternative to target messages only at users that consume a specific cloud platform.
+Note that Platform Engineers can also use [platform notifications](./administration.platforms.md#platform-notifications) as an alternative to target messages only at users that consume a specific cloud platform.
 
 <!--snippet:mesh.panel.environment.motd-->
 

@@ -19,7 +19,7 @@ If you want to see all detected policy violations, you can go to **Compliance** 
 
 ## Create Policies
 
-Policy creation is only possible for a user who has a partner role.
+Policy creation is only possible for a user who has a admin role.
 
 1. Navigate to **Compliance** > **Policies**.
 2. Click on the `+ Create Policy` button in the top right corner. The button is only visible for users with the right permission.
@@ -39,7 +39,7 @@ Policy creation is only possible for a user who has a partner role.
 
 To learn more about how policies work, please click [here](meshcloud.policies.md).
 
-After creating a policy, every subject defined in the policy will be evaluated. All violations caused by the new policy will be logged. These can be either fixed by workspace managers or partner admins, by picking the right tag values.
+After creating a policy, every subject defined in the policy will be evaluated. All violations caused by the new policy will be logged. These can be either fixed by workspace managers or organization admins, by picking the right tag values.
 
 ## Edit Policies
 

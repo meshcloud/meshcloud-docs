@@ -3,14 +3,14 @@ id: administration.emergency-users
 title: "Guide: Emergency Users"
 ---
 
-meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access meshProjects and associated meshTenants. This page outlines step-by-step procedures that Platform Operators can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
+meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access meshProjects and associated meshTenants. This page outlines step-by-step procedures that Platform Engineers can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
 
 Example use cases for emergency users and emergency intervention include
 
 - An important application has stopped functioning and operating users needs access to debug and fix the problem
 - Project access for a specific user must be immediately revoked (e.g. due to an account compromise)
 
-In all cases access permissions can always be modified through the [meshPartner](administration.index.md) account which is managed by an operations team. If available, a user with workspace manager access is also sufficient for some cases.
+In all cases access permissions can always be modified through the [meshAdmin](administration.index.md) account which is managed by an operations team. If available, a user with workspace manager access is also sufficient for some cases.
 
 ## Emergency Access with Workspace Manager
 
@@ -36,9 +36,9 @@ Since emergency access should only be temporary, it's strongly advised to assign
 
 ### Approving emergency user requests
 
-User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, the meshPartner can confirm project role requests directly:
+User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, the meshAdmin can confirm project role requests directly:
 
-- Ensure that the partner is selected from the meshWorkspace drop down
+- Ensure that the admin is selected from the meshWorkspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "User Pending Role Requests" from the actions column for the meshWorkspace to which the project is assigned
 - Approve the user role request
@@ -50,36 +50,36 @@ When emergency access is no longer required the following steps will revert perf
 - Remove user from meshProject by opening the project again and navigating to **Project Access** > **Current Access** (performed automatically if expiration date was set)
 - Remove user from meshWorkspace via the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): go to **Workspace Access** > **Current Access**.
 
-## Access with meshPartner
+## Access with meshAdmin
 
-Even when no workspace manager is available, users with partner admin/employee access can manage permissions for their managed meshWorkspaces.
+Even when no workspace manager is available, users with organization admin/employee access can manage permissions for their managed meshWorkspaces.
 
-### Adding emergency user as meshPartner
+### Adding emergency user as meshAdmin
 
 Note: this only works when Workspace Manager role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
 value ([read more here](meshstack.onboarding.md#workspace-user-invitations))
 
-In order to manage users for a specific meshProject, the partner user must add their own account to the respective meshWorkspace as a workspace manager:
+In order to manage users for a specific meshProject, the admin user must add their own account to the respective meshWorkspace as a workspace manager:
 
-- Ensure that the meshPartner is selected from the meshWorkspace dropdown
+- Ensure that the meshAdmin is selected from the meshWorkspace dropdown
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace User" from the actions column for the target workspace
 - Activate “Add Myself” button in the top right
 
 Afterwards they may proceed to manage users for this meshWorkspace as a workspace manager (see previous section).
 
-### Removing emergency user as meshPartner
+### Removing emergency user as meshAdmin
 
-Since the meshPartner user is now a workspace manager the procedure is the same as outlined in the previous section.
-However, to revert the temporary workspace manager role assignment, another workspace manager must remove the partner user from the workspace via **Workspace Access** > **Current Access**.
+Since the meshAdmin user is now a workspace manager the procedure is the same as outlined in the previous section.
+However, to revert the temporary workspace manager role assignment, another workspace manager must remove the admin user from the workspace via **Workspace Access** > **Current Access**.
 
 ## Auditing Emergency Access
 
-Since meshWorkspace/meshProject access permissions should not be granted lightly all changes to them are logged and can be audited by partner admin/employee users.
+Since meshWorkspace/meshProject access permissions should not be granted lightly all changes to them are logged and can be audited by organization admin/employee users.
 
 ### Workspace History
 
-- Ensure that the meshPartner is selected from the meshWorkspace drop down
+- Ensure that the meshAdmin is selected from the meshWorkspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace History"
 
@@ -87,7 +87,7 @@ The list contains all meshWorkspace events (i.e. sent invitations, added/removed
 
 ### Project History
 
-- Ensure that the meshPartner is selected from the meshWorkspace drop down
+- Ensure that the meshAdmin is selected from the meshWorkspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace Projects"
 - Find the project and select "Project History"

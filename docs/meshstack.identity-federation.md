@@ -134,7 +134,7 @@ meshStack supports the following identity provisioning strategies:
 
 #### Availability of Users and Atttributes
 
-In order to use externally-provisioned identities, Platform Operators need to set up the necessary user provisioning
+In order to use externally-provisioned identities, Platform Engineers need to set up the necessary user provisioning
 routines outside of meshStack. Depending on the existing IAM landscape in your organization, this can require
 setting up synchronization to on-premise directories and other IAM systems.
 
@@ -221,7 +221,7 @@ However, some identity providers only support a restricted set of user attribute
 For further details, please consult the [Identity Provider configuration reference](./meshstack.identity-provider.md).
 
 meshStack updates the `euid` of a user with the latest value passed from the IdP on every log in of the user into meshPanel.
-In case Platform Operators do not configure an identity lookup (see next section), this allows meshStack to retrieve an `euid` that is not an email from the IdP. However, Platform Operators need to be aware that
+In case Platform Engineers do not configure an identity lookup (see next section), this allows meshStack to retrieve an `euid` that is not an email from the IdP. However, Platform Engineers need to be aware that
 users that have never logged in to meshStack will not have an `euid` set and can thus not be replicated
 to cloud platforms configured to use externally-provisioned identities.
 
@@ -261,11 +261,11 @@ If the identity connector is used, see the [Identity Connector](./meshstack.work
 When meshStack generates the desired state for a [meshTenant](./meshcloud.tenant.md), it uses the
 assigned [meshProject roles](meshstack.authorization.md#meshproject-roles) together with the meshPlatform and meshLandingZone configuration to compute the desired IAM configuration in the cloud platform.
 
-As a part of this process, meshStack has to map each meshUser to a native platform user object using the meshUser's `euid` attribute and matching it with a configurable attribute of the native platform user object. Platform Operators can configure this process in two steps.
+As a part of this process, meshStack has to map each meshUser to a native platform user object using the meshUser's `euid` attribute and matching it with a configurable attribute of the native platform user object. Platform Engineers can configure this process in two steps.
 
 #### Transforming euids with patterns
 
-Some common cloud IAM architectures require using different user account for test and production workloads (e.g. `user@test.example.com`, `user@example.com`) or using a different user account for private and public clouds (`example-corp\user`, `user@example.com`). In order to allow support these setups, Platform Operators can configure this transformation of the meshUser `euid` individually for each meshPlatform.
+Some common cloud IAM architectures require using different user account for test and production workloads (e.g. `user@test.example.com`, `user@example.com`) or using a different user account for private and public clouds (`example-corp\user`, `user@example.com`). In order to allow support these setups, Platform Engineers can configure this transformation of the meshUser `euid` individually for each meshPlatform.
 
 <!--snippet:meshfed.platform#type-->
 
@@ -325,7 +325,7 @@ meshStack can thus only support lookup in one or two platform user attributes.
 
 \*_with AAD permission Replication_
 
-At the moment only AAD offers a choice of user lookup attributes. Platform Operators can configure these globally for all meshPlatforms.
+At the moment only AAD offers a choice of user lookup attributes. Platform Engineers can configure these globally for all meshPlatforms.
 
 <!--snippet:mesh.replicator-->
 

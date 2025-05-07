@@ -29,7 +29,7 @@ This StackSet will be created in every new AWS account. It usually contains simp
 
 ### StackSet ARN
 
-Platform Operators can also configure an [CloudFormation StackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html) on an AWS Landing Zone. meshStack will then ensure that all AWS Accounts provisioned using this Landing Zone will receive a StackInstance from the StackSet. This allows Platform Operators to leverage that StackSet to centrally manage configuration and resources for all AWS Accounts under the landing zone.
+Platform Engineers can also configure an [CloudFormation StackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html) on an AWS Landing Zone. meshStack will then ensure that all AWS Accounts provisioned using this Landing Zone will receive a StackInstance from the StackSet. This allows Platform Engineers to leverage that StackSet to centrally manage configuration and resources for all AWS Accounts under the landing zone.
 
 Each AWS project which now gets this Landing Zone assigned will be setup to receive the Cloud Formation Stack Instance setup.
 

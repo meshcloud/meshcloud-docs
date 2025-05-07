@@ -8,7 +8,7 @@ meshStack supports account creation, configuration, access control and cost mana
 
 ## Integration Overview
 
-To enable integration with AWS, Platform Operators configure one or multiple `meshPlatform`s of `PlatformType` AWS in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with AWS, Platform Engineers configure one or multiple `meshPlatform`s of `PlatformType` AWS in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
@@ -36,9 +36,9 @@ graph LR;
 
 ### IAM Roles and Service Control Policies
 
-meshStack replicates meshProject roles as AWS IAM roles to AWS SSO. Platform Operators can configure the mapping of these roles via meshLandingZones.
+meshStack replicates meshProject roles as AWS IAM roles to AWS SSO. Platform Engineers can configure the mapping of these roles via meshLandingZones.
 
-When configuring these roles, Platform Operators must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
+When configuring these roles, Platform Engineers must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 
 ## How to integrate AWS as a meshPlatform into meshStack
 

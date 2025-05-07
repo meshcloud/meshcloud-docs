@@ -49,7 +49,7 @@ You can choose which OSB Services Platform you want to publish your Service Brok
 
 Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the OSB Services Platform and your Service Broker.
 
-When you publish your Service Broker it won't be available in the OSB Services Platform. A Partner Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the OSB Services Platform. A Organization Admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### How to publish your Service Broker
 
