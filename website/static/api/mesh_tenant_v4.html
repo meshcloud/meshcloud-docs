@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Index</title>
+<title>meshTenant (v4-preview)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,11 +440,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="_index">Index</h3>
+<div class="sect3">
+<h4 id="mesh_tenant_v4">meshTenant (v4-preview)</h4>
 <div class="paragraph">
-<p>This is the entry point to navigate through the API of meshStack. Starting from here you will be able to
-find all endpoints your <a href="#authentication">authenticated</a> user has access to.</p>
+<p>All endpoints on meshTenants (v4-preview).</p>
+</div>
+<div class="sect4">
+<h5 id="_list_meshtenants">List meshTenants</h5>
+<div class="paragraph">
+<p>Provides a paged list of meshTenants (v4-preview). By default, list all active meshTenants (neither deleted nor submitted for deletion).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: If the state is not specified as a request parameter, only active meshTenants are returned.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Request Headers</caption>
@@ -461,28 +468,82 @@ find all endpoints your <a href="#authentication">authenticated</a> user has acc
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.v1.hal+json</code> for this version of the endpoint.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json</code> as an <code>Accept</code> header to be guaranteed the V4 response format of this endpoint. New versions might be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Request Parameters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>workspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants that belong to the meshWorkspace with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>projectIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants that belong to the meshProject with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants that belong to the meshPlatform with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformTypeIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants that belong to the platform type with given identifier. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>landingZoneIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants that belong to a certain landing zone. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platformTenantId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants with a given platformTenantId. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>state</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenants with a certain state. You can also filter for multiple states by providing the state parameter multiple times. Possible values are:<br>
+[ACTIVE](default option) All meshTenants that are not deleted or submitted for deletion.<br>
+[MARKED_FOR_DELETION] All meshTenants that are awaiting manual deletion approval or are pending deletion.<br>
+[DELETED] All meshTenants that are successfully deleted in cloud platforms.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;state=ACTIVE&amp;state=DELETED&amp;page=0&amp;size=2 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
-Accept: application/vnd.meshcloud.api.v1.hal+json
+Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
 Host: mesh-backend-url</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api' -i -u 'valid_username:valid_password' -X GET \
-    -H 'Accept: application/vnd.meshcloud.api.v1.hal+json'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;state=ACTIVE&amp;state=DELETED&amp;page=0&amp;size=2' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json'</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Response Fields</caption>
+<caption class="title">Table 3. Response Fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -497,18 +558,491 @@ Host: mesh-backend-url</code></pre>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshTenants[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_tenant_response_fields">meshTenant</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">All available <a href="#index_links">Top-Level Links</a> for the authenticated user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
 </tr>
 </tbody>
 </table>
-<div id="index_links" class="paragraph">
-<div class="title">Links</div>
-<p>List of all top-level endpoints the authenticated user has access to. Depending on your rights, you will only
-get a subset of the links mentioned here.</p>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 3380
+
+{
+  "_embedded" : {
+    "meshTenants" : [ {
+      "kind" : "meshTenant",
+      "apiVersion" : "v4-preview",
+      "metadata" : {
+        "uuid" : "e22f612d-4f9b-4c3f-9b95-8ad75d5288eb",
+        "ownedByWorkspace" : "test-workspace",
+        "ownedByProject" : "test-project",
+        "createdOn" : "2025-05-07T08:59:56.010072215Z"
+      },
+      "spec" : {
+        "platformIdentifier" : "aws.aws-meshstack-dev",
+        "landingZoneIdentifier" : "stage-dev",
+        "platformTenantId" : "2f3561e8-51f4-451f-bc92-9e5c8c6dd98f",
+        "quotas" : [ {
+          "key" : "limits.cpu",
+          "value" : 2000
+        }, {
+          "key" : "limits.memory",
+          "value" : 10000
+        } ]
+      },
+      "status" : {
+        "tenantName" : "test-workspace.test-project.aws.aws-meshstack-dev",
+        "platformTypeIdentifier" : "AWS",
+        "tags" : { }
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/e22f612d-4f9b-4c3f-9b95-8ad75d5288eb"
+        },
+        "meshusers" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=aws.aws-meshstack-dev"
+        }
+      }
+    }, {
+      "kind" : "meshTenant",
+      "apiVersion" : "v4-preview",
+      "metadata" : {
+        "uuid" : "fba4d194-2f6a-471b-957d-e64ea12fc891",
+        "ownedByWorkspace" : "test-workspace",
+        "ownedByProject" : "test-project",
+        "createdOn" : "2025-05-07T08:59:56.013516625Z",
+        "markedForDeletionOn" : "2025-05-08T08:59:56.013516625Z",
+        "deletedOn" : "2025-05-09T08:59:56.013516625Z"
+      },
+      "spec" : {
+        "platformIdentifier" : "okd-on-gcp.openshift",
+        "landingZoneIdentifier" : "stage-dev",
+        "platformTenantId" : "7139bd0c-65cd-4cb0-a0d6-864fd94254bf",
+        "quotas" : [ {
+          "key" : "limits.cpu",
+          "value" : 2000
+        }, {
+          "key" : "limits.memory",
+          "value" : 10000
+        } ]
+      },
+      "status" : {
+        "tenantName" : "test-workspace.test-project.okd-on-gcp.openshift",
+        "platformTypeIdentifier" : "OPENSHIFT",
+        "tags" : { }
+      },
+      "_links" : {
+        "meshusers" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=okd-on-gcp.openshift"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "first" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;state=ACTIVE&amp;state=DELETED&amp;page=0&amp;size=2"
+    },
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;state=ACTIVE&amp;state=DELETED&amp;page=0&amp;size=2"
+    },
+    "next" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;state=ACTIVE&amp;state=DELETED&amp;page=1&amp;size=2"
+    },
+    "last" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;state=ACTIVE&amp;state=DELETED&amp;page=1&amp;size=2"
+    }
+  },
+  "page" : {
+    "size" : 2,
+    "totalElements" : 3,
+    "totalPages" : 2,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshtenant">Get meshTenant</h5>
+<div class="paragraph">
+<p>Get a single meshTenant (v4-preview). A meshTenant submitted for deletion by a Workspace Manager can also be requested via this endpoint.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json</code> as an <code>Accept</code> header to be guaranteed the V4 response format of this endpoint. New versions might be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtenants/e22f612d-4f9b-4c3f-9b95-8ad75d5288eb HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/e22f612d-4f9b-4c3f-9b95-8ad75d5288eb' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json'</code></pre>
+</div>
+</div>
+<table id="mesh_tenant_response_fields" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshTenant datatype. Matches the version provided in the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshTenant' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains common meshObject data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UUID of the meshTenant. It must be used to reference a meshTenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByProject</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshProject the meshTenant belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshWorkspace the meshTenant belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.createdOn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The creation date of the meshTenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.markedForDeletionOn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the meshTenant has been submitted for deletion by a Workspace Manager, the <a href="#data_types">date</a>  is represented here (e.g. <code>2020-12-22T09:37:43Z)</code>. Otherwise this field is missing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.deletedOn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the meshTenant was deleted successfully in the cloud platform, the <a href="#data_types">date</a>,  is represented here (e.g. <code>2020-12-22T10:12:25Z)</code>. Otherwise this field is missing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the meshTenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the related platform instance.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformTenantId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The platform tenant id related to this meshTenant. It will only be set if the tenant  was either imported via meshObject API with a platformTenantId or if at least one replication run finished successfully for this tenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.landingZoneIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the Landing Zone of this meshTenant. This field will be empty if the meshTenant has no Landing Zone.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.quotas[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The set of applied Tenant Quotas. They can be set individually per tenant. By default the Landing Zone quotas are applied to new meshTenants.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section represent the current status of the tenant and can change over time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.tenantName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The full name of this tenant, a concatenation of the workspace identifier, project identifier and platform identifier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.platformTypeIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the related platform type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.platformWorkspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some platforms like Cloud Foundry create a representation of a workspace. The identifier of this workspace representation is stored here. This field is not provided or null if the platform does not support this feature.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.tags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tags assigned to this meshTenant originating from meshWorkspace, Payment Method and meshProject. Keep in mind, that values are an array. Also see our general section about <a href="#tags">[tags]</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 1079
+
+{
+  "kind" : "meshTenant",
+  "apiVersion" : "v4-preview",
+  "metadata" : {
+    "uuid" : "e22f612d-4f9b-4c3f-9b95-8ad75d5288eb",
+    "ownedByWorkspace" : "test-workspace",
+    "ownedByProject" : "test-project",
+    "createdOn" : "2025-05-07T08:59:56.010072215Z"
+  },
+  "spec" : {
+    "platformIdentifier" : "aws.aws-meshstack-dev",
+    "landingZoneIdentifier" : "stage-dev",
+    "platformTenantId" : "2f3561e8-51f4-451f-bc92-9e5c8c6dd98f",
+    "quotas" : [ {
+      "key" : "limits.cpu",
+      "value" : 2000
+    }, {
+      "key" : "limits.memory",
+      "value" : 10000
+    } ]
+  },
+  "status" : {
+    "tenantName" : "test-workspace.test-project.aws.aws-meshstack-dev",
+    "platformTypeIdentifier" : "AWS",
+    "tags" : { }
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/e22f612d-4f9b-4c3f-9b95-8ad75d5288eb"
+    },
+    "meshusers" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=aws.aws-meshstack-dev"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_post_meshtenant">Post meshTenant</h5>
+<div class="paragraph">
+<p>Create a new meshTenant (v4-preview).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json</code> as a <code>Content-Type</code> header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json</code> as an <code>Accept</code> header to be guaranteed the expected response format of this endpoint. New versions might be added in future.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshtenants HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
+Content-Length: 355
+Host: mesh-backend-url
+
+{
+    "apiVersion": "v4-preview",
+    "kind": "meshTenant",
+    "metadata": {
+      "ownedByProject": "test-project",
+      "ownedByWorkspace": "test-workspace"
+    },
+    "spec": {
+      "platformIdentifier": "azure.meshcloud-azure-dev",
+      "landingZoneIdentifier": "stage-dev",
+      "platformTenantId": "cloud-tenant-4763-4526189"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json' \
+    -d '{
+    "apiVersion": "v4-preview",
+    "kind": "meshTenant",
+    "metadata": {
+      "ownedByProject": "test-project",
+      "ownedByWorkspace": "test-workspace"
+    },
+    "spec": {
+      "platformIdentifier": "azure.meshcloud-azure-dev",
+      "landingZoneIdentifier": "stage-dev",
+      "platformTenantId": "cloud-tenant-4763-4526189"
+    }
+  }
+} '</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Request Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of Tenant datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshTenant' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed fields that help identify the Tenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByProject</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshProject the meshTenant belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the meshWorkspace the meshTenant belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the Tenant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the platform the meshTenant belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.landingZoneIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the landing zone the meshTenant belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformTenantId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The platform tenant id assigned by the platform for this meshTenant. If set, meshStack will import an existing tenant from the cloud platform instead of creating a new one. Only API Keys or API Users with admin permissions for saving tenants can set this field.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Tenant Links</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -521,23 +1055,20 @@ get a subset of the links mentioned here.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#metadata">Metadata API</a> to retrieve metadata from meshStack.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshobjects</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="#mesh_objects">MeshObjects API</a> to get, create, update and delete meshObjects.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>meshusers</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
 <div class="listingblock">
 <div class="title">Example Response</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Content-Type: application/vnd.meshcloud.api.v1.hal+json
+Location: https://mesh-backend-url/api/meshobjects/meshtenants/29d63d63-43c5-4302-9293-9eab37eef535
+Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -545,21 +1076,75 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 257
+Content-Length: 963
 
 {
+  "kind" : "meshTenant",
+  "apiVersion" : "v4-preview",
+  "metadata" : {
+    "uuid" : "29d63d63-43c5-4302-9293-9eab37eef535",
+    "ownedByWorkspace" : "test-workspace",
+    "ownedByProject" : "test-project",
+    "createdOn" : "2025-05-07T08:59:56.686977872Z"
+  },
+  "spec" : {
+    "platformIdentifier" : "azure.meshcloud-azure-dev",
+    "landingZoneIdentifier" : "stage-dev",
+    "platformTenantId" : "cloud-tenant-4763-4526189",
+    "quotas" : [ ]
+  },
+  "status" : {
+    "tenantName" : "test-workspace.test-project.azure.meshcloud-azure-dev",
+    "platformTypeIdentifier" : "AZURE",
+    "tags" : { }
+  },
   "_links" : {
-    "meshobjects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects"
-    },
-    "metadata" : {
-      "href" : "https://mesh-backend-url/api/metadata"
-    },
     "self" : {
-      "href" : "https://mesh-backend-url/api"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/29d63d63-43c5-4302-9293-9eab37eef535"
+    },
+    "meshusers" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=azure.meshcloud-azure-dev"
     }
   }
 }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshtenant">Delete meshTenant</h5>
+<div class="paragraph">
+<p>Submits an existing meshTenant for deletion (v4-preview). meshTenant deletion might involve manual action on operator side,
+so the meshTenant might not be immediately deleted but rather marked for deletion.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtenants/29d63d63-43c5-4302-9293-9eab37eef535 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/29d63d63-43c5-4302-9293-9eab37eef535' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 202 Accepted
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
 </div>
 </div>
 </div>
