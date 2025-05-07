@@ -52,7 +52,7 @@ When emergency access is no longer required the following steps will revert perf
 
 ## Access with meshAdmin
 
-Even when no workspace manager is available, users with organization admin/employee access can manage permissions for their managed meshWorkspaces.
+Even when no workspace manager is available, users with organization admin/user access can manage permissions for their managed meshWorkspaces.
 
 ### Adding emergency user as meshAdmin
 
@@ -75,7 +75,7 @@ However, to revert the temporary workspace manager role assignment, another work
 
 ## Auditing Emergency Access
 
-Since meshWorkspace/meshProject access permissions should not be granted lightly all changes to them are logged and can be audited by organization admin/employee users.
+Since meshWorkspace/meshProject access permissions should not be granted lightly all changes to them are logged and can be audited by organization admin/user.
 
 ### Workspace History
 
