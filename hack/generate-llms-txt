@@ -5,10 +5,11 @@ set -o errtrace
 set -o pipefail
 set -o nounset
 
-# Generate llms.txt file for AI-based search and content generation features.
+# Generate llms.txt and llms-toc.txt files for AI-based search and content generation features.
 # 
 # This script processes all markdown files in the docs directory and generates:
 # llms.txt: Contains the full content of all markdown files concatenated
+# llms-toc.txt: Contains the relative filepaths and headings from markdown files
 # 
 # Usage: bash generate-llms-txt
 
@@ -18,29 +19,48 @@ SITE_DIR="$(dirname "$SCRIPT_DIR")"
 CONTENT_DIR="$SITE_DIR/docs"
 OUT_DIR="$SITE_DIR/website/static"
 
-echo "Starting to generate llms.txt file..."
+echo "Starting to generate llms.txt and llms-toc.txt files..."
 echo "Reading markdown files from: $CONTENT_DIR"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUT_DIR"
 
-# Temporary file to collect all markdown content
+# Temporary files
 TEMP_FILE=$(mktemp)
+TOC_TEMP_FILE=$(mktemp)
 
-# Find all markdown files and concatenate their content
+# Find all markdown files and process them
 find "$CONTENT_DIR" -type f -name "*.md" | while read -r file; do
+  # Get relative path for the TOC file
+  REL_PATH=${file#$SITE_DIR/}
+  
+  # Add separator and content to the main file
   echo -e "\n\n---\n\n" >> "$TEMP_FILE"
   cat "$file" >> "$TEMP_FILE"
+  
+  # Extract headings for TOC file
+  echo -e "\nFile: $REL_PATH" >> "$TOC_TEMP_FILE"
+  
+  # Extract headings that are not within code fences
+  awk '
+    BEGIN { in_code_block = 0 }
+    /```/ { in_code_block = !in_code_block; next }
+    /^#/ && !in_code_block { print $0 }
+  ' "$file" >> "$TOC_TEMP_FILE"
 done
 
-# Remove the first separator (three dashes)
+# Remove the first separator (three dashes) from the main content file
 sed '1,3d' "$TEMP_FILE" > "$OUT_DIR/llms.txt"
+
+# Save the TOC file
+cp "$TOC_TEMP_FILE" "$OUT_DIR/llms-toc.txt"
 
 # Count the number of files processed
 FILE_COUNT=$(find "$CONTENT_DIR" -type f -name "*.md" | wc -l)
 echo "Found $FILE_COUNT markdown files"
 echo "Generated $OUT_DIR/llms.txt"
-echo "Successfully generated llms.txt file!"
+echo "Generated $OUT_DIR/llms-toc.txt"
+echo "Successfully generated LLM files!"
 
 # Clean up
-rm "$TEMP_FILE"
+rm "$TEMP_FILE" "$TOC_TEMP_FILE"
