@@ -60,7 +60,7 @@ To open the tenant deletion queue, follow these steps:
 
 You can filter tenants that require approval by selecting the status column and choosing the dropdown option `Requires approval`.
 
-As a partner or a platform engineer, you have the option to either confirm or decline the deletion of the tenant. For either decision, you can also enter an optional comment which is limited to 255 characters.
+As an organization user or a platform engineer, you have the option to either confirm or decline the deletion of the tenant. For either decision, you can also enter an optional comment which is limited to 255 characters.
 
 Depending on the configuration of the tenant's landing zone, meshStack will ask you to confirm whether you want meshStack to perform the tenant deletion automatically or that you will manually perform deletion in the cloud platform.
 
