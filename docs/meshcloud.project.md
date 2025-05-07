@@ -61,7 +61,7 @@ In the **Project Access** section you can find a type-ahead `Search for a worksp
 
 Project roles grant a configured set of permissions in cloud platforms used by the project. Project roles can be configured according to existing requirements or policies, by default the following roles are used:
 
-- **Project Reader**: A read-only user, like a controller or similar.
+- **Project Reader**: A read-only user, like a finops manager or similar.
 - **Project User**: A default user, like a developer, who can manage resources in the cloud platform.
 - **Project Admin**: An admin user, who can also change configurations of the project in the cloud platform.
 
@@ -90,7 +90,7 @@ The [deletion procedure](meshcloud.tenant.md#delete-a-meshtenant) of your meshPr
 2. a project contains exclusively OpenStack, Cloud Foundry and OSB Services meshTenants
 3. a project contains a project containing a combination of 1. and 2.
 
-**1. Non-automatic deletion**: If the project contains tenants on which a partner or a platform operator will have to perform manual deletion actions. Your project is deleted, when all tenant deletions have been confirmed by the partner or platform operator.
+**1. Non-automatic deletion**: If the project contains tenants on which a partner or a platform engineer will have to perform manual deletion actions. Your project is deleted, when all tenant deletions have been confirmed by the partner or platform engineer.
 
 **2. Automatic deletion**: The system will perform a check to see if any resources exist in the tenants of the project being deleted. If resources do exist in any of those platform tenants, you will be informed about them and have to manually delete those resources. Once you have performed the manual resource deletion, you can confirm the project deletion by entering the identifier of your project.
 

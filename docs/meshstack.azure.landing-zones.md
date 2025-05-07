@@ -5,9 +5,9 @@ title: Landing Zones
 
 In Azure, a [Landing Zone](./meshcloud.landing-zones.md) is defined via a Management Group the Subscription for the project will be assigned to. Policies can be applied to these Management Groups. Optionally a Blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the Subscription and additional specific policies can be defined. A Blueprint can be configured to decline users to change or delete the resources and policies created by the Blueprint.
 
-Platform Operators can define and configure [Landing Zone](./meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
+Platform Engineers can define and configure [Landing Zone](./meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
 
-The next section describe the individual building blocks that platform operators can configure in an Azure Landing Zone.
+The next section describe the individual building blocks that platform engineers can configure in an Azure Landing Zone.
 
 ## Azure Subscription
 
@@ -21,7 +21,7 @@ All newly created [meshProjects](./meshcloud.project.md) get their corresponding
 
 ### Blueprint Assignment
 
-Platform Operators can optionally define one or more [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview)
+Platform Engineers can optionally define one or more [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview)
  which meshStack will assign to managed Subscriptions.
 
 #### Blueprint Name
@@ -32,7 +32,7 @@ The name of the Blueprint which gets assigned to the tenant. If left empty, mesh
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
-Platform Operators must ensure to create these Management Groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
+Platform Engineers must ensure to create these Management Groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
 
 #### Available Blueprint Parameters
 
@@ -73,7 +73,7 @@ When parameters are marked as static in the Azure Panel, they can not be replace
 
 #### Max. Auto Upgrade Blueprint Version
 
-Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints, Platform Operators can configure the `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
+Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints, Platform Engineers can configure the `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
 - Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
@@ -137,7 +137,7 @@ For more information on this topic please refer to the [Azure documentation](htt
 
 ### Azure Function Invocation
 
-Platform Operators can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the Subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
+Platform Engineers can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the Subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
 Please review the [HTTP header interface documentation](./meshstack.metadata-tags.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 

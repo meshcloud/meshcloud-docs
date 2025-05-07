@@ -55,7 +55,7 @@ Operators globally configure the names and identifiers of meshProject roles avai
 
 The default configuration of meshStack ships with these roles and intended use.
 
-- Project Reader: A read-only user, like a controller or similar.
+- Project Reader: A read-only user, like a finops manager or similar.
 - Project User: A default user, like a developer, who can manage resources in the cloud platform.
 - Project Admin: An admin user, who can also change configurations of the project in the cloud platform.
 
@@ -135,6 +135,6 @@ do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 
-meshStack [replicates](./meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a Platform Operator on the platform or landing zone level.
+meshStack [replicates](./meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a Platform Engineer on the platform or landing zone level.
 
 > Please consult the documentation for the different cloud platforms for more details on the supported authorization mechanisms and their configuration.

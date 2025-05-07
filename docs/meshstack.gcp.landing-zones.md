@@ -12,7 +12,7 @@ The [Landing Zone](./meshcloud.landing-zones.md) can be configured in the `Admin
 
 All newly created meshProjects get their corresponding GCP project assigned to this [Folder](https://cloud.google.com/resource-manager/docs/creating-managing-folders) in the [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
 
-Folders and the application of organization constrains on the projects contained in them through the use of [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) can be setup outside of meshcloud by a Platform Operator.
+Folders and the application of organization constrains on the projects contained in them through the use of [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) can be setup outside of meshcloud by a Platform Engineer.
 
 ## Template Config URL
 
@@ -46,7 +46,7 @@ storage.buckets.get
 
 We suggest to create a custom role containing these permissions.
 
-As part of replication, meshStack will grant this permission to the "Google APIs Service Agent" service account. Reviewing the IAM permission of the bucket, Platform Operators will thus notice additional assignments of the `roles/storage.objectViewer` role to service accounts of the form `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
+As part of replication, meshStack will grant this permission to the "Google APIs Service Agent" service account. Reviewing the IAM permission of the bucket, Platform Engineers will thus notice additional assignments of the `roles/storage.objectViewer` role to service accounts of the form `<PROJECT_ID>@cloudservices.gserviceaccount.com`.
 
 The name of the template deployment is `template-<CUSTOMER_IDENTIFER>-<PROJECT_IDENTIFIER>` cut to a maximum length of 63 chars.
 

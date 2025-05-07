@@ -51,7 +51,7 @@ Additional remarks and configuration links:
 
 ### Default Quotas
 
-meshStack assigns a default quota to newly registered [meshWorkspaces](./meshcloud.workspace.md) (see section above). Platform Operators can configure this default quota via `meshfed.web.customer.defaultQuota`:
+meshStack assigns a default quota to newly registered [meshWorkspaces](./meshcloud.workspace.md) (see section above). Platform Engineers can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
 ```dhall
 { {- the number of allowed meshProjects per meshWorkspace -}
@@ -95,7 +95,7 @@ let UserRoleRequest =
           bindings. This is useful when an external system is the source of truth regarding
           Workspace Manager role assignments.
 
-          Also, partner users using the "add myself" functionality in the admin area will be restricted to granting
+          Also, admin users using the "add myself" functionality in the admin area will be restricted to granting
           themselves 'Workspace Member' roles instead of 'Workspace Manager'.
     -}
       { min-approval-count : Natural

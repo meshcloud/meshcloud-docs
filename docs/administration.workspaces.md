@@ -3,7 +3,7 @@ id: administration.workspaces
 title: meshWorkspaces
 ---
 
-With a Partner Account you can easily manage multiple workspaces with the meshcloud Portal. The meshcloud administration area is the
+With a Admin Account you can easily manage multiple workspaces with the meshcloud Portal. The meshcloud administration area is the
 place to create and manage your workspaces. You can access the meshcloud **Administration** Area by opening the settings menu and
 navigating to the **Administration** Area.
 
@@ -15,11 +15,11 @@ When selecting **Workspaces** in the menu bar on the left you can see the list o
 
 With meshcloud you can easily create workspaces.
 
-1. Login to the meshPanel with your partner credentials.
-2. If not logged in, please login with your Partner account credentials.
+1. Login to the meshPanel with your admin credentials.
+2. If not logged in, please login with your Admin account credentials.
 3. On the toolbar at the top, please make sure that you have navigated into the 'Admin Area'.
 4. Select **Workspaces** in the menu bar on the left.
-5. There is a button `+ Create Workspace` on the top-right of the table. After clicking the button, you will be navigated to the workspace creation screen. Here you can enter the name and identifier of the new workspace as well as the user(s) that should be assigned to the workspace. Keep in mind that you are able to configure restricted tags, this is not possible for non-partner users.
+5. There is a button `+ Create Workspace` on the top-right of the table. After clicking the button, you will be navigated to the workspace creation screen. Here you can enter the name and identifier of the new workspace as well as the user(s) that should be assigned to the workspace. Keep in mind that you are able to configure restricted tags, this is not possible for non-admin users.
 
 > **Attention**: Identifiers can not be changed. Please choose them carefully.
 
@@ -37,13 +37,13 @@ Setting the meshWorkspace status to **Disabled** has the following effects on [m
 
 - users can no longer access [meshTenants](meshcloud.tenant.md) via meshPanel
 
-Disabling a workspace does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, partners must add themselves to the workspace as an admin and manually remove user permissions.
+Disabling a workspace does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, admins must add themselves to the workspace as an admin and manually remove user permissions.
 
 If you want to prevent a workspace from creating new [meshProjects](meshcloud.project.md), you can [adjust the workspace's meshProject quota](#set-workspace-quotas).
 
 ### Access managed Workspaces
 
-As a partner user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
+As a admin user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
 
 1. Go to **Administration &gt; Workspaces** and click on the **Users** icon on the managed workspace you want to edit.
 2. In the **Workspaces Users** view click on the button **Add Myself** in the top right corner.
@@ -79,7 +79,7 @@ Partners and Administrators can manage the quota, that limits the maximum number
 
 ### Edit Workspace Tag Values
 
-Partner users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshWorkspaces** by navigating to the **Workspaces** list and clicking the `Workspace Tags` button.
+Admin users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshWorkspaces** by navigating to the **Workspaces** list and clicking the `Workspace Tags` button.
 
 ## Audit Workspaces
 

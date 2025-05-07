@@ -31,7 +31,7 @@ To retrieve detailed information about which systems under meshStack management 
 ## Guest Users
 
 It's possible to flag meshUsers as "guest users". Guest users are intended for scenarios where a cloud foundation team wants to manage permissions for  external users via meshStack.
-A common scenario where this occurs is when you organization collaborates with external partners on cloud projects and these partners "bring their own" indentities.
+A common scenario where this occurs is when you organization collaborates with external admins on cloud projects and these admins "bring their own" indentities.
 
 Guest users have the following properties
 
