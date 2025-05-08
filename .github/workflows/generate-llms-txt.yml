@@ -1,0 +1,25 @@
+name: Generate llms.txt File
+
+on:
+  push:
+    paths:
+      - 'docs/**/*.md'
+  workflow_dispatch:
+
+jobs:
+  generate-llms-txt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate llms.txt file
+        run: ./hack/generate-llms-txt
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add website/static/llms.txt
+          # Only commit if there are changes
+          git diff --staged --quiet || (git commit -m "Update llms.txt with latest docs content" && git push)
