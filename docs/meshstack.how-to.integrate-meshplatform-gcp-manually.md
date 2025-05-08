@@ -10,7 +10,7 @@ title: How to manually integrate GCP as meshPlatform
 meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the "least privilege" principle.
 
-Platform Operators need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
+Platform Engineers need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
 
 ```text
 resourcemanager.folders.get
@@ -42,7 +42,7 @@ resourcemanager.project.delete
 
 ### Configure the Root Project
 
-meshStack requires a project in GCP for some of the resources it uses. It is reserved for use by meshstack and Platform Operators. For this guide, we’ll call the project `meshstack-root`.
+meshStack requires a project in GCP for some of the resources it uses. It is reserved for use by meshstack and Platform Engineers. For this guide, we’ll call the project `meshstack-root`.
 
 ### Enable APIs
 
@@ -108,7 +108,7 @@ In order to associate created projects with a Billing Account, the replicator ne
 
 In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
 
-Platform Operators create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
+Platform Engineers create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
 
 ```text
 billing.resourceAssociations.create

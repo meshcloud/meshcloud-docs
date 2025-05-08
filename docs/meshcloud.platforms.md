@@ -28,4 +28,4 @@ an external service provider.
 
 Users can configure which meshPlatforms their [Projects](meshcloud.project.md) are enabled to use.
 The meshPlatforms available to your projects can be governed by [Landing Zones](meshcloud.landing-zones.md)
-configured by your [Platform Operator](meshstack.index.md).
+configured by your [Platform Engineer](meshstack.index.md).

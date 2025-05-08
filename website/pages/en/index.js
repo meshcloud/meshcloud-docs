@@ -150,8 +150,8 @@ class Index extends React.Component {
                   },
                   {
                     content:
-                      `IT Controllers use meshcloud to automate [metering and chargeback](${docUrl('meshstack.billing.html', language)})
-                      for all cloud platforms. Controllers can set product catalogs and pricing for private cloud platforms and
+                      `IT FinOps Managers use meshcloud to automate [metering and chargeback](${docUrl('meshstack.billing.html', language)})
+                      for all cloud platforms. FinOps Managers can set product catalogs and pricing for private cloud platforms and
                       [review cost and charges](${docUrl('administration.usage.html', language)}) for private & public clouds from a single pane of glass.
                       
                       `,

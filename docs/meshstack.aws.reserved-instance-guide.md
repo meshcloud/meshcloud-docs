@@ -41,4 +41,4 @@ This discount will achieve one of the following results
 
 3. **Provide a discount in the case of some other account utilizing it** : If the purchasing account did not use the RI or SP but some other account did use it, then the other account will pay the cost of the usage to the Cloud Foundation team via the amortized costs. The purchasing account will effectively get a reduction in their total costs via the above mentioned discount.
 
-Enabling these settings allows Platform Operators to consciously deviate from the default accrual basis accounting (via amortized cost) and switch to a "cashflow basis" accounting for RI/SP usage. The benefit of enabling this setting is that it will give a more accurate view of the usage of the budget by a meshProject.
+Enabling these settings allows Platform Engineers to consciously deviate from the default accrual basis accounting (via amortized cost) and switch to a "cashflow basis" accounting for RI/SP usage. The benefit of enabling this setting is that it will give a more accurate view of the usage of the budget by a meshProject.

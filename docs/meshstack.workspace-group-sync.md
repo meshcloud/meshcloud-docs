@@ -255,7 +255,7 @@ let example =
     {-
       The following example takes the 'cn' attribute and if the attribute matches the first rule,
       will assign whatever follows the "MESHCLOUD-ROLE-" as the value of the meshObject field. If the attribute matches
-      the second rule, will assign the value "Platform Operator" and if none of the rules match, assigns the
+      the second rule, will assign the value "Platform Engineer" and if none of the rules match, assigns the
       value "Workspace Member".
     -}
       { attribute = "cn"
@@ -263,7 +263,7 @@ let example =
       , rules =
         [ { regex = "MESHCLOUD-ROLE-(.+)", value = None Text }
         , { regex = "MESHCLOUD-OPERATOR"
-          , value = Some "Platform Operator"
+          , value = Some "Platform Engineer"
           }
         ]
       , template = None Text
@@ -432,10 +432,10 @@ let example
             , postProcessor = None PostProcessor
             , rules =
               [ { regex = "MESHCLOUD-ADMIN-.*"
-                , value = Some "Partner Admin"
+                , value = Some "Organization Admin"
                 }
               , { regex = "MESHCLOUD-OPERRATOR-.*"
-                , value = Some "Platform Operator"
+                , value = Some "Platform Engineer"
                 }
               ]
             , template = None Text

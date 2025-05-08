@@ -44,9 +44,9 @@ This user should have the following policy attached to assume the respective rol
 }
 ```
 
-Platform Operators should generate a unique and random value for `EXTERNAL_ID`, e.g. a GUID. meshStack AWS Connector will supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases the security of member accounts in your organization.
+Platform Engineers should generate a unique and random value for `EXTERNAL_ID`, e.g. a GUID. meshStack AWS Connector will supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases the security of member accounts in your organization.
 
-Platform Operators need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
+Platform Engineers need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
 
 ### Workload Identity Federation
 
@@ -85,7 +85,7 @@ This allows one specific identity (the replicator subject) with a specific audie
 
 > Security Note: The demonstrated IAM Policies implement the minimum of configuration required to produce
 > a working AWS integration using meshStack AWS Connector. This setup is based on the [default AWS Organization configuration](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
-> We advise Platform Operators to determine the specific needs and requirements for their usage of AWS and implement more restrictive
+> We advise Platform Engineers to determine the specific needs and requirements for their usage of AWS and implement more restrictive
 > roles and policies.
 
 This `MeshfedServiceRole` should be created in the management account with the following policy attached.
@@ -320,11 +320,11 @@ The following configuration options are available in the AWS [Platform Connectio
 You can define naming patterns based on the [String Templating](meshstack.replication-configuration.md#string-templating) syntax of meshStack for the following properties:
 
 * Account Email Address: Please make sure to consider that this is limited to 64 characters
-* Account Alias Pattern: The account alias must be unique across all of AWS. Platform Operators should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
+* Account Alias Pattern: The account alias must be unique across all of AWS. Platform Engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
 
 ## Identifier Configuration
 
-Platform Operators that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
+Platform Engineers that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
 
 ```yaml
 customer_identifier_length: 16
