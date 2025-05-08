@@ -8,7 +8,7 @@ meshStack supports account creation, configuration, access control and cost mana
 
 ## Integration Overview
 
-To enable integration with AWS, Platform Engineers configure one or multiple `meshPlatform`s of `PlatformType` AWS in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with AWS, Platform engineers configure one or multiple `meshPlatform`s of `PlatformType` AWS in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](./meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
