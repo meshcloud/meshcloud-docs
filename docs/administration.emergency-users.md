@@ -50,11 +50,11 @@ When emergency access is no longer required the following steps will revert perf
 - Remove user from meshProject by opening the project again and navigating to **Project Access** > **Current Access** (performed automatically if expiration date was set)
 - Remove user from meshWorkspace via the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): go to **Workspace Access** > **Current Access**.
 
-## Access with meshAdmin
+## Access with Organization Admin
 
 Even when no workspace manager is available, users with organization admin/user access can manage permissions for their managed meshWorkspaces.
 
-### Adding emergency user as meshAdmin
+### Adding emergency user as Organization Admin
 
 Note: this only works when Workspace Manager role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
 value ([read more here](meshstack.onboarding.md#workspace-user-invitations))
@@ -68,7 +68,7 @@ In order to manage users for a specific meshProject, the admin user must add the
 
 Afterwards they may proceed to manage users for this meshWorkspace as a workspace manager (see previous section).
 
-### Removing emergency user as meshAdmin
+### Removing emergency user as Organization Admin
 
 Since the meshAdmin user is now a workspace manager the procedure is the same as outlined in the previous section.
 However, to revert the temporary workspace manager role assignment, another workspace manager must remove the admin user from the workspace via **Workspace Access** > **Current Access**.

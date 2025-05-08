@@ -32,7 +32,7 @@ meshStack requires two technical admin user accounts for integration with Cloud 
 users the following [Cloud Foundry roles](https://docs.cloudfoundry.org/concepts/roles.html) and [UAA scopes](https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes).
 
 - the `replicator` admin account must have permission to create orgs, spaces, groups and assign roles. This user requires the
-  `Admin` role and additionally needs the `cloud_finops manager.admin`, `uaa.admin` and  `scim.read` scopes in UAA.
+  `Admin` role and additionally needs the `cloud_controller.admin`, `uaa.admin` and  `scim.read` scopes in UAA.
 - the `metering` admin account is used to collect [metering data](./meshstack.cloudfoundry.metering.md). This requires the `Global Auditor`.
 
 The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's project permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.

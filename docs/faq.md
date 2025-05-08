@@ -37,7 +37,7 @@ In order to connect to the cloud platforms and execute replication steps or mete
 
 ### How does meshcloud GmbH secure the Infrastructure for my meshStack?
 
-The various cloud components used by meshStack, such as Virtual Cloud Network, Network Load Balancers, and Ingress FinOps Manager (Kubernetes) are configured according to best practices.
+The various cloud components used by meshStack, such as Virtual Cloud Network, Network Load Balancers, and Ingress Controller (Kubernetes) are configured according to best practices.
 
 Kubernetes nodes are secured by a shared responsibility model. meshcloud GmbH uses best-practice configurations & network policies to secure the nodes for your meshStack. Access to these Kubernetes nodes is possible through the project/role assignment of the respective cloud provider.
 
@@ -77,7 +77,7 @@ The External User Identifier (EUID), usually the email address, is replicated to
 
 Yes, meshStack is compliant with the official terms of the General Data Protection Regulation (GDPR). The official definitions are explained in the GDPR requirements as follows:
 
-- Art. 24 - [Responsibility of the finops manager](https://gdpr-info.eu/art-24-gdpr/)
+- Art. 24 - [Responsibility of the controller](https://gdpr-info.eu/art-24-gdpr/)
 - Art. 25 - [Data protection by design and by default](https://gdpr-info.eu/art-25-gdpr/)
 - Art. 26 - [Joint finops managers](https://gdpr-info.eu/art-26-gdpr/)
 - Art. 27 - [Representatives of finops managers or processors not established in the Union](https://gdpr-info.eu/art-27-gdpr/)
@@ -132,7 +132,7 @@ Address: Syncfusion, Inc.
 
 **Slack:** meshcloud GmbH uses Slack messaging software for interacting within the workplace. By default, Slack encrypts data at rest and data in transit for all of its customers. The security program at Slack protects its customer's data at every layer and has the following compliance certifications and attestations:
 
-**[ISO/IEC 27001](https://a.slack-edge.com/f2814e1/marketing/downloads/security/Slack-27001-1105886-5.pdf), [ISO/IEC 27017](https://a.slack-edge.com/f2814e1/marketing/downloads/security/Slack-27017-1105886-4.pdf), [ISO/IEC 27018](https://a.slack-edge.com/f2814e1/marketing/downloads/security/Slack-27018-1105886-4.pdf), [ISO/IEC 27701](https://a.slack-edge.com/5ff60/marketing/downloads/security/Slack-27001-1105886-4.pdf), SOC 2, [SOC 3](https://a.slack-edge.com/31222cc/marketing/downloads/security/Slack_SOC_3_2021_Report.pdf), [APEC for Processors Certification](https://a.slack-edge.com/a0dbd8f/marketing/downloads/security/Slack_APEC_Processor_246.pdf), [APEC for FinOps Managers Certification](https://a.slack-edge.com/9fefd45/marketing/downloads/security/Slack_APEC_Controller_247.pdf), CSA**
+**[ISO/IEC 27001](https://a.slack-edge.com/f2814e1/marketing/downloads/security/Slack-27001-1105886-5.pdf), [ISO/IEC 27017](https://a.slack-edge.com/f2814e1/marketing/downloads/security/Slack-27017-1105886-4.pdf), [ISO/IEC 27018](https://a.slack-edge.com/f2814e1/marketing/downloads/security/Slack-27018-1105886-4.pdf), [ISO/IEC 27701](https://a.slack-edge.com/5ff60/marketing/downloads/security/Slack-27001-1105886-4.pdf), SOC 2, [SOC 3](https://a.slack-edge.com/31222cc/marketing/downloads/security/Slack_SOC_3_2021_Report.pdf), [APEC for Processors Certification](https://a.slack-edge.com/a0dbd8f/marketing/downloads/security/Slack_APEC_Processor_246.pdf), [APEC for Controller Certification](https://a.slack-edge.com/9fefd45/marketing/downloads/security/Slack_APEC_Controller_247.pdf), CSA**
 
 ```text
 Slack security overview: https://slack.com/trust/security
