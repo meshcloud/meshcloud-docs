@@ -1,11 +1,17 @@
 ---
 id: meshcloud.project
-title: meshProject
+title: Project
 ---
 
-meshProjects are multi-cloud enabled projects that allow teams to manage and scale cloud resources across all [meshPlatforms](meshcloud.platforms.md) made available to their [meshWorkspace](meshcloud.workspace.md).
+A project in meshStack is an element within a workspace where cloud resources are provisioned and managed. Projects are the operational units where actual workloads run and where services and platforms are consumed. Each project belongs to a workspace and inherits its organizational context. Within a project, you can manage user access to the associated tenants and gain financial insights into the costs incurred by the project.
 
-> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
+> Best Practice
+> Projects enable clear separation of environments (such as development, testing, or production) within a workspace, providing structured governance and control over cloud usage.
+> Typically, projects represent individual environments for an application or service, such as development, staging, or production. We recommend creating separate projects for each
+> environment to ensure clear isolation, cost tracking, and permission management.
+
+## Who manages a project
+Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
 ## Create a new meshProject
 
