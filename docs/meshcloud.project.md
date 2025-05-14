@@ -61,7 +61,7 @@ In the **Project Access** section you can find a type-ahead `Search for a worksp
 
 Project roles grant a configured set of permissions in cloud platforms used by the project. Project roles can be configured according to existing requirements or policies, by default the following roles are used:
 
-- **Project Reader**: A read-only user, like a finops manager or similar.
+- **Project Reader**: A read-only user, like a finOps manager or similar.
 - **Project User**: A default user, like a developer, who can manage resources in the cloud platform.
 - **Project Admin**: An admin user, who can also change configurations of the project in the cloud platform.
 

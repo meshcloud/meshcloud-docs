@@ -16,7 +16,7 @@ Metering is based on periodically sampling resource state from the platform's AP
 
 ## Supported Resources
 
-Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). Platform Engineers or Partners can use the traits of these resources to define fine-granular product and pricing rules.
+Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). platform engineers or Partners can use the traits of these resources to define fine-granular product and pricing rules.
 
 ### Neutron - Floating IP
 <!--snippet:mesh.kraken.productcatalog.traits.openstack.neutron.floatingIp#type-->

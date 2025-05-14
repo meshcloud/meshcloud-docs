@@ -3,7 +3,7 @@ id: administration.emergency-users
 title: "Guide: Emergency Users"
 ---
 
-meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access projects and associated tenants. This page outlines step-by-step procedures that users with the role "Platform Engineer" can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
+meshStack manages access to cloud platforms, projects and resources. In case urgent intervention is required by someone without regular access permissions there must be a defined process to securely access projects and associated tenants. This page outlines step-by-step procedures that users with the role "platform engineer" can use as the basis for their own emergency procedures. Depending on your organization's requirements, these procedures can be augmented with additional organisational or technical procedures.
 
 Example use cases for emergency users and emergency intervention include
 
@@ -36,9 +36,9 @@ Since emergency access should only be temporary, it's strongly advised to assign
 
 ### Approving emergency user requests
 
-User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, an Admin user can confirm project role requests directly:
+User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, an admin user can confirm project role requests directly:
 
-- Ensure that the Admin user is selected from the workspace drop down
+- Ensure that the admin user is selected from the workspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "User Pending Role Requests" from the actions column for the workspace to which the project is assigned
 - Approve the user role request
@@ -50,13 +50,13 @@ When emergency access is no longer required the following steps will revert perf
 - Remove user from project by opening the project again and navigating to **Project Access** > **Current Access** (performed automatically if expiration date was set)
 - Remove user from workspace via the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): go to **Workspace Access** > **Current Access**.
 
-## Workspace Access as an Admin User
+## Workspace Access as an admin user
 
 Even when no workspace manager is available, admin users can manage permissions for workspaces.
 
 ### Workspace History
 
-- Ensure that the Admin user is selected from the workspace drop down
+- Ensure that the admin user is selected from the workspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace History"
 

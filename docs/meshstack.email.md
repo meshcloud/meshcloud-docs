@@ -91,7 +91,7 @@ Application Team receive mails when
 - Budget exceeded
 - Executing Building Block succeeded
 
-Platform Engineers receive mails when
+platform engineers receive mails when
 
 - Building Block requires input (Recipients are defined per Building Block definition)
 

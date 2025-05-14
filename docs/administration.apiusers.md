@@ -5,7 +5,7 @@ title: API Users
 
 API Users can consume several APIs provided by meshStack. You can provide your API Users with access to certain resources for a new integration.
 
-> Only users with the role [Organization Admin](administration.index.md) have access to the administrative functionality described in this section.
+> Only users with the role [organization admin](administration.index.md) have access to the administrative functionality described in this section.
 
 ## API Key Limits
 

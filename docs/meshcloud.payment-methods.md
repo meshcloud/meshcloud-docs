@@ -24,7 +24,7 @@ The first step in reaping the benefits of payment methods is creating them. A fe
 
 ### Creating a Payment Method via the meshPanel
 
-One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the Organization Admin role. Navigate to the Admin area and follow these steps:
+One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the organization admin role. Navigate to the Admin area and follow these steps:
 
 1. Go to 'Payment Method' page under the FinOps section.
 2. Click on 'Create Payment Method' at the top right.
@@ -41,7 +41,7 @@ As automation matters, there is also the possibility to create payment methods v
 
 ## The Payment Method Lifecycle: Assigning to meshProjects
 
-Now that the Organization Admin has created one or more payment methods for a meshWorkspace, we are ready to link a payment method to one or more meshProjects.
+Now that the organization admin has created one or more payment methods for a meshWorkspace, we are ready to link a payment method to one or more meshProjects.
 
 First, check if the payment method is correctly created in the meshWorkspace. You can do so by navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). In order to do that you need to have Workspace Manager rights within the respective workspace. In the workspace control plane, open **Financials** and then **Payment Methods**. All payment methods that are created and assigned to your current meshWorkspace are shown here.
 
@@ -89,7 +89,7 @@ The other way of exporting metadata is via our [chargeback statements](meshcloud
 
 Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing.md#chargeback).
 
-The actual export itself can be done via the meshPanel. This is possible for both Organization Admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for organization admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) (for workspace managers) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
+The actual export itself can be done via the meshPanel. This is possible for both organization admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for organization admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) (for workspace managers) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
 
 ### External Payment Method Registration
 

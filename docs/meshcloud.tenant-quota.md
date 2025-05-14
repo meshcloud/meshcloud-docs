@@ -26,10 +26,10 @@ You can also update and cancel existing requests in the dialog. Additionally you
 
 ## Approval of Tenant Quota Requests
 
-Platform Engineers will approve your Tenant Quota request. They may also modify it, if there is some inconsistency in the quota request or if there is a limit, that only
+platform engineers will approve your Tenant Quota request. They may also modify it, if there is some inconsistency in the quota request or if there is a limit, that only
 allows them to provide less quota than you requested. If they change it, they have to provide a reason why they changed it. You will find this comment in the tenant
 quota dialog when managing your tenant quota as described above.
 
 ### Auto-Approval of Tenant Quota Requests
 
-Platform Engineers can define an auto-approval threshold for [Platform Quota Definitions](administration.platforms.md#manage-quota-definitions). All quota requests that don't exceed the defined threshold for all affected quotas will be approved automatically. Additionally any Quota Request that only decreases quotas will also be approved automatically.
+platform engineers can define an auto-approval threshold for [Platform Quota Definitions](administration.platforms.md#manage-quota-definitions). All quota requests that don't exceed the defined threshold for all affected quotas will be approved automatically. Additionally any Quota Request that only decreases quotas will also be approved automatically.
