@@ -70,7 +70,7 @@ Afterwards they may proceed to manage users for this meshWorkspace as a workspac
 
 ### Removing emergency user as Organization Admin
 
-Since the meshAdmin user is now a workspace manager the procedure is the same as outlined in the previous section.
+Since the Admin user is now a workspace manager the procedure is the same as outlined in the previous section.
 However, to revert the temporary workspace manager role assignment, another workspace manager must remove the admin user from the workspace via **Workspace Access** > **Current Access**.
 
 ## Auditing Emergency Access
