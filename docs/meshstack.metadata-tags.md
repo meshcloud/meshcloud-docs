@@ -72,7 +72,7 @@ You will be prompted with a new page where you can enter a lot of information. W
 - **Regular Expression (optional)**: This is only available for `e-mail` and `string` tag types and can be used to enforce that users enter a certain data format. Also make sure to mention this in the description to help users what to enter.
 - **Default Value (optional)**: This can be used to give a default value to the user for contextual help or for filling in a default.
 - **Mandatory**: If a tag is mandatory, it means the user cannot create a new meshObject without first filling in this tag value.
-- **Restricted**: If a tag is restricted, it means only Admin users can enter this tag value. The input will also not be shown to the end-user when creating a new meshObject. This is useful if an organization doesn't want users to edit these values in self-service. For example, an organization can use restricted tags to implement a "segregation of duty" control to ensure that a admin user confirmed a project's data classification.
+- **Restricted**: If a tag is restricted, it means only admin users can enter this tag value. The input will also not be shown to the end-user when creating a new meshObject. This is useful if an organization doesn't want users to edit these values in self-service. For example, an organization can use restricted tags to implement a "segregation of duty" control to ensure that a admin user confirmed a project's data classification.
 - **Immutable**: If a tag is immutable, it means tag values can be assigned only during the creation of a meshObject. Afterwards it is not longer possible to change the tag values.
 
 > Replication is not supported for meshLandingZones
