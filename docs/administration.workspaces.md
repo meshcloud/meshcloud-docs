@@ -3,7 +3,7 @@ id: administration.workspaces
 title: meshWorkspaces
 ---
 
-With a Admin Account you can easily manage multiple workspaces with the meshcloud Portal. The meshcloud administration area is the
+With an admin user you can easily manage multiple workspaces with the meshcloud Portal. The meshcloud administration area is the
 place to create and manage your workspaces. You can access the meshcloud **Administration** Area by opening the settings menu and
 navigating to the **Administration** Area.
 
@@ -16,7 +16,7 @@ When selecting **Workspaces** in the menu bar on the left you can see the list o
 With meshcloud you can easily create workspaces.
 
 1. Login to the meshPanel with your admin credentials.
-2. If not logged in, please login with your Admin account credentials.
+2. If not logged in, please login with your admin user credentials.
 3. On the toolbar at the top, please make sure that you have navigated into the 'Admin Area'.
 4. Select **Workspaces** in the menu bar on the left.
 5. There is a button `+ Create Workspace` on the top-right of the table. After clicking the button, you will be navigated to the workspace creation screen. Here you can enter the name and identifier of the new workspace as well as the user(s) that should be assigned to the workspace. Keep in mind that you are able to configure restricted tags, this is not possible for non-admin users.
