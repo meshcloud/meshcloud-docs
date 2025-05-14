@@ -7,7 +7,7 @@ To change Settings for the meshStack go to the "meshStack Settings" section of t
 
 ## Change Logo
 
-Organization Admins and Organization Users can access the meshStack Settings to change the logo on the top left of the panel.
+organization admins and organization users can access the meshStack Settings to change the logo on the top left of the panel.
 
 ### Upload a new Logo
 

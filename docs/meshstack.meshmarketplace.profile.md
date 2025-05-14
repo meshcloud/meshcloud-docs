@@ -43,7 +43,7 @@ OSB Services platform defines its own context objects for service provisioning r
 
 > `auth_url`, `token_url` and `permission_url` will be `null`, unless the service broker's catalog specifies a dashboard client.
 
-It is recommended that Service Brokers store this information as it allows Platform Engineers to more easily identify links between service instances and projects when handling support requests or monitoring service operation.
+It is recommended that Service Brokers store this information as it allows platform engineers to more easily identify links between service instances and projects when handling support requests or monitoring service operation.
 
 ## Catalog Metadata
 

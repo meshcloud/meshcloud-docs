@@ -7,7 +7,7 @@ If you are not familiar with what an admin user is, please check the [official m
 
 ## Pre-Requisites
 
-- Permissions: Your user needs the Organization Admin role in the admin area to assign administrative users and roles administration
+- Permissions: Your user needs the organization admin role in the admin area to assign administrative users and roles administration
 
 ## Step to Step Guide
 

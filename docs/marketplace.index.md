@@ -4,7 +4,7 @@ title: Overview
 ---
 ## Platform Services
 
-Platform Service within meshStack refers to any platform (e.g., Cloud or any other platform like GitHub) or service (e.g., Azure VNet) that can be  developed, executed, and managed by Platform Engineers with ease. Platform Engineers offer services and platforms that enable applications to build, deploy, and scale without concerns about the underlying infrastructure. The type of a Platform Service in meshStack depends on whether it can be developed as a [Building Blocks](administration.building-blocks.md), [Platform](administration.platforms.md), or [OSB Service](marketplace.service-instances.md).
+Platform Service within meshStack refers to any platform (e.g., Cloud or any other platform like GitHub) or service (e.g., Azure VNet) that can be  developed, executed, and managed by platform engineers with ease. platform engineers offer services and platforms that enable applications to build, deploy, and scale without concerns about the underlying infrastructure. The type of a Platform Service in meshStack depends on whether it can be developed as a [Building Blocks](administration.building-blocks.md), [Platform](administration.platforms.md), or [OSB Service](marketplace.service-instances.md).
 
 
 ## Marketplace

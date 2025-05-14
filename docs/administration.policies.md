@@ -19,7 +19,7 @@ If you want to see all detected policy violations, you can go to **Compliance** 
 
 ## Create Policies
 
-Policy creation is only possible for a user who has an Organization Admin or Compliance Manager role.
+Policy creation is only possible for a user who has an organization admin or compliance manager role.
 
 1. Navigate to **Compliance** > **Policies**.
 2. Click on the `+ Create Policy` button in the top right corner. The button is only visible for users with the right permission.

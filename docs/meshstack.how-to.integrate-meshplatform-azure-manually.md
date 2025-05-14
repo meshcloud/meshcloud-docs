@@ -40,7 +40,7 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
-Platform Engineers need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
+platform engineers need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
 ### Set Azure RBAC Permissions
 
@@ -256,7 +256,7 @@ Invoke-RestMethod $url -Method 'Get' -Headers $headers | Format-List
 
 Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist.
 
-In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Platform Engineers should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty AAD group or the [Blueprint Service Principal](#blueprint-configuration).
+In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. platform engineers should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty AAD group or the [Blueprint Service Principal](#blueprint-configuration).
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
