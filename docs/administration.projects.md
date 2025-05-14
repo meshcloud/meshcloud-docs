@@ -79,5 +79,5 @@ The following events are available:
 |**PROJECT_ROLE_APPROVED**| If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written for every approval.|
 |**PROJECT_ROLE_REJECTED**| If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written when a role request is rejected.|
 |**EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a tag is edited by a workspace manager.|
-|**ADMIN_EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time a partner/admin edits the restricted project tags.|
+|**ADMIN_EDIT_PROJECT_TAGS**| If Project Tags are configured, this event is written every time an admin edits the restricted project tags.|
 |**QUOTA_EDITED**| Quota Settings for the project were changed.|
