@@ -36,9 +36,9 @@ Since emergency access should only be temporary, it's strongly advised to assign
 
 ### Approving emergency user requests
 
-User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, the Admin can confirm project role requests directly:
+User project role assignments can be configured to require consent from multiple workspace managers ([4 eye principle](./meshstack.authorization.md#user-project-role-approval)). To avoid situations where not enough workspace managers are available to confirm an urgent user role request, an Admin user can confirm project role requests directly:
 
-- Ensure that the admin is selected from the workspace drop down
+- Ensure that the Admin user is selected from the workspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "User Pending Role Requests" from the actions column for the workspace to which the project is assigned
 - Approve the user role request
@@ -50,18 +50,18 @@ When emergency access is no longer required the following steps will revert perf
 - Remove user from project by opening the project again and navigating to **Project Access** > **Current Access** (performed automatically if expiration date was set)
 - Remove user from workspace via the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace): go to **Workspace Access** > **Current Access**.
 
-## Access with Organization Admin
+## Workspace Access as an Admin User
 
-Even when no workspace manager is available, users with organization admin/user access can manage permissions for their managed workspaces.
+Even when no workspace manager is available, admin users can manage permissions for workspaces.
 
 ### Adding emergency user as Organization Admin
 
 Note: this only works when Workspace Manager role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
 value ([read more here](meshstack.onboarding.md#workspace-user-invitations))
 
-In order to manage users for a specific project, the admin user must add their own account to the respective workspace as a workspace manager:
+In order to manage users for a specific project, the Admin user must add their own account to the respective workspace as a workspace manager:
 
-- Ensure that the Admin is selected from the workspace dropdown
+- Ensure that the Admin user is selected from the workspace dropdown
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace User" from the actions column for the target workspace
 - Activate “Add Myself” button in the top right
@@ -75,11 +75,11 @@ However, to revert the temporary workspace manager role assignment, another work
 
 ## Auditing Emergency Access
 
-Since workspace/project access permissions should not be granted lightly all changes to them are logged and can be audited by organization admin/user.
+Since workspace/project access permissions should not be granted lightly all changes to them are logged and can be audited by Organization Admin/User.
 
 ### Workspace History
 
-- Ensure that the Admin is selected from the workspace drop down
+- Ensure that the Admin user is selected from the workspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace History"
 
@@ -87,7 +87,7 @@ The list contains all workspace events (i.e. sent invitations, added/removed use
 
 ### Project History
 
-- Ensure that the Admin is selected from the workspace drop down
+- Ensure that the Admin user is selected from the workspace drop down
 - Open "Administration" from the settings menu in the top right
 - Navigate to "Workspaces" and select "Workspace Projects"
 - Find the project and select "Project History"
