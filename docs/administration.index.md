@@ -9,9 +9,8 @@ Assigning Admin Users can only be done by Organization Admins.
 Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
 available to users of the administration area:
 
-- **Organization Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the
-  administrator/organization account.
-- **Organization User**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the administrator/organization account.
+- **Organization Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the organization account.
+- **Organization User**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the organization account.
 - **Platform Engineer**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
 - **Ops Support**: Not all Ops operations must be executed by Platform Engineers. E.g. setting quotas is a task that can also be done by
