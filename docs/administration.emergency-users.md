@@ -54,25 +54,6 @@ When emergency access is no longer required the following steps will revert perf
 
 Even when no workspace manager is available, admin users can manage permissions for workspaces.
 
-### Adding emergency user as Organization Admin
-
-Note: this only works when Workspace Manager role assignment is enabled via the panel. This depends on the `restrictCustomerAdminRoleAssignment` configuration
-value ([read more here](meshstack.onboarding.md#workspace-user-invitations))
-
-In order to manage users for a specific project, the Admin user must add their own account to the respective workspace as a workspace manager:
-
-- Ensure that the Admin user is selected from the workspace dropdown
-- Open "Administration" from the settings menu in the top right
-- Navigate to "Workspaces" and select "Workspace User" from the actions column for the target workspace
-- Activate “Add Myself” button in the top right
-
-Afterwards they may proceed to manage users for this workspace as a workspace manager (see previous section).
-
-### Removing emergency user as Organization Admin
-
-Since the Admin user is now a workspace manager the procedure is the same as outlined in the previous section.
-However, to revert the temporary workspace manager role assignment, another workspace manager must remove the admin user from the workspace via **Workspace Access** > **Current Access**.
-
 ## Auditing Emergency Access
 
 Since workspace/project access permissions should not be granted lightly all changes to them are logged and can be audited by Organization Admin/User.
