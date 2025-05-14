@@ -3,8 +3,8 @@ id: administration.index
 title: Administration Roles
 ---
 
-Admin Users have access to the so called **Administration Area**. The administration area enables admin users to manage their child [meshWorkspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
-Assigning Admin Users can only be done by Organization Admins.
+Admin Users have access to the so called **Administration Area**. The administration area enables admin users to manage their [workspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
+Assigning admin users can only be done by user who have "organization admins" rights.
 
 Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
 available to users of the administration area:
