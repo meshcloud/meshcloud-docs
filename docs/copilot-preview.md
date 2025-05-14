@@ -4,7 +4,7 @@ title: meshStack Copilot Preview
 ---
 
 meshStack Copilot (Copilot) is an AI assistant that integrates with meshStack.
-It helps platform engineers build better services and their customers to find the right services.
+It helps platform engineers build better services and application teams to better leverage the services provided.
 Copilot is not generally available yet. meshcloud is offering a preview of Copilot to selected customers. 
 This document provides information about the preview.
 
