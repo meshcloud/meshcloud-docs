@@ -54,10 +54,6 @@ When emergency access is no longer required the following steps will revert perf
 
 Even when no workspace manager is available, admin users can manage permissions for workspaces.
 
-## Auditing Emergency Access
-
-Since workspace/project access permissions should not be granted lightly all changes to them are logged and can be audited by Organization Admin/User.
-
 ### Workspace History
 
 - Ensure that the Admin user is selected from the workspace drop down
