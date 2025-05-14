@@ -79,8 +79,8 @@ Yes, meshStack is compliant with the official terms of the General Data Protecti
 
 - Art. 24 - [Responsibility of the controller](https://gdpr-info.eu/art-24-gdpr/)
 - Art. 25 - [Data protection by design and by default](https://gdpr-info.eu/art-25-gdpr/)
-- Art. 26 - [Joint finops managers](https://gdpr-info.eu/art-26-gdpr/)
-- Art. 27 - [Representatives of finops managers or processors not established in the Union](https://gdpr-info.eu/art-27-gdpr/)
+- Art. 26 - [Joint controllers](https://gdpr-info.eu/art-26-gdpr/)
+- Art. 27 - [Representatives of controllers or processors not established in the Union](https://gdpr-info.eu/art-27-gdpr/)
 - Art. 28 - [Processor](https://gdpr-info.eu/art-28-gdpr/)
 
 ### Does meshStack provide a compliant way to delete my PII and organizational data?
