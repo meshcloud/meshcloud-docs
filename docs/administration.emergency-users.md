@@ -61,13 +61,3 @@ Even when no workspace manager is available, admin users can manage permissions 
 - Navigate to "Workspaces" and select "Workspace History"
 
 The list contains all workspace events (i.e. sent invitations, added/removed users, role changes), when they occurred and who initiated the action. Event specific information (i.e. who the recipient of an invite was) is available via the “Details” button.
-
-### Project History
-
-- Ensure that the Admin user is selected from the workspace drop down
-- Open "Administration" from the settings menu in the top right
-- Navigate to "Workspaces" and select "Workspace Projects"
-- Find the project and select "Project History"
-
-The general information per project event is the same as before. Event types include user assignments and project role changes.
-Event specific information is again available via the “Details” button.
