@@ -519,6 +519,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">Filter for Building Blocks that have a certain status. One of WAITING_FOR_DEPENDENT_INPUT, WAITING_FOR_OPERATOR_INPUT, PENDING, IN_PROGRESS, SUCCEEDED, FAILED, ABORTED. (optional)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>managedByWorkspaceIdentifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists Building Blocks that are managed by the workspace with given identifier. Requires API key permission 'List all Building Blocks for owned definition'. Takes precedence over the 'managedByDefinitionUuid' parameter. (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>managedByDefinitionUuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists Building Blocks that are created based on the definition with given uuid. Requires API key permission 'List all Building Blocks for owned definition'. (optional)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
 </tr>
@@ -606,16 +614,16 @@ Content-Length: 3293
       "metadata" : {
         "uuid" : "68ce5455-2a4a-4a4b-a324-6a6c18cab85a",
         "ownedByWorkspace" : "my-workspace",
-        "createdOn" : "2025-05-07T08:59:40.071990475Z"
+        "createdOn" : "2025-05-15T13:59:27.357112814Z"
       },
       "spec" : {
         "buildingBlockDefinitionVersionRef" : {
-          "uuid" : "abee6670-642e-4030-81bc-2871d0da4b64",
+          "uuid" : "ff1873d8-cbc1-4dd7-bf1a-f5cfcacdac38",
           "kind" : "meshBuildingBlockDefinitionVersion"
         },
         "targetRef" : {
           "kind" : "meshTenant",
-          "uuid" : "184a10b1-d54e-4c61-81e0-096029e2bc4a"
+          "uuid" : "65413d51-203a-4197-9cb8-2aa182843352"
         },
         "displayName" : "parent block",
         "inputs" : [ ],
@@ -643,16 +651,16 @@ Content-Length: 3293
       "metadata" : {
         "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
         "ownedByWorkspace" : "my-workspace",
-        "createdOn" : "2025-05-07T08:59:40.077495335Z"
+        "createdOn" : "2025-05-15T13:59:27.363398074Z"
       },
       "spec" : {
         "buildingBlockDefinitionVersionRef" : {
-          "uuid" : "ea843a55-a965-4d8c-8738-5f44446e22fd",
+          "uuid" : "8a9e24ed-8a75-4c01-bc0b-69fc1d96c15d",
           "kind" : "meshBuildingBlockDefinitionVersion"
         },
         "targetRef" : {
           "kind" : "meshTenant",
-          "uuid" : "184a10b1-d54e-4c61-81e0-096029e2bc4a"
+          "uuid" : "65413d51-203a-4197-9cb8-2aa182843352"
         },
         "displayName" : "child block",
         "inputs" : [ {
@@ -855,7 +863,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].valueType</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT, MULTI_SELECT.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[]</code></p></td>
@@ -905,7 +913,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.outputs[].valueType</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT, MULTI_SELECT.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
@@ -960,16 +968,16 @@ Content-Length: 1483
   "metadata" : {
     "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
     "ownedByWorkspace" : "my-workspace",
-    "createdOn" : "2025-05-07T08:59:40.077495335Z"
+    "createdOn" : "2025-05-15T13:59:27.363398074Z"
   },
   "spec" : {
     "buildingBlockDefinitionVersionRef" : {
-      "uuid" : "ea843a55-a965-4d8c-8738-5f44446e22fd",
+      "uuid" : "8a9e24ed-8a75-4c01-bc0b-69fc1d96c15d",
       "kind" : "meshBuildingBlockDefinitionVersion"
     },
     "targetRef" : {
       "kind" : "meshTenant",
-      "uuid" : "184a10b1-d54e-4c61-81e0-096029e2bc4a"
+      "uuid" : "65413d51-203a-4197-9cb8-2aa182843352"
     },
     "displayName" : "child block",
     "inputs" : [ {
@@ -1050,11 +1058,11 @@ Host: mesh-backend-url
   "spec" : {
     "buildingBlockDefinitionVersionRef": {
       "kind": "meshBuildingBlockDefinitionVersion",
-      "uuid": "ea843a55-a965-4d8c-8738-5f44446e22fd"
+      "uuid": "8a9e24ed-8a75-4c01-bc0b-69fc1d96c15d"
     },
     "targetRef": {
       "kind": "meshTenant",
-      "uuid": "184a10b1-d54e-4c61-81e0-096029e2bc4a"
+      "uuid": "65413d51-203a-4197-9cb8-2aa182843352"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [{
@@ -1064,7 +1072,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "1050179d-233b-4e16-bb5c-e7d7f8d39643"
+      "buildingBlockUuid": "d3a15a0d-e6e9-40ec-a86f-456eb6e68688"
     }]
   }
 }</code></pre>
@@ -1082,11 +1090,11 @@ Host: mesh-backend-url
   "spec" : {
     "buildingBlockDefinitionVersionRef": {
       "kind": "meshBuildingBlockDefinitionVersion",
-      "uuid": "ea843a55-a965-4d8c-8738-5f44446e22fd"
+      "uuid": "8a9e24ed-8a75-4c01-bc0b-69fc1d96c15d"
     },
     "targetRef": {
       "kind": "meshTenant",
-      "uuid": "184a10b1-d54e-4c61-81e0-096029e2bc4a"
+      "uuid": "65413d51-203a-4197-9cb8-2aa182843352"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [{
@@ -1096,7 +1104,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "1050179d-233b-4e16-bb5c-e7d7f8d39643"
+      "buildingBlockUuid": "d3a15a0d-e6e9-40ec-a86f-456eb6e68688"
     }]
   }
 } '</code></pre>
@@ -1190,7 +1198,7 @@ Host: mesh-backend-url
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.inputs[].valueType</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data type of the value. One of STRING, INTEGER, BOOLEAN, OBJECT, MAP, ANY, FILE, LIST, SET, SINGLE_SELECT, MULTI_SELECT.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.parentBuildingBlocks[]</code></p></td>
@@ -1239,7 +1247,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/48bfd243-e551-4c67-b257-960c4153ec95
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/fd1b2310-a762-4afc-9330-d9d85b9f6186
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -1254,18 +1262,18 @@ Content-Length: 1405
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v2-preview",
   "metadata" : {
-    "uuid" : "48bfd243-e551-4c67-b257-960c4153ec95",
+    "uuid" : "fd1b2310-a762-4afc-9330-d9d85b9f6186",
     "ownedByWorkspace" : "my-workspace",
-    "createdOn" : "2025-05-07T08:59:40.955838275Z"
+    "createdOn" : "2025-05-15T13:59:28.243270762Z"
   },
   "spec" : {
     "buildingBlockDefinitionVersionRef" : {
-      "uuid" : "ea843a55-a965-4d8c-8738-5f44446e22fd",
+      "uuid" : "8a9e24ed-8a75-4c01-bc0b-69fc1d96c15d",
       "kind" : "meshBuildingBlockDefinitionVersion"
     },
     "targetRef" : {
       "kind" : "meshTenant",
-      "uuid" : "184a10b1-d54e-4c61-81e0-096029e2bc4a"
+      "uuid" : "65413d51-203a-4197-9cb8-2aa182843352"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [ {
@@ -1274,7 +1282,7 @@ Content-Length: 1405
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "1050179d-233b-4e16-bb5c-e7d7f8d39643",
+      "buildingBlockUuid" : "d3a15a0d-e6e9-40ec-a86f-456eb6e68688",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -1288,10 +1296,10 @@ Content-Length: 1405
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/48bfd243-e551-4c67-b257-960c4153ec95"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/fd1b2310-a762-4afc-9330-d9d85b9f6186"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/48bfd243-e551-4c67-b257-960c4153ec95/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/fd1b2310-a762-4afc-9330-d9d85b9f6186/purge"
     }
   }
 }</code></pre>
@@ -1308,7 +1316,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/338bc94e-8633-4a18-b12f-4b069aff42a7 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/308ed253-2f14-4377-be82-50eed02dcde7 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1316,7 +1324,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/338bc94e-8633-4a18-b12f-4b069aff42a7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/308ed253-2f14-4377-be82-50eed02dcde7' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1346,7 +1354,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/338bc94e-8633-4a18-b12f-4b069aff42a7/purge HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/308ed253-2f14-4377-be82-50eed02dcde7/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1354,7 +1362,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/338bc94e-8633-4a18-b12f-4b069aff42a7/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/308ed253-2f14-4377-be82-50eed02dcde7/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1401,7 +1409,7 @@ It looks like one of the examples below:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-05-07 08:57:41 UTC
+Last updated 2025-05-15 13:56:06 UTC
 </div>
 </div>
 </body>
