@@ -5,7 +5,7 @@ title: Pipeline Automation
 
 With meshStack, you can publish automation workflows in other platforms directly to the marketplace, allowing application teams to easily access and initiate automation in a user-friendly, structured format in a central place. By providing triggers for automation in the marketplace, you enable teams to leverage these workflows without needing in-depth Git expertise.
 
-Platform engineers can offer "Pipeline Building Blocks" to trigger GitHub Action Workflows directly when added to a tenant. These building blocks can be published to the marketplace, creating a seamless experience for teams to use existing automations.
+platform engineers can offer "Pipeline Building Blocks" to trigger GitHub Action Workflows directly when added to a tenant. These building blocks can be published to the marketplace, creating a seamless experience for teams to use existing automations.
 
 ## Getting Started
 
