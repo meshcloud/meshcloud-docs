@@ -8,6 +8,14 @@ It helps platform engineers build better services and application teams to bette
 Copilot is not generally available yet. meshcloud is offering a preview of Copilot to selected customers. 
 This document provides information about the preview.
 
+## How to participate in the Copilot Preview?
+
+The Preview is invite only. It will only be activated for your meshStack if you accept the invitation.
+
+## Are all users in meshStack able to access Copilot? Does the interface change for all users?
+
+No. Your meshStack's Organnization Admins chose on a per-user basis who will be able to use Copilot. For all other users, the meshStack panel doesn not change.  
+
 ## Can meshcloud GmbH employees (aka meshis) access Copilot conversation transcripts during the preview?
 
 Yes, during the preview phase, selected meshis (employee at meshcloud) will have access to the conversation data. 
