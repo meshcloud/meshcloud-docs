@@ -71,8 +71,8 @@ The following events are available:
 |**TENANT_ADDED**| A tenant was added to a project.|
 |**TENANT_MARKED_FOR_DELETION**<br>`since v7.141.0`| A tenant was submitted for deletion by a workspace manager.
 |**TENANT_REMOVED**| A tenant was removed from a project by a successful deletion in the corresponding platform.
-|**TENANT_DELETION_CONFIRMED**<br>`since v7.141.0`| A admin or platform engineer confirmed a tenant deletion that required manual deletion in the corresponding platform.
-|**TENANT_DELETION_DECLINED**<br>`since v7.141.0`| A admin or platform engineer declined a tenant deletion that required manual deletion in the corresponding platform.
+|**TENANT_DELETION_CONFIRMED**<br>`since v7.141.0`| An admin or platform engineer confirmed a tenant deletion that required manual deletion in the corresponding platform.
+|**TENANT_DELETION_DECLINED**<br>`since v7.141.0`| An admin or platform engineer declined a tenant deletion that required manual deletion in the corresponding platform.
 |**USER_ASSIGNED**| A user was assigned to the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.|
 |**USER_UNASSIGNED**| A user was removed from the project.|
 |**PROJECT_ROLE_CHANGED**| The user role was changed on the project. If [4-EP](meshstack.authorization.md#user-project-role-approval) is active, this event is written after successful approval of the role request.|

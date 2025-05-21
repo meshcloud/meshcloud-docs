@@ -261,7 +261,7 @@ If the identity connector is used, see the [Identity Connector](./meshstack.work
 When meshStack generates the desired state for a [meshTenant](./meshcloud.tenant.md), it uses the
 assigned [meshProject roles](meshstack.authorization.md#meshproject-roles) together with the meshPlatform and meshLandingZone configuration to compute the desired IAM configuration in the cloud platform.
 
-As a part of this process, meshStack has to map each meshUser to a native platform user object using the meshUser's `euid` attribute and matching it with a configurable attribute of the native platform user object. platform engineers can configure this process in two steps.
+As a part of this process, meshStack has to map each meshUser to a native platform user object using the meshUser's `euid` attribute and matching it with a configurable attribute of the native platform user object. Platform engineers can configure this process in two steps.
 
 #### Transforming euids with patterns
 

@@ -5,7 +5,7 @@ title: Landing Zones
 
 ## Configuring Landing Zones
 
-platform engineers can configure the [Landing Zones](./meshcloud.landing-zones.md) available for each meshPlatform. The capabilities supported by meshcloud differ per platform type as we support "native" tooling provided by the different cloud platforms and vendors.
+Platform engineers can configure the [Landing Zones](./meshcloud.landing-zones.md) available for each meshPlatform. The capabilities supported by meshcloud differ per platform type as we support "native" tooling provided by the different cloud platforms and vendors.
 
 This ensures enterprises can seamlessly integrate existing operational capabilities and leverage the most powerful
 and best-integrated tooling available for each platform. In most instances, this tooling follows an infrastructure-as-code paradigm that fits naturally with meshcloud's multi-cloud orchestration approach.
@@ -19,7 +19,7 @@ this assignment will remain, but workspace managers can no longer create new pro
 
 ## Configure Landing Zone tags
 
-platform engineers can configure a custom Landing Zone [meshTag](./meshstack.metadata-tags.md). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
+Platform engineers can configure a custom Landing Zone [meshTag](./meshstack.metadata-tags.md). The schema is available during the Landing Zone creation and update. For each created Landing Zone different tags can be attached. You can tag or modify tags on a landing zone during creation and edit.
 
 ## Include Building Blocks as part of the Landing Zone
 

@@ -4,22 +4,22 @@ title: Administration Roles
 ---
 
 Admin users have access to the so called **Administration Area**. The administration area enables admin users to manage their [workspace](./meshcloud.workspace.md) accounts within the meshcloud platform.
-Assigning admin users can only be done by user who have "organization admins" rights.
+Assigning admin users can only be done by user who have "Organization Admins" rights.
 
 Different groups of people may need access to the different administration area functionality. Therefore, the following administrative roles are currently
 available to users of the administration area:
 
-- **organization admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the organization account.
-- **organization user**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the organization account.
-- **platform engineer**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
+- **Organization Admin**: It's basically the account with administration rights. Has full access to all functionality and can manage users of the organization account.
+- **Organization User**: Has full access to all administration functionality, but **cannot** manage policies, tag definitions or users of the organization account.
+- **Platform Engineer**: An operator of a cloud platform, that is managed by the meshcloud platform. This role can perform tasks related to
   platform operations in the administration area.
-- **ops support**: Not all Ops operations must be executed by platform engineers. E.g. setting quotas is a task that can also be done by
+- **Ops Support**: Not all Ops operations must be executed by platform engineers. E.g. setting quotas is a task that can also be done by
   a separate Ops Support team.
-- **finOps manager**: A finOps manager has access to billing and usage information of workspace projects.
-- **onboarding support**: A support team in place to help users who want to sign up may also need access to some administration
+- **FinOps Manager**: A finOps manager has access to billing and usage information of workspace projects.
+- **Onboarding Support**: A support team in place to help users who want to sign up may also need access to some administration
   functionality which is granted by this role.
-- **compliance manager**: Has the rights to manage policies and tag definitions.
-- **replication operator**: A supportive role that can assist by viewing tenants' replication status.
+- **Compliance Manager**: Has the rights to manage policies and tag definitions.
+- **Replication Operator**: A supportive role that can assist by viewing tenants' replication status.
   This role is helpful for meshcloud employees to debug any potential issues with tenant replication.
 
 See the [meshWorkspace](meshcloud.workspace.md) documentation for details about how you can manage the roles of your users. This set of roles is easily extendable by adding roles to reflect individual access requirements of your organization.

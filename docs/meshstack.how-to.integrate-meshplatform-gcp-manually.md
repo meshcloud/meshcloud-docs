@@ -10,7 +10,7 @@ title: How to manually integrate GCP as meshPlatform
 meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the "least privilege" principle.
 
-platform engineers need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
+Platform engineers need to define a [Custom IAM Role](https://cloud.google.com/iam/docs/understanding-custom-roles) called `meshfed-service` at the **Organization Level** with the following permissions
 
 ```text
 resourcemanager.folders.get

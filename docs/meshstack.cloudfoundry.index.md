@@ -26,7 +26,7 @@ You should set up your Cloud Foundry and UAA so that they store the `euid` value
 
 > The recommended way to set up Cloud Foundry as a meshPlatform is via the public terraform [Cloud Foundry meshPlatform Module](https://github.com/meshcloud/terraform-cloudfoundry-meshplatform).
 
-### meshStack admin user Accounts
+### meshStack Admin User Accounts
 
 meshStack requires two technical admin user accounts for integration with Cloud Foundry. We recommend your assign these 
 users the following [Cloud Foundry roles](https://docs.cloudfoundry.org/concepts/roles.html) and [UAA scopes](https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes).
