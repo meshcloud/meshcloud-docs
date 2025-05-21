@@ -108,7 +108,7 @@ In order to associate created projects with a Billing Account, the replicator ne
 
 In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
 
-platform engineers create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
+Platform engineers create a custom role `meshfed-billing-creator` in the organization that owns the target billing account with the following permisson
 
 ```text
 billing.resourceAssociations.create
