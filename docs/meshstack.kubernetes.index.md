@@ -216,7 +216,7 @@ kubectl get serviceaccount meshfed-service -n meshcloud -o json | jq '.secrets[]
 kubectl get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs kubectl describe secret -n meshcloud
 ```
 
-platform engineers need to securely inject these access token into the configuration of the Kubernetes modules.
+Platform engineers need to securely inject these access token into the configuration of the Kubernetes modules.
 
 ### Custom meshProject Roles
 

@@ -36,7 +36,7 @@ graph LR;
 
 ### IAM Roles and Service Control Policies
 
-meshStack replicates meshProject roles as AWS IAM roles to AWS SSO. platform engineers can configure the mapping of these roles via meshLandingZones.
+meshStack replicates meshProject roles as AWS IAM roles to AWS SSO. Platform engineers can configure the mapping of these roles via meshLandingZones.
 
 When configuring these roles, platform engineers must take care to correctly guard against privilege escalation and maintain project sandboxing. Operators should also consider leveraging [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html) to simplify role configuration and set up a guarded boundary for the maximum of permissions granted to any role.
 

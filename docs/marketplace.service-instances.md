@@ -15,7 +15,7 @@ Service bindings can come with an expiration in which case they will be deleted 
 
 ![OSB Marketplace integration](assets/marketplace/OSB.png)
 
-From the Marketplace users can add OSB services to their projects (i.e. databases, message brokers, filesystems, etc). platform engineers can connect any service that implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) to the OSB Services Platform and make it available to their users on the Markeplace.
+From the Marketplace users can add OSB services to their projects (i.e. databases, message brokers, filesystems, etc). Platform engineers can connect any service that implements the [Open Service Broker API](https://www.openservicebrokerapi.org/) to the OSB Services Platform and make it available to their users on the Markeplace.
 
 
 

@@ -29,7 +29,7 @@ We recommend using [externally provisioned identities](./meshstack.identity-fede
 
 ## Organization Setup
 
-platform engineers need to set up a GCP Organization to be used by meshStack. Please review the official GCP documentation on [creating and managing organizations](https://cloud.google.com/resource-manager/docs/creating-managing-organization).
+Platform engineers need to set up a GCP Organization to be used by meshStack. Please review the official GCP documentation on [creating and managing organizations](https://cloud.google.com/resource-manager/docs/creating-managing-organization).
 
 
 ## How to integrate GCP as a meshPlatform into meshStack

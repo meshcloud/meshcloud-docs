@@ -44,9 +44,9 @@ This user should have the following policy attached to assume the respective rol
 }
 ```
 
-platform engineers should generate a unique and random value for `EXTERNAL_ID`, e.g. a GUID. meshStack AWS Connector will supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases the security of member accounts in your organization.
+Platform engineers should generate a unique and random value for `EXTERNAL_ID`, e.g. a GUID. meshStack AWS Connector will supply this [ExternalId](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) only when accessing organization member accounts from a privileged (system) context. Using the ExternalId therefore increases the security of member accounts in your organization.
 
-platform engineers need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
+Platform engineers need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
 
 ### Workload Identity Federation
 
@@ -320,11 +320,11 @@ The following configuration options are available in the AWS [Platform Connectio
 You can define naming patterns based on the [String Templating](meshstack.replication-configuration.md#string-templating) syntax of meshStack for the following properties:
 
 * Account Email Address: Please make sure to consider that this is limited to 64 characters
-* Account Alias Pattern: The account alias must be unique across all of AWS. platform engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
+* Account Alias Pattern: The account alias must be unique across all of AWS. Platform engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
 
 ## Identifier Configuration
 
-platform engineers that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
+Platform engineers that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
 
 ```yaml
 customer_identifier_length: 16

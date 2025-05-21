@@ -43,7 +43,7 @@ If you want to prevent a workspace from creating new [meshProjects](meshcloud.pr
 
 ### Access managed Workspaces
 
-As a admin user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
+As an admin user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
 
 1. Go to **Administration &gt; Workspaces** and click on the **Users** icon on the managed workspace you want to edit.
 2. In the **Workspaces Users** view click on the button **Add Myself** in the top right corner.
