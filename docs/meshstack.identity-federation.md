@@ -325,7 +325,7 @@ meshStack can thus only support lookup in one or two platform user attributes.
 
 \*_with AAD permission Replication_
 
-At the moment only AAD offers a choice of user lookup attributes. platform engineers can configure these globally for all meshPlatforms.
+At the moment only AAD offers a choice of user lookup attributes. Platform engineers can configure these globally for all meshPlatforms.
 
 <!--snippet:mesh.replicator-->
 

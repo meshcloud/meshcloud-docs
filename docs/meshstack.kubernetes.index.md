@@ -5,7 +5,7 @@ title: Integration
 
 meshStack supports namespace creation, configuration, access control, quota management and billing for Kubernetes.
 
-Our Kubernetes integration is generally distribution-independent and is purely based on "vanilla" upstream Kubernetes services. platform engineers should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
+Our Kubernetes integration is generally distribution-independent and is purely based on "vanilla" upstream Kubernetes services. Platform engineers should be able to successfully integrate any Kubernetes distribution of their chosing as long as it has the
 required APIs (described below) and configuration options available.
 
 The following Kubernetes distributions are supported and covered on this page:
