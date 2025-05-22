@@ -24,7 +24,7 @@ The first step in reaping the benefits of payment methods is creating them. A fe
 
 ### Creating a Payment Method via the meshPanel
 
-One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the organization admin role. Navigate to the Admin area and follow these steps:
+One way of creating payment methods is via the meshPanel. To do so, make sure that you have an account with the 'Organization Admin' role. Navigate to the Admin area and follow these steps:
 
 1. Go to 'Payment Method' page under the FinOps section.
 2. Click on 'Create Payment Method' at the top right.
