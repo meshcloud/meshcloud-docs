@@ -3,11 +3,11 @@ id: meshstack.how-to.manage-partner-level-permissions
 title: How to manage partner level permissions
 ---
 
-If you are not familiar with what a Partner User is, please check the [official meshcloud documentation](administration.index.md).
+If you are not familiar with what an admin user is, please check the [official meshcloud documentation](administration.index.md).
 
 ## Pre-Requisites
 
-- Permissions: Your user needs the Partner Admin role in the Partner Workspace to assign other users administration and/or privileged roles
+- Permissions: Your user needs the organization admin role in the admin area to assign administrative users and roles administration
 
 ## Step to Step Guide
 

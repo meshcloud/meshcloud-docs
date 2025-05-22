@@ -23,7 +23,7 @@ In the tenant control plane you can log in to the cloud platform, manage your Bu
 
 ## Replication and Reconciliation
 
-meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](./meshcloud.workspace.md) admins), the [Landing Zone](./meshcloud.landing-zones.md) and [meshPlatform](./meshcloud.platforms.md) configuration (managed by the platform operator) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](./meshcloud.tenant-quota.md) to your meshTenant.
+meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](./meshcloud.workspace.md) admins), the [Landing Zone](./meshcloud.landing-zones.md) and [meshPlatform](./meshcloud.platforms.md) configuration (managed by the platform engineer) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](./meshcloud.tenant-quota.md) to your meshTenant.
 
 meshStack continuously reconciles the **actual state** of meshTenants with their desired state. This process is called replication and ensures that all cloud tenants governed by meshStack are in a known and expected state.
 
@@ -51,11 +51,11 @@ Tenant deletion always requires approval. It is possible that an operator will r
 Operators can configure how meshStack processes tenants on the deletion queue per landing zone.
 meshStack will update the status of your tenant in the Deletion Queue accordingly and send notifications to keep you updated about deletion progress.
 
-> If you are a platform operator and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](./administration.delete-tenants.md)
+> If you are a platform engineer and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](./administration.delete-tenants.md)
 
 ## Reuse of an existing tenant
 
-meshStack does not support reusing platform tenants. Imagine a tenant has been deleted, but the underlying platform tenant has not been deleted by the platform operator. You may think of reusing this tenant in another project. This is not supported by meshStack and will lead to an error during import. The reason for this current limitation is handling the reuse of tenants in the metering system. Having the same tenant being used by different projects (perhaps even within the same month), makes it hard or in some cases even impossible to decide which project to charge for this tenant. Therefore reusing platform tenants is currently not supported by meshStack.
+meshStack does not support reusing platform tenants. Imagine a tenant has been deleted, but the underlying platform tenant has not been deleted by the platform engineer. You may think of reusing this tenant in another project. This is not supported by meshStack and will lead to an error during import. The reason for this current limitation is handling the reuse of tenants in the metering system. Having the same tenant being used by different projects (perhaps even within the same month), makes it hard or in some cases even impossible to decide which project to charge for this tenant. Therefore reusing platform tenants is currently not supported by meshStack.
 
 > Read best practices on building a solid tenant management in your cloud foundation on the [cloud foundation website](https://cloudfoundation.org/maturity-model/tenant-management/).
 

@@ -9,7 +9,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with Cloud Foundry, Platform Operators configure one or multiple `Platform`s of `PlatformType` Cloud Foundry in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with Cloud Foundry, platform engineers configure one or multiple `Platform`s of `PlatformType` Cloud Foundry in the [Platform Administration](./administration.platforms.md) in meshPanel.
 
 ## Prerequisites 
 
