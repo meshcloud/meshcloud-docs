@@ -66,7 +66,7 @@ The following events are available:
 | **PROJECT_PROJECT_MARKED_FOR_DELETION**<br>`since v7.141.0`| A meshProject was deleted by a workspace manager.|
 |**PROJECT_DELETED**| `since v7.141.0` When the meshProject was submitted for deletion by a workspace manager and the deletion of all tenants is successful, this event is written.<br>`until v7.141.0`A meshProject was deleted by a workspace manager.|
 |**PROJECT_DELETION_CONFIRMED**<br>`deprecated`| A partner or platform engineer confirmed a meshProject deletion that required manual deletion of platform tenants|
-|**PROJECT_DELETION_DECLINED**| `since v7.141.0` When the project has been deleted by a workspace manager and the deletion of any tenant requiring manual deletion has been declined by a admin or platform engineer, this event is written.<br>`until v7.141.0`A admin or platform engineer declined a meshProject deletion that required manual deletion of platform tenants.|
+|**PROJECT_DELETION_DECLINED**| `since v7.141.0` When the project has been deleted by a workspace manager and the deletion of any tenant requiring manual deletion has been declined by an admin or platform engineer, this event is written.<br>`until v7.141.0`An admin or platform engineer declined a meshProject deletion that required manual deletion of platform tenants.|
 |**ALL_PROJECT_TENANTS_DELETED**<br>`deprecated`| Tenants of a meshProject are deleted asynchronously after the user deleted the project. When this deletion is successful, this event is written.
 |**TENANT_ADDED**| A tenant was added to a project.|
 |**TENANT_MARKED_FOR_DELETION**<br>`since v7.141.0`| A tenant was submitted for deletion by a workspace manager.
