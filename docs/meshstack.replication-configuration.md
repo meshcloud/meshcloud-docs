@@ -3,12 +3,12 @@ id: meshstack.replication-configuration
 title: Replication Configuration
 ---
 
-Certain aspects of the replication configuration are similiar accross all platforms. This keeps complexity low and makes it easier to setup a meshStack installation. The concepts are described in this section.
+Certain aspects of the replication configuration are similar across all platforms. This keeps complexity low and makes it easier to set up a meshStack installation. The concepts are described in this section.
 
 ## String Templating
 
-Some properties for the different platforms allow you to use string templates to control the creation of e.g. Azure Subscription names or creates user group names in the target platform.
-These string pattern work like the following example:
+Some properties for the different platforms allow you to use string templates to control the creation of e.g. Azure Subscription names or create user group names in the target platform. 
+These string patterns work like the following example:
 
 ```text
 #{workspaceIdentifier}.#{projectIdentifier:%.7s}-test.#{tenantPlatformNumber:%03d}
@@ -33,8 +33,10 @@ The template engine allows you to use the following placeholders if not describe
 | rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
 | tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
 
-Note that you can also use tags! The placeholders for these are generated automatically. For example, if you have a tag
-in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`.
+Note that you can also use tags! The placeholders for these are generated automatically. For example, if you have a tag in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`.
 
-> **Attention** For some cloud platforms certain strings must be globally unique (for example the AWS account alias). The `projectIdentifier` is not unique in meshstack. A combination of at least the `workspaceIdentifier` and `projectIdentifier`
-> is highly recommended to avoid name collisions. For platforms with globally unique requirements like GCP or AWS a randomized part or a unique static prefix can also help to prevent sporadic replication problems.
+> **Attention** For some cloud platforms certain strings must be globally unique (for example the AWS account alias). The `projectIdentifier` is not unique in meshstack. A combination of at least the `workspaceIdentifier` and `projectIdentifier` is highly recommended to avoid name collisions. For platforms with globally unique requirements like GCP or AWS a randomized part or a unique static prefix can also help to prevent sporadic replication problems.
+
+## Combining Services
+
+It is possible to combine the Replication and Metering services into a single enterprise app as long as each service principal has the appropriate permissions. Similarly, SSO and SCIM can also be combined in one enterprise app, but keep in mind that the use of the Terraform meshPlatform module may not be available in these combinations.
