@@ -157,3 +157,14 @@ Canny security overview: https://canny.io/security
 Address: San Francisco,
          California 94114, United States
 ```
+
+### Which browsers does meshStack support?
+
+meshStack supports the following browsers:
+
+- Firefox ESR
+- Last 2 versions of Firefox
+- Last 2 versions of Chrome
+- Edge (Chromium)
+
+If you experience problems with other browsers or mobile devices, please let us know. We are interested in making those work as well!
