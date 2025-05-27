@@ -103,7 +103,7 @@ By configuring the URL, the following button will appear in the meshPanel for me
 
 ## Optional Payment Method Setup
 
-While it is mandatory to have a payment method assigned to a meshProject at the time of creation, it is possible to make payment method setup more flexible for users. 
+By default, a payment method is required when creating a meshProject. However, this requirement can be adjusted to provide more flexibility:
 
 - **Self-Service Option**: The workspace team can configure payment methods to be self-service.
 - **Complete Disable**: Alternatively, you can disable the payment method feature entirely, which will remove all payment method screens from the interface. 
