@@ -89,16 +89,23 @@ The other way of exporting metadata is via our [chargeback statements](meshcloud
 
 Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing.md#chargeback).
 
-The actual export itself can be done via the meshPanel. This is possible for both organization admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for organization admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) (for workspace managers) , you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
+The actual export itself can be done via the meshPanel. This is possible for both organization admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for organization admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) (for workspace managers), you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
 
 ### External Payment Method Registration
 
-Beside manually creating a new payment method in the meshPanel on an ad-hoc basis, it is also possible to let users navigate to an external URL for requesting
-a new payment method, e.g. an internal budget request form. To make this even better, you can use the API of meshStack to create an approval flow and automate the creation
-of any new payment methods.
+Beside manually creating a new payment method in the meshPanel on an ad-hoc basis, it is also possible to let users navigate to an external URL for requesting a new payment method, e.g. an internal budget request form. To make this even better, you can use the API of meshStack to create an approval flow and automate the creation of any new payment methods.
 
 The external URL can be figured under the configuration option `environment.ui.externalPaymentMethodUrl`.
 
 By configuring the URL, the following button will appear in the meshPanel for meshWorkspaces:
 
 ![Request Payment Method Button](assets/payment_methods/payment_method_request_button.png)
+
+## Optional Payment Method Setup
+
+While it is mandatory to have a payment method assigned to a meshProject at the time of creation, it is possible to make payment method setup more flexible for users. 
+
+- **Self-Service Option**: The workspace team can configure payment methods to be self-service.
+- **Complete Disable**: Alternatively, you can disable the payment method feature entirely, which will remove all payment method screens from the interface. 
+
+Note that if the payment method feature is completely disabled, users will not have the option to enter any payment information.
