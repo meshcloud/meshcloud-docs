@@ -105,7 +105,7 @@ By configuring the URL, the following button will appear in the meshPanel for me
 
 By default, a payment method is required when creating a meshProject. However, this requirement can be adjusted to provide more flexibility:
 
-- **Self-Service Option**: The workspace team can configure payment methods to be self-service.
+- **Self-Service Option**: The workspace team can configure payment methods in self-service.
 - **Complete Disable**: Alternatively, you can disable the payment method feature entirely, which will remove all payment method screens from the interface. 
 
 Note that if the payment method feature is completely disabled, users will not have the option to enter any payment information.
