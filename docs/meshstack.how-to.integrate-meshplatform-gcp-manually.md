@@ -50,7 +50,7 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 
 - [Admin SDK](https://console.cloud.google.com/apis/api/admin.googleapis.com/overview)
 - [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
-- [Cloud Billing API](https://console.cloud.google.com/apis/library/cloudbilling.googleapis.com/overview)
+- [Cloud Billing API](https://console.cloud.google.com/apis/api/cloudbilling.googleapis.com/overview)
 
 ### Create meshfed-service Service Account
 
