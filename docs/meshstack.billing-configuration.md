@@ -212,7 +212,7 @@ let example2 =
 
 #### Discounts
 
-Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for platform engineers is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption.
+Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for platform engineers is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption. Discounts can be configured at the level of platform types, individual platforms, sellers, and product groups. 
 
 <!--snippet:mesh.kraken.productcatalog.discount#type-->
 
@@ -541,5 +541,3 @@ To enable this go to the Financials tab and select **Custom API Exchange Rates**
 3. **Prices for Platforms and Building Blocks**: Currently, prices can only be set in EUR, but we plan to support other currencies in the future.
 4. **Known Issue Detailed Tenant Usage Report**: Detailed tenant usage reports (available for OpenShift, OpenStack, Cloud Foundry, and OSB Services) provide additional insights, but even with currency conversion enabled, they continue to display the original currency from the provider.
 5. **Presenting other Currencies: If you want to show a different currency besides Euro you have to reach out to support@meshcloud.io
-
-
