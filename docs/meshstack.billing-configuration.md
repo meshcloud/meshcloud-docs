@@ -212,7 +212,7 @@ let example2 =
 
 #### Discounts
 
-Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for platform engineers is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption. Discounts can be configured at the level of platform types, individual platforms, sellers, and product groups. 
+Discounts allow Partners to add or deduct charges to Tenant Usage Reports. A common use case for platform engineers is to configure a discount with a positive rate to charge projects with a "management fee" based on the project's actual cloud consumption. Discounts can be configured at the level of platform types, individual platforms, sellers, and product groups. Discounts can only be configured via a request to support@meshcloud.io.
 
 <!--snippet:mesh.kraken.productcatalog.discount#type-->
 
