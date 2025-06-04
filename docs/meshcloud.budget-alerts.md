@@ -40,3 +40,7 @@ Another option is to request a new payment method. If configured by your Cloud F
 Once the new payment method is created, do not forget to set it as the active payment method on the project.
 
 > For admins: click [here](./meshcloud.payment-methods.html#external-payment-method-registration) to learn how to configure a payment method request button.
+
+## Can a substitute payment method be set as the primary payment method?
+
+Currently, the behavior of meshStack is to replace the primary payment method only when it has expired. There is no existing feature that automatically substitutes the primary payment method when budget consumption crosses 100%. However, a configuration option could be beneficial for some use cases, such as allowing users to have more control over their payment methods when the budget is insufficient.
