@@ -49,7 +49,9 @@ The payment methods that are assigned can be used for both existing meshProjects
 
 ### Applying a Payment Method to an existing meshProject
 
-In the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers or budgets. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the active payment method will be removed.
+In the [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the active payment method will be removed.
+
+Currently, the behavior of meshStack is to replace the primary payment method only when it has expired. There is no existing feature that automatically substitutes the primary payment method when budget consumption crosses 100%.
 
 ![Set Payment Method in project control plane](assets/payment_methods/payment_method_selection_project_edit.png)
 
