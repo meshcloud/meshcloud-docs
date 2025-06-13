@@ -1,10 +1,12 @@
 ---
 id: meshcloud.workspace
-title: meshWorkspace
+title: Workspace
 ---
 
-A meshWorkspace usually represents a product team or department in your organization. Self-service within a meshWorkspace
-allows you to invite and manage team members, create [meshProjects](meshcloud.project.md) and maintain organizational metadata like payment methods.
+A workspace is a defined area within meshStack that represents an organizational unit within your organization. It serves as the central place where you can manage multiple related environments called projects as well as the financials and user access for those environments. A workspace can act both as a consumer of platforms and services and, through the integrated Platform Builder and the Platform Ecosystem module, as a provider of platforms and services.
+
+> Best Practice
+> Usually a workspace represents a distinct application or platform team. If the responsibilities within the teams are clearly distinguishable we recommend to use a workspace for each use case e.g. individual application or platform.
 
 ## Workspace Creation
 
