@@ -8,10 +8,10 @@ title: Workspace Services
 
 ## Workspace Services
 
-As an admin you can view all services that are offered by workspaces through their [Service Management Area](./marketplace.service-management-area.md).
+As an admin, you can view all services that are offered by workspaces through their [Platform Builder](./marketplace.service-management-area.md).
 You can find this view in the Admin Area by going to "Workspace Services" under "Marketplace" on the left sidebar.
 
-![Workspace Services Overview](./assets/service-management-area/workspace-services-overview.png)
+![Workspace Services Overview](./assets/platform-builder/workspace-services-overview.png)
 
 These are all Platforms & Building Blocks that exist in the organization. The list contains everything, including services
 that are not approved and globally available yet, or that have been rejected.
@@ -27,8 +27,8 @@ A workspace service can have one of the following states:
 To review a service, open the Workspace Services view. Services that require your approval or have been rejected are
 automatically at the top of the page.
 
-![Workspace Services](./assets/service-management-area/workspace-services.png)
+![Workspace Services](./assets/platform-builder/workspace-services.png)
 
 Upon selecting a service, you will be directed to its Control Plane. From there, you can either reject the publication request, or approve it, making the service accessible to all workspaces within your organization.
 
-![Approval](./assets/service-management-area/service-approval.png)
+![Approval](./assets/platform-builder/service-approval.png)
