@@ -65,6 +65,8 @@ Yes, you can perform security tests like Penetration Tests on meshStack but this
 
 No, meshis (employee at meshcloud) do not primarily have any access to your organizational data. Though, in certain scenarios such as for support cases if you would like to give the access or permission to your cloud environment then you can assign it to any of our relevant meshi's.
 
+This may differ for Preview features, that are not generally available yet, as we are still improving performance and functionality.
+
 ## Data Protection
 
 ### Does meshStack process any Personal Identifiable Information (PII)?
@@ -148,6 +150,14 @@ GitHub privacy policies: https://docs.github.com/en/site-policy/privacy-policies
 Address: 88 Colin P Kelly Jr Street,
          San Francisco,
          California 94107, United States
+```
+**Google Cloud Gemini**: meshcloud GmbH uses Gemini for processing of user requests to the meshStack Copilot. Use of the service is configured with data storage and processing exclusively in EU regions.
+
+```text
+Gemini Apps Privacy Hub: https://support.google.com/gemini/answer/13594961?hl=en-GB
+Address: 1600 Amphitheatre 
+         PkwyMountain View
+         California 94043, United States
 ```
 
 (optional) [**Canny**](http://Canny.io): meshcloud GmbH uses Canny.io for collecting the customer’s feedback. Canny is SOC 2 certified. (Customers are optional participating in Canny.io)
