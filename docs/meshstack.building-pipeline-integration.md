@@ -31,7 +31,7 @@ We recommend using a distinct name for the Building Block Definition that descri
 
 ### 3. Publish to the Marketplace
 
-Now you can [publish](./marketplace.service-management-area.md#publishing) the Building Block to the **marketplace**. A new service will appear in the marketplace that, when ordered, will trigger your pipeline.
+Now you can [publish](./marketplace.platform-builder.md#publishing) the Building Block to the **marketplace**. A new service will appear in the marketplace that, when ordered, will trigger your pipeline.
 
 ## Update Status of a Building Block
 

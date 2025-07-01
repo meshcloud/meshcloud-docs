@@ -296,4 +296,4 @@ You can also change the behavior if you want in this starter kit. In its current
 
 ## What’s Next?
 
-- [Publish all building blocks](./marketplace.service-management-area.md#publishing) so anyone in the organization can use it and provision namespaces in self-service.
+- [Publish all building blocks](./marketplace.platform-builder.md#publishing) so anyone in the organization can use it and provision namespaces in self-service.

@@ -23,7 +23,7 @@ Before starting, ensure you have the following:
 - An AWS account with a service user that has permission to manage S3 buckets.
   - Tip: have a look at our [Terraform code](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/backplane) for defining a service user to learn more.
 - Terraform code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/buildingblock) to get started.
-- Access to a meshStack workspace that has the [Platform Builder enabled](./marketplace.service-management-area.md).  
+- Access to a meshStack workspace that has the [Platform Builder enabled](./marketplace.platform-builder.md).  
   If you don’t see the Platform Builder, go to Settings > General in your workspace and enable it.
 
 ## Creating Definition
