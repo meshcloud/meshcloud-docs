@@ -8,7 +8,7 @@ title: Workspace Services
 
 ## Workspace Services
 
-As an admin, you can view all services that are offered by workspaces through their [Platform Builder](./marketplace.service-management-area.md).
+As an admin, you can view all services that are offered by workspaces through their [Platform Builder](./marketplace.platform-builder.md).
 You can find this view in the Admin Area by going to "Workspace Services" under "Marketplace" on the left sidebar.
 
 ![Workspace Services Overview](./assets/platform-builder/workspace-services-overview.png)
