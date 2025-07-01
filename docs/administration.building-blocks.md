@@ -11,7 +11,7 @@ Building Blocks can be added on-demand by your users in self-service in the tena
 your users create a new meshProject or meshTenant.
 
 Building Blocks are instantiated from so-called Definitions. These Building Block Definitions are created and maintained
-in the Admin Area by the Cloud Foundation Team. Read more below on how you can create and deploy a new Building Block
+in the Admin Area by the Platform Team. Read more below on how you can create and deploy a new Building Block
 Definition.
 
 ## meshStack Hub

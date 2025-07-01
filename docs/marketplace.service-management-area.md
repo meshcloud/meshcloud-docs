@@ -63,7 +63,7 @@ After you are done with the development & testing phase, you can go the Control 
 
 ![Publishing](./assets/service-management-area/publish-button.png)
 
-Once approved by your cloud foundation team, it will become accessible to all workspaces within the organization.
+Once approved by your platform team, it will become accessible to all workspaces within the organization.
 If your publication request gets rejected, you can easily identify the reason by hovering over the rejected label or checking the rejection comment in the history.
 
 ![Rejection](./assets/service-management-area/rejection-details.png)
