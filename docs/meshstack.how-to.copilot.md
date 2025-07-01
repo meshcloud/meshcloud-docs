@@ -31,6 +31,13 @@ suggest questions you could ask to speed up your work.
 
 ![Copilot Get help button](assets/copilot-get-help.png)
 
+## Enabling meshStack Copilot
+
+To enable meshStack Copilot, you need to be an Organization Admin.
+In the Admin Area, navigate to **Settings** → **Copilot** to enable meshStack Copilot.
+
+You can enable Copilot selectively for individual users or for the entire organization.
+
 ## Discovering Platform Services
 
 As an application developer, you're always looking for the best services to
