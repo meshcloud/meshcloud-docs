@@ -1,6 +1,6 @@
 ---
-id: marketplace.service-management-area
-title: Service Management Area
+id: marketplace.platform-builder
+title: Platform Builder
 ---
 
 > Please note that the following functionality is only available to meshStacks that have the **Service Economy** module activated.
@@ -8,32 +8,29 @@ title: Service Management Area
 
 ## Introduction
 
-The Service Management Area can be used by workspaces to offer their [platform services](./marketplace.index.md#platform-services) to the rest of the organization.
+The Platform Builder can be used by workspaces to offer their [platform services](./marketplace.index.md#platform-services) to the rest of the organization.
 For example, the Azure team in your organization could set up a workspace to offer their Azure [Platform](./administration.platforms.md) from there to
 the rest of the organization. Or the Networking team might want to offer their best-practice Cloud Network [Building Blocks](./administration.building-blocks.md)
 to Application Teams.
 
-Anyone in the organization can offer their valuable services to the rest of the organization through the
-Service Management Area as long as it is approved by someone in the [Admin Area](./administration.index.md).
+Anyone in the organization can offer their valuable services to the rest of the organization through the Platform Builder, as long as it’s approved by someone in the [Admin Area](./administration.index.md).
 
-The Service Management Area can at any time be opened up from the Workspace Control Plane by clicking the
-"Go to Services Management" button as depicted below.
+You can open the Platform Builder at any time from the Workspace Control Plane by clicking the
+"Platform Builder" button as shown below.
 
-![Introduction](assets/service-management-area/introduction.png)
+![Introduction](assets/platform-builder/introduction.png)
 
-If you would like to go back again to the regular Workspace View, click on "Go to Workspace Management".
+If you’d like to go back to the regular Workspace View, click on "Go to Workspace Management".
 
 ## Getting Access
 
-If you do not see the button to open the Service Management Area your workspace most likely does not 
-have it activated yet. As can be seen in the screenshot, open your Workspace Settings and toggle "Enable Service Management Area".
-Hit "Save" and you should see the "Go to Services Management" button now.
+If you don’t see the button to open the Platform Builder, your workspace probably doesn’t have it activated yet. As shown in the screenshot, open your Workspace Settings and toggle "Enable Platform Builder". Hit "Save" and you should see the "Platform Builder" button.
 
-[!Getting Access](assets/service-management-area/getting-access.png)
+[!Getting Access](assets/platform-builder/getting-access.png)
 
 ## Types of Platform Services
 
-The following three types of platform services can be created and offered in the Service Management Area:
+The following three types of platform services can be created and offered in the Platform Builder:
 
 1. [Platforms](./administration.platforms.md). Platforms are a high-level concept in meshStack where users can book
    their own isolated tenant (environment) in a given cloud platform. meshStack has a handful of first-party supported
@@ -44,31 +41,27 @@ The following three types of platform services can be created and offered in the
    connectivity to a cloud tenant.
 3. [Service Brokers](./administration.service-brokers.md). Service Brokers are self-hosted components that can execute
    automation and provision workloads using the Open Service Broker API that can be booked by users in the meshStack.
-   As the automation is fully managed by someone it can provision and do anything that you would like.
+   As the automation is fully managed by someone it can provision and do anything that you’d like.
 
 ## Development & Testing
 
-By default, anything that you create in your Service Management Area will be available to you inside the workspace and 
-not directly published in the Service Catalog.
-For development & testing purposes you can consume any of your created platform services mentioned above in
-**your own workspace**. They will be marked as "Private". This will give you an idea of the user experience and allows you
-to debug any potential issues with the Platform Configuration or Terraform code.
+By default, anything you create in the Platform Builder will be available to you inside the workspace and not directly published in the Service Catalog.
+For development and testing, you can use any of your created platform services in **your own workspace**. They’ll be marked as "Private." This gives you a feel for the user experience and lets you debug any potential issues with the Platform Configuration or Terraform code.
 
-![Private](./assets/service-management-area/private.png)
-
+![Private](./assets/platform-builder/private.png)
 
 ## Publishing
 
-After you are done with the development & testing phase, you can go the Control Plane of your provided service in the Service Management Area and submit it for publication by clicking the "Submit for publishing" button.
+After you’re done with development and testing, you can go to the Control Plane of your service in the Platform Builder and submit it for publication by clicking the "Submit for publishing" button.
 
-![Publishing](./assets/service-management-area/publish-button.png)
+![Publishing](./assets/platform-builder/publish-button.png)
 
-Once approved by your platform team, it will become accessible to all workspaces within the organization.
-If your publication request gets rejected, you can easily identify the reason by hovering over the rejected label or checking the rejection comment in the history.
+Once approved by your cloud foundation team, it’ll become accessible to all workspaces in your organization.
+If your publication request gets rejected, you can easily spot the reason by hovering over the rejected label or checking the rejection comment in the history.
 
-![Rejection](./assets/service-management-area/rejection-details.png)
+![Rejection](./assets/platform-builder/rejection-details.png)
 
-Once you've addressed the identified issues, you can resubmit it for publishing.
+Once you’ve addressed the issues, you can resubmit it for publishing.
 
-> If you are an administrator and want to know how
-> to manage and approve workspaces service you can learn more [here](./administration.workspace-services.md).
+> If you’re an administrator and want to know how
+> to manage and approve workspace services, you can learn more [here](./administration.workspace-services.md).
