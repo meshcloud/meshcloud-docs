@@ -9,7 +9,7 @@ meshStack Copilot isn't generally available yet; however, we're offering a publi
 
 ## How to use meshStack Copilot
 
-For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot guide](./how-to.copilot.md).
+For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot guide](./meshstack.how-to.copilot.md).
 
 ## How does Copilot work?
 
