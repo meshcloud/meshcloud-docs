@@ -110,8 +110,9 @@ b. **Additional 3rd party services used by meshcloud GmbH**
 
 ```text
 Google Workspace security overview: https://workspace.google.com/learn-more/security/security-whitepaper/page-1.html
-Address: 1600 Amphitheatre Pkwy,
-         Mountain View, California 94043, United States
+Address: 1600 Amphitheatre Pkwy
+         Mountain View
+         California 94043, United States
 ```
 
 **ClickUp:** ClickUp is used as a project management & ticketing tool for meshcloud GmbH. ClickUp stores data according to the AICPA SOC2, GDPR & HIPAA compliances in different data centers worldwide (Germany & Ireland in Europe) hosted by AWS.
@@ -138,8 +139,8 @@ Address: Syncfusion, Inc.
 
 ```text
 Slack security overview: https://slack.com/trust/security
-Address: 500 Howard Street,
-         San Francisco,
+Address: 500 Howard Street
+         San Francisco
          California 94105, United States
 ```
 
@@ -147,24 +148,26 @@ Address: 500 Howard Street,
 
 ```text
 GitHub privacy policies: https://docs.github.com/en/site-policy/privacy-policies
-Address: 88 Colin P Kelly Jr Street,
-         San Francisco,
+Address: 88 Colin P Kelly Jr Street
+         San Francisco
          California 94107, United States
 ```
-**Google Cloud Gemini**: meshcloud GmbH uses Gemini for processing of user requests to the meshStack Copilot. Use of the service is configured with data storage and processing exclusively in EU regions.
+**Google Cloud Gemini**: meshcloud GmbH uses Gemini for processing of user requests to the meshStack Copilot. Use of the service is configured exclusively in EU regions.
 
 ```text
-Gemini Apps Privacy Hub: https://support.google.com/gemini/answer/13594961?hl=en-GB
-Address: 1600 Amphitheatre 
-         PkwyMountain View
+Google Gemini Privacy Policies:     https://policies.google.com/privacy?hl=en-US#europeanrequirements
+                                    https://business.safety.google/processorterms/?hl=de
+                                    https://support.google.com/gemini/answer/13594961?hl=en#privacy_notice
+Address: 1600 Amphitheatre Pkwy
+         Mountain View
          California 94043, United States
 ```
 
-(optional) [**Canny**](http://Canny.io): meshcloud GmbH uses Canny.io for collecting the customer’s feedback. Canny is SOC 2 certified. (Customers are optional participating in Canny.io)
+(optional) [**Canny**](http://Canny.io): meshcloud GmbH uses Canny.io to collect customer feedback. Canny is SOC 2 certified. (It's optional for customers use Canny.io)
 
 ```text
 Canny security overview: https://canny.io/security
-Address: San Francisco,
+Address: San Francisco
          California 94114, United States
 ```
 
