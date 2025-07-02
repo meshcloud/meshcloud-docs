@@ -39,7 +39,7 @@ The following three types of platform services can be created and offered in the
 2. [Building Blocks](./administration.building-blocks.md). Building Blocks are standardized extensions to cloud tenants that users
    can book and roll out. These can be either rolled out using Terraform, or manually. Example use cases are an on-premise
    connectivity to a cloud tenant.
-3. [Service Brokers](./administration.service-brokers.md). Service Brokers are self-hosted components that can execute
+3. When enabled for your meshStack, [Open Service Brokers](./administration.service-brokers.md). Service Brokers are self-hosted components that can execute
    automation and provision workloads using the Open Service Broker API that can be booked by users in the meshStack.
    As the automation is fully managed by someone it can provision and do anything that you’d like.
 
@@ -56,7 +56,7 @@ After you’re done with development and testing, you can go to the Control Plan
 
 ![Publishing](./assets/platform-builder/publish-button.png)
 
-Once approved by your cloud foundation team, it’ll become accessible to all workspaces in your organization.
+Once approved by your platform team, it’ll become accessible to all workspaces in your organization.
 If your publication request gets rejected, you can easily spot the reason by hovering over the rejected label or checking the rejection comment in the history.
 
 ![Rejection](./assets/platform-builder/rejection-details.png)
