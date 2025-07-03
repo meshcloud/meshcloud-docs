@@ -152,6 +152,7 @@ Address: 88 Colin P Kelly Jr Street
          San Francisco
          California 94107, United States
 ```
+
 **Google Cloud Gemini**: meshcloud GmbH uses Gemini for processing of user requests to the meshStack Copilot. Use of the service is configured exclusively in EU regions.
 
 ```text
