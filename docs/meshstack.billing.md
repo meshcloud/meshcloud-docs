@@ -6,7 +6,7 @@ title: Cost Management
 meshStack's cost management functionality enables developers to track resource usage, while platform teams can monitor overall costs and allocate them to specific teams. These cost management capabilities can be broken down into three key sections: metering, billing, and chargeback.
 
 
-> Learn more about how your cloud foundation team can enable cloud cost management in
+> Learn more about how your platform team can enable cloud cost management in
 > the [Cloud Foundation Maturity Model](https://cloudfoundation.meshcloud.io/maturity-model/cost-management/)
 
 

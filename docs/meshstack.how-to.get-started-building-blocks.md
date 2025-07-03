@@ -32,7 +32,7 @@ The diagram below illustrates the key components addressed in this document:
 
 To create a new Building Block definition, from Admin Area navigate to “Marketplace > Building Block Definitions” and then select “Create new Definition”. The configuration process is divided into multiple steps as outlined below.
 
-Alternatively, you can switch to “Service Management” UI and navigate to “Building Blocks > Definitions” and then select “Create new Definition”.
+Alternatively, you can switch to “Platform Builder” UI and navigate to “Building Blocks > Definitions” and then select “Create new Definition”.
 
 ### General
 
@@ -273,6 +273,6 @@ The diagram illustrates the lifecycle of a Building Block definition. It indicat
 
 Building Blocks with "Terraform" as the implementation type produce logs when they are added to a project by an end-user. These logs provide details on the resources provisioned or any errors if the execution is unsuccessful. Both Admins and owners of the Building Block definitions can access these logs. As an Admin, you can view them by going to the Admin Area, proceeding to "Marketplace > Building Block overview," and choosing the desired Building Block from the list of executed instances. On the next screen, you will find one or more "Runs," depending on the number of times the user has executed this specific Building Block. By selecting a Run, you can inspect the associated Terraform logs.
 
-The owner of the Building Block definition can access the logs by switching to “Service Management” view and navigating to "Building Blocks > Overview".
+The owner of the Building Block definition can access the logs by switching to “Platform Builder” view and navigating to "Building Blocks > Overview".
 
 ![Building block logs](assets/bb-howto-15.png)

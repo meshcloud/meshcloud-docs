@@ -23,14 +23,14 @@ Before starting, ensure you have the following:
 - An AWS account with a service user that has permission to manage S3 buckets.
   - Tip: have a look at our [Terraform code](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/backplane) for defining a service user to learn more.
 - Terraform code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/buildingblock) to get started.
-- Access to a meshStack workspace that has the [service management area enabled](./marketplace.service-management-area.md).  
-  If you do not see the service management area, go to settings -> general in your workspace and enable the service management area.
+- Access to a meshStack workspace that has the [Platform Builder enabled](./marketplace.platform-builder.md).  
+  If you don’t see the Platform Builder, go to Settings > General in your workspace and enable it.
 
 ## Creating Definition
 
-1. **Open the list of building block definitions in the service management area.**
+1. **Open the list of building block definitions in the Platform Builder.**
 
-   When entering your workspace, click the blue “Go to Services Management” button at the top-right if you haven’t already.
+   When entering your workspace, click the blue “Platform Builder” button at the top right if you haven’t already.
    Then open the menu on the left-hand side and click on “Building Blocks → Building Blocks”.
 
 2. **Create a new building block definition**
@@ -178,12 +178,12 @@ Now that your building block runs successfully in your workspace, let’s make i
 
 5. **Submit for publishing**
 
-   Go back to the service management area and open up your building block from before.
+   Go back to Platform Builder and open up your building block from before.
 
-   On the top-right click the “Submit for Publishing” button. You will be prompted with some more information about the process.
+   On the top-right click the “Submit for Publishing” button. You’ll be prompted with some more information about the process.
 
    Go ahead and click “Yes, submit for review”.
 
 🎉That’s it! Your new building block has now been submitted for review.
-Once an admin approves you will be notified via e-mail and your building block
+Once an admin approves you’ll be notified via e-mail and your building block
 will be published and ready to be used by the rest of the organization! 🎉
