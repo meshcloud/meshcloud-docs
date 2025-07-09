@@ -110,6 +110,12 @@ const config: Config = {
           label: 'Administrator Docs',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'new-docs',
+          position: 'right',
+          label: 'New Docs',
+        },
+        {
           type: 'doc',
           docId: 'apis.index',
           position: 'right',
