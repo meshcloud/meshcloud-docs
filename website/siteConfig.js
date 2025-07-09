@@ -34,6 +34,7 @@ const siteConfig = {
   headerLinks: [
     { doc: 'meshcloud.index', label: 'User Docs' },
     { doc: 'meshstack.index', label: 'Administrator Docs' },
+    { doc: 'new-gettingstarted-index', label: 'New Docs' },
     { doc: 'apis.index', label: 'API Docs' },
     { blog: true, label: 'Release Notes' },
     { href: 'https://meshcloud.canny.io', label: 'Feedback' }
