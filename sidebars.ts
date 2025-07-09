@@ -244,6 +244,74 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+
+  'new-docs': [
+    {
+      type: 'category',
+      label: 'Getting Started',
+      items: [
+        'new-gettingstarted-index',
+        'new-overview-index',
+        'new-getting-started-admin',
+        'new-getting-started-platform-engineer',
+        'new-getting-started-application-team',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Concepts',
+      items: [
+        'new-concept-meshstackareas',
+        'new-concept-workspace',
+        'new-concept-project',
+        'new-concept-users-and-groups',
+        'new-concept-platform',
+        'new-concept-landingzone',
+        'new-concept-tenant',
+        'new-concept-tenant-quota',
+        'new-concept-buildingblock',
+        'new-concept-meshstack-hub',
+        'new-concept-tags',
+        'new-concept-policies',
+        'new-concept-cost-management',
+        'new-concept-communication',
+        'new-concept-marketplace',
+        'new-concept-osb-services',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Integrations',
+      items: [
+        'new-integration-index',
+        'new-integration-aws',
+        'new-integration-azure',
+        'new-integration-gcp',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Guides',
+      items: [
+        'new-guide-how-manage-a-workspace',
+        'new-guide-how-to-limit-workspace-resources',
+        'new-guide-how-to-protect-admin-roles',
+        'new-guide-how-to-user-management',
+        'new-guide-how-to-organizational-structure',
+        'new-guide-how-to-extract-data',
+        'new-guide-how-to-implement-tenant-deletion',
+        'new-guide-how-to-reflect-ownership-changes',
+        'new-guide-how-to-manage-a-tenant',
+        'new-guide-how-to-import-tenants',
+        'new-guide-how-to-request-more-tenant-quota',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Configuration and Security',
+      items: ['new-configurationandsecurity-index'],
+    }
+  ]
 };
 
 export default sidebars;
