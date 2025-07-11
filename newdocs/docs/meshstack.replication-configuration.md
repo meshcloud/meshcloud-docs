@@ -1,0 +1,40 @@
+---
+id: meshstack.replication-configuration
+title: Replication Configuration
+---
+
+Certain aspects of the replication configuration are similiar accross all platforms. This keeps complexity low and makes it easier to setup a meshStack installation. The concepts are described in this section.
+
+## String Templating
+
+Some properties for the different platforms allow you to use string templates to control the creation of e.g. Azure Subscription names or creates user group names in the target platform.
+These string pattern work like the following example:
+
+```text
+#{workspaceIdentifier}.#{projectIdentifier:%.7s}-test.#{tenantPlatformNumber:%03d}
+```
+
+The engine will substitute `#{PLACEHOLDER}` with the actual contextual value (see table below). Optionally you can provide a `String.format()` pattern after the `:` which will be used to transform the value provided for the placeholder. Consider a case where the workspace ID is 'my-workspace', the project ID is 'my-project', and the tenantPlatformNumber is 4. In the example above `%.7s` will use the first seven characters of the project identifier of the current project and pattern `%03d` applied to 4 will produce 004. The above string would evaluate into this:
+
+```text
+my-workspace.my-proj-test.004
+```
+
+For further details on the patterns supported by `String.format()`, please consult the Java official documentation.
+
+The template engine allows you to use the following placeholders if not described otherwise in the corresponding documentation:
+
+| Placeholder          | Type   | Description                                                                                                                            |
+| -------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| workspaceIdentifier  | string | Workspace Identifier                                                                                                                   |
+| projectIdentifier    | string | Project Identifier                                                                                                                     |
+| meshProjectId        | number | Internal ID of the meshProject. Every project is guaranteed to have a unique ID, but tenants on different platforms can share this ID. |
+| platform             | string | Platform Identifier                                                                                                                    |
+| rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
+| tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
+
+Note that you can also use tags! The placeholders for these are generated automatically. For example, if you have a tag
+in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`.
+
+> **Attention** For some cloud platforms certain strings must be globally unique (for example the AWS account alias). The `projectIdentifier` is not unique in meshstack. A combination of at least the `workspaceIdentifier` and `projectIdentifier`
+> is highly recommended to avoid name collisions. For platforms with globally unique requirements like GCP or AWS a randomized part or a unique static prefix can also help to prevent sporadic replication problems.

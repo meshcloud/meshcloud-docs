@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'meshStack Docs',
-  tagline: 'All-in-one platform management for your clouds',
+  title: 'meshStack Documentation',
+  tagline: 'We { Platform }, You { Product }',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -36,6 +36,13 @@ const config: Config = {
     locales: ['en'],
   },
 
+  // Enable markdown support
+  markdown: {
+    mermaid: true,
+    format: 'detect'
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -59,7 +66,7 @@ const config: Config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
+          onInlineAuthors: 'ignore',
           onUntruncatedBlogPosts: 'warn',
         },
         theme: {
@@ -70,6 +77,14 @@ const config: Config = {
   ],
 
   themeConfig: {
+    algolia: {
+      // Productive Algolia credentials.
+      // It's fine to use these locally, it does not harm anything.
+      // They are also not secrets so it's fine to put them in the code.
+      apiKey: 'aa3b874dff5c832fe2e3ed42a8062160',
+      appId: 'LDDGX81P02',
+      indexName: 'meshcloud'
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
@@ -81,9 +96,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'meshcloud',
           position: 'right',
-          label: 'Docs',
+          label: 'User Docs',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'meshstack',
+          position: 'right',
+          label: 'Administrator Docs',
         },
         {
           to: '/blog',
@@ -135,11 +156,12 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} meshcloud GmbH`
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['dhall', 'json', 'yaml', 'bash', 'powershell'],
     },
   } satisfies Preset.ThemeConfig,
 };
