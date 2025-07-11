@@ -25,8 +25,10 @@ const config: Config = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+
+  scripts: [],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -117,15 +119,6 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
           title: 'Community',
           items: [
             {
@@ -146,7 +139,7 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
+              label: 'Release Notes',
               to: '/blog',
             },
             {
@@ -165,5 +158,15 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 };
+
+// For the production build we include the Plausible tracking script.
+// We only use this for the master build. Not for develop builds or preview builds.
+if (process.env.AWS_BRANCH === 'master') {
+  config.scripts.push({
+    src: '/js/script.js',
+    defer: true,
+    'data-domain': 'docs.meshcloud.io'
+  });
+}
 
 export default config;
