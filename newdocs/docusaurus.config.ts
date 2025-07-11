@@ -110,6 +110,12 @@ const config: Config = {
           label: 'Administrator Docs',
         },
         {
+          type: 'doc',
+          docId: 'apis.index',
+          position: 'right',
+          label: 'API Docs',
+        },
+        {
           to: '/blog',
           label: 'Release Notes',
           position: 'right'
