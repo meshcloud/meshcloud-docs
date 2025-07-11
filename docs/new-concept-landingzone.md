@@ -2,12 +2,36 @@
 id: new-concept-landingzone
 title: Landing Zone
 ---
-A **Landing Zone** is a predefined environment in which cloud resources are provisioned and managed. It provides a framework for organizing and controlling access to cloud resources, ensuring compliance with organizational policies and best practices.
+A **landing zone** is a platform specific predefined configuration of a new tenant. They are provided by platform engineers via the platform builder and are a prerequisite for the provisioning of new tenants.
 
-Landing Zones are typically used to:
+Landing zones are typically used to:
 
-- Establish a secure and compliant cloud environment.
-- Define network configurations, security controls, and access policies.
-- Enable consistent resource provisioning and management across multiple projects and teams.
+- Provide a secure, compliant foundation for new tenants.
+- Standardize network, security, and access configurations.
+- Ensure consistent infrastructure across teams and environments.
+- Support tailored setups for development, testing, or production.
 
-By using Landing Zones, organizations can streamline their cloud operations and improve governance, security, and cost management.
+## Versioning Landing Zones
+
+Landing zones can evolve over time, and versioning allows organizations to manage changes effectively. Versioning landing zones involves:
+
+- Creating new versions of landing zones to accommodate changes in requirements or best practices.
+- Maintaining backward compatibility with existing tenants using older versions.
+
+## Modularization of Landing Zones
+
+Landing zones can consist of one or multiple building blocks rolled out when a tenant is provisioned. This modular approach allows for:
+
+- Reusability of common configurations across different landing zones.
+- Easier updates and maintenance of individual components without affecting the entire landing zone.
+- Customization of specific components to meet the unique needs of different teams or projects.
+
+Building blocks for a landing zone can be configured as:
+
+- **required**: Building blocks that must be included by the application team when a new tenant is created. Use these for security critical configurations, such as network security groups.
+- **optional**: Building blocks that are recommended to application teams when they create a new tenant. Use these for configurations that are not mandatory, such as monitoring or logging.
+
+## Platform Specific Landing Zone Configuration
+
+
+## Related Resources
