@@ -7,11 +7,11 @@ As described in [Identity Federation](meshstack.identity-federation.md) a SSO so
 
 meshStack uses an RBAC authorization model. The default product configuration includes roles aggregating individual permissions (rights). These roles are modeled after functional roles expected in typical usage scenarios.
 
-> Make sure to review the [meshModel](meshcloud.index.md) for background on terminology used in this document.
+> Make sure to review the [meshModel](/) for background on terminology used in this document.
 
 ## Overview
 
-meshStack includes **meshObject roles** that manage permissions on different [meshObjects](meshcloud.index.md). For example meshWorkspace Roles describe permissions on a meshWorkspace object.
+meshStack includes **meshObject roles** that manage permissions on different [meshObjects](/). For example meshWorkspace Roles describe permissions on a meshWorkspace object.
 
 ### Role Bindings
 
@@ -31,7 +31,7 @@ Role requests produce an audit trail and may trigger notifications to involved p
 
 ### meshWorkspace Roles
 
-[meshWorkspace Roles](meshcloud.workspace.md#assign-meshWorkspace-roles) control the permission on a [meshWorkspace](meshcloud.workspace.md) and the [meshObjects](meshcloud.index.md) owned by that meshWorkspace. Users must have a corresponding role binding in order to access meshObjects owned by a meshWorkspace like [meshProjects](meshcloud.project.md).
+[meshWorkspace Roles](meshcloud.workspace.md#assign-meshWorkspace-roles) control the permission on a [meshWorkspace](meshcloud.workspace.md) and the [meshObjects](/) owned by that meshWorkspace. Users must have a corresponding role binding in order to access meshObjects owned by a meshWorkspace like [meshProjects](meshcloud.project.md).
 
 Users with the right permissions can [assign meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) in self-service.
 

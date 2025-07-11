@@ -1,6 +1,7 @@
 ---
 id: meshcloud.index
 title: Overview
+slug: /
 ---
 
 ## Introduction
