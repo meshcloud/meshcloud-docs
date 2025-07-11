@@ -4,7 +4,7 @@ title: Metadata Tags
 ---
 
 Organizations can configure meshStack to collect, attach and distribute organization-specific metadata
-to objects in the [meshModel](meshcloud.index.md). Currently, [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](./meshcloud.payment-methods.md) support this metadata.
+to objects in the [meshModel](/). Currently, [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](./meshcloud.payment-methods.md) support this metadata.
 
 Depending on the configuration of the administrators, some of these tags will be applied directly on to the meshTenant(s) in the cloud platform.
 
