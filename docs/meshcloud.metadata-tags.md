@@ -4,7 +4,7 @@ title: Metadata Tags
 ---
 
 Organizations can configure meshStack to collect, attach and distribute organization-specific metadata
-to objects in the [meshModel](/). Currently, [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](./meshcloud.payment-methods.md) support this metadata.
+to objects in the [meshModel](/). Currently, [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md) support this metadata.
 
 Depending on the configuration of the administrators, some of these tags will be applied directly on to the meshTenant(s) in the cloud platform.
 
@@ -21,17 +21,17 @@ meshPanel seamlessly integrates any tags that can be set by allowing users to in
 
 ## Tags restricted to Administrators
 
-Administrators can configure tags so that only [admin users](./administration.index.md) can edit them. These tags are called **restricted tags**. End-users cannot edit restricted tags in meshPanel, but they can view them at anytime. Admin users can view and edit restricted and unrestricted tags.
+Administrators can configure tags so that only [admin users](administration.index.md) can edit them. These tags are called **restricted tags**. End-users cannot edit restricted tags in meshPanel, but they can view them at anytime. Admin users can view and edit restricted and unrestricted tags.
 
-The [administration documentation](./administration.index.md) provides further details on how admin users can edit restricted tags.
+The [administration documentation](administration.index.md) provides further details on how admin users can edit restricted tags.
 
 ## Immutable tags
 
-Administrators can configure immutable tags. This means that we allow the selection of specific tag values only during the creation process of [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](./meshcloud.payment-methods.md). Afterwards it is no longer possible to edit the selected values. Also administrators cannot change immutable tag values after creation.
+Administrators can configure immutable tags. This means that we allow the selection of specific tag values only during the creation process of [meshWorkspaces](meshcloud.workspace.md), [meshProjects](meshcloud.project.md), [meshLandingZones](meshcloud.landing-zones.md) and [meshPaymentMethods](meshcloud.payment-methods.md). Afterwards it is no longer possible to edit the selected values. Also administrators cannot change immutable tag values after creation.
 For example if you create a meshProject with **environment** tag **dev** then you can't change the meshProject to **prod**. If you want a meshProject with **environment** tag **dev** then you need to create a new meshProject.
 
 ## Enforce organizational policies using tags
 
 Beside providing valuable metadata, tags can also be used to enforce organizational [policies](meshcloud.policies.md) in your meshstack. A common use case for this is enforcing that a meshWorkspace can only create meshProjects for which it has one of the environment tag values set. If a meshWorkspace has environment `dev` and `qa`, it is possible to enforce that users only create meshProjects for these environments but not for e.g. `prod` projects (until an adminstrator gives the meshWorkspace a `prod` environment tag). The environment tag on the meshWorkspace should also be a restricted tag in this case to ensure only partners can influence this behavior.
 
-To learn more, read the [policies](./meshcloud.policies.md) page for other use cases and explanations.
+To learn more, read the [policies](meshcloud.policies.md) page for other use cases and explanations.

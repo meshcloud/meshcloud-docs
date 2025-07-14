@@ -6,7 +6,7 @@ title: Monitoring & Telemetry
 Our [managed service](meshstack.managed-service.md) team
 relies on monitoring & telemetry to operate meshStack installations for our customers. The integration of these systems are a mandatory pre-requisite for using our managed services.
 
-This page documents what data we collect and for what purposes we process it. All customer data we collect and store is handled with confidentiality in accordance with our information security management system as described in our [Security FAQ](./faq.md).
+This page documents what data we collect and for what purposes we process it. All customer data we collect and store is handled with confidentiality in accordance with our information security management system as described in our [Security FAQ](faq.md).
 
 ## Customer data
 
@@ -24,7 +24,7 @@ Application-level metrics can contain labels that include customer data such as 
 
 ## Logs
 
-meshStack collects various logs as described in [Logging & Auditing](./meshstack.logging.md). Logs can contain customer data and also PII like user identifiers.
+meshStack collects various logs as described in [Logging & Auditing](meshstack.logging.md). Logs can contain customer data and also PII like user identifiers.
 
 Log data is therefore not part of telemetry data we collect.
 

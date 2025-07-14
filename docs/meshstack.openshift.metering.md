@@ -7,7 +7,7 @@ meshStack supports metering and billing for most common OpenShift versions.
 
 ## Prerequisites
 
-- The "meshfed-metering" service account must be configured as described [here](./meshstack.openshift.index.md#metering-service-account)
+- The "meshfed-metering" service account must be configured as described [here](meshstack.openshift.index.md#metering-service-account)
 - CPU and memory limits have to be defined for all containers, as metering is currently based on these limits
 - OpenShift APIs are accessible by meshStack metering collector components
 

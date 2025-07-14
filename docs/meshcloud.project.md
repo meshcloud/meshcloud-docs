@@ -9,11 +9,11 @@ meshProjects are multi-cloud enabled projects that allow teams to manage and sca
 
 ## Create a new meshProject
 
-We wrote an extensive guide on how to create a new meshProject [here](./meshstack.how-to.create-project.md).
+We wrote an extensive guide on how to create a new meshProject [here](meshstack.how-to.create-project.md).
 
 ## Manage meshProjects
 
-In your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace) under the **Projects** tab you will find all meshProjects of your meshWorkspace.
+In your [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace) under the **Projects** tab you will find all meshProjects of your meshWorkspace.
 To manage a project, click the name of the meshProject to open the project control plane.
 
 ![Project Control Plane](assets/project/control-plane.png)
@@ -22,16 +22,16 @@ In the project control plane you can manage your tenants, payment information an
 
 ## Replication of Project Users
 
-The following diagram shows how access rights and project [replication](./meshcloud.tenant.md) result in the correct project access for your users.
+The following diagram shows how access rights and project [replication](meshcloud.tenant.md) result in the correct project access for your users.
 
 ![Project User Role Replication](assets/project-user-roles.png)
 
-Projects have a representation in each cloud platform that we call [meshTenant](./meshcloud.tenant.md). Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabled for the project.
+Projects have a representation in each cloud platform that we call [meshTenant](meshcloud.tenant.md). Azure Subscriptions, AWS Accounts and Cloud Foundry Spaces are all examples of Tenants. Each meshProject can have at most one Tenant in cloud platforms enabled for the project.
 meshcloud uses orchestration to ensure users assigned to a meshProject always have the same role on all Tenants associated with the Project.
 
 ### Adding meshTenants
 
-The edit screen of a project shows the list of all active [meshTenants](./meshcloud.tenant.md). Via a dropdown below this list, new meshTenants can be created by selecting the according [meshPlatform](meshcloud.platforms.md). They will be added to the project when clicking the `+` button. Depending on the configuration of the [meshPlatform](meshcloud.platforms.md), users may also have to select a [Landing Zone](meshcloud.landing-zones.md) for this platform.
+The edit screen of a project shows the list of all active [meshTenants](meshcloud.tenant.md). Via a dropdown below this list, new meshTenants can be created by selecting the according [meshPlatform](meshcloud.platforms.md). They will be added to the project when clicking the `+` button. Depending on the configuration of the [meshPlatform](meshcloud.platforms.md), users may also have to select a [Landing Zone](meshcloud.landing-zones.md) for this platform.
 
 When adding a [meshPlatform](meshcloud.platforms.md) to a meshProject, meshStack creates a representation of the meshProject for that meshPlatform. This representation is called a [meshTenant](meshcloud.tenant.md) and is an isolated cloud environment e.g. an AWS Account, Azure Subscription or Cloud Foundry Space.
 
@@ -43,7 +43,7 @@ You can configure one or multiple [payment methods](meshcloud.payment-methods.md
 
 You also have the option of setting a substitute payment method on a project. This feature is enabled via a configuration in meshStack. A job that runs daily will check if the already assigned payment method is expired and if it is, will replace it with the substitute payment method. In that case, the substitute payment will be set to `None`.
 
-Depending on the configuration of your meshStack implementation, you may be able to edit additional project [metadata tags](./meshcloud.metadata-tags.md) here.
+Depending on the configuration of your meshStack implementation, you may be able to edit additional project [metadata tags](meshcloud.metadata-tags.md) here.
 
 ## Access Control on a meshProject
 

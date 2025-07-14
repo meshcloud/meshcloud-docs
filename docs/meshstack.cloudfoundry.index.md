@@ -9,7 +9,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with Cloud Foundry, platform engineers configure one or multiple `Platform`s of `PlatformType` Cloud Foundry in the [Platform Administration](./administration.platforms.md) in meshPanel.
+To enable integration with Cloud Foundry, platform engineers configure one or multiple `Platform`s of `PlatformType` Cloud Foundry in the [Platform Administration](administration.platforms.md) in meshPanel.
 
 ## Prerequisites 
 
@@ -33,14 +33,14 @@ users the following [Cloud Foundry roles](https://docs.cloudfoundry.org/concepts
 
 - the `replicator` admin account must have permission to create orgs, spaces, groups and assign roles. This user requires the
   `Admin` role and additionally needs the `cloud_controller.admin`, `uaa.admin` and  `scim.read` scopes in UAA.
-- the `metering` admin account is used to collect [metering data](./meshstack.cloudfoundry.metering.md). This requires the `Global Auditor`.
+- the `metering` admin account is used to collect [metering data](meshstack.cloudfoundry.metering.md). This requires the `Global Auditor`.
 
-The tenant [replication](./meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's project permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
+The tenant [replication](meshcloud.tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's project permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
 
 ### Spaces & Organizations
 
-By default, meshStack will replicate [tenants](./meshcloud.tenant.md) as Cloud Foundry Spaces and create a
-Cloud Foundry Organization for every [workspace](./meshcloud.workspace.md).
+By default, meshStack will replicate [tenants](meshcloud.tenant.md) as Cloud Foundry Spaces and create a
+Cloud Foundry Organization for every [workspace](meshcloud.workspace.md).
 
 ### Permission Replication
 

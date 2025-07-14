@@ -115,7 +115,7 @@ Administrators can inform users about platform specific events (updates, new fea
 notifications:
 
 * **Platforms**: Select the platforms relevant to your notification so they can be shown on the affected platform's dashboards. Users
-  can also [subscribe](meshcloud.profile.md#profile) to notifications by platform and [subscribed users](./meshcloud.profile.md#platform-notification-subscriptions) will receive new notifications via email.
+  can also [subscribe](meshcloud.profile.md#profile) to notifications by platform and [subscribed users](meshcloud.profile.md#platform-notification-subscriptions) will receive new notifications via email.
 * **Message**: The message that will be shown to all users. You can enter valid HTML in this field (except for the `<p>` tag). This is useful for e.g. supplying links to support pages.
 * **Severity**: The type of message (info, warning, critical).
   * Info: for new features, upcoming services updates and general information that is not expected to disrupt platform operation

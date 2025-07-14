@@ -10,7 +10,7 @@ meshStack's multi-cloud chargeback process.
 
 Serice Owners that want to charge consumers of their services via meshStack need to expose cost information
 in the service catalog of their Service Broker implementations. meshStack metering will then automatically calculate charges
-and generate a [Tenant Usage Report](./meshcloud.project-metering.md) for each OSB Services Platform used in a meshProject.
+and generate a [Tenant Usage Report](meshcloud.project-metering.md) for each OSB Services Platform used in a meshProject.
 
 In the context of OSB Services metering Service Owners are also called **Sellers**. The id of a seller is the
 identifier of the meshWorkspace that has registed the Service Broker with the meshMarketplace.
@@ -154,7 +154,7 @@ let example
 
 ## Reviewing Metering Data
 
-Metering & Usage information for Service Owners is available for your Service Brokers from the "Service Broker" tab in your [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace).
+Metering & Usage information for Service Owners is available for your Service Brokers from the "Service Broker" tab in your [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace).
 
 You see a list of all plans of your Service Broker's services provisioned in projects per period (usually monthly). This information is available individually per OSB Services platform you published your Service Broker to. Click the "Metering & Usage" Button of the according Service Broker to see the Metering & Usage data. You can filter by several criteria like period or service name.
 

@@ -7,7 +7,7 @@ meshStack enables self-service onboarding for your internal customers. Operators
 
 ## Workspace Registration
 
-Multiple options are available to control how [meshWorkspaces](./meshcloud.workspace.md) can sign up to meshStack in
+Multiple options are available to control how [meshWorkspaces](meshcloud.workspace.md) can sign up to meshStack in
 self-service. meshStack can be configured to suit your organization's unique demands for sign up.
 
 <!--snippet:mesh.panel.environment.mesh.registration-->
@@ -51,7 +51,7 @@ Additional remarks and configuration links:
 
 ### Default Quotas
 
-meshStack assigns a default quota to newly registered [meshWorkspaces](./meshcloud.workspace.md) (see section above). Platform engineers can configure this default quota via `meshfed.web.customer.defaultQuota`:
+meshStack assigns a default quota to newly registered [meshWorkspaces](meshcloud.workspace.md) (see section above). Platform engineers can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
 ```dhall
 { {- the number of allowed meshProjects per meshWorkspace -}
@@ -59,7 +59,7 @@ meshStack assigns a default quota to newly registered [meshWorkspaces](./meshclo
 }
 ```
 
-The default only applies to newly registered [meshWorkspaces](./meshcloud.workspace.md). [meshPartners](./administration.index.md) can change the individual quotas for managed meshWorkspaces at any time using the [administration area](administration.workspaces.md#workspace-quota-management).
+The default only applies to newly registered [meshWorkspaces](meshcloud.workspace.md). [meshPartners](administration.index.md) can change the individual quotas for managed meshWorkspaces at any time using the [administration area](administration.workspaces.md#workspace-quota-management).
 
 
 ## Workspace User Invitations

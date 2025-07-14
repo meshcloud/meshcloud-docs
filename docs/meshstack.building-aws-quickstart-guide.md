@@ -12,7 +12,7 @@ quickly set up your first meshStack building block and deploy AWS resources usin
 
 By the end of this guide, you will have achieved:
 
-1. Creating a [building block definition](./administration.building-blocks.md) that deploys an AWS S3 Bucket using Terraform.
+1. Creating a [building block definition](administration.building-blocks.md) that deploys an AWS S3 Bucket using Terraform.
 2. Deployed & tested the building block.
 3. Publishing the building block on the marketplace.
 
@@ -23,7 +23,7 @@ Before starting, ensure you have the following:
 - An AWS account with a service user that has permission to manage S3 buckets.
   - Tip: have a look at our [Terraform code](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/backplane) for defining a service user to learn more.
 - Terraform code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/buildingblock) to get started.
-- Access to a meshStack workspace that has the [Platform Builder enabled](./marketplace.platform-builder.md).  
+- Access to a meshStack workspace that has the [Platform Builder enabled](marketplace.platform-builder.md).  
   If you don’t see the Platform Builder, go to Settings > General in your workspace and enable it.
 
 ## Creating Definition
@@ -52,7 +52,7 @@ Before starting, ensure you have the following:
 
    Logo: You can copy the logo from below or use your own.
 
-   ![Simple Storage Service.png](./assets/s3_logo.png)
+   ![Simple Storage Service.png](assets/s3_logo.png)
 
 5. **Skip over other settings**
 
@@ -73,7 +73,7 @@ Before starting, ensure you have the following:
    > This is an open-source, friendlier alternative of Terraform.
 
    - Enable the option “Use meshStack’s Http Backend” if using our template.
-     Learn more about how this meshStack backend works [here](./meshstack.building-blocks.meshStack-http-backend.md).
+     Learn more about how this meshStack backend works [here](meshstack.building-blocks.meshStack-http-backend.md).
    - Enter a git repository URL. You can either enter your own or use our template, for which the git repository URL
      is `https://github.com/meshcloud/meshstack-hub.git`
        - The AWS Bucket Terraform code is under folder `modules/aws/s3_bucket/buildingblock`.
@@ -95,7 +95,7 @@ Before starting, ensure you have the following:
 
    You will land on the “Dependencies” page.
 
-   > meshStack can work with [dependencies between building blocks](./administration.building-blocks.md#dependencies).
+   > meshStack can work with [dependencies between building blocks](administration.building-blocks.md#dependencies).
    > We will skip this in this quickstart guide.
 
    Click “Next” again, and you should see a modal pop-up with imported inputs, authentication, and outputs.
