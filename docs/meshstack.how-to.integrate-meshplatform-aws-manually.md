@@ -149,7 +149,7 @@ This `MeshfedServiceRole` should be created in the management account with the f
 }
 ```
 
-In order to enable meshStack to close AWS accounts as part of [tenant deletion](./administration.delete-tenants.md), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
+In order to enable meshStack to close AWS accounts as part of [tenant deletion](administration.delete-tenants.md), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
 
 ```json
 {
@@ -349,7 +349,7 @@ The following configuration options are available in the AWS [Platform Connectio
 
 > In order to enroll created accounts with AWS Control Tower, **a Landing Zone must be configured**. The `Target Organization Unit Id` from the Landing Zone
 > configuration must belong to a OU that is already enrolled with AWS Control Tower.
-> Refer to [Landing Zone Configuration](./meshstack.aws.landing-zones.md#target-organization-unit-id) for more information.
+> Refer to [Landing Zone Configuration](meshstack.aws.landing-zones.md#target-organization-unit-id) for more information.
 
 The following prerequisites must be fulfilled for the enrollment to work:
 
@@ -502,7 +502,7 @@ graph LR;
 For the purpose of metering, meshStack requires a user created in the `meshcloud` AWS account (same process as [here](#set-up-aws-account-1-meshcloud)).
 A role  should be created in the AWS `management account` which has the following policies attached (This role will be referred to as `MeteringRole` from now on).
 
-1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshWorkspaces buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+1. **MeshCostExplorerServiceRole's Access Policy**: This policy allows the Metering IAM user to call the AWS Cost Explorer API to read data required for metering. Note that Savings Plan and Reserved Instance related permissions are needed only if you have specific meshWorkspaces buying those directly, and you need to implement a cash-flow based Chargeback process for those. See [Reserved Reserved Instances & Savings Plans Guide](meshstack.aws.reserved-instance-guide.md) for more details.
 2. **CostExplorerUser's Assume Role Policy**: This policy allows CostExplorerUser IAM user to assume the IAM Role `MeshCostExplorerServiceRole`
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -559,7 +559,7 @@ A role  should be created in the AWS `management account` which has the followin
 This section applies only if your application teams (represented by meshWorkspaces) pay you (the Cloud Foundation team), upfront to purchase Reserved Instances
 and Savings Plans directly on their AWS accounts, which give them priority for consuming the RI or SP.
 If this is the case, you can enable `reservedInstanceFairChargeback` and `savingsPlanFairChargeback` feature
-flags to achieve the following. See [Reserved Reserved Instances & Savings Plans Guide](./meshstack.aws.reserved-instance-guide.md) for more details.
+flags to achieve the following. See [Reserved Reserved Instances & Savings Plans Guide](meshstack.aws.reserved-instance-guide.md) for more details.
 
 The upfront payments will be shown as line items in the tenant usage report for the month on which the Reserved Instance or Savings Plan starts.
 

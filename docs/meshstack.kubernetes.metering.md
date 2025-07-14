@@ -11,7 +11,7 @@ Metering is based on periodically sampling the state of Kubernetes resources fro
 
 ## Prerequisites
 
-- The "meshfed-metering" service account must be configured as described [here](./meshstack.kubernetes.index.md#metering)
+- The "meshfed-metering" service account must be configured as described [here](meshstack.kubernetes.index.md#metering)
 - CPU and memory limits have to be defined for all containers, as metering is currently based on these limits
 - Kubernetes APIs are accessible by meshStack metering collector components
 

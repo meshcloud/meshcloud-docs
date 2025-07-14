@@ -39,7 +39,7 @@ const sidebars: SidebarsConfig = {
       label: 'Marketplace',
       items: [
         'marketplace.index',
-        'marketplace.service-management-area',
+        'marketplace.platform-builder',
         'marketplace.service-instances',
         'marketplace.service-brokers-vs-building-blocks',
       ],
@@ -54,6 +54,7 @@ const sidebars: SidebarsConfig = {
         'meshstack.how-to.onboard-team-to-project',
         'meshstack.how-to.change-workspace-owner',
         'meshstack.how-to.add-platformservice',
+        'meshstack.how-to.copilot'
       ],
     },
     {
@@ -184,8 +185,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'GitHub',
       items: [
-        'meshstack.github.pipeline-automation',
-        'meshstack.github.repository-provisioning',
+        'meshstack.github.pipeline-automation'
       ],
     },
     {

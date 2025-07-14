@@ -3,13 +3,13 @@ id: meshstack.openshift.landing-zones
 title: Landing Zones
 ---
 
-By defining a Landing Zone for OpenShift certain configurations can be enforced during [replication](./meshcloud.tenant.md).
+By defining a Landing Zone for OpenShift certain configurations can be enforced during [replication](meshcloud.tenant.md).
 
 ## Resource Quota
 
 With OpenShift [ResourceQuotas](https://docs.openshift.com/container-platform/3.11/dev_guide/compute_resources.html) the number of resources inside a namespace (meshProject) can be limited.
 
-These quotas can be defined on an OpenShift Landing Zone via the [Quota Management](./administration.landing-zones.md#defining-quotas).
+These quotas can be defined on an OpenShift Landing Zone via the [Quota Management](administration.landing-zones.md#defining-quotas).
 
 ## Templates
 

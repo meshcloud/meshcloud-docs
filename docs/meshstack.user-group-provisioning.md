@@ -17,7 +17,7 @@ your users exclusively via SCIM, you need to enable this setting in the Admin ar
 assignments. To enable SCIM, go to the Settings page in the Admin area, and in the 'Manage' tab, turn on the 'SCIM only user management' button.
 By default, this button is turned off, allowing users and groups to be created through other means.
 
-<img src="assets/scim-user-management.png" alt="SCIM only user management">
+![SCIM User Management](assets/scim-user-management.png)
 
 ## Provisioning with SCIM
 
@@ -27,7 +27,7 @@ group by a unique attribute: for users it selects the `userName`, for groups it 
 To support a wider range of userName formats, meshStack will look up users by their username and uses the email
 as a fallback.
 
-**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via <support@meshcloud.io>.
+**Attention** Each SCIM client handles requests a bit differently. The way the scope of the synchronization is specified plays a huge role when it comes to load and performance. Because of this we specify the officially supported amount of groups and users for each client for now. For the AAD SCIM client we support the synchronization of an unlimited amount of groups with a maximum of 250 users each at the moment. If you want to sync more users please reach out to us via [support@meshcloud.io](mailto:support@meshcloud.io).
 
 ### Example
 

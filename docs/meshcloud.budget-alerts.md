@@ -11,7 +11,7 @@ This is very helpful to make users aware of any unexpected expenditure compared 
 
 In the below screenshot you can see an example of a budget alert that was received by a user.
 
-![Budget Alert Example](./assets/budget_alert_example.png)
+![Budget Alert Example](assets/budget_alert_example.png)
 
 It contains the necessary information for the user to be aware of where the problem lies, and how severe it is.
 

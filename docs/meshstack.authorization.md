@@ -109,10 +109,7 @@ In case you are required to implement a 4-eye-principle for access requests for 
 
 If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to workspace managers who then can accept or decline such a request.
 
-<figure>
-  <img src="assets/authorization.additional-role-info.png" style="width: 50%;" alt="Additional Information Role Request Popup">
-  <figcaption>Popup requesting additional information for a project role request</figcaption>
-</figure>
+![Popup requesting additional information for a project role request](assets/authorization.additional-role-info.png)
 
 New project role requests must be approved before the binding is created. The workspace manager making the role request registers an implict approval of the request. Each workspace manager can only reqister a single approval for an access request. This ensures that a _different_ workspace manager must register the 2nd approval before the binding is created.
 
@@ -135,6 +132,6 @@ do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 
-meshStack [replicates](./meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a platform engineer on the platform or landing zone level.
+meshStack [replicates](meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a platform engineer on the platform or landing zone level.
 
 > Please consult the documentation for the different cloud platforms for more details on the supported authorization mechanisms and their configuration.

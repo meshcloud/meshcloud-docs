@@ -3,9 +3,9 @@ id: meshstack.azure.landing-zones
 title: Landing Zones
 ---
 
-In Azure, a [Landing Zone](./meshcloud.landing-zones.md) is defined via a Management Group the Subscription for the project will be assigned to. Policies can be applied to these Management Groups. Optionally a Blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the Subscription and additional specific policies can be defined. A Blueprint can be configured to decline users to change or delete the resources and policies created by the Blueprint.
+In Azure, a [Landing Zone](meshcloud.landing-zones.md) is defined via a Management Group the Subscription for the project will be assigned to. Policies can be applied to these Management Groups. Optionally a Blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the Subscription and additional specific policies can be defined. A Blueprint can be configured to decline users to change or delete the resources and policies created by the Blueprint.
 
-Platform engineers can define and configure [Landing Zone](./meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
+Platform engineers can define and configure [Landing Zone](meshcloud.landing-zones.md) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
 
 The next section describe the individual building blocks that platform engineers can configure in an Azure Landing Zone.
 
@@ -15,9 +15,9 @@ The following description targets the regular Azure Subscription based integrati
 
 ### Management Group Assignment
 
-All newly created [meshProjects](./meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
+All newly created [meshProjects](meshcloud.project.md) get their corresponding Subscription assigned to this [Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
 
-> Management Groups used in different Azure [Landing Zones](./meshcloud.landing-zones.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
+> Management Groups used in different Azure [Landing Zones](meshcloud.landing-zones.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
 
 ### Blueprint Assignment
 
@@ -43,7 +43,7 @@ The following parameter can be used in the Blueprint:
 | workspaceIdentifier | Workspace Identifier                                                                       |
 | projectIdentifier  | The project identifier                                                                    |
 | SubscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
-| tagCostCenter      | Example for a  [metadata tags](./meshstack.metadata-tags.md) named `costCenter`           |
+| tagCostCenter      | Example for a  [metadata tags](meshstack.metadata-tags.md) named `costCenter`           |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or workspace tags can also be used in the Blueprints.
 The following modifications are applied to metadata tag keys by meshstack before making them available as parameters:
@@ -52,7 +52,7 @@ The following modifications are applied to metadata tag keys by meshstack before
 - First letter of metadata tag key is capitalized
 
 In the example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
-See [metadata tags](./meshstack.metadata-tags.md) for more information.
+See [metadata tags](meshstack.metadata-tags.md) for more information.
 
 > If you are planning on converting any of the Blueprint parameters into Azure tags, please be aware of the limits and requirements
 > that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
@@ -66,16 +66,13 @@ See [metadata tags](./meshstack.metadata-tags.md) for more information.
 
 When parameters are marked as static in the Azure Panel, they can not be replaced or overwritten during replication. Usually default parameter should not be marked as static in the Azure Blueprint panel because doing so prevents their replacement by meshStack specific variables.
 
-<figure>
-  <img src="assets/azure-static-param.png" alt="Static Parameter usage in Azure Blueprint Panel">
-  <figcaption>Static Parameter usage in Azure Blueprint Panel</figcaption>
-</figure>
+![Static Parameter usage in Azure Blueprint Panel](assets/azure-static-param.png)
 
 #### Max. Auto Upgrade Blueprint Version
 
 Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints, platform engineers can configure the `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
-- Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](./meshcloud.tenant.md)
+- Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](meshcloud.tenant.md)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
 
 #### Managed Identity
@@ -83,7 +80,7 @@ Blueprints are versioned in Azure and can be managed via the Azure Portal. To av
 ##### Using System Assigned Managed Identity (SAMI)
 
 In order to assign [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview), the meshStack replicator needs to be configured with the service principal id of the `Azure Blueprints` app provided by Microsoft.
-Please refer to the [Azure Configuration Reference](./meshstack.azure.index.md#configuration-reference) for details.
+Please refer to the [Azure Configuration Reference](meshstack.azure.index.md#configuration-reference) for details.
 
 ##### Use User Assigned Managed Identity (UAMI)
 
@@ -127,7 +124,7 @@ These options are shared between both Azure Subscription & Azure Resource Group 
 
 ### meshRole to Platform Role Mapping
 
-The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the [AAD group name generation](./meshstack.azure.index.md#aad-group-name), this setting is used or not.
+The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the [AAD group name generation](meshstack.azure.index.md#aad-group-name), this setting is used or not.
 
 The Azure Role Definition is the RBAC ID of the Azure role you want to use. You can either create your own roles or use the [predefined global IDs](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) from Azure.
 
@@ -139,7 +136,7 @@ For more information on this topic please refer to the [Azure documentation](htt
 
 Platform engineers can configure an Azure Function invocation to trigger a small piece of code in the cloud whenever meshStack's replicator reconciliates the Landing Zone definition against the Subscription. Currently this function is invoked via a `POST` request and receives parameters from meshStack via HTTP header values.
 
-Please review the [HTTP header interface documentation](./meshstack.metadata-tags.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
+Please review the [HTTP header interface documentation](meshstack.metadata-tags.md#http-header-interface) for metadata meshStack makes available to Azure Functions.
 
 In addition to the headers referenced above, meshStack provides the following Azure-specific HTTP headers:
 

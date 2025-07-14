@@ -31,7 +31,7 @@ The OSB Services Platform provides support for global and local services. Servic
 
 ## OSB API Profile
 
-meshcloud implements an extended [OSB API Profile](./meshstack.meshmarketplace.profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
+meshcloud implements an extended [OSB API Profile](meshstack.meshmarketplace.profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
 
 ## Authentication & Authorization
 
@@ -43,7 +43,7 @@ All communication between the OSB Services platform and Service Brokers is secur
 
 OSB Services platform supports two different options for authenticating and authorizing users.
 
-- (Enterprise Plans only) use an OIDC client in meshIdB as described in the [OSB dashboard tutorial](./meshstack.meshmarketplace.dashboard-tutorial.md)
+- (Enterprise Plans only) use an OIDC client in meshIdB as described in the [OSB dashboard tutorial](meshstack.meshmarketplace.dashboard-tutorial.md)
 - replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
 
 If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack
@@ -117,7 +117,7 @@ in    λ(Secret : Type)
       }
 ```
 
-Role mappings must be configured for all [meshProject roles](./meshcloud.project.md#project-roles). Note that in
+Role mappings must be configured for all [meshProject roles](meshcloud.project.md#project-roles). Note that in
 contrast to the [Azure replicator](meshstack.azure.index.md) replication for the OSB Services platform will not create any
 Azure-role assignments.
 

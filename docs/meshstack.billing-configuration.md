@@ -93,11 +93,11 @@ let example2
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](./meshcloud.payment-methods.md).
+> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](meshcloud.payment-methods.md).
 
 ## Setting Internal Prices
 
-In meshStack, you have the flexibility to define prices for [Platform Services](./marketplace.index.md) in addition to usage costs from providers. Configuring your internal prices allows you to account for various expenses such as licensing costs or the effort invested in maintaining and enhancing Platform Services. These internal prices will be displayed on the service details page within the Marketplace.
+In meshStack, you have the flexibility to define prices for [Platform Services](marketplace.index.md) in addition to usage costs from providers. Configuring your internal prices allows you to account for various expenses such as licensing costs or the effort invested in maintaining and enhancing Platform Services. These internal prices will be displayed on the service details page within the Marketplace.
 
 ![Marketplace price](assets/marketplace/marketplace-costs.png)
 
