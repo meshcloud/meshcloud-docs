@@ -50,12 +50,3 @@ For more details, see the [Tenant Concept](new-concept-tenant).
 - **Use Tags Effectively**: Leverage tags for cost allocation, reporting, and automation.
 - **Document Security Contacts**: Ensure security contact information is up to date for each tenant.
 
----
-
-## Related Resources
-- [Tenant Concept](new-concept-tenant)
-- [How to Implement a Tenant Deletion Concept](new-guide-how-to-implement-tenant-deletion)
-- [How to Reflect Ownership Changes in meshStack](new-guide-how-to-reflect-ownership-changes)
-- [How to Provide Security Contact Information in Tenants](new-guide-how-to-provide-security-contact)
-- [How to Manage a Project](new-guide-how-to-manage-a-project)
-- [Workspace Users and Permissions](new-concept-users-and-groups#workspace-users-and-permissions)

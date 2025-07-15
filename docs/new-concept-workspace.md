@@ -25,8 +25,7 @@ Below is a visual example of how workspaces are structured in meshStack:
 <!--
 ## Related Resources
 
-- [How to Manage Workspaces](new-guide-how-to-manage-a-workspace)
-- [How to Limit Workspace Resources](new-guide-how-to-limit-workspace-resources)
-- [meshStack Areas](new-concept-meshstackareas)
-- [Workspace Users and Permissions](new-concept-users-and-groups#workspace-users-and-permissions)
--->
+- [How to Manage Workspaces](./new-guide-how-to-manage-a-workspace.md)
+- [How to Limit Workspace Resources](./new-guide-how-to-limit-workspace-resources.md)
+- [meshStack Areas](./new-concept-meshstackareas.md)
+- [Workspace Users and Permissions](./new-concept-users-and-groups.md#workspace-users-and-permissions)

@@ -32,12 +32,3 @@ Additionally, it is possible to provide a euro amount to a payment method for bu
 Below is an example diagram illustrating financial reports:
 
 ![Cost Management and Financial Reports Diagram](./assets/new_concept/concept_financialreports.png)
-
-<!--
-## Related Resources
-- [Payment Methods Concept](new-concept-payment-methods)
-- [meshStack Chargeback Statements Documentation](meshcloud.chargeback-v2)
-- [meshStack Tenant Usage Reports Documentation](meshcloud.cost-management)
-- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
-- [How to Manage a Project](new-guide-how-to-manage-a-project)
--->

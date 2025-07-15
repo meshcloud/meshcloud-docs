@@ -64,6 +64,7 @@ OSB Services platform supports two different options for authenticating and auth
 - replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
 
 If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack
+<<<<<<< HEAD
 using the [meshObject API](pathname:///api/).
 
 <!--
@@ -71,4 +72,13 @@ using the [meshObject API](pathname:///api/).
 - [meshStack Marketplace Documentation](marketplace.index)
 - [Building Block Concept](new-concept-buildingblock)
 - [meshStack Service Broker Documentation](administration.service-brokers)
+=======
+using the [meshObject API](/api/).
+
+<!--
+## Related Resources
+- [meshStack Marketplace Documentation](../marketplace.index.md)
+- [Building Block Concept](./new-concept-buildingblock.md)
+- [meshStack Service Broker Documentation](../administration.service-brokers.md)
+>>>>>>> c3f7ac3f (maintenance-message)
 -->
