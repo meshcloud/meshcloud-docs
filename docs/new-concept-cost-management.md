@@ -33,11 +33,11 @@ Below is an example diagram illustrating financial reports:
 
 ![Cost Management and Financial Reports Diagram](./assets/new_concept/concept_financialreports.png)
 
----
-
+<!--
 ## Related Resources
 - [Payment Methods Concept](./new-concept-payment-methods.md)
 - [meshStack Chargeback Statements Documentation](../meshcloud.chargeback-v2.md)
 - [meshStack Tenant Usage Reports Documentation](../meshcloud.project-metering.md)
 - [How to Manage a Workspace](./new-guide-how-to-manage-a-workspace.md)
 - [How to Manage a Project](./new-guide-how-to-manage-a-project.md)
+-->

@@ -13,10 +13,10 @@ Below is an example diagram illustrating the marketplace concept:
 
 ![Marketplace Concept Diagram](./assets/new_concept/concept_marketplace.png)
 
----
-
+<!--
 ## Related Resources
 - [Building Block Concept](./new-concept-buildingblock.md)
 - [How to Manage a Building Block Definition](./new-guide-how-to-manage-a-building-block-definition.md)
 - [meshStack Hub](./new-concept-meshstack-hub.md)
 - [meshStack Marketplace Documentation](../marketplace.index.md)
+-->

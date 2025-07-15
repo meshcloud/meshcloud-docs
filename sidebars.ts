@@ -246,6 +246,7 @@ const sidebars: SidebarsConfig = {
   ],
 
   'new-docs': [
+    /**
     {
       type: 'category',
       label: 'Getting Started',
@@ -256,6 +257,11 @@ const sidebars: SidebarsConfig = {
         'new-getting-started-platform-engineer',
         'new-getting-started-application-team',
       ],
+    },
+     */
+    {
+      type: 'doc',
+      id: 'new-docs.index',
     },
     {
       type: 'category',
@@ -278,6 +284,7 @@ const sidebars: SidebarsConfig = {
         'new-concept-osb-services',
       ],
     },
+    /**
     {
       type: 'category',
       label: 'Guides',
@@ -300,6 +307,7 @@ const sidebars: SidebarsConfig = {
       label: 'Configuration and Security',
       items: ['new-configurationandsecurity-index'],
     }
+    */
   ]
 };
 

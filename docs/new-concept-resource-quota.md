@@ -22,6 +22,8 @@ Below is an example diagram illustrating resource quota management:
 
 ---
 
+<!--
 ## Related Resources
 - [Tenant Concept](./new-concept-tenant.md)
 - [How to Request More Tenant Quota](./new-guide-how-to-request-more-tenant-quota.md)
+-->
