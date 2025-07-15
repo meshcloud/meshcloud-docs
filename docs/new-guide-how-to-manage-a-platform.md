@@ -48,4 +48,4 @@ A platform is a connected environment (e.g., Kubernetes, AWS, Azure, GCP, OpenSt
 ## Related Resources
 - [Platform Concept](./new-concept-platform.md)
 - [How to Manage a Tenant](./new-guide-how-to-manage-a-tenant.md)
-- [How to Manage a Workspace](./new-guide-how-manage-a-workspace.md)
+- [How to Manage a Workspace](./new-guide-how-to-manage-a-workspace.md)

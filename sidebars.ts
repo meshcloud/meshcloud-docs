@@ -268,7 +268,6 @@ const sidebars: SidebarsConfig = {
         'new-concept-platform',
         'new-concept-landingzone',
         'new-concept-tenant',
-        'new-concept-tenant-quota',
         'new-concept-buildingblock',
         'new-concept-meshstack-hub',
         'new-concept-tags',
@@ -281,19 +280,9 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Integrations',
-      items: [
-        'new-integration-index',
-        'new-integration-aws',
-        'new-integration-azure',
-        'new-integration-gcp',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Guides',
       items: [
-        'new-guide-how-manage-a-workspace',
+        'new-guide-how-to-manage-a-workspace',
         'new-guide-how-to-limit-workspace-resources',
         'new-guide-how-to-protect-admin-roles',
         'new-guide-how-to-user-management',

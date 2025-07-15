@@ -15,7 +15,7 @@ Workspace creation can be configured in two ways:
 - **Self-service**: Users can create workspaces directly through meshPanel in self-service mode.
 - **API-based**: If you use an ITSM solution such as ServiceNow, you can initiate workspace creation through an API, enabling integration with existing approval workflows. This approach allows the creation process to be externalized and automated according to your organization's requirements.
 
-Each workspace includes a [Workspace Manager](./new-concept-meshstack-areas.md#workspace-manager) and [Platform Builder](./new-concept-meshstack-areas.md#platform-builder).
+Each workspace includes a [Workspace Manager](./new-concept-meshstackareas.md#workspace-manager) and [Platform Builder](./new-concept-meshstackareas.md#platform-builder).
 
 ---
 Below is a visual example of how workspaces are structured in meshStack:
@@ -24,7 +24,7 @@ Below is a visual example of how workspaces are structured in meshStack:
 
 ## Related Resources
 
-- [How to Manage Workspaces](./new-guide-how-manage-a-workspace.md)
+- [How to Manage Workspaces](./new-guide-how-to-manage-a-workspace.md)
 - [How to Limit Workspace Resources](./new-guide-how-to-limit-workspace-resources.md)
-- [meshStack Areas](./new-concept-meshstack-areas.md)
+- [meshStack Areas](./new-concept-meshstackareas.md)
 - [Workspace Users and Permissions](./new-concept-users-and-groups.md#workspace-users-and-permissions)
