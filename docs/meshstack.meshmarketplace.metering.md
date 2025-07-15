@@ -97,7 +97,7 @@ Service instances are charged for each started hour using the normalized hourly 
 
 #### Quantity-based Units
 
-Direct support for charging based on quantity units (e.g., "GB of messages stored") is not available. However, you can report custom cost data using the [meshResourceUsageReports API](https://docs.meshcloud.io/billing-api/index.html#_put_meshresourceusagereports) to meshStack.
+Direct support for charging based on quantity units (e.g., "GB of messages stored") is not available. However, you can report custom cost data using the [meshResourceUsageReports API](pathname:///billing-api/index.html#_put_meshresourceusagereports) to meshStack.
 
 #### Setup Fees
 

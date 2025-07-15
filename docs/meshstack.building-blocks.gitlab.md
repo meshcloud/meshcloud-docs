@@ -36,6 +36,6 @@ A few important details to note during this process:
 To ensure that the building block status is updated correctly in meshStack, you need to modify your GitLab pipeline to
 include steps that call back the meshStack API to update the status. We recommend using our
 [GitLab CI/CD Components](https://gitlab.com/meshcloud/meshstack-integration) for this. Alternatively, you
-can also completely build this yourself using the [meshBuildingBlockRun API](https://docs.meshcloud.io/api/index.html#mesh_buildingblockrun)
+can also completely build this yourself using the [meshBuildingBlockRun API](pathname:///api/index.html#mesh_buildingblockrun)
 
 <!-- TODO HENRY TEMPLATES -->
