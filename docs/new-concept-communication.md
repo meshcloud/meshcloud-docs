@@ -1,5 +1,5 @@
 ---
-id: new-concept-communications
+id: new-concept-communication
 title: Communications
 ---
 
@@ -11,6 +11,20 @@ Communications in meshStack provide a structured way to manage and deliver messa
 ## Communication Center
 
 The communication center is the central place for creating and managing communications to application teams within meshStack. It allows administrators and platform engineers to get in touch with application teams at scale and track progress.
+
+### Module Capability Comparison
+
+| Feature | Developer Portal "Light Version" | Developer Engagement "Full Version"|
+|---|:---:|:---:|
+| Communication Type Notification | ☑️ | ☑️ |
+| Communication Type "Action Required" with due date and reminder | ⬜ | ☑️ |
+| Communications Targeting a Workspace by name or Platform | ☑️ | ☑️ |
+| Communications Targeting Workspaces by tag, Tenants and Building Blocks | ⬜ | ☑️ |
+| Create communications via meshObject API | ⬜ | ☑️ |
+| Message of the Day | ☑️ | ☑️ |
+| Email Notifications about new Communications | ☑️ | ☑️ |
+| Communication Section in Platform Builder | ☑️ (limited) | ☑️ |
+| Communication Center in Admin Area | ☑️ | ☑️ |
 
 ## Communication Types
 
