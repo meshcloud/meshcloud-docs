@@ -31,7 +31,4 @@ Building blocks for a landing zone can be configured as:
 - **required**: Building blocks that must be included by the application team when a new tenant is created. Use these for security critical configurations, such as network security groups.
 - **optional**: Building blocks that are recommended to application teams when they create a new tenant. Use these for configurations that are not mandatory, such as monitoring or logging.
 
-## Platform Specific Landing Zone Configuration
-
-
 ## Related Resources
