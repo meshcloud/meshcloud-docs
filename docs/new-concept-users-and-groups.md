@@ -13,7 +13,7 @@ A user is an individual account in meshStack. Users can be assigned to workspace
 
 API Users can access several APIs provided by meshStack. You can provide your API Users with access to certain resources for a new integration.
 
-> Please also see the documentation on [API keys](/api/).
+> Please also see the documentation on [API keys](pathname:///api/).
 
 ### Groups
 
@@ -28,7 +28,7 @@ Bindings can be managed via the meshStack UI or API. When a user or group is bou
 ### Admin Groups
 
 To avoid assigning multiple users individually, you can create Admin Groups. These groups can be assigned to roles in the same way as individual users.
-You can view Admin Groups within your Administration Area. Currently, the creation of Admin Groups is only possible via the [meshStack API](/api/), namely [meshWorkspaceUserGroups API endpoint](/api/index.html#mesh_workspaceusergroup).
+You can view Admin Groups within your Administration Area. Currently, the creation of Admin Groups is only possible via the [meshStack API](pathname:///api/), namely [meshWorkspaceUserGroups API endpoint](/api/index.html#mesh_workspaceusergroup).
 
 ### Workspace User Groups
 

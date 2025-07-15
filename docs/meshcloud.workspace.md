@@ -51,7 +51,7 @@ If 4 eyes-principle is active, the user or group will not be assigned directly t
 For not having to assign multiple users individually to your projects, you can also group them in a user group. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
 You can view workspace user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
-Currently, creating a group is only supported via the [meshStack API](/api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
+Currently, creating a group is only supported via the [meshStack API](pathname:///api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
 ![workspace-identifier](assets/workspace-identifier.png)
 
 ### Creating Groups in meshStack
