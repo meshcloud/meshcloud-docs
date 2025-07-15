@@ -29,7 +29,13 @@ A payment method represents a way to pay for cloud usage, such as a cost center,
 <!--
 ## Related Resources
 
+<<<<<<< HEAD
 - [meshStack Payment Methods Documentation](meshcloud.payment-methods)
 - [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
 - [How to Manage a Project](new-guide-how-to-manage-a-project)
+=======
+- [meshStack Payment Methods Documentation](../meshcloud.payment-methods.md)
+- [How to Manage a Workspace](./new-guide-how-to-manage-a-workspace.md)
+- [How to Manage a Project](./new-guide-how-to-manage-a-project.md)
+>>>>>>> c3f7ac3f (maintenance-message)
 -->
