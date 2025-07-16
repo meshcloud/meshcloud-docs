@@ -23,7 +23,7 @@ reflect whatever is available in your case.
 
 To work with meshStack, the following concepts are of importance:
 
-- [Workspace](meshcloud.workspace.md): The workspace is the highest level that you will work with. In here, you will invite
+- [Workspace](./meshcloud.workspace.md): The workspace is the highest level that you will work with. In here, you will invite
   your entire team of managers, developers and more. In the workspace you will create one or more projects.
 - [Project](meshcloud.project.md): The project is a cloud-agnostic concept which usually maps to an environment of an application
   that you and your team are developing. The project will have a payment method assigned that acts as the budget. On the project

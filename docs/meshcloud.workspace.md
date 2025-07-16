@@ -4,7 +4,7 @@ title: meshWorkspace
 ---
 
 A meshWorkspace usually represents a product team or department in your organization. Self-service within a meshWorkspace
-allows you to invite and manage team members, create [meshProjects](meshcloud.project.md) and maintain organizational metadata like payment methods.
+allows you to invite and manage team members, create [meshProjects](meshcloud.project) and maintain organizational metadata like payment methods.
 
 ## Workspace Creation
 
