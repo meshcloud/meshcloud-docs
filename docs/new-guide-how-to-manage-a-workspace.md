@@ -3,38 +3,117 @@ id: new-guide-how-to-manage-a-workspace
 title: How to Manage A Workspace
 ---
 
-## 2. User Management
+:::note What is this guide about?
+Here are short guides on how to handle the most common tasks in a workspace.
+:::
 
-- **Add or invite users**: Go to the workspace's user management area and invite users by email or assign existing users to the workspace.
-- **Assign roles**: Assign roles such as Workspace Owner, Workspace Manager, or Workspace User to control permissions.
-- **Manage groups**: Use groups to simplify access management for teams.
-- **Remove users**: Remove users or change their roles as needed to maintain security and compliance.
+## Creating a Workspace
 
-## 3. Tags
+### Creating a Workspace as an Application Team
 
-- **Add tags**: Use tags to add business context, such as cost center, environment, or owner, to your workspace.
-- **Mandatory tags**: Some tags may be required by your organization for compliance or reporting.
-- **Tag replication**: Tags can be automatically replicated to projects and platform resources for consistent metadata.
+**Prerequisites:**
 
-## 4. Environments (Projects)
+- Have a user account that can log into meshStack.
+- meshStack is configured to allow workspace creation for application teams via the UI.
 
-- **Create projects**: Organize your workspace into projects for different environments (e.g., development, testing, production).
-- **Assign users to projects**: Control access to each environment by assigning users or groups to specific projects.
-- **Manage project settings**: Configure project-specific settings, such as quotas, tags, and platform connections.
+1. Start the wizard by selecting "Create Workspace" in the workspace drop-down in the top navigation bar.
+2. Fill in the required details such as name, ID, and tag information.
+3. Onboard the initial team members.
+4. Review the workspace details and confirm creation.
 
-## 5. Financials
+### Creating a Workspace as an Administrator
 
-- **View costs**: Access cost and usage reports for your workspace and its projects.
-- **Budgeting**: Set budgets or alerts to monitor spending and avoid overruns.
-- **Cost allocation**: Use tags and project structure to allocate costs to teams, applications, or business units.
+**Prerequisites:**
 
-## 6. Additional Management Tasks
+- Have admin access to meshStack with organization admin permissions.
 
-- **Connect platforms**: Link cloud platforms (AWS, Azure, GCP, etc.) to your workspace for resource provisioning.
-- **Configure landing zones**: Set up landing zones for secure and compliant cloud environments.
-- **Workspace settings**: Update workspace details, such as name, description, and contact information.
-- **Audit and compliance**: Review activity logs and ensure your workspace meets organizational policies.
+1. Navigate to the admin area and select "Workspaces."
+2. Click on "Create Workspace."
+3. Fill in the required details such as name, ID, and tag information.
+4. Assign initial users and roles.
+5. Review the workspace details and confirm creation.
 
-## Summary
+## Manage Workspace Tags
 
-Managing a workspace in meshStack involves organizing users, projects, and resources, applying tags for context, and monitoring financials. Use the workspace management features to keep your cloud environments secure, organized, and cost-effective.
+### Manage Workspace Tags as an Application Team
+
+**Prerequisites:**
+
+- Have access to the workspace management area.
+- Have workspace manager or owner permissions.
+
+1. Navigate to the workspace management area.
+2. Under "Settings," select "Tags."
+3. Add or edit tags as needed. Please be aware that some tags may be restricted to admin users only.
+4. Save changes to apply the tags to the workspace.
+
+### Manage Workspace Tags as an Administrator
+
+**Prerequisites:**
+
+- Have admin access to meshStack with organization admin permissions.
+
+1. Navigate to the admin area and select "Workspaces."
+2. In the drop-down for the workspace, select "Workspace Tags."
+3. Add or edit tags as needed.
+
+## Workspace User Management
+
+### User Management as an Application Team
+
+**Prerequisites:**
+
+- Have access to the workspace management area.
+- Have workspace manager or owner permissions.
+
+You can find the workspace access management in the workspace management area under "Access Management." Select "Role Bindings."
+
+- To **add users** to a workspace, follow the guide [How to Onboard Your Team to a Workspace](how-to-onboard-your-team-to-workspace.md).
+- To **remove users**, simply select their role binding and click "Remove."
+- To **set an expiration date** for a user, select a deprecation date on the user.
+- To **change a user's role**, choose a different role from the drop-down menu.
+- To **add a workspace group**, use the "meshWorkspaceUserGroup" resource in the API.
+
+### User Management as an Administrator
+
+**Prerequisites:**
+
+- Have admin access to meshStack with organization admin permissions.
+
+1. Navigate to the admin area and select "Workspaces."
+2. In the drop-down for the workspace, select "User & Groups."
+
+- To **add users** to a workspace, follow the guide [How to Onboard Your Team to a Workspace](how-to-onboard-your-team-to-workspace.md).
+- To **remove users**, simply select their role binding and click "Remove."
+- To **set an expiration date** for a user, select a deprecation date on the user.
+- To **change a user's role**, choose a different role from the drop-down menu.
+- To **add a workspace group**, use the "meshWorkspaceUserGroup" resource in the API.
+
+## Payment Methods
+
+### Manage Payment Methods as an Application Team
+
+**Prerequisites:**
+
+- Have access to the workspace management area.
+- Have workspace manager or owner permissions.
+- Have default payment method setup enabled. This means payment methods are created by admins and assigned to workspaces.
+
+1. Navigate to the workspace management area.
+2. Under "Financials," select "Payment Methods."
+3. See the status of your payment methods across projects.
+4. Access the details for tags, budget status, spend history, and forecast.
+
+### Manage Payment Methods as an Administrator
+
+**Prerequisites:**
+
+- Have admin access to meshStack with organization admin permissions.
+
+1. Navigate to the admin area and select "Workspaces."
+2. In the drop-down for the workspace, select "Create/Edit Payment Methods."
+
+- To **create a new payment method**, click "Create Payment Method" and fill in the required details.
+- To **edit an existing payment method**, select "Edit Payment Method" in the drop-down.
+- To **export payment methods**, click "Export Payment Methods" to download a CSV file with the payment method details.
+- To **delete a payment method**, select "Delete Payment Method" in the drop-down and confirm the deletion.

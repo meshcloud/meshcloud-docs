@@ -284,24 +284,24 @@ const sidebars: SidebarsConfig = {
         'new-concept-osb-services',
       ],
     },
-    /**
     {
       type: 'category',
       label: 'Guides',
+      collapsible: true,
+      collapsed: false,
       items: [
-        'new-guide-how-to-manage-a-workspace',
-        'new-guide-how-to-limit-workspace-resources',
-        'new-guide-how-to-protect-admin-roles',
-        'new-guide-how-to-user-management',
-        'new-guide-how-to-organizational-structure',
-        'new-guide-how-to-extract-data',
-        'new-guide-how-to-implement-tenant-deletion',
-        'new-guide-how-to-reflect-ownership-changes',
-        'new-guide-how-to-manage-a-tenant',
-        'new-guide-how-to-import-tenants',
-        'new-guide-how-to-request-more-tenant-quota',
+        {
+          type: 'category',
+          label: 'Core',
+          items: [
+            'new-guide-how-to-manage-a-workspace',
+            'new-guide-how-to-limit-workspace-resources',
+            'new-guide-how-to-onboard-your-team-to-workspace'
+          ],
+        }
       ],
     },
+    /**
     {
       type: 'category',
       label: 'Configuration and Security',
