@@ -619,12 +619,23 @@ Content-Length: 3461
 
 {
   "_links" : {
-    "meshserviceinstances" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
-      "templated" : true
-    },
     "meshpaymentmethods" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods{?workspaceIdentifier}",
+      "templated" : true
+    },
+    "meshtenants" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+      "templated" : true
+    },
+    "meshtagdefinitions" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
+    },
+    "meshcommunications" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications{?communicationDefinitionUuid,resolutionStatus,communicationType}",
+      "templated" : true
+    },
+    "meshcommunicationdefinitions" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions{?type}",
       "templated" : true
     },
     "meshworkspaceuserbindings" : {
@@ -635,23 +646,19 @@ Content-Length: 3461
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings{?username,workspaceRole}",
       "templated" : true
     },
+    "meshworkspaces" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces"
+    },
     "meshworkspaceusergroups" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaceusergroups{?workspaceIdentifier,username}",
       "templated" : true
     },
-    "meshworkspaces" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces"
-    },
-    "meshcommunicationdefinitions" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions{?type}",
+    "meshusers" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
       "templated" : true
     },
-    "meshcommunications" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications{?communicationDefinitionUuid,resolutionStatus,communicationType}",
-      "templated" : true
-    },
-    "meshprojects" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
+    "meshserviceinstances" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances{?workspaceIdentifier,projectIdentifier,marketplaceIdentifier,serviceIdentifier,planIdentifier}",
       "templated" : true
     },
     "meshprojectgroupbindings" : {
@@ -662,8 +669,12 @@ Content-Length: 3461
       "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier={workspaceIdentifier}&amp;projectIdentifier={projectIdentifier}",
       "templated" : true
     },
-    "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants{?workspaceIdentifier,projectIdentifier,platformIdentifier,deletionState}",
+    "meshprojects" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects{?workspaceIdentifier,paymentIdentifier}",
+      "templated" : true
+    },
+    "meshbuildingblockruns" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
       "templated" : true
     },
     "meshbuildingblockdefinitions" : {
@@ -673,17 +684,6 @@ Content-Length: 3461
     "meshbuildingblocks" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks{?workspaceIdentifier,projectIdentifier,platformIdentifier,name,definitionUuid,versionUuid,tenantUuid,targetRefKind,status,managedByWorkspaceIdentifier,managedByDefinitionUuid}",
       "templated" : true
-    },
-    "meshbuildingblockruns" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockruns?runnerNodeId={runnerNodeId}{&amp;selector}",
-      "templated" : true
-    },
-    "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers{?workspaceIdentifier,projectIdentifier,platformIdentifier,workspaceUserGroupIdentifier,projectRole,workspaceRole,email,firstName,lastName,username,euid}",
-      "templated" : true
-    },
-    "meshtagdefinitions" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtagdefinitions"
     },
     "self" : {
       "href" : "https://mesh-backend-url/api/meshobjects"
@@ -858,7 +858,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2025-07-15T09:01:18.675815643Z"
+        "createdOn" : "2025-07-16T11:05:04.780895424Z"
       },
       "spec" : {
         "displayName" : "parent block",
@@ -889,7 +889,7 @@ Content-Length: 2947
         "definitionVersion" : 1,
         "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
         "forcePurge" : false,
-        "createdOn" : "2025-07-15T09:01:18.685808422Z"
+        "createdOn" : "2025-07-16T11:05:04.792757415Z"
       },
       "spec" : {
         "displayName" : "child block",
@@ -1180,7 +1180,7 @@ Content-Length: 1334
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2025-07-15T09:01:18.685808422Z"
+    "createdOn" : "2025-07-16T11:05:04.792757415Z"
   },
   "spec" : {
     "displayName" : "child block",
@@ -1272,7 +1272,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "d0628353-cb24-4b02-a035-712190d07e5d"
+      "buildingBlockUuid": "e31f65dc-941f-4be0-baba-b7a9c078c1fd"
     }]
   }
 }</code></pre>
@@ -1301,7 +1301,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "d0628353-cb24-4b02-a035-712190d07e5d"
+      "buildingBlockUuid": "e31f65dc-941f-4be0-baba-b7a9c078c1fd"
     }]
   }
 } '</code></pre>
@@ -1429,7 +1429,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v1.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -1444,12 +1444,12 @@ Content-Length: 1253
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v1",
   "metadata" : {
-    "uuid" : "99b34afe-a6b4-44a3-a264-1aa2b6e12891",
+    "uuid" : "5337a536-832e-420a-82a1-e85a1dbf7dd1",
     "definitionUuid" : "ef6aaf87-3f8c-477c-94f4-f3cf509728ca",
     "definitionVersion" : 1,
     "tenantIdentifier" : "my-workspace.my-project.my-platform.my-location",
     "forcePurge" : false,
-    "createdOn" : "2025-07-15T09:01:19.883644555Z"
+    "createdOn" : "2025-07-16T11:05:06.057625062Z"
   },
   "spec" : {
     "displayName" : "New BuildingBlock",
@@ -1459,7 +1459,7 @@ Content-Length: 1253
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "d0628353-cb24-4b02-a035-712190d07e5d",
+      "buildingBlockUuid" : "e31f65dc-941f-4be0-baba-b7a9c078c1fd",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -1469,13 +1469,13 @@ Content-Length: 1253
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1"
     },
     "meshtenant" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1/purge"
     }
   }
 }</code></pre>
@@ -1492,7 +1492,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1500,7 +1500,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1530,7 +1530,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891/purge HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1538,7 +1538,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2140,16 +2140,16 @@ Content-Length: 3293
       "metadata" : {
         "uuid" : "68ce5455-2a4a-4a4b-a324-6a6c18cab85a",
         "ownedByWorkspace" : "my-workspace",
-        "createdOn" : "2025-07-15T09:01:21.577717024Z"
+        "createdOn" : "2025-07-16T11:05:07.796044749Z"
       },
       "spec" : {
         "buildingBlockDefinitionVersionRef" : {
-          "uuid" : "b9af99a6-e2f9-4e06-9576-77f66753eead",
+          "uuid" : "6efc6173-26e0-41b0-b7e5-56ba73292c75",
           "kind" : "meshBuildingBlockDefinitionVersion"
         },
         "targetRef" : {
           "kind" : "meshTenant",
-          "uuid" : "da481dba-9528-4e56-8508-c5a91da82bd8"
+          "uuid" : "d281e3a9-876d-410e-97d8-4c6f71fe9b34"
         },
         "displayName" : "parent block",
         "inputs" : [ ],
@@ -2177,16 +2177,16 @@ Content-Length: 3293
       "metadata" : {
         "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
         "ownedByWorkspace" : "my-workspace",
-        "createdOn" : "2025-07-15T09:01:21.583091764Z"
+        "createdOn" : "2025-07-16T11:05:07.801974659Z"
       },
       "spec" : {
         "buildingBlockDefinitionVersionRef" : {
-          "uuid" : "9f146582-d94c-4b7a-96b5-b373fee77328",
+          "uuid" : "f89f7dd9-e462-4577-9314-e4c7b6ef5794",
           "kind" : "meshBuildingBlockDefinitionVersion"
         },
         "targetRef" : {
           "kind" : "meshTenant",
-          "uuid" : "da481dba-9528-4e56-8508-c5a91da82bd8"
+          "uuid" : "d281e3a9-876d-410e-97d8-4c6f71fe9b34"
         },
         "displayName" : "child block",
         "inputs" : [ {
@@ -2494,16 +2494,16 @@ Content-Length: 1483
   "metadata" : {
     "uuid" : "5646eafe-5d56-43e5-84fe-329bb050d720",
     "ownedByWorkspace" : "my-workspace",
-    "createdOn" : "2025-07-15T09:01:21.583091764Z"
+    "createdOn" : "2025-07-16T11:05:07.801974659Z"
   },
   "spec" : {
     "buildingBlockDefinitionVersionRef" : {
-      "uuid" : "9f146582-d94c-4b7a-96b5-b373fee77328",
+      "uuid" : "f89f7dd9-e462-4577-9314-e4c7b6ef5794",
       "kind" : "meshBuildingBlockDefinitionVersion"
     },
     "targetRef" : {
       "kind" : "meshTenant",
-      "uuid" : "da481dba-9528-4e56-8508-c5a91da82bd8"
+      "uuid" : "d281e3a9-876d-410e-97d8-4c6f71fe9b34"
     },
     "displayName" : "child block",
     "inputs" : [ {
@@ -2584,11 +2584,11 @@ Host: mesh-backend-url
   "spec" : {
     "buildingBlockDefinitionVersionRef": {
       "kind": "meshBuildingBlockDefinitionVersion",
-      "uuid": "9f146582-d94c-4b7a-96b5-b373fee77328"
+      "uuid": "f89f7dd9-e462-4577-9314-e4c7b6ef5794"
     },
     "targetRef": {
       "kind": "meshTenant",
-      "uuid": "da481dba-9528-4e56-8508-c5a91da82bd8"
+      "uuid": "d281e3a9-876d-410e-97d8-4c6f71fe9b34"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [{
@@ -2598,7 +2598,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "6f3294a0-1a35-4fd2-b6fe-c7e0e5f4ea6f"
+      "buildingBlockUuid": "cb706852-9e23-4930-8ffe-798c3ab1cee5"
     }]
   }
 }</code></pre>
@@ -2616,11 +2616,11 @@ Host: mesh-backend-url
   "spec" : {
     "buildingBlockDefinitionVersionRef": {
       "kind": "meshBuildingBlockDefinitionVersion",
-      "uuid": "9f146582-d94c-4b7a-96b5-b373fee77328"
+      "uuid": "f89f7dd9-e462-4577-9314-e4c7b6ef5794"
     },
     "targetRef": {
       "kind": "meshTenant",
-      "uuid": "da481dba-9528-4e56-8508-c5a91da82bd8"
+      "uuid": "d281e3a9-876d-410e-97d8-4c6f71fe9b34"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [{
@@ -2630,7 +2630,7 @@ Host: mesh-backend-url
     }],
     "parentBuildingBlocks" : [{
       "definitionUuid": "b23cfb9a-6974-444f-9d33-62134a632373",
-      "buildingBlockUuid": "6f3294a0-1a35-4fd2-b6fe-c7e0e5f4ea6f"
+      "buildingBlockUuid": "cb706852-9e23-4930-8ffe-798c3ab1cee5"
     }]
   }
 } '</code></pre>
@@ -2773,7 +2773,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/24526c3c-ed25-402c-bf89-a22e2aaf064a
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblocks/d515b912-0d5d-4b45-84f4-58549c8b4599
 Content-Type: application/vnd.meshcloud.api.meshbuildingblock.v2-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -2788,18 +2788,18 @@ Content-Length: 1405
   "kind" : "meshBuildingBlock",
   "apiVersion" : "v2-preview",
   "metadata" : {
-    "uuid" : "24526c3c-ed25-402c-bf89-a22e2aaf064a",
+    "uuid" : "d515b912-0d5d-4b45-84f4-58549c8b4599",
     "ownedByWorkspace" : "my-workspace",
-    "createdOn" : "2025-07-15T09:01:22.446113229Z"
+    "createdOn" : "2025-07-16T11:05:08.687785523Z"
   },
   "spec" : {
     "buildingBlockDefinitionVersionRef" : {
-      "uuid" : "9f146582-d94c-4b7a-96b5-b373fee77328",
+      "uuid" : "f89f7dd9-e462-4577-9314-e4c7b6ef5794",
       "kind" : "meshBuildingBlockDefinitionVersion"
     },
     "targetRef" : {
       "kind" : "meshTenant",
-      "uuid" : "da481dba-9528-4e56-8508-c5a91da82bd8"
+      "uuid" : "d281e3a9-876d-410e-97d8-4c6f71fe9b34"
     },
     "displayName" : "New BuildingBlock v2",
     "inputs" : [ {
@@ -2808,7 +2808,7 @@ Content-Length: 1405
       "valueType" : "STRING"
     } ],
     "parentBuildingBlocks" : [ {
-      "buildingBlockUuid" : "6f3294a0-1a35-4fd2-b6fe-c7e0e5f4ea6f",
+      "buildingBlockUuid" : "cb706852-9e23-4930-8ffe-798c3ab1cee5",
       "definitionUuid" : "b23cfb9a-6974-444f-9d33-62134a632373"
     } ]
   },
@@ -2822,10 +2822,10 @@ Content-Length: 1405
       "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/my-workspace.my-project.my-platform.my-location"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/24526c3c-ed25-402c-bf89-a22e2aaf064a"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/d515b912-0d5d-4b45-84f4-58549c8b4599"
     },
     "forcePurge" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/24526c3c-ed25-402c-bf89-a22e2aaf064a/purge"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks/d515b912-0d5d-4b45-84f4-58549c8b4599/purge"
     }
   }
 }</code></pre>
@@ -2842,7 +2842,7 @@ meshBuildingBlock&#8217;s version, the meshBuildingBlock will either be removed
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -2850,7 +2850,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2880,7 +2880,7 @@ is ignored and the meshBuildingBlock is deleted from meshStack.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891/purge HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1/purge HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -2888,7 +2888,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/99b34afe-a6b4-44a3-a264-1aa2b6e12891/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblocks/5337a536-832e-420a-82a1-e85a1dbf7dd1/purge' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3067,10 +3067,10 @@ Content-Length: 1795
         "uuid" : "b23cfb9a-6974-444f-9d33-62134a632373",
         "ownedByWorkspace" : "my-workspace",
         "tags" : { },
-        "createdOn" : "2025-07-15T09:01:17.054948667Z"
+        "createdOn" : "2025-07-16T11:05:03.137800604Z"
       },
       "spec" : {
-        "displayName" : "eplh1mbbdds1",
+        "displayName" : "bxpj4mbbdds1",
         "symbol" : "my-image",
         "targetType" : "TENANT_LEVEL",
         "description" : "description",
@@ -3082,7 +3082,7 @@ Content-Length: 1795
       },
       "status" : {
         "versions" : [ {
-          "versionUuid" : "6d20f6b1-fd08-48c2-8203-dbce5cc42335",
+          "versionUuid" : "a1c66cbe-3e7c-493f-b7e6-048e94a78b85",
           "versionNumber" : 1,
           "state" : "RELEASED"
         } ],
@@ -3346,10 +3346,10 @@ Content-Length: 1293
     "uuid" : "b23cfb9a-6974-444f-9d33-62134a632373",
     "ownedByWorkspace" : "my-workspace",
     "tags" : { },
-    "createdOn" : "2025-07-15T09:01:17.054948667Z"
+    "createdOn" : "2025-07-16T11:05:03.137800604Z"
   },
   "spec" : {
-    "displayName" : "eplh1mbbdds1",
+    "displayName" : "bxpj4mbbdds1",
     "symbol" : "my-image",
     "targetType" : "TENANT_LEVEL",
     "description" : "description",
@@ -3361,7 +3361,7 @@ Content-Length: 1293
   },
   "status" : {
     "versions" : [ {
-      "versionUuid" : "6d20f6b1-fd08-48c2-8203-dbce5cc42335",
+      "versionUuid" : "a1c66cbe-3e7c-493f-b7e6-048e94a78b85",
       "versionNumber" : 1,
       "state" : "RELEASED"
     } ],
@@ -3582,7 +3582,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4
+Location: https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e
 Content-Type: application/vnd.meshcloud.api.meshbuildingblockdefinition.v1-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -3597,10 +3597,10 @@ Content-Length: 35260
   "kind" : "meshBuildingBlockDefinition",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "2efa123e-0675-4faa-8b2d-17835fc99ee4",
+    "uuid" : "2e9a9f08-a004-4d24-a941-5f093942c23e",
     "ownedByWorkspace" : "my-workspace",
     "tags" : { },
-    "createdOn" : "2025-07-15T09:01:17.871715125Z"
+    "createdOn" : "2025-07-16T11:05:03.958387244Z"
   },
   "spec" : {
     "displayName" : "BB definition example",
@@ -3615,7 +3615,7 @@ Content-Length: 35260
   },
   "status" : {
     "versions" : [ {
-      "versionUuid" : "39ad2eb4-e536-4c68-8be4-990fb531c44d",
+      "versionUuid" : "cfbe0f1d-628d-4235-b740-0a6566bae541",
       "versionNumber" : 1,
       "state" : "DRAFT"
     } ],
@@ -3624,13 +3624,13 @@ Content-Length: 35260
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/my-workspace"
     },
     "buildingblocks" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks?definitionUuid=2efa123e-0675-4faa-8b2d-17835fc99ee4"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks?definitionUuid=2e9a9f08-a004-4d24-a941-5f093942c23e"
     }
   }
 }</code></pre>
@@ -3668,7 +3668,7 @@ Content-Length: 35260
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e HTTP/1.1
 Content-Type: application/vnd.meshcloud.api.meshbuildingblockdefinition.v1-preview.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshbuildingblockdefinition.v1-preview.hal+json
@@ -3679,7 +3679,7 @@ Host: mesh-backend-url
   "apiVersion" : "v1-preview",
   "kind" : "meshBuildingBlockDefinition",
   "metadata" : {
-    "uuid": "2efa123e-0675-4faa-8b2d-17835fc99ee4",
+    "uuid": "2e9a9f08-a004-4d24-a941-5f093942c23e",
     "ownedByWorkspace": "my-workspace"
   },
   "spec" : {
@@ -3698,14 +3698,14 @@ Host: mesh-backend-url
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4' -i -u 'valid_username:valid_password' -X PUT \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e' -i -u 'valid_username:valid_password' -X PUT \
     -H 'Content-Type: application/vnd.meshcloud.api.meshbuildingblockdefinition.v1-preview.hal+json;charset=UTF-8' \
     -H 'Accept: application/vnd.meshcloud.api.meshbuildingblockdefinition.v1-preview.hal+json' \
     -d '{
   "apiVersion" : "v1-preview",
   "kind" : "meshBuildingBlockDefinition",
   "metadata" : {
-    "uuid": "2efa123e-0675-4faa-8b2d-17835fc99ee4",
+    "uuid": "2e9a9f08-a004-4d24-a941-5f093942c23e",
     "ownedByWorkspace": "my-workspace"
   },
   "spec" : {
@@ -3857,10 +3857,10 @@ Content-Length: 35270
   "kind" : "meshBuildingBlockDefinition",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "2efa123e-0675-4faa-8b2d-17835fc99ee4",
+    "uuid" : "2e9a9f08-a004-4d24-a941-5f093942c23e",
     "ownedByWorkspace" : "my-workspace",
     "tags" : { },
-    "createdOn" : "2025-07-15T09:01:17.871715125Z"
+    "createdOn" : "2025-07-16T11:05:03.958387244Z"
   },
   "spec" : {
     "displayName" : "BB definition example",
@@ -3875,7 +3875,7 @@ Content-Length: 35270
   },
   "status" : {
     "versions" : [ {
-      "versionUuid" : "39ad2eb4-e536-4c68-8be4-990fb531c44d",
+      "versionUuid" : "cfbe0f1d-628d-4235-b740-0a6566bae541",
       "versionNumber" : 1,
       "state" : "DRAFT"
     } ],
@@ -3884,13 +3884,13 @@ Content-Length: 35270
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/my-workspace"
     },
     "buildingblocks" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks?definitionUuid=2efa123e-0675-4faa-8b2d-17835fc99ee4"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshbuildingblocks?definitionUuid=2e9a9f08-a004-4d24-a941-5f093942c23e"
     }
   }
 }</code></pre>
@@ -3905,7 +3905,7 @@ Content-Length: 35270
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -3913,7 +3913,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2efa123e-0675-4faa-8b2d-17835fc99ee4' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshbuildingblockdefinitions/2e9a9f08-a004-4d24-a941-5f093942c23e' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4022,7 +4022,7 @@ If you would like to enable this feature, please contact us at <a href="mailto:s
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshcommunications?communicationDefinitionUuid=6d6776d1-aaa5-4d41-a998-265e3cf3aafa&amp;resolutionStatus=OPEN&amp;communicationType=ACTION_REQUIRED&amp;page=0&amp;size=3 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshcommunications?communicationDefinitionUuid=f6ca0f00-54a2-4a39-a918-6451c9c55c09&amp;resolutionStatus=OPEN&amp;communicationType=ACTION_REQUIRED&amp;page=0&amp;size=3 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -4031,7 +4031,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications?communicationDefinitionUuid=6d6776d1-aaa5-4d41-a998-265e3cf3aafa&amp;resolutionStatus=OPEN&amp;communicationType=ACTION_REQUIRED&amp;page=0&amp;size=3' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications?communicationDefinitionUuid=f6ca0f00-54a2-4a39-a918-6451c9c55c09&amp;resolutionStatus=OPEN&amp;communicationType=ACTION_REQUIRED&amp;page=0&amp;size=3' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -4095,7 +4095,7 @@ Content-Length: 1381
       "kind" : "meshCommunication",
       "apiVersion" : "v1-preview",
       "metadata" : {
-        "uuid" : "b0f087a2-92db-4b09-8257-63e6bcb94e21",
+        "uuid" : "ba2235f9-f424-4749-a84a-4e7b8fa6bfeb",
         "ownedByWorkspace" : "my-workspace-identifier"
       },
       "spec" : {
@@ -4104,28 +4104,28 @@ Content-Length: 1381
           "name" : "my-workspace-identifier"
         },
         "communicationDefinitionRef" : {
-          "uuid" : "6d6776d1-aaa5-4d41-a998-265e3cf3aafa"
+          "uuid" : "f6ca0f00-54a2-4a39-a918-6451c9c55c09"
         }
       },
       "status" : {
         "resolutionStatus" : "OPEN",
         "meshCommunicationDefinition" : {
-          "uuid" : "6d6776d1-aaa5-4d41-a998-265e3cf3aafa",
+          "uuid" : "f6ca0f00-54a2-4a39-a918-6451c9c55c09",
           "title" : "Communication definition 1 Title",
-          "dueDate" : "2025-07-16",
+          "dueDate" : "2025-07-17",
           "communicationType" : "ACTION_REQUIRED"
         }
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb"
         }
       }
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications?communicationDefinitionUuid=6d6776d1-aaa5-4d41-a998-265e3cf3aafa&amp;resolutionStatus=OPEN&amp;communicationType=ACTION_REQUIRED&amp;page=0&amp;size=3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications?communicationDefinitionUuid=f6ca0f00-54a2-4a39-a918-6451c9c55c09&amp;resolutionStatus=OPEN&amp;communicationType=ACTION_REQUIRED&amp;page=0&amp;size=3"
     }
   },
   "page" : {
@@ -4165,7 +4165,7 @@ Content-Length: 1381
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -4174,7 +4174,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -4311,7 +4311,7 @@ Content-Length: 853
   "kind" : "meshCommunication",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "b0f087a2-92db-4b09-8257-63e6bcb94e21",
+    "uuid" : "ba2235f9-f424-4749-a84a-4e7b8fa6bfeb",
     "ownedByWorkspace" : "my-workspace-identifier"
   },
   "spec" : {
@@ -4320,21 +4320,21 @@ Content-Length: 853
       "name" : "my-workspace-identifier"
     },
     "communicationDefinitionRef" : {
-      "uuid" : "6d6776d1-aaa5-4d41-a998-265e3cf3aafa"
+      "uuid" : "f6ca0f00-54a2-4a39-a918-6451c9c55c09"
     }
   },
   "status" : {
     "resolutionStatus" : "OPEN",
     "meshCommunicationDefinition" : {
-      "uuid" : "6d6776d1-aaa5-4d41-a998-265e3cf3aafa",
+      "uuid" : "f6ca0f00-54a2-4a39-a918-6451c9c55c09",
       "title" : "Communication definition 1 Title",
-      "dueDate" : "2025-07-16",
+      "dueDate" : "2025-07-17",
       "communicationType" : "ACTION_REQUIRED"
     }
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb"
     }
   }
 }</code></pre>
@@ -4389,7 +4389,7 @@ Host: mesh-backend-url
       "name": "my-workspace-identifier"
     },
     "communicationDefinitionRef": {
-      "uuid": "6d6776d1-aaa5-4d41-a998-265e3cf3aafa"
+      "uuid": "f6ca0f00-54a2-4a39-a918-6451c9c55c09"
     }
   }
 }</code></pre>
@@ -4410,7 +4410,7 @@ Host: mesh-backend-url
       "name": "my-workspace-identifier"
     },
     "communicationDefinitionRef": {
-      "uuid": "6d6776d1-aaa5-4d41-a998-265e3cf3aafa"
+      "uuid": "f6ca0f00-54a2-4a39-a918-6451c9c55c09"
     }
   }
 }'</code></pre>
@@ -4483,7 +4483,7 @@ For kind <code>meshBuildingBlock</code>, use the building block UUID.</p></td>
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21
+Location: https://mesh-backend-url/api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb
 Content-Type: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -4498,7 +4498,7 @@ Content-Length: 853
   "kind" : "meshCommunication",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "b0f087a2-92db-4b09-8257-63e6bcb94e21",
+    "uuid" : "ba2235f9-f424-4749-a84a-4e7b8fa6bfeb",
     "ownedByWorkspace" : "my-workspace-identifier"
   },
   "spec" : {
@@ -4507,21 +4507,21 @@ Content-Length: 853
       "name" : "my-workspace-identifier"
     },
     "communicationDefinitionRef" : {
-      "uuid" : "6d6776d1-aaa5-4d41-a998-265e3cf3aafa"
+      "uuid" : "f6ca0f00-54a2-4a39-a918-6451c9c55c09"
     }
   },
   "status" : {
     "resolutionStatus" : "OPEN",
     "meshCommunicationDefinition" : {
-      "uuid" : "6d6776d1-aaa5-4d41-a998-265e3cf3aafa",
+      "uuid" : "f6ca0f00-54a2-4a39-a918-6451c9c55c09",
       "title" : "Communication definition 1 Title",
-      "dueDate" : "2025-07-16",
+      "dueDate" : "2025-07-17",
       "communicationType" : "ACTION_REQUIRED"
     }
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb"
     }
   }
 }</code></pre>
@@ -4536,7 +4536,7 @@ Content-Length: 853
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -4545,7 +4545,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications/b0f087a2-92db-4b09-8257-63e6bcb94e21' -i -u 'valid_username:valid_password' -X DELETE \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunications/ba2235f9-f424-4749-a84a-4e7b8fa6bfeb' -i -u 'valid_username:valid_password' -X DELETE \
     -H 'Accept: application/vnd.meshcloud.api.meshcommunication.v1-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -4720,36 +4720,12 @@ Content-Length: 2742
       "kind" : "meshCommunicationDefinition",
       "apiVersion" : "v1-preview",
       "metadata" : {
-        "uuid" : "049eefac-5fdd-43c9-aad0-6cbf29d6cade"
+        "uuid" : "af87457a-3153-4e8a-9048-b5b2c906fee4"
       },
       "spec" : {
         "communication" : {
           "title" : "Communication definition 1 Title",
           "message" : "Message for Communication definition 1. Use [this guide](http://example.com/1) for reference.",
-          "dueDate" : "2025-07-16",
-          "type" : "ACTION_REQUIRED"
-        }
-      },
-      "status" : {
-        "communicationsTotal" : 0,
-        "communicationsResolved" : 0,
-        "communicationsOpen" : 0
-      },
-      "_links" : {
-        "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade"
-        }
-      }
-    }, {
-      "kind" : "meshCommunicationDefinition",
-      "apiVersion" : "v1-preview",
-      "metadata" : {
-        "uuid" : "ff08b9fa-e827-4f7b-9d29-805943283200"
-      },
-      "spec" : {
-        "communication" : {
-          "title" : "Communication definition 2 Title",
-          "message" : "Message for Communication definition 2. Use [this guide](http://example.com/2) for reference.",
           "dueDate" : "2025-07-17",
           "type" : "ACTION_REQUIRED"
         }
@@ -4761,19 +4737,19 @@ Content-Length: 2742
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/ff08b9fa-e827-4f7b-9d29-805943283200"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4"
         }
       }
     }, {
       "kind" : "meshCommunicationDefinition",
       "apiVersion" : "v1-preview",
       "metadata" : {
-        "uuid" : "a3c22594-99f0-404d-9a52-0ffe5a279a2f"
+        "uuid" : "25ee8532-7472-4648-a7d1-3a812fef10e0"
       },
       "spec" : {
         "communication" : {
-          "title" : "Communication definition 3 Title",
-          "message" : "Message for Communication definition 3. Use [this guide](http://example.com/3) for reference.",
+          "title" : "Communication definition 2 Title",
+          "message" : "Message for Communication definition 2. Use [this guide](http://example.com/2) for reference.",
           "dueDate" : "2025-07-18",
           "type" : "ACTION_REQUIRED"
         }
@@ -4785,7 +4761,31 @@ Content-Length: 2742
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/a3c22594-99f0-404d-9a52-0ffe5a279a2f"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/25ee8532-7472-4648-a7d1-3a812fef10e0"
+        }
+      }
+    }, {
+      "kind" : "meshCommunicationDefinition",
+      "apiVersion" : "v1-preview",
+      "metadata" : {
+        "uuid" : "f6bbab8f-52d0-4d07-8cdf-5aa779b04288"
+      },
+      "spec" : {
+        "communication" : {
+          "title" : "Communication definition 3 Title",
+          "message" : "Message for Communication definition 3. Use [this guide](http://example.com/3) for reference.",
+          "dueDate" : "2025-07-19",
+          "type" : "ACTION_REQUIRED"
+        }
+      },
+      "status" : {
+        "communicationsTotal" : 0,
+        "communicationsResolved" : 0,
+        "communicationsOpen" : 0
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/f6bbab8f-52d0-4d07-8cdf-5aa779b04288"
         }
       }
     } ]
@@ -4833,7 +4833,7 @@ Content-Length: 2742
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -4842,7 +4842,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -4939,13 +4939,13 @@ Content-Length: 708
   "kind" : "meshCommunicationDefinition",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "049eefac-5fdd-43c9-aad0-6cbf29d6cade"
+    "uuid" : "af87457a-3153-4e8a-9048-b5b2c906fee4"
   },
   "spec" : {
     "communication" : {
       "title" : "Communication definition 1 Title",
       "message" : "Message for Communication definition 1. Use [this guide](http://example.com/1) for reference.",
-      "dueDate" : "2025-07-16",
+      "dueDate" : "2025-07-17",
       "type" : "ACTION_REQUIRED"
     }
   },
@@ -4956,7 +4956,7 @@ Content-Length: 708
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4"
     }
   }
 }</code></pre>
@@ -5136,7 +5136,7 @@ meshCommunication endpoint.</p>
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/692b2858-9529-46bc-a3bf-7e67f0be6edd
+Location: https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/44388379-a5fd-413e-9696-22bd55edcd43
 Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -5151,7 +5151,7 @@ Content-Length: 628
   "kind" : "meshCommunicationDefinition",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "692b2858-9529-46bc-a3bf-7e67f0be6edd"
+    "uuid" : "44388379-a5fd-413e-9696-22bd55edcd43"
   },
   "spec" : {
     "communication" : {
@@ -5168,7 +5168,7 @@ Content-Length: 628
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/692b2858-9529-46bc-a3bf-7e67f0be6edd"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/44388379-a5fd-413e-9696-22bd55edcd43"
     }
   }
 }</code></pre>
@@ -5239,7 +5239,7 @@ communication definition can be updated.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">PATCH /api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">PATCH /api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4 HTTP/1.1
 Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.patch.v1-preview.hal+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
@@ -5260,7 +5260,7 @@ Host: mesh-backend-url
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade' -i -u 'valid_username:valid_password' -X PATCH \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4' -i -u 'valid_username:valid_password' -X PATCH \
     -H 'Content-Type: application/vnd.meshcloud.api.meshcommunicationdefinition.patch.v1-preview.hal+json;charset=UTF-8' \
     -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json' \
     -d '{
@@ -5299,7 +5299,7 @@ Content-Length: 609
   "kind" : "meshCommunicationDefinition",
   "apiVersion" : "v1-preview",
   "metadata" : {
-    "uuid" : "049eefac-5fdd-43c9-aad0-6cbf29d6cade"
+    "uuid" : "af87457a-3153-4e8a-9048-b5b2c906fee4"
   },
   "spec" : {
     "communication" : {
@@ -5316,7 +5316,7 @@ Content-Length: 609
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4"
     }
   }
 }</code></pre>
@@ -5359,7 +5359,7 @@ Requires <code>ADM_COMMUNICATIONDEFINITION_DELETE</code> authority.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -5368,7 +5368,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/049eefac-5fdd-43c9-aad0-6cbf29d6cade' -i -u 'valid_username:valid_password' -X DELETE \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshcommunicationdefinitions/af87457a-3153-4e8a-9048-b5b2c906fee4' -i -u 'valid_username:valid_password' -X DELETE \
     -H 'Accept: application/vnd.meshcloud.api.meshcommunicationdefinition.v1-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -6122,7 +6122,7 @@ X-Frame-Options: DENY</code></pre>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects?workspaceIdentifier=eplh1mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects?workspaceIdentifier=bxpj4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -6131,7 +6131,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eplh1mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=bxpj4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -6196,7 +6196,7 @@ Content-Length: 2273
       "apiVersion" : "v2",
       "metadata" : {
         "name" : "test-project-1",
-        "ownedByWorkspace" : "eplh1mpdsv2",
+        "ownedByWorkspace" : "bxpj4mpdsv2",
         "createdOn" : "2024-01-01T00:00:00Z"
       },
       "spec" : {
@@ -6206,38 +6206,38 @@ Content-Length: 2273
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/eplh1mpdsv2.test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-1"
         },
         "meshtenants" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshusers" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "activePaymentMethod" : {
           "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
         },
         "meshprojectuserbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
         },
         "meshprojectgroupbindings" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
         }
       }
     } ]
   },
   "_links" : {
     "first" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eplh1mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=bxpj4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eplh1mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=bxpj4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=0&amp;size=1"
     },
     "next" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eplh1mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=bxpj4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     },
     "last" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=eplh1mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects?workspaceIdentifier=bxpj4mpdsv2&amp;paymentIdentifier=test-payment&amp;page=1&amp;size=1"
     }
   },
   "page" : {
@@ -6278,7 +6278,7 @@ Deleted meshProjects can also be requested via this endpoint.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects/eplh1mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -6287,7 +6287,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/eplh1mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -6435,9 +6435,9 @@ Content-Length: 1344
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-1",
-    "ownedByWorkspace" : "eplh1mpdsv2",
+    "ownedByWorkspace" : "bxpj4mpdsv2",
     "createdOn" : "2024-01-01T00:00:00Z",
-    "deletedOn" : "2025-07-15T09:01:33.036698919Z"
+    "deletedOn" : "2025-07-16T11:05:19.712812758Z"
   },
   "spec" : {
     "displayName" : "Test Project 1",
@@ -6446,22 +6446,22 @@ Content-Length: 1344
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/eplh1mpdsv2.test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-1"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-1"
     }
   }
 }</code></pre>
@@ -6512,7 +6512,7 @@ Content-Length: 1344
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "eplh1mpdsv2"
+    "ownedByWorkspace" : "bxpj4mpdsv2"
   }
 }</code></pre>
 </div>
@@ -6537,7 +6537,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "eplh1mpdsv2"
+    "ownedByWorkspace" : "bxpj4mpdsv2"
   }
 }</code></pre>
 </div>
@@ -6558,7 +6558,7 @@ Host: mesh-backend-url
   },
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "eplh1mpdsv2"
+    "ownedByWorkspace" : "bxpj4mpdsv2"
   }
 }'</code></pre>
 </div>
@@ -6637,7 +6637,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshprojects/eplh1mpdsv2.test-project-3
+Location: https://mesh-backend-url/api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-3
 Content-Type: application/vnd.meshcloud.api.meshproject.v2.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -6653,8 +6653,8 @@ Content-Length: 1302
   "apiVersion" : "v2",
   "metadata" : {
     "name" : "test-project-3",
-    "ownedByWorkspace" : "eplh1mpdsv2",
-    "createdOn" : "2025-07-15T09:01:32.514360987Z"
+    "ownedByWorkspace" : "bxpj4mpdsv2",
+    "createdOn" : "2025-07-16T11:05:19.192313036Z"
   },
   "spec" : {
     "displayName" : "Test Project 3",
@@ -6663,22 +6663,22 @@ Content-Length: 1302
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/eplh1mpdsv2.test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-3"
     },
     "meshtenants" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "activePaymentMethod" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshpaymentmethods/test-payment"
     },
     "meshprojectuserbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-3"
     },
     "meshprojectgroupbindings" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=eplh1mpdsv2&amp;projectIdentifier=test-project-3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings?workspaceIdentifier=bxpj4mpdsv2&amp;projectIdentifier=test-project-3"
     }
   }
 }</code></pre>
@@ -6735,7 +6735,7 @@ If one tenant still has such active services the project deletion will fail.</p>
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojects/eplh1mpdsv2.test-project-1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-1 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -6744,7 +6744,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/eplh1mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojects/bxpj4mpdsv2.test-project-1' -i -u 'valid_username:valid_password' -X DELETE \
     -H 'Accept: application/vnd.meshcloud.api.meshproject.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -6916,7 +6916,7 @@ Content-Length: 982
       "kind" : "meshProjectUserBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "8fff5e93-6469-4089-a9fc-c522270cb0b2"
+        "name" : "fd5def0e-16cc-499a-a7c0-55286922b1c3"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -6931,7 +6931,7 @@ Content-Length: 982
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8fff5e93-6469-4089-a9fc-c522270cb0b2"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/fd5def0e-16cc-499a-a7c0-55286922b1c3"
         }
       }
     } ]
@@ -6978,7 +6978,7 @@ Content-Length: 982
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/userbindings/8fff5e93-6469-4089-a9fc-c522270cb0b2 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/userbindings/fd5def0e-16cc-499a-a7c0-55286922b1c3 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json
 Host: mesh-backend-url</code></pre>
@@ -6987,7 +6987,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8fff5e93-6469-4089-a9fc-c522270cb0b2' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/fd5def0e-16cc-499a-a7c0-55286922b1c3' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshprojectuserbinding.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -7079,7 +7079,7 @@ Content-Length: 534
   "kind" : "meshProjectUserBinding",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "8fff5e93-6469-4089-a9fc-c522270cb0b2"
+    "name" : "fd5def0e-16cc-499a-a7c0-55286922b1c3"
   },
   "roleRef" : {
     "name" : "Project User"
@@ -7094,7 +7094,7 @@ Content-Length: 534
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/8fff5e93-6469-4089-a9fc-c522270cb0b2"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/userbindings/fd5def0e-16cc-499a-a7c0-55286922b1c3"
     }
   }
 }</code></pre>
@@ -7505,7 +7505,7 @@ Content-Length: 986
       "kind" : "meshProjectGroupBinding",
       "apiVersion" : "v3",
       "metadata" : {
-        "name" : "a30a86ab-fa36-46f2-8efe-18a98bea6db1"
+        "name" : "036ab347-24cd-49fe-85bc-1d5bf56d923f"
       },
       "roleRef" : {
         "name" : "Project User"
@@ -7520,7 +7520,7 @@ Content-Length: 986
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a30a86ab-fa36-46f2-8efe-18a98bea6db1"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/036ab347-24cd-49fe-85bc-1d5bf56d923f"
         }
       }
     } ]
@@ -7567,7 +7567,7 @@ Content-Length: 986
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/groupbindings/a30a86ab-fa36-46f2-8efe-18a98bea6db1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshprojectbindings/groupbindings/036ab347-24cd-49fe-85bc-1d5bf56d923f HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json
 Host: mesh-backend-url</code></pre>
@@ -7576,7 +7576,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a30a86ab-fa36-46f2-8efe-18a98bea6db1' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/036ab347-24cd-49fe-85bc-1d5bf56d923f' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshprojectgroupbinding.v3.hal+json'</code></pre>
 </div>
 </div>
@@ -7668,7 +7668,7 @@ Content-Length: 536
   "kind" : "meshProjectGroupBinding",
   "apiVersion" : "v3",
   "metadata" : {
-    "name" : "a30a86ab-fa36-46f2-8efe-18a98bea6db1"
+    "name" : "036ab347-24cd-49fe-85bc-1d5bf56d923f"
   },
   "roleRef" : {
     "name" : "Project User"
@@ -7683,7 +7683,7 @@ Content-Length: 536
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a30a86ab-fa36-46f2-8efe-18a98bea6db1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/036ab347-24cd-49fe-85bc-1d5bf56d923f"
     }
   }
 }</code></pre>
@@ -7916,7 +7916,7 @@ This action effectively withdraws the permissions granted to the group within th
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/a30a86ab-fa36-46f2-8efe-18a98bea6db1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshprojectbindings/groupbindings/036ab347-24cd-49fe-85bc-1d5bf56d923f HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -7924,7 +7924,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/a30a86ab-fa36-46f2-8efe-18a98bea6db1' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshprojectbindings/groupbindings/036ab347-24cd-49fe-85bc-1d5bf56d923f' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8096,20 +8096,20 @@ Content-Length: 1386
       "kind" : "meshServiceInstance",
       "apiVersion" : "v2",
       "metadata" : {
-        "ownedByProject" : "eplh1mtdg11",
+        "ownedByProject" : "bxpj4mtdg11",
         "ownedByWorkspace" : "my-mobile-app-team",
-        "marketplaceIdentifier" : "eplh1mtdg1",
-        "instanceId" : "eplh1mtdg9"
+        "marketplaceIdentifier" : "bxpj4mtdg1",
+        "instanceId" : "bxpj4mtdg9"
       },
       "spec" : {
-        "displayName" : "eplh1mtdg12",
-        "serviceId" : "eplh1mtdg5",
-        "planId" : "eplh1mtdg7",
+        "displayName" : "bxpj4mtdg12",
+        "serviceId" : "bxpj4mtdg5",
+        "planId" : "bxpj4mtdg7",
         "creator" : "Unknown"
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/eplh1mtdg9"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshserviceinstances/bxpj4mtdg9"
         }
       }
     } ]
@@ -8283,8 +8283,8 @@ Content-Length: 530
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "eplh1mtdg24",
-    "planId" : "eplh1mtdg26",
+    "serviceId" : "bxpj4mtdg24",
+    "planId" : "bxpj4mtdg26",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -8345,8 +8345,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "eplh1mtdg24",
-    "planId" : "eplh1mtdg26",
+    "serviceId" : "bxpj4mtdg24",
+    "planId" : "bxpj4mtdg26",
     "creator" : "alice@example.com"
   }
 }</code></pre>
@@ -8369,8 +8369,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "eplh1mtdg24",
-    "planId" : "eplh1mtdg26",
+    "serviceId" : "bxpj4mtdg24",
+    "planId" : "bxpj4mtdg26",
     "creator" : "alice@example.com"
   }
 }'</code></pre>
@@ -8481,8 +8481,8 @@ Content-Length: 522
   },
   "spec" : {
     "displayName" : "New SI",
-    "serviceId" : "eplh1mtdg24",
-    "planId" : "eplh1mtdg26",
+    "serviceId" : "bxpj4mtdg24",
+    "planId" : "bxpj4mtdg26",
     "creator" : "Unknown"
   },
   "_links" : {
@@ -8543,8 +8543,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "eplh1mtdg24",
-    "planId" : "eplh1mtdg26",
+    "serviceId" : "bxpj4mtdg24",
+    "planId" : "bxpj4mtdg26",
     "creator" : "alice@example.com"
   }
 }</code></pre>
@@ -8567,8 +8567,8 @@ Host: mesh-backend-url
   },
   "spec" : {
     "displayName" : "New SI updated",
-    "serviceId" : "eplh1mtdg24",
-    "planId" : "eplh1mtdg26",
+    "serviceId" : "bxpj4mtdg24",
+    "planId" : "bxpj4mtdg26",
     "creator" : "alice@example.com"
   }
 }'</code></pre>
@@ -9712,12 +9712,12 @@ Content-Length: 2091
         "ownedByProject" : "test-project",
         "ownedByWorkspace" : "test-workspace",
         "platformIdentifier" : "aws.aws-meshstack-dev",
-        "deletedOn" : "2025-07-16T09:01:35.955994637Z",
+        "deletedOn" : "2025-07-17T11:05:22.790633366Z",
         "assignedTags" : { },
         "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
       },
       "spec" : {
-        "localId" : "21d220ad-3e23-41d3-99d5-5c211ddc2e8c",
+        "localId" : "fd3d9de4-2507-4225-8f92-228344071484",
         "landingZoneIdentifier" : "stage-dev",
         "quotas" : [ {
           "key" : "limits.cpu",
@@ -9913,12 +9913,12 @@ Content-Length: 979
     "ownedByProject" : "test-project",
     "ownedByWorkspace" : "test-workspace",
     "platformIdentifier" : "aws.aws-meshstack-dev",
-    "deletedOn" : "2025-07-16T09:01:35.955994637Z",
+    "deletedOn" : "2025-07-17T11:05:22.790633366Z",
     "assignedTags" : { },
     "tenantIdentifier" : "test-workspace.test-project.aws.aws-meshstack-dev"
   },
   "spec" : {
-    "localId" : "21d220ad-3e23-41d3-99d5-5c211ddc2e8c",
+    "localId" : "fd3d9de4-2507-4225-8f92-228344071484",
     "landingZoneIdentifier" : "stage-dev",
     "quotas" : [ {
       "key" : "limits.cpu",
@@ -10339,10 +10339,10 @@ Content-Length: 3380
       "kind" : "meshTenant",
       "apiVersion" : "v4-preview",
       "metadata" : {
-        "uuid" : "685f9f51-2b3b-4abd-a070-bd8cebebfb46",
+        "uuid" : "2607ab56-d11e-4923-86db-da0631c41720",
         "ownedByWorkspace" : "test-workspace",
         "ownedByProject" : "test-project",
-        "createdOn" : "2025-07-15T09:01:36.872314002Z"
+        "createdOn" : "2025-07-16T11:05:23.753254815Z"
       },
       "spec" : {
         "platformIdentifier" : "aws.aws-meshstack-dev",
@@ -10363,7 +10363,7 @@ Content-Length: 3380
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/685f9f51-2b3b-4abd-a070-bd8cebebfb46"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/2607ab56-d11e-4923-86db-da0631c41720"
         },
         "meshusers" : {
           "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=aws.aws-meshstack-dev"
@@ -10373,12 +10373,12 @@ Content-Length: 3380
       "kind" : "meshTenant",
       "apiVersion" : "v4-preview",
       "metadata" : {
-        "uuid" : "ec97088a-25ea-49be-ad56-e61d0760dfab",
+        "uuid" : "d819ff76-971b-4f0e-85c7-8904dbf891d4",
         "ownedByWorkspace" : "test-workspace",
         "ownedByProject" : "test-project",
-        "createdOn" : "2025-07-15T09:01:36.875255532Z",
-        "markedForDeletionOn" : "2025-07-16T09:01:36.875255532Z",
-        "deletedOn" : "2025-07-17T09:01:36.875255532Z"
+        "createdOn" : "2025-07-16T11:05:23.756446585Z",
+        "markedForDeletionOn" : "2025-07-17T11:05:23.756446585Z",
+        "deletedOn" : "2025-07-18T11:05:23.756446585Z"
       },
       "spec" : {
         "platformIdentifier" : "okd-on-gcp.openshift",
@@ -10455,7 +10455,7 @@ Content-Length: 3380
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtenants/685f9f51-2b3b-4abd-a070-bd8cebebfb46 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtenants/2607ab56-d11e-4923-86db-da0631c41720 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -10464,7 +10464,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/685f9f51-2b3b-4abd-a070-bd8cebebfb46' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/2607ab56-d11e-4923-86db-da0631c41720' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -10606,10 +10606,10 @@ Content-Length: 1079
   "kind" : "meshTenant",
   "apiVersion" : "v4-preview",
   "metadata" : {
-    "uuid" : "685f9f51-2b3b-4abd-a070-bd8cebebfb46",
+    "uuid" : "2607ab56-d11e-4923-86db-da0631c41720",
     "ownedByWorkspace" : "test-workspace",
     "ownedByProject" : "test-project",
-    "createdOn" : "2025-07-15T09:01:36.872314002Z"
+    "createdOn" : "2025-07-16T11:05:23.753254815Z"
   },
   "spec" : {
     "platformIdentifier" : "aws.aws-meshstack-dev",
@@ -10630,7 +10630,7 @@ Content-Length: 1079
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/685f9f51-2b3b-4abd-a070-bd8cebebfb46"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/2607ab56-d11e-4923-86db-da0631c41720"
     },
     "meshusers" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=aws.aws-meshstack-dev"
@@ -10804,7 +10804,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshtenants/22dc2069-b1d1-4a4e-996c-908f34027ce1
+Location: https://mesh-backend-url/api/meshobjects/meshtenants/36d77ff6-59ec-4bc9-9034-ea12bedde26b
 Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -10819,10 +10819,10 @@ Content-Length: 963
   "kind" : "meshTenant",
   "apiVersion" : "v4-preview",
   "metadata" : {
-    "uuid" : "22dc2069-b1d1-4a4e-996c-908f34027ce1",
+    "uuid" : "36d77ff6-59ec-4bc9-9034-ea12bedde26b",
     "ownedByWorkspace" : "test-workspace",
     "ownedByProject" : "test-project",
-    "createdOn" : "2025-07-15T09:01:37.539862290Z"
+    "createdOn" : "2025-07-16T11:05:24.439796927Z"
   },
   "spec" : {
     "platformIdentifier" : "azure.meshcloud-azure-dev",
@@ -10837,7 +10837,7 @@ Content-Length: 963
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/22dc2069-b1d1-4a4e-996c-908f34027ce1"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/36d77ff6-59ec-4bc9-9034-ea12bedde26b"
     },
     "meshusers" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=azure.meshcloud-azure-dev"
@@ -10856,7 +10856,7 @@ so the meshTenant might not be immediately deleted but rather marked for deletio
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtenants/22dc2069-b1d1-4a4e-996c-908f34027ce1 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtenants/36d77ff6-59ec-4bc9-9034-ea12bedde26b HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -10864,7 +10864,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/22dc2069-b1d1-4a4e-996c-908f34027ce1' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/36d77ff6-59ec-4bc9-9034-ea12bedde26b' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11073,7 +11073,7 @@ Content-Length: 1451
         "email" : "jdoe@example.com",
         "firstName" : "John",
         "lastName" : "Doe",
-        "euid" : "a4e86154-00ab-479e-81e1-fc363889bc7b",
+        "euid" : "9043367c-02ed-4d3b-96e6-b50a55ced16f",
         "tags" : { }
       },
       "_links" : {
@@ -11177,7 +11177,7 @@ Content-Length: 525
     "email" : "jdoe@example.com",
     "firstName" : "John",
     "lastName" : "Doe",
-    "euid" : "a4e86154-00ab-479e-81e1-fc363889bc7b",
+    "euid" : "9043367c-02ed-4d3b-96e6-b50a55ced16f",
     "tags" : { }
   },
   "_links" : {
@@ -11499,7 +11499,7 @@ Host: mesh-backend-url
   },
   "spec": {
     "email": "sjohnson@example.com",
-    "euid": "dda40a5d-6ab3-4b32-af92-0eba598f6660",
+    "euid": "5c3b6507-bdf7-4df7-b99c-91ad15e28923",
     "firstName": "Samira",
     "lastName": "Johnson",
     "tags": {}
@@ -11521,7 +11521,7 @@ Host: mesh-backend-url
   },
   "spec": {
     "email": "sjohnson@example.com",
-    "euid": "dda40a5d-6ab3-4b32-af92-0eba598f6660",
+    "euid": "5c3b6507-bdf7-4df7-b99c-91ad15e28923",
     "firstName": "Samira",
     "lastName": "Johnson",
     "tags": {}
@@ -11560,7 +11560,7 @@ Content-Length: 603
     "email" : "sjohnson@example.com",
     "firstName" : "Samira",
     "lastName" : "Johnson",
-    "euid" : "dda40a5d-6ab3-4b32-af92-0eba598f6660",
+    "euid" : "5c3b6507-bdf7-4df7-b99c-91ad15e28923",
     "tags" : {
       "environment" : [ "dev", "test", "qa" ]
     }
@@ -11777,7 +11777,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "admin-customer",
-        "createdOn" : "2025-07-15T09:00:36Z"
+        "createdOn" : "2025-07-16T11:04:21Z"
       },
       "spec" : {
         "displayName" : "admin-customer",
@@ -11808,7 +11808,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-customer",
-        "createdOn" : "2025-07-15T09:00:36Z"
+        "createdOn" : "2025-07-16T11:04:21Z"
       },
       "spec" : {
         "displayName" : "demo-customer",
@@ -11839,7 +11839,7 @@ Content-Length: 4124
       "apiVersion" : "v1",
       "metadata" : {
         "name" : "demo-partner",
-        "createdOn" : "2025-07-15T09:00:36Z"
+        "createdOn" : "2025-07-16T11:04:21Z"
       },
       "spec" : {
         "displayName" : "demo-partner",
@@ -12055,7 +12055,7 @@ Content-Length: 1055
   "apiVersion" : "v1",
   "metadata" : {
     "name" : "admin-customer",
-    "createdOn" : "2025-07-15T09:00:36Z"
+    "createdOn" : "2025-07-16T11:04:21Z"
   },
   "spec" : {
     "displayName" : "admin-customer",
@@ -12770,7 +12770,7 @@ Content-Length: 951
       "kind" : "meshWorkspaceGroupBinding",
       "apiVersion" : "v2",
       "metadata" : {
-        "name" : "d82d0106-9378-4ce9-abc3-763848702df6"
+        "name" : "d6f9de58-e50d-47f2-a1c7-279e7afe626c"
       },
       "roleRef" : {
         "name" : "Workspace Manager"
@@ -12784,7 +12784,7 @@ Content-Length: 951
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/d82d0106-9378-4ce9-abc3-763848702df6"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/d6f9de58-e50d-47f2-a1c7-279e7afe626c"
         }
       }
     } ]
@@ -12831,7 +12831,7 @@ Content-Length: 951
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshworkspacebindings/groupbindings/d82d0106-9378-4ce9-abc3-763848702df6 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshworkspacebindings/groupbindings/d6f9de58-e50d-47f2-a1c7-279e7afe626c HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json
 Host: mesh-backend-url</code></pre>
@@ -12840,7 +12840,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/d82d0106-9378-4ce9-abc3-763848702df6' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/d6f9de58-e50d-47f2-a1c7-279e7afe626c' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshworkspacegroupbinding.v2.hal+json'</code></pre>
 </div>
 </div>
@@ -12927,7 +12927,7 @@ Content-Length: 512
   "kind" : "meshWorkspaceGroupBinding",
   "apiVersion" : "v2",
   "metadata" : {
-    "name" : "d82d0106-9378-4ce9-abc3-763848702df6"
+    "name" : "d6f9de58-e50d-47f2-a1c7-279e7afe626c"
   },
   "roleRef" : {
     "name" : "Workspace Manager"
@@ -12941,7 +12941,7 @@ Content-Length: 512
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/d82d0106-9378-4ce9-abc3-763848702df6"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspacebindings/groupbindings/d6f9de58-e50d-47f2-a1c7-279e7afe626c"
     }
   }
 }</code></pre>
@@ -14705,7 +14705,7 @@ rates:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-07-15 08:59:35 UTC
+Last updated 2025-07-16 11:03:21 UTC
 </div>
 </div>
 </body>
