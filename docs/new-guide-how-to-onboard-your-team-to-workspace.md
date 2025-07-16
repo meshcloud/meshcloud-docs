@@ -3,7 +3,7 @@ id: new-guide-how-to-onboard-your-team-to-workspace
 title: How to Onboard Your Team to Your Workspace
 ---
 
-:::What is this guide about?
+:::note What is this guide about?
 
 This guide walks you through adding your team members to a workspace. You’ll learn how to invite users, assign roles, and use optional approval workflows for extra control.
 
