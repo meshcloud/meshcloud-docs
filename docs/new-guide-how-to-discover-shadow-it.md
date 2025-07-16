@@ -38,4 +38,4 @@ meshStack can scan connected platforms for tenants (accounts, subscriptions, pro
 ---
 
 ## Related Resources
-- [How to Manage a Tenant](./new-guide-how-to-manage-a-tenant.md)
+- [How to Manage a Tenant](new-guide-how-to-manage-a-tenant)

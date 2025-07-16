@@ -41,7 +41,7 @@ Via the `pen` icon you can edit the service instance. Changing the name is alway
 ### Tenant Bindings
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
-> Please use [Building Blocks](administration.building-blocks.md) with Platform Tenant Identifiers as inputs instead!
+> Please use [Building Blocks](administration.building-blocks) with Platform Tenant Identifiers as inputs instead!
 > For more information, have a look at the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-tenant-bindings)
 
 Some services require to bind a meshTenant. In that case you have to select one of your meshTenants when creating a binding.
@@ -53,10 +53,10 @@ It is not possible to select the same meshTenant for multiple bindings of the sa
 ### Share Service Instance
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
-> Please use [Building Blocks](administration.building-blocks.md) for Workspaces instead!
+> Please use [Building Blocks](administration.building-blocks) for Workspaces instead!
 > For more information, have a look at the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-service-instance-sharing)
 
-If the Service Broker [supports](meshstack.meshmarketplace.profile.md#sharable-service-instances) it, service Instances can be shared between meshProjects of the same meshWorkspace. It is only sharable to projects, if the meshLocation the Service Instance relates to exists in the meshProject the instance shall be shared with. This is currently only supported for the global OSB Services.
+If the Service Broker [supports](meshstack.meshmarketplace.profile#sharable-service-instances) it, service Instances can be shared between meshProjects of the same meshWorkspace. It is only sharable to projects, if the meshLocation the Service Instance relates to exists in the meshProject the instance shall be shared with. This is currently only supported for the global OSB Services.
 
 Shared Instances are read-only. Only “own” bindings can be created/updated/deleted. This means that only bindings of the current project are shown and can be created/updated/deleted.
 

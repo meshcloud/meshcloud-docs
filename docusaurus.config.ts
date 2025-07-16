@@ -27,7 +27,7 @@ const config: Config = {
   organizationName: 'meshcloud', // Usually your GitHub org/user name.
   projectName: 'meshcloud-docs', // Usually your repo name.
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   scripts: [],
@@ -97,6 +97,7 @@ const config: Config = {
       logo: {
         alt: 'meshStack Logo',
         src: 'img/meshstack_logo.png',
+        href: '/docs'
       },
       items: [
         {

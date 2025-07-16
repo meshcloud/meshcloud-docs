@@ -9,7 +9,7 @@ meshStack Copilot isn't generally available yet; however, we're offering a publi
 
 ## How to use meshStack Copilot
 
-For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot guide](./meshstack.how-to.copilot.md).
+For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot guide](meshstack.how-to.copilot).
 
 ## How does Copilot work?
 
@@ -26,13 +26,13 @@ When using meshStack Copilot, please keep in mind:
 - We might rate-limit requests per user to ensure fair usage and performance for everyone.
 - We're constantly improving it and your feedback is valuable. Please reach out to us with any feedback!
 
-The meshStack Copilot Preview is available in all meshStacks. If you're running a [meshStack SaaS on-prem](./meshstack.managed-service.md#meshstack-saas-on-prem), you might need some extra configuration to enable it. Just reach out to our Customer Success team for more information.
+The meshStack Copilot Preview is available in all meshStacks. If you're running a [meshStack SaaS on-prem](meshstack.managed-service#meshstack-saas-on-prem), you might need some extra configuration to enable it. Just reach out to our Customer Success team for more information.
 
 Also, let us know if you're interested in "bring your own model" (or API key) support. This would let you use meshStack Copilot with models under your own contract.
 
 ## Which AI model providers do you use for Copilot?
 
-meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official [subprocessor list in the Security FAQ](./faq.md#subprocessors).
+meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official [subprocessor list in the Security FAQ](faq#subprocessors).
 
 We're curious to hear if you’d like to see “bring your own model” (or API key) support so you can use meshStack Copilot with models under your own contract.
 

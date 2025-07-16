@@ -11,13 +11,13 @@ Metering is based on periodically sampling the state of Kubernetes resources fro
 
 ## Prerequisites
 
-- The "meshfed-metering" service account must be configured as described [here](meshstack.kubernetes.index.md#metering)
+- The "meshfed-metering" service account must be configured as described [here](meshstack.kubernetes.index#metering)
 - CPU and memory limits have to be defined for all containers, as metering is currently based on these limits
 - Kubernetes APIs are accessible by meshStack metering collector components
 
 ## Supported Resources
 
-Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). Platform engineers can use the traits of these resources to define fine-granular product and pricing rules.
+Resources with the following traits are addressable in the [Product Catalog](meshstack.billing-configuration#defining-a-custom-product-catalog). Platform engineers can use the traits of these resources to define fine-granular product and pricing rules.
 
 ### Pod
 

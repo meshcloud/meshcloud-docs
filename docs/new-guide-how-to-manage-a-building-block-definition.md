@@ -43,6 +43,6 @@ A building block definition is a reusable template for automating resource provi
 ---
 
 ## Related Resources
-- [Building Block Concept](./new-concept-buildingblock.md)
-- [How to Manage a Platform](./new-guide-how-to-manage-a-platform.md)
-- [meshStack Building Blocks Documentation](../administration.building-blocks.md)
+- [Building Block Concept](new-concept-buildingblock)
+- [How to Manage a Platform](new-guide-how-to-manage-a-platform)
+- [meshStack Building Blocks Documentation](administration.building-blocks)

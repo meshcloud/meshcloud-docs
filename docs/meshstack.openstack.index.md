@@ -8,7 +8,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with OpenStack, platform engineers configure one or multiple `Platform`s of `PlatformType` OpenStack in the [Platform Administration](administration.platforms.md) in meshPanel.
+To enable integration with OpenStack, platform engineers configure one or multiple `Platform`s of `PlatformType` OpenStack in the [Platform Administration](administration.platforms) in meshPanel.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ The latest OpenStack release officially validated with meshStack is [OpenStack 2
 However, any later OpenStack releases that continues to maintain API compatibility with the API versions specified below is supported.
 
 > As OpenStack is typically deployed "behind the firewall" in a private cloud settings, you may consider using an on-prem deployment of
-> [meshStack Enterprise](meshstack.managed-service.md). This enables meshStack to safely connect to your OpenStack APIs on your private network.
+> [meshStack Enterprise](meshstack.managed-service). This enables meshStack to safely connect to your OpenStack APIs on your private network.
 
 ### Supported OpenStack Versions
 
@@ -28,7 +28,7 @@ This an essential pre-requesite for using meshStack's OpenStack integration.
 
 meshStack also supports the following OpenStack APIs for advanced features
 
-| Service and minimum Version                                                                  | [Resource Metering](meshstack.openstack.metering.md) |
+| Service and minimum Version                                                                  | [Resource Metering](meshstack.openstack.metering) |
 | -------------------------------------------------------------------------------------------- |--------------------------------------------------------|
 | [Nova 2.0](https://docs.openstack.org/nova/latest/reference/api-microversion-history.html)   | Servers                                                |
 | [Cinder 3.0](https://docs.openstack.org/api-ref/block-storage/api_microversion_history.html) | Volumes & Volume Snapshots                             |
@@ -42,7 +42,7 @@ meshStack also supports the following OpenStack APIs for advanced features
 
 ### Keystone Federated Users
 
-meshStack will identify and assign users to roles in OpenStack based on their `euid` (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
+meshStack will identify and assign users to roles in OpenStack based on their `euid` (external user id) as described in [Identity Federation](meshstack.identity-federation#externally-provisioned-identities).
 meshStack expects that your OpenStack uses [Federated Identity](https://docs.openstack.org/keystone/2023.2/admin/federation/federated_identity.html). 
 
 You should set up OpenStack Keystone so that your identity provider stores the `euid` value in the `User.name` field of the [Keystone User object](https://docs.openstack.org/api-ref/identity/v3/?expanded=list-users-detail,show-user-details-detail#show-user-details). 
@@ -54,7 +54,7 @@ You should set up OpenStack Keystone so that your identity provider stores the `
 meshStack requires two admin user accounts for integration with OpenStack. 
 
 - the `replicator` admin account must have permission to create projects, groups and assign roles. This typically requires an `admin` role on the admin project, unless your OpenStack deployment has additional fine-grained policies available.
-- the `metering` account must have `reader` role access across all OpenStack projects. This user is used to collect [metering data](meshstack.openstack.metering.md) for all projects from OpenStack services.
+- the `metering` account must have `reader` role access across all OpenStack projects. This user is used to collect [metering data](meshstack.openstack.metering) for all projects from OpenStack services.
 
 ### Permission Replication
 
@@ -67,4 +67,4 @@ Because OpenStack does only provide the `member` project-level role out of the b
 
 ### Keystone Domains
 
-By default, meshStack will replicate [tenants](meshcloud.tenant.md) as OpenStack projects in the `default` Keystone domain of OpenStack. You can optionally enable meshStack to create dedicated Keystone domains per Workspace.
+By default, meshStack will replicate [tenants](meshcloud.tenant) as OpenStack projects in the `default` Keystone domain of OpenStack. You can optionally enable meshStack to create dedicated Keystone domains per Workspace.

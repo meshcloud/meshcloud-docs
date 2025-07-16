@@ -31,19 +31,19 @@ We recommend using a distinct name for the Building Block Definition that descri
 
 ### 3. Publish to the Marketplace
 
-Now you can [publish](marketplace.platform-builder.md#publishing) the Building Block to the **marketplace**. A new service will appear in the marketplace that, when ordered, will trigger your pipeline.
+Now you can [publish](marketplace.platform-builder#publishing) the Building Block to the **marketplace**. A new service will appear in the marketplace that, when ordered, will trigger your pipeline.
 
 ## Update Status of a Building Block
 
 With meshStack you have the ability to provide custom status to you users to update them about the progress of the pipeline execution e.g. AWS bucket was create or inform them about issues during the execution. 
 
-> In order to do that you must have [API keys](meshstack.how-to-API-keys.md) for workspaces enabled. If this is not the case please reach out to your administrators.
+> In order to do that you must have [API keys](meshstack.how-to-API-keys) for workspaces enabled. If this is not the case please reach out to your administrators.
 
 ### Building Block Run and Steps
 
 In meshStack the execution of a Building Block from beginning till end is called a **run**. A run can have multiple **steps**. You have complete freedom about the granularity of information you share with your users.
 
-We have issued API documentation [here](pathname:///docs/api/index.html#mesh_buildingblockrun).
+We have issued API documentation [here](pathname:///api/index.html#mesh_buildingblockrun).
 
 #### Available States for Runs and Steps
 

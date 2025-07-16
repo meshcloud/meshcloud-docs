@@ -35,9 +35,9 @@ Below is an example diagram illustrating financial reports:
 
 <!--
 ## Related Resources
-- [Payment Methods Concept](./new-concept-payment-methods.md)
-- [meshStack Chargeback Statements Documentation](../meshcloud.chargeback-v2.md)
-- [meshStack Tenant Usage Reports Documentation](../meshcloud.project-metering.md)
-- [How to Manage a Workspace](./new-guide-how-to-manage-a-workspace.md)
-- [How to Manage a Project](./new-guide-how-to-manage-a-project.md)
+- [Payment Methods Concept](new-concept-payment-methods)
+- [meshStack Chargeback Statements Documentation](meshcloud.chargeback-v2)
+- [meshStack Tenant Usage Reports Documentation](meshcloud.cost-management)
+- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
+- [How to Manage a Project](new-guide-how-to-manage-a-project)
 -->

@@ -3,7 +3,7 @@ id: administration.delete-tenants
 title: Delete Tenants
 ---
 
-The process for [deleting a tenant](meshcloud.tenant.md#delete-a-meshtenant) always starts by putting the tenant in the deletion queue from the workspace view.
+The process for [deleting a tenant](meshcloud.tenant#delete-a-meshtenant) always starts by putting the tenant in the deletion queue from the workspace view.
 
 ## Tenant Deletion Process
 

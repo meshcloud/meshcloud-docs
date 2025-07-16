@@ -36,7 +36,7 @@ There are two main types of communications in meshStack:
 
 <!--
 ## Related Resources
-- [How to Provide Security Contact Information in Tenants](./new-guide-how-to-provide-security-contact.md)
-- [How to Manage a Workspace](./new-guide-how-to-manage-a-workspace.md)
-- [meshStack Areas](./new-concept-meshstackareas.md)
+- [How to Provide Security Contact Information in Tenants](new-guide-how-to-provide-security-contact)
+- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
+- [meshStack Areas](new-concept-meshstackareas)
 -->

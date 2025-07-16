@@ -14,7 +14,7 @@ Below is an example diagram illustrating the meshStack Hub:
 
 <!--
 ## Related Resources
-- [Building Blocks](./new-definition-buildingblocks.md)
-- [meshStack API Documentation](../apis.index.md)
-- [How to Extract Data from meshStack](./new-guide-how-to-extract-data.md)
+- [Building Blocks](new-definition-buildingblocks)
+- [meshStack API Documentation](apis.index)
+- [How to Extract Data from meshStack](new-guide-how-to-extract-data)
 -->
