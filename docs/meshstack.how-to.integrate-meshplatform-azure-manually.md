@@ -81,7 +81,7 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Resources/subscriptions/resourceGroups/write",
 ```
 
-You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./meshstack.azure.landing-zones.md).
+You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](meshstack.azure.landing-zones.md).
 
 1. In Azure Portal, navigate to the "Management Groups" blade.
 2. Click on the "Details" link of the management group you want to give access to.
@@ -90,7 +90,7 @@ You must grant the meshcloud Service Principal this access to all [Management Gr
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
-In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](./administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
+In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
 
 
 ```hcl
@@ -140,7 +140,7 @@ To provide Azure Subscription for your organization's meshProjects, meshcloud su
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement, Microsoft Customer Agreement or a Microsoft Partner Agreement and want to provide a large number of subscriptions in a fully automated fashion.
 
-> Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](./meshcloud.platforms.md). Please contact our experts for more details.
+> Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](meshcloud.platforms.md). Please contact our experts for more details.
 
 #### Set up the Enrollment Account
 
@@ -291,8 +291,8 @@ If your organization does not have access to an Enterprise Enrollment, you can a
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish
 to use "Pay-as-you-go" subscriptions or if your organization partners with an [Azure Cloud Solution Provider](https://learn.microsoft.com/en-us/partner-center/azure-plan-lp) to provide your subscriptions.
 
-The meshcloud Azure [replication](./meshcloud.tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
-name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./meshstack.azure.landing-zones.md) configuration
+The meshcloud Azure [replication](meshcloud.tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
+name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 
 ## Set up the Metering Service Principal
@@ -336,4 +336,4 @@ Before users can access an AAD tenant they've been invited to using Azure B2B, t
 - The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
 - meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
 
-> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](./meshstack.identity-federation.md#externally-provisioned-identities).
+> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](meshstack.identity-federation.md#externally-provisioned-identities).

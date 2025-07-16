@@ -3,7 +3,7 @@ id: meshcloud.tenant
 title: meshTenant
 ---
 
-meshTenants are the representation of a [meshProject](./meshcloud.project.md) in a [meshPlatform](./meshcloud.platforms.md).
+meshTenants are the representation of a [meshProject](meshcloud.project.md) in a [meshPlatform](meshcloud.platforms.md).
 meshTenants are isolated cloud environments protected by multi-tenant mechanisms of the cloud platform. The following types of meshTenants are supported by meshStack:
 
 - Accounts in AWS
@@ -15,21 +15,21 @@ meshTenants are isolated cloud environments protected by multi-tenant mechanisms
 
 ## Using your Tenant
 
-To use your tenant, open the tenant control plane by going to the [project control plane](./meshcloud.project.md#manage-meshprojects) and opening one of its tenants.
+To use your tenant, open the tenant control plane by going to the [project control plane](meshcloud.project.md#manage-meshprojects) and opening one of its tenants.
 
 ![Tenant Control Plane](assets/tenants/control-plane.png)
 
-In the tenant control plane you can log in to the cloud platform, manage your Building Blocks, view costs associated to the tenant and book additional services for the tenant from the [marketplace](./marketplace.index.md).
+In the tenant control plane you can log in to the cloud platform, manage your Building Blocks, view costs associated to the tenant and book additional services for the tenant from the [marketplace](marketplace.index.md).
 
 ## Replication and Reconciliation
 
-meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](./meshcloud.workspace.md) admins), the [Landing Zone](./meshcloud.landing-zones.md) and [meshPlatform](./meshcloud.platforms.md) configuration (managed by the platform engineer) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](./meshcloud.tenant-quota.md) to your meshTenant.
+meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](meshcloud.workspace.md) admins), the [Landing Zone](meshcloud.landing-zones.md) and [meshPlatform](meshcloud.platforms.md) configuration (managed by the platform engineer) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](meshcloud.tenant-quota.md) to your meshTenant.
 
 meshStack continuously reconciles the **actual state** of meshTenants with their desired state. This process is called replication and ensures that all cloud tenants governed by meshStack are in a known and expected state.
 
 ## Metadata Tags
 
-meshStack automatically derives [metadata tags](./meshcloud.metadata-tags.md) for meshTenants based on the metadata tags set on the meshProject, the [payment method](./meshcloud.payment-methods.md) configured on the meshProject and
+meshStack automatically derives [metadata tags](meshcloud.metadata-tags.md) for meshTenants based on the metadata tags set on the meshProject, the [payment method](meshcloud.payment-methods.md) configured on the meshProject and
 the meshWorkspace it belongs to.
 
 Any update to tenant metadata (e.g. a change in payment method) triggers a new meshTenant reconciliation cycle.
@@ -51,7 +51,7 @@ Tenant deletion always requires approval. It is possible that an operator will r
 Operators can configure how meshStack processes tenants on the deletion queue per landing zone.
 meshStack will update the status of your tenant in the Deletion Queue accordingly and send notifications to keep you updated about deletion progress.
 
-> If you are a platform engineer and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](./administration.delete-tenants.md)
+> If you are a platform engineer and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](administration.delete-tenants.md)
 
 ## Reuse of an existing tenant
 

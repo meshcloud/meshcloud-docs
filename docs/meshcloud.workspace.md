@@ -16,7 +16,7 @@ and any additional [metadata specific to your organization](meshstack.metadata-t
 
 ## Managing your meshWorkspace
 
-Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate down to the [project control plane](./meshcloud.project.md#manage-meshprojects) & [tenant control plane](./meshcloud.tenant.md#using-your-tenant). Each control plane has a similar layout. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
+Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](./meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate down to the [project control plane](meshcloud.project.md#manage-meshprojects) & [tenant control plane](meshcloud.tenant.md#using-your-tenant). Each control plane has a similar layout. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
 
 ![Workspace Control Plane User Interface](assets/Workspace-overview.png)
 
@@ -25,7 +25,7 @@ The workspace identifier is also shown here, but it can never be changed,
 as it is used as an immutable identifier of the meshWorkspace for its
 representation in the different cloud platforms. You are however able to change the display name of the meshWorkspace.
 
-If configured by your Cloud Foundation team, you may also be able to edit additional workspace [metadata tags](./meshcloud.metadata-tags.md) in the Settings Tab.
+If configured by your Cloud Foundation team, you may also be able to edit additional workspace [metadata tags](meshcloud.metadata-tags.md) in the Settings Tab.
 
 ## Invite Users to a Workspace Team
 
@@ -51,7 +51,7 @@ If 4 eyes-principle is active, the user or group will not be assigned directly t
 For not having to assign multiple users individually to your projects, you can also group them in a user group. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
 You can view workspace user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
-Currently, creating a group is only supported via the [meshStack API](/api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
+Currently, creating a group is only supported via the [meshStack API](pathname:///api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
 ![workspace-identifier](assets/workspace-identifier.png)
 
 ### Creating Groups in meshStack

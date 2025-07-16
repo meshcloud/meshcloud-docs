@@ -44,7 +44,7 @@ You can easily assign an unmanaged tenant to a project in meshStack by doing the
 
 Tenants that are assigned into meshStack are removed from the unmanaged tenants list and shown in the tenants list instead.
 
-Alternatively, if you prefer building an automation or an "as Code"-approach, you can use the [meshTenant API Import](https://docs.meshcloud.io/api/#_meshtenant).
+Alternatively, if you prefer building an automation or an "as Code"-approach, you can use the [meshTenant API Import](pathname:///api/#_meshtenant).
 
 ### Unmanaged AWS tenants
 

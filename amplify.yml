@@ -3,22 +3,23 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd website
         - yarn install
     build:
       commands:
         - yarn build
+
         - |
           if [[ $AWS_BRANCH = master ]]; then
-              cp robots.master.txt build/meshcloud-docs/robots.txt
+      
+              cp robots.master.txt build/robots.txt
           else
-              cp robots.develop.txt build/meshcloud-docs/robots.txt
+              cp robots.develop.txt build/robots.txt
           fi
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: website/build/meshcloud-docs
+    baseDirectory: build
     files:
       - "**/*"
   cache:
     paths:
-      - website/node_modules/**/*
+      - node_modules/**/*

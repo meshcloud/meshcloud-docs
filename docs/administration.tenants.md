@@ -3,7 +3,7 @@ id: administration.tenants
 title: meshTenants
 ---
 
-You can find a description of meshTenants [here](./meshcloud.tenant.md).
+You can find a description of meshTenants [here](meshcloud.tenant.md).
 
 ## Viewing tenant status
 

@@ -50,7 +50,7 @@ A policy evaluation strategy describes how authoritative and affected policy
 subjects shall be evaluated in the context of a policy. In that way, you can
 decide in which form the tag values have to be present on both policy subjects
 to comply with the policy. As mentioned before, policies are built on top of
-meshStack's [tagging](./meshcloud.metadata-tags.md) system. By that system, you
+meshStack's [tagging](meshcloud.metadata-tags.md) system. By that system, you
 can allow your tag to only have one value or multiple values. For the
 evaluation, all tags are treated as arrays: no matter if there are no values, a
 single value, or multiple values. This means you can also create a policy that
@@ -84,15 +84,15 @@ subject.
 allowed values: `dev`, `qa`, and `prod`. The project is the affected subject and
 the workspace is the authoritative subject.
 
-| Workspace<br> _authoritative_ | Project<br> _affected_ | Result | Explanation                                                                 |
-| ----------------------------- | ---------------------- | ------ | --------------------------------------------------------------------------- |
-| `prod`                        | `prod`                 | ✓      | `prod` is present on both Project and Workspace                             |
-| `dev`, `qa`                   | `prod`                 | ✖      | Project `prod` is not present on Workspace `qa`,`dev`                       |
-| `dev`                         | < empty >              | ✖      | Project has no tag values, the subset is empty                              |
-| < empty >                     | `dev`                  | ✖      | Workspace has no tag values, Project `dev` is not a subset                  |
-| < empty >                     | < empty >              | ✓      | Null sets rule: Both subjects have no tag values, the policy passes         |
-| `qa`, `dev`                   | `prod`, `qa`           | ✖      | Project `prod` is not present in Workspace `qa`,`dev`                       |
-| `qa`, `dev`                   | `dev`, `qa`            | ✓      | `dev`, `qa` is present on both Project and Workspace, order does not matter |
+| Workspace _authoritative_ | Project _affected_ | Result | Explanation                                                                 |
+| ------------------------- | ------------------ | ------ | --------------------------------------------------------------------------- |
+| `prod`                    | `prod`             | ✓      | `prod` is present on both Project and Workspace                             |
+| `dev`, `qa`               | `prod`             | ✖      | Project `prod` is not present on Workspace `qa`,`dev`                       |
+| `dev`                     | < empty >          | ✖      | Project has no tag values, the subset is empty                              |
+| < empty >                 | `dev`              | ✖      | Workspace has no tag values, Project `dev` is not a subset                  |
+| < empty >                 | < empty >          | ✓      | Null sets rule: Both subjects have no tag values, the policy passes         |
+| `qa`, `dev`               | `prod`, `qa`       | ✖      | Project `prod` is not present in Workspace `qa`,`dev`                       |
+| `qa`, `dev`               | `dev`, `qa`        | ✓      | `dev`, `qa` is present on both Project and Workspace, order does not matter |
 
 #### Intersection
 
@@ -114,15 +114,15 @@ tag, and a workspace's `environment` tag with the following allowed values:
 `dev`, `qa`, and `prod`. The User/Group is the affected subject and the
 workspace is the authoritative subject.
 
-| Workspace<br> _authoritative_ | User/Group<br> _affected_ | Result | Explanation                                                         |
-| ----------------------------- | ------------------------- | ------ | ------------------------------------------------------------------- |
-| `prod`                        | `prod`                    | ✓      | `prod` is present on User/Group and Workspace                       |
-| `dev`, `qa`                   | `prod`                    | ✖      | User/Group `prod` is not present on Workspace `qa`,`dev`            |
-| `dev`                         | < empty >                 | ✖      | No overlapping value, the intersection is empty                     |
-| < empty >                     | `dev`                     | ✖      | No overlapping value, the intersection is empty                     |
-| < empty >                     | < empty >                 | ✓      | Null sets rule: Both subjects have no tag values, the policy passes |
-| `qa`, `dev`                   | `prod`, `qa`              | ✓      | User/Group `qa` is present in Workspace `qa`,`dev`                  |
-| `qa`, `dev`                   | `dev`, `qa`               | ✓      | `dev`, `qa` is present on User/Group and Workspace                  |
+| Workspace _authoritative_ | User/Group _affected_ | Result | Explanation                                                         |
+| ------------------------- | --------------------- | ------ | ------------------------------------------------------------------- |
+| `prod`                    | `prod`                | ✓      | `prod` is present on User/Group and Workspace                       |
+| `dev`, `qa`               | `prod`                | ✖      | User/Group `prod` is not present on Workspace `qa`,`dev`            |
+| `dev`                     | < empty >             | ✖      | No overlapping value, the intersection is empty                     |
+| < empty >                 | `dev`                 | ✖      | No overlapping value, the intersection is empty                     |
+| < empty >                 | < empty >             | ✓      | Null sets rule: Both subjects have no tag values, the policy passes |
+| `qa`, `dev`               | `prod`, `qa`          | ✓      | User/Group `qa` is present in Workspace `qa`,`dev`                  |
+| `qa`, `dev`               | `dev`, `qa`           | ✓      | `dev`, `qa` is present on User/Group and Workspace                  |
 
 ### Policies for Users/Groups
 
@@ -145,12 +145,12 @@ e.g., production projects, the following aspects have to be considered:
    can add the production environment tag to that user, so this user gets access
    to all production projects in all workspaces.
 2. If you want to maintain per workspace who has access to production projects,
-   you have to use [WorkspaceUserGroups](./meshcloud.workspace.md#user-groups)
+   you have to use [WorkspaceUserGroups](meshcloud.workspace.md#user-groups)
    for that. It is not possible to assign a single user certain tags within a
    certain workspace.
 3. To provide easy access to "unrestricted" projects (e.g. those with the
    environment "dev" and "qa") we provide
-   [default tags](./meshstack.metadata-tags.md#tags-on-meshusers) for users.
+   [default tags](meshstack.metadata-tags.md#tags-on-meshusers) for users.
    meshStack makes sure that these default tags are applied to all users.
 
 ### What can I achieve with policies?
