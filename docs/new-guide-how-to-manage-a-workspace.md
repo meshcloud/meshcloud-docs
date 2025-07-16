@@ -16,6 +16,8 @@ Here are short guides on how to handle the most common tasks in a workspace.
 - Have a user account that can log into meshStack.
 - meshStack is configured to allow workspace creation for application teams via the UI.
 
+**Step by Step Guide:**
+
 1. Start the wizard by selecting "Create Workspace" in the workspace drop-down in the top navigation bar.
 2. Fill in the required details such as name, ID, and tag information.
 3. Onboard the initial team members.
@@ -27,11 +29,41 @@ Here are short guides on how to handle the most common tasks in a workspace.
 
 - Have admin access to meshStack with organization admin permissions.
 
+**Step by Step Guide:**
+
 1. Navigate to the admin area and select "Workspaces."
 2. Click on "Create Workspace."
 3. Fill in the required details such as name, ID, and tag information.
 4. Assign initial users and roles.
 5. Review the workspace details and confirm creation.
+
+## Deleting a Workspace
+
+### Deleting a Workspace as an Application Team
+
+**Prerequisites:**
+
+- Have access to the workspace management area.
+- Have workspace owner permissions.
+- No remaining resources in the workspace (e.g., projects, building blocks, tenants)
+
+**Step by Step Guide:**
+
+1. Navigate to the workspace management area.
+2. Under "Deletion", provide a reason for deletion and confirm.
+
+### Deleting a Workspace as an Administrator
+
+**Prerequisites:**
+
+- Have admin access to meshStack with organization admin permissions.
+- No remaining resources in the workspace (e.g., projects, building blocks, tenants)
+
+**Step by Step Guide:**
+
+1. Navigate to the admin area and select "Workspaces."
+2. In the drop-down for the workspace, select "Delete Workspace."
+3. Provide a reason for deletion and confirm.
 
 ## Manage Workspace Tags
 
@@ -41,6 +73,8 @@ Here are short guides on how to handle the most common tasks in a workspace.
 
 - Have access to the workspace management area.
 - Have workspace manager or owner permissions.
+
+**Step by Step Guide:**
 
 1. Navigate to the workspace management area.
 2. Under "Settings," select "Tags."
@@ -52,6 +86,8 @@ Here are short guides on how to handle the most common tasks in a workspace.
 **Prerequisites:**
 
 - Have admin access to meshStack with organization admin permissions.
+
+**Step by Step Guide:**
 
 1. Navigate to the admin area and select "Workspaces."
 2. In the drop-down for the workspace, select "Workspace Tags."
@@ -66,6 +102,8 @@ Here are short guides on how to handle the most common tasks in a workspace.
 - Have access to the workspace management area.
 - Have workspace manager or owner permissions.
 
+**Step by Step Guide:**
+
 You can find the workspace access management in the workspace management area under "Access Management." Select "Role Bindings."
 
 - To **add users** to a workspace, follow the guide [How to Onboard Your Team to a Workspace](how-to-onboard-your-team-to-workspace.md).
@@ -79,6 +117,8 @@ You can find the workspace access management in the workspace management area un
 **Prerequisites:**
 
 - Have admin access to meshStack with organization admin permissions.
+
+**Step by Step Guide:**
 
 1. Navigate to the admin area and select "Workspaces."
 2. In the drop-down for the workspace, select "User & Groups."
@@ -103,6 +143,8 @@ Deleting payment methods is not supported via UI.
 - Have workspace manager or owner permissions.
 - Have default payment method setup enabled. This means payment methods are created by admins and assigned to workspaces.
 
+**Step by Step Guide:**
+
 1. Navigate to the workspace management area.
 2. Under "Financials," select "Payment Methods."
 3. See the status of your payment methods across projects.
@@ -113,6 +155,8 @@ Deleting payment methods is not supported via UI.
 **Prerequisites:**
 
 - Have admin access to meshStack with organization admin permissions.
+
+**Step by Step Guide:**
 
 1. Navigate to the admin area and select "Workspaces."
 2. In the drop-down for the workspace, select "Create/Edit Payment Methods."
