@@ -301,6 +301,93 @@ const sidebars: SidebarsConfig = {
         }
       ],
     },
+    {
+      type: 'category',
+      label: 'Integrations',
+      items: [
+        {
+          type: 'category',
+          label: 'Amazon Web Services',
+          items: [
+            'meshstack.aws.index',
+            'meshstack.aws.landing-zones',
+            'meshstack.aws.metering',
+            'meshstack.aws.sso-setup',
+            'meshstack.aws.reserved-instance-guide',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Microsoft Azure',
+          items: [
+            'meshstack.azure.index',
+            'meshstack.azure.landing-zones',
+            'meshstack.azure.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Google Cloud Platform',
+          items: [
+            'meshstack.gcp.index',
+            'meshstack.gcp.landing-zones',
+            'meshstack.gcp.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Cloud Foundry',
+          items: [
+            'meshstack.cloudfoundry.index',
+            'meshstack.cloudfoundry.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Kubernetes',
+          items: [
+            'meshstack.kubernetes.index',
+            'meshstack.kubernetes.landing-zones',
+            'meshstack.kubernetes.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'GitHub',
+          items: [
+            'meshstack.github.pipeline-automation'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OpenShift',
+          items: [
+            'meshstack.openshift.index',
+            'meshstack.openshift.landing-zones',
+            'meshstack.openshift.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OpenStack',
+          items: [
+            'meshstack.openstack.index',
+            'meshstack.openstack.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OSB Services',
+          items: [
+            'meshstack.meshmarketplace.index',
+            'meshstack.meshmarketplace.metering',
+            'meshstack.meshmarketplace.profile',
+            'meshstack.meshmarketplace.tenant-services',
+            'meshstack.meshmarketplace.broker-tutorial'
+          ],
+        },
+      ],
+    },
     /**
     {
       type: 'category',
