@@ -53,6 +53,6 @@ This guide explains how to establish and integrate a custom platform with meshSt
 ---
 
 ## Related Resources
-- [Platform Concept](./new-concept-platform.md)
-- [How to Manage a Platform](./new-guide-how-to-manage-a-platform.md)
-- [meshStack API Documentation](../apis.index.md)
+- [Platform Concept](new-concept-platform)
+- [How to Manage a Platform](new-guide-how-to-manage-a-platform)
+- [meshStack API Documentation](apis.index)

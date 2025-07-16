@@ -37,6 +37,6 @@ Tag values can be up to 255 characters. Ensure your tags configured as replicate
 <!--
 ## Related Resources
 
-- [How to Provide Security Contact Information in Tenants](./new-guide-how-to-provide-security-contact.md)
-- [How to Provide Organization Context to the Platform](./new-guide-how-to-provide-organization-context.md)
+- [How to Provide Security Contact Information in Tenants](new-guide-how-to-provide-security-contact)
+- [How to Provide Organization Context to the Platform](new-guide-how-to-provide-organization-context)
 -->

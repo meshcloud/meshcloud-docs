@@ -144,7 +144,7 @@ meshStack does not monitor the status of the GitHub Action Workflow. This means 
 
 However, you can use the meshStack API to update the status during and after the execution of the workflow. We highly recommend using our pre-built GitHub Actions workflow steps to do so.
 
-You will need an [API Key](meshstack.how-to-API-keys.md) to authenticate with the meshStack API.
+You will need an [API Key](meshstack.how-to-API-keys) to authenticate with the meshStack API.
 
 You should do two things within the pipeline to update the status of the run:
 

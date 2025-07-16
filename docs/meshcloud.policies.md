@@ -13,15 +13,15 @@ are called policy subjects.
 > subjects
 
 For ease of use, we restrict the combinations of policy subjects which do not
-make sense. Each policy describes which [tag](meshcloud.metadata-tags.md) values
+make sense. Each policy describes which [tag](meshcloud.metadata-tags) values
 have to be present on both policy subjects to comply with the policy. By setting
-an [evaluation strategy](meshcloud.policies.md#policy-evaluation-strategy) you
+an [evaluation strategy](meshcloud.policies#policy-evaluation-strategy) you
 can decide how the policy subjects are evaluated against each other.
 
 Policies are enforced in various places wherever you edit a tag of a policy
 subject or change a relation to another policy subject like assigning a user to
 a workspace. Operators can learn more about configuring policies
-[here](administration.policies.md).
+[here](administration.policies).
 
 ### Authoritative and Affected Subject
 
@@ -50,7 +50,7 @@ A policy evaluation strategy describes how authoritative and affected policy
 subjects shall be evaluated in the context of a policy. In that way, you can
 decide in which form the tag values have to be present on both policy subjects
 to comply with the policy. As mentioned before, policies are built on top of
-meshStack's [tagging](meshcloud.metadata-tags.md) system. By that system, you
+meshStack's [tagging](meshcloud.metadata-tags) system. By that system, you
 can allow your tag to only have one value or multiple values. For the
 evaluation, all tags are treated as arrays: no matter if there are no values, a
 single value, or multiple values. This means you can also create a policy that
@@ -145,12 +145,12 @@ e.g., production projects, the following aspects have to be considered:
    can add the production environment tag to that user, so this user gets access
    to all production projects in all workspaces.
 2. If you want to maintain per workspace who has access to production projects,
-   you have to use [WorkspaceUserGroups](meshcloud.workspace.md#user-groups)
+   you have to use [WorkspaceUserGroups](meshcloud.workspace#user-groups)
    for that. It is not possible to assign a single user certain tags within a
    certain workspace.
 3. To provide easy access to "unrestricted" projects (e.g. those with the
    environment "dev" and "qa") we provide
-   [default tags](meshstack.metadata-tags.md#tags-on-meshusers) for users.
+   [default tags](meshstack.metadata-tags#tags-on-meshusers) for users.
    meshStack makes sure that these default tags are applied to all users.
 
 ### What can I achieve with policies?

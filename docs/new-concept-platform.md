@@ -30,7 +30,7 @@ meshStack supports various platforms out of the box:
 - **AKS (Azure Kubernetes Service)**
 - **GKS (Google Kubernetes Service)**
 
-Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](./new-guide-how-to-establish-a-custom-platform.md) guide.
+Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](new-guide-how-to-establish-a-custom-platform) guide.
 
 ## Restricted Platforms
 

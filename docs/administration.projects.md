@@ -7,7 +7,7 @@ title: meshProjects
 
 ### Edit Workspace Tag Values
 
-Admin users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshProjects**.
+Admin users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags) for managed **meshProjects**.
 
 1. Login to the meshPanel with your administrator credentials.
 2. Navigate to the **Administration** via the settings button on the top right.
@@ -35,7 +35,7 @@ Projects can currently only be deleted by Workspace Managers.
 If a meshProject is marked for deletion by a user, and all meshTenants of the meshProject
 have been successfully deleted, the meshProject is then automatically deleted.
 
-> Read more about the tenant deletion & approval procedure [here](administration.delete-tenants.md).
+> Read more about the tenant deletion & approval procedure [here](administration.delete-tenants).
 
 ## Audit Projects
 

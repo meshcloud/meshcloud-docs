@@ -27,7 +27,7 @@ const config: Config = {
   organizationName: 'meshcloud', // Usually your GitHub org/user name.
   projectName: 'meshcloud-docs', // Usually your repo name.
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   scripts: [],
@@ -47,17 +47,31 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
+  plugins: [
+      [
+        '@docusaurus/plugin-client-redirects',
+        {
+          redirects: [
+            {
+              from: '/',
+              to: '/docs'
+            },
+          ],
+        },
+      ]
+  ],
+
   presets: [
     [
       'classic',
       {
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/meshcloud/meshcloud-docs/tree/develop',
         },
         blog: {
           showReadingTime: true,
@@ -97,6 +111,7 @@ const config: Config = {
       logo: {
         alt: 'meshStack Logo',
         src: 'img/meshstack_logo.png',
+        href: '/docs'
       },
       items: [
         {

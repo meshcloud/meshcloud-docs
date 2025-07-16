@@ -3,23 +3,23 @@ id: meshstack.metadata-tags
 title: Managing Tags
 ---
 
-Operators can configure meshStack to collect, attach and distribute organization-specific metadata to various [meshModel](/) objects using [metadata tags](meshcloud.metadata-tags.md).
+Operators can configure meshStack to collect, attach and distribute organization-specific metadata to various meshObjects using [metadata tags](meshcloud.metadata-tags).
 
 > To get more insight into how your cloud foundation can improve the use of metadata tags,
 > read about [Cloud Tenant Tagging on cloudfoundation.org](https://cloudfoundation.meshcloud.io/maturity-model/security-and-compliance/cloud-tenant-tagging.html).
 
 ## Use Cases for Tags
 
-> meshStack currently supports tags on [workspaces](meshcloud.workspace.md), [projects](meshcloud.project.md), [landing zones](meshcloud.landing-zones.md), [building block definitions](administration.building-blocks.md) and [payment methods](meshcloud.payment-methods.md).
-> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [workspace user groups](meshstack.workspace-group-sync.md) are freely taggable via the meshStack API.
+> meshStack currently supports tags on [workspaces](meshcloud.workspace), [projects](meshcloud.project), [landing zones](meshcloud.landing-zones), [building block definitions](administration.building-blocks) and [payment methods](meshcloud.payment-methods).
+> Additionally, it is also possible to supply [default tags on meshUsers](#tags-on-meshusers) and [workspace user groups](meshstack.workspace-group-sync) are freely taggable via the meshStack API.
 
 meshStack acts as an organization's central registry of cloud environments and services. It therefore needs to cover
 a wide range of use cases for orchestrating organizational processes across multiple clouds, including;
 
-- centralized management and configuration of [cloud platforms](meshcloud.platforms.md)
-- life-cycle management for [cloud tenants](meshcloud.tenant.md) and [security policy automation](meshcloud.landing-zones.md)
-- centralized Identity and Access Management (IAM) via [multi-cloud identity federation](meshstack.identity-federation.md)
-- unified [chargeback process](meshcloud.project-metering.md) across all cloud platforms and services
+- centralized management and configuration of [cloud platforms](meshcloud.platforms)
+- life-cycle management for [cloud tenants](meshcloud.tenant) and [security policy automation](meshcloud.landing-zones)
+- centralized Identity and Access Management (IAM) via [multi-cloud identity federation](meshstack.identity-federation)
+- unified [chargeback process](meshcloud.cost-management) across all cloud platforms and services
 
 Many of these use cases can require organizational metadata to be shared across different systems. Common examples of
 such metadata include:
@@ -90,7 +90,7 @@ You will be prompted with a new page where you can enter a lot of information. W
 3. Click on the trash icon in the 'Actions' column of the meshPolicy you want to delete in the list of active tags. A prompt will appear.
 4. Confirm the deletion by entering the tag key in the input field of the prompt. After the deletion of your tag is finalized your list of active tags will be updated.
 
-> You can only delete a tag which it is not used by any [meshPolicies](meshcloud.policies.md).
+> You can only delete a tag which it is not used by any [meshPolicies](meshcloud.policies).
 
 ## Tags on meshUsers
 
@@ -121,14 +121,14 @@ let example
 
 ## Exposing Tags via Landing Zones
 
-meshStack makes metadata available to [Landing Zones](meshcloud.landing-zones.md), for example by providing it as parameters to an [Azure Blueprint](meshstack.azure.landing-zones.md). The Landing Zone documentation for each of meshStack's supported platforms describes how meshStack makes **meshTenant metadata** available.
+meshStack makes metadata available to [Landing Zones](meshcloud.landing-zones), for example by providing it as parameters to an [Azure Blueprint](meshstack.azure.landing-zones). The Landing Zone documentation for each of meshStack's supported platforms describes how meshStack makes **meshTenant metadata** available.
 
 ### meshTenant Metadata
 
 > meshTenant metadata is part of a tenant's desired state. meshStack will therefore automatically reconcile any change to metadata with the actual tenant state.
 
-meshStack automatically derives [metadata tags](meshcloud.metadata-tags.md) for [meshTenants](meshcloud.tenant.md) based on the metadata tags set on the [meshProject](meshcloud.project.md), the [payment method](meshcloud.payment-methods.md) configured on the meshProject and
-the [meshWorkspace](meshcloud.workspace.md) it belongs to.
+meshStack automatically derives [metadata tags](meshcloud.metadata-tags) for [meshTenants](meshcloud.tenant) based on the metadata tags set on the [meshProject](meshcloud.project), the [payment method](meshcloud.payment-methods) configured on the meshProject and
+the [meshWorkspace](meshcloud.workspace) it belongs to.
 
 It's possible that these objects have tags with the same tag key. For example, both the meshWorkspace and
 meshProject could contain a `cmdb-id` tag. Setting the `cmdb-id` tag value on the
@@ -153,7 +153,7 @@ This example would result in `cmdb-id` being equal to `56` as the meshProject ha
 
 ### HTTP Header Interface
 
-Some Landing Zone assets like [GCP Cloud Functions](meshstack.gcp.landing-zones.md) or [Azure Functions](meshstack.azure.landing-zones.md) receive metadata tags from meshStack using HTTP Headers. meshStack invokes these Landing Zone assets using the following HTTP headers:
+Some Landing Zone assets like [GCP Cloud Functions](meshstack.gcp.landing-zones) or [Azure Functions](meshstack.azure.landing-zones) receive metadata tags from meshStack using HTTP Headers. meshStack invokes these Landing Zone assets using the following HTTP headers:
 
 
 | HTTP Header Name                 | Description                                                                                                                   |
@@ -173,7 +173,7 @@ As a full example, a tag named `myCustomerTag` would be provided as an HTTP head
 Beside having tags in meshStack, it is also useful for cloud-native users to be aware of the metadata within e.g. Azure. This is why meshStack
 supports the ability to "replicate" the tags into the actual cloud platforms. The entire lifecycle of these tags can be managed by meshStack. This means tags on the cloud platform are updated and removed depending on the underlying metadata of the replicated meshProject. meshStack manages all tags of a prefixed namespace (e.g. the `meshstack_` prefix in the tag label `meshstack_costcenter:12345` indicates that this is a meshStack managed tag).
 
-Use the config tab in the [platform control plane](administration.platforms.md#platform-control-plane) and the [tag definition user interface](#how-to-define-a-new-tag) to enable automatic replication of tags to cloud tenants.
+Use the config tab in the [platform control plane](administration.platforms#platform-control-plane) and the [tag definition user interface](#how-to-define-a-new-tag) to enable automatic replication of tags to cloud tenants.
 
 ![Tag Configuration Header](assets/platform_maintenance/tag-config-1.png)
 
@@ -192,8 +192,8 @@ The following extra metadata can be used in such a tag definition configuration:
 | `${workspaceIdentifier}`      | The project's workspace identifier                                                                                                                        |
 | `${workspaceName}`            | The projects's workspace name                                                                                                                             |
 | `${projectName}`              | The project display name                                                                                                                                  |
-| `${landingZoneName}`          | The name of the applied [landing zone](meshcloud.landing-zones.md). It contains `no-landingzone` if the tenant does not have a landing zone applied       |
-| `${landingZoneIdentifier}`    | The identifier of the applied [landing zone](meshcloud.landing-zones.md). It contains `no-landingzone` if the tenant does not have a landing zone applied |
+| `${landingZoneName}`          | The name of the applied [landing zone](meshcloud.landing-zones). It contains `no-landingzone` if the tenant does not have a landing zone applied       |
+| `${landingZoneIdentifier}`    | The identifier of the applied [landing zone](meshcloud.landing-zones). It contains `no-landingzone` if the tenant does not have a landing zone applied |
 | `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the project                                                                                      |
 | `${paymentName}`              | The display name of the payment method that is assigned to the project                                                                                    |
 | `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the project. It contains `none` if no expiration date is set for the payment method         |
@@ -251,4 +251,4 @@ During replication non conform tag keys and values are possibly adapted to the p
 
 ## Tags in Reports
 
-meshStack includes meshWorkspace, meshProject and Payment Method metadata tags as extra columns in relevant reports, e.g. [Chargeback Statements](meshstack.billing-configuration.md#chargeback).
+meshStack includes meshWorkspace, meshProject and Payment Method metadata tags as extra columns in relevant reports, e.g. [Chargeback Statements](meshstack.billing-configuration#chargeback).

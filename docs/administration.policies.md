@@ -3,7 +3,7 @@ id: administration.policies
 title: Policies
 ---
 
-Policies are described in detail [here](meshcloud.policies.md). They can be set up between subjects.
+Policies are described in detail [here](meshcloud.policies). They can be set up between subjects.
 
 The following subjects are available:
 
@@ -33,11 +33,11 @@ Policy creation is only possible for a user who has an organization admin or com
 
 - **Policy Subject Tags**: select a tag on both subjects that shall be evaluated against each other within this policy
 
-- **Policy Evaluation Strategy**: select the evaluation strategy for how the subjects shall be evaluated (click [here](meshcloud.policies.md#policy-evaluation-strategy) to learn more about the different strategies)
+- **Policy Evaluation Strategy**: select the evaluation strategy for how the subjects shall be evaluated (click [here](meshcloud.policies#policy-evaluation-strategy) to learn more about the different strategies)
 
 - **How to Fix (optional)**: provide an additional hint on how users can resolve the situation when they violate a policy
 
-To learn more about how policies work, please click [here](meshcloud.policies.md).
+To learn more about how policies work, please click [here](meshcloud.policies).
 
 After creating a policy, every subject defined in the policy will be evaluated. All violations caused by the new policy will be logged. These can be either fixed by workspace managers or organization admins, by picking the right tag values.
 

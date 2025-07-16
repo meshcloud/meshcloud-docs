@@ -5,7 +5,7 @@ title: "Tutorial: Dashboards"
 
 > **Important! This functionality is only available on the meshStack Enterprise plan**
 > If you are on a SaaS plan and you want to replicate Authorization information to another
-> system, please consider using [Azure Active Directory Permission Replication](meshstack.meshmarketplace.index.md#aad-permission-replication)
+> system, please consider using [Azure Active Directory Permission Replication](meshstack.meshmarketplace.index#aad-permission-replication)
 > or build your own integration using the [meshObject API](pathname:///api/).
 
 Service Brokers can offer dashboards for their service instances. Users can use the dashboard to interact with the service, e.g. for monitoring and service configuration. This tutorial explains how to implement a dashboard for the OSB Services Platform
@@ -32,11 +32,11 @@ Service Brokers need to discover the URLs for initiating the OAuth flow and for 
 
 ## Implementing a dashboard
 
-The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration with a OSB Services Platform. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration with OSB Services Platform specifically, leveraging the [OSB API Profile](meshstack.meshmarketplace.profile.md).
+The OSB API spec does not specify all necessary steps to achieve properly secured dashboard integration with a OSB Services Platform. This section describes how Service Brokers can discover user permissions and the URLs necessary for OAuth integration with OSB Services Platform specifically, leveraging the [OSB API Profile](meshstack.meshmarketplace.profile).
 
 ### Permissions on Service Instance Level
 
-The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users that are assigned to the project in the OSB Services Platform where the service instance was created, or users in the projects this service instance [is shared with](marketplace.service-instances.md#share-service-instance), shall have access to its dashboard. Therefore the OSB Services Platform provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property `permission_url`:
+The authorization shall be done per service instance for every user who accesses the dashboard. This means that only users that are assigned to the project in the OSB Services Platform where the service instance was created, or users in the projects this service instance [is shared with](marketplace.service-instances#share-service-instance), shall have access to its dashboard. Therefore the OSB Services Platform provides a REST endpoint to retrieve the information whether the current user is allowed to access a specific service instance. This URL is submitted in the context object of a provision request as the property `permission_url`:
 
 ```json
 {

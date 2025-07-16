@@ -8,7 +8,7 @@ This guide explains how to request additional quota for a tenant in meshStack-ma
 ## What is Tenant Quota?
 Tenant quotas control the amount of resources (CPU, memory, storage, etc.) a tenant can consume within a platform. Quotas help ensure fair usage and prevent resource exhaustion.
 
-For more details, see the [Tenant Concept](./new-concept-tenant.md#tenant-quota-private-cloud).
+For more details, see the [Tenant Concept](new-concept-tenant#tenant-quota-private-cloud).
 
 ---
 
@@ -57,7 +57,7 @@ For more details, see the [Tenant Concept](./new-concept-tenant.md#tenant-quota-
 ---
 
 ## Related Resources
-- [Tenant Concept](./new-concept-tenant.md#tenant-quota-private-cloud)
-- [How to Manage a Tenant](./new-guide-how-to-manage-a-tenant.md)
-- [meshStack Tenant Quota Documentation](./meshcloud.tenant-quota.md)
+- [Tenant Concept](new-concept-tenant#tenant-quota-private-cloud)
+- [How to Manage a Tenant](new-guide-how-to-manage-a-tenant)
+- [meshStack Tenant Quota Documentation](meshcloud.tenant-quota)
 - [Contact Support](mailto:support@meshcloud.io)

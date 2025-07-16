@@ -3,7 +3,7 @@ id: meshstack.how-to.manage-partner-level-permissions
 title: How to manage partner level permissions
 ---
 
-If you are not familiar with what an admin user is, please check the [official meshcloud documentation](administration.index.md).
+If you are not familiar with what an admin user is, please check the [official meshcloud documentation](administration.index).
 
 ## Pre-Requisites
 

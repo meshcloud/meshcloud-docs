@@ -40,7 +40,7 @@ Here you can find all your personal information stored in the meshStack. You can
 
 ### Platform Notification Subscriptions
 
-Here you can also manage your subscriptions if you wish to receive emails for any [platform notifications](administration.platforms.md).
+Here you can also manage your subscriptions if you wish to receive emails for any [platform notifications](administration.platforms).
 While all platform notifications are also shown in the meshPanel (i.e. control planes) it can be useful to subscribe to notifications for specific platforms.
 Notifications have a severity level (info > warning > critical) and you can select to only receive notifications above a certain level, i.e. selecting a minimum severity of info will also include warnings and critical notifications while selecting warning will *only* include warnings and critical notifications.
 If you have important applications running in a specific platform you might be interested in notifications with a severity level of at least warning, so you'd be informed about service disruptions, platform outages, etc.
