@@ -77,5 +77,5 @@ Please review [meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-
 ## Admin Groups
 
 To avoid assigning multiple users individually, you can create Admin Groups. These groups can be assigned to roles in the same way as individual users.
-You can view Admin Groups within your Administration Area by going to the **Admin Groups** section on the **Admin Access Control** page. Currently, the creation of Admin Groups is only possible via the [meshStack API](pathname:///api/index.html), namely [meshWorkspaceUserGroups API endpoint](/api/index.html#mesh_workspaceusergroup), and to create one you will need a unique identifier, which you can find in the Admin Group section. In the example provided, the identifier is named "demo-partner," but it is unique to every meshStack.
+You can view Admin Groups within your Administration Area by going to the **Admin Groups** section on the **Admin Access Control** page. Currently, the creation of Admin Groups is only possible via the [meshStack API](pathname:///docs/api/index.html), namely [meshWorkspaceUserGroups API endpoint](/api/index.html#mesh_workspaceusergroup), and to create one you will need a unique identifier, which you can find in the Admin Group section. In the example provided, the identifier is named "demo-partner," but it is unique to every meshStack.
 ![admin-group](assets/admin-group.png)

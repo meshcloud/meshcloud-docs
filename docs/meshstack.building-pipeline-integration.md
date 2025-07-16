@@ -43,7 +43,7 @@ With meshStack you have the ability to provide custom status to you users to upd
 
 In meshStack the execution of a Building Block from beginning till end is called a **run**. A run can have multiple **steps**. You have complete freedom about the granularity of information you share with your users.
 
-We have issued API documentation [here](pathname:///api/index.html#mesh_buildingblockrun).
+We have issued API documentation [here](pathname:///docs/api/index.html#mesh_buildingblockrun).
 
 #### Available States for Runs and Steps
 
