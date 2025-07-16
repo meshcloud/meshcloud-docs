@@ -95,6 +95,10 @@ Here are short guides on how to handle the most common tasks in a workspace.
 
 ## Workspace User Management
 
+:::note Info
+Please be aware that one user can have multiple workspace role bindings. As the roles are hierarchical we recommend to only assign one role per user in a workspace to ease configuration of access.
+:::
+
 ### User Management as an Application Team
 
 **Prerequisites:**
@@ -132,7 +136,7 @@ You can find the workspace access management in the workspace management area un
 ## Payment Methods
 
 :::note Info
-Deleting payment methods is not supported via UI.
+Deleting payment methods is supported via API and not available via meshPanel.
 :::
 
 ### Manage Payment Methods as an Application Team
