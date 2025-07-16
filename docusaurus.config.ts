@@ -124,6 +124,11 @@ const config: Config = {
           label: 'API Docs',
         },
         {
+          href: 'https://registry.terraform.io/providers/meshcloud/meshstack/latest/docs',
+          position: 'right',
+          label: 'meshStack Terraform Docs'
+        },
+        {
           to: '/blog',
           label: 'Release Notes',
           position: 'right'
