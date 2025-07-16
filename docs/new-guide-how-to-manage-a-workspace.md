@@ -91,6 +91,10 @@ You can find the workspace access management in the workspace management area un
 
 ## Payment Methods
 
+:::note Info
+Deleting payment methods is not supported via UI.
+:::
+
 ### Manage Payment Methods as an Application Team
 
 **Prerequisites:**
@@ -116,4 +120,4 @@ You can find the workspace access management in the workspace management area un
 - To **create a new payment method**, click "Create Payment Method" and fill in the required details.
 - To **edit an existing payment method**, select "Edit Payment Method" in the drop-down.
 - To **export payment methods**, click "Export Payment Methods" to download a CSV file with the payment method details.
-- To **delete a payment method**, select "Delete Payment Method" in the drop-down and confirm the deletion.
+- To **delete a payment method**, select use the meshpayment method endpoint in the API.
