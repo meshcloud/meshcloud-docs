@@ -12,7 +12,7 @@ meshStack accesses the building block state with every new run or on deletion. W
 
 > Additionally, you can also use the natively supported Terraform backend for remote state management if you prefer implementing that configuration. 
 
-It is of course possible to also access and manipulate the state with [API Keys](meshstack.how-to-API-keys.md). 
+It is of course possible to also access and manipulate the state with [API Keys](meshstack.how-to-API-keys). 
 
 ## Enabling the meshStack http backend for a Building Block
 

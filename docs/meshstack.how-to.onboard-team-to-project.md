@@ -3,7 +3,7 @@ id: meshstack.how-to.onboard-team-to-project
 title: How to onboard your team to a meshProject
 ---
 
-If you are not familiar with what a meshProject is, please check the [official meshcloud documentation](meshcloud.project.md).
+If you are not familiar with what a meshProject is, please check the [official meshcloud documentation](meshcloud.project).
 
 ## Pre-Requisites
 
@@ -34,7 +34,7 @@ If you are not familiar with what a meshProject is, please check the [official m
 ### Optional
 
 meshStack enterprise supports 4-eyes access controls.
-Please check the [official meshcloud documentation](meshcloud.project.md#access-control-on-a-meshproject).
+Please check the [official meshcloud documentation](meshcloud.project#access-control-on-a-meshproject).
 
 - A second user with Workspace Manager or Workspace Owner permission needs to approve the access request. The second user must also navigate to the specific meshWorkspace (see step 1.), select the meshProject (see step 2.), go to the `Workspace Access` tab (see step 3.) and then click on the `Access Requests` tab in the second tab-row.
 ![Click the Access Requests tab](assets/project/project-access-approve.png "Access Control - Access Requests")

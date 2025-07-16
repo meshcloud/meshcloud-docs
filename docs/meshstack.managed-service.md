@@ -69,8 +69,8 @@ frameworks such as ISO 27001 and ISO 27017.
 
 ### Monitoring and Support
 
-Every meshStack installation includes sophisticated [logging](meshstack.logging.md)
-and [monitoring](meshstack.monitoring.md) infrastructure. meshcloud uses these tools
+Every meshStack installation includes sophisticated [logging](meshstack.logging)
+and [monitoring](meshstack.monitoring) infrastructure. meshcloud uses these tools
 to monitor system availability and diagnose any possible issues.
 
 The monitoring infrastructure of your installations can be made available to your own operations teams on request.

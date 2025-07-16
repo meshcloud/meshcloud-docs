@@ -3,7 +3,7 @@ id: administration.tenants
 title: meshTenants
 ---
 
-You can find a description of meshTenants [here](meshcloud.tenant.md).
+You can find a description of meshTenants [here](meshcloud.tenant).
 
 ## Viewing tenant status
 
@@ -27,9 +27,9 @@ Via the button at the top right of the replication status mentioned in the secti
 
 ### Tenant Quotas
 
-In the tenant list you can filter in the `Quota Request` column to only get meshTenants with an open [Tenant Quota Request](meshcloud.tenant-quota.md). Platform engineers have to take action on these requests and either approve or decline them. They also have the option to change the quota before approval if the request cannot be approved as is.
+In the tenant list you can filter in the `Quota Request` column to only get meshTenants with an open [Tenant Quota Request](meshcloud.tenant-quota). Platform engineers have to take action on these requests and either approve or decline them. They also have the option to change the quota before approval if the request cannot be approved as is.
 
-It is also possible to change tenant quota proactively as a platform engineer, even if no tenant quota request exists. This is important, as meshStack will always make sure the defined quotas are applied in the platform. That means it is not possible to apply different quotas in the platform, as they will be overwritten on every replication by meshStack. If no quota request has been made yet by the workspace, default quotas defined in the [meshLandingZone](administration.landing-zones.md#defining-quotas) are applied.
+It is also possible to change tenant quota proactively as a platform engineer, even if no tenant quota request exists. This is important, as meshStack will always make sure the defined quotas are applied in the platform. That means it is not possible to apply different quotas in the platform, as they will be overwritten on every replication by meshStack. If no quota request has been made yet by the workspace, default quotas defined in the [meshLandingZone](administration.landing-zones#defining-quotas) are applied.
 
 When a quota request is active for a meshTenant you will see info about the quotas currently applied to the tenant, the requested quota and you have the option to overwrite requested quotas.
 

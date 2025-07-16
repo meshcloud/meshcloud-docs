@@ -4,7 +4,7 @@ title: GitLab Building Blocks
 ---
 
 With meshStack, you can publish your GitLab CI/CD Pipelines directly to the marketplace with meshStack
-[building blocks](./administration.building-blocks.md). This allows application teams
+[building blocks](administration.building-blocks). This allows application teams
 to easily access and initiate your automation in a user-friendly, structured format in a central place.
 By providing triggers for your automation in the marketplace, you enable teams to leverage these workflows without needing in-depth Git expertise.
 
@@ -36,6 +36,6 @@ A few important details to note during this process:
 To ensure that the building block status is updated correctly in meshStack, you need to modify your GitLab pipeline to
 include steps that call back the meshStack API to update the status. We recommend using our
 [GitLab CI/CD Components](https://gitlab.com/meshcloud/meshstack-integration) for this. Alternatively, you
-can also completely build this yourself using the [meshBuildingBlockRun API](pathname:///docs/api/index.html#mesh_buildingblockrun)
+can also completely build this yourself using the [meshBuildingBlockRun API](pathname:///api/index.html#mesh_buildingblockrun)
 
 <!-- TODO HENRY TEMPLATES -->

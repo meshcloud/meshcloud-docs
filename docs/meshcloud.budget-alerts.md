@@ -39,4 +39,4 @@ The first and easiest option to fix a budget that is reaching its limit is to in
 Another option is to request a new payment method. If configured by your Cloud Foundation team, in the workspace control plane, you can go to “Financials” → “Payment Methods” and click “Request Payment Method” which will open a form on a new page to request a new payment method for your meshWorkspace.
 Once the new payment method is created, do not forget to set it as the active payment method on the project.
 
-> For admins: click [here](./meshcloud.payment-methods.html#external-payment-method-registration) to learn how to configure a payment method request button.
+> For admins: click [here](meshcloud.payment-methods#external-payment-method-registration) to learn how to configure a payment method request button.
