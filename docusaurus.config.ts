@@ -95,6 +95,8 @@ const config: Config = {
     ],
   ],
 
+  trailingSlash: false,
+
   themeConfig: {
     algolia: {
       // Productive Algolia credentials.
@@ -102,7 +104,7 @@ const config: Config = {
       // They are also not secrets so it's fine to put them in the code.
       apiKey: 'aa3b874dff5c832fe2e3ed42a8062160',
       appId: 'LDDGX81P02',
-      indexName: 'meshcloud'
+      indexName: 'Docusaurus'
     },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
