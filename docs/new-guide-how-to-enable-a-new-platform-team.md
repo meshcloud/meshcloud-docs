@@ -25,10 +25,7 @@ With meshStack and the Platform Ecosystem Module, you have the ability to separa
 
 ### Next Steps
 
-- [How to Create a Platform](/docs/new-guide-how-to-create-a-platform)
-- [How to Create a Building Block](/docs/new-guide-how-to-create-a-building-block)
-- [How to Create a Platform Service](/docs/new-guide-how-to-create-a-platform-service)
-- [How to Onboard your Team](/docs/new-guide-how-to-onboard-your-team)
+- [How to Onboard Your Team](/docs/new-guide-how-to-onboard-your-team)
 
 ## Admin Onboarding
 
@@ -54,7 +51,4 @@ With meshStack and the Platform Ecosystem Module, you have the ability to separa
 
 ### Guides
 
-- [How to Create a Platform](/docs/new-guide-how-to-create-a-platform)
-- [How to Create a Building Block](/docs/new-guide-how-to-create-a-building-block)
-- [How to Create a Platform Service](/docs/new-guide-how-to-create-a-platform-service)
 - [How to Onboard your Team](/docs/new-guide-how-to-onboard-your-team)
