@@ -26,7 +26,7 @@ This guide explains how to tailor the project roles in meshStack to fit your org
 ### Concepts
 
 - [Project](/docs/new-concept-project)
-- [User, Groups, and Role Management](/docs/new-concept-user-groups-and-role-management)
+- [User Groups and Role Management](/docs/new-concept-users-and-groups)
 
 ### Guides
 

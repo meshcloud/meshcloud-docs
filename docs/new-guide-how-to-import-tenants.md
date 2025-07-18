@@ -67,5 +67,5 @@ Importing tenants is useful when:
 
 - [Tenant Concept](/docs/new-concept-tenant)
 - [How to Manage a Tenant](/docs/new-guide-how-to-manage-a-tenant)
-- [How to Reflect Ownership Changes in meshStack](/docs/new-guide-how-to-reflect-ownership-changes)
+- [How to Reflect Organizational Changes](/docs/new-guide-how-to-reflect-organizational-changes)
 - [Workspace Users and Permissions](/docs/new-concept-users-and-groups#workspace-users-and-permissions)

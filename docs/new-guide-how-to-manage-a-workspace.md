@@ -110,7 +110,7 @@ Please be aware that one user can have multiple workspace role bindings. As the 
 
 You can find the workspace access management in the workspace management area under "Access Management." Select "Role Bindings."
 
-- To **add users** to a workspace, follow the guide [How to Onboard Your Team to a Workspace](how-to-onboard-your-team-to-workspace.md).
+- To **add users** to a workspace, follow the guide [How to Onboard Your Team](/docs/new-guide-how-to-onboard-your-team).
 - To **remove users**, simply select their role binding and click "Remove."
 - To **set an expiration date** for a user, select a deprecation date on the user.
 - To **change a user's role**, choose a different role from the drop-down menu.

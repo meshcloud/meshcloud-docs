@@ -99,4 +99,4 @@ subjects:
 - [Workspace](/docs/new-concept-workspace)
 - [Project](/docs/new-concept-project)
 - [Tenant](/docs/new-concept-tenant)
-- [User, Groups, and Role Management](/docs/new-concept-user-groups-and-role-management)
+- [User Groups and Role Management](/docs/new-concept-users-and-groups)
