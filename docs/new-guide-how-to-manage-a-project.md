@@ -114,7 +114,7 @@ Please be aware that users can only be added to a project if they are also part 
 
 You can find the project access management in the "Access Management" tab of the project. Select "Role Bindings."
 
-- To **add users** to a project, follow the guide [How to Onboard Your Application Team](/docs/how-to-onboard-your-application-team).
+- To **add users** to a project, follow the guide [How to Onboard Your Team](/docs/new-guide-how-to-onboard-your-team).
 - To **remove users**, simply select their role binding and click "Remove."
 - To **set an expiration date** for a user, select a deprecation date on the user.
 - To **change a user's role**, choose a different role from the drop-down menu.
@@ -136,7 +136,7 @@ You can find the project access management in the "Access Management" tab of the
 ### Concepts
 
 - [Project](/docs/new-concept-project)
-- [User, Groups, and Role Management](/docs/new-concept-user-groups-and-role-management)   
+- [User Groups and Role Management](/docs/new-concept-users-and-groups)   
 
 ### Guides
 

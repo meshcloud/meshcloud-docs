@@ -22,8 +22,8 @@ meshStack consists of 3 main areas for different roles inside your organization.
 
 - [Workspace](/docs/new-concept-workspace)
 - [Platforms](/docs/new-concept-platform)
-- [Building Blocks](/docs/new-concept-building-block)
-- [Platform Services](/docs/new-concept-platform-service)
+- [Building Blocks](/docs/new-concept-buildingblock)
+- [Platform Services](/docs/new-concept-serviceinstance)
 
 ### Guides
 

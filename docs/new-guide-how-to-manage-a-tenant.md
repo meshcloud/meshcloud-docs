@@ -40,7 +40,7 @@ For more details, see the [Tenant Concept](/docs/new-concept-tenant).
 
 - **Tenant Creation**: Tenants are typically created when a new project is set up or when additional environments are needed. This can be self-service or API-driven.
 - **Tenant Deletion**: To delete a tenant, follow your organization's process. meshStack may require approval or cleanup steps. See [How to Implement a Tenant Deletion Concept](/docs/new-guide-how-to-implement-tenant-deletion).
-- **Reflect Ownership Changes**: If project or tenant ownership changes, update user/group assignments and tags accordingly. See [How to Reflect Ownership Changes in meshStack](/docs/new-guide-how-to-reflect-ownership-changes).
+- **Reflect Ownership Changes**: If project or tenant ownership changes, update user/group assignments and tags accordingly. See [How to Reflect Organizational Changes](/docs/new-guide-how-to-reflect-organizational-changes).
 
 ---
 

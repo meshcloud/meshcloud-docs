@@ -32,6 +32,6 @@ Below is a visual example of how workspaces are structured in meshStack:
 ### Guides
 
 - [How to Manage Workspaces](/docs/new-guide-how-to-manage-a-workspace)
-- [How to Onboard your Team to a Workspace](/docs/new-guide-how-to-onboard-your-team-to-workspace)
+- [How to Onboard your Team to a Workspace](/docs/new-guide-how-to-onboard-your-team)
 - [How to Limit Workspace Resources](/docs/new-guide-how-to-limit-workspace-resources)
 

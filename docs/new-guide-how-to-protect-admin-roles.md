@@ -69,7 +69,7 @@ As this has implications for all workspace users, it is recommended to follow th
 ### Concepts
 
 - [/docs/new-concept-project](/docs/new-concept-project)
-- [/docs/new-concept-user-groups-and-role-management](/docs/new-concept-user-groups-and-role-management)
+- [/docs/new-concept-users-and-groups](/docs/new-concept-users-and-groups)
 
 ### Guides
 
