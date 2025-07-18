@@ -19,16 +19,4 @@ Tenant usage reports provide detailed insights into resource consumption and ass
 
  Resource usage reports are optional and can be included into tenant usage reports via API. Use the "meshResourceUsageReport" endpoint to provide cost data from external systems to meshStack. A resource usage report will be picked up by the metering system of meshStack and subsequently included into regular tenant usage reports. Use this if you want to provide cost information to meshStack and use a platform without native metering support.
 
-### Payment Methods
-
-Just like you pay for a new t-shirt online via your credit card, application teams "reference" payment methods for cost allocation of their environments. Payment methods are used for allocating cost from projects.
-
-Payment methods are created per workspace and can be customized via the admin area under tags to reflect organization information such as cost centers, department information, etc.
-
-Additionally, it is possible to provide a euro amount to a payment method for budgeting purposes.
-
----
-
-Below is an example diagram illustrating financial reports:
-
 ![Cost Management and Financial Reports Diagram](./assets/new_concept/concept_financialreports.png)

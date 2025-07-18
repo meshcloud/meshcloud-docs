@@ -3,39 +3,45 @@ id: new-concept-payment-methods
 title: Payment Methods
 ---
 
-Payment methods in meshStack define how costs for cloud resources and services are allocated, billed, and tracked across workspaces, projects, and tenants. They enable organizations to manage financial responsibility, cost allocation, and chargeback processes in a multi-cloud environment.
+:::warning Unsupported Functionality
 
-## What is a Payment Method?
-A payment method represents a way to pay for cloud usage, such as a cost center, internal billing account, or external payment instrument. Payment methods are typically configured by administrators and can be assigned to workspaces, projects, or tenants.
+- Deleting payment methods is supported via API and not available via meshPanel.
+- Budgets can be applied in Dollar and Euro. Budget alerts and payment method status only considers Euro.
 
-## Key Features
-- **Cost Allocation**: Assign payment methods to workspaces, projects, or tenants to ensure costs are tracked and billed to the correct entity.
-- **Chargeback**: Enable chargeback processes by linking cloud consumption to specific payment methods.
-- **Multiple Methods**: Support for multiple payment methods to reflect different organizational structures or funding sources.
-- **Integration**: Integrate with external financial systems for automated billing and reporting.
+:::
 
-## Managing Payment Methods
-- Administrators can configure available payment methods in meshStack settings.
-- Users with appropriate permissions can assign or change payment methods for their workspaces, projects, or tenants.
-- Payment methods can be updated as organizational needs change.
+Just like you pay for a new t-shirt online via your credit card, application teams "reference" payment methods for cost allocation of their environments. Payment methods are used for allocating cost from projects. The following points summarize the key aspects of the standard payment method setup in meshStack:
 
-## Best Practices
-- Use clear and consistent naming for payment methods (e.g., cost center codes, project numbers).
-- Regularly review and update payment method assignments to ensure accurate cost allocation.
-- Integrate payment methods with your organization's financial and reporting systems for transparency.
+## Different Payment Method Setups
 
----
+In order to enable different organizational setups meshStack provides three different payment method working modes:
 
-<!--
+1. **Standard**: By default, a payment method is required when creating a meshProject. This enforces cost allocation throughout the platform and prevents tenant creation without a payment method.
+2. **Self-Service Option**: The workspace team can configure payment methods in self-service.
+3. **Complete Disable**: Alternatively, you can disable the payment method feature entirely, which will remove all payment method screens from the interface.
+
+These are configured in the backend. Please reach out to [contact support](mailto:support@meshcloud.io) if you want to change the setup.
+
+## Standard Payment Method Setup
+
+Use this setup if you want to enforce approval processes for payment methods and prevent the teams from entering information themselves. The following points summarize the key aspects of the standard payment method setup in meshStack:
+
+- Payment methods are created **per workspace**. You cannot assign a payment method to more than one workspace.
+- Payment methods can be **customized via tags** in the admin area to reflect organizational information such as cost centers, department information, etc.
+- A payment method's identifier is **globally unique**. Please consider this when creating new payment methods by including workspace specific information such as the application or project name.
+- **Expired payment methods are removed** from all projects automatically upon expiration and can no longer be assigned to any projects. If a **substitute payment method** is available, it will be assigned to the project automatically.
+- **Payment methods can be managed via API**. This allows for automation and integration with external financial systems e.g. to integrate approval flows.
+
+## Self-Service Payment Method Setup
+
+Use this setup if you want to allow workspace teams to create and manage their own payment methods. This is useful for organization where the financial responsibility is decentralized. The following points summarize the key aspects of the self-service payment method setup in meshStack:
+
+- You can create **one payment method per workspace**. Multiple payment methods per workspace are not supported within this setup.
+- You can **assign a payment method to a project** within the workspace.
+- Users **cannot set tags** on the payment method. This is only possible in the admin area.
+- Users **cannot set a budget** on the payment method.
+- Users can **set a cost center** on the payment method to reflect organizational information.
+
 ## Related Resources
 
-<<<<<<< HEAD
-- [meshStack Payment Methods Documentation](meshcloud.payment-methods)
-- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
-- [How to Manage a Project](new-guide-how-to-manage-a-project)
-=======
-- [meshStack Payment Methods Documentation](../meshcloud.payment-methods.md)
-- [How to Manage a Workspace](./new-guide-how-to-manage-a-workspace.md)
-- [How to Manage a Project](./new-guide-how-to-manage-a-project.md)
->>>>>>> c3f7ac3f (maintenance-message)
--->
+- [How to Manage Payment Methods](./new-guide-how-to-manage-payment-methods.md)

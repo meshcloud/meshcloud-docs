@@ -127,45 +127,8 @@ You can find the workspace access management in the workspace management area un
 1. Navigate to the admin area and select "Workspaces."
 2. In the drop-down for the workspace, select "User & Groups."
 
-- To **add users** to a workspace, follow the guide [How to Onboard Your Team to a Workspace](how-to-onboard-your-team-to-workspace.md).
+- To **add users** to a workspace, follow the guide [How to Onboard Your Application Team](how-to-onboard-your-application-team.md).
 - To **remove users**, simply select their role binding and click "Remove."
 - To **set an expiration date** for a user, select a deprecation date on the user.
 - To **change a user's role**, choose a different role from the drop-down menu.
 - To **add a workspace group**, use the "meshWorkspaceUserGroup" resource in the API.
-
-## Payment Methods
-
-:::note Info
-Deleting payment methods is supported via API and not available via meshPanel.
-:::
-
-### Manage Payment Methods as an Application Team
-
-**Prerequisites:**
-
-- Have access to the workspace management area.
-- Have workspace manager or owner permissions.
-- Have default payment method setup enabled. This means payment methods are created by admins and assigned to workspaces.
-
-**Step by Step Guide:**
-
-1. Navigate to the workspace management area.
-2. Under "Financials," select "Payment Methods."
-3. See the status of your payment methods across projects.
-4. Access the details for tags, budget status, spend history, and forecast.
-
-### Manage Payment Methods as an Administrator
-
-**Prerequisites:**
-
-- Have admin access to meshStack with organization admin permissions.
-
-**Step by Step Guide:**
-
-1. Navigate to the admin area and select "Workspaces."
-2. In the drop-down for the workspace, select "Create/Edit Payment Methods."
-
-- To **create a new payment method**, click "Create Payment Method" and fill in the required details.
-- To **edit an existing payment method**, select "Edit Payment Method" in the drop-down.
-- To **export payment methods**, click "Export Payment Methods" to download a CSV file with the payment method details.
-- To **delete a payment method**, select use the meshpayment method endpoint in the API.
