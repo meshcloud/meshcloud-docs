@@ -279,6 +279,7 @@ const sidebars: SidebarsConfig = {
         'new-concept-tags',
         'new-concept-policies',
         'new-concept-cost-management',
+        'new-concept-payment-methods',
         'new-concept-communication',
         'new-concept-marketplace',
         'new-concept-osb-services',
@@ -296,7 +297,31 @@ const sidebars: SidebarsConfig = {
           items: [
             'new-guide-how-to-manage-a-workspace',
             'new-guide-how-to-limit-workspace-resources',
-            'new-guide-how-to-onboard-your-team-to-workspace'
+            'new-guide-how-to-manage-a-project',
+            'new-guide-how-to-customize-project-roles',
+            'new-guide-how-to-reflect-organizational-changes'
+          ],
+        },
+         {
+          type: 'category',
+          label: 'Developer Portal',
+          items: [
+            'new-guide-how-to-onboard-your-team',
+            'new-guide-how-to-protect-admin-roles'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'FinOps',
+          items: [
+            'new-guide-how-to-manage-payment-methods'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Platform Ecosystem',
+          items: [
+            'new-guide-how-to-enable-a-new-platform-team'
           ],
         }
       ],

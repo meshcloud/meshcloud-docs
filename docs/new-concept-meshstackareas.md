@@ -15,3 +15,17 @@ meshStack consists of 3 main areas for different roles inside your organization.
   The platform builder is THE PLACE for platform teams to offer platforms and services (building blocks) to application teams. For example, the Azure team in your organization could set up a workspace to offer their Azure Platform from there to the rest of the organization. Or the Networking team might want to offer their best-practice Cloud Network Building Blocks to Application Teams.
 
 > **Note:** Enabling the Platform Builder in more than one workspace is only supported with the meshStack Platform Ecosystem module.
+
+## Related Resources
+
+### Concepts
+
+- [Workspace](./new-concept-workspace.md)
+- [Platforms](./new-concept-platform.md)
+- [Building Blocks](./new-concept-building-block.md)
+- [Platform Services](./new-concept-platform-service.md)
+
+### Guides
+
+- [How to Manage Workspaces](./new-guide-how-to-manage-a-workspace.md)
+- [How to Onboard a New Platform Team](./new-guide-how-to-enable-a-new-platform-team.md)

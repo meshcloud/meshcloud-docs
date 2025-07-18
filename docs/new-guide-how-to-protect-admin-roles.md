@@ -3,10 +3,10 @@ id: new-guide-how-to-protect-admin-roles
 title: How to Protect Admin Roles
 ---
 
-> 
-> **How to Protect Admin Roles**
->
-> This guide provides a step-by-step approach to securing admin roles in platforms by restricting their usage and ensuring only authorized users can perform sensitive actions.
+:::note What is this guide about?
+
+This guide provides a step-by-step approach to securing admin roles in platforms by restricting their usage and ensuring only authorized users can perform sensitive actions.
+:::
 
 ## Challenge
 
@@ -64,3 +64,14 @@ As this has implications for all workspace users, it is recommended to follow th
 6. **Test and Review**
    - Verify via a project creation and test users for admin (`admin=yes,no`) and for non-admin (`admin=no`) that only intended users/groups can receive admin roles and that policies are enforced as expected.
    - Before ending of the maintenance window ensure that all users have the correct tags applied.
+
+## Related Resources
+
+### Concepts
+
+- [Project](new-concept-project.md)
+- [User, Groups, and Role Management](new-concept-user-groups-and-role-management.md)
+
+### Guides
+
+- [How to Customize Project Roles](new-guide-how-to-customize-project-roles.md)
