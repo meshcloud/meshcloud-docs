@@ -127,7 +127,7 @@ You can find the workspace access management in the workspace management area un
 1. Navigate to the admin area and select "Workspaces."
 2. In the drop-down for the workspace, select "User & Groups."
 
-- To **add users** to a workspace, follow the guide [How to Onboard Your Application Team](how-to-onboard-your-application-team.md).
+- To **add users** to a workspace, follow the guide [How to Onboard Your Team](/docs/how-to-onboard-your-team.md).
 - To **remove users**, simply select their role binding and click "Remove."
 - To **set an expiration date** for a user, select a deprecation date on the user.
 - To **change a user's role**, choose a different role from the drop-down menu.
