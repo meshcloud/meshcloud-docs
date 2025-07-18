@@ -21,9 +21,3 @@ Below is an example diagram illustrating resource quota management:
 ![Resource Quota Concept Diagram](./assets/new_concept/concept_tenant_quota.png)
 
 ---
-
-<!--
-## Related Resources
-- [Tenant Concept](new-concept-tenant)
-- [How to Request More Tenant Quota](new-guide-how-to-request-more-tenant-quota)
--->

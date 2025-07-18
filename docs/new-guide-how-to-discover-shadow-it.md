@@ -31,6 +31,7 @@ meshStack can scan connected platforms for tenants (accounts, subscriptions, pro
    - Assign them to the correct workspace, project, and payment method.
 
 ## Best Practices
+
 - Regularly review the list of unmanaged tenants to catch new shadow IT early.
 - Establish clear policies for onboarding and managing all cloud resources.
 - Communicate with teams about the risks of unmanaged cloud usage.
@@ -38,4 +39,5 @@ meshStack can scan connected platforms for tenants (accounts, subscriptions, pro
 ---
 
 ## Related Resources
-- [How to Manage a Tenant](new-guide-how-to-manage-a-tenant)
+
+- [How to Manage a Tenant](/docs/new-guide-how-to-manage-a-tenant)

@@ -1,4 +1,3 @@
----
 id: new-guide-how-to-protect-admin-roles
 title: How to Protect Admin Roles
 ---
@@ -69,9 +68,9 @@ As this has implications for all workspace users, it is recommended to follow th
 
 ### Concepts
 
-- [Project](new-concept-project.md)
-- [User, Groups, and Role Management](new-concept-user-groups-and-role-management.md)
+- [/docs/new-concept-project](/docs/new-concept-project)
+- [/docs/new-concept-user-groups-and-role-management](/docs/new-concept-user-groups-and-role-management)
 
 ### Guides
 
-- [How to Customize Project Roles](new-guide-how-to-customize-project-roles.md)
+- [/docs/new-guide-how-to-customize-project-roles](/docs/new-guide-how-to-customize-project-roles)

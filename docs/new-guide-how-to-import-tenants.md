@@ -6,7 +6,9 @@ title: How to Import Tenants
 This guide explains how to import existing tenants into meshStack, allowing you to bring platform resources (such as AWS accounts, Azure subscriptions, or GCP projects) under meshStack management.
 
 ## When to Import Tenants
+
 Importing tenants is useful when:
+
 - You have existing platform resources not yet managed by meshStack.
 - You want to consolidate tenant management, tagging, and access control in meshStack.
 - You are migrating to meshStack from another management solution.
@@ -14,6 +16,7 @@ Importing tenants is useful when:
 ---
 
 ## Prerequisites
+
 - You must have the necessary permissions in meshStack (typically Workspace Manager or Platform Builder roles).
 - The platform integration (AWS, Azure, GCP, etc.) must be set up in meshStack.
 - You need the identifiers (e.g., account ID, subscription ID, project ID) of the tenants you want to import.
@@ -44,6 +47,7 @@ Importing tenants is useful when:
 ---
 
 ## After Importing
+
 - The imported tenant will appear in the project and workspace views.
 - meshStack will begin managing the tenant's desired state, including tags, users, and platform settings.
 - You can now use meshStack features such as replication, policy enforcement, and reporting for the imported tenant.
@@ -51,6 +55,7 @@ Importing tenants is useful when:
 ---
 
 ## Troubleshooting & Best Practices
+
 - **Ensure Platform Integration**: Make sure the platform is properly integrated with meshStack before importing tenants.
 - **Validate Identifiers**: Double-check tenant identifiers to avoid import errors.
 - **Tag Consistently**: Use consistent tags for reporting and automation.
@@ -59,7 +64,8 @@ Importing tenants is useful when:
 ---
 
 ## Related Resources
-- [Tenant Concept](new-concept-tenant)
-- [How to Manage a Tenant](new-guide-how-to-manage-a-tenant)
-- [How to Reflect Ownership Changes in meshStack](new-guide-how-to-reflect-ownership-changes)
-- [Workspace Users and Permissions](new-concept-users-and-groups#workspace-users-and-permissions)
+
+- [Tenant Concept](/docs/new-concept-tenant)
+- [How to Manage a Tenant](/docs/new-guide-how-to-manage-a-tenant)
+- [How to Reflect Ownership Changes in meshStack](/docs/new-guide-how-to-reflect-ownership-changes)
+- [Workspace Users and Permissions](/docs/new-concept-users-and-groups#workspace-users-and-permissions)

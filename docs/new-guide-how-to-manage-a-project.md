@@ -1,4 +1,3 @@
----
 id: new-guide-how-to-manage-a-project
 title: How to Manage a Project
 ---
@@ -34,7 +33,7 @@ This guide explains how to manage projects in meshStack, including user access, 
 
 1. Navigate to the admin area and select "Workspaces."
 2. Assign yourself to the workspace you want to create a project for.
-3. Follow the steps for [Creating a Project as an Application Team](#creating-a-project-as-an-application-team).
+3. Follow the steps for [Creating a Project as an Application Team](/docs/new-guide-how-to-manage-a-project).
 
 ## Deleting a Project
 
@@ -109,12 +108,13 @@ Please be aware that users can only be added to a project if they are also part 
 
 - Have access to the workspace management area.
 - Have workspace manager or owner permissions.
+- Have workspace manager or owner permissions.
 
 **Step by Step Guide:**
 
 You can find the project access management in the "Access Management" tab of the project. Select "Role Bindings."
 
-- To **add users** to a project, follow the guide [How to Onboard Your Application Team](how-to-onboard-your-application-team.md).
+- To **add users** to a project, follow the guide [How to Onboard Your Application Team](/docs/how-to-onboard-your-application-team).
 - To **remove users**, simply select their role binding and click "Remove."
 - To **set an expiration date** for a user, select a deprecation date on the user.
 - To **change a user's role**, choose a different role from the drop-down menu.
@@ -129,16 +129,16 @@ You can find the project access management in the "Access Management" tab of the
 
 1. Navigate to the admin area and select "Workspaces."
 2. Assign yourself to the workspace.
-3. Follow the steps for [Project User Management as an Application Team](#project-user-management-as-an-application-team).
+3. Follow the steps for [Project User Management as an Application Team](/docs/new-guide-how-to-manage-a-project#project-user-management-as-an-application-team).
 
 ## Related Resources
 
 ### Concepts
 
-- [Project](new-concept-project.md)
-- [User, Groups, and Role Management](new-concept-user-groups-and-role-management.md)   
+- [Project](/docs/new-concept-project)
+- [User, Groups, and Role Management](/docs/new-concept-user-groups-and-role-management)   
 
 ### Guides
 
-- [How to Customize Project Roles](new-guide-how-to-customize-project-roles.md)
-- [How to Protect Admin Roles](new-guide-how-to-protect-admin-roles.md)
+- [How to Customize Project Roles](/docs/new-guide-how-to-customize-project-roles)
+- [How to Protect Admin Roles](/docs/new-guide-how-to-protect-admin-roles)
