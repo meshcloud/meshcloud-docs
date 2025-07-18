@@ -15,7 +15,7 @@ Projects allow you to:
 
 Below is a visual example of how projects are structured in meshStack:
 
-![Project concept diagram](/docs/assets/new_concept/concept_project.png)
+![Project concept diagram](./assets/new_concept/concept_project.png)
 
 ## Related Resources
 

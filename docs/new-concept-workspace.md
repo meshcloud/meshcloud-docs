@@ -20,7 +20,7 @@ Each workspace includes a [Workspace Manager](new-concept-meshstackareas#workspa
 ---
 Below is a visual example of how workspaces are structured in meshStack:
 
-![Workspace concept diagram](/docs/assets/new_concept/concept_workspace.png)
+![Workspace concept diagram](./assets/new_concept/concept_workspace.png)
 
 ## Related Resources
 
