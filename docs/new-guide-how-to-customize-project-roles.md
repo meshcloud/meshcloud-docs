@@ -25,10 +25,10 @@ This guide explains how to tailor the project roles in meshStack to fit your org
 
 ### Concepts
 
-- [Project](new-concept-project.md)
-- [User, Groups, and Role Management](new-concept-user-groups-and-role-management.md)
+- [Project](/docs/new-concept-project)
+- [User, Groups, and Role Management](/docs/new-concept-user-groups-and-role-management)
 
 ### Guides
 
-- [How to Manage a Project](new-guide-how-to-manage-a-project.md)
-- [How to Protct Admin Roles](new-guide-how-to-protect-admin-roles.md)
+- [How to Manage a Project](/docs/new-guide-how-to-manage-a-project)
+- [How to Protct Admin Roles](/docs/new-guide-how-to-protect-admin-roles)

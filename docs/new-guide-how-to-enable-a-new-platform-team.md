@@ -19,16 +19,16 @@ With meshStack and the Platform Ecosystem Module, you have the ability to separa
 ### Step-by-Step Guide
 
 1. In the top navigation bar, click the workspace dropdown and select "Create new workspace".
-2. Follow [How to Create a Workspace](./new-guide-how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign yourself workspace owner permissions.
+2. Follow [How to Create a Workspace](/docs/new-guide-how-to-manage-a-workspace#createing-a-workspace-as-an-application-team) to create a new workspace. Assign yourself workspace owner permissions.
 3. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
 4. You now have access to the Platform Builder via the button in the top right corner.
 
 ### Next Steps
 
-- [How to Create a Platform](./new-guide-how-to-create-a-platform.md)
-- [How to Create a Building Block](./new-guide-how-to-create-a-building-block.md)
-- [How to Create a Platform Service](./new-guide-how-to-create-a-platform-service.md)
-- [How to Onboard your Team](./new-guide-how-to-onboard-your-team.md)
+- [How to Create a Platform](/docs/new-guide-how-to-create-a-platform)
+- [How to Create a Building Block](/docs/new-guide-how-to-create-a-building-block)
+- [How to Create a Platform Service](/docs/new-guide-how-to-create-a-platform-service)
+- [How to Onboard your Team](/docs/new-guide-how-to-onboard-your-team)
 
 ## Admin Onboarding
 
@@ -39,22 +39,22 @@ With meshStack and the Platform Ecosystem Module, you have the ability to separa
 ### Step-by-Step Guide
 
 1. In the top navigation bar, click the workspace dropdown and select "Create new workspace".
-2. Follow [How to Create a Workspace](./new-guide-how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
+2. Follow [How to Create a Workspace](/docs/new-guide-how-to-manage-a-workspace#createing-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
 3. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
-4. Onboard the rest of the team using [How to Onboard your Team](./new-guide-how-to-onboard-your-team.md) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
+4. Onboard the rest of the team using [How to Onboard your Team](/docs/new-guide-how-to-onboard-your-team) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
 5. The team now has access to the Platform Builder via the button in the top right corner.
 
 ## Related Resources
 
 ### Concepts
 
-- [Workspace](./new-concept-workspace.md)
-- [meshStack Areas](./new-concept-meshstackareas.md)
-- [Workspace Users and Permissions](./new-concept-users-and-groups.md#workspace-users-and-permissions)
+- [Workspace](/docs/new-concept-workspace)
+- [meshStack Areas](/docs/new-concept-meshstackareas)
+- [Workspace Users and Permissions](/docs/new-concept-users-and-groups#workspace-users-and-permissions)
 
 ### Guides
 
-- [How to Create a Platform](./new-guide-how-to-create-a-platform.md)
-- [How to Create a Building Block](./new-guide-how-to-create-a-building-block.md)
-- [How to Create a Platform Service](./new-guide-how-to-create-a-platform-service.md)
-- [How to Onboard your Team](./new-guide-how-to-onboard-your-team.md)
+- [How to Create a Platform](/docs/new-guide-how-to-create-a-platform)
+- [How to Create a Building Block](/docs/new-guide-how-to-create-a-building-block)
+- [How to Create a Platform Service](/docs/new-guide-how-to-create-a-platform-service)
+- [How to Onboard your Team](/docs/new-guide-how-to-onboard-your-team)

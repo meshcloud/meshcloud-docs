@@ -74,6 +74,7 @@ using the [meshObject API](pathname:///api/).
 - [meshStack Service Broker Documentation](administration.service-brokers)
 =======
 using the [meshObject API](/api/).
+<<<<<<< HEAD
 
 <!--
 ## Related Resources
@@ -82,3 +83,5 @@ using the [meshObject API](/api/).
 - [meshStack Service Broker Documentation](../administration.service-brokers.md)
 >>>>>>> c3f7ac3f (maintenance-message)
 -->
+=======
+>>>>>>> c3370b4b (corrected-links)
