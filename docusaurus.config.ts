@@ -47,26 +47,12 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
-  plugins: [
-      [
-        '@docusaurus/plugin-client-redirects',
-        {
-          redirects: [
-            {
-              from: '/',
-              to: '/docs'
-            },
-          ],
-        },
-      ]
-  ],
-
   presets: [
     [
       'classic',
       {
         docs: {
-          routeBasePath: '/docs',
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -111,7 +97,7 @@ const config: Config = {
       logo: {
         alt: 'meshStack Logo',
         src: 'img/meshstack_logo.png',
-        href: '/docs'
+        href: '/'
       },
       items: [
         {
