@@ -15,8 +15,8 @@ Below is an example diagram illustrating the marketplace concept:
 
 ## See also
 
-- [Building Block Concept](./new-concept-buildingblock)
-- [How to Manage a Building Block Definition](./new-guide-how-to-manage-a-building-block-definition)
-- [meshStack Hub](./new-concept-meshstack-hub)
-- [meshStack Marketplace Documentation](./marketplace.index)
+- [Building Block Concept](./new-concept-buildingblock.md)
+- [How to Manage a Building Block Definition](./new-guide-how-to-manage-a-building-block-definition.md)
+- [meshStack Hub](./new-concept-meshstack-hub.md)
+- [meshStack Marketplace Documentation](./marketplace.index.md)
 

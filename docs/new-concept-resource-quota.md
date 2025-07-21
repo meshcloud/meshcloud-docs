@@ -12,7 +12,7 @@ Resource quotas control the amount of resources a tenant can consume within a pl
 - **Quota Approval**: Platform engineers review and approve these requests based on resource availability via the tenant screen in the platform builder.
 - **Quota Enforcement**: meshStack replicates and enforces these quotas as part of the desired state, ensuring tenants remain within their allocated limits.
 
-For details on requesting more quota, see [How to Request More Tenant Quota](new-guide-how-to-request-more-tenant-quota).
+For details on requesting more quota, see [How to Request More Tenant Quota](new-guide-how-to-request-more-tenant-quota.md).
 
 ---
 

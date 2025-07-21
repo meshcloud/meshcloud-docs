@@ -9,7 +9,7 @@ meshStack Copilot isn't generally available yet; however, we're offering a publi
 
 ## How to use meshStack Copilot
 
-For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot guide](meshstack.how-to.copilot).
+For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot guide](meshstack.how-to.copilot.md).
 
 ## How does Copilot work?
 
@@ -26,13 +26,13 @@ When using meshStack Copilot, please keep in mind:
 - We might rate-limit requests per user to ensure fair usage and performance for everyone.
 - We're constantly improving it and your feedback is valuable. Please reach out to us with any feedback!
 
-The meshStack Copilot Preview is available in all meshStacks. If you're running a [meshStack SaaS on-prem](meshstack.managed-service#meshstack-saas-on-prem), you might need some extra configuration to enable it. Just reach out to our Customer Success team for more information.
+The meshStack Copilot Preview is available in all meshStacks. If you're running a [meshStack SaaS on-prem](meshstack.managed-service.md#meshstack-saas-on-prem), you might need some extra configuration to enable it. Just reach out to our Customer Success team for more information.
 
 Also, let us know if you're interested in "bring your own model" (or API key) support. This would let you use meshStack Copilot with models under your own contract.
 
 ## Which AI model providers do you use for Copilot?
 
-meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official [subprocessor list in the Security FAQ](faq#subprocessors).
+meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official [subprocessor list in the Security FAQ](faq.md#subprocessors).
 
 We're curious to hear if you’d like to see “bring your own model” (or API key) support so you can use meshStack Copilot with models under your own contract.
 
@@ -65,7 +65,7 @@ Additionally, meshStack Copilot gets access to what you share in the chat, which
 
 ## Who has access to meshStack Copilot conversation transcripts?
 
-Users with the [Organization Admin role](./administration.index) can access the transcripts of their organization.
+Users with the [Organization Admin role](administration.index.md) can access the transcripts of their organization.
 
 During the Beta phase, our engineering team will have access to conversation data to help us improve meshStack Copilot. We'll only use this data to improve the Copilot code and system prompts.
 

@@ -9,7 +9,7 @@ The OSB API Spec allows platforms to define various extensions as part of a [Pro
 
 ## Originating Identity Header
 
-OSB Services platform sets the [X-Broker-API-Originating-Identity](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/profile.md#originating-identity-header) header to contain a Json Web Token (JWT) with the meshStack user id as well as the [euid](meshstack.identity-federation#externally-provisioned-identities).
+OSB Services platform sets the [X-Broker-API-Originating-Identity](https://github.com/openservicebrokerapi/servicebroker/blob/v2.14/profile.md#originating-identity-header) header to contain a Json Web Token (JWT) with the meshStack user id as well as the [euid](meshstack.identity-federation.md#externally-provisioned-identities).
 
 ```text
 X-Broker-API-Originating-Identity: meshmarketplace eyJ1c2VyX2lkIjogInRlc3R1c2VyIiwgInVzZXJfZXVpZCI6ICJ0ZXN0VXNlckV1aWQifQ==
@@ -56,14 +56,14 @@ The conventions used by OSB Services platform are very similar to official [OSB 
 
 The OSB profile also contains properties to provide [cost information](https://github.com/openservicebrokerapi/servicebroker/blob/master/profile.md#cost-object)
 via the OSB catalog. Besides showing this information to the user of the meshMarketplace, this information is also used
-by [meshStack metering](meshstack.billing). That means cost information provided via the OSB catalog will be used to calculate costs for used services by meshStack metering.
+by [meshStack metering](meshstack.billing.md). That means cost information provided via the OSB catalog will be used to calculate costs for used services by meshStack metering.
 
-Please review the [meshMarketplace Metering documentation](meshstack.meshmarketplace.metering) for more details.
+Please review the [meshMarketplace Metering documentation](meshstack.meshmarketplace.metering.md) for more details.
 
 ### Sensitive Services
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
-> Please use [Building Blocks](administration.building-blocks) with sensitive inputs instead!
+> Please use [Building Blocks](administration.building-blocks.md) with sensitive inputs instead!
 > For more information, please see the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-sensitive-services).
 
 Usually the OSB Services platform shows credentials of a Service Binding to the users, who have access to it. If the Service Broker requires a more secure handling of credentials, it can provide the `sensitive` metadata for the according service in the OSB catalog.
@@ -85,7 +85,7 @@ The OSB Services platform does not store any credentials provided by bindings on
 ### Tenant-Aware Services
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
-> Please use [Building Blocks](administration.building-blocks) with Platform Tenant Identifiers as inputs instead!
+> Please use [Building Blocks](administration.building-blocks.md) with Platform Tenant Identifiers as inputs instead!
 > For more information, have a look at the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-tenant-bindings)
 
 A Service Broker can define its services to be tenant-aware by providing a `tenantAware` flag in service metadata of the service definition. Tenant-aware Services can receive special Service Bindings that provide the meshTenant context to the Service Broker using a special [Bind Resource Object](https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#bind-resource-object). When users create a tenant service binding in the OSB Services platform, they have to select a meshTenant. Only the meshTenants of the meshProject, which contains the Service Instance, can be selected.
@@ -104,16 +104,16 @@ In the service catalog it would like this:
 }
 ```
 
-Please review the [Tenant Services documentation](meshstack.meshmarketplace.tenant-services) for more details.
+Please review the [Tenant Services documentation](meshstack.meshmarketplace.tenant-services.md) for more details.
 
 ### Sharable Service Instances
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
-> Please use [Building Blocks](administration.building-blocks) for Workspaces instead!
+> Please use [Building Blocks](administration.building-blocks.md) for Workspaces instead!
 > For more information, have a look at the [deprecation item](https://meshcloud.canny.io/deprecations/p/deprecation-of-osb-service-instance-sharing)
 
 
-[Service Instance Sharing](marketplace.service-instances#share-service-instance) must be activated by Service Broker via `shareable` flag on metadata of the service definition.
+[Service Instance Sharing](marketplace.service-instances.md#share-service-instance) must be activated by Service Broker via `shareable` flag on metadata of the service definition.
 
 ```json
 {
@@ -130,7 +130,7 @@ Please review the [Tenant Services documentation](meshstack.meshmarketplace.tena
 ### Expiring Service Bindings
 
 > ⚠️ This feature is deprecated and will be removed in a future release.
-> Please use [Building Blocks](administration.building-blocks) instead!
+> Please use [Building Blocks](administration.building-blocks.md) instead!
 
 Additionally, the OSB Services platform supports expiring service bindings which can be used to force credential rolling. Service catalogs can specify service plans with expiring bindings by settings `metadata.expiryDays` to the number of days after which a service binding for a service instance based on this plan should be deleted.
 The meshStack regularly checks expiring service bindings, notifies users about upcoming expiration dates through the OSB Services dashboard and enforces their deletion once they are expired.

@@ -68,9 +68,9 @@ As this has implications for all workspace users, it is recommended to follow th
 
 ### Concepts
 
-- [/docs/new-concept-project](./new-concept-project)
-- [/docs/new-concept-users-and-groups](./new-concept-users-and-groups)
+- [/docs/new-concept-project](./new-concept-project.md)
+- [/docs/new-concept-users-and-groups](./new-concept-users-and-groups.md)
 
 ### Guides
 
-- [/docs/new-guide-how-to-customize-project-roles](./new-guide-how-to-customize-project-roles)
+- [/docs/new-guide-how-to-customize-project-roles](./new-guide-how-to-customize-project-roles.md)
