@@ -11,19 +11,21 @@ A user is an individual account in meshStack. Users can be assigned to workspace
 
 ### API Users
 
-API Users can access several APIs provided by meshStack. You can provide your API Users with access to certain resources for a new integration.
+API Users can access several APIs provided by meshStack across all workspaces. You can provide your API Users with access to certain resources for a new integration.
+
+### API Keys
+
+You can issue workspace scoped API Keys via the admin or workspace area. Those API keys authorize only for requests towards the meshObject API in scope of the respective workspace.
 
 > Please also see the documentation on [API keys](pathname:///api/).
 
-### Groups
+### When to use API Users vs. API Keys
+
+API users are typically used by admins or systems to manage objects across meshStack. API keys are scope to a single workspace and are provided and managed by application teams to manage their workspace resources. 
+
+### "Global" Groups
 
 A group is a collection of users, used to manage permissions collectively. Groups can be assigned to roles at the workspace or project level, simplifying access management for teams.
-
-## User and Role Bindings
-
-User and role bindings define how users and groups are assigned specific roles within workspaces and projects. These bindings control access and permissions, ensuring that users have the appropriate level of responsibility for their tasks.
-
-Bindings can be managed via the meshStack UI or API. When a user or group is bound to a role, they inherit the permissions associated with that role for the relevant workspace or project.
 
 ### Admin Groups
 
@@ -97,6 +99,16 @@ available to users of the administration area:
 | &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003;|
 | &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |             | | | |      
 
+## User and Role Bindings
+
+User and role bindings define how users and groups are assigned specific roles within workspaces and projects. These bindings control access and permissions, ensuring that users have the appropriate level of responsibility for their tasks.
+
+Bindings can be managed via the meshStack UI or API. When a user or group is bound to a role, they inherit the permissions associated with that role for the relevant workspace or project.
+
+## 4 Eye Principle
+
+You can configure meshStack to require 4 eye principle for workspace and project permissions. This configuration enforces that at least two workspace owners or managers have to approve access before a user binding is created or modified.
+
 ## Workspace Users and Permissions
 
 Workspace users are assigned roles within a workspace, such as Workspace Owner, Workspace Manager, or Workspace User. These roles determine what actions a user can perform within the workspace.
@@ -122,12 +134,24 @@ Workspace users are assigned roles within a workspace, such as Workspace Owner, 
 
 ## Project Users and Roles
 
-Project users are assigned to specific projects within a workspace. Their permissions manage access to platform resources, as defined by their project role (e.g., Project Member, Project Admin).
+Project users are assigned to specific projects within a workspace. Their permissions manage access to platform resources, as defined by their project role (e.g., Project Member, Project Admin). The project roles dont have any effect on permissions in meshStack.
 
 Project roles can be customized in the global settings in the admin area.
 
-Add platform and landing zone to configuration in the platform builder to enable role mappings.
-
----
+Add platform and landing zone to configuration in the Platform Builder to enable role mappings.
 
 ## Related Resources
+
+### Concepts
+
+- [Workspace](/docs/new-concept-workspace)
+- [Project](/docs/new-concept-project)
+
+### Guides
+
+- [How to Customize Project Roles](/docs/new-guide-how-to-customize-project-roles)
+- [How to Manage a Project](/docs/new-guide-how-to-manage-a-project)
+- [How to Manage a Workspace](/docs/new-guide-how-to-manage-a-workspace)
+- [How to Manage API Users](/docs/new-guide-how-to-manage-api-users)
+- [How to Manage API Keys](/docs/new-guide-how-to-manage-api-keys)
+- [How to Manage 4 Eye Principle](/docs/new-guide-how-to-manage-4-eye-principle)
