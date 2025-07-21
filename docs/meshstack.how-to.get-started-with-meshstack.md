@@ -28,4 +28,4 @@ Now lets get started by creating the first workspace in your meshStack. To open 
 The most central aspect of an Internal Developer Platform is offering services to other teams in your organization to jumpstart their projects, secure their application or extend their environments with additional resources.
 
 In order to start the step by step guide for you first building block, access the created workspace and click on Platform Builder on the top right corner.
-To offer your first service with meshStack, follow [AWS S3 Quickstart Guide](meshstack.building-aws-quickstart-guide).
+To offer your first service with meshStack, follow [AWS S3 Quickstart Guide](meshstack.building-aws-quickstart-guide.md).

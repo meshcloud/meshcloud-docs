@@ -8,7 +8,7 @@ This guide explains how to manage a tenant in meshStack, including viewing tenan
 ## What is a Tenant?
 A tenant represents an isolated segment within a platform (e.g., AWS account, Azure subscription, GCP project, or Kubernetes namespace). Each tenant is linked to a project and provides a dedicated environment for a specific use case.
 
-For more details, see the [Tenant Concept](./new-concept-tenant).
+For more details, see the [Tenant Concept](./new-concept-tenant.md).
 
 ---
 
@@ -39,8 +39,8 @@ For more details, see the [Tenant Concept](./new-concept-tenant).
 ## Tenant Lifecycle Management
 
 - **Tenant Creation**: Tenants are typically created when a new project is set up or when additional environments are needed. This can be self-service or API-driven.
-- **Tenant Deletion**: To delete a tenant, follow your organization's process. meshStack may require approval or cleanup steps. See [How to Implement a Tenant Deletion Concept](./new-guide-how-to-implement-tenant-deletion).
-- **Reflect Ownership Changes**: If project or tenant ownership changes, update user/group assignments and tags accordingly. See [How to Reflect Organizational Changes](./new-guide-how-to-reflect-organizational-changes).
+- **Tenant Deletion**: To delete a tenant, follow your organization's process. meshStack may require approval or cleanup steps. See [How to Implement a Tenant Deletion Concept](./new-guide-how-to-implement-tenant-deletion.md).
+- **Reflect Ownership Changes**: If project or tenant ownership changes, update user/group assignments and tags accordingly. See [How to Reflect Organizational Changes](./new-guide-how-to-reflect-organizational-changes.md).
 
 ---
 

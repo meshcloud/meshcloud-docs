@@ -3,10 +3,10 @@ id: meshstack.monitoring
 title: Monitoring & Telemetry
 ---
 
-Our [managed service](meshstack.managed-service) team
+Our [managed service](meshstack.managed-service.md) team
 relies on monitoring & telemetry to operate meshStack installations for our customers. The integration of these systems are a mandatory pre-requisite for using our managed services.
 
-This page documents what data we collect and for what purposes we process it. All customer data we collect and store is handled with confidentiality in accordance with our information security management system as described in our [Security FAQ](faq).
+This page documents what data we collect and for what purposes we process it. All customer data we collect and store is handled with confidentiality in accordance with our information security management system as described in our [Security FAQ](faq.md).
 
 ## Customer data
 
@@ -24,7 +24,7 @@ Application-level metrics can contain labels that include customer data such as 
 
 ## Logs
 
-meshStack collects various logs as described in [Logging & Auditing](meshstack.logging). Logs can contain customer data and also PII like user identifiers.
+meshStack collects various logs as described in [Logging & Auditing](meshstack.logging.md). Logs can contain customer data and also PII like user identifiers.
 
 Log data is therefore not part of telemetry data we collect.
 
@@ -34,7 +34,7 @@ meshcloud transmits and processes metrics data to a central monitoring system op
 
 Customers can find more details including a full list of metrics transmitted in meshStack's security documentation.
 
-When enabled, collected [product feedback and usage data](administration.product-feedback-collection) is relayed from meshPanel's web server to a central plausible server instance operated by meshcloud.
+When enabled, collected [product feedback and usage data](administration.product-feedback-collection.md) is relayed from meshPanel's web server to a central plausible server instance operated by meshcloud.
 
 ## Health endpoint
 

@@ -26,10 +26,10 @@ meshStack supports the management of multiple platforms of the same or different
 
 Integrating a cloud platform with meshStack generally consists of these steps:
 
-- prepare the cloud platform for integration (Service Accounts, [Identity Federation](meshstack.identity-federation))
-- configure & [register the platform](administration.platforms) in meshStack
+- prepare the cloud platform for integration (Service Accounts, [Identity Federation](meshstack.identity-federation.md))
+- configure & [register the platform](administration.platforms.md) in meshStack
 - provide Landing Zone implementations
-- configure [Metering & Billing](meshstack.billing)
+- configure [Metering & Billing](meshstack.billing.md)
 
 Please review the detailed documentation for each cloud platform type in the sidebar for more details.
 
@@ -40,7 +40,7 @@ These mappings can be customized. For more details, please consult documentation
 
 The connections are shown in the following matrix table:
 
-|               | [meshWorkspace](meshcloud.workspace) | [meshProject](meshcloud.project) | [meshUser](meshcloud.profile) | [meshLandingZone](meshcloud.landing-zones) |
+|               | [meshWorkspace](meshcloud.workspace.md) | [meshProject](meshcloud.project.md) | [meshUser](meshcloud.profile.md) | [meshLandingZone](meshcloud.landing-zones.md) |
 | :-----------: | :---------------------------------------: | :-----------------------------------: | :--------------------------------: | :------------------------------------------: |
 |   OpenStack   |             Domain (optional)             |                Project                |        Keystone Shadow User        |                    Quota                     |
 | Cloud Foundry |               Organization                |                 Space                 |              UAA User              |                    Quota                     |
@@ -52,11 +52,11 @@ The connections are shown in the following matrix table:
 
 ## Operations
 
-meshcloud will typically operate your meshStack installation as a [managed service](meshstack.managed-service) for you. As a managed service, all configuration and validation is done by meshcloud. Nonetheless, we make references to configuration options in the documentation so that Partners get a better understanding of meshStack's capabilities. The configuration references also simplify examples and communicate the exact parameters that may need to be supplied by Partners.
+meshcloud will typically operate your meshStack installation as a [managed service](meshstack.managed-service.md) for you. As a managed service, all configuration and validation is done by meshcloud. Nonetheless, we make references to configuration options in the documentation so that Partners get a better understanding of meshStack's capabilities. The configuration references also simplify examples and communicate the exact parameters that may need to be supplied by Partners.
 
 ### Configuration
 
 Most of meshStack's configuration can be done in self-service via the meshPanel in the Administration area.
 
-meshStack also supports advanced configuration options. Please see [managed service](meshstack.managed-service) for more details.
+meshStack also supports advanced configuration options. Please see [managed service](meshstack.managed-service.md) for more details.
 

@@ -3,13 +3,13 @@ id: meshstack.openshift.index
 title: Integration
 ---
 
-meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.index) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
+meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.index.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
 
 meshStack supports project creation, configuration, access control, quota management and billing for OpenShift.
 
 ## Integration Overview
 
-To enable integration with OpenShift, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` OpenShift in the [Platform Administration](administration.platforms) in meshPanel.
+To enable integration with OpenShift, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` OpenShift in the [Platform Administration](administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 
@@ -17,14 +17,14 @@ To enable integration with OpenShift, platform engineers configure one or multip
 
 meshStack currently officially supports and validates OpenShift version 4.x as either Open-Source (OKD) or OpenShift Enterprise variants. Also version 3.9+ was successfully validated in the past with meshStack and should still be working, but it is no longer officially validated by meshcloud.
 
-In general meshStack supports all OpenShift versions that can provide the resources listed for the required [service accounts](meshstack.openshift.index#meshstack-service-accounts). These resources are consumed with the versions mentioned in the cluster roles of the service account or if not defined there with the following versions:
+In general meshStack supports all OpenShift versions that can provide the resources listed for the required [service accounts](meshstack.openshift.index.md#meshstack-service-accounts). These resources are consumed with the versions mentioned in the cluster roles of the service account or if not defined there with the following versions:
 
 * [`/api/v1`](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/)
 * [`/apis/template.openshift.io/v1`](https://docs.openshift.com/container-platform/4.7/rest_api/template_apis/template-template-openshift-io-v1.html)
 
 ### IdP Configuration
 
-meshStack will identify and assign users in OpenShift via their euid (external user id) as described in [Identity Federation](meshstack.identity-federation#externally-provisioned-identities).
+meshStack will identify and assign users in OpenShift via their euid (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
 In practice, we recommend using the same external IdP as configured for meshStack and configuring OpenShift to use the same attribute as `username`.
 
 
@@ -305,7 +305,7 @@ For example if you plan to use custom roles named `my-custom-view` and `my-custo
 
 ### Tagging Configuration
 
-Openshift supports meshStack's powerful multi-cloud [tagging system](meshstack.metadata-tags#replicate-tags-to-cloud-platforms).
+Openshift supports meshStack's powerful multi-cloud [tagging system](meshstack.metadata-tags.md#replicate-tags-to-cloud-platforms).
 To enable the Openshift integration to automatically replicate tags from meshStack into the cloud platform, a label prefix must be defined in the OpenShift configuration.
 It can be found in the meshPanel in the Administration Area. Go to "meshPlatforms" on the left, click on an OpenShift platform and go to "Settings" -> "Config".
 The Label Prefix can be found under the "Replication Configuration" header.

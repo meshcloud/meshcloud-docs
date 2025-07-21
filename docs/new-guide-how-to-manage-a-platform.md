@@ -6,7 +6,7 @@ title: How to Manage a Platform
 This guide explains how to manage platforms in meshStack, including registering new platforms, configuring platform settings, managing platform instances, and handling restricted platforms.
 
 ## What is a Platform?
-A platform is a connected environment (e.g., Kubernetes, AWS, Azure, GCP, OpenStack, Cloud Foundry) that can be managed and integrated with meshStack. For more details, see the [Platform Concept](new-concept-platform).
+A platform is a connected environment (e.g., Kubernetes, AWS, Azure, GCP, OpenStack, Cloud Foundry) that can be managed and integrated with meshStack. For more details, see the [Platform Concept](new-concept-platform.md).
 
 ---
 

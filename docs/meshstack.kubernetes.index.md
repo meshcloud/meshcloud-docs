@@ -10,14 +10,14 @@ required APIs (described below) and configuration options available.
 
 The following Kubernetes distributions are supported and covered on this page:
 
-- **Native Kubernetes** with [Identity Federation](meshstack.identity-federation#externally-provisioned-identities) using externally provisioned identities
+- **Native Kubernetes** with [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities) using externally provisioned identities
 - **Azure Kubernetes Services** with user authentication and authorization via AKS AAD integration
 
-> meshStack additionally offers [OpenShift integration](meshstack.openshift.index). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
+> meshStack additionally offers [OpenShift integration](meshstack.openshift.index.md). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
 
 ## Integration Overview
 
-To enable integration with Kubernetes, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in the [Platform Administration](administration.platforms) in meshPanel.
+To enable integration with Kubernetes, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in the [Platform Administration](administration.platforms.md) in meshPanel.
 
 ## Prerequisites
 
@@ -247,7 +247,7 @@ Integrating access control with meshStack requires different steps depending on 
 
 #### Generic Kubernetes Distributions
 
-meshStack will identify and assign users to roles in Kubernetes based on their `euid` (external user id) as described in [Identity Federation](meshstack.identity-federation#externally-provisioned-identities).
+meshStack will identify and assign users to roles in Kubernetes based on their `euid` (external user id) as described in [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities).
 In practice this means that meshStack will replicate `ClusterRoleBinding` with subjects like
 
 ```yaml
@@ -275,4 +275,4 @@ After a successful replication, users can then fetch their `kubectl` credentials
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-This credential information and some additional configuration around the azure tenant the AKS cluster is running in have to provided in the [Platform Connection Configuration](administration.platforms#platform-connection-config).
+This credential information and some additional configuration around the azure tenant the AKS cluster is running in have to provided in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).

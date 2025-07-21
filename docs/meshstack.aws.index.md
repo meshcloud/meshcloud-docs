@@ -8,13 +8,13 @@ meshStack supports account creation, configuration, access control and cost mana
 
 ## Integration Overview
 
-To enable integration with AWS, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` AWS in the [Platform Administration](administration.platforms) in meshPanel.
+To enable integration with AWS, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` AWS in the [Platform Administration](administration.platforms.md) in meshPanel.
 
-meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](meshcloud.project). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
+meshStack uses [AWS Organizations](https://aws.amazon.com/organizations/) to provision and manage AWS Accounts for [meshProjects](meshcloud.project.md). To use AWS with a meshStack deployment, operators will need an AWS [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html) acting as the parent of all accounts managed by meshStack. The complete meshStack setup contains three dedicated accounts:
 
 * management account: organization management account, the account that hosts the AWS Organization. `meshfed-service-user` needs to assume a role in this account to perform tasks such as new account provisioning.`meshfed-service-user` (Replicator User)
 * meshcloud account: meshStack will use this account to host the IAM users used by meshStack. `meshfed-service-user` (Replicator User) lives in this account. We have a dedicated account for this user so that meshcloud can easily roll the credentials of the user when needed.
-* automation account: meshStack will use this account to manage CloudFormation that are used in [Landing Zones](meshcloud.landing-zones).
+* automation account: meshStack will use this account to manage CloudFormation that are used in [Landing Zones](meshcloud.landing-zones.md).
 
 ```mermaid
 graph LR;
@@ -42,4 +42,4 @@ When configuring these roles, platform engineers must take care to correctly gua
 
 ## How to integrate AWS as a meshPlatform into meshStack
 
-This is described in the Guide section under [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform).
+This is described in the Guide section under [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform.md).

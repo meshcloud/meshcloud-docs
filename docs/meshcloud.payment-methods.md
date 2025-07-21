@@ -7,7 +7,7 @@ title: Payment Methods
 
 Just like you pay for a new t-shirt online via your credit card, enterprises also have to be responsible for the costs that they make in cloud platforms. Payment methods are used for allocating cloud costs, all the way back to the responsible department of your organization, for a clear and transparent accounting process. As the cloud can be mighty with its enormous offering of practically unlimited services, it is important that all meshProjects and meshWorkspaces are correctly charged and that this information makes its way back to the required systems. Payment methods therefore are the link between the cloud usage and the resulting cost in the context of a meshProject.
 
-Payment methods are created **per** meshWorkspace and can be enhanced with [metadata tags](meshcloud.metadata-tags) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgeting purposes.
+Payment methods are created **per** meshWorkspace and can be enhanced with [metadata tags](meshcloud.metadata-tags.md) for use cases such as cost center allocation, department information, etc. Additionally, it is possible to provide a euro amount to a payment method for budgeting purposes.
 
 ![Payment Methods Lifecycle](assets/payment_methods/payment_method_overall_lifecycle.png)
 
@@ -32,7 +32,7 @@ One way of creating payment methods is via the meshPanel. To do so, make sure th
 4. Enter a name and identifier for the new payment method.
 5. (This is optional) Set an amount of EUR on the payment method to indicate the budget of this payment method.
 6. (This is optional) Set an expiration date for the payment method. This is especially useful when a budget expires, e.g. at the end of the accounting year.
-7. Additionally, you can enter tags for the payment method, which are custom for your meshStack (also see [meshTags](meshstack.metadata-tags)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
+7. Additionally, you can enter tags for the payment method, which are custom for your meshStack (also see [meshTags](meshstack.metadata-tags.md)). This is useful when you want to enhance the payment method with organizational details like the cost center number or the business unit.
 8. Click 'Save' and your new payment method will be available to the meshWorkspace it was created in!
 
 ### Creating a Payment Method via the meshObject API
@@ -43,13 +43,13 @@ As automation matters, there is also the possibility to create payment methods v
 
 Now that the organization admin has created one or more payment methods for a meshWorkspace, we are ready to link a payment method to one or more meshProjects.
 
-First, check if the payment method is correctly created in the meshWorkspace. You can do so by navigating to the [workspace control plane](meshcloud.workspace#managing-your-meshworkspace). In order to do that you need to have Workspace Manager rights within the respective workspace. In the workspace control plane, open **Financials** and then **Payment Methods**. All payment methods that are created and assigned to your current meshWorkspace are shown here.
+First, check if the payment method is correctly created in the meshWorkspace. You can do so by navigating to the [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace). In order to do that you need to have Workspace Manager rights within the respective workspace. In the workspace control plane, open **Financials** and then **Payment Methods**. All payment methods that are created and assigned to your current meshWorkspace are shown here.
 
 The payment methods that are assigned can be used for both existing meshProjects and new meshProjects.
 
 ### Applying a Payment Method to an existing meshProject
 
-In the [workspace control plane](meshcloud.workspace#managing-your-meshworkspace), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the active payment method will be removed.
+In the [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace), open the corresponding project. Then click on the **Financials** tab and open the **Payment Methods** tab. In this screen, you'll see the selected payment method(s). As explained at the top of the page, you also have the ability to specify a Substitute Payment Method. A Substitute Payment Method is useful when working with expiring cost centers. meshStack runs a job every night to make sure that when the Active Payment Method has expired, the Substitute Payment Method will be set as the active payment method. If there is no Substitute Payment Method, the active payment method will be removed.
 
 Currently, the behavior of meshStack is to replace the primary payment method only when it has expired. There is no existing feature that automatically substitutes the primary payment method when budget consumption crosses 100%.
 
@@ -73,7 +73,7 @@ After setting a payment method, you can continue the project creation flow and s
 
 ## The Payment Method Lifecycle: Enhance with Metadata
 
-As it is difficult to handle large amounts of payment methods only via their names or identifiers, there is the possibility to provide tags (also see [Tag Schema](meshstack.metadata-tags)) to the payment methods. This metadata can be provided when creating/editing the payment method in the meshPanel. This is already described in step 8 [here](#creating-a-payment-method-via-the-meshpanel).
+As it is difficult to handle large amounts of payment methods only via their names or identifiers, there is the possibility to provide tags (also see [Tag Schema](meshstack.metadata-tags.md)) to the payment methods. This metadata can be provided when creating/editing the payment method in the meshPanel. This is already described in step 8 [here](#creating-a-payment-method-via-the-meshpanel).
 
 An alternative way of providing metadata to payment methods is via the meshObject API. The API docs will describe how to inject tags in payment methods.
 
@@ -83,15 +83,15 @@ There are two possible ways to exporting the metadata of the payment methods, de
 
 ### Applying Metadata on Tenants in Cloud Platforms
 
-One way of exporting the payment method data (on top of other metadata from meshWorkspaces and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.metadata-tags#meshtenant-metadata) and decide what approach fits best.
+One way of exporting the payment method data (on top of other metadata from meshWorkspaces and meshProjects) is via the meshTenant. The meshTenant in the cloud platform can be 'tagged' (or 'labeled' for Google Cloud Platform) with the metadata from meshcloud. There are multiple ways of exporting the metadata into the cloud platforms. You can read more about exporting your metadata [here](meshstack.metadata-tags.md#meshtenant-metadata) and decide what approach fits best.
 
 ### Exporting Financial Data and Metadata
 
-The other way of exporting metadata is via our [chargeback statements](meshcloud.cost-management#chargeback-statements). These chargeback statements are generated periodically and contain the financial data of one or more meshTenants (based on the Tenant Usage Reports). It is possible to export these chargeback statements via CSV and on top of that, provide one or more metadata values per CSV row. This is very helpful when parsing the CSV export in another tool for financial processing.
+The other way of exporting metadata is via our [chargeback statements](meshcloud.cost-management.md#chargeback-statements). These chargeback statements are generated periodically and contain the financial data of one or more meshTenants (based on the Tenant Usage Reports). It is possible to export these chargeback statements via CSV and on top of that, provide one or more metadata values per CSV row. This is very helpful when parsing the CSV export in another tool for financial processing.
 
-Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing#chargeback).
+Not all metadata is exported by default, and each metadata field has to be explicitly configured before it will be exported as part of the CSV file. It is even possible to configure the export to include standard fields of the payment method, e.g. the name or expiration date. To configure this behavior, read more [here](meshstack.billing.md#chargeback).
 
-The actual export itself can be done via the meshPanel. This is possible for both organization admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for organization admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](meshcloud.workspace#managing-your-meshworkspace) (for workspace managers), you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
+The actual export itself can be done via the meshPanel. This is possible for both organization admins (for all meshWorkspaces) and Workspace Managers (for the selected meshWorkspace). When navigating to the Administration area (for organization admins), you will see **Chargeback Statements** on the left. When navigating to the [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace) (for workspace managers), you will see **Chargeback Statements** under **Financials**. Click on it and you will see all chargeback statements. Additionally, there is the option at the top right labelled 'CSV Export' to export the list to a single CSV file.
 
 ### External Payment Method Registration
 
