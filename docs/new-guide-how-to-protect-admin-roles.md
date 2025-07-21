@@ -1,3 +1,4 @@
+---
 id: new-guide-how-to-protect-admin-roles
 title: How to Protect Admin Roles
 ---

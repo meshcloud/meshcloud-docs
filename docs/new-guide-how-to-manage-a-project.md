@@ -1,3 +1,4 @@
+---
 id: new-guide-how-to-manage-a-project
 title: How to Manage a Project
 ---

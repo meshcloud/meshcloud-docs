@@ -5,7 +5,7 @@ title: How to Enable a New Platform Team
 
 :::note What is this guide about?
 
-With meshStack and the Platform Ecosystem Module, you have the ability to separate different platform teams into different workspaces without providing them admin privileges. This guide explains how to enable a new platform team in meshStack and get them started in the Platform Builder.
+With meshStack and the Platform Ecosystem Module, you can separate different platform teams into their own workspaces without giving them admin privileges. This guide explains how to enable a new platform team in meshStack and get them started in the Platform Builder.
 
 :::
 
@@ -19,7 +19,7 @@ With meshStack and the Platform Ecosystem Module, you have the ability to separa
 ### Step-by-Step Guide
 
 1. In the top navigation bar, click the workspace dropdown and select "Create new workspace".
-2. Follow [How to Create a Workspace](./new-guide-how-to-manage-a-workspace.md#createing-a-workspace-as-an-application-team) to create a new workspace. Assign yourself workspace owner permissions.
+2. Follow [How to Create a Workspace](./new-guide-how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign yourself workspace owner permissions.
 3. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
 4. You now have access to the Platform Builder via the button in the top right corner.
 
@@ -36,7 +36,7 @@ With meshStack and the Platform Ecosystem Module, you have the ability to separa
 ### Step-by-Step Guide
 
 1. In the top navigation bar, click the workspace dropdown and select "Create new workspace".
-2. Follow [How to Create a Workspace](./new-guide-how-to-manage-a-workspace.md#createing-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
+2. Follow [How to Create a Workspace](./new-guide-how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
 3. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
 4. Onboard the rest of the team using [How to Onboard your Team](./new-guide-how-to-onboard-your-team.md) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
 5. The team now has access to the Platform Builder via the button in the top right corner.
