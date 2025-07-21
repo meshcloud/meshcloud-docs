@@ -59,10 +59,10 @@ This guide walks you through adding your application or platform team members to
 
 ### Concepts
 
-- [Workspace](/docs/new-concept-workspace)
-- [Projects](/docs/new-concept-project)
-- [Workspace Users and Permissions](/docs/new-concept-users-and-groups#workspace-users-and-permissions)
+- [Workspace](./new-concept-workspace)
+- [Projects](./new-concept-project)
+- [Workspace Users and Permissions](./new-concept-users-and-groups#workspace-users-and-permissions)
 
 ### Guides
 
-- [How to Manage Workspaces](/docs/new-guide-how-to-manage-a-workspace)
+- [How to Manage Workspaces](./new-guide-how-to-manage-a-workspace)
