@@ -20,12 +20,12 @@ meshStack consists of 3 main areas for different roles inside your organization.
 
 ### Concepts
 
-- [Workspace](/docs/new-concept-workspace)
-- [Platforms](/docs/new-concept-platform)
-- [Building Blocks](/docs/new-concept-buildingblock)
-- [Platform Services](/docs/new-concept-buildingblock)
+- [Workspace](./new-concept-workspace)
+- [Platforms](./new-concept-platform)
+- [Building Blocks](./new-concept-buildingblock)
+- [Platform Services](./new-concept-buildingblock)
 
 ### Guides
 
-- [How to Manage Workspaces](/docs/new-guide-how-to-manage-a-workspace)
-- [How to Onboard a New Platform Team](/docs/new-guide-how-to-enable-a-new-platform-team)
+- [How to Manage Workspaces](./new-guide-how-to-manage-a-workspace)
+- [How to Onboard a New Platform Team](./new-guide-how-to-enable-a-new-platform-team)

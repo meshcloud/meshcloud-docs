@@ -21,14 +21,14 @@ Below is a visual example of how projects are structured in meshStack:
 
 ### Concepts
 
-- [Workspace](/docs/new-concept-workspace)
-- [Tenant](/docs/new-concept-tenant)
-- [Users and Groups](/docs/new-concept-users-and-groups)
+- [Workspace](./new-concept-workspace)
+- [Tenant](./new-concept-tenant)
+- [Users and Groups](./new-concept-users-and-groups)
 
 ### Guides
 
-- [How to Manage a Project](/docs/new-guide-how-to-manage-a-project)
-- [How to Customize Project Roles](/docs/new-guide-how-to-customize-project-roles)
-- [How to Reflect Organizational Changes](/docs/new-guide-how-to-reflect-organizational-changes)
-- [How to Customize Project Roles](/docs/new-guide-how-to-customize-project-roles)
-- [How to Manage Payment Methods](/docs/new-guide-how-to-manage-payment-methods)
+- [How to Manage a Project](./new-guide-how-to-manage-a-project)
+- [How to Customize Project Roles](./new-guide-how-to-customize-project-roles)
+- [How to Reflect Organizational Changes](./new-guide-how-to-reflect-organizational-changes)
+- [How to Customize Project Roles](./new-guide-how-to-customize-project-roles)
+- [How to Manage Payment Methods](./new-guide-how-to-manage-payment-methods)

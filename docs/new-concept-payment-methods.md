@@ -44,4 +44,4 @@ Use this setup if you want to allow workspace teams to create and manage their o
 
 ## Related Resources
 
-- [How to Manage Payment Methods](/docs/new-guide-how-to-manage-payment-methods)
+- [How to Manage Payment Methods](./new-guide-how-to-manage-payment-methods)

@@ -65,7 +65,7 @@ Additionally, meshStack Copilot gets access to what you share in the chat, which
 
 ## Who has access to meshStack Copilot conversation transcripts?
 
-Users with the [Organization Admin role](https://docs.meshcloud.io/docs/administration.index.html) can access the transcripts of their organization.
+Users with the [Organization Admin role](./administration.index) can access the transcripts of their organization.
 
 During the Beta phase, our engineering team will have access to conversation data to help us improve meshStack Copilot. We'll only use this data to improve the Copilot code and system prompts.
 
