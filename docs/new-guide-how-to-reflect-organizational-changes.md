@@ -96,7 +96,7 @@ subjects:
 ## Related Resources
 
 ### Concepts
-- [Workspace](./new-concept-workspace.md)
-- [Project](./new-concept-project.md)
-- [Tenant](./new-concept-tenant.md)
-- [User Groups and Role Management](./new-concept-users-and-groups.md)
+- [Workspace](new-concept-workspace.md)
+- [Project](new-concept-project.md)
+- [Tenant](new-concept-tenant.md)
+- [User Groups and Role Management](new-concept-users-and-groups.md)

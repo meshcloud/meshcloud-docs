@@ -97,7 +97,7 @@ available to users of the administration area:
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md)                          | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003; |
 | &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003;|
-| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |             | | | |      
+| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |             | | | |
 
 ## User and Role Bindings
 
@@ -144,14 +144,14 @@ Add platform and landing zone to configuration in the Platform Builder to enable
 
 ### Concepts
 
-- [Workspace](/docs/new-concept-workspace)
-- [Project](/docs/new-concept-project)
+- [Workspace](new-concept-workspace.md)
+- [Project](new-concept-project.md)
 
 ### Guides
 
-- [How to Customize Project Roles](/docs/new-guide-how-to-customize-project-roles)
-- [How to Manage a Project](/docs/new-guide-how-to-manage-a-project)
-- [How to Manage a Workspace](/docs/new-guide-how-to-manage-a-workspace)
-- [How to Manage API Users](/docs/new-guide-how-to-manage-api-users)
-- [How to Manage API Keys](/docs/new-guide-how-to-manage-api-keys)
-- [How to Manage 4 Eye Principle](/docs/new-guide-how-to-manage-4-eye-principle)
+- [How to Customize Project Roles](new-guide-how-to-customize-project-roles.md)
+- [How to Manage a Project](new-guide-how-to-manage-a-project.md)
+- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace.md)
+- [How to Manage API Users](new-guide-how-to-manage-api-users.md)
+- [How to Manage API Keys](new-guide-how-to-manage-api-keys.md)
+- [How to Manage 4 Eye Principle](new-guide-how-to-manage-4-eye-principle.md)
