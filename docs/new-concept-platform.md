@@ -50,19 +50,33 @@ There are two main reasons to use custom platforms:
  We already built some cloud platform integrations with Terraform that we open sourced. You can find them in [meshStack Hub](https://hub.meshcloud.io)!
 :::
 
+## Resource Quotas
+
+Managing the physical resources of a platform is crucial for maintaining performance and cost efficiency. In meshStack, resource quotas can be defined for private platforms to control the amount of resources available to tenants. 
+
+Depending on the platform, quota limits may be placed on usage such as CPU, memory, storage, or other platform-specific resources.
+
+- **Quota Definition**: Platform engineers can define resource quotas through meshStack using the landing zone and platform configuration in platform builder.
+- **Quota Changes**: Application teams can request additional resources or quota increases through the meshStack workspace manager.
+- **Quota Approval**: Platform engineers review and approve these requests based on resource availability via the tenant screen in the platform builder.
+- **Quota Enforcement**: meshStack replicates and enforces these quotas as part of the desired state, ensuring tenants remain within their allocated limits.
+
 ![Platform Concept Diagram](./assets/new_concept/concept_platform.png)
 
 ## Related Resources
 
 ### Concepts
 
-- [Building Blocks](/docs/new-concept-building-blocks)
-- [Tenant](/docs/new-concept-tenant)
-- [Platform Builder](/docs/new-concept-meshstackareas#platform-builder)
-- [Resource Quota](/docs/new-concept-resource-quota)
-- [Landing Zone](/docs/new-concept-landing-zone)
-- [meshHub](/docs/new-concept-meshhub)
+- [Building Blocks](new-concept-building-blocks.md)
+- [Tenant](new-concept-tenant.md)
+- [Platform Builder](new-concept-meshstackareas.md#platform-builder)
+- [Platform Location](new-concept-location.md)
+- [Resource Quota](new-concept-resource-quota.md)
+- [Landing Zone](new-concept-landing-zone.md)
+- [meshHub](new-concept-meshhub.md)
 
 ### Guides
 
-- [How to Provide Your Own Platform](/docs/new-guide-how-to-provide-your-own-platform)
+- [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
+- [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
+- [How to Enforce Resource Quota](new-guide-how-to-manage-resource-quotas.md)
