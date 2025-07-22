@@ -96,6 +96,7 @@ subjects:
 ## Related Resources
 
 ### Concepts
+
 - [Workspace](new-concept-workspace.md)
 - [Project](new-concept-project.md)
 - [Tenant](new-concept-tenant.md)
