@@ -310,7 +310,8 @@ const sidebars: SidebarsConfig = {
           items: [
             'new-guide-how-to-onboard-your-team',
             'new-guide-how-to-protect-admin-roles',
-            'new-guide-how-to-manage-4-eye-principle'
+            'new-guide-how-to-manage-4-eye-principle',
+            'new-guide-how-to-provide-your-own-platform'
           ],
         },
         {
