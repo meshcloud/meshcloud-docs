@@ -272,12 +272,13 @@ const sidebars: SidebarsConfig = {
         'new-concept-project',
         'new-concept-users-and-groups',
         'new-concept-platform',
+        'new-concept-platform-location',
         'new-concept-landingzone',
         'new-concept-tenant',
         'new-concept-buildingblock',
         'new-concept-meshstack-hub',
-        'new-concept-tags',
-        'new-concept-policies',
+        'new-concept-tag',
+        'new-concept-policy',
         'new-concept-cost-management',
         'new-concept-payment-methods',
         'new-concept-communication',
@@ -311,7 +312,10 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-onboard-your-team',
             'new-guide-how-to-protect-admin-roles',
             'new-guide-how-to-manage-4-eye-principle',
-            'new-guide-how-to-provide-your-own-platform'
+            'new-guide-how-to-provide-your-own-platform',
+            'new-guide-how-to-manage-a-platform',
+            'new-guide-how-to-restrict-platform-access',
+            'new-guide-how-enforce-resource-quotas'
           ],
         },
         {
@@ -339,6 +343,7 @@ const sidebars: SidebarsConfig = {
           label: 'Amazon Web Services',
           items: [
             'meshstack.aws.index',
+            'new-integration-how-to-integrate-aws',
             'meshstack.aws.landing-zones',
             'meshstack.aws.metering',
             'meshstack.aws.sso-setup',
@@ -350,6 +355,7 @@ const sidebars: SidebarsConfig = {
           label: 'Microsoft Azure',
           items: [
             'meshstack.azure.index',
+            'new-integration-how-to-integrate-azure',
             'meshstack.azure.landing-zones',
             'meshstack.azure.metering',
           ],
@@ -359,6 +365,7 @@ const sidebars: SidebarsConfig = {
           label: 'Google Cloud Platform',
           items: [
             'meshstack.gcp.index',
+            'new-guide-how-to-integrate-gcp',
             'meshstack.gcp.landing-zones',
             'meshstack.gcp.metering',
           ],

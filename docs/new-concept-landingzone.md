@@ -32,3 +32,16 @@ Building blocks for a landing zone can be configured as:
 - **optional**: Building blocks that are recommended to application teams when they create a new tenant. Use these for configurations that are not mandatory, such as monitoring or logging.
 
 ## Related Resources
+
+### Concepts
+
+- [Platform](new-concept-platform.md)
+- [Tenant](new-concept-tenant.md)
+- [Building Block](new-concept-building-block.md)
+- [Resource Quota](new-concept-resource-quota.md)
+
+## Guides
+
+- [How to Manage Landing Zones](new-guide-how-to-manage-landing-zones.md)
+- [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
+- [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
