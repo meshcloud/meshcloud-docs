@@ -299,7 +299,9 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-limit-workspace-resources',
             'new-guide-how-to-manage-a-project',
             'new-guide-how-to-customize-project-roles',
-            'new-guide-how-to-reflect-organizational-changes'
+            'new-guide-how-to-reflect-organizational-changes',
+            'new-guide-how-to-manage-api-keys',
+            'new-guide-how-to-manage-api-users',
           ],
         },
          {
@@ -307,7 +309,8 @@ const sidebars: SidebarsConfig = {
           label: 'Developer Portal',
           items: [
             'new-guide-how-to-onboard-your-team',
-            'new-guide-how-to-protect-admin-roles'
+            'new-guide-how-to-protect-admin-roles',
+            'new-guide-how-to-manage-4-eye-principle'
           ],
         },
         {

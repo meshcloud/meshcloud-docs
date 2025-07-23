@@ -3,6 +3,10 @@ id: new-guide-how-to-manage-api-users
 title: How to Manage API Users
 ---
 
+:::warning API User Deprecation
+We have decided to deprecate the API user feature in meshStack. This decision was made to streamline our user management processes and enhance security. We recommend transitioning to API keys for managing API access. For more information on API keys, please refer to the [How to Manage API Keys](new-guide-how-to-manage-api-keys.md) guide.
+:::
+
 :::note What is this guide about?
 This guide explains how to handle API users to manage objects within meshStack.
 :::
