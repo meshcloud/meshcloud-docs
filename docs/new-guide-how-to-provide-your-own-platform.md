@@ -4,9 +4,11 @@ title: How to Provide Your Own Platform
 ---
 
 :::note What is this guide about?
-This guide will show you how to offer your own platform to application teams using meshStack. This enables you to provide platforms in an easy fashion including cost management, lifecycle management, self-service provisioning and enforce a compliant level of security and governance.
-:::
+This guide will show you how to offer your own platform to application teams using meshStack and terraform. This enables you to provide platforms in an easy fashion including cost management, lifecycle management, self-service provisioning and enforce a compliant level of security and governance.
 
+Please be aware that you can also integrate your own platforms using other types of building blocks e.g. GitHub action or GitLab CI. This guide focuses on the Terraform implementation as it is the most common way to integrate platforms into meshStack.
+
+:::
 
 On a high level, you need the following and your platform integration is done:
 
@@ -19,7 +21,7 @@ On a high level, you need the following and your platform integration is done:
 - You have access to the Platform Builder in meshStack.
 - You have the necessary platform credentials and configuration details.
 - Terraform knowledge is helpful, as meshStack relies on Terraform for custom platform integrations.
-- There is some kind of platform/tenancy organization model in the cloud platform, just like e.g. Azure has an AAD (platform) and Subscriptions (tenant).
+- There is some kind of platform/tenancy organization model in the cloud platform, just like e.g. Azure (platform) has isolated Subscriptions (tenant).
 - The above can be created & automated with Terraform.
 - (optional) Users and groups can be assigned to the tenant via Terraform (this allows you to do permission management as well)
 
@@ -38,7 +40,7 @@ Make sure to:
 
 ### 2. Create a Building Block
 
-Follow [Create a Building Block](new-guide-how-to-manage-building-blocks.md) to create a new Building Block that will do the automation for your platform.
+Follow [Create a Building Block](new-guide-how-to-manage-buildingblocks.md) to create a new Building Block that will do the automation for your platform.
 
 Make sure to configure the following details:
 
@@ -80,9 +82,9 @@ Application teams will now be able to see the new platform in the marketplace an
 ### Concepts
 
 - [Platform](new-concept-platform.md)
-- [Building Block](new-concept-building-blocks.md)
-- [Landing Zone](new-concept-landing-zone.md)
+- [Building Block](new-concept-buildingblocks.md)
+- [Landing Zone](new-concept-landingzone.md)
 
 ### Guides
 
-- [How to Manage Platforms](new-guide-how-to-manage-platforms.md)
+- [How to Manage Platforms](new-guide-how-to-manage-a-platform.md)

@@ -30,7 +30,7 @@ meshStack supports various platforms out of the box:
 - **AKS (Azure Kubernetes Service)**
 - **GKS (Google Kubernetes Service)**
 
-Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](new-guide-how-to-establish-a-custom-platform.md) guide.
+Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](new-guide-how-to-provide-your-own-platform.md) guide.
 
 ## Restricted Platforms
 
@@ -52,7 +52,7 @@ There are two main reasons to use custom platforms:
 
 ## Resource Quotas
 
-Managing the physical resources of a platform is crucial for maintaining performance and cost efficiency. In meshStack, resource quotas can be defined for private platforms to control the amount of resources available to tenants. 
+Managing the physical resources of a platform is crucial for maintaining performance and cost efficiency especially for private cloud platforms. In meshStack, resource quotas can be defined for private platforms to control the amount of resources available to tenants. 
 
 Depending on the platform, quota limits may be placed on usage such as CPU, memory, storage, or other platform-specific resources.
 
@@ -67,16 +67,16 @@ Depending on the platform, quota limits may be placed on usage such as CPU, memo
 
 ### Concepts
 
-- [Building Blocks](new-concept-building-blocks.md)
+- [Building Blocks](new-concept-buildingblocks.md)
 - [Tenant](new-concept-tenant.md)
 - [Platform Builder](new-concept-meshstackareas.md#platform-builder)
-- [Platform Location](new-concept-location.md)
+- [Platform Location](new-concept-platform-location.md)
 - [Resource Quota](new-concept-resource-quota.md)
-- [Landing Zone](new-concept-landing-zone.md)
-- [meshHub](new-concept-meshhub.md)
+- [Landing Zone](new-concept-landingzone.md)
+- [meshHub](new-concept-meshstack-hub.md)
 
 ### Guides
 
 - [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
 - [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
-- [How to Enforce Resource Quota](new-guide-how-to-manage-resource-quotas.md)
+- [How to Enforce Resource Quota](new-guide-how-to-enforce-resource-quotas.md)

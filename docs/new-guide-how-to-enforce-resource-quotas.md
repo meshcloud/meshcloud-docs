@@ -70,7 +70,7 @@ Quota requests can be made when you open a tenant (that supports quotas) under *
 ### Concepts
 
 - [Platform](new-concept-platform.md)
-- [Landing Zone](new-concept-landing-zone.md)
+- [Landing Zone](new-concept-landingzone.md)
 - [Tenant](new-concept-tenant.md)
 
 ### Guides

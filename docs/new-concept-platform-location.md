@@ -16,7 +16,7 @@ The location concept is especially useful for grouping private cloud platforms t
 
 ### Concepts
 
-- [Platform](/docs/new-concept-platform)
+- [Platform](new-concept-platform.md)
 
 ### Guides
 
