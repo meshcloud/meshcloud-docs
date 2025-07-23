@@ -12,7 +12,7 @@ This guide explains how to manage the lifecycle of platforms in meshStack. Pleas
 - Access to a platform builder
 - Access to the administration capabilities of the platform you want to integrate.
 
-## Steps-by-Step Guide to Register a New Platform
+## Step-by-Step Guide to Register a New Platform
 
 1. In meshPanel, go to platforms in the platform builder area.
 2. Click on "Add Platform" on the top right.
@@ -21,12 +21,10 @@ This guide explains how to manage the lifecycle of platforms in meshStack. Pleas
 5. Chose a location for the platform. See [Location](new-concept-location.md) for more details.
 6. You can add a tenant price to the platform. See [Pricing](new-guide-how-enforce-pricing-structure.md) for more details.
 
-Next Step: In order to trigger the platform via meshStack you need to provide configuration details. See the guides linked below for specific platform types.
-
 :::note Next Steps
 Next Step: In order to trigger the platform via meshStack you need to provide configuration details. See the guides linked below for specific platform types.
 
-Platform will only be published to the marketplace if there is a landing zone configured.
+The platform will only be published to the marketplace if there is a landing zone configured.
 :::
 
 ## Step-by-Step Guide to Deprecate a Platform

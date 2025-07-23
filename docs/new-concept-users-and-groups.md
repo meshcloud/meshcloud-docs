@@ -121,9 +121,9 @@ User and role bindings define how users and groups are assigned specific roles w
 
 Bindings can be managed via the meshStack UI or API. When a user or group is bound to a role, they inherit the permissions associated with that role for the relevant workspace or project.
 
-## 4 Eye Principle
+## Role Approvals (4 Eye Principle)
 
-You can configure meshStack to require 4 eye principle for workspace and project permissions. This configuration enforces that at least two workspace owners or managers have to approve access before a user binding is created or modified.
+You can configure meshStack to require approvals for workspace and project permissions. This configuration enforces that at least two workspace owners or managers have to approve access before a user binding is created or modified.
 
 ## Workspace Users and Permissions
 
