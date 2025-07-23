@@ -16,7 +16,7 @@ Here is a mapping of the term "tenant" across different platforms:
 | AWS                     | Account                  |
 | Microsoft Azure         | Subscription             |
 | Google Cloud            | Project                  |
-| Kubernetes & OpenShift  | Namespace                |
+| Kubernetes & OpenShift & AKS | Namespace                |
 | OpenStack               | Project                  |
 | CloudFoundry            | Space                    |
 

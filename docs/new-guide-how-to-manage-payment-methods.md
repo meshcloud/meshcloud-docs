@@ -1,6 +1,6 @@
 ---
 id: new-guide-how-to-manage-payment-methods
-title: How to Manage Standard Payment Methods
+title: How to Manage Payment Methods
 ---
 
 :::note What is this guide about?

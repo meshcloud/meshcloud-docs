@@ -1,9 +1,9 @@
 ---
-id: new-concept-policies
-title: Policies
+id: new-concept-policy
+title: Policy
 ---
 
-In meshStack you can use policies to enforce existing complaiance and governance rules across your Internal Developer Platform (IDP).
+In meshStack you can use policies to enforce existing compliance and governance rules across your Internal Developer Platform (IDP).
 
 In meshStack:
 

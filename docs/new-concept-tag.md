@@ -1,6 +1,6 @@
 ---
-id: new-concept-tags
-title: Tags
+id: new-concept-tag
+title: Tag
 ---
 
 Tags are key-value labels in meshStack that add business context to enable reporting, and support automation by attaching metadata to cloud resources. Use tags for cost allocation, compliance, ownership tracking, and policy enforcement.
