@@ -35,9 +35,9 @@ With meshStack and the Platform Ecosystem Module, you can separate different pla
 
 ### Step-by-Step Guide
 
-1. Follow [How to Create a Workspace](/docs/new-guide-how-to-manage-a-workspace#creating-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
+1. Follow [How to Create a Workspace](new-guide-how-to-manage-a-workspace#creating-a-workspace-as-an-application-team.md) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
 2. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
-3. Onboard the rest of the team using [How to Onboard your Team](/docs/new-guide-how-to-onboard-your-team) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
+3. Onboard the rest of the team using [How to Onboard your Team](new-guide-how-to-onboard-your-team.md) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
 4. The team now has access to the Platform Builder via the button in the top right corner.
 
 ## Related Resources
