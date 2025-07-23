@@ -315,7 +315,8 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-provide-your-own-platform',
             'new-guide-how-to-manage-a-platform',
             'new-guide-how-to-restrict-platform-access',
-            'new-guide-how-enforce-resource-quotas'
+            'new-guide-how-enforce-resource-quotas',
+            'new-guide-how-to-manage-landing-zones'
           ],
         },
         {
