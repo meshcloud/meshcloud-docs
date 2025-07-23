@@ -22,7 +22,6 @@ This guide explains how the 4 eye principle handles user binding requests in mes
     - The workspace manager who initiates the request automatically registers the first approval.
     - Each workspace manager can only register one approval per request.
     - A second, different workspace manager must provide the additional approval for the request to proceed.
-    - If a role request is made on behalf of another workspace manager, that user (or another workspace manager) must still approve or reject the request.
 
 3. **Notifications**
     - Workspace managers receive email notifications about pending approvals.

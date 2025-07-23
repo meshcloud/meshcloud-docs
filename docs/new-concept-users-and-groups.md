@@ -11,17 +11,21 @@ A user is an individual account in meshStack. Users can be assigned to workspace
 
 ### API Users
 
-API Users can access several APIs provided by meshStack across all workspaces. You can provide your API Users with access to certain resources for a new integration.
+API Users are accounts that can access meshStack APIs across all workspaces. They are typically used to enable integrations that require access to resources spanning multiple workspaces.
 
 ### API Keys
 
-You can issue workspace scoped API Keys via the admin or workspace area. Those API keys authorize only for requests towards the meshObject API in scope of the respective workspace.
+API Keys can be issued either at the workspace or admin level. Workspace-scoped API Keys authorize requests to the meshObject API within the specific workspace, while admin-issued API Keys can also provide access across multiple workspaces. API Keys are now the recommended way to manage resources programmatically.
 
-> Please also see the documentation on [API keys](pathname:///api/).
+For more details, refer to the [API keys documentation](pathname:///api/).
 
-### When to use API Users vs. API Keys
+### Choosing Between API Users and API Keys
 
-API users are typically used by admins or systems to manage objects across meshStack. API keys are scope to a single workspace and are provided and managed by application teams to manage their workspace resources. 
+:::warning API User Deprecation
+API keys are gradually replacing API users. Over time, more actions will be supported via API keys, and API user functionality will be fully deprecated.
+:::
+
+Historically, API users were used by admins or systems to manage resources across meshStack. API keys now offer similar capabilities, with the added flexibility of workspace scoping. Application teams can issue and manage API keys to control access to their workspace resources.
 
 ### "Global" Groups
 
@@ -134,7 +138,7 @@ Workspace users are assigned roles within a workspace, such as Workspace Owner, 
 
 ## Project Users and Roles
 
-Project users are assigned to specific projects within a workspace. Their permissions manage access to platform resources, as defined by their project role (e.g., Project Member, Project Admin). The project roles dont have any effect on permissions in meshStack.
+Project users are assigned to specific projects within a workspace. If you are part of the project you can access the project in meshStack and add services from the marketplace. Project permissions also manage access to platform resources, as defined by their project role (e.g., Project Member, Project Admin). The project roles dont have any effect on permissions in meshStack.
 
 Project roles can be customized in the global settings in the admin area.
 
