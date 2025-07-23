@@ -78,4 +78,4 @@ We release regularly and provide weekly updates. If you want to stay on top of c
 
 - Have a look at the roadmap on the website under [www.meshcloud.io](https://www.meshcloud.io/en/product/).
 - Subscribe to the [Product Newsletter](https://share.hsforms.com/1AbELCsdRRP6EaCkm1UeATwc0hrp) which is sent out every two weeks summarizing the most important changes.
-- Have a look at the [release notes](/blog) or follow either one of [RSS](pathname:///blog/feed.xml) or [atom](pathname:///blog/atom.xml) directly. 
+- Have a look at the [release notes](/blog) or follow either one of [RSS](pathname:///blog/rss.xml) or [atom](pathname:///blog/atom.xml) directly. 
