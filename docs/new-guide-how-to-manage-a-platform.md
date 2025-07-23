@@ -18,8 +18,8 @@ This guide explains how to manage the lifecycle of platforms in meshStack. Pleas
 2. Click on "Add Platform" on the top right.
 3. Select Platform Type: Choose the platform type (e.g., AWS, Azure, GCP, OpenStack, Cloud Foundry).
 4. Provide further context such as a name, id and description. You are also able to provide links that are shown to application teams when working with the new platform. 
-5. Chose a location for the platform. See [Location](new-concept-location.md) for more details.
-6. You can add a tenant price to the platform. See [Pricing](new-guide-how-enforce-pricing-structure.md) for more details.
+5. Chose a location for the platform. See [Location](new-concept-platform-location.md) for more details.
+6. You can add a tenant price to the platform. See [Pricing](new-guide-how-to-pricing.md) for more details.
 
 :::note Next Steps
 Next Step: In order to trigger the platform via meshStack you need to provide configuration details. See the guides linked below for specific platform types.

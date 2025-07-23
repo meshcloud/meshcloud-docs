@@ -67,11 +67,10 @@ Depending on the platform, quota limits may be placed on usage such as CPU, memo
 
 ### Concepts
 
-- [Building Blocks](new-concept-buildingblocks.md)
+- [Building Blocks](new-concept-buildingblock.md)
 - [Tenant](new-concept-tenant.md)
 - [Platform Builder](new-concept-meshstackareas.md#platform-builder)
 - [Platform Location](new-concept-platform-location.md)
-- [Resource Quota](new-concept-resource-quota.md)
 - [Landing Zone](new-concept-landingzone.md)
 - [meshHub](new-concept-meshstack-hub.md)
 
