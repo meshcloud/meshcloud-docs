@@ -3,9 +3,9 @@ id: meshstack.OSBServicesPlatform.development
 title: OSB Services Platform Development
 ---
 
-> Only users with the role [Workspace Manager](meshcloud.workspace#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
-You can provide your own OSB services (e.g. databases, message brokers, filesystems, etc) via the **Service Brokers** tab and **Service Brocker** subtab on your Wrokspace Control Plane. This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the OSB Services Platform are described [here](marketplace.service-instances). Also via **Instances** subtab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
+You can provide your own OSB services (e.g. databases, message brokers, filesystems, etc) via the **Service Brokers** tab and **Service Brocker** subtab on your Wrokspace Control Plane. This requires you have a running Service Broker, an application that manages these services by the means of [Open Service Broker API](https://www.openservicebrokerapi.org/). Services provided by you can then be consumed by other users in the meshPanel. A short overview and some specifics that should be considered when writing a Service Broker for the OSB Services Platform are described [here](marketplace.service-instances.md). Also via **Instances** subtab, you get to the maintenance area for your service brokers. You can register and publish your Service Broker. [Analytics](#debugging-your-service-broker) screens that provide you with Usage and Logging Data are also available.
 
 
 meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
@@ -13,7 +13,7 @@ meshStack supports OSB Version 2.14 and is on the way to support OSB 2.15.
 
 ## Register your Service Broker
 
-Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker. A new OSB Services Platform for your Workspace will be available for your [projects](meshcloud.project#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own OSB Services Platform will be available on the project.
+Registering your Service Broker does not publish your Service Broker directly for all users. Initially only your meshWorkspace will have access to this Service Broker. We call this type of Service Broker a **private Service Broker**. It allows you to test and develop your Service Broker. A new OSB Services Platform for your Workspace will be available for your [projects](meshcloud.project.md#adding-meshtenants) after registering a Service Broker. When you select it for a project, your own OSB Services Platform will be available on the project.
 
 
 1. Open **Service Brocker** on your Workspace control plane
@@ -49,7 +49,7 @@ You can choose which OSB Services Platform you want to publish your Service Brok
 
 Location-based Service Brokers should be running independently of each other in all Locations they are published to. Therefore different endpoints and credentials have to be configured for every Location. Endpoints of published Service Brokers must always use an **https** endpoint, because that's the way how security can be established for the communication between the OSB Services Platform and your Service Broker.
 
-When you publish your Service Broker it won't be available in the OSB Services Platform. An organization admin has to [approve](administration.service-brokers#approve-service-broker) your Service Broker first.
+When you publish your Service Broker it won't be available in the OSB Services Platform. An organization admin has to [approve](administration.service-brokers.md#approve-service-broker) your Service Broker first.
 
 ### How to publish your Service Broker
 
@@ -69,21 +69,21 @@ Please execute the following steps:
 
 Like for your private Service Broker, you can also actively [refresh the catalog](#refresh-service-broker-catalog) of your published Service Broker. You can click on **Refresh Catalog** button in the Publishing List of your Service Broker.
 
-The Analytics functionality for Service Owners is available to Workspace Managers, who already [registered a Service Broker](meshstack.OSBServicesPlatform.development#register-your-service-broker).
+The Analytics functionality for Service Owners is available to Workspace Managers, who already [registered a Service Broker](meshstack.OSBServicesPlatform.development.md#register-your-service-broker).
 
 ## Debugging your Service Broker
 
 ### Reviewing failed Service Instances
 
-From the [workspace control plane](meshcloud.workspace#managing-your-meshworkspace), you can access an overview of all failed service instances of your service brokers under the "Instances" sub-page which can be found under the "Service Broker" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
+From the [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace), you can access an overview of all failed service instances of your service brokers under the "Instances" sub-page which can be found under the "Service Broker" tab. This allows a quick error analysis of failed service broker calls. The list shows you an overview about all failed Service Instances with the specific local id, name, service plan and the last operation.
 
 ### Service Communication Logs
 
 Especially when an error occurs during a service broker call, detailed information about the request that was made from the OSB Services Platform to the service broker helps in analyzing the reason why a call failed. But the communication logs are not only available in error cases, they are available for all requests that were made from the OSB Services Platform to the Service Broker. Instead of implementing a detailed request and response logging in every service broker, the OSB Services Platform provides this information for all service brokers.
 
-All relevant information like the request date and the type of operation that was executed, all request and response headers as well as the body of the request and in case of an error also the response from the service broker, are available. The duration of the call and information about the used Service Plan and [Service Instance](marketplace.service-instances) are also available. This information, combined with the application logs of the service broker should provide all information for a successful error analysis.
+All relevant information like the request date and the type of operation that was executed, all request and response headers as well as the body of the request and in case of an error also the response from the service broker, are available. The duration of the call and information about the used Service Plan and [Service Instance](marketplace.service-instances.md) are also available. This information, combined with the application logs of the service broker should provide all information for a successful error analysis.
 
-The communication logs are available for [private](meshstack.OSBServicesPlatform.development#register-your-service-broker) and [published](meshstack.OSBServicesPlatform.development#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the OSB Services Platform integration phase of your service broker.
+The communication logs are available for [private](meshstack.OSBServicesPlatform.development.md#register-your-service-broker) and [published](meshstack.OSBServicesPlatform.development.md#publish-your-service-broker) service brokers via the **Communication Logs** button in the according service broker list. In case of private service brokers the communication logs can provide you with helpful insights during the development phase or the OSB Services Platform integration phase of your service broker.
 
 A searchable overview of all communication logs is the starting point for analyzing communication logs. When more details about a specific log is needed, the **info** icon in the list of logs provides you with all details that are available to a specific call that was made.
 
@@ -95,12 +95,12 @@ Searching the communication logs to e.g. find a specific issue that was reported
 - **Operation Type**: You can filter by the different operation types, that are defined by the [OSB specification](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md). A dropdown with the different operation types like FETCH_CATALOG or PROVISION_INSTANCE is available for selection.
 - **Response Code**: The response code (HTTP Status Code) is an often used filter criteria as you can search e.g. for all error responses by entering ">399", which will return all requests that failed with a client (4xx) or server (5xx) HTTP response code. But you can also search for a specific response codes like "403".
 - **Service Plan**: When you know that there was an issue with a specific service plan, you can search for all service plan related requests by entering the id of the service plan, that you defined in your [service broker catalog](https://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#catalog-management).
-- **Service Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances), you can search for all related logs by entering the id of the service instance.
+- **Service Instance**: When you know that an error occurred for a specific [Service Instance](marketplace.service-instances.md), you can search for all related logs by entering the id of the service instance.
 
 
 ## Deletion of Service Brokers
 
-The deletion of a Service Broker is only allowed if it has not been [published](#publish-your-service-broker) and [approved](administration.service-brokers#approve-service-broker). As soon as an approved Service Broker exists users can create Service Instances from your services. The deletion of a Service Broker could affect productive data of other users and is therefore not possible.
+The deletion of a Service Broker is only allowed if it has not been [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker). As soon as an approved Service Broker exists users can create Service Instances from your services. The deletion of a Service Broker could affect productive data of other users and is therefore not possible.
 
 Unpublished, unapproved Service Brokers can be deleted from the list of Service Brokers via the **trash** button. A safety dialogue pops up, where you have to enter the name of the Service Broker for confirmation. The deletion will only delete the Service Broker in the meshStack. **No deprovisioning** will be triggered in the Service Broker! You have to clean up existing Service Instances in your Service Broker by yourself!
 
@@ -109,6 +109,6 @@ After you have published your Service Broker you can also revoke this publishing
 
 ## Deactivation of Service Brokers
 
-If a Service Broker has been [published](#publish-your-service-broker) and [approved](administration.service-brokers#approve-service-broker) it can no longer be deleted because there may already be provisioned service instances. Instead, a published Service Broker can be **deactivated**. Deactivating a Service Broker does not delete any service instances or bindings but ensures that no new service instances can be created. OSB Services platform will no longer show any services offered by this broker and if the Service Broker uses a dashboard client it will no longer be available.
+If a Service Broker has been [published](#publish-your-service-broker) and [approved](administration.service-brokers.md#approve-service-broker) it can no longer be deleted because there may already be provisioned service instances. Instead, a published Service Broker can be **deactivated**. Deactivating a Service Broker does not delete any service instances or bindings but ensures that no new service instances can be created. OSB Services platform will no longer show any services offered by this broker and if the Service Broker uses a dashboard client it will no longer be available.
 
 > Deactivating a Service Broker is permanent and irreversible!

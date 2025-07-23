@@ -35,8 +35,8 @@ A common scenario where this occurs is when you organization collaborates with e
 
 Guest users have the following properties
 
-- They are not expected or unable to sign in via the configured Enterprise  [Identity Provider](meshstack.identity-provider).
+- They are not expected or unable to sign in via the configured Enterprise  [Identity Provider](meshstack.identity-provider.md).
 - Guest users are not able to login to meshPanel. It's sufficient for guest users to access any assigned cloud tenants directly via the cloud platform.
 - Guest users do not receive email notifications from meshStack, e.g. about changed role assignments
-- Guest users have an `euid`, see [configuring externally-provisioned identities](meshstack.identity-federation#configuring-externally-provisioned-identity-federation).
+- Guest users have an `euid`, see [configuring externally-provisioned identities](meshstack.identity-federation.md#configuring-externally-provisioned-identity-federation).
 - Guest user identities are available in the cloud platform's IAM directory with an `euid`, e.g. via AAD B2B or disabling domain restricted sharing on GCP

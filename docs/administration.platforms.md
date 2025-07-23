@@ -8,8 +8,8 @@ It enables the core functionality of meshStack such as tenant creation, replicat
 
 Besides integrating your cloud platform, the following functionality is also highly useful:
 
-* Manage and create landing zones in the [landing zone administration screen](administration.landing-zones).
-* View all your existing cloud tenants in the [tenant list](administration.tenants).
+* Manage and create landing zones in the [landing zone administration screen](administration.landing-zones.md).
+* View all your existing cloud tenants in the [tenant list](administration.tenants.md).
 
 > All platform related maintenance like Landing Zones, Tenants, etc will be moved to the [Platform Control Plane](#platform-control-plane)
 > in future.
@@ -57,15 +57,15 @@ you can provide a link to a Wiki to provide further, more detailed information a
 
 #### Platform Connection Config
 
-When integrating a cloud platform into meshStack you have to enter some specific configuration so meshStack knows how to handle the platform. This relates to replication as well as metering configuration. A central aspect of it is defining how to connect to your cloud platform. For public cloud platforms you have to provide some kind of root account for all tenants managed by meshStack are living in. This is for example an AWS Root Account, a GCP Billing Account or an Azure Tenant. For private cloud platforms you usually have to provide an endpoint for the API. meshStack will communicate with it to manage tenants. In all cases you have to provide some kind of credentials so meshStack can perform the actions needed for replication and metering. You can find details about how to set up the cloud platform with credentials and more in the platform-specific [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform) guide.
+When integrating a cloud platform into meshStack you have to enter some specific configuration so meshStack knows how to handle the platform. This relates to replication as well as metering configuration. A central aspect of it is defining how to connect to your cloud platform. For public cloud platforms you have to provide some kind of root account for all tenants managed by meshStack are living in. This is for example an AWS Root Account, a GCP Billing Account or an Azure Tenant. For private cloud platforms you usually have to provide an endpoint for the API. meshStack will communicate with it to manage tenants. In all cases you have to provide some kind of credentials so meshStack can perform the actions needed for replication and metering. You can find details about how to set up the cloud platform with credentials and more in the platform-specific [How to integrate a meshPlatform into meshStack](meshstack.how-to.integrate-meshplatform.md) guide.
 
 The following list provides the most common configurations available for different cloud platform types:
 
 * Credentials and connection attributes for replication and metering
 * Role Mappings for mapping Project Roles in meshStack to specific roles in the cloud platform
-* Naming of platform tenants (e.g. AWS Account or Azure Subscription) via [String Templates](meshstack.replication-configuration#string-templating)
-* Naming via [String Templates](meshstack.replication-configuration#string-templating) of platform IAM groups created by meshStack to provide users access to their tenants
-* [Tag Configuration](meshstack.metadata-tags#tags-in-cloud-tenants) for platform tenants and resources (e.g. add workspace and project identifier as a tag to the platform tenant)
+* Naming of platform tenants (e.g. AWS Account or Azure Subscription) via [String Templates](meshstack.replication-configuration.md#string-templating)
+* Naming via [String Templates](meshstack.replication-configuration.md#string-templating) of platform IAM groups created by meshStack to provide users access to their tenants
+* [Tag Configuration](meshstack.metadata-tags.md#tags-in-cloud-tenants) for platform tenants and resources (e.g. add workspace and project identifier as a tag to the platform tenant)
 * platform-specific additional configuration
 
 As an example you can find a part of the GCP configuration in the following image:
@@ -82,7 +82,7 @@ To restrict the meshPlatform, search for the workspaces the platform shall be re
 
 #### Manage Quota Definitions
 
-In order to provide quotas to meshTenants, the available quotas have to be defined first. A `Quota Key` that must match the quota key in the platform, can be defined. Additionally a speaking name for the Quota that is shown in meshPanel as well as a description and a unit can be defined. Min and Max values can also be set to restrict the quotas to a certain maximum or minimum. An [Auto Approval Threshold](meshcloud.tenant-quota#auto-approval-of-tenant-quota-requests) can also be defined. It can be set to 0, if no auto-approval of quota requests shall be applied.
+In order to provide quotas to meshTenants, the available quotas have to be defined first. A `Quota Key` that must match the quota key in the platform, can be defined. Additionally a speaking name for the Quota that is shown in meshPanel as well as a description and a unit can be defined. Min and Max values can also be set to restrict the quotas to a certain maximum or minimum. An [Auto Approval Threshold](meshcloud.tenant-quota.md#auto-approval-of-tenant-quota-requests) can also be defined. It can be set to 0, if no auto-approval of quota requests shall be applied.
 
 **Removing Quotas**
 If you want to remove quotas from a platform just click the "-" button on the right side of the table. If removed in the Platform Quota Definition, quotas will be removed from the Landing Zones and tenants belonging to the platform as well. The removal of quotas from the meshTenants will happen during next replication.
@@ -115,7 +115,7 @@ Administrators can inform users about platform specific events (updates, new fea
 notifications:
 
 * **Platforms**: Select the platforms relevant to your notification so they can be shown on the affected platform's dashboards. Users
-  can also [subscribe](meshcloud.profile#profile) to notifications by platform and [subscribed users](meshcloud.profile#platform-notification-subscriptions) will receive new notifications via email.
+  can also [subscribe](meshcloud.profile.md#profile) to notifications by platform and [subscribed users](meshcloud.profile.md#platform-notification-subscriptions) will receive new notifications via email.
 * **Message**: The message that will be shown to all users. You can enter valid HTML in this field (except for the `<p>` tag). This is useful for e.g. supplying links to support pages.
 * **Severity**: The type of message (info, warning, critical).
   * Info: for new features, upcoming services updates and general information that is not expected to disrupt platform operation

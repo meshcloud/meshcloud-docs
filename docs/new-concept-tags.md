@@ -33,10 +33,3 @@ Tag values can be up to 255 characters. Ensure your tags configured as replicate
 ## Example
 
 ![Tags concept diagram](./assets/new_concept/concept_tags.png)
-
-<!--
-## Related Resources
-
-- [How to Provide Security Contact Information in Tenants](new-guide-how-to-provide-security-contact)
-- [How to Provide Organization Context to the Platform](new-guide-how-to-provide-organization-context)
--->

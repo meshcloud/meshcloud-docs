@@ -16,11 +16,10 @@ provider "aws" {
 
 locals {
   redirects = [
-    # currently none, would be of form
-    # {
-    #   source = "/from"
-    #   target = "/to"
-    # }
+    {
+      source = "/docs/<*>"
+      target = "/<*>"
+    }
   ]
 }
 
@@ -35,7 +34,12 @@ resource "aws_amplify_app" "docs" {
 
   build_spec = null # we use amplify.yml to host the build spec
 
-  # note: rules here are processed top to bottom! 
+  environment_variables = {
+    # This is somehow set by Amplify. To keep the diff view happy we just add it for simplicity.
+    "NODE_OPTIONS" = "--max_old_space_size=4096"
+  }
+
+  # note: rules here are processed top to bottom!
 
   ## Redirects required for bypassing adblockers with plausible.io
   ## See https://plausible.io/docs/proxy/guides/netlify
@@ -52,7 +56,14 @@ resource "aws_amplify_app" "docs" {
     status = 200
   }
 
-  # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google      
+  # not sure what this one does? probably the 404 handler
+  custom_rule {
+    source = "/<*>"
+    status = "404-200"
+    target = "/index.html"
+  }
+
+  # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google
   dynamic "custom_rule" {
     for_each = toset(local.redirects)
 
@@ -61,13 +72,6 @@ resource "aws_amplify_app" "docs" {
       target = custom_rule.value.target
       status = "301"
     }
-  }
-
-  # not sure what this one does? probably the 404 handler
-  custom_rule {
-    source = "/<*>"
-    status = "404-200"
-    target = "/index.html"
   }
 }
 
@@ -121,7 +125,7 @@ resource "aws_amplify_domain_association" "docs_dev_meshcloud_io" {
   sub_domain {
     branch_name = aws_amplify_branch.develop.branch_name
     prefix      = ""
-  }  
+  }
 }
 
 

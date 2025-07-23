@@ -37,7 +37,7 @@ Once you implemented your service broker, you can deploy it. The UniPipe Wiki ha
 
 ## How to set up your Service Broker in the OSB Services Platform
 
-Service development in the OSB Services Platform is documented in [meshcloud docs](meshstack.OSBServicesPlatform.development).
+Service development in the OSB Services Platform is documented in [meshcloud docs](meshstack.OSBServicesPlatform.development.md).
 
 - Log in into the meshPanel.
 - Open the Workspace Overview.
@@ -52,4 +52,4 @@ Service development in the OSB Services Platform is documented in [meshcloud doc
 
 You can now start booking and using your OSB services within your own meshWorkspace. This is useful for testing and verifying whether your service broker works as intended.
 
-Once you are ready for other teams to book your offered services, you can [publish](meshstack.OSBServicesPlatform.development#publish-your-service-broker) your service broker.
+Once you are ready for other teams to book your offered services, you can [publish](meshstack.OSBServicesPlatform.development.md#publish-your-service-broker) your service broker.

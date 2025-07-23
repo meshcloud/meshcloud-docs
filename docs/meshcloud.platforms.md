@@ -26,6 +26,6 @@ an external service provider.
 
 ## Using Platforms
 
-Users can configure which meshPlatforms their [Projects](meshcloud.project) are enabled to use.
-The meshPlatforms available to your projects can be governed by [Landing Zones](meshcloud.landing-zones)
-configured by your [platform engineer](meshstack.index).
+Users can configure which meshPlatforms their [Projects](meshcloud.project.md) are enabled to use.
+The meshPlatforms available to your projects can be governed by [Landing Zones](meshcloud.landing-zones.md)
+configured by your [platform engineer](meshstack.index.md).

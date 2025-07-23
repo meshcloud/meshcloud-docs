@@ -3,7 +3,7 @@ id: meshcloud.tenant
 title: meshTenant
 ---
 
-meshTenants are the representation of a [meshProject](meshcloud.project) in a [meshPlatform](meshcloud.platforms).
+meshTenants are the representation of a [meshProject](meshcloud.project.md) in a [meshPlatform](meshcloud.platforms.md).
 meshTenants are isolated cloud environments protected by multi-tenant mechanisms of the cloud platform. The following types of meshTenants are supported by meshStack:
 
 - Accounts in AWS
@@ -15,32 +15,32 @@ meshTenants are isolated cloud environments protected by multi-tenant mechanisms
 
 ## Using your Tenant
 
-To use your tenant, open the tenant control plane by going to the [project control plane](meshcloud.project#manage-meshprojects) and opening one of its tenants.
+To use your tenant, open the tenant control plane by going to the [project control plane](meshcloud.project.md#manage-meshprojects) and opening one of its tenants.
 
 ![Tenant Control Plane](assets/tenants/control-plane.png)
 
-In the tenant control plane you can log in to the cloud platform, manage your Building Blocks, view costs associated to the tenant and book additional services for the tenant from the [marketplace](marketplace.index).
+In the tenant control plane you can log in to the cloud platform, manage your Building Blocks, view costs associated to the tenant and book additional services for the tenant from the [marketplace](marketplace.index.md).
 
 ## Replication and Reconciliation
 
-meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](meshcloud.workspace) admins), the [Landing Zone](meshcloud.landing-zones) and [meshPlatform](meshcloud.platforms) configuration (managed by the platform engineer) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](meshcloud.tenant-quota) to your meshTenant.
+meshStack combines the meshProject configuration (managed in self-service by the [meshWorkspace](meshcloud.workspace.md) admins), the [Landing Zone](meshcloud.landing-zones.md) and [meshPlatform](meshcloud.platforms.md) configuration (managed by the platform engineer) to compute a **desired state** for each meshTenant. For private cloud platforms this may include applying certain [quotas](meshcloud.tenant-quota.md) to your meshTenant.
 
 meshStack continuously reconciles the **actual state** of meshTenants with their desired state. This process is called replication and ensures that all cloud tenants governed by meshStack are in a known and expected state.
 
 ## Metadata Tags
 
-meshStack automatically derives [metadata tags](meshcloud.metadata-tags) for meshTenants based on the metadata tags set on the meshProject, the [payment method](meshcloud.payment-methods) configured on the meshProject and
+meshStack automatically derives [metadata tags](meshcloud.metadata-tags.md) for meshTenants based on the metadata tags set on the meshProject, the [payment method](meshcloud.payment-methods.md) configured on the meshProject and
 the meshWorkspace it belongs to.
 
 Any update to tenant metadata (e.g. a change in payment method) triggers a new meshTenant reconciliation cycle.
 
 ## Delete a meshTenant
 
-> Only users with the role [Workspace Manager](meshcloud.workspace#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
+> Only users with the role [Workspace Manager](meshcloud.workspace.md#assign-meshworkspace-roles) or [Workspace Owner](meshcloud.workspace.md#assign-meshworkspace-roles) have access to the administrative functionality described in this section.
 
 If you would like to delete a meshTenant that is no longer used, open the corresponding meshTenant and navigate to **Deletion**.
 
-> If you delete the entire meshProject [submitted for deletion](meshcloud.project#delete-a-meshproject) instead,
+> If you delete the entire meshProject [submitted for deletion](meshcloud.project.md#delete-a-meshproject) instead,
 > the meshProject will be deleted once all meshTenants within the meshProject have been deleted successfully.
 
 When you delete a tenant it will be removed from the project view and submitted to the tenant deletion queue. You will also immediately loose access to the tenant in the cloud platform.
@@ -51,7 +51,7 @@ Tenant deletion always requires approval. It is possible that an operator will r
 Operators can configure how meshStack processes tenants on the deletion queue per landing zone.
 meshStack will update the status of your tenant in the Deletion Queue accordingly and send notifications to keep you updated about deletion progress.
 
-> If you are a platform engineer and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](administration.delete-tenants)
+> If you are a platform engineer and want to learn more about the approval and deletion workflows in the Admin Area, read more [here](administration.delete-tenants.md)
 
 ## Reuse of an existing tenant
 
@@ -61,7 +61,7 @@ meshStack does not support reusing platform tenants. Imagine a tenant has been d
 
 ## Deprovisioning / Deleting Tenants
 
-Before a meshTenant can be [automatically deleted](meshcloud.tenant#automatic-deletion) by meshStack, users must make sure that no resources are left in the cloud platform tenants. This is a security measure as we do not want to accidentally delete a tenant with resources still used from the cloud platforms. We therefore check the absence of resources prior of tenant deletion and upon presence of a resource we stop the deprovisioning process.
+Before a meshTenant can be [automatically deleted](meshcloud.tenant.md#automatic-deletion) by meshStack, users must make sure that no resources are left in the cloud platform tenants. This is a security measure as we do not want to accidentally delete a tenant with resources still used from the cloud platforms. We therefore check the absence of resources prior of tenant deletion and upon presence of a resource we stop the deprovisioning process.
 
 This security check is currently supported for the platforms:
 
@@ -69,4 +69,4 @@ This security check is currently supported for the platforms:
 - OpenStack
 - OSB Services
 
-> Since this security measure is very important, fully automated deprovisioning of projects from other platforms is currently not supported and requires [manual intervention](administration.projects#delete-tenants). We are looking into extending support for further automating this process in the future.
+> Since this security measure is very important, fully automated deprovisioning of projects from other platforms is currently not supported and requires [manual intervention](administration.projects.md#delete-tenants). We are looking into extending support for further automating this process in the future.

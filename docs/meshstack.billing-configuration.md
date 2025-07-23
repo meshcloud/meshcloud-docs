@@ -7,7 +7,7 @@ title: Configuration
 
 > Chargeback is the process of allocating IT cost to consumers and feeding it into the company-wide finance and controlling processes.
 
-Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.cost-management#chargeback-statements).
+Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](meshcloud.cost-management.md#chargeback-statements).
 
 The attributes that shall be part of the billing info on the chargeback statements can be configured.
 
@@ -37,7 +37,7 @@ The following metadata keys are derived from meshStack metadata and therefore av
 
 ### Available tag keys
 
-It is also possible to derive [meshTags](meshstack.metadata-tags) as metadata keys by using its tag name.
+It is also possible to derive [meshTags](meshstack.metadata-tags.md) as metadata keys by using its tag name.
 
 ### Configuration example
 
@@ -93,11 +93,11 @@ let example2
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](meshcloud.payment-methods).
+> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](meshcloud.payment-methods.md).
 
 ## Setting Internal Prices
 
-In meshStack, you have the flexibility to define prices for [Platform Services](marketplace.index) in addition to usage costs from providers. Configuring your internal prices allows you to account for various expenses such as licensing costs or the effort invested in maintaining and enhancing Platform Services. These internal prices will be displayed on the service details page within the Marketplace.
+In meshStack, you have the flexibility to define prices for [Platform Services](marketplace.index.md) in addition to usage costs from providers. Configuring your internal prices allows you to account for various expenses such as licensing costs or the effort invested in maintaining and enhancing Platform Services. These internal prices will be displayed on the service details page within the Marketplace.
 
 ![Marketplace price](assets/marketplace/marketplace-costs.png)
 

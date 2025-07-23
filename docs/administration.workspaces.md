@@ -31,26 +31,26 @@ A meshStack installation can be configured to require a manual approval by a par
 
 ### Disabling Workspaces
 
-Partners can disable meshWorkspaces in case the responsible workspace managers do not provide valid [Payment Methods](meshcloud.payment-methods) or do not maintain correct [metadata](meshstack.metadata-tags).
+Partners can disable meshWorkspaces in case the responsible workspace managers do not provide valid [Payment Methods](meshcloud.payment-methods.md) or do not maintain correct [metadata](meshstack.metadata-tags.md).
 
-Setting the meshWorkspace status to **Disabled** has the following effects on [meshProjects](meshcloud.project) and [meshTenants](meshcloud.tenant) owned by this workspace:
+Setting the meshWorkspace status to **Disabled** has the following effects on [meshProjects](meshcloud.project.md) and [meshTenants](meshcloud.tenant.md) owned by this workspace:
 
-- users can no longer access [meshTenants](meshcloud.tenant) via meshPanel
+- users can no longer access [meshTenants](meshcloud.tenant.md) via meshPanel
 
 Disabling a workspace does not technically prevent users from accessing tenants when logging in directly on the cloud platform. To prevent this access so, admins must add themselves to the workspace as an admin and manually remove user permissions.
 
-If you want to prevent a workspace from creating new [meshProjects](meshcloud.project), you can [adjust the workspace's meshProject quota](#set-workspace-quotas).
+If you want to prevent a workspace from creating new [meshProjects](meshcloud.project.md), you can [adjust the workspace's meshProject quota](#set-workspace-quotas).
 
 ### Access managed Workspaces
 
-As an admin user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
+As an admin user you can assign yourself a role on managed workspaces. The role that will be assigned can either be "Workspace Member" or "Workspace Manager" depending on the configuration of meshstack ([read more here](meshstack.onboarding.md#workspace-user-invitations)). If you are assigned as a Workspace Member you cannot execute step four and five.
 
 1. Go to **Administration &gt; Workspaces** and click on the **Users** icon on the managed workspace you want to edit.
 2. In the **Workspaces Users** view click on the button **Add Myself** in the top right corner.
 3. After you have successfully assigned yourself to the account you can now choose the account in the top left drop-down. Please select the
    new managed workspace there.
 4. In the toolbox go to **Account &gt; Users** where you can invite and add users to the managed workspace.
-5. Invited users will receive an e-mail with a link to get access to this new workspace. For more details on user invitation, also see [meshWorkspace](meshcloud.workspace).
+5. Invited users will receive an e-mail with a link to get access to this new workspace. For more details on user invitation, also see [meshWorkspace](meshcloud.workspace.md).
 
 ### Send messages to workspace users
 
@@ -79,7 +79,7 @@ Partners and Administrators can manage the quota, that limits the maximum number
 
 ### Edit Workspace Tag Values
 
-Admin users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags) for managed **meshWorkspaces** by navigating to the **Workspaces** list and clicking the `Workspace Tags` button.
+Admin users can edit tag values for tags defined in both [restricted and unrestricted meshTags](meshstack.metadata-tags.md) for managed **meshWorkspaces** by navigating to the **Workspaces** list and clicking the `Workspace Tags` button.
 
 ## Audit Workspaces
 

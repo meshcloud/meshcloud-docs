@@ -48,7 +48,7 @@ A policy evaluation strategy describes how authoritative and affected policy
 subjects shall be evaluated in the context of a policy. In that way, you can
 decide in which form the tag values have to be present on both policy subjects
 to comply with the policy. As mentioned before, policies are built on top of
-meshStack's [tagging](meshcloud.metadata-tags) system. By that system, you
+meshStack's [tagging](meshcloud.metadata-tags.md) system. By that system, you
 can allow your tag to only have one value or multiple values. For the
 evaluation, all tags are treated as arrays: no matter if there are no values, a
 single value, or multiple values. This means you can also create a policy that

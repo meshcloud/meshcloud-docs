@@ -6,12 +6,14 @@ title: How to Establish a Custom Platform
 This guide explains how to establish and integrate a custom platform with meshStack, enabling your organization to manage non-standard or internally developed platforms alongside public and private cloud providers.
 
 ## When to Use a Custom Platform
+
 - You have an internally developed platform or service that is not natively supported by meshStack.
 - You want to provide a unified experience for managing tenants, access, and quotas across all platforms.
 
 ---
 
 ## Prerequisites
+
 - Administrative access to meshStack (Platform Builder permissions).
 - Documentation or API access for the custom platform you want to integrate.
 
@@ -46,13 +48,9 @@ This guide explains how to establish and integrate a custom platform with meshSt
 ---
 
 ## Best Practices
+
 - Collaborate closely with your platform engineering and security teams during integration.
 - Use consistent naming and tagging conventions for custom platforms and tenants.
 - Regularly review and update the integration as your custom platform evolves.
 
 ---
-
-## Related Resources
-- [Platform Concept](new-concept-platform)
-- [How to Manage a Platform](new-guide-how-to-manage-a-platform)
-- [meshStack API Documentation](apis.index)

@@ -112,12 +112,12 @@ to the [Authentication](pathname:///api/#authentication) section within the API 
 
 To set up the provisioning on AAD side, have a look at [Microsoft's guideline](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal) and please follow these steps:
 
-1. [Enable SCIM](meshstack.user-group-provisioning#enable-scim) in meshStack.
+1. [Enable SCIM](meshstack.user-group-provisioning.md#enable-scim) in meshStack.
 2. Create a new non-gallery Enterprise Application (EA) in your AAD that is dedicated to the provisioning. A step-by-step guide is available [here](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started).
 3. In the EA set up the meshStack endpoint as target API:
    1. Go to the "Provisioning" section and then to "Admin Credentials"-
    2. Use your meshStack's backend URL as endpoint: `https://meshfed.<meshStack>/api/scim/v2/`.
-   3. Create an [API user](administration.apiusers) with permission `Use all SCIM endpoints provided by meshStack` in meshStack.
+   3. Create an [API user](administration.apiusers.md) with permission `Use all SCIM endpoints provided by meshStack` in meshStack.
    ![Create API User](assets/aad-user-and-group-sync.png)
    4. Set the base64 encoded Basic Auth Credentials as "Secret Token".
    ![Set Secret Token](assets/scim-secret-token.png)

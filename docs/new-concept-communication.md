@@ -33,10 +33,3 @@ There are two main types of communications in meshStack:
 1. **Notification**: Enables broadcasting of messages such as maintenance windows and new functionality. Notifications can be delivered through UI and email, and tailored to specific roles or application teams for maximum relevance and reduced noise.
 
 2. **Action Required**: Automates assignment of actionable tasks including security reviews, access validation, and metadata accuracy checks. These tasks ensure compliance and accountability by embedding ownership directly into workflows, providing stakeholders with real-time visibility into progress and reducing manual tracking overhead. You can also assign a due date to the action required communication to ensure timely completion.
-
-<!--
-## Related Resources
-- [How to Provide Security Contact Information in Tenants](new-guide-how-to-provide-security-contact)
-- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
-- [meshStack Areas](new-concept-meshstackareas)
--->

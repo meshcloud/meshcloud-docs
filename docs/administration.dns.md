@@ -25,7 +25,7 @@ The DNS records needed for those domains are provided to you by meshcloud during
 
 ## SSL certificates
 
-> Providing SSL certificates is only required for [meshStack Enterprise](meshstack.managed-service#meshstack-saas-on-prem). For [meshStack SaaS](meshstack.managed-service#meshstack-saas) manages SSL certificates automatically.
+> Providing SSL certificates is only required for [meshStack Enterprise](meshstack.managed-service.md#meshstack-saas-on-prem). For [meshStack SaaS](meshstack.managed-service.md#meshstack-saas) manages SSL certificates automatically.
 
 meshStack supports wildcard certificates and certificates with Subject Alternative Name (SAN).
 SAN certificates need to contain FQDN for all hosts.

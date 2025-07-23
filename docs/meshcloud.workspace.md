@@ -4,28 +4,28 @@ title: meshWorkspace
 ---
 
 A meshWorkspace usually represents a product team or department in your organization. Self-service within a meshWorkspace
-allows you to invite and manage team members, create [meshProjects](meshcloud.project) and maintain organizational metadata like payment methods.
+allows you to invite and manage team members, create [meshProjects](meshcloud.project.md) and maintain organizational metadata like payment methods.
 
 ## Workspace Creation
 
 Organizations implementing meshStack can choose to offer self-service workspace registration via meshPanel or externalize
-the process to some existing ITSM or process automation system. Partners can read more about these options [here](meshstack.onboarding#workspace-registration).
+the process to some existing ITSM or process automation system. Partners can read more about these options [here](meshstack.onboarding.md#workspace-registration).
 
 In any case, the meshWorkspace creation process always involves collecting basic workspace information like name, identifier
-and any additional [metadata specific to your organization](meshstack.metadata-tags#workspace-tag-schema).
+and any additional [metadata specific to your organization](meshstack.metadata-tags.md#workspace-tag-schema).
 
 ## Managing your meshWorkspace
 
-Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](meshcloud.workspace#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate down to the [project control plane](meshcloud.project#manage-meshprojects) & [tenant control plane](meshcloud.tenant#using-your-tenant). Each control plane has a similar layout. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
+Every aspect of your meshWorkspace can be managed in the so-called [workspace control plane](meshcloud.workspace.md#managing-your-meshworkspace). The workspace control plane is the highest control plane. From that level, you can navigate down to the [project control plane](meshcloud.project.md#manage-meshprojects) & [tenant control plane](meshcloud.tenant.md#using-your-tenant). Each control plane has a similar layout. Depending on your permissions within the workspace and the meshStack configuration, you will have access to different tabs like **Settings** or **Financials**. The workspace control plane below shows the control plane from the perspective of a Workspace Manager.
 
 ![Workspace Control Plane User Interface](assets/Workspace-overview.png)
 
-General information of a meshWorkspace (like its name) and [Workspace Tags](meshstack.metadata-tags#workspace-tag-schema) can be edited under the **Settings** tab.
+General information of a meshWorkspace (like its name) and [Workspace Tags](meshstack.metadata-tags.md#workspace-tag-schema) can be edited under the **Settings** tab.
 The workspace identifier is also shown here, but it can never be changed,
 as it is used as an immutable identifier of the meshWorkspace for its
 representation in the different cloud platforms. You are however able to change the display name of the meshWorkspace.
 
-If configured by your Cloud Foundation team, you may also be able to edit additional workspace [metadata tags](meshcloud.metadata-tags) in the Settings Tab.
+If configured by your Cloud Foundation team, you may also be able to edit additional workspace [metadata tags](meshcloud.metadata-tags.md) in the Settings Tab.
 
 ## Invite Users to a Workspace Team
 
@@ -43,12 +43,12 @@ You can initially setup the meshWorkspace role in the dropdown which describes t
 Press "+" to add to the meshWorkspace. All users and members of the group will receive an email with the information,
 that they have been granted access to your meshWorkspace.
 
-Assigning a meshWorkspace role is necessary in order to give access to [meshProjects](meshcloud.project) insight the meshWorkspace.
+Assigning a meshWorkspace role is necessary in order to give access to [meshProjects](meshcloud.project.md) insight the meshWorkspace.
 If 4 eyes-principle is active, the user or group will not be assigned directly to your meshWorkspace. Another Workspace Manager has to approve this role assignment first. Therefore the user or group will appear in the "Pending Requests" section.
 
 ## Workspace User Groups
 
-For not having to assign multiple users individually to your projects, you can also group them in a user group. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project#access-control-on-a-meshproject) in the same way as for usual users.
+For not having to assign multiple users individually to your projects, you can also group them in a user group. User groups can be assigned roles on a [meshWorkspace](#invite-users-to-a-meshworkspace-team) and a [meshProject](meshcloud.project.md#access-control-on-a-meshproject) in the same way as for usual users.
 
 You can view workspace user groups within your workspace by going to the **User Groups** section in the **Access Control** tab.
 Currently, creating a group is only supported via the [meshStack API](pathname:///api/) and to create one you will need a Workspace identifier, which you can find on the Workspace overview.
@@ -82,30 +82,30 @@ The following table provides details about the functionality available to the di
 |                                                                                                                      | Workspace Owner | Workspace Manager | Workspace Member |
 |----------------------------------------------------------------------------------------------------------------------| :------------: | :------------: |:----------------:|
 | View Projects                                                                                                        |    &#10003;    |    &#10003;    |  (if assigned)   |
-| [Workspace&nbsp;Projects](meshcloud.project#manage-meshprojects)                                                  |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project#create-a-new-meshproject)                                     |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project#manage-meshprojects)                                            |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project#adding-meshtenants)                              |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Delete&nbsp;meshTenants](meshcloud.tenant#delete-a-meshtenant)                           |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project#provide-payment-information-for-meshproject) |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project#access-control-on-a-meshproject)                  |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project#expiration-of-a-principal-assignment)                         |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.cost-management#project-statement)                               |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project#delete-a-meshproject)                                         |    &#10003;    |    &#10003;    |                  |
-| [Workspace&nbsp;Users](meshcloud.workspace)                                                                       |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.workspace#invite-users-to-a-meshworkspace-team)                          |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.workspace#assign-meshworkspace-roles)                                    |    &#10003;    |    &#10003;    |                  |
-| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.workspace#remove-assigned-meshworkspace-roles)                         |    &#10003;    |    &#10003;    |                  |
+| [Workspace&nbsp;Projects](meshcloud.project.md#manage-meshprojects)                                                  |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Create&nbsp;Project](meshcloud.project.md#create-a-new-meshproject)                                     |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Edit&nbsp;Project](meshcloud.project.md#manage-meshprojects)                                            |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;meshTenants](meshcloud.project.md#adding-meshtenants)                              |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Delete&nbsp;meshTenants](meshcloud.tenant.md#delete-a-meshtenant)                           |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Payment&nbsp;Information](meshcloud.project.md#provide-payment-information-for-meshproject) |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Access&nbsp;Control](meshcloud.project.md#access-control-on-a-meshproject)                  |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Expired&nbsp;Access](meshcloud.project.md#expiration-of-a-principal-assignment)                         |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Project&nbsp;Statements](meshcloud.cost-management.md#project-statement)                               |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Delete&nbsp;Project](meshcloud.project.md#delete-a-meshproject)                                         |    &#10003;    |    &#10003;    |                  |
+| [Workspace&nbsp;Users](meshcloud.workspace.md)                                                                       |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Give&nbsp;Access](meshcloud.workspace.md#invite-users-to-a-meshworkspace-team)                          |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Edit&nbsp;Access](meshcloud.workspace.md#assign-meshworkspace-roles)                                    |    &#10003;    |    &#10003;    |                  |
+| &nbsp;&nbsp;[Remove&nbsp;Access](meshcloud.workspace.md#remove-assigned-meshworkspace-roles)                         |    &#10003;    |    &#10003;    |                  |
 | &nbsp;&nbsp;[Assign&nbsp;Workspace&nbsp;Owner](#assign-meshworkspace-roles)                                          |    &#10003;    |                |                  |
-| [Workspace&nbsp;User&nbsp;Groups](meshcloud.workspace#user-groups)                                                |    &#10003;    |    &#10003;    |                  |
+| [Workspace&nbsp;User&nbsp;Groups](meshcloud.workspace.md#user-groups)                                                |    &#10003;    |    &#10003;    |                  |
 | [Workspace&nbsp;Settings](#workspace-deletion)                                                                       |    &#10003;    |    &#10003;    |                  |
-| [Payment&nbsp;Methods](meshcloud.payment-methods)                                                                 |    &#10003;    |    &#10003;    |                  |
-| [Service&nbsp;Broker&nbsp;Development](meshstack.OSBServicesPlatform.development)                                     |    &#10003;    |    &#10003;    |                  |
+| [Payment&nbsp;Methods](meshcloud.payment-methods.md)                                                                 |    &#10003;    |    &#10003;    |                  |
+| [Service&nbsp;Broker&nbsp;Development](meshstack.OSBServicesPlatform.development.md)                                     |    &#10003;    |    &#10003;    |                  |
 | Delete Workspace                                                                                                     |    &#10003;    |                |                  |
 
-> The roles that are available meshStack Administrators are described in the [Administration](administration.index) section.
+> The roles that are available meshStack Administrators are described in the [Administration](administration.index.md) section.
 
-meshWorkspace roles grant rights in meshStack only. In order to access cloud resources users need to be [granted a role on a meshProject](meshcloud.project#access-control-on-a-meshproject).
+meshWorkspace roles grant rights in meshStack only. In order to access cloud resources users need to be [granted a role on a meshProject](meshcloud.project.md#access-control-on-a-meshproject).
 
 ## Remove assigned Workspace Roles
 
@@ -122,7 +122,7 @@ Role recertification is also available for assigning users to the role via API. 
 Before a meshWorkspace may be deleted, a check is performed to verify the following:
 
 - all meshProjects in the meshWorkspace have been deleted
-- all published Service Brokers in the meshWorkspace have been [deactivated](meshstack.OSBServicesPlatform.development#deactivation-of-service-brokers)
+- all published Service Brokers in the meshWorkspace have been [deactivated](meshstack.OSBServicesPlatform.development.md#deactivation-of-service-brokers)
 
 The deletion can be performed only by the Workspace Owners! You can delete the workspace under **Deletion** in the workspace control plane. You will be asked for confirmation and a deletion reason.
 

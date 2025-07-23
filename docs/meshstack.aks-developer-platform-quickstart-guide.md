@@ -24,9 +24,9 @@ By the end of this guide, you will have built a complete starter kit for your us
 Before starting, ensure you have the following:
 
 - You have a basic understanding of building blocks in meshStack.
-  - *If you don’t, we recommend running through the [AWS S3 guide](meshstack.building-aws-quickstart-guide) to learn how building blocks work.*
+  - *If you don’t, we recommend running through the [AWS S3 guide](meshstack.building-aws-quickstart-guide.md) to learn how building blocks work.*
 - You have integrated an AKS cluster into meshStack.
-  - *If you don’t, we recommend running through the [First Platform guide for AKS](meshstack.aks-platform-quickstart-guide) where you are guided to integrate an AKS cluster as a platform in meshStack*
+  - *If you don’t, we recommend running through the [First Platform guide for AKS](meshstack.aks-platform-quickstart-guide.md) where you are guided to integrate an AKS cluster as a platform in meshStack*
 
 ## What Will We Do in This Guide?
 
@@ -296,4 +296,4 @@ You can also change the behavior if you want in this starter kit. In its current
 
 ## What’s Next?
 
-- [Publish all building blocks](marketplace.platform-builder#publishing) so anyone in the organization can use it and provision namespaces in self-service.
+- [Publish all building blocks](marketplace.platform-builder.md#publishing) so anyone in the organization can use it and provision namespaces in self-service.

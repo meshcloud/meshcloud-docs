@@ -3,7 +3,7 @@ id: meshstack.how-to.onboard-team-to-workspace
 title: How to onboard your team to your meshWorkspace
 ---
 
-If you are not familiar with what a meshWorkspace is, please check the [official meshcloud documentation](meshcloud.workspace).
+If you are not familiar with what a meshWorkspace is, please check the [official meshcloud documentation](meshcloud.workspace.md).
 
 ## Pre-Requisites
 
@@ -28,7 +28,7 @@ If you are not familiar with what a meshWorkspace is, please check the [official
 ### Optional
 
 meshStack provides the optional configuration for 4-eyes access controls.
-Please check the [official meshcloud documentation](meshcloud.workspace#invite-users-to-a-meshworkspace-team).
+Please check the [official meshcloud documentation](meshcloud.workspace.md#invite-users-to-a-meshworkspace-team).
 
 - A second user with Workspace Manager or Workspace Owner permission needs to approve the access request. The second user must also navigate to the specific meshWorkspace (see step 1.), go to the `Workpsace Access` tab (see step 2.) and then click on the `Access Requests` tab in the second tab-row.
 ![Click the Access Requests tab](assets/workspace/workspace-access-approve.png "Access Control - Access Requests")

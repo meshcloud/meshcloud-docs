@@ -11,19 +11,27 @@ A user is an individual account in meshStack. Users can be assigned to workspace
 
 ### API Users
 
-API Users can access several APIs provided by meshStack. You can provide your API Users with access to certain resources for a new integration.
+API Users are accounts that can access meshStack APIs across all workspaces. They are typically used to enable integrations that require access to resources spanning multiple workspaces.
 
-> Please also see the documentation on [API keys](pathname:///api/).
+### API Keys
 
-### Groups
+API Keys can be issued either at the workspace or admin level. Workspace-scoped API Keys authorize requests to the meshObject API within the specific workspace, while admin-issued API Keys can also provide access across multiple workspaces. API Keys are now the recommended way to manage resources programmatically.
+
+For more details, refer to the [API keys documentation](pathname:///api/).
+
+### Choosing Between API Users and API Keys
+
+:::warning API User Deprecation
+API keys are gradually replacing API users. Over time, more actions will be supported via API keys, and API user functionality will be fully deprecated.
+:::
+
+API keys have the advantage of being short-lived tokens (the username/password is not sent with every request and therefore cannot be “stolen” as easily), and they allow more fine-grained permission handling.
+
+API keys offer similar capabilities, with the added flexibility of workspace scoping. Application teams can issue and manage API keys to control access to their workspace resources. Historically, API users were used by admins or systems to manage resources across meshStack.
+
+### "Global" Groups
 
 A group is a collection of users, used to manage permissions collectively. Groups can be assigned to roles at the workspace or project level, simplifying access management for teams.
-
-## User and Role Bindings
-
-User and role bindings define how users and groups are assigned specific roles within workspaces and projects. These bindings control access and permissions, ensuring that users have the appropriate level of responsibility for their tasks.
-
-Bindings can be managed via the meshStack UI or API. When a user or group is bound to a role, they inherit the permissions associated with that role for the relevant workspace or project.
 
 ### Admin Groups
 
@@ -58,44 +66,54 @@ available to users of the administration area:
 
 |                                                                                                                     | Organization Admin        | Organization User     | Platform Engineer | Ops Support | FinOps Manager | Onboarding Support | Compliance Manager | Replication Operator |
 |---------------------------------------------------------------------------------------------------------------------| :------------------: | :------------------: | :---------------: |:-----------:| :--------: | :----------------: | :----------------: | :------------------: |
-| [Workspace&nbsp;List](administration.workspaces)                                                                 |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
+| [Workspace&nbsp;List](administration.workspaces.md)                                                                 |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
 | &nbsp;&nbsp;Payment&nbsp;Methods&nbsp;List                                                                          |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
 | &nbsp;&nbsp;Manage&nbsp;Payment&nbsp;Methods                                                                        |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| &nbsp;&nbsp;[Project&nbsp;List](administration.projects)                                                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Manage&nbsp;Quota](administration.projects#set-project-quotas)                          |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
+| &nbsp;&nbsp;[Project&nbsp;List](administration.projects.md)                                                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Manage&nbsp;Quota](administration.projects.md#set-project-quotas)                          |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;project&nbsp;tags                                                                 |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |      &#10003;      |                      |
 | &nbsp;&nbsp;List&nbsp;Workspace&nbsp;Users        |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.workspaces#access-managed-workspace-accounts)         |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](administration.workspaces#send-messages-to-workspace-users)          |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](administration.workspaces.md#access-managed-workspace-accounts)         |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](administration.workspaces.md#send-messages-to-workspace-users)          |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;role&nbsp;requests                                                             |       &#10003;       |       &#10003;       |                   |  &#10003;   |            |      &#10003;      |                    |                      |
-| &nbsp;&nbsp;[Project&nbsp;Export](administration.projects#project-export)                                        |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| &nbsp;&nbsp;[Quota&nbsp;Export](administration.projects#quota-export)                                            |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |                    |                      |
+| &nbsp;&nbsp;[Project&nbsp;Export](administration.projects.md#project-export)                                        |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
+| &nbsp;&nbsp;[Quota&nbsp;Export](administration.projects.md#quota-export)                                            |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |                    |                      |
 | Compliance                                                                                                          |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; List [policies](administration.policies)                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; Manage [policies](administration.policies)                                                          |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; List [Tags](meshstack.metadata-tags)                                                                |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; Manage [Tags](meshstack.metadata-tags)                                                              |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; List [policies](administration.policies.md)                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; Manage [policies](administration.policies.md)                                                          |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; List [Tags](meshstack.metadata-tags.md)                                                                |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; Manage [Tags](meshstack.metadata-tags.md)                                                              |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
 | Project Management                                                                                                  |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
-| &nbsp;&nbsp;[Delete&nbsp;Tenants](administration.delete-tenants#delete-tenants)                                  |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
-| &nbsp;&nbsp;[Chargeback&nbsp;Statements](meshcloud.cost-management#chargeback-statements)                       |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| [Platforms](administration.platforms)                                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Platform&nbsp;Notifications](administration.platforms#platform-notifications)                       |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Platform&nbsp;Restrictions](administration.platforms#restrict-platform-access)                      |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
-| &nbsp;&nbsp;[Landing&nbsp;Zones](administration.landing-zones)                                                   |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Usage&nbsp;Reports](meshcloud.cost-management#tenant-usage-reports)                                |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| &nbsp;&nbsp;[Tenants](administration.tenants)                                                                    |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |         &#10003;     |
-| &nbsp;&nbsp;View [Unmanaged Tenants](administration.unmanaged-tenants)                                           |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |         &#10003;     |
-| &nbsp;&nbsp;Assign [Unmanaged Tenants](administration.unmanaged-tenants#assigning-unmanaged-tenants)             |       &#10003;       |             |           |             |            |                    |                    |             |
-| [User&nbsp;List](administration.users)                                                                           |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Delete&nbsp;Tenants](administration.delete-tenants.md#delete-tenants)                                  |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
+| &nbsp;&nbsp;[Chargeback&nbsp;Statements](meshcloud.cost-management.md#chargeback-statements)                       |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
+| [Platforms](administration.platforms.md)                                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Platform&nbsp;Notifications](administration.platforms.md#platform-notifications)                       |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Platform&nbsp;Restrictions](administration.platforms.md#restrict-platform-access)                      |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
+| &nbsp;&nbsp;[Landing&nbsp;Zones](administration.landing-zones.md)                                                   |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Usage&nbsp;Reports](meshcloud.cost-management.md#tenant-usage-reports)                                |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
+| &nbsp;&nbsp;[Tenants](administration.tenants.md)                                                                    |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |         &#10003;     |
+| &nbsp;&nbsp;View [Unmanaged Tenants](administration.unmanaged-tenants.md)                                           |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |         &#10003;     |
+| &nbsp;&nbsp;Assign [Unmanaged Tenants](administration.unmanaged-tenants.md#assigning-unmanaged-tenants)             |       &#10003;       |             |           |             |            |                    |                    |             |
+| [User&nbsp;List](administration.users.md)                                                                           |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;Create User                                                |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Delete&nbsp;User](administration.users#delete-user)                                                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Download&nbsp;User&nbsp;Info](administration.users#download-user-information)                       |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| [API Users](administration.apiusers)                                                                             |       &#10003;       |            |                   |             |            |                    |                    |                      |
-| [Service&nbsp;Broker](administration.service-brokers)                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers#approve-service-broker)            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks)                          | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003; |
-| &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks) | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003;|
-| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks) | &#10003; | &#10003; | &#10003; |             | | | |      
+| &nbsp;&nbsp;[Delete&nbsp;User](administration.users.md#delete-user)                                                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Download&nbsp;User&nbsp;Info](administration.users.md#download-user-information)                       |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| [API Users](administration.apiusers.md)                                                                             |       &#10003;       |            |                   |             |            |                    |                    |                      |
+| [Service&nbsp;Broker](administration.service-brokers.md)                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](administration.service-brokers.md#approve-service-broker)            |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md)                          | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003; |
+| &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003;|
+| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](administration.building-blocks.md) | &#10003; | &#10003; | &#10003; |             | | | |
+
+## User and Role Bindings
+
+User and role bindings define how users and groups are assigned specific roles within workspaces and projects. These bindings control access and permissions, ensuring that users have the appropriate level of responsibility for their tasks.
+
+Bindings can be managed via the meshStack UI or API. When a user or group is bound to a role, they inherit the permissions associated with that role for the relevant workspace or project.
+
+## 4 Eye Principle
+
+You can configure meshStack to require 4 eye principle for workspace and project permissions. This configuration enforces that at least two workspace owners or managers have to approve access before a user binding is created or modified.
 
 ## Workspace Users and Permissions
 
@@ -122,12 +140,24 @@ Workspace users are assigned roles within a workspace, such as Workspace Owner, 
 
 ## Project Users and Roles
 
-Project users are assigned to specific projects within a workspace. Their permissions manage access to platform resources, as defined by their project role (e.g., Project Member, Project Admin).
+Project users are assigned to specific projects within a workspace. If you are part of the project you can access the project in meshStack and add services from the marketplace. Project permissions also manage access to platform resources, as defined by their project role (e.g., Project Member, Project Admin). The project roles dont have any effect on permissions in meshStack.
 
 Project roles can be customized in the global settings in the admin area.
 
-Add platform and landing zone to configuration in the platform builder to enable role mappings.
-
----
+Add platform and landing zone to configuration in the Platform Builder to enable role mappings.
 
 ## Related Resources
+
+### Concepts
+
+- [Workspace](new-concept-workspace.md)
+- [Project](new-concept-project.md)
+
+### Guides
+
+- [How to Customize Project Roles](new-guide-how-to-customize-project-roles.md)
+- [How to Manage a Project](new-guide-how-to-manage-a-project.md)
+- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace.md)
+- [How to Manage API Users](new-guide-how-to-manage-api-users.md)
+- [How to Manage API Keys](new-guide-how-to-manage-api-keys.md)
+- [How to Manage 4 Eye Principle](new-guide-how-to-manage-4-eye-principle.md)

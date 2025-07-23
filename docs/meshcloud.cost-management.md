@@ -3,13 +3,13 @@ id: meshcloud.cost-management
 title: Cost Management
 ---
 
-meshStack provides central [multi-cloud billing](meshstack.billing). It can automatically collect usage information from all your cloud platforms and provides central access to cost and usage data.
+meshStack provides central [multi-cloud billing](meshstack.billing.md). It can automatically collect usage information from all your cloud platforms and provides central access to cost and usage data.
 
 This information will be consolidated by project, providing an overview of resource usage, including detailed insights into when and how long your resources were running, along with the associated costs.
 
 ## Payment Information
 
-A payment method is used to ensure transparent budget management and allocate costs back to the responsible team within your organization. One common example of a payment method is a cost center, which helps categorize and track expenses specific to a team or project. Please find more detailed information about payment methods and how they could be used [here](meshcloud.payment-methods).
+A payment method is used to ensure transparent budget management and allocate costs back to the responsible team within your organization. One common example of a payment method is a cost center, which helps categorize and track expenses specific to a team or project. Please find more detailed information about payment methods and how they could be used [here](meshcloud.payment-methods.md).
 
 As the cost and usage data is consolidated per project, payment methods are created in a workspace and assigned per project in meshStack.
 
@@ -82,7 +82,7 @@ they can be processed starting at the 7th of a month at 7 a.m.
 If you are unsure about the configuration of the finalization day of chargebacks in your meshStack, please contact our support team.
 
 Chargeback Statements also contain billing information per line item. Your platform team can 
-[configure](meshstack.billing-configuration)
+[configure](meshstack.billing-configuration.md)
 which information meshStack should include as billing information in chargeback statements.
 
 > Platform teams typically configure billing information to payment method name, identifier, 
@@ -106,7 +106,7 @@ Transparency around updates in finalized chargeback statements in CSV exports an
 
 #### Retroactive Payment Methods
 
-The following only applies, if payment methods are [configured](meshstack.billing-configuration#available-metadata-keys) to be required for chargeback statements (you can request this via [meshcloud support](mailto:support@meshcloud.io)). If a project doesn’t have a payment method because the previous one expired and no new method has been set, chargeback statements will not be generated. Tenant usage reports, however, will still be created and finalized without a payment method.
+The following only applies, if payment methods are [configured](meshstack.billing-configuration.md#available-metadata-keys) to be required for chargeback statements (you can request this via [meshcloud support](mailto:support@meshcloud.io)). If a project doesn’t have a payment method because the previous one expired and no new method has been set, chargeback statements will not be generated. Tenant usage reports, however, will still be created and finalized without a payment method.
 When a new payment method is added, the system retroactively generates chargeback statements for all missing months, applying the newly added payment method. Tenant usage reports for the affected months are updated to include the new payment method, resulting in updated labels for these reports. Additionally, via the meshTenantUsageReport API, you can check the updated reports by using the finalizedAfter parameter with the date when the payment method expired.
 
 **Example:**

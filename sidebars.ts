@@ -279,29 +279,144 @@ const sidebars: SidebarsConfig = {
         'new-concept-tags',
         'new-concept-policies',
         'new-concept-cost-management',
+        'new-concept-payment-methods',
         'new-concept-communication',
         'new-concept-marketplace',
         'new-concept-osb-services',
       ],
     },
-    /**
     {
       type: 'category',
       label: 'Guides',
+      collapsible: true,
+      collapsed: false,
       items: [
-        'new-guide-how-to-manage-a-workspace',
-        'new-guide-how-to-limit-workspace-resources',
-        'new-guide-how-to-protect-admin-roles',
-        'new-guide-how-to-user-management',
-        'new-guide-how-to-organizational-structure',
-        'new-guide-how-to-extract-data',
-        'new-guide-how-to-implement-tenant-deletion',
-        'new-guide-how-to-reflect-ownership-changes',
-        'new-guide-how-to-manage-a-tenant',
-        'new-guide-how-to-import-tenants',
-        'new-guide-how-to-request-more-tenant-quota',
+        {
+          type: 'category',
+          label: 'Core',
+          items: [
+            'new-guide-how-to-manage-a-workspace',
+            'new-guide-how-to-limit-workspace-resources',
+            'new-guide-how-to-manage-a-project',
+            'new-guide-how-to-customize-project-roles',
+            'new-guide-how-to-reflect-organizational-changes',
+            'new-guide-how-to-manage-api-keys',
+            'new-guide-how-to-manage-api-users',
+          ],
+        },
+         {
+          type: 'category',
+          label: 'Developer Portal',
+          items: [
+            'new-guide-how-to-onboard-your-team',
+            'new-guide-how-to-protect-admin-roles',
+            'new-guide-how-to-manage-4-eye-principle'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'FinOps',
+          items: [
+            'new-guide-how-to-manage-payment-methods'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Platform Ecosystem',
+          items: [
+            'new-guide-how-to-enable-a-new-platform-team'
+          ],
+        }
       ],
     },
+    {
+      type: 'category',
+      label: 'Integrations',
+      items: [
+        {
+          type: 'category',
+          label: 'Amazon Web Services',
+          items: [
+            'meshstack.aws.index',
+            'meshstack.aws.landing-zones',
+            'meshstack.aws.metering',
+            'meshstack.aws.sso-setup',
+            'meshstack.aws.reserved-instance-guide',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Microsoft Azure',
+          items: [
+            'meshstack.azure.index',
+            'meshstack.azure.landing-zones',
+            'meshstack.azure.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Google Cloud Platform',
+          items: [
+            'meshstack.gcp.index',
+            'meshstack.gcp.landing-zones',
+            'meshstack.gcp.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Cloud Foundry',
+          items: [
+            'meshstack.cloudfoundry.index',
+            'meshstack.cloudfoundry.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Kubernetes',
+          items: [
+            'meshstack.kubernetes.index',
+            'meshstack.kubernetes.landing-zones',
+            'meshstack.kubernetes.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'GitHub',
+          items: [
+            'meshstack.github.pipeline-automation'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OpenShift',
+          items: [
+            'meshstack.openshift.index',
+            'meshstack.openshift.landing-zones',
+            'meshstack.openshift.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OpenStack',
+          items: [
+            'meshstack.openstack.index',
+            'meshstack.openstack.metering',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OSB Services',
+          items: [
+            'meshstack.meshmarketplace.index',
+            'meshstack.meshmarketplace.metering',
+            'meshstack.meshmarketplace.profile',
+            'meshstack.meshmarketplace.tenant-services',
+            'meshstack.meshmarketplace.broker-tutorial'
+          ],
+        },
+      ],
+    },
+    /**
     {
       type: 'category',
       label: 'Configuration and Security',

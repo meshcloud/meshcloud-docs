@@ -3,7 +3,7 @@ id: meshstack.authorization
 title: Authorization
 ---
 
-As described in [Identity Federation](meshstack.identity-federation) a SSO solution to access multiple cloud platforms is a central feature of meshStack. This section about **Authorization** describes in details on which level and how authorization is granted.
+As described in [Identity Federation](meshstack.identity-federation.md) a SSO solution to access multiple cloud platforms is a central feature of meshStack. This section about **Authorization** describes in details on which level and how authorization is granted.
 
 meshStack uses an RBAC authorization model. The default product configuration includes roles aggregating individual permissions (rights). These roles are modeled after functional roles expected in typical usage scenarios.
 
@@ -17,7 +17,7 @@ meshStack includes **meshObject roles** that manage permissions on different mes
 
 Role bindings can also have a managed expiry date after which meshStack will automatically revoke the role.
 
-Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Workspace Manager" [meshWorkspace Role](meshcloud.workspace#assign-meshWorkspace-roles) can add new role bindings to that meshWorkspace.
+Some roles also include permissions that allow users to manage role bindings in self-service. For example, a user with the "Workspace Manager" [meshWorkspace Role](meshcloud.workspace.md#assign-meshWorkspace-roles) can add new role bindings to that meshWorkspace.
 
 ### Access Requests
 
@@ -29,27 +29,27 @@ Role requests produce an audit trail and may trigger notifications to involved p
 
 ### meshWorkspace Roles
 
-[meshWorkspace Roles](meshcloud.workspace#assign-meshWorkspace-roles) control the permission on a [meshWorkspace](meshcloud.workspace) and the meshObjects owned by that meshWorkspace. Users must have a corresponding role binding in order to access meshObjects owned by a meshWorkspace like [meshProjects](meshcloud.project).
+[meshWorkspace Roles](meshcloud.workspace.md#assign-meshWorkspace-roles) control the permission on a [meshWorkspace](meshcloud.workspace.md) and the meshObjects owned by that meshWorkspace. Users must have a corresponding role binding in order to access meshObjects owned by a meshWorkspace like [meshProjects](meshcloud.project.md).
 
-Users with the right permissions can [assign meshWorkspace roles](meshcloud.workspace#assign-meshworkspace-roles) in self-service.
+Users with the right permissions can [assign meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles) in self-service.
 
 ### meshPartner Roles
 
-The [meshPartner](administration.index) is a special type of meshWorkspace. meshPartners own other meshWorkspaces and therefore have far-reaching permissions managed in [meshPartner Roles](administration.index).
+The [meshPartner](administration.index.md) is a special type of meshWorkspace. meshPartners own other meshWorkspaces and therefore have far-reaching permissions managed in [meshPartner Roles](administration.index.md).
 
-Users with the right permissions can assign meshWorkspace roles in self-service with the same process used to [assign meshWorkspace roles](meshcloud.workspace#assign-meshworkspace-roles).
+Users with the right permissions can assign meshWorkspace roles in self-service with the same process used to [assign meshWorkspace roles](meshcloud.workspace.md#assign-meshworkspace-roles).
 
 ### meshProject Roles
 
-[meshProject roles](meshcloud.project#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platforms) and [Landing Zone](meshcloud.landing-zones) configuration.
+[meshProject roles](meshcloud.project.md#project-roles) grant users access to meshProjects and their associated [meshTenants](meshcloud.tenant.md). meshProject roles are special in that they do not grant permissions within meshStack (apart from permission to view the meshProject). Instead meshStack replicates meshProject role bindings to the associated meshTenants according to their [meshPlatform](meshcloud.platforms.md) and [Landing Zone](meshcloud.landing-zones.md) configuration.
 
-Users with the right permissions can [assign meshProject roles](meshcloud.project#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshWorkspace that is the owner of that meshProject. When a user or group loses access to a workspace, meshStack will automatically remove all associated project role bindings.
+Users with the right permissions can [assign meshProject roles](meshcloud.project.md#assign-user-to-a-meshproject) in self-service. Users and groups can only have meshProject role bindings as long as they also have a role binding on the meshWorkspace that is the owner of that meshProject. When a user or group loses access to a workspace, meshStack will automatically remove all associated project role bindings.
 
 ## Configuration Options
 
 ### Available meshProject Roles
 
-Operators globally configure the names and identifiers of meshProject roles available in their meshStack implementation. The individual [meshPlatform](meshcloud.platforms) and [Landing Zone](meshcloud.landing-zones) configuration determines how these meshProject roles are mapped to cloud roles/permissions for an individual meshTenant.
+Operators globally configure the names and identifiers of meshProject roles available in their meshStack implementation. The individual [meshPlatform](meshcloud.platforms.md) and [Landing Zone](meshcloud.landing-zones.md) configuration determines how these meshProject roles are mapped to cloud roles/permissions for an individual meshTenant.
 
 The default configuration of meshStack ships with these roles and intended use.
 
@@ -103,7 +103,7 @@ let example =
 
 ### Role Request Approval
 
-In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index#configuration) under `meshfed.web.user.rolerequest`. See the [role request configuration reference](meshstack.onboarding#workspace-user-invitations) for details.
+In case you are required to implement a 4-eye-principle for access requests for compliance purposes you can configure the meshStack to do so. The approval can be configured in the [meshStack configuration model](meshstack.index.md#configuration) under `meshfed.web.user.rolerequest`. See the [role request configuration reference](meshstack.onboarding.md#workspace-user-invitations) for details.
 
 If the `minApprovalCount` option is set to 2 or higher upon adding a project role binding, a popup will ask the inviting user to enter some additional information like why this role is required and for how long. This information will be visible to workspace managers who then can accept or decline such a request.
 
@@ -119,7 +119,7 @@ When any workspace manager declines the role request, the role request is immedi
 
 > Note: When a workspace has less workspace managers than the requested `minApprovalCount`, role requests will get automatically approved when all workspace managers have registered an approval. The meshPanel can be configured to display a warning in this case.
 
-Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the workspace. To do so configure the [meshStack configuration model](meshstack.index#configuration) under `panel.mesh.dashboardNotification`:
+Its recommended to configure a warning to be shown to the user if this happens so another admin can be invited to the workspace. To do so configure the [meshStack configuration model](meshstack.index.md#configuration) under `panel.mesh.dashboardNotification`:
 
 ```dhall
 { show4EyePrincipleWarning = Some True }
@@ -130,6 +130,6 @@ do not require approval and are made effective immediately.
 
 ### Authorization in Cloud Platforms
 
-meshStack [replicates](meshcloud.tenant) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a platform engineer on the platform or landing zone level.
+meshStack [replicates](meshcloud.tenant.md) project role bindings to the cloud platform. During this process, meshStack translates the role binding to platform-specific role assignments according to the configuration provided by a platform engineer on the platform or landing zone level.
 
 > Please consult the documentation for the different cloud platforms for more details on the supported authorization mechanisms and their configuration.

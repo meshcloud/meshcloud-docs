@@ -69,7 +69,7 @@ Automatic provisioning can be set via `SCIM`. Select `enable automatic provision
 
 ![assets/aws_sso_setup/azure_tenant_url_secret_token.png](assets/aws_sso_setup/azure_tenant_url_secret_token.png)
 
-> An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. Azure AD attributes can be mapped to AWS SSO service with `Mappings` configuration.
+> An important precondition regarding the automated user provisioning to AWS SSO is, that the userName in AWS SSO will be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter on userNames to find users. Azure AD attributes can be mapped to AWS SSO service with `Mappings` configuration.
 ![assets/aws_sso_setup/azure_mappings.png](assets/aws_sso_setup/azure_mappings.png)
 
 Disable the Group sync in Azure by clicking on the "Provision Azure Active Directy Groups" mapping and disable it in the details screen. Usually only groups managed by meshStack will be used and also they will be created by meshStack.

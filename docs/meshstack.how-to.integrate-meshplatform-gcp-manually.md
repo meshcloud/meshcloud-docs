@@ -34,7 +34,7 @@ deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
-In order to enable meshStack to delete GCP Projects as part of [tenant deletion](administration.delete-tenants), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
+In order to enable meshStack to delete GCP Projects as part of [tenant deletion](administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
 
 ```text
 resourcemanager.project.delete
@@ -92,7 +92,7 @@ Add this permissions by assigning the roles `roles/iam.serviceAccountOpenIdToken
 
 The Service Account will be used by meshStack to perform project replication. Operators thus need to grant it the permissions of the
 `meshfed-service` IAM role on those folders of the [GCP resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
-that make up the [Landing Zones](meshstack.gcp.landing-zones) for client projects.
+that make up the [Landing Zones](meshstack.gcp.landing-zones.md) for client projects.
 
 > It's a best practice to segregate "user" and "infrastructure" projects in GCP using the resource hierarchy.
 > By setting granular permissions (instead of organization-wide permissions) this can limit the access of meshStack's replicator

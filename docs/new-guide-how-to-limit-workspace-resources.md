@@ -3,7 +3,11 @@ id: new-guide-how-to-limit-workspace-resources
 title: How to Limit Workspace Resources
 ---
 
+:::note What is this guide about?
+
 This guide explains how to set limits (quotas) for projects and API keys within a workspace in meshStack.
+
+:::
 
 ## Project Quotas
 

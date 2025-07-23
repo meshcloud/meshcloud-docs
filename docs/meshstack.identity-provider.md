@@ -77,7 +77,7 @@ To set up Azure Active Directory for IDP authentication follow these steps:
 
     ![Register non-gallery Enterprise Application](assets/aad_identity_provider/aad-1.png)
 
-    > We create a non-gallery Enterprise Application (that creates an App Registration) instead of directly creating an App Registration here because [provisioning via SCIM](meshstack.user-group-provisioning#aad-configuration) will be set up later with this Enterprise Application.
+    > We create a non-gallery Enterprise Application (that creates an App Registration) instead of directly creating an App Registration here because [provisioning via SCIM](meshstack.user-group-provisioning.md#aad-configuration) will be set up later with this Enterprise Application.
 
 2. Open the App Registration for `meshcloud SSO`. Navigate to Authentication and add a new Platform of Type Web. Enter the redirect URI for your meshStack that was provided by meshcloud.
 

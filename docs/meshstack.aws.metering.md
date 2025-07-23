@@ -10,11 +10,11 @@ The `amortized cost` is used when generating the tenant usage reports.
 
 ## Configuration
 
-[Connection information](meshstack.how-to.integrate-meshplatform-aws-manually#set-up-iam-user-for-metering) and metering behavior can be configured via the [Platform Connection Configuration](administration.platforms#platform-connection-config). Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](meshstack.how-to.integrate-meshplatform-aws-manually#leverage-reserved-instances--savings-plans).
+[Connection information](meshstack.how-to.integrate-meshplatform-aws-manually.md#set-up-iam-user-for-metering) and metering behavior can be configured via the [Platform Connection Configuration](administration.platforms.md#platform-connection-config). Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](meshstack.how-to.integrate-meshplatform-aws-manually.md#leverage-reserved-instances--savings-plans).
 
 ## Configuring Seller Information
 
-If you would like to see the AWS costs attributed to a seller in the [chargeback statments](meshcloud.cost-management#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](meshstack.billing-configuration#defining-a-custom-product-catalog). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Aws` . An example is shown below.
+If you would like to see the AWS costs attributed to a seller in the [chargeback statments](meshcloud.cost-management.md#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](meshstack.billing-configuration.md#defining-a-custom-product-catalog). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Aws` . An example is shown below.
 
 ```json
 {

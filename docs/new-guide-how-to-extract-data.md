@@ -22,4 +22,3 @@ Login to the meshPanel with your Administrator credentials.
 Navigate to the Administration Area via the settings button on the top right.
 Click on Workspaces.
 In the upper right there is the button Project Export. By clicking it, the download of the Project .CSV file for all workspaces will start
-

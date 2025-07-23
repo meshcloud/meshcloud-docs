@@ -8,12 +8,12 @@ title: Platform Builder
 
 ## Introduction
 
-The Platform Builder can be used by workspaces to offer their [platform services](marketplace.index#platform-services) to the rest of the organization.
-For example, the Azure team in your organization could set up a workspace to offer their Azure [Platform](administration.platforms) from there to
-the rest of the organization. Or the Networking team might want to offer their best-practice Cloud Network [Building Blocks](administration.building-blocks)
+The Platform Builder can be used by workspaces to offer their [platform services](marketplace.index.md#platform-services) to the rest of the organization.
+For example, the Azure team in your organization could set up a workspace to offer their Azure [Platform](administration.platforms.md) from there to
+the rest of the organization. Or the Networking team might want to offer their best-practice Cloud Network [Building Blocks](administration.building-blocks.md)
 to Application Teams.
 
-Anyone in the organization can offer their valuable services to the rest of the organization through the Platform Builder, as long as it’s approved by someone in the [Admin Area](administration.index).
+Anyone in the organization can offer their valuable services to the rest of the organization through the Platform Builder, as long as it’s approved by someone in the [Admin Area](administration.index.md).
 
 You can open the Platform Builder at any time from the Workspace Control Plane by clicking the
 "Platform Builder" button as shown below.
@@ -32,14 +32,14 @@ If you don’t see the button to open the Platform Builder, your workspace proba
 
 The following three types of platform services can be created and offered in the Platform Builder:
 
-1. [Platforms](administration.platforms). Platforms are a high-level concept in meshStack where users can book
+1. [Platforms](administration.platforms.md). Platforms are a high-level concept in meshStack where users can book
    their own isolated tenant (environment) in a given cloud platform. meshStack has a handful of first-party supported
-   platforms, but it also offers the ability to [create your own platforms](meshstack.how-to.create-your-own-platform)
+   platforms, but it also offers the ability to [create your own platforms](meshstack.how-to.create-your-own-platform.md)
    with the use of Terraform.
-2. [Building Blocks](administration.building-blocks). Building Blocks are standardized extensions to cloud tenants that users
+2. [Building Blocks](administration.building-blocks.md). Building Blocks are standardized extensions to cloud tenants that users
    can book and roll out. These can be either rolled out using Terraform, or manually. Example use cases are an on-premise
    connectivity to a cloud tenant.
-3. When enabled for your meshStack, [Open Service Brokers](administration.service-brokers). Service Brokers are self-hosted components that can execute
+3. When enabled for your meshStack, [Open Service Brokers](administration.service-brokers.md). Service Brokers are self-hosted components that can execute
    automation and provision workloads using the Open Service Broker API that can be booked by users in the meshStack.
    As the automation is fully managed by someone it can provision and do anything that you’d like.
 
@@ -64,4 +64,4 @@ If your publication request gets rejected, you can easily spot the reason by hov
 Once you’ve addressed the issues, you can resubmit it for publishing.
 
 > If you’re an administrator and want to know how
-> to manage and approve workspace services, you can learn more [here](administration.workspace-services).
+> to manage and approve workspace services, you can learn more [here](administration.workspace-services.md).
