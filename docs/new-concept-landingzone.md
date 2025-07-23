@@ -38,7 +38,6 @@ Building blocks for a landing zone can be configured as:
 - [Platform](new-concept-platform.md)
 - [Tenant](new-concept-tenant.md)
 - [Building Block](new-concept-buildingblock.md)
-- [Resource Quota](new-concept-resource-quota.md)
 
 ## Guides
 

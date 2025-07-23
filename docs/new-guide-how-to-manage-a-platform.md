@@ -69,7 +69,6 @@ Please be aware that the deletion of the platform will cut the integration with 
 
 - [Location](new-concept-platform-location.md)
 - [Platform](new-concept-platform.md)
-- [Resource Quota](new-concept-resource-quota.md)
 
 ### Guides
 
