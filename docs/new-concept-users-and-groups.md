@@ -25,7 +25,9 @@ For more details, refer to the [API keys documentation](pathname:///api/).
 API keys are gradually replacing API users. Over time, more actions will be supported via API keys, and API user functionality will be fully deprecated.
 :::
 
-Historically, API users were used by admins or systems to manage resources across meshStack. API keys now offer similar capabilities, with the added flexibility of workspace scoping. Application teams can issue and manage API keys to control access to their workspace resources.
+API keys have the advantage of being short-lived tokens (the username/password is not sent with every request and therefore cannot be “stolen” as easily), and they allow more fine-grained permission handling.
+
+API keys offer similar capabilities, with the added flexibility of workspace scoping. Application teams can issue and manage API keys to control access to their workspace resources. Historically, API users were used by admins or systems to manage resources across meshStack.
 
 ### "Global" Groups
 
