@@ -60,15 +60,20 @@ Example:
 
 ## Version
 
-meshStack configures a version endpoint to request the current version and commit-hash. This information is available under path `<meshPanel>/version`.
+meshStack configures a version endpoint to request the current version and commit-hash. This information is available under path `<meshPanel>/#/version`.
 
 Example:
 
 ```json
 {
-    "package": "7.7.7",
-    "git": "123456789a",
-    "branch": "HEAD"
+    "package": "2025.1.0",
 }
+```
 
+meshStack also exposes `https://<backend-domain>/mesh/info` that includes the version information as part of the JSON response.
+
+Example:
+
+```bash
+curl -s https://<backend-domain>/mesh/info | jq -r '.version'
 ```
