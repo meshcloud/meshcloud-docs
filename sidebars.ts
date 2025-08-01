@@ -300,6 +300,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-limit-workspace-resources',
             'new-guide-how-to-manage-a-project',
             'new-guide-how-to-customize-project-roles',
+            'new-guide-how-to-manage-a-tenant',
             'new-guide-how-to-reflect-organizational-changes',
             'new-guide-how-to-manage-api-keys',
             'new-guide-how-to-manage-api-users',
@@ -316,6 +317,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-manage-a-platform',
             'new-guide-how-to-restrict-platform-access',
             'new-guide-how-enforce-resource-quotas',
+            'new-guide-how-to-ensure-compliant-deletion-of-environments',
             'new-guide-how-to-manage-landing-zones'
           ],
         },
