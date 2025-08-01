@@ -580,3 +580,38 @@ meshStack also adds a discount which is equal to the `amortized upfront cost` to
 This line item will be added to the report every month until the end of the Reserved Instances or Savings Plan period.
 
 To achieve this, meshStack collects the information about Reserved Instances and Savings Plans via the cost explorer API.
+
+## 11. Set UP AWS Tenant Import (optional)
+
+To import an unmanaged AWS account into a workspace and project, the account must be configured for meshStack integration. This configuration involves setting up an IAM role with a trust relationship to the root or master account of the AWS organization to which the account belongs.
+
+Create the IAM role named `MeshstackAccountAccessRole` in the unmanaged account and assign the AWS managed IAM Policy `AdministratorAccess` to it. Once the account import is complete, the IAM role's permissions will be reduced to the required level.
+
+Add the following trust relationship to the IAM role `MeshstackAccountAccessRole`, substituting `ROOT_ACCOUNT_ID` with the AWS account ID of the organization's master or root account.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<ROOT_ACCOUNT_ID>:role/MeshfedServiceRole"
+      },
+      "Action": "sts:AssumeRole"
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<ROOT_ACCOUNT_ID>:role/MeshfedServiceRole"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+Once the role is established, the unmanaged AWS account can be assigned to a project, allowing you to proceed with the steps outlined above.

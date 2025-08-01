@@ -53,6 +53,10 @@ This guide explains how to manage projects in meshStack, including user access, 
 3. Go to the "Deletion" section.
 4. Provide a reason for deletion and confirm.
 
+:::info 
+When a user marks a project for deletion, the project will be automatically deleted once all tenants of that project have been successfully deleted.
+:::
+
 ### Deleting a Project as an Administrator
 
 **Prerequisites:**
