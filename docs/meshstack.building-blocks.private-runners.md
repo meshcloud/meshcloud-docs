@@ -3,26 +3,17 @@ id: meshstack.building-blocks.private-runners
 title: Private Runners
 ---
 
-Private runners can be used to execute building blocks in your own cloud environment to enable access to resources that are not publicly accessible.
+Private runners execute building blocks within your own cloud environment.
+This is ideal for managing resources that are not accessible from the public internet.
+While the runner operates within your infrastructure, it is still fully managed by meshcloud operators.
 
-These runners are still operated by meshcloud but run outside of your meshStack.
-Otherwise private runners operate like regular runners and connects to meshStack via meshStack API. 
+The private runner functions just like a regular runner.
+It connects to your meshStack's API to receive and execute building block runs.
 
-When using a private runner it will run all building blocks from your meshStack.
+## How It Works
 
-## Requirements for private runners
-
-To use private runners meshcloud operators need access to an environment with
-
-- network access to your meshStack,
-- internet access for sourcing building block code and requirements (e.g. Terraform providers),
-- a way to run container based workloads (e.g. Kubernetes),
-- a way to facilitate automatic updates to the runner.
-
-## Communication between private runners and meshStack
-
-The private runner connects to the parent meshStack to receive building block executions.
-Since the private runner opens a connection to your meshStack, inbound connections to the runner are not needed.
+The private runner initiates a secure, outbound connection to your meshStack to poll for new jobs.
+This means no inbound connections from the internet to the private runner are required, simplifying your network security configuration.
 
 ```mermaid
 graph LR
@@ -31,9 +22,24 @@ subgraph meshStack
   API
 end
 
-subgraph private network
-  runner[private runner]
+subgraph "Your Private Network"
+  runner(Private Runner)
 end
 
-runner --HTTPS via public internet--> API
+runner -- HTTPS via Public Internet --> API
 ```
+
+## Prerequisites
+
+To set up a private runner, meshcloud operators need permissions within your target cloud environment to provision and manage the necessary infrastructure.
+The goal is to create a secure, isolated environment for the runner.
+
+The exact roles and permissions required will depend on your specific cloud platform (e.g., AWS, Azure, GCP).
+Access should be scoped according to the principle of least privilege, providing just enough access to manage the runner's lifecycle.
+
+The environment provisioned for the private runner must have:
+
+- **Connectivity to meshStack**: The runner needs outbound network access to the meshStack API.
+- **Internet Access**: The runner requires outbound internet access to download necessary dependencies, such as building block source code and Terraform providers.
+- **Container Orchestration**: A service capable of running container-based workloads is required (e.g., Kubernetes).
+- **Automated Updates**: meshcloud must be able to automatically update the runner to ensure it stays current with the latest features and security patches.
