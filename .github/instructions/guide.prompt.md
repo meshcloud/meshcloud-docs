@@ -37,6 +37,9 @@ When writing a guide for meshStack, follow this structure to ensure consistency,
 - Follow the meshStack tone instructions
 - Focus on benefits and actionable steps.
 - Avoid filler words and keep instructions efficient.
+- Use Chicago Manual of Style for capitalization of headings and subheadings.
+- Use active voice and direct language.
+- Don't include definitions of concepts that are already covered in the documentation.
 
 ## Example Template
 
