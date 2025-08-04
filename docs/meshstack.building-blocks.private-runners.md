@@ -79,7 +79,8 @@ Any sensitive data, like secrets used by building blocks, are encrypted both in 
 
 **Why can't I host the runner myself?**
 
-We are tracking the request for self-hosted runners on our public roadmap.
+We are tracking the feature request for [self-hosted runners](https://meshcloud.canny.io/feature-requests/p/host-my-own-runner-for-my-own-building-block-definitions) on our public roadmap.
+
 However, ensuring the security and reliability of building block execution is our top priority.
-We have prioritized building other capabilities first while we design a secure self-hosting model.
+We have prioritized building other capabilities first while we design a secure self-hosting model for runner registration and management.
 For now, private runners offer a balance between a managed service and execution in a private environment.
