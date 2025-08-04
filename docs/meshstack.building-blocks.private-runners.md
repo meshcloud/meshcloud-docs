@@ -46,19 +46,18 @@ runner -- HTTPS via Public Internet --> API
 ## Prerequisites
 
 To set up a private runner, meshcloud operators need permissions within your target cloud environment to provision and manage the necessary infrastructure.
-The goal is to create a secure, isolated environment for the runner.
+We provide the runner as a docker container image. In order for us to operate a private runner for you, you need to provide a secure, isolated container runtime.
 
-The exact roles and permissions required will depend on your specific cloud platform (e.g. AWS, Azure, GCP).
-Access should be scoped according to the principle of least privilege, providing just enough access to manage the runner's lifecycle.
+We support the following runtimes
+  - Managed Kubernetes: Amazon EKS, Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), or other Kubernetes distributions.
+  - Container-as-a-Service: AWS Elastic Container Service (ECS), Azure Container Instances (ACI), or Google Cloud Run.
 
-The environment provisioned for the private runner must have:
+The container runtime provisioned for the private runner must have:
 
 - **Connectivity to meshStack**: The runner needs outbound network access to the meshStack API.
 - **Internet access**: The runner requires outbound internet access to download necessary dependencies, such as building block source code and Terraform providers.
-- **Container orchestration**: A service capable of running container-based workloads is required. Supported services include:
-  - Managed Kubernetes: Amazon EKS, Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), or other Kubernetes distributions.
-  - Container-as-a-Service: AWS Elastic Container Service (ECS), Azure Container Instances (ACI), or Google Cloud Run.
 - **Automated updates**: meshcloud must be able to automatically update the runner to ensure it stays current with the latest features and security patches.
+- **Operator access**: Our operations team must be able to access the runner in order to perform the deployment and any exceptional maintenance like accessing logs for debugging support issues.
 
 ## Shared Responsibility Model
 
@@ -77,10 +76,13 @@ The environment provisioned for the private runner must have:
 All communication between the private runner and the meshStack API is secured using HTTPS/TLS and API keys.
 Any sensitive data, like secrets used by building blocks, are encrypted both in transit and at rest using asymmetric encryption.
 
+**How can I request a private runner?**
+
+Please get in touch with support@meshcloud.io or our customer success team. We can help you setup the requisite container runtime
+and establish minimal, least-privilege access for our operations team to deploy and operate the runner.
+
 **Why can't I host the runner myself?**
 
 We are tracking the feature request for [self-hosted runners](https://meshcloud.canny.io/feature-requests/p/host-my-own-runner-for-my-own-building-block-definitions) on our public roadmap.
-
-However, ensuring the security and reliability of building block execution is our top priority.
-We have prioritized building other capabilities first while we design a secure self-hosting model for runner registration and management.
+We have currently prioritized building other building block capabilities first until we design a secure self-hosting model for runner registration and management.
 For now, private runners offer a balance between a managed service and execution in a private environment.
