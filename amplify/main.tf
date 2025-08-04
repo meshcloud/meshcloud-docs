@@ -56,13 +56,6 @@ resource "aws_amplify_app" "docs" {
     status = 200
   }
 
-  # not sure what this one does? probably the 404 handler
-  custom_rule {
-    source = "/<*>"
-    status = "404-200"
-    target = "/index.html"
-  }
-
   # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google
   dynamic "custom_rule" {
     for_each = toset(local.redirects)

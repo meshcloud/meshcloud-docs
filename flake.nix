@@ -32,6 +32,9 @@
           (pkgs.yarn.override {
             nodejs = pkgs.nodejs_22;
           })
+
+          pkgs.opentofu
+          pkgs.awscli2
         ];
       in
       {
