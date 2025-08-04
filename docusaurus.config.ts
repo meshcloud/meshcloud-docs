@@ -20,6 +20,12 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+  // Disable trailing slashes in URLs, i.e. generating docs as mydocspage/index.html
+  // This breaks some links that we previously had like /mydocspage which would then return a 404 
+  // and then fix themselves only using client-side routing magic. This behavior breaks crawlers, esp. Algolia for search.
+  // See https://docusaurus.io/docs/next/advanced/routing#routes-become-html-files
+  trailingSlash: false,
+
   staticDirectories: ['static'],
 
   // GitHub pages deployment config.
