@@ -20,11 +20,11 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // Disable trailing slashes in URLs, i.e. generating docs as mydocspage/index.html
-  // This breaks some links that we previously had like /mydocspage which would then return a 404 
-  // and then fix themselves only using client-side routing magic. This behavior breaks crawlers, esp. Algolia for search.
+  // Enable trailing slashes in URLs, i.e. generating docs as mydocspage/index.html and alwas link to mydocspage/
+  // This matches the default behavior of AWS Amplify hosting, which we use for deployment.
   // See https://docusaurus.io/docs/next/advanced/routing#routes-become-html-files
-  trailingSlash: false,
+  // And https://docs.aws.amazon.com/amplify/latest/userguide/redirect-rewrite-examples.html#trailing-slashes-and-clean-urls
+  trailingSlash: true,
 
   staticDirectories: ['static'],
 
