@@ -13,16 +13,6 @@ provider "aws" {
   allowed_account_ids = ["548876773848"]
 }
 
-
-locals {
-  redirects = [
-    {
-      source = "/docs/<*>"
-      target = "/<*>"
-    }
-  ]
-}
-
 import {
   to = aws_amplify_app.docs
   id = "d17q6gob2fx97d"
@@ -54,17 +44,6 @@ resource "aws_amplify_app" "docs" {
     source = "/api/event"
     target = "https://plausible.io/api/event"
     status = 200
-  }
-
-  # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google
-  dynamic "custom_rule" {
-    for_each = toset(local.redirects)
-
-    content {
-      source = custom_rule.value.source
-      target = custom_rule.value.target
-      status = "301"
-    }
   }
 }
 
