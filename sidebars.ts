@@ -350,7 +350,7 @@ const sidebars: SidebarsConfig = {
           label: 'Developer Engagement',
           items: [
             'new-guide-how-to-provide-security-contact',
-            'new-guide-how-to-use-meshstack-copilot'
+            'new-guide-how-to-copilot'
           ],
         },
         },
