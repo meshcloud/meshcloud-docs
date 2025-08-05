@@ -4,7 +4,7 @@ title: How to Kickstart Your IDP
 ---
 
 :::note What is this guide about?
-This guide shows you how to accelerate your platform engineering by importing pre-built building blocks from meshStack Hub. You'll learn how to quickly provide standardized, secure infrastructure for your teams using community-maintained resources.
+This guide shows you how to accelerate your platform engineering by importing pre-built building blocks from meshStack Hub. You'll learn how to quickly provide standardized, secure infrastructure for your teams using community-maintained resources. This guides uses AWS S3 Buckets as an example, but the process applies to any building block definition available in the meshStack Hub.
 :::
 
 :::tip
@@ -35,7 +35,7 @@ importing a Building Block Definition from the meshStack Hub and making it avail
 ### 3. Finish Creation of the Building Block Definition
 
 - Complete the pre-populated form.
-- The inputs are automatically imported. Fill in the AWS Secret Key and AWS Access Key ID (from Bitwarden).
+- The inputs are automatically imported. Fill in the AWS Secret Key and AWS Access Key ID.
 - Finish the creation wizard.
 
 ### 4. Finishing Up
