@@ -71,4 +71,4 @@ Briefly describe the guide's purpose and what users will achieve.
 
 ---
 
-Use this prompt as a checklist and template whenever you create or update a guide in
+Use these instructions as a checklist and template whenever you create or update a guide in the meshStack documentation.
