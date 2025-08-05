@@ -12,7 +12,7 @@ This guide helps you manage tenants in meshStack. You'll learn how to keep your 
 ### Prerequisites
 
 - Have an admin user that can log into meshStack.
-- For AWS account import, please check [AWS integration documentation, step 11](integrations/aws-integration-guide.md#step-11-import-existing-aws-account).
+- For AWS account import, please check [AWS integration documentation, step 11](/integrations/aws-integration-guide.md#step-11-import-existing-aws-account).
 
 ### Step by Step Guide
 
@@ -163,7 +163,7 @@ You can filter tenants that were deleted successfully by selecting the status co
 ### Concepts
 
 - [Tenant](new-concept-tenant)
-- [Landing Zone](new-concept-landing-zone.md)
+- [Landing Zone](new-concept-landingzone.md)
 - [Platform](new-concept-platform.md)
 
 ### Guides
@@ -172,5 +172,5 @@ You can filter tenants that were deleted successfully by selecting the status co
 - [How to Reflect Organizational Changes in meshStack](new-guide-how-to-reflect-organizational-changes.md)
 - [How to Restrict Platform Access](new-guide-how-to-restrict-platform-access.md)
 - [How to Protect Admin Roles](new-guide-how-to-protect-admin-roles.md)
-- [How to Enforce Resource Quota](new-guide-how-to-enforce-resource-quota.md)
+- [How to Enforce Resource Quota](new-guide-how-to-enforce-resource-quotas.md)
 - [How to Ensure Compliant Deletion of Environments](new-guide-how-to-ensure-compliant-deletion-of-environments.md)

@@ -57,7 +57,7 @@ For example, you might not want to be involved with each single deletion request
 ### Concepts
 
 - [Tenant](new-concept-tenant.md)
-- [Landing Zone](new-concept-landing-zone.md)
+- [Landing Zone](new-concept-landingzone.md)
 - [Platform](new-concept-platform.md)
 
 ### Guides
