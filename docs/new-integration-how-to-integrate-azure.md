@@ -55,6 +55,10 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 
 Platform engineers need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
+:::tip
+For enhanced security and to limit meshStack's permissions to a specific scope within your Entra tenant, consider using the [Azure integration with Administrative Units](new-integration-how-to-integrate-azure-administrative-units.md). This approach is recommended for organizations with strict security requirements as it reduces the global permissions needed by meshStack.
+::: 
+
 ### 3. Set Azure RBAC Permissions
 
 Created subscriptions will have the Service Principal of the replicator registered as an owner at first. As soon as all needed maintenance steps are performed (e.g. renaming the subscription, moving it into the final management group), the replicator removes itself as an owner.

@@ -10,7 +10,7 @@ This guide shows you how to integrate your AWS platform into meshStack. This is 
 ## Prerequisites
 
 - Access to a platform builder
-- Access to the AWS Management Console
+- Access to the AWS Management Console and an AWS Organization
 
 ## Best Practice Integration
 

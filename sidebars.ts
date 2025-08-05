@@ -359,6 +359,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'meshstack.azure.index',
             'new-integration-how-to-integrate-azure',
+            'new-integration-how-to-integrate-azure-administrative-units',
             'meshstack.azure.landing-zones',
             'meshstack.azure.metering',
           ],
