@@ -48,7 +48,7 @@ A policy evaluation strategy describes how authoritative and affected policy
 subjects shall be evaluated in the context of a policy. In that way, you can
 decide in which form the tag values have to be present on both policy subjects
 to comply with the policy. As mentioned before, policies are built on top of
-meshStack's [tagging](meshcloud.metadata-tags.md) system. By that system, you
+meshStack's [tagging](new-concept-tags.md) system. By that system, you
 can allow your tag to only have one value or multiple values. For the
 evaluation, all tags are treated as arrays: no matter if there are no values, a
 single value, or multiple values. This means you can also create a policy that
@@ -123,3 +123,12 @@ workspace is the authoritative subject.
 | `qa`, `dev`                   | `dev`, `qa`               | ✓      | `dev`, `qa` is present on User/Group and Workspace                  |
 
 ## Related Resources
+
+### Concepts
+
+- [Tags](new-concept-tags.md)
+
+### Guides
+
+- [How to Manage Policies](new-guide-how-to-manage-policies.md)
+- [How to Manage Tags](new-guide-how-to-manage-tags.md)
