@@ -327,7 +327,9 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'FinOps',
           items: [
-            'new-guide-how-to-manage-payment-methods'
+            'new-guide-how-to-manage-payment-methods',
+            'new-guide-how-to-set-up-prices',
+            'new-guide-how-to-set-up-currency-conversion'
           ],
         },
         {
