@@ -59,4 +59,4 @@ meshStack also enables you to view tenants discovered in integrated platforms th
 - [How to Manage a Tenant](new-guide-how-to-manage-a-tenant.md)
 - [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
 - [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
-- [How to Enforce Resource Quotas in a Tenant](new-guide-how-to-enforce-resource-quotas-in-a-tenant.md)
+- [How to Enforce Resource Quotas in a Tenant](new-guide-how-to-enforce-resource-quotas.md)
