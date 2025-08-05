@@ -284,6 +284,7 @@ const sidebars: SidebarsConfig = {
         'new-concept-communication',
         'new-concept-marketplace',
         'new-concept-osb-services'
+        'new-concept-copilot'
       ],
     },
     {
@@ -341,14 +342,24 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Platform Ecosystem',
           items: [
-            'new-guide-how-to-enable-a-new-platform-team'
+            'new-guide-how-to-enable-a-new-platform-team',  
           ],
         },
         {
           type: 'category',
           label: 'Developer Engagement',
           items: [
-            'new-guide-how-to-provide-security-contact'
+            'new-guide-how-to-provide-security-contact',
+            'new-guide-how-to-use-meshstack-copilot'
+          ],
+        },
+        },
+        {
+          type: 'category',
+          label: 'Developer Engagement',
+          items: [
+            'new-guide-how-to-provide-security-contact',
+            'new-guide-how-to-use-meshstack-copilot'
           ],
         },
         },
