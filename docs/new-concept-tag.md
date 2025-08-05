@@ -30,6 +30,14 @@ Tags are visible throughout meshStack and can be referenced in policies for auto
 
 Tag values can be up to 255 characters. Ensure your tags configured as replicated meet the requirements of each platform.
 
+## Tag Propagation to Platform
+
+meshStack automatically provides tags and metadata to platforms and resources. meshStack automatically derives metadata tags for tenants based on the metadata tags set on the project, the payment method configured on the project, and the workspace it belongs to. These tags are sent to platforms via Landing Zones and platform configuration. meshStack ensures tags meet each platform’s requirements (AWS, Azure, GCP) for length and allowed characters through tag sanitation.
+
+:::note Best Practice Tip
+We advise you to choose tag names that work for all platforms you use. This way, you can ensure that the tags are consistently applied and avoid confusion.
+:::
+
 ## Example
 
 ![Tags concept diagram](./assets/new_concept/concept_tags.png)
