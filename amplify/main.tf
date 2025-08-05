@@ -32,8 +32,6 @@ resource "aws_amplify_app" "docs" {
   # note: rules here are processed top to bottom!
 
   ## Redirects required for bypassing adblockers with plausible.io
-  ## See https://plausible.io/docs/proxy/guides/netlify
-  ## Contrary to netlify docs, only status=200 works here, see https://github.com/plausible/docs/issues/177
   custom_rule {
     source = "/js/script.js"
     target = "https://plausible.io/js/plausible.js"
@@ -44,6 +42,24 @@ resource "aws_amplify_app" "docs" {
     source = "/api/event"
     target = "https://plausible.io/api/event"
     status = 200
+  }
+
+  // required for legacy links that are still out there
+  custom_rule {
+    source = "/docs/<*>" 
+    status = "301" 
+    target = "/<*>" 
+  }
+
+  // some legacy links still use the format /mydocs instead of /mydocs/ 
+  // for these lnks fallback to client side routing
+  // https://docs.aws.amazon.com/amplify/latest/APIReference/API_CustomRule.html
+  // "404-200" means "if the request 404s because the requested file does not exist, return index.html instead as a "rewrite"
+  // note that the returned status code is _not_ 200, but still a 404(!). This behavior confuses crawlers but works fine for humans
+  custom_rule {
+    source = "<*>"
+    target = "/index.html"
+    status = "404-200"
   }
 }
 
