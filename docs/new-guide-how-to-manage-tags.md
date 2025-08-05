@@ -65,8 +65,6 @@ Changes to existing tags are not automatically propagated to existing resources.
 
 ### Step by Step Guide
 
-### Step by Step Guide
-
 1. **Navigate to the Tags Section**
     - Go to the admin area of meshStack.
     - Click on **Tags** in the left sidebar.
@@ -77,12 +75,18 @@ Changes to existing tags are not automatically propagated to existing resources.
 
 ## Exposing Tags to Platforms
 
+:::note
+There are two ways to expose tags to platforms:
+1. Via the platform configuration in the admin area. Use this for information that is inherent to meshStack, such as the payment identifier.
+2. Via the landing zone configuration in the admin area or platform builder. Use this for custom metadata defined by your organization in the tag catalog.
+:::
+
 ### Prerequisites
 
-- You have access to meshStack as an organization admin.
+- You have access to meshStack as an organization admin or platform builder.
 - You have defined tags in the admin area that you want to expose to platforms.
 
-### Step by Step Guide
+### Step by Step Guide for Custom Meta Data
 
 1. **Navigate to the Landing Zone Section**
    - Go to the admin area of meshStack.
@@ -96,63 +100,18 @@ Changes to existing tags are not automatically propagated to existing resources.
 5. **Verify Tag Replication**
     - Check the platform to ensure that the tags are replicated correctly.
 
-:::note Handling Tag Conflicts
-It's possible that these objects have tags with the same tag key. For example, both the meshWorkspace and
-meshProject could contain a `cmdb-id` tag. Setting the `cmdb-id` tag value on the
-meshWorkspace provides it as a "default" value to all tenants owned by that meshWorkspace. A user can then override
-this default value on an individual meshProject by providing a value for the optional `cmdb-id` tag on the meshProject.
+### Step by Step Guide for meshStack Objects
 
-When merging the tag sources for a meshTenant, meshStack therefore applies the following precedence rule:
+1. **Navigate to Platform Configuration**
+   - Go to the admin area of meshStack.
+   - Click on **Platforms** in the left sidebar.
+   - Open Configuration for the platform you want to modify.
+   - Navigate to the tag configuration section in the **Configuration** tab.
+2. **Specify Meta Data for Replication**
+   - Add the tag keys you want to expose to the platform. (see list below)
+3. **Save Changes**
 
-```text
-meshProject tags > payment method tags > meshWorkspace tags
-```
-
-You can find an example in the table below which explains this behavior:
-
-| meshObject        | Tag Name | Tag Value |
-| ----------------- | -------- | --------- |
-| meshWorkspace     | cmdb-id  | 12        |
-| meshPaymentMethod | cmdb-id  | 34        |
-| meshProject       | cmdb-id  | 56        |
-
-This example would result in `cmdb-id` being equal to `56` as the meshProject has the highest priority.
-:::
-
-### HTTP Header Interface
-
-Some Landing Zone assets like [GCP Cloud Functions](meshstack.gcp.landing-zones.md) or [Azure Functions](meshstack.azure.landing-zones.md) receive metadata tags from meshStack using HTTP Headers. meshStack invokes these Landing Zone assets using the following HTTP headers:
-
-
-| HTTP Header Name                 | Description                                                                                                                   |
-|----------------------------------|:------------------------------------------------------------------------------------------------------------------------------|
-| `x-mesh-customer-identifier`     | meshWorkspace Identifier                                                                                                      |
-| `x-mesh-project-identifier`      | meshProject identifier                                                                                                        |
-| `x-mesh-costcenter` *deprecated* | If available, ID of the CostCenter selected for this meshProject. Please use `x-mesh-tag-cost-center` or another tag instead. |
-| `x-mesh-tenant-platform-number`  | A increasing sequence number for a meshProject tenant on a specific platform.                                                 |
-| `x-mesh-landing-zone-identifier` | landing zone identifier                                                                                                       |
-| `x-mesh-tag-${format(tagName)}`  | metadata tags as defined in the tags screen in the admin area                                                                 |
-
-Headers for *metadata tags* are formatted to an http-header name by converting `camelCase` tag names into a dashed string i.e. `camel-case` and prefixing them with `x-mesh-tag-`.
-As a full example, a tag named `myCustomerTag` would be provided as an HTTP header with name `x-mesh-tag-my-customer-tag`.
-
-## Tags in Cloud Tenants
-
-Beside having tags in meshStack, it is also useful for cloud-native users to be aware of the metadata within e.g. Azure. This is why meshStack
-supports the ability to "replicate" the tags into the actual cloud platforms. The entire lifecycle of these tags can be managed by meshStack. This means tags on the cloud platform are updated and removed depending on the underlying metadata of the replicated meshProject. meshStack manages all tags of a prefixed namespace (e.g. the `meshstack_` prefix in the tag label `meshstack_costcenter:12345` indicates that this is a meshStack managed tag).
-
-Use the config tab in the [platform control plane](administration.platforms.md#platform-control-plane) and the [tag definition user interface](#how-to-define-a-new-tag) to enable automatic replication of tags to cloud tenants.
-
-![Tag Configuration Header](assets/platform_maintenance/tag-config-1.png)
-
-![Tag Configuration](assets/platform_maintenance/tag-config-2.png)
-
-Every platform might have different limitations about the tag names and values, which are described in the following sections.
-
-### Extra metadata
-
-The tag definition configuration describes on a per-platform basis how these tags are extracted and transformed into cloud platform tags.
-The following extra metadata can be used in such a tag definition configuration:
+**meshStack metadata**
 
 | Tag Key                       | Description                                                                                                                                               |
 | ----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -171,8 +130,30 @@ The following extra metadata can be used in such a tag definition configuration:
 | `${ownerFirstName}`           | The first name of the workspace owner of this project. It is `none` if no owner is set                                                                    |
 | `${ownerLastName}`            | The last name of the workspace owner of this project. It is `none` if no owner is set                                                                     |
 | `${additionalOwnerUsername}`  | The username of the additional workspace owner of this project. It is `none` if no additional owner is set                                                |
-| `${additionalOwnerFirstName}` | The first name of the additional workspace owner of this project. It is `none` if no additional owner is set                                              |
+| `${additionalOwnerFirstName}` | The first name of the additional workspace owner of this project. It is `none` if no additional owner is set   
 
+:::note Handling Tag Conflicts
+It's possible that objects such as workspace and project have tags with the same tag key. For example, both the workspace and
+project could contain a `cmdb-id` tag. Setting the `cmdb-id` tag value on the
+workspace provides it as a "default" value to all tenants owned by that workspace. A user can then override
+this default value on an individual project by providing a value for the optional `cmdb-id` tag on the project.
+
+When merging the tag sources for a tenant, meshStack therefore applies the following precedence rule:
+
+```text
+project tags > payment method tags > workspace tags
+```
+
+You can find an example in the table below which explains this behavior:
+
+| Object            | Tag Name | Tag Value |
+| ----------------- | -------- | --------- |
+| Workspace         | cmdb-id  | 12        |
+| Payment Method    | cmdb-id  | 34        |
+| Project           | cmdb-id  | 56        |
+
+This example would result in `cmdb-id` being equal to `56` as the project has the highest priority.
+:::                                          
 
 ## Provide Information as an Application Team
 
@@ -210,4 +191,3 @@ The tags available on an objects are defined by the meshStack admins via the adm
 ## Related Resources
 
 - [Tag Concept](new-concept-tag)
-- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace)
