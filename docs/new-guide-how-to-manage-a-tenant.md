@@ -105,7 +105,7 @@ Alternative:
 
 ## Change Environment Ownership
 
-If project or tenant ownership changes, update user/group assignments and tags. See [How to Reflect Organizational Changes](new-guide-how-to-reflect-organizational-changes).
+If project or tenant ownership changes, update user/group assignments and tags. See [How to Reflect Organizational Changes](new-guide-how-to-reflect-organizational-changes.md).
 
 ## Tenant Deletion Flow
 
@@ -162,7 +162,7 @@ You can filter tenants that were deleted successfully by selecting the status co
 
 ### Concepts
 
-- [Tenant](new-concept-tenant)
+- [Tenant](new-concept-tenant.md)
 - [Landing Zone](new-concept-landingzone.md)
 - [Platform](new-concept-platform.md)
 
