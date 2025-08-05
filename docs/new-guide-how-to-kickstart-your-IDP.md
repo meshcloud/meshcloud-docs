@@ -4,7 +4,7 @@ title: How to Kickstart Your IDP
 ---
 
 :::note What is this guide about?
-This guide shows you how to accelerate your platform engineering by importing pre-built building blocks from meshStack Hub. You'll learn how to quickly provide standardized, secure infrastructure for your teams using community-maintained resources. This guides uses AWS S3 Buckets as an example, but the process applies to any building block definition available in the meshStack Hub.
+This guide shows you how to accelerate your platform engineering by importing pre-built building blocks from meshStack Hub. You'll learn how to quickly provide standardized, secure infrastructure for your teams using community-maintained resources. This guide uses AWS S3 Buckets as an example, but the process applies to any building block definition available in the meshStack Hub.
 :::
 
 :::tip
@@ -15,7 +15,7 @@ importing a Building Block Definition from the meshStack Hub and making it avail
 ## Prerequisites
 
 - You have a user with workspace owner or admin permissions to access platform builder. 
-- You have credentials to deploy AWS S3 Buckets.
+- You have an AWS principal with the rights to deploy AWS S3 Buckets.
 
 ## Step by Step Guide
 
