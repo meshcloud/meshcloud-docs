@@ -305,6 +305,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-manage-api-keys',
             'new-guide-how-to-manage-api-users',
             'new-guide-how-to-kickstart-your-IDP'
+            'new-guide-how-to-provide-your-own-platform'
           ],
         },
          {
@@ -329,7 +330,8 @@ const sidebars: SidebarsConfig = {
           items: [
             'new-guide-how-to-manage-payment-methods',
             'new-guide-how-to-set-up-prices',
-            'new-guide-how-to-set-up-currency-conversion'
+            'new-guide-how-to-set-up-currency-conversion',
+            'new-guide-how-to-create-customized-bills'
           ],
         },
         {
@@ -338,7 +340,14 @@ const sidebars: SidebarsConfig = {
           items: [
             'new-guide-how-to-enable-a-new-platform-team'
           ],
-        }
+        },
+        {
+          type: 'category',
+          label: 'Developer Engagement',
+          items: [
+            'new-guide-how-to-provide-security-contact'
+          ],
+        },
       ],
     },
     {

@@ -88,3 +88,4 @@ Application teams will now be able to see the new platform in the marketplace an
 ### Guides
 
 - [How to Manage Platforms](new-guide-how-to-manage-a-platform.md)
+- [How to Create Customized Bills](new-guide-how-to-create-customized-bills.md)
