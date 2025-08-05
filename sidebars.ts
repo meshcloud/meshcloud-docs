@@ -283,7 +283,7 @@ const sidebars: SidebarsConfig = {
         'new-concept-payment-methods',
         'new-concept-communication',
         'new-concept-marketplace',
-        'new-concept-osb-services',
+        'new-concept-osb-services'
       ],
     },
     {
@@ -304,6 +304,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-reflect-organizational-changes',
             'new-guide-how-to-manage-api-keys',
             'new-guide-how-to-manage-api-users',
+            'new-guide-how-to-provide-your-own-platform'
             'new-guide-how-to-kickstart-your-IDP',
             'new-guide-how-to-provide-your-own-platform',
             'new-guide-how-to-manage-tags'
@@ -322,7 +323,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-enforce-resource-quotas',
             'new-guide-how-to-ensure-compliant-deletion-of-environments',
             'new-guide-how-to-manage-landing-zones',
-            'new-guide-how-to-manage-policies'
+            'new-guide-how-to-manage-policies',
           ],
         },
         {
@@ -332,6 +333,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-manage-payment-methods',
             'new-guide-how-to-set-up-prices',
             'new-guide-how-to-set-up-currency-conversion',
+            'new-guide-how-to-create-customized-bills',
             'new-guide-how-to-create-customized-bills'
           ],
         },
@@ -341,6 +343,14 @@ const sidebars: SidebarsConfig = {
           items: [
             'new-guide-how-to-enable-a-new-platform-team'
           ],
+        },
+        {
+          type: 'category',
+          label: 'Developer Engagement',
+          items: [
+            'new-guide-how-to-provide-security-contact'
+          ],
+        },
         },
         {
           type: 'category',
