@@ -12,7 +12,7 @@ This guide helps you manage tenants in meshStack. You'll learn how to keep your 
 ### Prerequisites
 
 - Have an admin user that can log into meshStack.
-- For AWS account import, please check [AWS integration documentation, step 11](/integrations/aws-integration-guide.md#step-11-import-existing-aws-account).
+- For AWS account import, refer to the [AWS Integration Guide Step 11](new-integration-how-to-integrate-aws.md) for detailed instructions.
 
 ### Step by Step Guide
 
