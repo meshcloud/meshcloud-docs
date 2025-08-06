@@ -27,7 +27,7 @@ const config: Config = {
   // However, it seems that documentation by AWS is incorrect. I could not get the configuration
   // /about => returnes /about.html to work with trailingSlash: false, amplify always returned a 404 for this page
   // This is why we use trailingSlash: true here as thats the only other configuration that works consistently
-  trailingSlash: true,
+  trailingSlash: false,
 
   staticDirectories: ['static'],
 
