@@ -29,8 +29,8 @@ integration:
 
 | Feature                                 | Standard Integration Permissions                                                          | Integration Permissions with Administrative Units                                                |
 | --------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **User Discovery for Group Membership** | `Directory.Read.All` _tenant scope_ <br>Read all users and groups                         | `AdministrativeUnit.Read.All` _tenant scope_ <br>Read administrative unit information                                              |
-| **Manage Groups**                       | `Group.ReadWrite.All` _tenant scope_ <br>Create and delete groups, manage membership       | Custom role with administrative unit scope:<br>• `microsoft.directory/users/standard/read`<br>• `microsoft.directory/groups/standard/read`<br>• `microsoft.directory/groups/create`<br>• `microsoft.directory/groups/members/update`<br>• `microsoft.directory/groups/members/read`<br>• `microsoft.directory/groups/memberOf/read` |
+| **User Discovery for Group Membership** | `Directory.Read.All` _tenant scope_ <br>Read all users and groups                         | `User.Read.All` _tenant scope_ <br>Read all users                                              |
+| **Manage Groups**                       | `Group.ReadWrite.All` _tenant scope_ <br>Create and delete groups, manage membership       | `Groups Administrator` _administrative unit scope_ <br>Create and delete groups, manage membership _only within_ the administrative unit |
 | **Invite Users (Azure B2B)**            | `User.Invite.All` _tenant scope_ <br>Optional, invite AAD B2B guest users into the tenant | `User.Invite.All` _tenant scope_ <br>Optional, invite AAD B2B guest users into the tenant        |
 
 <details>
@@ -41,9 +41,6 @@ Most customers manage users in meshStack using SCIM, typically via a "sync group
 The users in the sync group must be kept consistent with the users in the administrative unit.
 This is not only possible with dynamic user membership in the administrative unit. When dynamic user membership is used however, Azure no longer supports managing groups in the administrative unit.
 </details>
-
-Integration with Administrative Units requires that you create a custom role
-with the permissions listed in the table above.
 
 ## Prerequisites
 
@@ -71,6 +68,10 @@ identities:
    - **Membership Type**: **Assigned Users**  to enable group management in the administrative unit
 5. Click **Create**
 6. Note down the **Administrative Unit ID** - you'll need this for configuring your Azure platform in meshStack
+
+:::tip Use Terraform for Automated Setup
+For automated setup, we recommend using the [Azure meshPlatform Terraform Module](https://registry.terraform.io/modules/meshcloud/meshplatform/azure/latest) with the `administrative_unit_name` variable set. This module will handle the creation of the replicator service principal, the administrative unit, and proper role assignments automatically.
+:::
 
 ### 2. Configure the Azure Platform in meshStack
 
