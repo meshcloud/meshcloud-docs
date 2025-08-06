@@ -67,10 +67,13 @@ identities:
      `Administrative Unit for meshStack managed users and groups`
    - **Membership Type**: **Assigned Users**  to enable group management in the administrative unit
 5. Click **Create**
-6. Note down the **Administrative Unit ID** - you'll need this for configuring your Azure platform in meshStack
+6. Go to **Roles and Administrators** and assign the `Groups Administrator` role to the
+   Replication Service Principal created during the standard Azure integration.
+   - This allows meshStack to create and manage groups within this administrative unit.
+7. Note down the **Administrative Unit ID** - you'll need this for configuring your Azure platform in meshStack
 
 :::tip Use Terraform for Automated Setup
-For automated setup, we recommend using the [Azure meshPlatform Terraform Module](https://registry.terraform.io/modules/meshcloud/meshplatform/azure/latest) with the `administrative_unit_name` variable set. This module will handle the creation of the replicator service principal, the administrative unit, and proper role assignments automatically.
+For automated setup, we recommend using the [Azure meshPlatform Terraform Module](https://registry.terraform.io/modules/meshcloud/meshplatform/azure/latest) with the `administrative_unit_name` variable set. This module will handle the creation of the replication service principal, the administrative unit, and proper role assignments automatically.
 :::
 
 ### 2. Configure the Azure Platform in meshStack
