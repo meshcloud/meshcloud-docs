@@ -215,7 +215,7 @@ const sidebars: SidebarsConfig = {
         'meshstack.logging',
         'meshstack.monitoring',
         'meshstack.backup',
-        'faq',
+        'security-faq',
         'copilot-preview',
       ],
     },
