@@ -13,16 +13,6 @@ provider "aws" {
   allowed_account_ids = ["548876773848"]
 }
 
-
-locals {
-  redirects = [
-    {
-      source = "/docs/<*>"
-      target = "/<*>"
-    }
-  ]
-}
-
 import {
   to = aws_amplify_app.docs
   id = "d17q6gob2fx97d"
@@ -42,8 +32,6 @@ resource "aws_amplify_app" "docs" {
   # note: rules here are processed top to bottom!
 
   ## Redirects required for bypassing adblockers with plausible.io
-  ## See https://plausible.io/docs/proxy/guides/netlify
-  ## Contrary to netlify docs, only status=200 works here, see https://github.com/plausible/docs/issues/177
   custom_rule {
     source = "/js/script.js"
     target = "https://plausible.io/js/plausible.js"
@@ -56,22 +44,22 @@ resource "aws_amplify_app" "docs" {
     status = 200
   }
 
-  # not sure what this one does? probably the 404 handler
+  // required for legacy links that are still out there
   custom_rule {
-    source = "/<*>"
-    status = "404-200"
-    target = "/index.html"
+    source = "/docs/<*>" 
+    status = "301" 
+    target = "/<*>" 
   }
 
-  # Redirects for individual pages that we moved/renamed but we want to make sure we don't confuse google
-  dynamic "custom_rule" {
-    for_each = toset(local.redirects)
-
-    content {
-      source = custom_rule.value.source
-      target = custom_rule.value.target
-      status = "301"
-    }
+  // some legacy links still use the format /mydocs instead of /mydocs/ 
+  // for these lnks fallback to client side routing
+  // https://docs.aws.amazon.com/amplify/latest/APIReference/API_CustomRule.html
+  // "404-200" means "if the request 404s because the requested file does not exist, return index.html instead as a "rewrite"
+  // note that the returned status code is _not_ 200, but still a 404(!). This behavior confuses crawlers but works fine for humans
+  custom_rule {
+    source = "<*>"
+    target = "/index.html"
+    status = "404-200"
   }
 }
 

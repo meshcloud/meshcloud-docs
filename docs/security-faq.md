@@ -1,5 +1,5 @@
 ---
-id: faq
+id: security-faq
 title: Security FAQ
 ---
 

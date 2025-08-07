@@ -20,6 +20,15 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+  // Enable trailing slashes in URLs, i.e. generating docs as mydocspage/index.html and alwas link to mydocspage/
+  // This matches the default behavior of AWS Amplify hosting, which we use for deployment.
+  // See https://docusaurus.io/docs/next/advanced/routing#routes-become-html-files
+  // And https://docs.aws.amazon.com/amplify/latest/userguide/redirect-rewrite-examples.html#trailing-slashes-and-clean-urls
+  // However, it seems that documentation by AWS is incorrect. I could not get the configuration
+  // /about => returnes /about.html to work with trailingSlash: false, amplify always returned a 404 for this page
+  // This is why we use trailingSlash: true here as thats the only other configuration that works consistently
+  trailingSlash: true,
+
   staticDirectories: ['static'],
 
   // GitHub pages deployment config.
