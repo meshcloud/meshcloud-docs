@@ -93,5 +93,13 @@ All conversations with meshStack Copilot, including all data provided to the mod
 
 ## Related Resources
 
-- [How to use meshStack Copilot Guide](new-guide-how-to-copilot.md)
+### Concepts
+
+- [Copilot](new-concept-copilot.md)
 - [Security FAQ](security-faq.md)
+
+### Guides
+
+- [How to use meshStack Copilot Guide](new-guide-how-to-copilot.md)
+- [How to Discover Services Guide](new-guide-how-to-discover-services.md)
+- [How to Generate Building Block Documentation Guide](new-guide-how-to-generate-building-block-documentation.md)
