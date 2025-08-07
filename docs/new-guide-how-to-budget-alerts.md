@@ -20,7 +20,7 @@ Staying on top of platform costs is critical. meshStack’s budget alerts help a
 
 ### How Budget Alerts Work
 
-- Budget alerts are sent automatically—no setup required.
+- Budget alerts are sent automatically — no setup required.
 - You’ll receive an alert if:
   - You’re a Workspace Manager or Owner.
   - Your workspace has a payment method with a set limit.
@@ -29,22 +29,16 @@ Staying on top of platform costs is critical. meshStack’s budget alerts help a
 - To avoid spam, all relevant budget alerts are bundled into a single email.
 
 :::info
-Currently, budget alerts and payment method status only consider Euro. While budgets can be set in Dollar and Euro, support for additional currencies is planned.
+Currently, budget alerts and payment method status only consider Euro.
 :::
 
 ### What to Do If a Budget Is Exceeded
 
-1. **Increase the Limit of the Payment Method**
-   - Contact a Cloud Foundation administrator to raise the limit for your payment method.
+You have two options if your budget is exceeded:
 
-2. **Request a New Payment Method**
-   - If enabled by your Cloud Foundation team, go to “Financials” → “Payment Methods” in the workspace control plane.
-   - Click **Request Payment Method** to open the request form.
-   - Once approved, set the new payment method as active for your project.
+- **Increase the limit of the payment method**: Contact an admin to raise the limit for your payment method.
 
-:::tip
-Admins: [Learn how to configure a payment method request button.](#)
-:::
+- **Request a new payment method**: If you need a new payment method, you can request a new one by contacting an admin.
 
 ## Related Resources
 
