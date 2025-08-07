@@ -45,11 +45,12 @@ We advise you to choose tag names that work for all platforms you use. This way,
 ## Related Resources
 
 ### Concepts
+
 - [Tenant](new-concept-tenant.md)
 - [Project](new-concept-project.md)
 - [Platform](new-concept-platform.md)
 - [Workspace](new-concept-workspace.md)
-- [Tag Management](new-guide-how-to-manage-tags)
 
 ### Guides
+
 - [How to Manage Tags](new-guide-how-to-manage-tags.md)
