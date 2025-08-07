@@ -17,7 +17,7 @@ Tenant usage reports provide detailed insights into resource consumption and ass
 
 ### Resource Usage Reports
 
- Resource usage reports are optional and can be included into tenant usage reports via API. Use the "meshResourceUsageReport" endpoint to provide cost data from external systems to meshStack. A resource usage report will be picked up by the metering system of meshStack and subsequently included into regular tenant usage reports. Use this if you want to provide cost information to meshStack and use a platform without native metering support.
+Resource usage reports are optional and can be integrated into tenant usage reports via API. Use the `meshResourceUsageReport` endpoint to provide cost data from external systems to meshStack. Once submitted, these reports are processed by meshStack’s metering system and included in regular tenant usage reports. This feature is useful if you want to supply cost information from platforms that do not have native metering support.
 
 ![Cost Management and Financial Reports Diagram](./assets/new_concept/concept_financialreports.png)
 
