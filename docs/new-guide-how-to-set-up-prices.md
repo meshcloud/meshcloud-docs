@@ -52,4 +52,3 @@ Not all platforms support setting prices for tenants.
 ### Guides
 
 - [How to Manage Platforms](new-guide-how-to-manage-a-platform.md)
-- [How to Manage Building Blocks](new-guide-how-to-manage-building-blocks.md)

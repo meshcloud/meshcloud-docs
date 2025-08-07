@@ -39,4 +39,4 @@ Check meshStack's API documentation for details on authentication, required fiel
 ### Guides
 
 - [How to Set Up Prices](new-guide-how-to-set-up-prices.md)
-- [How to Create Your Own Platforms](new-guide-how-to-create-own-platforms.md)
+- [How to Create Your Own Platforms](new-guide-how-to-provide-your-own-platform.md)
