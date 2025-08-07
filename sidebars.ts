@@ -328,7 +328,9 @@ const sidebars: SidebarsConfig = {
           label: 'Developer Engagement',
           items: [
             'new-guide-how-to-provide-security-contact',
-            'new-guide-how-to-copilot'
+            'new-guide-how-to-copilot',
+            'new-guide-how-to-discover-services',
+            'new-guide-how-to-generate-building-block-documentation'
           ],
         },
         {

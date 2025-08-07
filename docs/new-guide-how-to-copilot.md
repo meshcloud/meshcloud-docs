@@ -7,35 +7,7 @@ title: How to Use meshStack Copilot
 This guide shows you how to get the most out of meshStack Copilot, your AI-powered assistant for discovering platform services, generating documentation, and improving your cloud experience.
 :::
 
-## Challenge
-
-Finding the right platform services, keeping documentation up to date, and understanding user needs can be tough. meshStack Copilot helps you solve these challenges by providing instant answers, documentation support, and actionable insights—all in one place.
-
-## Discover Platform Services
-
-### Prerequisites
-
-- You have access to meshPanel with Copilot enabled.
-
-### Step by Step Guide
-
-1. Click the Copilot sheep icon at the top right corner of any meshPanel screen.
-2. Use the chat interface to ask questions about available services, policies, or how to get started with a specific tool.
-3. Copilot will recommend services and guide you on how to request access.
-
-## Generate Service Documentation
-
-### Prerequisites
-
-- You have access to meshPanel with Copilot enabled.
-- You are defining a building block or service.
-
-### Step by Step Guide
-
-1. Use Copilot’s “Get help” button when defining a building block or service.
-2. Answer Copilot’s prompts to generate best-practices documentation, including descriptions, usage instructions, and troubleshooting guides.
-
-## Improve Services with User Insights
+## Improve Answers with User Insights
 
 ### Prerequisites
 
@@ -66,5 +38,4 @@ Use Copilot’s “Get help” button for context-aware suggestions and faster w
 
 ### Concepts
 
-- [meshStack Copilot Concept](new-concept-copilot.md)
-- [Marketplace](new-concept-marketplace.md)
+- [Copilot](new-concept-copilot.md)
