@@ -3,7 +3,7 @@ id: new-concept-copilot
 title: Copilot
 ---
 
-meshStack Copilot is an AI assistant that helps you get more from your platform. Whether you’re a developer or platform engineer, Copilot supports you via a chat interface in meshPanel. Just click the sheep icon at the top right and ask questions in natural language—Copilot responds instantly using your meshStack data.
+meshStack Copilot is an AI assistant that helps you get more from your platform. Whether you’re a developer or platform engineer, Copilot supports you via a chat interface in meshPanel. Just click the sheep icon at the top right and ask questions in natural language. Copilot responds instantly using your meshStack data.
 
 **Key Capabilities:**
 
