@@ -21,6 +21,6 @@ This guide shows you how to use Copilot in meshPanel to discover available servi
 
 ### Concepts
 
-- [Marketplace](new-concept-marketplace)
-- [Platform](new-concept-platform)
+- [Marketplace](new-concept-marketplace.md)
+- [Platform](new-concept-platform.md)
 - [Copilot](new-concept-copilot.md)

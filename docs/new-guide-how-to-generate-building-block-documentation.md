@@ -21,6 +21,6 @@ This guide shows you how to use Copilot in meshPanel to quickly generate high-qu
 
 ### Concepts
 
-- [Building Block](new-concept-buildingblock)
-- [Service Documentation](new-concept-marketplace)
+- [Building Block](new-concept-buildingblock.md)
+- [Service Documentation](new-concept-marketplace.md)
 - [Copilot](new-concept-copilot.md)
