@@ -53,7 +53,9 @@ Budget alerts notify workspace owners and managers by email when project costs a
 - [Project](new-concept-project.md)
 - [Workspace](new-concept-workspace.md)
 - [Cost Management](new-concept-cost-management.md)
+- [Tags](new-concept-tags.md)
 
 ### Guides
 
-- [How to Manage Cost](new-guide-how-to-manage-costs.md)
+- [How to Manage Payment Methods](new-guide-how-to-manage-payment-methods.md)
+- [How to Integrate External Approval Processes](new-guide-how-to-integrate-external-approval-processes.md)

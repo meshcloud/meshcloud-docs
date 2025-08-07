@@ -17,34 +17,13 @@ You can customize payment methods in meshStack to suit your organization's finan
 
 **Prerequisites:**
 
-- Have admin access to meshStack with organization admin, organization user, or FinOps manager permissions.
+- Have admin access to meshStack with organization admin, organization admin and user, or FinOps manager permissions.
 
 **Step-by-Step Guide:**
 
 1. Navigate to the admin area and select "Tags."
-2. Create a new tag for payment methods, such as `payment-method-type`.
-
-### Payment Method Roll Over
-
-:::note Information
-This functionality is limited to expired payment methods. Used up budgets don't lead to an automatic roll over.
-:::
-
-**Prerequisites:**
-
-- Have admin access to meshStack with organization admin, organization user, or FinOps manager permissions.
-- Have workspace owner or member access to the workspace management area of the workspace you want to provide with a substitute payment method.
-- Payment methods have a expiration date e.g. 31th of December.
-
-Use this functionality if you want to have a smooth roll over for when a payment method expires.
-
-**Step-by-Step Guide:**
-
-1. Assign at least two payment method to the workspace.
-2. Navigate to the workspace management area of the workspace you want to provide with a substitute payment method.
-3. Select the project you want to assign a payment method to.
-4. Under "Financials," click on "Payment Methods."
-5. Choose a substitute payment method.
+2. Create a new tag for payment methods, such as `payment-method-type` and make it required.
+3. Navigate to the "Payment Methods" section and assign the new tag to the relevant payment methods.
 
 ### Manage Payment Methods as an Application Team
 
@@ -86,6 +65,33 @@ Use this functionality if you want to have a smooth roll over for when a payment
 - To **export payment methods**, click "Export Payment Methods" to download a CSV file with the payment method details.
 - To **delete a payment method**, use the meshPayment method endpoint in the API.
 
+### Payment Method Roll Over
+
+:::note Information
+This functionality is limited to expired payment methods. Used up budgets don't lead to an automatic roll over.
+:::
+
+**Prerequisites:**
+
+- Have admin access to meshStack with organization admin, organization user, or FinOps manager permissions.
+- Have workspace owner or member access to the workspace management area of the workspace you want to provide with a substitute payment method.
+- Payment methods have a expiration date e.g. 31th of December.
+- Have standard payment method setup enabled. This means payment methods are created by admins and assigned to workspaces.
+
+Use this functionality if you want to have a smooth roll over for when a payment method expires.
+
+**Step-by-Step Guide:**
+
+1. Assign at least two payment methods to the workspace via the admin area.
+2. Navigate to the workspace management area of the workspace you want to provide with a substitute payment method.
+3. Select the project you want to assign the payment method to.
+4. Under "Financials," click on "Payment Methods."
+5. Choose a substitute payment method.
+
+Now the substitute payment method will automatically be active for the project when the original payment method expires.
+
+
+
 ## Self-Service Payment Method Setup
 
 ### Assigning New Payment Method
@@ -102,3 +108,16 @@ Use this functionality if you want to have a smooth roll over for when a payment
 2. Under "Financials," select "Payment Methods."
 3. Fill in the required details for the new payment method.
 4. Click "Save" to establish the new payment method.
+
+## Related Ressources
+
+### Concepts
+
+- [Payment Method](new-concept-payment-methods.md)
+- [Tags](new-concept-tags.md)
+- [Workspace](new-concept-workspace.md)
+- [Project](new-concept-project.md)
+
+### Guides
+
+- [Budget Alerts](new-guide-how-to-budget-alerts.md)
