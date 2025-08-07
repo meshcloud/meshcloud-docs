@@ -190,4 +190,4 @@ The tags available on an objects are defined by the meshStack admins via the adm
 
 ## Related Resources
 
-- [Tag Concept](new-concept-tag)
+- [Tags](new-concept-tag.md)
