@@ -2,16 +2,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
 const sidebars: SidebarsConfig = {
   meshcloud: [
     {
@@ -63,7 +53,7 @@ const sidebars: SidebarsConfig = {
       items: ['faq.projects'],
     },
   ],
-
+  
   meshstack: [
     {
       type: 'category',
@@ -246,19 +236,6 @@ const sidebars: SidebarsConfig = {
   ],
 
   'new-docs': [
-    /**
-    {
-      type: 'category',
-      label: 'Getting Started',
-      items: [
-        'new-gettingstarted-index',
-        'new-overview-index',
-        'new-getting-started-admin',
-        'new-getting-started-platform-engineer',
-        'new-getting-started-application-team',
-      ],
-    },
-     */
     {
       type: 'doc',
       id: 'new-docs.index',
@@ -283,7 +260,7 @@ const sidebars: SidebarsConfig = {
         'new-concept-payment-methods',
         'new-concept-communication',
         'new-concept-marketplace',
-        'new-concept-osb-services'
+        'new-concept-osb-services',
         'new-concept-copilot'
       ],
     },
@@ -305,13 +282,13 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-reflect-organizational-changes',
             'new-guide-how-to-manage-api-keys',
             'new-guide-how-to-manage-api-users',
-            'new-guide-how-to-provide-your-own-platform'
+            'new-guide-how-to-provide-your-own-platform',
             'new-guide-how-to-kickstart-your-IDP',
             'new-guide-how-to-provide-your-own-platform',
             'new-guide-how-to-manage-tags'
           ],
         },
-         {
+        {
           type: 'category',
           label: 'Developer Portal',
           items: [
@@ -353,124 +330,102 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-copilot'
           ],
         },
-        },
         {
           type: 'category',
-          label: 'Developer Engagement',
+          label: 'Integrations',
+          collapsible: true,
+          collapsed: false,
           items: [
-            'new-guide-how-to-provide-security-contact',
-            'new-guide-how-to-use-meshstack-copilot'
-          ],
-        },
-        },
-        {
-          type: 'category',
-          label: 'Developer Engagement',
-          items: [
-            'new-guide-how-to-provide-security-contact'
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Integrations',
-      items: [
-        {
-          type: 'category',
-          label: 'Amazon Web Services',
-          items: [
-            'meshstack.aws.index',
-            'new-integration-how-to-integrate-aws',
-            'meshstack.aws.landing-zones',
-            'meshstack.aws.metering',
-            'meshstack.aws.sso-setup',
-            'meshstack.aws.reserved-instance-guide',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Microsoft Azure',
-          items: [
-            'meshstack.azure.index',
-            'new-integration-how-to-integrate-azure',
-            'new-integration-how-to-integrate-azure-administrative-units',
-            'meshstack.azure.landing-zones',
-            'meshstack.azure.metering',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Google Cloud Platform',
-          items: [
-            'meshstack.gcp.index',
-            'new-guide-how-to-integrate-gcp',
-            'meshstack.gcp.landing-zones',
-            'meshstack.gcp.metering',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Cloud Foundry',
-          items: [
-            'meshstack.cloudfoundry.index',
-            'meshstack.cloudfoundry.metering',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Kubernetes',
-          items: [
-            'meshstack.kubernetes.index',
-            'meshstack.kubernetes.landing-zones',
-            'meshstack.kubernetes.metering',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'GitHub',
-          items: [
-            'meshstack.github.pipeline-automation'
-          ],
-        },
-        {
-          type: 'category',
-          label: 'OpenShift',
-          items: [
-            'meshstack.openshift.index',
-            'meshstack.openshift.landing-zones',
-            'meshstack.openshift.metering',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'OpenStack',
-          items: [
-            'meshstack.openstack.index',
-            'meshstack.openstack.metering',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'OSB Services',
-          items: [
-            'meshstack.meshmarketplace.index',
-            'meshstack.meshmarketplace.metering',
-            'meshstack.meshmarketplace.profile',
-            'meshstack.meshmarketplace.tenant-services',
-            'meshstack.meshmarketplace.broker-tutorial'
+            {
+              type: 'category',
+              label: 'Amazon Web Services',
+              items: [
+                'meshstack.aws.index',
+                'new-integration-how-to-integrate-aws',
+                'meshstack.aws.landing-zones',
+                'meshstack.aws.metering',
+                'meshstack.aws.sso-setup',
+                'meshstack.aws.reserved-instance-guide',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Microsoft Azure',
+              items: [
+                'meshstack.azure.index',
+                'new-integration-how-to-integrate-azure',
+                'new-integration-how-to-integrate-azure-administrative-units',
+                'meshstack.azure.landing-zones',
+                'meshstack.azure.metering',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Google Cloud Platform',
+              items: [
+                'meshstack.gcp.index',
+                'new-guide-how-to-integrate-gcp',
+                'meshstack.gcp.landing-zones',
+                'meshstack.gcp.metering',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Cloud Foundry',
+              items: [
+                'meshstack.cloudfoundry.index',
+                'meshstack.cloudfoundry.metering',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Kubernetes',
+              items: [
+                'meshstack.kubernetes.index',
+                'meshstack.kubernetes.landing-zones',
+                'meshstack.kubernetes.metering',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'GitHub',
+              items: [
+                'meshstack.github.pipeline-automation'
+              ],
+            },
+            {
+              type: 'category',
+              label: 'OpenShift',
+              items: [
+                'meshstack.openshift.index',
+                'meshstack.openshift.landing-zones',
+                'meshstack.openshift.metering',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'OpenStack',
+              items: [
+                'meshstack.openstack.index',
+                'meshstack.openstack.metering',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'OSB Services',
+              items: [
+                'meshstack.meshmarketplace.index',
+                'meshstack.meshmarketplace.metering',
+                'meshstack.meshmarketplace.profile',
+                'meshstack.meshmarketplace.tenant-services',
+                'meshstack.meshmarketplace.broker-tutorial'
+              ],
+            },
           ],
         },
       ],
     },
-    /**
-    {
-      type: 'category',
-      label: 'Configuration and Security',
-      items: ['new-configurationandsecurity-index'],
-    }
-    */
-  ]
+  ],
 };
 
 export default sidebars;
