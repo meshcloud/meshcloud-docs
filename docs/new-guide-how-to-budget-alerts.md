@@ -50,7 +50,5 @@ Admins: [Learn how to configure a payment method request button.](#)
 
 ### Concepts
 
-- [Cost Management](new-concept-cost-management)
-- [Payment Methods](new-concept-payment-method)
-
-### Guides
+- [Cost Management](new-concept-cost-management.md)
+- [Payment Methods](new-concept-payment-methods.md)
