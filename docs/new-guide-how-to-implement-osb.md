@@ -1,6 +1,6 @@
 ---
 id: meshstack.meshmarketplace.broker-tutorial
-title: Tutorial: Implement a Broker
+title: "Tutorial: Implement a Broker"
 ---
 
 :::note What is this guide about?
