@@ -90,8 +90,6 @@ Use this functionality if you want to have a smooth roll over for when a payment
 
 Now the substitute payment method will automatically be active for the project when the original payment method expires.
 
-
-
 ## Self-Service Payment Method Setup
 
 ### Assigning New Payment Method
