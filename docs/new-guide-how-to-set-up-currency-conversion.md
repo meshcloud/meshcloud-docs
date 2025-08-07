@@ -8,7 +8,7 @@ This guide shows you how to configure currency conversion in meshStack, so you c
 :::
 
 :::note Current Limitations
-**Euro-only Conversion:** Currently, meshStack only supports conversion to Euro. Support for additional currencies is planned for future releases.
+**Euro-only Conversion:** Currently, meshStack can convert any currency into Euros. Conversion in other currencies is not yet supported. Please reach out to support@meshcloud.io if you are interested in this feature.
 
 **Payment Methods:** Payment amounts are currently limited to EUR. Support for other currencies will be added in the future.
 
@@ -48,7 +48,7 @@ Managing cloud costs across multiple currencies can be confusing and lead to rep
 ### 2b. Enable Custom API Exchange Rates
 
 - In the **Financials** tab, select **Custom API Exchange Rates**.
-- Provide your own exchange rates via API.
+- Provide your own exchange rates via API. You can find the API docs for this [here](https://docs.meshcloud.io/api/index.html#_meshexchangerate)
 - If no rates are provided by the finalization date and the currency converter is turned on, meshStack default exchange rates will apply for that month.
 
 ### Related Resources
@@ -56,7 +56,7 @@ Managing cloud costs across multiple currencies can be confusing and lead to rep
 ### Concepts
 
 - [Cost Management](new-concept-cost-management.md)
-- [ Platform](new-concept-platform.md)
+- [Platform](new-concept-platform.md)
 - [Payment Methods](new-concept-payment-methods.md)
 
 ### Guides
