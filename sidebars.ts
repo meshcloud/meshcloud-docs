@@ -304,7 +304,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-reflect-organizational-changes',
             'new-guide-how-to-manage-api-keys',
             'new-guide-how-to-manage-api-users',
-            'new-guide-how-to-kickstart-your-IDP'
+            'new-guide-how-to-kickstart-your-IDP',
             'new-guide-how-to-provide-your-own-platform'
           ],
         },
