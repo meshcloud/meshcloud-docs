@@ -29,7 +29,7 @@ integration:
 
 | Feature                                 | Standard Integration Permissions                                                          | Integration Permissions with Administrative Units                                                |
 | --------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **User Discovery for Group Membership** | `Directory.Read.All` _tenant scope_ <br>Read all users and groups                         | `User.Read.All` _tenant scope_ <br>Read all users                                              |
+| **User Discovery for Group Membership** | `Directory.Read.All` _tenant scope_ <br>Read all users and groups                         | `User.Read.All` and `AdministrativeUnit.Read.All` _tenant scope_ <br>Read all users and administrative units                                             |
 | **Manage Groups**                       | `Group.ReadWrite.All` _tenant scope_ <br>Create and delete groups, manage membership       | `Groups Administrator` _administrative unit scope_ <br>Create and delete groups, manage membership _only within_ the administrative unit |
 | **Invite Users (Azure B2B)**            | `User.Invite.All` _tenant scope_ <br>Optional, invite AAD B2B guest users into the tenant | `User.Invite.All` _tenant scope_ <br>Optional, invite AAD B2B guest users into the tenant        |
 
