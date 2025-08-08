@@ -309,6 +309,7 @@ const sidebars: SidebarsConfig = {
           label: 'FinOps',
           items: [
             'new-guide-how-to-manage-payment-methods',
+            'new-guide-how-to-integrate-external-approval-processes',,
             'new-guide-how-to-set-up-prices',
             'new-guide-how-to-set-up-currency-conversion',
             'new-guide-how-to-create-customized-bills',

@@ -42,6 +42,20 @@ Use this setup if you want to allow workspace teams to create and manage their o
 - Users **cannot set a budget** on the payment method.
 - Users can **set a cost center** on the payment method to reflect organizational information.
 
+### Budget Alerts
+
+Budget alerts notify workspace owners and managers by email when project costs approach or exceed a predefined budget of a payment method. You can configure this threshold in the project settings. Alerts help teams stay informed and take action before budget overruns occur.
+
 ## Related Resources
 
-- [How to Manage Payment Methods](./new-guide-how-to-manage-payment-methods.md)
+### Concepts
+
+- [Project](new-concept-project.md)
+- [Workspace](new-concept-workspace.md)
+- [Cost Management](new-concept-cost-management.md)
+- [Tags](new-concept-tag.md)
+
+### Guides
+
+- [How to Manage Payment Methods](new-guide-how-to-manage-payment-methods.md)
+- [How to Integrate External Approval Processes](new-guide-how-to-integrate-external-approval-processes.md)
