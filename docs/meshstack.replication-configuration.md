@@ -32,7 +32,7 @@ The template engine allows you to use the following placeholders if not describe
 | platform             | string | Platform Identifier                                                                                                                    |
 | rand                 | string | A string of up to 100 random alpha numeric characters.                                                                                 |
 | tenantPlatformNumber | number | A sequential number of the tenant on this very platform.                                                                               |
-| tagPlaceholder       | string | The value of a tag. The placeholders for these are generated automatically. For example, if you have a tagin meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`. |
+| tagPlaceholder       | string | The value of a tag. The placeholders for these are generated automatically. For example, if you have a tag in meshStack called `projectOwner`, the template engine placeholder for this would be `tagProjectOwner`. |
 
 > **Attention** For some cloud platforms certain strings must be globally unique (for example the AWS account alias). The `projectIdentifier` is not unique in meshstack. A combination of at least the `workspaceIdentifier` and `projectIdentifier`
 > is highly recommended to avoid name collisions. For platforms with globally unique requirements like GCP or AWS a randomized part or a unique static prefix can also help to prevent sporadic replication problems.
