@@ -1,6 +1,6 @@
 ---
 id: new-guide-how-to-generate-building-block-documentation
-title: How to Generate Building Block Documentation
+title: How to Generate Building Block Documentation with Copilot
 ---
 
 :::note What is this guide about?

@@ -1,6 +1,6 @@
 ---
 id: new-guide-how-to-discover-services
-title: How to Discover Services
+title: How to Discover Services with Copilot
 ---
 
 :::note What is this guide about?
