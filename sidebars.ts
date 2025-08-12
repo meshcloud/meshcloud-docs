@@ -53,7 +53,7 @@ const sidebars: SidebarsConfig = {
       items: ['faq.projects'],
     },
   ],
-  
+
   meshstack: [
     {
       type: 'category',
@@ -242,6 +242,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Getting Started',
+      items: [
+        'meshstack.building-aws-quickstart-guide',
+        'meshstack.aks-platform-quickstart-guide',
+        'meshstack.aks-developer-platform-quickstart-guide',
+      ]
+    }
+    {
+      type: 'category',
       label: 'Concepts',
       items: [
         'new-concept-meshstackareas',
@@ -320,7 +329,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Platform Ecosystem',
           items: [
-            'new-guide-how-to-enable-a-new-platform-team',  
+            'new-guide-how-to-enable-a-new-platform-team',
           ],
         },
         {
