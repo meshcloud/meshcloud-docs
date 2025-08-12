@@ -245,6 +245,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Getting Started',
+      items: [
+        'meshstack.building-aws-quickstart-guide',
+        'meshstack.aks-platform-quickstart-guide',
+        'meshstack.aks-developer-platform-quickstart-guide',
+      ]
+    }
+    {
+      type: 'category',
       label: 'Concepts',
       items: [
         'new-concept-meshstackareas',
