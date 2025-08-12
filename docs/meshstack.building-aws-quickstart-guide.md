@@ -1,20 +1,18 @@
 ---
 id: meshstack.building-aws-quickstart-guide
-title: AWS S3 Quickstart Guide
+title: How to Offer an AWS S3 Bucket via Marketplace
 ---
 
-## Introduction
-
-Welcome to the **AWS building block quickstart guide**! This guide provides step-by-step instructions to help you
+:::note What this guide is about
+This guide provides step-by-step instructions to help you
 quickly set up your first meshStack building block and deploy AWS resources using Terraform.
-
-## Goals
 
 By the end of this guide, you will have achieved:
 
 1. Creating a [building block definition](administration.building-blocks.md) that deploys an AWS S3 Bucket using Terraform.
 2. Deployed & tested the building block.
 3. Publishing the building block on the marketplace.
+:::
 
 ## Prerequisites
 

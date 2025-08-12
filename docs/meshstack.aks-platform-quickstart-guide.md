@@ -1,15 +1,13 @@
 ---
 id: meshstack.aks-platform-quickstart-guide
-title: AKS Platform Quickstart Guide
+title: How to Integrate AKS
 ---
-
 
 ## Introduction
 
-Welcome to the **First Platform: AKS guide**! This guide provides step-by-step instructions to help you quickly set up
+:::note What this guide is about
+This guide provides step-by-step instructions to help you quickly set up
 your first meshStack platform integration with Azure Kubernetes Service (AKS).
-
-## Goals
 
 By the end of this guide, you will have achieved:
 
@@ -20,6 +18,7 @@ By the end of this guide, you will have achieved:
 2. Successfully testing the AKS integration
 
 This allows your application teams to open up meshStack and provision themselves namespaces and authorization on AKS.
+:::
 
 ## Prerequisites
 

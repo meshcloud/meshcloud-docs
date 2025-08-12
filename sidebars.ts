@@ -286,7 +286,10 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-provide-your-own-platform',
             'new-guide-how-to-kickstart-your-IDP',
             'new-guide-how-to-provide-your-own-platform',
-            'new-guide-how-to-manage-tags'
+            'new-guide-how-to-manage-tags',
+            'new-guide-how-to-launch-a-new-manual-building-block',
+            'new-guide-how-to-launch-a-new-terraform-building-block',
+            'meshstack.building-aws-quickstart-guide'
           ],
         },
         {
@@ -338,7 +341,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Integrations',
+      label: 'Platforms',
       collapsible: true,
       collapsed: true,
       items: [
@@ -361,8 +364,9 @@ const sidebars: SidebarsConfig = {
             'meshstack.azure.index',
             'new-integration-how-to-integrate-azure',
             'new-integration-how-to-integrate-azure-administrative-units',
+            'meshstack.aks-platform-quickstart-guide',
             'meshstack.azure.landing-zones',
-            'meshstack.azure.metering',
+            'meshstack.azure.metering'
           ],
         },
         {
@@ -372,7 +376,7 @@ const sidebars: SidebarsConfig = {
             'meshstack.gcp.index',
             'new-guide-how-to-integrate-gcp',
             'meshstack.gcp.landing-zones',
-            'meshstack.gcp.metering',
+            'meshstack.gcp.metering'
           ],
         },
         {
@@ -380,7 +384,7 @@ const sidebars: SidebarsConfig = {
           label: 'Cloud Foundry',
           items: [
             'meshstack.cloudfoundry.index',
-            'meshstack.cloudfoundry.metering',
+            'meshstack.cloudfoundry.metering'
           ],
         },
         {
@@ -389,7 +393,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'meshstack.kubernetes.index',
             'meshstack.kubernetes.landing-zones',
-            'meshstack.kubernetes.metering',
+            'meshstack.kubernetes.metering'
           ],
         },
         {
@@ -405,7 +409,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'meshstack.openshift.index',
             'meshstack.openshift.landing-zones',
-            'meshstack.openshift.metering',
+            'meshstack.openshift.metering'
           ],
         },
         {
