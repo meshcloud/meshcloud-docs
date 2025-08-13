@@ -67,21 +67,14 @@ If the above options do not work for your use case, you can also consider extrac
 <<<<<<< HEAD
 using the [meshObject API](pathname:///api/).
 
-<!--
 ## Related Resources
-- [meshStack Marketplace Documentation](marketplace.index.md)
-- [Building Block Concept](new-concept-buildingblock.md)
-- [meshStack Service Broker Documentation](administration.service-brokers.md)
-=======
-using the [meshObject API](/api/).
-<<<<<<< HEAD
 
-<!--
-## Related Resources
-- [meshStack Marketplace Documentation](../marketplace.index.md)
-- [Building Block Concept](./new-concept-buildingblock.md)
-- [meshStack Service Broker Documentation](../administration.service-brokers.md)
->>>>>>> c3f7ac3f (maintenance-message)
--->
-=======
->>>>>>> c3370b4b (corrected-links)
+### Concepts
+
+- [Marketplace](new-concept-marketplace.md)
+- [Building Block Concept](new-concept-buildingblock.md)
+
+### Guides
+
+- [How to Manage OSB Services](new-guide-how-to-manage-osb.md)
+- [How to Implement an OSB Service Broker](new-guide-how-to-implement-osb.md)

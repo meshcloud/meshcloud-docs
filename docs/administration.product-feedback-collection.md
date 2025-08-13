@@ -3,70 +3,68 @@ id: administration.product-feedback-collection
 title: Product Feedback Collection
 ---
 
-> We are happy to share any of the feedback and product usage data we collect with you for your meshStack.
+> We're happy to share any feedback and product usage data we collect with you for your meshStack.  
 > Reach out to your Customer Success representative to get the data.
+
+## Why Your Feedback Matters
+
+Your feedback helps us build a better product. We want to make it easy for you to share your thoughts, stay informed, and help shape the future of meshStack.
+
+---
+
+## Communication Channels
+
+We offer several ways for you to connect with us and stay up to date:
+
+### 1. Share Your Thoughts
+
+- **Email:** Write to [feedback@meshcloud.io](mailto:feedback@meshcloud.io) and our Product Managers will get back to you.
+- **1-on-1 Meetings:** Prefer a chat? [Schedule a meeting](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3CKr5hOFH0vyReqOgXy4p5O7gF3oURG5FEP9ky9vr6AFGxaUG-Bc0UmSqbEduT14V5ccldBwKM) with a Product Manager.
+
+### 2. Stay Informed
+
+- **Newsletter:** Get regular updates about new features and improvements. [Subscribe here](https://www.meshcloud.io/en/product/).
+- **Roadmap:** See what's coming, ongoing, and released on our [product roadmap](https://www.meshcloud.io/en/product/).
+- **Release Notes:** Find detailed release notes in the top-level navigation.
+
+### 3. Suggest Features
+
+- **Feature Requests:** Use [Canny](https://meshcloud.canny.io) to submit ideas, track progress, and vote for features that matter to you.
+
+---
 
 ## In-Product Satisfaction Survey
 
-meshStack might show your users a short survey consisting of three questions:
+We may occasionally show a short survey in meshStack to gather your feedback.  
+You'll see three quick questions about your experience.  
+*If your organization uses a custom name for meshStack, you'll see that name in the survey.*
 
-1. How satisfied are you with {meshStack}*
-2. When I perform an action in {meshStack}, it works as expected.
-3. I was able to complete the tasks I needed to using {meshStack}.
+**When does the survey appear?**
+- You’re not an Admin Area user.
+- You’ve logged in more than three times in the last 30 days.
+- You haven’t seen the survey in the last 30 days.
+- You’ve been inactive for at least 25 seconds.
 
-*Please note that if you have your own rebranded name for meshStack, that will be shown instead.
-
-Below you can see an example of what the survey looks like.
+*Note: The survey is always enabled for each meshStack.*
 
 ![Example of Satisfaction Survey](assets/feedback-survey-example.png)
 
-### When does the survey show up?
+---
 
-The satisfaction survey will show up under the following conditions:
+## Product Usage Data
 
-- The user is **not** a user of the Admin Area.
-- The user has logged in more than three times in the last 30 days.
-- The user has not been shown the survey in the last 30 days. (If a user closes the survey it will only ever show up again after 30 days)
-- The user did not do anything for the last 25 seconds (to prevent interrupting the user in important flows)
+We use [plausible.io](https://plausible.io/data-policy) to collect anonymous usage data, helping us improve meshStack.  
+This data is stored securely by meshcloud and never shared externally.
 
-Note that the satisfaction survey is not configurable to be turned off. It is always turned on for each meshStack.
+**What do we collect?**
+- Satisfaction ratings (e.g., after creating a project)
+- Usage metrics (how often and how you use features)
 
-## Product Usage Data with Plausible
+**How to enable usage data collection:**  
+Your Customer Success representative can enable this after your confirmation.
 
-In order to continuously improve our product we collect product usage data and feedback.
-Product usage data collection can be explicitly enabled by your Customer Success representative after your confirmation.
-
-meshPanel uses the privacy-preserving and open source web-analytics library plausible.io for collecting anonymous usage data as described in the [plausible data policy](https://plausible.io/data-policy).
-The system we use is operated by meshcloud and the data collected will remain within the secure meshcloud environment and will not be shared or processed externally.
-
-### What data is collected?
-
-Rest assured, the data we collect will not include any Personally Identifiable Information (PII).
-Data that we collect includes the following:
-
-- Satisfaction Ratings: To gauge user satisfaction, we will implement a star rating system. After completing an activity within the product, such as creating a meshProject, users will be prompted to provide a rating based on their experience.
-- Usage Metrics: We will collect data on the frequency and manner in which functionalities are utilized within meshStack. This will help us identify patterns and understand how our product is being used, allowing us to make informed decisions for further improvement.
-
-### Enabling Plausible data collection
-
-<!--snippet:mesh.panel.environment#Plausible-->
-
-The following configuration options are available at `mesh.panel.environment#Plausible`:
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Dhall Type-->
 ```dhall
 let Plausible =
-    {-
-        activatePlausibleTracking:
-            Enable product usage analysis and telemetry using the plausible JavaScript library.
-    -}
-      { activatePlausibleTracking : Bool }
-```
-<!--Example-->
-```dhall
+    { activatePlausibleTracking : Bool }
 let example = { activatePlausibleTracking = True } : Plausible
 ```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-When enabled, meshPanel will send usage data to this meshStack's meshPanel domain, which means there will be
-no third-party domains accessed from user's browsers.
