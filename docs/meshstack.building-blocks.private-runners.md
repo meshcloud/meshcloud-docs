@@ -5,9 +5,9 @@ title: Private Runners
 
 A building block runner is a component responsible for executing a specific type of building block (e.g. Terraform, GitLab). The typical workflow for a runner is:
 
-1.  **Poll for Jobs**: The runner connects to your meshStack's API to receive building block runs.
-2.  **Execute**: It prepares the execution environment (e.g. by downloading source code and tools) and executes the job.
-3.  **Report back**: After execution, it posts back the result (success or failure) to meshStack.
+1. **Poll for Jobs**: The runner connects to your meshStack's API to receive building block runs.
+2. **Execute**: It prepares the execution environment (e.g. by downloading source code and tools) and executes the job.
+3. **Report back**: After execution, it posts back the result (success or failure) to meshStack.
 
 meshcloud-hosted runners are fully managed by meshcloud and run in our cloud environment.
 
@@ -49,7 +49,8 @@ To set up a private runner, meshcloud operators need permissions within your tar
 We provide the runner as a docker container image. In order for us to operate a private runner for you, you need to provide a secure, isolated container runtime.
 
 We support the following runtimes
-  - Managed Kubernetes: Amazon EKS, Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), or other Kubernetes distributions.
+
+- Managed Kubernetes: Amazon EKS, Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), or other Kubernetes distributions.
   - Container-as-a-Service: AWS Elastic Container Service (ECS), Azure Container Instances (ACI), or Google Cloud Run.
 
 The container runtime provisioned for the private runner must have:
