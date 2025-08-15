@@ -11,12 +11,12 @@ This guide walks you through adding your application or platform team members to
 
 ## Invite to Workspace
 
-**Prerequisites**
+### Prerequisites
 
 - You need either the workspace manager or workspace owner role in the workspace where you want to add users to.
 - Users need to be present in meshStack.
 
-**Step-by-Step Guide**
+### Step-by-Step Guide
 
 1. **Select Your Workspace**
    - Use the drop-down in the upper-left corner to pick the workspace you want to manage.
@@ -40,12 +40,12 @@ This guide walks you through adding your application or platform team members to
 
 ## Invite to Project
 
-**Prerequisites**
+### Prerequisites
 
 - You need either the workspace manager or workspace owner role in the workspace where you want to add users to.
 - Users need to be present in meshStack.
 
-**Step-by-Step Guide**
+### Step-by-Step Guide
 
 1. Make sure you are in the workspace you want to add further users. Do this by checking the drop-down in the upper-left corner.
 2. Navigate to the project where you want to onboard your project team members.

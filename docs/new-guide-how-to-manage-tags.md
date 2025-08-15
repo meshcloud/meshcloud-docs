@@ -112,7 +112,7 @@ There are two ways to expose tags to platforms:
    - Add the tag keys you want to expose to the platform. (see list below)
 3. **Save Changes**
 
-**meshStack metadata**
+### meshStack metadata
 
 | Tag Key                       | Description                                                                                                                                               |
 | ----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
