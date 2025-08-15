@@ -447,6 +447,23 @@ const sidebars: SidebarsConfig = {
         'administration.product-feedback-collection'
       ],
     },
+    {
+      type: 'category',
+      label: 'Settings',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'meshstack.onboarding',
+        'meshstack.billing-configuration',
+        'meshstack.user-group-provisioning',
+        'meshstack.workspace-group-sync',
+        'meshstack.identity-lookup',
+        'meshstack.identity-provider',
+        'administration.meshstack-settings',
+        'meshstack.customizing',
+        'meshstack.replication-configuration'
+      ],
+    },
   ],
 };
 
