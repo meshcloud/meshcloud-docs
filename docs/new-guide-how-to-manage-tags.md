@@ -77,6 +77,7 @@ Changes to existing tags are not automatically propagated to existing resources.
 
 :::note
 There are two ways to expose tags to platforms:
+
 1. Via the platform configuration in the admin area. Use this for information that is inherent to meshStack, such as the payment identifier.
 2. Via the landing zone configuration in the admin area or platform builder. Use this for custom metadata defined by your organization in the tag catalog.
 :::
@@ -111,7 +112,7 @@ There are two ways to expose tags to platforms:
    - Add the tag keys you want to expose to the platform. (see list below)
 3. **Save Changes**
 
-**meshStack metadata**
+### meshStack metadata
 
 | Tag Key                       | Description                                                                                                                                               |
 | ----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |

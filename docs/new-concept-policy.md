@@ -14,7 +14,7 @@ In meshStack:
 - Policies are enforced when editing tags or changing relations (e.g., assigning users).
 - In the meshPanel, non-compliant choices are disabled or excluded
 
-### What can I achieve with policies?
+## What can I achieve with policies?
 
 **Workspaces Restrictions**
 Based on your tags defined in the policies, you can

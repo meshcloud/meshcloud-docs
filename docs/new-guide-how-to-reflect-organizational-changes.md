@@ -53,7 +53,7 @@ curl --location --request POST 'https://backend-url/api/meshobjectcollections' \
 }'
 ```
 
-2. Import existing workspace owners into the meshObjectCollection
+1. Import existing workspace owners into the meshObjectCollection
 
 Import the existing [meshWorkspaceUserBindings](pathname:///api/index.html#_meshworkspaceuserbinding) for the Workspace Owners into the meshObjectCollection.
 Importing is done by specifying the [meshObjectCollection](pathname:///api/index.html#mesh_object_declarative_import) in the request URL.
@@ -73,7 +73,7 @@ subjects:
   - name: partner-old@meshcloud.io'
 ```
 
-3. Set yourself as workspace owner
+1. Set yourself as workspace owner
 
 ```sh
 # If you skipped steps 1 and 2, replace the first line of the command below with:

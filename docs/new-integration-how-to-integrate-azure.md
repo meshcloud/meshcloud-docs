@@ -225,13 +225,13 @@ When using an [Enterprise Enrollment Account (EA) for Subscription provisioning]
 
 This happens via a PUT request against `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview`.
 
-**Option 1: Use the Try it Button**
+#### Option 1: Use the Try it Button
 
 The Mircosoft [API documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) offers a **Try it** button which you can use to execute the call.
 
 Using the Try it Button is also mentioned in the Mircosoft [role assignment documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
 
-**Option 2: Use a PowerShell Script**
+#### Option 2: Use a PowerShell Script
 
 Replace the parameters in the following PowerShell script and execute it in a cloud shell:
 

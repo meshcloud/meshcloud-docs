@@ -22,8 +22,8 @@ The recommended way to set up AWS as a meshPlatform is via the public terraform 
 
 The meshStack AWS Connector uses a dedicated set of IAM credentials to work with AWS APIs on behalf of meshStack. To create these credentials, create a user in IAM with these specifications:
 
-* User name: `meshfed-service-user`
-* AWS access type: Programmatic access - with an access key
+- User name: `meshfed-service-user`
+- AWS access type: Programmatic access - with an access key
 
 This user should have the following policy attached to assume the respective roles in the management account and in the automation account. Replace the MANAGEMENT_ACCOUNT_ID, AUTOMATION_ACCOUNT_ID and EXTERNAL_ID placeholders accordingly.
 
@@ -61,7 +61,7 @@ Platform engineers should generate a unique and random value for `EXTERNAL_ID`, 
 
 Platform engineers need to securely inject the generated credentials and `EXTERNAL_ID` into the configuration of the AWS Connector.
 
-**Workload Identity Federation**
+### Workload Identity Federation
 
 Instead of using explicit credentials you can also configure identity federation to allow specific identities representing meshStack access to the role assumption policy you created in the previous step.
 
@@ -303,7 +303,7 @@ In order to roll out CloudFormation Stack Instances in the newly provisioned acc
 
 Currently meshStack supports 2 different ways of integrating AWS IAM with meshStack, either via [AWS SSO](#aws-sso) or [meshIdB](#meshidb-deprecated) (deprecated). The AWS SSO integration is the preferred integration as it allows using your company's central IdP to log in to AWS. This simplifies integration with meshStack, gives you more control over the AuthN part and improves UX for end-users when logging in to AWS.
 
-**Option 1: Using AWS SSO (recommended)**
+#### Option 1: Using AWS SSO (recommended)
 
 The integration with AWS SSO basically works like this: AuthN is done via the company's IdP. Additionally users will be synced via AWS SSO Automated Provisioning (SCIM) to AWS SSO. meshStack takes care of AuthZ. That means meshStack will create groups for every project role on a meshTenant in AWS SSO. meshStack will assign the according users to these groups. As a last step, meshStack assigns the created groups to the respective AWS account with configured PermissionSets.
 
@@ -315,7 +315,7 @@ The following configuration options are available in the AWS [Platform Connectio
 
 ![AWS SSO Configuration](assets/platform_maintenance/aws-sso.png)
 
-**Option 2: Using meshIdB (deprecated)**
+#### Option 2: Using meshIdB (deprecated)
 
 As AWS SSO is a rather new AWS feature, meshStack integrated IAM for AWS differently in the past. This AWS IAM integration should not be used
 for new integrations anymore. During replication meshStack configures meshIdB as an IdP within the managed account. Additionally according IAM
@@ -332,8 +332,8 @@ The following configuration options are available in the AWS [Platform Connectio
 
 You can define naming patterns based on the [String Templating](meshstack.replication-configuration.md#string-templating) syntax of meshStack for the following properties:
 
-* Account Email Address: Please make sure to consider that this is limited to 64 characters
-* Account Alias Pattern: The account alias must be unique across all of AWS. Platform engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
+- Account Email Address: Please make sure to consider that this is limited to 64 characters
+- Account Alias Pattern: The account alias must be unique across all of AWS. Platform engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
 
 ### 6. Identifier Configuration
 

@@ -58,10 +58,10 @@ As this has implications for all workspace users, it is recommended to follow th
 }
 ```
 
-5. **Define Policies**
+1. **Define Policies**
    - Create a policy that validates a subset match between the project role tags and the user/group tags.
 
-6. **Test and Review**
+2. **Test and Review**
    - Verify via a project creation and test users for admin (`admin=yes,no`) and for non-admin (`admin=no`) that only intended users/groups can receive admin roles and that policies are enforced as expected.
    - Before ending of the maintenance window ensure that all users have the correct tags applied.
 
