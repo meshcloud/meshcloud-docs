@@ -242,6 +242,10 @@ const sidebars: SidebarsConfig = {
       id: 'new-docs.index',
     },
     {
+      type: 'doc',
+      id: 'new-meshkube',
+    },
+    {
       type: 'category',
       label: 'Concepts',
       items: [
