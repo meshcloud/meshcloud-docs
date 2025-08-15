@@ -6,9 +6,11 @@ title: How to Discover Shadow IT with Unmanaged Tenants
 This guide explains how to use meshStack's unmanaged tenant discovery features to identify and address shadow IT—cloud resources or accounts created outside of official processes.
 
 ## What is Shadow IT?
+
 Shadow IT refers to cloud accounts, projects, or resources that are provisioned without central IT oversight. These unmanaged tenants can introduce security, compliance, and cost risks.
 
 ## How meshStack Helps Discover Shadow IT
+
 meshStack can scan connected platforms for tenants (accounts, subscriptions, projects, namespaces, etc.) that are not yet managed within meshStack. These are called **unmanaged tenants**.
 
 ## Steps to Discover Unmanaged Tenants

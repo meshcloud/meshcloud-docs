@@ -33,6 +33,7 @@ meshStack brings together the project context such as tags and users, the landin
 - The default frequency is set to once per day, but this can be adjusted by contacting support@meshcloud.io.
 
 ## Tenant Status
+
 The tenant status provides insight into the current state of the environment within the platform. It helps identify integration issues or configuration mismatches. The available statuses are:
 
 - **Successful**: The desired state has been applied, and the tenant is synchronized with the platform.

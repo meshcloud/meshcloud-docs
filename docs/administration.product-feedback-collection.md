@@ -40,6 +40,7 @@ You'll see three quick questions about your experience.
 *If your organization uses a custom name for meshStack, you'll see that name in the survey.*
 
 **When does the survey appear?**
+
 - You’re not an Admin Area user.
 - You’ve logged in more than three times in the last 30 days.
 - You haven’t seen the survey in the last 30 days.
@@ -57,6 +58,7 @@ We use [plausible.io](https://plausible.io/data-policy) to collect anonymous usa
 This data is stored securely by meshcloud and never shared externally.
 
 **What do we collect?**
+
 - Satisfaction ratings (e.g., after creating a project)
 - Usage metrics (how often and how you use features)
 
