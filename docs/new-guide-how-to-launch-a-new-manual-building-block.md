@@ -36,6 +36,6 @@ Please be aware that we focus the guide on the critical configuration items for 
 
 ### Guides
 
-- [How to Generate Service Documentation with Copilot](new-guide-how-to-generate-service-documentation.md)
+- [How to Generate Building Block Documentation with Copilot](new-guide-how-to-generate-building-block-documentation.md)
 - [How to Launch a New Terraform Building Block](new-guide-how-to-launch-a-new-terraform-building-block.md)
 - [How to Offer an AWS S3 Bucket via Marketplace](meshstack.building-aws-quickstart-guide.md)

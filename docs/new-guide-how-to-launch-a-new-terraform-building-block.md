@@ -281,11 +281,10 @@ The owner of the Building Block definition can access the logs by switching to â
 
 ### Concepts
 
-- [Building Block](new-concept-buildingblock)
-- [Marketplace](new-concept-marketplace)
+- [Building Block](new-concept-buildingblock.md)
+- [Marketplace](new-concept-marketplace.md)
 
 ### Guides
 
-- [How to Generate Service Documentation](new-guide-how-to-generate-service-documentation)
-- [How to Launch a New Manual Building Block](new-guide-how-to-launch-a-new-manual-building-block)
-- [How to Offer an AWS S3 Bucket via Marketplace](meshstack.building-aws-quickstart-guide.md)
+- [How to Generate Service Documentation](new-guide-how-to-generate-service-documentation.md)
+- [How to Launch a New Manual Building Block](new-guide-how-to-launch-a-new-manual-building-block.md)
