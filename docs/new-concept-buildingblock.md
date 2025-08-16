@@ -100,7 +100,7 @@ For Terraform-based Building Blocks, you can automatically extract Terraform out
 
 ## Pricing
 
-You can set up prices for Building Blocks when ordered via the marketplace. For more information please follow the [How to Setup Prices](how-to-setup-prices.md) guide.
+You can set up prices for Building Blocks when ordered via the marketplace. For more information please follow the [How to Setup Prices](new-guide-how-to-setup-prices.md) guide.
 
 ## Versioning and Rollout
 
@@ -133,13 +133,12 @@ meshStack simplifies credential management by offering preconfigured inputs for 
 
 ### Concepts
 
-- [Platforms](new-concept-platforms.md)
-- [User Permissions](new-concept-user-permissions.md)
+- [Platforms](new-concept-platform.md)
+- [User Permissions](new-concept-user-and-groups.md)
 
 ### Guides
 
-- [How to Generate Building Block Documentation](how-to-generate-building-block-documentation.md)
-- [How to Provide Your Own Platform](how-to-provide-your-own-platform.md)
-- [How to Launch a New Manual Building Block Definition](how-to-launch-a-new-manual-building-block.md)
-- [How to Launch a New Terraform Building Block](how-to-launch-a-new-terraform-building-block.md)
-- [How to Offer an AWS S3 Bucket via Marketplace](meshstack.building-aws-quickstart-guide.md)
+- [How to Generate Building Block Documentation](new-guide-how-to-generate-building-block-documentation.md)
+- [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
+- [How to Launch a New Manual Building Block Definition](new-guide-how-to-launch-a-new-manual-building-block.md)
+- [How to Launch a New Terraform Building Block](new-guide-how-to-launch-a-new-terraform-building-block.md)
