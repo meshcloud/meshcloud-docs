@@ -286,5 +286,5 @@ The owner of the Building Block definition can access the logs by switching to â
 
 ### Guides
 
-- [How to Generate Service Documentation](new-guide-how-to-generate-service-documentation.md)
+- [How to Generate Building Block Documentation](new-guide-how-to-generate-building-block-documentation.md)
 - [How to Launch a New Manual Building Block](new-guide-how-to-launch-a-new-manual-building-block.md)
