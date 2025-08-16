@@ -53,7 +53,7 @@ const sidebars: SidebarsConfig = {
       items: ['faq.projects'],
     },
   ],
-  
+
   meshstack: [
     {
       type: 'category',
@@ -216,7 +216,7 @@ const sidebars: SidebarsConfig = {
         'meshstack.monitoring',
         'meshstack.backup',
         'security-faq',
-        'administration.dns', 
+        'administration.dns',
         'administration.product-feedback-collection', // Product Feedback Collection
       ],
     },
@@ -240,6 +240,10 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'new-docs.index',
+    },
+    {
+      type: 'doc',
+      id: 'new-meshkube',
     },
     {
       type: 'category',
@@ -321,7 +325,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Platform Ecosystem',
           items: [
-            'new-guide-how-to-enable-a-new-platform-team',  
+            'new-guide-how-to-enable-a-new-platform-team',
           ],
         },
         {
