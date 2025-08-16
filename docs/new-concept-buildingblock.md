@@ -100,7 +100,7 @@ For Terraform-based Building Blocks, you can automatically extract Terraform out
 
 ## Pricing
 
-You can set up prices for Building Blocks when ordered via the marketplace. For more information please follow the [How to Setup Prices](new-guide-how-to-setup-prices.md) guide.
+You can set up prices for Building Blocks when ordered via the marketplace. For more information please follow the [How to Setup Prices](new-guide-how-to-set-up-prices.md) guide.
 
 ## Versioning and Rollout
 
@@ -134,7 +134,7 @@ meshStack simplifies credential management by offering preconfigured inputs for 
 ### Concepts
 
 - [Platforms](new-concept-platform.md)
-- [User Permissions](new-concept-user-and-groups.md)
+- [User Permissions](new-concept-users-and-groups.md)
 
 ### Guides
 
