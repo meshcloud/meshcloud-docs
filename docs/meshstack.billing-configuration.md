@@ -1,6 +1,6 @@
 ---
 id: meshstack.billing-configuration
-title: Configuration
+title: Billing Configuration
 ---
 
 ## Chargeback

@@ -1,6 +1,6 @@
 ---
 id: meshstack.identity-provider
-title: Identity Provider
+title: Configuring your Identity Provider
 ---
 
 Partners must be aware of the following requirements and limitations for IdPs serving as identity sources for meshStack.

@@ -53,7 +53,7 @@ const sidebars: SidebarsConfig = {
       items: ['faq.projects'],
     },
   ],
-  
+
   meshstack: [
     {
       type: 'category',
@@ -216,7 +216,7 @@ const sidebars: SidebarsConfig = {
         'meshstack.monitoring',
         'meshstack.backup',
         'security-faq',
-        'administration.dns', 
+        'administration.dns',
         'administration.product-feedback-collection', // Product Feedback Collection
       ],
     },
@@ -321,7 +321,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Platform Ecosystem',
           items: [
-            'new-guide-how-to-enable-a-new-platform-team',  
+            'new-guide-how-to-enable-a-new-platform-team',
           ],
         },
         {
@@ -443,6 +443,23 @@ const sidebars: SidebarsConfig = {
         'security-faq',
         'administration.dns',
         'administration.product-feedback-collection'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Settings',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'meshstack.onboarding',
+        'meshstack.billing-configuration',
+        'meshstack.user-group-provisioning',
+        'meshstack.workspace-group-sync',
+        'meshstack.identity-lookup',
+        'meshstack.identity-provider',
+        'administration.meshstack-settings',
+        'meshstack.customizing',
+        'meshstack.replication-configuration'
       ],
     },
   ],
