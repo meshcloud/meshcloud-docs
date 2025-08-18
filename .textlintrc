@@ -2,10 +2,15 @@
   "filters": {},
   "rules": {
     "no-dead-link": {
-      "checkRelative": true,
+      "checkRelative": false, // these are checked by docusaurus build now
       "ignoreRedirects": true,
-      "retry": 1,
+      "retry": 0,
+      "preferGET": [
+        "https://support.google.com/**",
+        "https://app.storylane.io/**"
+      ],
       "ignore": [
+        "pathname://**", // see https://docusaurus.io/docs/advanced/routing#escaping-from-spa-redirects
         // relative link but fails locally because it's not an .md file
         "/blog",
         "/blog/feed.xml",
@@ -25,8 +30,7 @@
         "https://docs.cloudfoundry.org/api/uaa/version/77.8.0/index.html#get",
         "https://docs.cloudfoundry.org/concepts/roles.html",
         "https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes"
-      ],
-      "ignoreRedirects": true
+      ]
     }
   }
 }
