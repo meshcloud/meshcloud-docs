@@ -431,7 +431,7 @@ const sidebars: SidebarsConfig = {
             'meshstack.meshmarketplace.metering',
             'meshstack.meshmarketplace.profile',
             'meshstack.meshmarketplace.tenant-services',
-            'meshstack.meshmarketplace.broker-tutorial'
+            'new-guide-how-to-implement-osb'
           ],
         },
       ],
