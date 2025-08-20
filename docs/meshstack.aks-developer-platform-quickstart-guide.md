@@ -60,7 +60,7 @@ Follow the following steps to create a GitHub App that will be used to manage th
 
 To make things easy, we will use the [meshStack Hub](https://hub.meshcloud.io) to create the new building block definition.
 
-1. Open the Github Repository Creation Definition in the meshStack hub [here](https://hub.meshcloud.io/definitions/github-repository).
+1. Open the GitHub Repository Creation Definition in the meshStack hub [here](https://hub.meshcloud.io/definitions/github-repository).
 2. Click on “Add to meshStack” and enter your meshStack URL (if not given already).
 3. Continue the flow in meshStack.
     1. Right away you will be asked for a “Type”. Pick “Workspace Building Block” here.
@@ -88,11 +88,11 @@ Make sure you save the `config_tf` output and save it as a file called `config.t
 
 We will again use the [meshStack Hub](https://hub.meshcloud.io) to create the new building block definition.
 
-1. Open the Github Actions Integration with AKS definition in the meshStack hub [here](https://hub.meshcloud.io/definitions/aks-github-connector).
+1. Open the GitHub Actions Integration with AKS definition in the meshStack hub [here](https://hub.meshcloud.io/definitions/aks-github-connector).
 2. Click on “Add to meshStack” and enter your meshStack URL (if not given already).
 3. Continue the flow in meshStack.
     1. Right away you will be asked for a “Type”. Pick “Tenant Building Block” here and select “AKS” as the supported platform.
-    2. Continue until you reach the “Dependencies” page. On this page, select the “Github Repository Creation” building block definition that you created before.
+    2. Continue until you reach the “Dependencies” page. On this page, select the “GitHub Repository Creation” building block definition that you created before.
     3. Continue until you reach the “Inputs” page. On this page you will be forced to fill in the following:
         1. `namespace` - This refers to the AKS namespace. Open this up and set the “Source” to “Platform Tenant ID”.
         2. `github_repo` - This refers to the GitHub repository to connect to. Open this up and set the “Source” to “Parent Building Block Output” and set the corresponding output to “repo_name”.
