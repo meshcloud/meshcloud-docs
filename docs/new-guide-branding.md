@@ -38,7 +38,9 @@ Your organization is launching an Internal Developer Platform (IDP) using meshSt
 
 4. **Set Email Signature**
    - Use the following signature:
-     ```
+
+     
+     ```html
      Best regards,
      The Likvid Developer Platform Team
 
