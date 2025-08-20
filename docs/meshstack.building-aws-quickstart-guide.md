@@ -61,13 +61,13 @@ Before starting, ensure you have the following:
    - Notification user: receive notifications when things require their attention. This is set to your user by default.
    - Support & documentation: you can enter URLs that will be visible to users in the marketplace to request support or read more documentation.
 
-6. **Entering Terraform implementation details**
+6. **Entering OpenTofu implementation details**
 
-   If still on the general page, click “Next” and let’s start filling in all details for running Terraform as part of this building block.
+   If still on the general page, click “Next” and let’s start filling in all details for running OpenTofu as part of this building block.
 
    You will be asked which implementation type to use. Pick “Terraform” here. Additional settings will show up.
 
-   - Enter a desired Terraform version or leave the default value.
+   - Enter a desired OpenTofu version or leave the default value.
 
    > 💡Any versions entered over 1.5.5 will run using [OpenTofu](https://opentofu.org/).  
    > This is an open-source, friendlier alternative of Terraform.
@@ -100,7 +100,7 @@ Before starting, ensure you have the following:
 
    Click “Next” again, and you should see a modal pop-up with imported inputs, authentication, and outputs.
 
-   meshStack read out the Terraform files and automatically generated fitting inputs based on the defined variables, outputs, and providers.
+   meshStack read out the OpenTofu files and automatically generated fitting inputs based on the defined variables, outputs, and providers.
 
    Leave all of them checked and click “Add selected”.
 
