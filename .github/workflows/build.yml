@@ -25,9 +25,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: yarn
           cache-dependency-path: "**/yarn.lock"
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint && yarn build
-      - run: yarn install --frozen-lockfile
+      - name: docs - install
+        run: yarn install --frozen-lockfile
+      - name: docs - build
+        run: yarn lint && yarn build
+      - name: snippets - install
+        run: yarn install --frozen-lockfile
         working-directory: snippets
-      - run: yarn lint && yarn test
+      - name: snippets - test
+        run: yarn lint && yarn test
         working-directory: snippets

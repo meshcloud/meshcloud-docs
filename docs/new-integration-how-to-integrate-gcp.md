@@ -116,7 +116,7 @@ In order to associate created projects with a Billing Account, the replicator ne
 `billing.resourceAssociations.create` permission on the Billing Account. This is best achieved by assigning the
 `meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
-**Option 1: Billing Account owned by a different organization**
+#### Option 1: Billing Account owned by a different organization
 
 In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
 
@@ -130,7 +130,7 @@ The `meshfed-service` user needs to be granted the `meshfed-billing-creator` rol
 
 Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#set-up-the-service-account-for-replication).
 
-**Option 2: Using Different Billing Accounts for Different Google Cloud Projects**
+#### Option 2: Using Different Billing Accounts for Different Google Cloud Projects
 
 By default, meshStack will associate all created Google Cloud projects with the same billing account. If you want to use different
 billing accounts for different projects, you can do so via the following steps:
@@ -212,7 +212,7 @@ Make sure that the `kraken-service` service account has permission on the table 
 Then, enter the BigQuery reference in the GCP meshPlatform configuration in meshStack, which you can find under
 'Metering Configuration' → 'BigQuery Table'.
 
-**Example: multiple billing accounts for the same GCP organization**
+#### Example: multiple billing accounts for the same GCP organization
 
 There can be situations where you want the projects inside a single GCP meshPlatform to be associated with multiple
 billing accounts. One such example is when you have one billing account which has

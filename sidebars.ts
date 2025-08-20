@@ -53,7 +53,7 @@ const sidebars: SidebarsConfig = {
       items: ['faq.projects'],
     },
   ],
-  
+
   meshstack: [
     {
       type: 'category',
@@ -216,7 +216,7 @@ const sidebars: SidebarsConfig = {
         'meshstack.monitoring',
         'meshstack.backup',
         'security-faq',
-        'administration.dns', 
+        'administration.dns',
         'administration.product-feedback-collection', // Product Feedback Collection
       ],
     },
@@ -286,7 +286,10 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-provide-your-own-platform',
             'new-guide-how-to-kickstart-your-IDP',
             'new-guide-how-to-provide-your-own-platform',
-            'new-guide-how-to-manage-tags'
+            'new-guide-how-to-manage-tags',
+            'new-guide-how-to-launch-a-new-manual-building-block',
+            'new-guide-how-to-launch-a-new-terraform-building-block',
+            'meshstack.building-aws-quickstart-guide'
           ],
         },
         {
@@ -321,7 +324,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Platform Ecosystem',
           items: [
-            'new-guide-how-to-enable-a-new-platform-team',  
+            'new-guide-how-to-enable-a-new-platform-team',
           ],
         },
         {

@@ -20,6 +20,7 @@ A service instance is a specific deployed service that you can include in your a
 A service binding is a set of credentials you need to access your service instance, e.g. the connection string to access your database instance. Service bindings can come with an expiration in which case they will be deleted after a set amount of days.
 
 ## Service Plans
+
 In order to provision a service instance for your project you first have to choose the Service Plan that best fits your needs. A service plan will be shown in the details screen of the Marketplace Catalog and it is a certain variant of the service, i.e. it has a certain amount of RAM available or storage, or network bandwidth, etc. So pick the matching plan whose resource coverages best matches your requirements.
 
 Service Broker may have one or more plans each. A service plan captures a variation of a service offering. Taking a MySQL service as an example, an “S” plan could offer 50GB of database storage whereas an “L” plan could offer 500GB.

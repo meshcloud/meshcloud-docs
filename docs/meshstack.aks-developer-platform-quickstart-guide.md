@@ -97,10 +97,10 @@ We will again use the [meshStack Hub](https://hub.meshcloud.io) to create the ne
         1. `namespace` - This refers to the AKS namespace. Open this up and set the “Source” to “Platform Tenant ID”.
         2. `github_repo` - This refers to the GitHub repository to connect to. Open this up and set the “Source” to “Parent Building Block Output” and set the corresponding output to “repo_name”.
         3. `branch` - This is the branch to use for deployments. If not provided, defaults to 'main'. If a custom branch is provided, it will be created if it doesn't exist.
-        3. `GITHUB_APP_ID` - This is the value saved under “Preparation” step 1b from the previous building block definition
-        4. `GITHUB_APP_INSTALLATION_ID` - This is the value saved under “Preparation” step 2b from the previous building block definition
-        5. `GITHUB_APP_PEM_FILE` - This is the value saved under “Preparation” step 3a from the previous building block definition. Take the entire content of the file and paste it in here.
-        6. Create a new input called `config.tf` and set the Source to “Static” and the Type to “File”. Mark the input as encrypted and upload the config.tf file from the preparation step.
+        4. `GITHUB_APP_ID` - This is the value saved under “Preparation” step 1b from the previous building block definition
+        5. `GITHUB_APP_INSTALLATION_ID` - This is the value saved under “Preparation” step 2b from the previous building block definition
+        6. `GITHUB_APP_PEM_FILE` - This is the value saved under “Preparation” step 3a from the previous building block definition. Take the entire content of the file and paste it in here.
+        7. Create a new input called `config.tf` and set the Source to “Static” and the Type to “File”. Mark the input as encrypted and upload the config.tf file from the preparation step.
 4. Finish the flow and create the building block definition.
 
 🎉 The GitHub Actions Connector Building Block Definition is ready!
