@@ -237,6 +237,10 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
+      id: 'new-meshStack',
+    },
+    {
+      type: 'doc',
       id: 'meshkube',
     },
     {
@@ -288,7 +292,8 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-manage-tags',
             'new-guide-how-to-launch-a-new-manual-building-block',
             'new-guide-how-to-launch-a-new-terraform-building-block',
-            'meshstack.building-aws-quickstart-guide'
+            'meshstack.building-aws-quickstart-guide',
+            'new-guide-how-to-branding'
           ],
         },
         {
@@ -333,7 +338,8 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-provide-security-contact',
             'new-guide-how-to-copilot',
             'new-guide-how-to-discover-services',
-            'new-guide-how-to-generate-building-block-documentation'
+            'new-guide-how-to-generate-building-block-documentation',
+            'new-guide-how-to-branding'
           ],
         },
       ],
