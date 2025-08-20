@@ -60,15 +60,15 @@ A Building Block is created to operate on one or several Platforms. This selecti
 
 How often can the same Building Block be allocated to a particular project? Choose "One" for a single assignment, or "Multiple" for more than one.
 
-#### Terraform vs manual
+#### OpenTofu vs manual
 
-The building block definition has two implementation types: Terraform and manual. Using Terraform, the building block can automatically provision the infrastructure resources. This gives engineers and DevOps the ability to use the full power of IaC (Infrastructure as Code) to create self-service products available in the Marketplace.
+The building block definition has two implementation types: OpenTofu and manual. Using OpenTofu, the building block can automatically provision the infrastructure resources. This gives engineers and DevOps the ability to use the full power of IaC (Infrastructure as Code) to create self-service products available in the Marketplace.
 
 Manual implementation is beneficial when the Building Block provider wants to gather end-user information (through inputs) and process it outside of meshStack.
 
 #### Git repository authentication
 
-When the implementation type is configured as Terraform, meshStack offers two methods for retrieving your code from a remote Git repository of your choice:
+When the implementation type is configured as OpenTofu, meshStack offers two methods for retrieving your code from a remote Git repository of your choice:
 
 - HTTPS
 - SSH using deploy keys
@@ -271,7 +271,7 @@ The diagram illustrates the lifecycle of a Building Block definition. It indicat
 
 ## Execution logs
 
-Building Blocks with "Terraform" as the implementation type produce logs when they are added to a project by an end-user. These logs provide details on the resources provisioned or any errors if the execution is unsuccessful. Both Admins and owners of the Building Block definitions can access these logs. As an Admin, you can view them by going to the Admin Area, proceeding to "Marketplace > Building Block overview," and choosing the desired Building Block from the list of executed instances. On the next screen, you will find one or more "Runs," depending on the number of times the user has executed this specific Building Block. By selecting a Run, you can inspect the associated Terraform logs.
+Building Blocks with "OpenTofu" as the implementation type produce logs when they are added to a project by an end-user. These logs provide details on the resources provisioned or any errors if the execution is unsuccessful. Both Admins and owners of the Building Block definitions can access these logs. As an Admin, you can view them by going to the Admin Area, proceeding to "Marketplace > Building Block overview," and choosing the desired Building Block from the list of executed instances. On the next screen, you will find one or more "Runs," depending on the number of times the user has executed this specific Building Block. By selecting a Run, you can inspect the associated OpenTofu logs.
 
 The owner of the Building Block definition can access the logs by switching to “Platform Builder” view and navigating to "Building Blocks > Overview".
 

@@ -6,14 +6,14 @@ title: How to Provide Your Own Platform
 :::note What is this guide about?
 This guide will show you how to offer your own platform to application teams using meshStack and terraform. This enables you to provide platforms in an easy fashion including cost management, lifecycle management, self-service provisioning and enforce a compliant level of security and governance.
 
-Please be aware that you can also integrate your own platforms using other types of building blocks e.g. GitHub action or GitLab CI. This guide focuses on the Terraform implementation as it is the most common way to integrate platforms into meshStack.
+Please be aware that you can also integrate your own platforms using other types of building blocks e.g. GitHub action or GitLab CI. This guide focuses on the OpenTofu implementation as it is the most common way to integrate platforms into meshStack.
 
 :::
 
 On a high level, you need the following and your platform integration is done:
 
 1. Create a platform with its own name and icon.
-2. Create a Building Block that does the automation in the background using Terraform
+2. Create a Building Block that does the automation in the background using OpenTofu
 3. Create a Landing Zone that does the roll out of the Building Block.
 
 ## Prerequisites
@@ -46,7 +46,7 @@ Make sure to configure the following details:
 
 - Supported Platform: select the platform type you created in the previous step.
 - How often assigned: Once
-- Implementation Type: Terraform
+- Implementation Type: OpenTofu
 - OpenTofu Version: enter what version you used to write the OpenTofu
 - Git Repository URL: point this to the Git repository where your Terraform is
 - Git Repository Path: if your Terraform files are under a directory in the repository, enter that path here
