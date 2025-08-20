@@ -14,11 +14,11 @@ Please find below the steps that are required to trigger an external automation 
 
 ### 1. Preparation
 
-At the moment we don't provide a native integration into any CI/CD tooling but we offer a neat way to trigger external systems via Building Blocks. In order to trigger a pipeline you may use the Terraform Building Block template below as a place to start. The module below can be used to trigger Github actions, we call this module "Trigger Module".
+At the moment we don't provide a native integration into any CI/CD tooling but we offer a neat way to trigger external systems via Building Blocks. In order to trigger a pipeline you may use the Terraform Building Block template below as a place to start. The module below can be used to trigger GitHub actions, we call this module "Trigger Module".
 
 The strucutre of the module is as follows:
 
-- [**main.tf**](assets/terraform_examples/pipeline_main.tf): Calls webhooks that are used to trigger Github actions via `terraform apply` and `terraform destroy`
+- [**main.tf**](assets/terraform_examples/pipeline_main.tf): Calls webhooks that are used to trigger GitHub actions via `terraform apply` and `terraform destroy`
 - [**variables.tf**](assets/terraform_examples/pipeline_var.tf): Variables necessary for the integration with GitHub
 
 Host your version of the module in a repository of your choice.
