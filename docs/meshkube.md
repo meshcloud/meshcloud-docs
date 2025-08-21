@@ -1,9 +1,7 @@
 ---
-id: new-meshkube
+id: meshkube
 title: meshKube
 ---
-
-# meshKube
 
 This document provides an overview of meshKube for users interested in how it works under the hood.
 meshKube is designed to give platform teams new to meshStack an out-of-the-box internal developer platform implementation meant for Kubernetes.
