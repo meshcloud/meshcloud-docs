@@ -261,7 +261,8 @@ const sidebars: SidebarsConfig = {
         'new-concept-communication',
         'new-concept-marketplace',
         'new-concept-osb-services',
-        'new-concept-copilot'
+        'new-concept-copilot',
+        'meshstack.identity-federation'
       ],
     },
     {
