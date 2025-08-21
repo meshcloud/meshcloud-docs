@@ -1,6 +1,6 @@
 ---
-id: new-guide-how-to-branding
-title: How to Branding
+id: new-guide-how-to-email-branding
+title: How to Brand Emails sent by meshStack
 ---
 
 > This guide is also available as an [interactive demo](https://app.storylane.io/share/5jjhgbmxckib).
@@ -8,10 +8,6 @@ title: How to Branding
 :::note What Is This Guide About?
 This guide explains how to customize email notifications in meshStack to reflect your organization’s brand identity. Custom branding helps establish trust and recognition with your users.
 :::
-
-## Challenge
-
-Your organization is launching an Internal Developer Platform (IDP) using meshStack. To encourage adoption and maintain a consistent, professional image, the platform team needs all email notifications to reflect the organization’s unique brand identity.
 
 ## Prerequisites
 
@@ -23,22 +19,22 @@ Your organization is launching an Internal Developer Platform (IDP) using meshSt
    - In **meshPanel**, go to **Settings → Appearance → Email**.
 
 2. **Configure Email Identity**
-   - Set **Internal Name** to `Likvid Developer Platform`.  
+   - Set **Internal Name** to a value of your choice, e.g. `Likvid Developer Platform`.  
      _This will appear as the "From" name in emails._
-   - Enable **Prefix internal name to all email subjects**.  
+   - If desired, enable **Prefix internal name to all email subjects**.  
      _All emails will start with “Likvid Developer Platform” for consistency._
-   - Set **Sender Email Address** to `likvid-developer-platform@likvidbank.com`.
-   - Set **Reply-To Email Address** to `likvid-developer-platform@likvidbank.com`.
+   - Set **Sender Email Address** to a value of your choice `likvid-developer-platform@likvidbank.com`.
+   - Set **Reply-To Email Address** to  a value of your choice `likvid-developer-platform@likvidbank.com`.
 
 3. **Apply Brand Visuals**
-   - Set the **Email Header Logo** to:  
-     ![Likvid Logo](https://raw.githubusercontent.com/likvid-bank/likvid-cloudfoundation/1e5d5e9b99c105060d10bc604c0cf8f1aafef414/kit/foundation/meshstack/guides/likvid_logo.png)
-   - Set the **Button Color** to **Likvid Bank Blue** (`#0072C6`).
-   - Set the **Button Text** to `Open Likvid Developer Platform`.
+   - Set the **Email Header Logo** to a logo of your choice. This will be shown at the top of all emails.
+   - Set the **Button Color** to your preferred color **Likvid Bank Blue** (`#0072C6`).
+   - Set the **Button Text** to a call-to-action text of your choice, e.g. `Open Likvid Developer Platform`.
 
 4. **Set Email Signature**
-   - Use the following signature:
-     ```
+   - You can set an e-mail signature, including HTML, that will be added to the bottom of all e-mails. For example:
+
+     ```text
      Best regards,
      The Likvid Developer Platform Team
 

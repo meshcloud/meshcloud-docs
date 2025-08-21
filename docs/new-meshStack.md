@@ -1,6 +1,6 @@
 ---
 id: new-meshStack
-title: "meshStack"
+title: meshStack
 ---
 
 ## We {Platform}, You {Product}
