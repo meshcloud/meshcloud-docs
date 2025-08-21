@@ -1,5 +1,5 @@
 ---
-id: meshstack.meshmarketplace.broker-tutorial
+id: new-guide-how-to-implement-osb
 title: "Tutorial: Implement a Broker"
 ---
 

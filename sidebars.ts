@@ -242,6 +242,10 @@ const sidebars: SidebarsConfig = {
       id: 'new-docs.index',
     },
     {
+      type: 'doc',
+      id: 'meshkube',
+    },
+    {
       type: 'category',
       label: 'Concepts',
       items: [
@@ -427,7 +431,7 @@ const sidebars: SidebarsConfig = {
             'meshstack.meshmarketplace.metering',
             'meshstack.meshmarketplace.profile',
             'meshstack.meshmarketplace.tenant-services',
-            'meshstack.meshmarketplace.broker-tutorial'
+            'new-guide-how-to-implement-osb'
           ],
         },
       ],
