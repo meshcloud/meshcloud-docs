@@ -243,7 +243,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      id: 'new-meshkube',
+      id: 'meshkube',
     },
     {
       type: 'category',
