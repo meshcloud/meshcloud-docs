@@ -293,7 +293,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-launch-a-new-manual-building-block',
             'new-guide-how-to-launch-a-new-terraform-building-block',
             'meshstack.building-aws-quickstart-guide',
-            'new-guide-how-to-branding'
+            'new-guide-how-to-email-branding'
           ],
         },
         {
@@ -339,7 +339,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-copilot',
             'new-guide-how-to-discover-services',
             'new-guide-how-to-generate-building-block-documentation',
-            'new-guide-how-to-branding'
+            'new-guide-how-to-email-branding'
           ],
         },
       ],

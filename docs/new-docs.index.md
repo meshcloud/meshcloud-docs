@@ -1,6 +1,6 @@
 ---
 id: new-docs.index
-title: "Welcome"
+title: Welcome
 ---
 
 Welcome to the meshcloud product documentation! Here you'll find everything you need to understand, use, and get the most out of meshStack and meshKube.
