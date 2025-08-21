@@ -113,8 +113,7 @@ const sidebars: SidebarsConfig = {
         'administration.building-blocks',
         'meshstack.building-blocks.private-runners',
         'meshstack.building-blocks.meshStack-http-backend',
-        'meshstack.building-blocks.permission-delegation-aws',
-        'meshstack.building-pipeline-integration',
+        'meshstack.building-blocks.permission-delegation-aws'
       ],
     },
     {
