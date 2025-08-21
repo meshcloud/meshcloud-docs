@@ -1,6 +1,6 @@
 ---
 id: meshstack.building-blocks.permission-delegation-aws
-title: Permission Delegation on AWS
+title: Building Blocks Permission Delegation on AWS
 ---
 
 Building blocks are often managing resources in tenants that are owned by application teams. Such resource management might require privileged access and needs to be handled with great care.
