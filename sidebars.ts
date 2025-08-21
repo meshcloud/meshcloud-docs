@@ -303,7 +303,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-manage-a-platform',
             'new-guide-how-to-restrict-platform-access',
             'new-guide-how-enforce-resource-quotas',
-            'new-guide-how-to-ensure-compliant-deletion-of-environments',
+            'new-guide-how-to-ensure-compliant-deletion-of-tenants',
             'new-guide-how-to-manage-landing-zones',
             'new-guide-how-to-manage-policies',
           ],
