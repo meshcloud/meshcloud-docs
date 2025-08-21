@@ -354,6 +354,7 @@ const sidebars: SidebarsConfig = {
             'meshstack.aws.metering',
             'meshstack.aws.sso-setup',
             'meshstack.aws.reserved-instance-guide',
+            'meshstack.building-blocks.permission-delegation-aws'
           ],
         },
         {
