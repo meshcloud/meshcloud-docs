@@ -46,12 +46,7 @@ const sidebars: SidebarsConfig = {
         'meshstack.how-to.add-platformservice',
         'meshstack.how-to.copilot'
       ],
-    },
-    {
-      type: 'category',
-      label: 'FAQ',
-      items: ['faq.projects'],
-    },
+    }
   ],
 
   meshstack: [
