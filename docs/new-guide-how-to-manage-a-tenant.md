@@ -110,7 +110,7 @@ If project or tenant ownership changes, update user/group assignments and tags. 
 ## Tenant Deletion Flow
 
 :::note Info
-The behavior for deletion depends on the configuration defined in the landing zone of the tenant's platform. There are multiple options to tailor the deletion process of tenants to your organizational requirements. See [How to Ensure Compliant Deletion of Environments](new-guide-how-to-ensure-compliant-deletion-of-environments.md).
+The behavior for deletion depends on the configuration defined in the landing zone of the tenant's platform. There are multiple options to tailor the deletion process of tenants to your organizational requirements. See [How to Ensure Compliant Deletion of Environments](new-guide-how-to-ensure-compliant-deletion-of-tenants.md).
 :::
 
 ### 1. Deletion Request
@@ -173,4 +173,4 @@ You can filter tenants that were deleted successfully by selecting the status co
 - [How to Restrict Platform Access](new-guide-how-to-restrict-platform-access.md)
 - [How to Protect Admin Roles](new-guide-how-to-protect-admin-roles.md)
 - [How to Enforce Resource Quota](new-guide-how-to-enforce-resource-quotas.md)
-- [How to Ensure Compliant Deletion of Environments](new-guide-how-to-ensure-compliant-deletion-of-environments.md)
+- [How to Ensure Compliant Deletion of Environments](new-guide-how-to-ensure-compliant-deletion-of-tenants.md)
