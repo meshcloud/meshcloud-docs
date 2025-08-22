@@ -11,7 +11,7 @@ The service catalog presents application teams with details, prices, and documen
 
 Below is an example diagram illustrating the marketplace concept:
 
-![Marketplace Concept Diagram](./assets/new_concept/concept_marketplace.png)
+![Marketplace Concept Diagram](/assets/new_concept/concept_marketplace.png)
 
 ## See also
 

@@ -40,7 +40,7 @@ We advise you to choose tag names that work for all platforms you use. This way,
 
 ## Example
 
-![Tags concept diagram](./assets/new_concept/concept_tags.png)
+![Tags concept diagram](/assets/new_concept/concept_tags.png)
 
 ## Related Resources
 

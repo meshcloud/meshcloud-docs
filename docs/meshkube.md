@@ -42,7 +42,7 @@ The key resources managed by the module are:
 * `meshstack_building_block_v2`: This generic resource is used to provision both the GitHub repository and the GitHub Actions connectors for the CI/CD pipeline.
 * `meshstack_project_user_binding`: Automatically grants the user who created the environment administrative access to the newly created projects.
 
-![meshKube](assets/meshkube.png)
+![meshKube](/assets/meshkube.png)
 
 ## Configuration & Outputs
 
