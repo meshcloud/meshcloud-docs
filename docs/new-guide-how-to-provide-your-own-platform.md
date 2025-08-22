@@ -40,7 +40,9 @@ Make sure to:
 
 ### 2. Create a Building Block
 
-Follow [Create a Building Block](new-guide-how-to-manage-buildingblocks.md) to create a new Building Block that will do the automation for your platform.
+Create a new Building Block Definition, for example with Terraform
+([How to Launch a New Terraform Building Block Definition](new-guide-how-to-launch-a-new-terraform-building-block))
+that will do the automation for your platform.
 
 Make sure to configure the following details:
 
