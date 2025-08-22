@@ -26,12 +26,12 @@ Below is a visual example of how workspaces are structured in meshStack:
 
 ### Concepts
 
-- [meshStack Areas](./new-concept-meshstackareas.md)
-- [Workspace Users and Permissions](./new-concept-users-and-groups.md#workspace-users-and-permissions)
+- [meshStack Areas](/new-concept-meshstackareas.md)
+- [Workspace Users and Permissions](/new-concept-users-and-groups.md#workspace-users-and-permissions)
 
 ### Guides
 
-- [How to Manage Workspaces](./new-guide-how-to-manage-a-workspace.md)
-- [How to Onboard your Team to a Workspace](./new-guide-how-to-onboard-your-team.md)
-- [How to Limit Workspace Resources](./new-guide-how-to-limit-workspace-resources.md)
+- [How to Manage Workspaces](/new-guide-how-to-manage-a-workspace.md)
+- [How to Onboard your Team to a Workspace](/new-guide-how-to-onboard-your-team.md)
+- [How to Limit Workspace Resources](/new-guide-how-to-limit-workspace-resources.md)
 

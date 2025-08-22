@@ -61,7 +61,7 @@ All communication between the OSB Services platform and Service Brokers is secur
 
 OSB Services platform supports two different options for authenticating and authorizing users.
 
-- (Enterprise Plans only) use an OIDC client in meshIdB as described in the [OSB dashboard tutorial](meshstack.OSB.dashboard-tutorial.md)
+- (Enterprise Plans only) use an OIDC client in meshIdB
 - replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
 
 If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack

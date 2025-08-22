@@ -120,8 +120,8 @@ There are two ways to expose tags to platforms:
 | `${workspaceIdentifier}`      | The project's workspace identifier                                                                                                                        |
 | `${workspaceName}`            | The projects's workspace name                                                                                                                             |
 | `${projectName}`              | The project display name                                                                                                                                  |
-| `${landingZoneName}`          | The name of the applied [landing zone](meshcloud.landing-zones.md). It contains `no-landingzone` if the tenant does not have a landing zone applied       |
-| `${landingZoneIdentifier}`    | The identifier of the applied [landing zone](meshcloud.landing-zones.md). It contains `no-landingzone` if the tenant does not have a landing zone applied |
+| `${landingZoneName}`          | The name of the applied [landing zone](/new-concept-landingzone). It contains `no-landingzone` if the tenant does not have a landing zone applied       |
+| `${landingZoneIdentifier}`    | The identifier of the applied [landing zone](/new-concept-landingzone). It contains `no-landingzone` if the tenant does not have a landing zone applied |
 | `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the project                                                                                      |
 | `${paymentName}`              | The display name of the payment method that is assigned to the project                                                                                    |
 | `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the project. It contains `none` if no expiration date is set for the payment method         |

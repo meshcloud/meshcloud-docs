@@ -17,7 +17,7 @@ The following Kubernetes distributions are supported and covered on this page:
 
 ## Integration Overview
 
-To enable integration with Kubernetes, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in the [Platform Administration](administration.platforms.md) in meshPanel.
+To enable integration with Kubernetes, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` Kubernetes or AKS in meshPanel.
 
 ## Prerequisites
 
@@ -275,4 +275,4 @@ After a successful replication, users can then fetch their `kubectl` credentials
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-This credential information and some additional configuration around the azure tenant the AKS cluster is running in have to provided in the [Platform Connection Configuration](administration.platforms.md#platform-connection-config).
+This credential information and some additional configuration around the azure tenant the AKS cluster is running in have to provided in the Platform Replication Configuration.

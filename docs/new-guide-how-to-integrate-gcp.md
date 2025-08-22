@@ -1,11 +1,23 @@
 ---
-id: meshstack.how-to.integrate-meshplatform-gcp-manually
-title: How to manually integrate GCP as meshPlatform
+id: new-guide-how-to-integrate-gcp
+title: How to Integrate GCP
 ---
+:::note What is this guide about?
+This guide shows you how to integrate your GCP platform into meshStack. This is a required step to provide GCP projects in self-service, metering and billing, and to manage GCP authorization in meshStack.
+:::
 
-> The recommended way to set up GCP as a meshPlatform is via the public terraform [GCP meshPlatform Module](https://github.com/meshcloud/terraform-gcp-meshplatform). The steps below are not needed if you decide to use it.
+## Prerequisites
 
-## Set up the Service Account for Replication
+- Access to a platform builder
+- Admin access to GCP
+
+## Best Practice Integration
+
+The recommended way to set up GCP as a platform is via the public terraform [GCP platform module](https://github.com/meshcloud/terraform-gcp-meshplatform). The steps below are not needed if you decide to use it.
+
+## Step by Step Guide For Manual Integration
+
+### 1. Set up the Service Account for Replication
 
 meshStack needs a well-defined set of permissions for its automation. meshStack is designed so that it **does not require
 access to workload**. We highly recommend that permissions are configured according to the "least privilege" principle.
@@ -34,17 +46,17 @@ deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
-In order to enable meshStack to delete GCP Projects as part of [tenant deletion](administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
+In order to enable meshStack to delete GCP Projects as part of [tenant deletion](/new-guide-how-to-manage-a-tenant#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
 
 ```text
 resourcemanager.project.delete
 ```
 
-### Configure the Root Project
+### 2. Configure the Root Project
 
 meshStack requires a project in GCP for some of the resources it uses. It is reserved for use by meshstack and platform engineers. For this guide, we’ll call the project `meshstack-root`.
 
-### Enable APIs
+### 3. Enable APIs
 
 Enable the following APIs on the `meshstack-root` project from the API Library
 
@@ -52,7 +64,7 @@ Enable the following APIs on the `meshstack-root` project from the API Library
 - [Cloud Resource Manager API](https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview)
 - [Cloud Billing API](https://console.cloud.google.com/apis/api/cloudbilling.googleapis.com/overview)
 
-### Create meshfed-service Service Account
+### 4. Create meshfed-service Service Account
 
 Create a `meshfed-service` [Service Account](https://cloud.google.com/iam/docs/service-accounts) in the `meshstack-root` project.
 Enable the Service Account for “G Suite Domain-wide Delegation” and note the generated `Client Id`.
@@ -64,11 +76,11 @@ meshfed-service@meshstack-root.iam.gserviceaccount.com
 
 Next, configure either a service account key or workload identity federation for authentication purposes.
 
-#### Service Account Key
+### 5. Service Account Key
 
 Generate and Download a [Service Account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will be used by meshStack.
 
-#### Workload Identity Federation
+### 6. Workload Identity Federation
 
 Setting up [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation) is more involved but allows meshStack to use short lived credentials without explicitly handing over any secrets or requiring manual rotation.
 
@@ -88,7 +100,7 @@ In addition to the permissions required to perform resource management or meteri
 ID tokens must be used when calling cloud functions and authentication via workload identity federation does not automatically create such tokens.
 Add this permissions by assigning the roles `roles/iam.serviceAccountOpenIdTokenCreator` and `roles/iam.serviceAccountTokenCreator` to the the service account.
 
-#### Grant Resource Permissions
+### 7. Grant Resource Permissions
 
 The Service Account will be used by meshStack to perform project replication. Operators thus need to grant it the permissions of the
 `meshfed-service` IAM role on those folders of the [GCP resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
@@ -98,13 +110,13 @@ that make up the [Landing Zones](meshstack.gcp.landing-zones.md) for client proj
 > By setting granular permissions (instead of organization-wide permissions) this can limit the access of meshStack's replicator
 > to only the parts of the resource hierarchy that it needs to actively manage (principle of least privilege).
 
-#### Grant Billing Account Permissions to the Service Account
+### 8. Grant Billing Account Permissions to the Service Account
 
 In order to associate created projects with a Billing Account, the replicator needs to be granted the
 `billing.resourceAssociations.create` permission on the Billing Account. This is best achieved by assigning the
 `meshfed-service` IAM Role to the `meshfed-service` Service Account on the Billing Account in [the Billing Account's permissions](https://cloud.google.com/billing/docs/how-to/billing-access#update-cloud-billing-permissions).
 
-#### Optional: Billing Account owned by a different organization
+#### Option 1: Billing Account owned by a different organization
 
 In order to use a billing account that is owned by a different organization the permissons for `meshfed-service` user need to be adjusted.
 
@@ -118,7 +130,7 @@ The `meshfed-service` user needs to be granted the `meshfed-billing-creator` rol
 
 Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#set-up-the-service-account-for-replication).
 
-#### Optional: Using Different Billing Accounts for Different Google Cloud Projects
+#### Option 2: Using Different Billing Accounts for Different Google Cloud Projects
 
 By default, meshStack will associate all created Google Cloud projects with the same billing account. If you want to use different
 billing accounts for different projects, you can do so via the following steps:
@@ -129,9 +141,7 @@ billing accounts for different projects, you can do so via the following steps:
    billing account ID to the value given inside the tag. If no tag is set on the
    object in meshStack, it will default to the default billing account ID from the platform configuration.
 
-## Set up Cloud Identity
-
-### Authorize the Service Account
+### 9. Authorize the Service Account
 
 In order to perform certain group related administrative tasks the previously created `meshfed-service` service account needs the "Groups Admin" role from the Admin Console (G Suite).
 
@@ -139,7 +149,7 @@ To authorize the Service Account **via the Google Admin Console** navigate to `@
 
 You can alternatively authorize the Service Account **via the Cloud Identity Groups API**. Please find the instructions in for this in the official [Google guide](https://cloud.google.com/identity/docs/how-to/setup#auth-no-dwd).
 
-## Set up the Service Account for Metering
+### 10. Set up the Service Account for Metering
 
 meshStack needs a separate service account to provide metering functionality. Create a new service account `kraken-service` and
 assign it the following [predefined roles](https://cloud.google.com/bigquery/docs/access-control):
@@ -158,7 +168,7 @@ resourcemanager.projects.get
 resourcemanager.projects.list
 ```
 
-### Set up GCP Billing data export
+### 11. Set up GCP Billing data export
 
 Complete the GCP instructions to set up [Cloud Billing data export to BigQuery](https://cloud.google.com/billing/docs/how-to/export-data-bigquery#setup).
 We recommend using the "standard usage cost data" export with meshStack.
@@ -171,7 +181,7 @@ or directly on the dataset itself.
 roles/bigquery.dataViewer
 ```
 
-### Optional: Provide a custom BigQuery table
+### 12. Provide a custom BigQuery table (Optional)
 
 Beyond the default BigQuery Billing Export, meshStack can also support custom BigQuery tables. You might want to apply
 some custom transformations or logic on the data. As long as the view or table is given in the same format as the
@@ -223,7 +233,7 @@ UNION ALL
 
 Configure this view as mentioned in the section above and meshStack will start using this data for cost collection.
 
-### Optional: Filter billable projects from the export
+### 13. Filter billable projects from the export (Optional)
 
 The GCP platform configuration offers an "additional filter" setting. meshStack will include configured filters in the
 `WHERE` clause of its query to read billing data from the export table. This enables scenarios like excluding projects
@@ -235,7 +245,7 @@ The following example excludes all projects nested underneath folder `123456789`
 AND "123456789" IN UNNEST(SPLIT(project.ancestry_number, "/"))
 ```
 
-### Optional: Enable GCP Cloud Carbon Footprint Export
+### 14. Enable GCP Cloud Carbon Footprint Export (Optional)
 
 meshStack metering supports general environmental reports based on GCP Cloud Carbon Footprint data.
 To enable this feature,set up a big query data set containing the carbon footprint export data, see
@@ -253,11 +263,11 @@ Finally configure the table id containing the exported carbon data in the meshPl
 > the transfer config. The user must therefore grant permission to the big query service to access their account.
 > This is a [limitation](https://cloud.google.com/bigquery/docs/use-service-accounts) of the big query data transfer service authorization model.
 
-## Optional: Enable Audit Logs for meshfed-service User
+### 15. Enable Audit Logs for meshfed-service User (Optional)
 
 The actions of the `meshfed-service` User can be monitored via [Audit Logs](https://cloud.google.com/logging/docs/audit/). This allows an in-depth view meshStack activities for GCP project at any moment.
 
-### Enable Audit Logs
+### 16. Enable Audit Logs
 
 > Enabling Audit Logs may incur charges.
 
@@ -274,7 +284,6 @@ The below screen shot show how to set up the Audit Logs for the organization `de
 
 ![GCP Audit Logs](assets/gcp-enable-audit-logs.png)
 
-### Query Audit Logs in Google Cloud Console
+### 17. Query Audit Logs in Google Cloud Console
 
 Please consult [Google docs](https://cloud.google.com/logging/docs/audit#viewing_audit_logs) for options to querying Audit Logs.
-

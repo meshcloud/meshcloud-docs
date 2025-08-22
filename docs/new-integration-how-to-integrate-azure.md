@@ -56,7 +56,7 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 Platform engineers need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
 
 :::tip
-For enhanced security and to limit meshStack's permissions to a specific scope within your Entra tenant, consider using the [Azure integration with Administrative Units](new-integration-how-to-integrate-azure-administrative-units.md). This approach is recommended for organizations with strict security requirements as it reduces the global permissions needed by meshStack.
+For enhanced security and to limit meshStack's permissions to a specific scope within your Entra tenant, consider using the [Azure integration with Administrative Units](new-integration-how-to-integrate-azure-administrative-units). This approach is recommended for organizations with strict security requirements as it reduces the global permissions needed by meshStack.
 ::: 
 
 ### 3. Set Azure RBAC Permissions
@@ -107,7 +107,7 @@ You must grant the meshcloud Service Principal this access to all [Management Gr
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
-In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
+In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](/new-guide-how-to-manage-a-tenant#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
 
 
 ```hcl
@@ -157,7 +157,7 @@ To provide Azure Subscription for your organization's meshProjects, meshcloud su
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement, Microsoft Customer Agreement or a Microsoft Partner Agreement and want to provide a large number of subscriptions in a fully automated fashion.
 
-> Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same [meshPlatform](meshcloud.platforms.md). Please contact our experts for more details.
+> Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same meshPlatform. Please contact our experts for more details.
 
 ### 7. Set up the Enrollment Account
 
@@ -215,7 +215,7 @@ the response is:
 }
 ```
 
-The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account, as it needs to be used as the `enrollmentAccountId` in the [Platform Connection Config](administration.platforms.md#platform-connection-config).
+The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account, as it needs to be used as the `enrollmentAccountId` in the Platform Replicator Config.
 
 #### 8. Grant Enterprise Enrollment Account Permissions
 
@@ -308,7 +308,7 @@ If your organization does not have access to an Enterprise Enrollment, you can a
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish
 to use "Pay-as-you-go" subscriptions or if your organization partners with an [Azure Cloud Solution Provider](https://learn.microsoft.com/en-us/partner-center/azure-plan-lp) to provide your subscriptions.
 
-The meshcloud Azure [replication](meshcloud.tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
+The meshcloud Azure [replication](/new-concept-tenant) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](meshstack.azure.landing-zones.md) configuration
 and removed from the subscription pool.
 

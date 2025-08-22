@@ -1,22 +1,19 @@
 ---
 id: new-docs.index
-title: Welcome
+title: "Welcome"
 ---
 
-Welcome to the meshcloud product documentation! Here you'll find everything you need to understand, use, and get the most out of meshStack and meshKube.
+![Maintenance](./assets/maintenance.png)
 
-This documentation is organized into categories to help you quickly find the information you need:
+## This area is under maintenance
 
-- **Concepts:**  
-  Learn about the central elements to meshStack and meshKube. This section provides foundational knowledge for understanding how the platform works.
+A lot changed throughout the last months and we are working on a new structure to make it easier for you to find the information you need. We are in the process of updating our documentation.
 
-- **Guides:**  
-  Step-by-step instructions and best practices for common tasks, configurations, and workflows. Use these guides to accomplish specific goals or solve common challenges.
+The full extent of updated documentation will be available soon. Thank you for your patience!
 
-- **Integrations:**  
-  Information on how to integrate meshStack and meshKube with platforms and products.
+## The new documentation will provide
 
-- **Operations:**  
-  Here you can find information around how meshStack is operated and secured.
-
-Use the navigation on the left to explore each section.
+- Clear separation of central concepts, guides, integration information and meshStack operation information
+- Will use consistent cross referencing to make it easier to find related information
+- Will provide more guides on how to achieve your goals with meshStack
+- Updated illustrations

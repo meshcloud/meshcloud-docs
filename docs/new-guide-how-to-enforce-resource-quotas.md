@@ -1,5 +1,5 @@
 ---
-id: new-guide-how-enforce-resource-quotas
+id: new-guide-how-to-enforce-resource-quotas
 title: How to Enforce Resource Quotas
 ---
 

@@ -5,7 +5,7 @@ title: Identity Lookup
 
 > The recommended way to set up [user provisioning via SCIM](meshstack.user-group-provisioning.md). The instructions below are not needed if users are provisioned via SCIM.
 
-meshStack allows Workspace Managers to [quickly onboard team members](meshcloud.workspace.md#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
+meshStack allows Workspace Managers to [quickly onboard team members](/new-concept-workspace#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. We call this search process identity lookup.
 
 <!--snippet:mesh.meshfed.web.identity-lookup-->
@@ -128,7 +128,7 @@ let example
 
 With this initial config is present, Partners can set up the following optional settings to customize the way meshStack provisions user accounts from identity lookup.
 
-To provision new meshUsers as [guest users](administration.users.md#guest-users), configure the guest detection.
+To provision new meshUsers as guest users, configure the guest detection.
 
 <!--snippet:mesh.meshfed.identitylookup.azure.guest#type-->
 
