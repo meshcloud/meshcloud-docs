@@ -1,9 +1,10 @@
 ---
 id: new-docs.index
 title: "Welcome"
+slug: /
 ---
 
-![Maintenance](./assets/maintenance.png)
+![Maintenance](/assets/maintenance.png)
 
 ## This area is under maintenance
 

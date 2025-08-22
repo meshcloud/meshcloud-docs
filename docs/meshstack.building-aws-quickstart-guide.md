@@ -52,7 +52,7 @@ Before starting, ensure you have the following:
 
    Logo: You can copy the logo from below or use your own.
 
-   ![Simple Storage Service.png](assets/s3_logo.png)
+   ![Simple Storage Service.png](/assets/s3_logo.png)
 
 5. **Skip over other settings**
 

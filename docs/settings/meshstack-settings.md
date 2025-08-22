@@ -1,5 +1,5 @@
 ---
-id: administration.meshstack-settings
+id: meshstack-settings
 title: meshStack Settings
 ---
 

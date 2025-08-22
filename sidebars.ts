@@ -248,14 +248,14 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'settings/self-service-onboarding',
-        'meshstack.billing-configuration',
-        'meshstack.user-group-provisioning',
-        'meshstack.workspace-group-sync',
-        'meshstack.identity-lookup',
-        'meshstack.identity-provider',
-        'administration.meshstack-settings',
-        'meshstack.customizing',
-        'meshstack.replication-configuration'
+        'settings/billing-configuration',
+        'settings/user-group-provisioning',
+        'settings/workspace-group-sync',
+        'settings/identity-lookup',
+        'settings/identity-provider',
+        'settings/meshstack-settings',
+        'settings/customizing',
+        'settings/replication-configuration'
       ],
     },
   ],

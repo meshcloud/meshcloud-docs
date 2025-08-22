@@ -61,7 +61,7 @@ Depending on the platform, quota limits may be placed on usage such as CPU, memo
 - **Quota Approval**: Platform engineers review and approve these requests based on resource availability via the tenant screen in the platform builder.
 - **Quota Enforcement**: meshStack replicates and enforces these quotas as part of the desired state, ensuring tenants remain within their allocated limits.
 
-![Platform Concept Diagram](./assets/new_concept/concept_platform.png)
+![Platform Concept Diagram](/assets/new_concept/concept_platform.png)
 
 ## Related Resources
 

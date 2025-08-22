@@ -1,5 +1,5 @@
 ---
-id: meshstack.customizing
+id: customizing
 title: Customizing
 ---
 

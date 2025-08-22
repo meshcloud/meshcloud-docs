@@ -208,7 +208,7 @@ euid attributes supported for the particular component or system.
 
 ### Identity Provider
 
-meshStack auto-provisions meshUsers from valid, federated login tokens provided by an [Enterprise Identity Provider](meshstack.identity-provider.md).
+meshStack auto-provisions meshUsers from valid, federated login tokens provided by an [Enterprise Identity Provider](settings/identity-provider).
 In essence, any user attribute that the Identity Provider is capable to provide in a SAML assertion or OIDC token claim can be used as an `euid`.
 However, some identity providers only support a restricted set of user attributes.
 
@@ -218,7 +218,7 @@ However, some identity providers only support a restricted set of user attribute
 | AAD               | `userPrincipalName`, `mailNickName`         |
 | GCP               | `primaryEmail`                              |
 
-For further details, please consult the [Identity Provider configuration reference](meshstack.identity-provider.md).
+For further details, please consult the [Identity Provider configuration reference](settings/identity-provider).
 
 meshStack updates the `euid` of a user with the latest value passed from the IdP on every log in of the user into meshPanel.
 In case platform engineers do not configure an identity lookup (see next section), this allows meshStack to retrieve an `euid` that is not an email from the IdP. However, platform engineers need to be aware that
@@ -243,18 +243,18 @@ This email address can also be used to set a user's `euid`, see the [user onboar
 | AAD                    | email, any user attribute, incl. SchemaExtensions and Custom Attributes |
 | GCP                    | email, any Schema Extension attribute                                   |
 
-For further details, please consult the [Identity Lookup configuration reference](meshstack.identity-lookup.md).
+For further details, please consult the [Identity Lookup configuration reference](settings/identity-lookup).
 
 ### Identity Connector
 
-The [Identity Connector](meshstack.workspace-group-sync.md) can automatically provision meshUsers via the meshObject API.
+The [Identity Connector](settings/workspace-group-sync) can automatically provision meshUsers via the meshObject API.
 As a part of this process, the identity connector can also set the `euid` attribute.
 
 | Identity Connector Source | euid attributes supported                                 |
 | ------------------------- | --------------------------------------------------------- |
 | LDAP                      | every attribute available via LDAP query on a User entity |
 
-If the identity connector is used, see the [Identity Connector](meshstack.workspace-group-sync.md) configuration reference.
+If the identity connector is used, see the [Identity Connector](settings/workspace-group-sync) configuration reference.
 
 ### Platform Configuration
 
@@ -370,7 +370,7 @@ let AzureLookupStrategy =
 
 For the platform listed below user access is given by assigning groups with the apropriate users inside to the platform tenant. The naming of these groups can be customized by setting the `User Group Name Pattern` in the appropriate meshPlatform Configuration. See the image below.
 
-![User Group Name pattern in the meshPlatform config](assets/platform-config-groupname-pattern.png)
+![User Group Name pattern in the meshPlatform config](/assets/platform-config-groupname-pattern.png)
 
 Additionally added group permissions are discouraged, but possible for some platforms. For other platforms additional added permissions are removed during a replication run. This currently is a slight inconsistent behavior that will be unified in the future. Below is a table to see in which platform externally added permissions are kept on their usergroups during project replication.
 

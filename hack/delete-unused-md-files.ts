@@ -61,7 +61,7 @@ let deleted = 0;
 allMdFiles.forEach((filePath) => {
     const relative = path.relative(docsDir, filePath);
     if (!referencedFiles.has(relative) && !filesToIgnore.includes(relative)) {
-        fs.unlinkSync(filePath);
+        fs.unlinkSync(filePath); // Comment this line to avoid actual deletion if you want to do a dry run
         console.log("Deleted:", relative);
         deleted++;
     }

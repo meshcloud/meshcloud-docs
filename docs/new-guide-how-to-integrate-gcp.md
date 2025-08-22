@@ -282,7 +282,7 @@ You may want to check the [official Google instructions](https://cloud.google.co
 
 The below screen shot show how to set up the Audit Logs for the organization `dev.meshcloud.io`
 
-![GCP Audit Logs](assets/gcp-enable-audit-logs.png)
+![GCP Audit Logs](/assets/gcp-enable-audit-logs.png)
 
 ### 17. Query Audit Logs in Google Cloud Console
 

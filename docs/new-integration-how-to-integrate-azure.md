@@ -37,9 +37,9 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 3. Choose a name for example, `meshReplicator`.
 4. Choose "Register an application to integrate with Azure AD".
 
-![Enterprise application registration](assets/app-creation-1.png)
+![Enterprise application registration](/assets/app-creation-1.png)
 5. Choose "Accounts in this organizational directory only, Single tenant".
-![Choose single tenant](assets/app-creation-2.png)
+![Choose single tenant](/assets/app-creation-2.png)
 6. It can take some time to show up in the overview, but then please write down its Object ID (will later correspond to `objectId`) and Application (client) ID (will later correspond to `client-id`).
 7. In the AAD overview now go to **App registrations** (the created app should show up there as well).
 8. Click on the app.
