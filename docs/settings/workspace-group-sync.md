@@ -1,5 +1,5 @@
 ---
-id: meshstack.workspace-group-sync
+id: workspace-group-sync
 title: User & Group LDAP Synchronisation
 ---
 

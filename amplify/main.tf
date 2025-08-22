@@ -117,7 +117,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.replication-configuration"
-    #   target = "TODO needs to be moved. update link"
+    #   target = "settings/replication-configuration"
     # },
     # {
     #   source = "/administration.delete-tenants"
@@ -153,7 +153,7 @@ locals {
     # },
     # {
     #   source = "/administration.meshstack-settings"
-    #   target = "TODO very specific. could maybe make a return as more self-service config"
+    #   target = "/settings/meshstack-settings"
     # },
     # {
     #   source = "/administration.workspace-services"
@@ -169,7 +169,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.customizing"
-    #   target = "todo should also move to meshstack settings"
+    #   target = "/settings/meshstack-customizing"
     # },
     # {
     #   source = "/administration.product-feedback-collection"
@@ -181,11 +181,11 @@ locals {
     # },
     # {
     #   source = "/meshstack.identity-provider"
-    #   target = "todo this one looks good we can use it 1:1 i would say"
+    #   target = "/settings/identity-provider"
     # },
     # {
     #   source = "/meshstack.identity-lookup"
-    #   target = "todo planned to be deprecated. can we ditch it?"
+    #   target = "/settings/identity-lookup"
     # },
     # {
     #   source = "/meshstack.authorization"
@@ -193,11 +193,11 @@ locals {
     # },
     # {
     #   source = "/meshstack.workspace-group-sync"
-    #   target = "todo should be moved"
+    #   target = "/settings/workspace-group-sync"
     # },
     # {
     #   source = "/meshstack.user-group-provisioning"
-    #   target = "todo should be moved"
+    #   target = "/settings/user-group-provisioning"
     # },
     # {
     #   source = "/meshstack.building-blocks.private-runners"

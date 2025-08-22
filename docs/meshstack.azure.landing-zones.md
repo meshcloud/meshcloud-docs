@@ -66,7 +66,7 @@ See [metadata tags](/new-concept-tag) for more information.
 
 When parameters are marked as static in the Azure Panel, they can not be replaced or overwritten during replication. Usually default parameter should not be marked as static in the Azure Blueprint panel because doing so prevents their replacement by meshStack specific variables.
 
-![Static Parameter usage in Azure Blueprint Panel](assets/azure-static-param.png)
+![Static Parameter usage in Azure Blueprint Panel](/assets/azure-static-param.png)
 
 #### Max. Auto Upgrade Blueprint Version
 
@@ -157,7 +157,7 @@ This means that behind the scenes meshStack is fetching a JWT token uniquely sco
 
 In order for meshStack to fetch the right token, it needs to know the unique ID of the Azure Enterprise Application your function belongs to. You can obtain this ID by navigating to your Azure Function App, click on your Cloud Function and then select `Authentication` (you need to upgrade from the 'Classic Authentication Experience' to the latest version in order to get the `Client ID`). In the new view you can directly see the `App (client) ID` which is the ID required for the Landing Zone "Azure Function Scope" parameter.
 
-![Retrieval of the App (client) ID.](assets/azure_function/cloud-function-scope.png)
+![Retrieval of the App (client) ID.](/assets/azure_function/cloud-function-scope.png)
 
 
 #### Required Platform Configuration
@@ -168,11 +168,11 @@ In order to make an Azure Function only accessible via the replicator's Service 
 
 1. Create a SAMI or UAMI for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
 
-    ![System assigned identity](assets/azure_function/system-assigned-identity.png)
+    ![System assigned identity](/assets/azure_function/system-assigned-identity.png)
 
 2. Lock down your function to only allow assigned users in the `Properties` section of the Enterprise Application created for the SAMI or UAMI in step 1.
 
-    ![Assigned users only](assets/azure_function/assigned-users.png)
+    ![Assigned users only](/assets/azure_function/assigned-users.png)
 
 3. Modify the Manifest of the Enterprise Application from step 2. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
 
@@ -191,11 +191,11 @@ In order to make an Azure Function only accessible via the replicator's Service 
     }
     ```
 
-    ![App Role Manifest](assets/azure_function/app-role-manifest.png)
+    ![App Role Manifest](/assets/azure_function/app-role-manifest.png)
 
 4. Now modify the API permissions of the **App Registration** belonging to the **replicator Service Principal**. This will allow meshStack's replicator to invoke the Azure Function. Open the `API permissions` screen and add the newly created `SPP-Access` Application Role. Don't forget to grant admin consent again afterwards.
 
-    ![Assign the Application Role to SP](assets/azure_function/sp-role.png)
+    ![Assign the Application Role to SP](/assets/azure_function/sp-role.png)
 
 5. _Optional_ In case you see an authorization error when the replicator wants to invoke the function try to set `"accessTokenAcceptedVersion" : "2"` in the app registration manifests of the replicator service principal and the app registration manifest of the Azure Function.
 

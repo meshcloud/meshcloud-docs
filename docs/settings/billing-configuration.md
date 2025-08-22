@@ -1,5 +1,5 @@
 ---
-id: meshstack.billing-configuration
+id: billing-configuration
 title: Billing Configuration
 ---
 
@@ -99,15 +99,15 @@ let example2
 
 In meshStack, you have the flexibility to define prices for Platform Services in addition to usage costs from providers. Configuring your internal prices allows you to account for various expenses such as licensing costs or the effort invested in maintaining and enhancing Platform Services. These internal prices will be displayed on the service details page within the Marketplace.
 
-![Marketplace price](assets/marketplace/marketplace-costs.png)
+![Marketplace price](/assets/marketplace/marketplace-costs.png)
 
 For Platforms, you can now establish monthly or daily recurring prices per meshTenant, which will be charged only once when a user adds a Platform Tenant. You can configure prices within meshStack by navigating to the Pricing tab of the Platform Settings. Additionally, prices for Platforms per Landing Zone can be set up by contacting the meshcloud support team, among other pricing options.
 
-![platform pricing](assets/marketplace/price-platform.png)
+![platform pricing](/assets/marketplace/price-platform.png)
 
 For Building Blocks prices can be configured as recurring monthly or daily fees per Building Block instance. To set prices, navigate to the Pricing tab of the Building Block setting or you can set it during Building Block creation.
 
-![bb pricing](assets/marketplace/price-buildingblock.png)
+![bb pricing](/assets/marketplace/price-buildingblock.png)
 
 If you would like to add prices for OSBs, please contact our support team and they will assist you in setting them up.
 

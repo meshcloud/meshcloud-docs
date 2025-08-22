@@ -46,7 +46,7 @@ The tenant status provides insight into the current state of the environment wit
 
 meshStack also enables you to view tenants discovered in integrated platforms that have not yet been added to meshStack. This helps identify unmanaged environments and facilitates their onboarding into meshStack for consistent governance and management.
 
-![Tenant Concept Diagram](assets/new_concept/concept_tenant.png)
+![Tenant Concept Diagram](/assets/new_concept/concept_tenant.png)
 
 ## Related Resources
 

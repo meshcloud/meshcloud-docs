@@ -1,5 +1,5 @@
 ---
-id: meshstack.replication-configuration
+id: replication-configuration
 title: Replication Configuration
 ---
 
