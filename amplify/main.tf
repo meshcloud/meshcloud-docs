@@ -51,6 +51,13 @@ resource "aws_amplify_app" "docs" {
     target = "/<*>" 
   }
 
+  // redirect old RSS feed URL to new URL (changed with Docusaurus v3 upgrade)
+  custom_rule {
+    source = "/blog/feed.xml"
+    status = "301"
+    target = "/blog/rss.xml"
+  }
+
   // some legacy links still use the format /mydocs instead of /mydocs/ 
   // for these lnks fallback to client side routing
   // https://docs.aws.amazon.com/amplify/latest/APIReference/API_CustomRule.html
