@@ -452,8 +452,15 @@ resource "aws_amplify_app" "docs" {
     }
   }
 
-  // some legacy links still use the format /mydocs instead of /mydocs/
-  // for these lnks fallback to client side routing
+  // redirect old RSS feed URL to new URL (changed with Docusaurus v3 upgrade)
+  custom_rule {
+    source = "/blog/feed.xml"
+    status = "301"
+    target = "/blog/rss.xml"
+  }
+
+  // some legacy links still use the format /mydocs instead of /mydocs/ 
+  // for these links fallback to client side routing
   // https://docs.aws.amazon.com/amplify/latest/APIReference/API_CustomRule.html
   // "404-200" means "if the request 404s because the requested file does not exist, return index.html instead as a "rewrite"
   // note that the returned status code is _not_ 200, but still a 404(!). This behavior confuses crawlers but works fine for humans
