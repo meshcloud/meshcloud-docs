@@ -8,7 +8,7 @@ meshStack supports project creation, configuration, access control, quota manage
 
 ## Integration Overview
 
-To enable integration with OpenStack, platform engineers configure one or multiple `Platform`s of `PlatformType` OpenStack in the [Platform Administration](administration.platforms.md) in meshPanel.
+To enable integration with OpenStack, platform engineers configure one or multiple `Platform`s of `PlatformType` OpenStack in meshPanel.
 
 ## Prerequisites
 
@@ -67,4 +67,4 @@ Because OpenStack does only provide the `member` project-level role out of the b
 
 ### Keystone Domains
 
-By default, meshStack will replicate [tenants](meshcloud.tenant.md) as OpenStack projects in the `default` Keystone domain of OpenStack. You can optionally enable meshStack to create dedicated Keystone domains per Workspace.
+By default, meshStack will replicate [tenants](/new-concept-tenant) as OpenStack projects in the `default` Keystone domain of OpenStack. You can optionally enable meshStack to create dedicated Keystone domains per Workspace.
