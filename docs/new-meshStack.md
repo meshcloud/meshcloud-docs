@@ -17,5 +17,3 @@ With meshStack, you:
 
 An **Internal Developer Platform (IDP)** empowers platform engineers by providing a unified framework to build, integrate, and manage the tools and services developers need. With an IDP, platform engineers can standardize workflows, enforce governance, and automate infrastructure provisioning, reducing manual effort and operational overhead. This enables platform teams to deliver secure, scalable, and reusable services faster, while giving developers a seamless self-service experience. Ultimately, an IDP allows platform engineers to focus on delivering value and innovation, rather than maintaining custom scripts or handling repetitive requests.
 :::
-
-![meshStack Logo](./assets/meshStack_Logo.png)

@@ -271,8 +271,6 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Guides',
-      collapsible: true,
-      collapsed: false,
       items: [
         {
           type: 'category',
@@ -293,6 +291,8 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-launch-a-new-manual-building-block',
             'new-guide-how-to-launch-a-new-terraform-building-block',
             'meshstack.building-aws-quickstart-guide',
+            'meshstack.aks-platform-quickstart-guide',
+            'meshstack.aks-developer-platform-quickstart-guide',
             'new-guide-how-to-email-branding'
           ],
         },
