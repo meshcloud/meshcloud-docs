@@ -11,7 +11,7 @@ required APIs (described below) and configuration options available.
 The following Kubernetes distributions are supported and covered on this page:
 
 - **Native Kubernetes** with [Identity Federation](meshstack.identity-federation.md#externally-provisioned-identities) using externally provisioned identities
-- **Azure Kubernetes Services** with user authentication and authorization via AKS AAD integration
+- **Azure Kubernetes Services** with user authentication and authorization via AKS Microsoft Entra ID integration
 
 > meshStack additionally offers [OpenShift integration](meshstack.openshift.index.md). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
 

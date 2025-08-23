@@ -296,11 +296,11 @@ The requirements for the principal on the target tenant is identically with the 
 
 ### 12. meshPanel Configuration
 
-When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source tenant AAD.
+When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source tenant Microsoft Entra ID.
 
-The `Destination AAD ID` must be an ID. Please don't use the domain name variant of it e.g. `*.onmicrosoft.com` but use its UUID form. The principal data in the **Access Configuration** part refers to the target tenant AAD service principal.
+The `Destination AAD ID` must be an ID. Please don't use the domain name variant of it e.g. `*.onmicrosoft.com` but use its UUID form. The principal data in the **Access Configuration** part refers to the target tenant Microsoft Entra ID service principal.
 
-> If the source AAD tenant is the same as the destination AAD tenant, ensure to use an ID and not the domain name variant for the source AAD tenant as well.
+> If the source Microsoft Entra ID tenant is the same as the destination Microsoft Entra ID tenant, ensure to use an ID and not the domain name variant for the source Microsoft Entra ID tenant as well.
 
 ### 13. Use pre-provisioned Subscriptions
 
@@ -320,10 +320,10 @@ To read resource usage, a metering principal is needed. It requires the followin
 
 ### 15. Set up Blueprint
 
-The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
-of the app in the managed AAD Tenant.
+The `Azure Blueprints` service principal id is different in every Microsoft Entra ID Tenant, so we need to find the id
+of the app in the managed Microsoft Entra ID Tenant.
 
-The easiest way to accomplish this is to start an Azure cloud shell in a subscription on the meshcloud AAD Tenant and execute the following command:
+The easiest way to accomplish this is to start an Azure cloud shell in a subscription on the meshcloud Microsoft Entra ID Tenant and execute the following command:
 
 ```powershell
 Get-AzureRmADServicePrincipal -ApplicationId f71766dc-90d9-4b7d-bd9d-4499c4331c3f
@@ -343,14 +343,14 @@ This `Id` needs to be configured in the Azure Platform configuration.
 
 ### 16. B2B User Invitation (Deprecated)
 
-You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform.
-This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central
+You can optionally activate Microsoft Entra ID B2B guest invitations for users missing in the Microsoft Entra ID tenant managed by the meshPlatform.
+This configuration is useful if you have one or more "workload" Microsoft Entra ID tenants for Azure Subscriptions while having a central
 "home tenant" for your organization's user identities that handles O365 and related services.
 
-Before users can access an AAD tenant they've been invited to using Azure B2B, they need to go through Azure's
+Before users can access a Microsoft Entra ID tenant they've been invited to using Azure B2B, they need to go through Azure's
 ["Consent Experience"](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/redemption-experience) and accept the invitation. meshStack supports two different entry points into this process:
 
-- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
+- The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right Microsoft Entra ID tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
 - meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
 
 > B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](meshstack.identity-federation.md#externally-provisioned-identities).
