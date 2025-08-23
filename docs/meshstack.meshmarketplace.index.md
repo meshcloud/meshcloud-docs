@@ -78,9 +78,9 @@ in    λ(Secret : Type)
 The default `permissionReplication` for setting every OSB Services platform is an instance of `MeshIdb`, which
 offers no further configuration options. Note that these platforms do not need to be explicitly configured at this time.
 
-### AAD Permission Replication
+### Microsoft Entra ID Permission Replication
 
-Platforms that want to use AAD group permission replication need to configure an instance of `AzureAd`
+Platforms that want to use Microsoft Entra ID group permission replication need to configure an instance of `AzureAd`
 
 ```dhall
 let InviteB2BUserConfig =
@@ -92,7 +92,7 @@ let InviteB2BUserConfig =
 
 in    λ(Secret : Type)
     → { groupNamePattern :
-          {- A pattern for deriving AAD Group names. Please see details described below -}
+          {- A pattern for deriving Microsoft Entra ID Group names. Please see details described below -}
           Optional Text
       , servicePrincipal :
           {- Either friendly domain name or your tenants GUID -}
@@ -104,13 +104,13 @@ in    λ(Secret : Type)
       , b2bUserInvitation :
           {-
           Optionally configure the replicator to create Azure B2B guest invitations for
-          users missing in the target AAD tenant.
+          users missing in the target Microsoft Entra ID tenant.
           -}
           Optional InviteB2BUserConfig
       , roleMappings :
           {-
           Each mesh project role (specified by key, i.e. user) is mapped to an
-          AAD Group via an alias. This alias is available as a parameter in the
+          Microsoft Entra ID Group via an alias. This alias is available as a parameter in the
           groupNamePattern. Example:
           List { mapKey : Text, mapValue : { alias : Text } }
           -}
@@ -121,13 +121,13 @@ Role mappings must be configured for all [meshProject roles](meshcloud.project.m
 contrast to the [Azure replicator](meshstack.azure.index.md) replication for the OSB Services platform will not create any
 Azure-role assignments.
 
-### AAD Group Name
+### Microsoft Entra ID Group Name
 
 The name of the generated subscriptions can be fully customized. A `printf` format string is used. You can read about all the available options in the official Java documentation about [`String.format`](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax).
 
 For example the default string pattern `%s.%s-%4$s` would generate the group name `workspace.project-role`.
 
-> Operators must be careful to ensure resulting group names are unique for project-role combinations. Groups should also not conflict with existing AAD groups.
+> Operators must be careful to ensure resulting group names are unique for project-role combinations. Groups should also not conflict with existing Microsoft Entra ID groups.
 
 The arguments available here are:
 

@@ -32,7 +32,7 @@ The name of the Blueprint which gets assigned to the tenant. If left empty, mesh
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
-Platform engineers must ensure to create these Management Groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
+Platform engineers must ensure to create these Management Groups in the meshcloud Microsoft Entra ID Tenant before configuring them for use in a meshLanding Zone.
 
 #### Available Blueprint Parameters
 

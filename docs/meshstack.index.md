@@ -47,7 +47,7 @@ The connections are shown in the following matrix table:
 |  Kubernetes   |                     -                     |               Namespace               |            Rolebinding             |                YAML Templates                |
 |   OpenShift   |                     -                     |                Project                |                User                |                YAML Templates                |
 |      AWS      |                     -                     |                Account                |              IAM Role              |      Organization Units / CF StackSets       |
-|     Azure     |                     -                     |             Subscription              |              AAD User              |        Management Groups / Blueprints        |
+|     Azure     |                     -                     |             Subscription              |        Microsoft Entra ID User        |        Management Groups / Blueprints        |
 |      GCP      |                     -                     |                Project                |              GCD User              |           Folders / GDM Templates            |
 
 ## Operations

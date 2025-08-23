@@ -29,19 +29,19 @@ Select `External identity provider`
 
 ![assets/aws_sso_setup/aws_set_identity_source_external.png](assets/aws_sso_setup/aws_set_identity_source_external.png)
 
-Download `AWS SSO SAML metadata` to later use this metadata for configuration in your source IdP (e.g. AAD). Leave this tab open, as you also need to add the IdP SAML metadata later on. But at first we have to get this metadata from the IdP.
+Download `AWS SSO SAML metadata` to later use this metadata for configuration in your source IdP (e.g. Microsoft Entra ID). Leave this tab open, as you also need to add the IdP SAML metadata later on. But at first we have to get this metadata from the IdP.
 
-## Configure AAD as IdP for AWS SSO
+## Configure Microsoft Entra ID as IdP for AWS SSO
 
-This section describes how to set up AWS SSO with Azure Active Directory. Make sure that you have the "Application Administrator" role in Azure assigned to you. Even if you are "Global Administrator", you require additionally this role.
+This section describes how to set up AWS SSO with Microsoft Entra ID. Make sure that you have the "Application Administrator" role in Azure assigned to you. Even if you are "Global Administrator", you require additionally this role.
 
-### Create an Enterprise Registration in AAD
+### Create an Enterprise Registration in Microsoft Entra ID
 
 Go to `Enterprise applications` on Azure, click on `New application` and search for `aws` and choose `AWS Single Sign-on`
 
 ![assets/aws_sso_setup/azure_create_enterprise_application.png](assets/aws_sso_setup/azure_create_enterprise_application.png)
 
-Follow the steps in AAD under Getting Started. Mandatory are only the first 3 steps. Conditional Access and Self service are optional.
+Follow the steps in Microsoft Entra ID under Getting Started. Mandatory are only the first 3 steps. Conditional Access and Self service are optional.
 
 ![assets/aws_sso_setup/aad_getting_started.png](assets/aws_sso_setup/aad_getting_started.png)
 

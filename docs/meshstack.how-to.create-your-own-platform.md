@@ -13,7 +13,7 @@ great experience of tenant creation, permission management & more.
 
 Automated platform integrations have the following requirements:
 
-- There is some kind of platform/tenancy organization model in the cloud platform, just like e.g. Azure has an AAD (platform) and Subscriptions (tenant).
+- There is some kind of platform/tenancy organization model in the cloud platform, just like e.g. Azure has Microsoft Entra ID (platform) and Subscriptions (tenant).
 - The above can be created & automated with Terraform.
 - (optional) Users and groups can be assigned to the tenant via Terraform (this allows you to do permission management as well)
 

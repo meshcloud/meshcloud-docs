@@ -69,11 +69,11 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 2. Select `Send Group Membership as a Claim` rule type.
 3. Usually two groups should be defined via this. They should result in Outgoing claim type `Group` with Outgoing claim values `meshUser` and `meshManager`. A `meshUser` can login to meshcloud and be invited to existing meshWorkspaces. A `meshManager` is allowed to create new `meshWorkspaces`.
 
-### Azure AD (AAD)
+### Microsoft Entra ID
 
-To set up Azure Active Directory for IDP authentication follow these steps:
+To set up Microsoft Entra ID for IDP authentication follow these steps:
 
-1. Create a new non-gallery Enterprise Application in AAD ([Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started)) with display name `meshcloud SSO` or similar.
+1. Create a new non-gallery Enterprise Application in Microsoft Entra ID ([Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started)) with display name `meshcloud SSO` or similar.
 
     ![Register non-gallery Enterprise Application](assets/aad_identity_provider/aad-1.png)
 

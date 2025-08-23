@@ -27,10 +27,10 @@ meshStack uses separate service principals for different tasks based on the best
 
 Depending on the way you choose to setup, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#subscription-provisioning), the usage of an App Registration principle is **mandatory**.
 
-In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
-The Service Principal must be authorized in the scope of this AAD Tenant.
+In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the Microsoft Entra ID Tenant containing your Azure Subscriptions and workloads.
+The Service Principal must be authorized in the scope of this Microsoft Entra ID Tenant.
 
-### 2. Set AAD Level Permissions
+### 2. Set Microsoft Entra ID Level Permissions
 
 1. Under **Azure Active Directory** &rarr; **Enterprise applications**, click on **New application**.
 2. Click on **Create your own application**.
@@ -41,7 +41,7 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 5. Choose "Accounts in this organizational directory only, Single tenant".
 ![Choose single tenant](assets/app-creation-2.png)
 6. It can take some time to show up in the overview, but then please write down its Object ID (will later correspond to `objectId`) and Application (client) ID (will later correspond to `client-id`).
-7. In the AAD overview now go to **App registrations** (the created app should show up there as well).
+7. In the Microsoft Entra ID overview now go to **App registrations** (the created app should show up there as well).
 8. Click on the app.
 9. Add either a client secret or federated credentials.
     - **Client secret**: generate a client secret and note it down as well.
@@ -163,10 +163,10 @@ meshcloud can automatically provision new subscriptions from an Enterprise Enrol
 
 We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
 
-> EA Administrators must be careful to choose an EA Account Owner that is placed in the meshcloud AAD Tenant!
+> EA Administrators must be careful to choose an EA Account Owner that is placed in the meshcloud Microsoft Entra ID Tenant!
 
-Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
-If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
+Subscriptions provisioned through the EA get automatically associated with the Microsoft Entra ID Home-Tenant of the EA Account Owner.
+If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud Microsoft Entra ID Tenant before creating the enrollment account.
 
 For setting up the replicator configuration you need the scope of the enrollment account. Microsoft states this is the ID, however their documentation is inconclusive about this. The recommendation is to use a REST call to [get the Enrollment Account ID/Scope](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to) (it should be executed in the scope of a user who is the owner of this EA account):
 
@@ -273,13 +273,13 @@ Invoke-RestMethod $url -Method 'Get' -Headers $headers | Format-List
 
 Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist.
 
-In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Platform engineers should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty AAD group or the [Blueprint Service Principal](#blueprint-configuration).
+In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Platform engineers should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty Microsoft Entra ID group or the [Blueprint Service Principal](#blueprint-configuration).
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
 ### 9. Use a Customer Agreement
 
-If your company has a Customer Agreement with Microsoft you can also use an automatic REST API in order to create new subscriptions. It is a very similiar process to the [Enterprise Agreement](#set-up-enterprise-agreement-provisioning) variant. The difference is you need two principals, one on the Billing Account tenant that creates the subscription and another one on the target AAD tenant that receives its ownership.
+If your company has a Customer Agreement with Microsoft you can also use an automatic REST API in order to create new subscriptions. It is a very similiar process to the [Enterprise Agreement](#set-up-enterprise-agreement-provisioning) variant. The difference is you need two principals, one on the Billing Account tenant that creates the subscription and another one on the target Microsoft Entra ID tenant that receives its ownership.
 
 ### 10. Create Source Tenant Principal
 
