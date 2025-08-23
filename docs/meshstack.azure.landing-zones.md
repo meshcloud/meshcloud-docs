@@ -32,7 +32,7 @@ The name of the Blueprint which gets assigned to the tenant. If left empty, mesh
 
 Blueprints must reside inside a Management Group. It is assumed it is in the same group as the group where to put the Subscriptions by default. If the Blueprint is located in another group it can be configuered here.
 
-Platform engineers must ensure to create these Management Groups in the meshcloud AAD Tenant before configuring them for use in a meshLanding Zone.
+Platform engineers must ensure to create these Management Groups in the meshcloud Microsoft Entra ID Tenant before configuring them for use in a meshLanding Zone.
 
 #### Available Blueprint Parameters
 
@@ -124,7 +124,7 @@ These options are shared between both Azure Subscription & Azure Resource Group 
 
 ### meshRole to Platform Role Mapping
 
-The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the [AAD group name generation](meshstack.azure.index.md#aad-group-name), this setting is used or not.
+The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the [Microsoft Entra ID group name generation](meshstack.meshmarketplace.index.md#microsoft-entra-id-group-name), this setting is used or not.
 
 The Azure Role Definition is the RBAC ID of the Azure role you want to use. You can either create your own roles or use the [predefined global IDs](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) from Azure.
 
