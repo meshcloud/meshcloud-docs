@@ -76,15 +76,15 @@ in the future and even let you develop your own implementation types for Buildin
   to your customers. It can also be an easy option to evaluate if a need for a new building block definition exists.
   You just create a manual block and observe how many application teams use the definition.
   You can switch the definition to an automated building block in the future.
-- Terraform: this is the option to automate your Building Block. You only need a Terraform module and meshStack will
+- OpenTofu: this is the option to automate your Building Block. You only need an OpenTofu module and meshStack will
   run this configuration everytime a user adds a new Building Block to a meshTenant.
   In a later step you can setup Inputs for your
-  Terraform script. There is also a [section](#developing--deploying-a-terraform-building-block)
+  OpenTofu script. There is also a [section](#developing--deploying-a-terraform-building-block)
   below with further tips for developing Terraform Building Blocks.
 
-If you pick Terraform you have to enter a few further values:
+If you pick OpenTofu you have to enter a few further values:
 
-- Terraform Version: the version your Terraform modules shall be executed with.
+- OpenTofu Version: the version your OpenTofu modules shall be executed with.
 - Git Repository URL: the URL of the Git repository where your Terraform module resides.
 - (Optional) Git Repository Path: the specific directory in the repository where your Terraform module resides.
 - (Optional) Private SSH Key: This is needed and the only option to access private repositories.

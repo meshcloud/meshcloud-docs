@@ -51,7 +51,7 @@ is not usable yet. Let's continue...
    - Supported Platform: select the platform type you created in Step 1.3
    - How often assigned: Once
    - Implementation Type: Terraform
-   - Terraform Version: enter what version you used to write the Terraform
+   - OpenTofu Version: enter what version you used to write the OpenTofu
    - Git Repository URL: point this to the Git repository where your Terraform is
    - Git Repository Path: if your Terraform files are under a directory in the repository, enter that path here
    - Git Commit Hash: if you want, enter a Git commit hash so that meshStack will always use the Terraform files at this commit
