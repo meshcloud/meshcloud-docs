@@ -82,7 +82,7 @@ available to users of the administration area:
 | &nbsp;&nbsp; List [Tags](/concepts/tag)                                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
 | &nbsp;&nbsp; Manage [Tags](/concepts/tag)                                                                 |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
 | Project Management                                                                                           |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
-| &nbsp;&nbsp;[Delete&nbsp;Tenants](/new-guide-how-to-manage-a-tenant#tenant-deletion-flow)                    |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
+| &nbsp;&nbsp;[Delete&nbsp;Tenants](/guides/core/how-to-manage-a-tenant#tenant-deletion-flow)                    |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
 | &nbsp;&nbsp;[Chargeback&nbsp;Statements](/concepts/cost-management#chargeback-statements)                 |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
 | [Platforms](/concepts/platform)                                                                           |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;[Platform&nbsp;Restrictions](/concepts/platform#restricted-platforms)                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
@@ -95,7 +95,7 @@ available to users of the administration area:
 | &nbsp;&nbsp;Create User                                                                                      |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;Delete&nbsp;User                                                                                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;Download&nbsp;User&nbsp;Info                                                                     |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| [API Users](/new-guide-how-to-manage-api-users)                                                              |       &#10003;       |            |                   |             |            |                    |                    |                      |
+| [API Users](/guides/core/how-to-manage-api-users)                                                              |       &#10003;       |            |                   |             |            |                    |                    |                      |
 | [Service&nbsp;Broker](/concepts/osb-services)                                                             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](/concepts/osb-services#approve-service-broker)             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/concepts/building-block)                          | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003; |
@@ -156,9 +156,9 @@ Add platform and landing zone to configuration in the Platform Builder to enable
 
 ### Guides
 
-- [How to Customize Project Roles](new-guide-how-to-customize-project-roles.md)
-- [How to Manage a Project](new-guide-how-to-manage-a-project.md)
-- [How to Manage a Workspace](new-guide-how-to-manage-a-workspace.md)
-- [How to Manage API Users](new-guide-how-to-manage-api-users.md)
-- [How to Manage API Keys](new-guide-how-to-manage-api-keys.md)
-- [How to Manage 4 Eye Principle](new-guide-how-to-manage-4-eye-principle.md)
+- [How to Customize Project Roles](guides/core/how-to-customize-project-roles.md)
+- [How to Manage a Project](guides/core/how-to-manage-a-project.md)
+- [How to Manage a Workspace](guides/core/how-to-manage-a-workspace.md)
+- [How to Manage API Users](guides/core/how-to-manage-api-users.md)
+- [How to Manage API Keys](guides/core/how-to-manage-api-keys.md)
+- [How to Manage 4 Eye Principle](guides/developer-portal/how-to-manage-4-eye-principle.md)

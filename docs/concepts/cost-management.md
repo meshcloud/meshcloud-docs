@@ -41,6 +41,6 @@ Current functionality includes:
 
 ### Guides
 
-- [How to Manage Payment Methods](new-guide-how-to-manage-payment-methods.md)
-- [How to Set Up Prices](new-guide-how-to-set-up-prices.md)
-- [How to Set Up Currency Conversion](new-guide-how-to-set-up-currency-conversion.md)
+- [How to Manage Payment Methods](guides/finops/how-to-manage-payment-methods.md)
+- [How to Set Up Prices](guides/finops/how-to-set-up-prices.md)
+- [How to Set Up Currency Conversion](guides/finops/how-to-set-up-currency-conversion.md)

@@ -34,4 +34,4 @@ Platform engineers need to set up a GCP Organization to be used by meshStack. Pl
 
 ## How to integrate GCP as a meshPlatform into meshStack
 
-This is described in the Guide section under [How to integrate GCP](/new-guide-how-to-integrate-gcp).
+This is described in the Guide section under [How to integrate GCP](/new-integration-how-to-integrate-gcp).

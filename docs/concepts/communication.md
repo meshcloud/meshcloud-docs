@@ -36,5 +36,5 @@ There are two main types of communications in meshStack:
 
 ## Related Resources
 
-- [How to Maintain Security Contacts with meshStack](/new-guide-how-to-provide-security-contact.md)
-- [How to Customize Emails in meshStack](/new-guide-how-to-email-branding.md)
+- [How to Maintain Security Contacts with meshStack](/guides/developer-engagement/how-to-provide-security-contact.md)
+- [How to Customize Emails in meshStack](/guides/developer-engagement/how-to-email-branding.md)

@@ -130,4 +130,4 @@ workspace is the authoritative subject.
 
 ### Guides
 
-- [How to Manage Policies](new-guide-how-to-manage-policies.md)
+- [How to Manage Policies](guides/developer-portal/how-to-manage-policies.md)

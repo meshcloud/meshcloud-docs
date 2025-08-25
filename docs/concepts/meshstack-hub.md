@@ -9,4 +9,4 @@ title: meshStack Hub
 
 ## Related Resources
 
-- [How to Kickstart Your IDP](new-guide-how-to-kickstart-your-IDP.md)
+- [How to Kickstart Your IDP](guides/core/how-to-kickstart-your-IDP.md)
