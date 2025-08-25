@@ -47,7 +47,7 @@ const sidebars: SidebarsConfig = {
         'concepts/marketplace',
         'concepts/osb-services',
         'concepts/copilot',
-        'meshstack.identity-federation'
+        'concepts/identity-and-access-management'
       ],
     },
     {
@@ -135,85 +135,85 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Amazon Web Services',
           items: [
-            'meshstack.aws.index',
-            'new-integration-how-to-integrate-aws',
-            'meshstack.aws.landing-zones',
-            'meshstack.aws.metering',
-            'meshstack.aws.sso-setup',
-            'meshstack.aws.reserved-instance-guide',
-            'meshstack.building-blocks.permission-delegation-aws'
+            'integrations/aws/index',
+            'integrations/aws/how-to-integrate',
+            'integrations/aws/landing-zones',
+            'integrations/aws/metering',
+            'integrations/aws/sso-setup',
+            'integrations/aws/reserved-instance-guide',
+            'integrations/aws/permission-delegation'
           ],
         },
         {
           type: 'category',
           label: 'Microsoft Azure',
           items: [
-            'meshstack.azure.index',
-            'new-integration-how-to-integrate-azure',
-            'new-integration-how-to-integrate-azure-administrative-units',
-            'meshstack.azure.landing-zones',
-            'meshstack.azure.metering',
+            'integrations/azure/index',
+            'integrations/azure/how-to-integrate',
+            'integrations/azure/how-to-integrate-administrative-units',
+            'integrations/azure/landing-zones',
+            'integrations/azure/metering',
           ],
         },
         {
           type: 'category',
           label: 'Google Cloud Platform',
           items: [
-            'meshstack.gcp.index',
-            'new-integration-how-to-integrate-gcp',
-            'meshstack.gcp.landing-zones',
-            'meshstack.gcp.metering',
+            'integrations/gcp/index',
+            'integrations/gcp/how-to-integrate',
+            'integrations/gcp/landing-zones',
+            'integrations/gcp/metering',
           ],
         },
         {
           type: 'category',
           label: 'Cloud Foundry',
           items: [
-            'meshstack.cloudfoundry.index',
-            'meshstack.cloudfoundry.metering',
+            'integrations/cloud-foundry/index',
+            'integrations/cloud-foundry/metering',
           ],
         },
         {
           type: 'category',
           label: 'Kubernetes',
           items: [
-            'meshstack.kubernetes.index',
-            'meshstack.kubernetes.landing-zones',
-            'meshstack.kubernetes.metering',
+            'integrations/kubernetes/index',
+            'integrations/kubernetes/landing-zones',
+            'integrations/kubernetes/metering',
           ],
         },
         {
           type: 'category',
           label: 'GitHub',
           items: [
-            'meshstack.github.pipeline-automation'
+            'integrations/github/github-actions'
           ],
         },
         {
           type: 'category',
           label: 'OpenShift',
           items: [
-            'meshstack.openshift.index',
-            'meshstack.openshift.landing-zones',
-            'meshstack.openshift.metering',
+            'integrations/openshift/index',
+            'integrations/openshift/landing-zones',
+            'integrations/openshift/metering',
           ],
         },
         {
           type: 'category',
           label: 'OpenStack',
           items: [
-            'meshstack.openstack.index',
-            'meshstack.openstack.metering',
+            'integrations/openstack/index',
+            'integrations/openstack/metering',
           ],
         },
         {
           type: 'category',
           label: 'OSB Services',
           items: [
-            'meshstack.meshmarketplace.index',
-            'meshstack.meshmarketplace.metering',
-            'meshstack.meshmarketplace.profile',
-            'meshstack.meshmarketplace.tenant-services',
+            'integrations/osb/index',
+            'integrations/osb/metering',
+            'integrations/osb/api-profile',
+            'integrations/osb/tenant-services',
             'integrations/osb/how-to-implement-osb'
           ],
         },

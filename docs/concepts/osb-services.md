@@ -49,7 +49,7 @@ The OSB Services Platform provides support for global and local services. Servic
 
 ## OSB API Profile
 
-meshcloud implements an extended [OSB API Profile](meshstack.meshmarketplace.profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
+meshcloud implements an extended [OSB API Profile](integrations/osb/api-profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
 
 ## Authentication & Authorization
 
