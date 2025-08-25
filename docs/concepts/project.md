@@ -27,8 +27,8 @@ Below is a visual example of how projects are structured in meshStack:
 
 ### Guides
 
-- [How to Manage a Project](/new-guide-how-to-manage-a-project.md)
-- [How to Customize Project Roles](/new-guide-how-to-customize-project-roles.md)
-- [How to Reflect Organizational Changes](/new-guide-how-to-reflect-organizational-changes.md)
-- [How to Customize Project Roles](/new-guide-how-to-customize-project-roles.md)
-- [How to Manage Payment Methods](/new-guide-how-to-manage-payment-methods.md)
+- [How to Manage a Project](/guides/core/how-to-manage-a-project.md)
+- [How to Customize Project Roles](/guides/core/how-to-customize-project-roles.md)
+- [How to Reflect Organizational Changes](/guides/core/how-to-reflect-organizational-changes.md)
+- [How to Customize Project Roles](/guides/core/how-to-customize-project-roles.md)
+- [How to Manage Payment Methods](/guides/finops/how-to-manage-payment-methods.md)

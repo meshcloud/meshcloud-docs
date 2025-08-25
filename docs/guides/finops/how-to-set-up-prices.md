@@ -1,0 +1,54 @@
+---
+id: how-to-set-up-prices
+title: How to Set Up Prices
+---
+
+:::note What Is This Guide About?
+This guide shows you how to set up internal prices for Platform Services, Building Blocks, and OSBs in meshStack. You'll learn how to configure recurring fees and ensure your chargeback statements reflect your organization's costs.
+:::
+
+## Challenge
+
+Teams offering internal services to other teams need a way to charge for these services. Setting up internal prices allows you to account for costs associated and allow for a fully automated chargeback process.
+
+## Set Prices for Tenant Building Blocks
+
+### Prerequisites
+
+- You have workspace owner or manager permissions and access to the platform builder in meshStack.
+
+### Step by Step Guide
+
+- Go to the **Building Block** settings in the platform builder.
+- Open the **General** tab or set prices during Building Block creation.
+- Enter monthly or daily recurring fees per Building Block instance.
+- Save your changes.
+
+## Set Prices for Tenants
+
+:::note
+Not all platforms support setting prices for tenants.
+:::
+
+## Prerequisites
+
+- You have workspace owner or manager permissions and access to the platform builder in meshStack.
+
+## Step by Step Guide
+
+- Go to the **Platform** settings in the platform builder and select the platform you want to set prices for.
+- Open the **Settings** tab and navigate to the **Pricing** section or set prices during Tenant creation.
+- Enter monthly or daily recurring fees per Tenant instance.
+- Save your changes.
+
+## Related Resources
+
+### Concepts
+
+- [Cost Management](concepts/cost-management.md)
+- [Platform](concepts/platform.md)
+- [Building Blocks](concepts/building-block.md)
+
+### Guides
+
+- [How to Manage Platforms](guides/developer-portal/how-to-manage-a-platform.md)

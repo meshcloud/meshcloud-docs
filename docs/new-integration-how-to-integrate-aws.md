@@ -162,7 +162,7 @@ This `MeshfedServiceRole` should be created in the management account with the f
 }
 ```
 
-In order to enable meshStack to close AWS accounts as part of [tenant deletion](/new-guide-how-to-manage-a-tenant#tenant-deletion-flow), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
+In order to enable meshStack to close AWS accounts as part of [tenant deletion](/guides/core/how-to-manage-a-tenant#tenant-deletion-flow), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
 
 ```json
 {

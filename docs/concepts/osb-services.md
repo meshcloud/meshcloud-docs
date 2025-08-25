@@ -77,5 +77,5 @@ using the [meshObject API](pathname:///api/).
 
 ### Guides
 
-- [How to Manage OSB Services](new-guide-how-to-manage-osb.md)
-- [How to Implement an OSB Service Broker](new-guide-how-to-implement-osb.md)
+- [How to Manage OSB Services](guides/developer-portal/how-to-manage-osb.md)
+- [How to Implement an OSB Service Broker](/integrations/osb/how-to-implement-osb.md)

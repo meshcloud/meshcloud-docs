@@ -57,5 +57,5 @@ Budget alerts notify workspace owners and managers by email when project costs a
 
 ### Guides
 
-- [How to Manage Payment Methods](new-guide-how-to-manage-payment-methods.md)
-- [How to Integrate External Approval Processes](new-guide-how-to-integrate-external-approval-processes.md)
+- [How to Manage Payment Methods](guides/finops/how-to-manage-payment-methods.md)
+- [How to Integrate External Approval Processes](guides/finops/how-to-integrate-external-approval-processes.md)

@@ -30,7 +30,7 @@ meshStack supports various platforms out of the box:
 - **AKS (Azure Kubernetes Service)**
 - **GKS (Google Kubernetes Service)**
 
-Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](new-guide-how-to-provide-your-own-platform.md) guide.
+Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](guides/developer-portal/how-to-provide-your-own-platform.md) guide.
 
 ## Restricted Platforms
 
@@ -76,6 +76,6 @@ Depending on the platform, quota limits may be placed on usage such as CPU, memo
 
 ### Guides
 
-- [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
-- [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
-- [How to Enforce Resource Quota](new-guide-how-to-enforce-resource-quotas.md)
+- [How to Provide Your Own Platform](guides/developer-portal/how-to-provide-your-own-platform.md)
+- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Enforce Resource Quota](guides/developer-portal/how-to-enforce-resource-quotas.md)

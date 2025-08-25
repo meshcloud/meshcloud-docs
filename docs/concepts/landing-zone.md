@@ -42,6 +42,6 @@ Building blocks for a landing zone can be configured as:
 
 ## Guides
 
-- [How to Manage Landing Zones](new-guide-how-to-manage-landing-zones.md)
-- [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
-- [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
+- [How to Manage Landing Zones](guides/developer-portal/how-to-manage-landing-zones.md)
+- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Provide Your Own Platform](guides/developer-portal/how-to-provide-your-own-platform.md)
