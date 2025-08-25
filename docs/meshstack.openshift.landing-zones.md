@@ -3,7 +3,7 @@ id: meshstack.openshift.landing-zones
 title: Landing Zones
 ---
 
-By defining a Landing Zone for OpenShift certain configurations can be enforced during [replication](/new-concept-tenant).
+By defining a Landing Zone for OpenShift certain configurations can be enforced during [replication](/concepts/tenant).
 
 ## Resource Quota
 

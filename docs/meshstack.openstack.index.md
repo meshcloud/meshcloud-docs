@@ -67,4 +67,4 @@ Because OpenStack does only provide the `member` project-level role out of the b
 
 ### Keystone Domains
 
-By default, meshStack will replicate [tenants](/new-concept-tenant) as OpenStack projects in the `default` Keystone domain of OpenStack. You can optionally enable meshStack to create dedicated Keystone domains per Workspace.
+By default, meshStack will replicate [tenants](/concepts/tenant) as OpenStack projects in the `default` Keystone domain of OpenStack. You can optionally enable meshStack to create dedicated Keystone domains per Workspace.

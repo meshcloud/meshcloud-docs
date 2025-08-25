@@ -1,5 +1,5 @@
 ---
-id: new-concept-osb-services
+id: osb-services
 title: OSB Services
 ---
 
@@ -72,8 +72,8 @@ using the [meshObject API](pathname:///api/).
 
 ### Concepts
 
-- [Marketplace](new-concept-marketplace.md)
-- [Building Block Concept](new-concept-buildingblock.md)
+- [Marketplace](concepts/marketplace.md)
+- [Building Block Concept](concepts/building-block.md)
 
 ### Guides
 

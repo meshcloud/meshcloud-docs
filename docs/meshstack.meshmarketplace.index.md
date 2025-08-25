@@ -117,7 +117,7 @@ in    λ(Secret : Type)
       }
 ```
 
-Role mappings must be configured for all [meshProject roles](/new-concept-project#project-roles). Note that in
+Role mappings must be configured for all [meshProject roles](/concepts/project#project-roles). Note that in
 contrast to the [Azure replicator](meshstack.azure.index.md) replication for the OSB Services platform will not create any
 Azure-role assignments.
 

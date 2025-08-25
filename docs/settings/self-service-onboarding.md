@@ -7,7 +7,7 @@ meshStack enables self-service onboarding for your internal customers. Operators
 
 ## Workspace Registration
 
-Multiple options are available to control how [meshWorkspaces](/new-concept-workspace) can sign up to meshStack in
+Multiple options are available to control how [meshWorkspaces](/concepts/workspace) can sign up to meshStack in
 self-service. meshStack can be configured to suit your organization's unique demands for sign up.
 
 <!--snippet:mesh.panel.environment.mesh.registration-->
@@ -51,7 +51,7 @@ Additional remarks and configuration links:
 
 ### Default Quotas
 
-meshStack assigns a default quota to newly registered [meshWorkspaces](/new-concept-workspace) (see section above). Platform engineers can configure this default quota via `meshfed.web.customer.defaultQuota`:
+meshStack assigns a default quota to newly registered [meshWorkspaces](/concepts/workspace) (see section above). Platform engineers can configure this default quota via `meshfed.web.customer.defaultQuota`:
 
 ```dhall
 { {- the number of allowed meshProjects per meshWorkspace -}
@@ -59,7 +59,7 @@ meshStack assigns a default quota to newly registered [meshWorkspaces](/new-conc
 }
 ```
 
-The default only applies to newly registered [meshWorkspaces](/new-concept-workspace). [meshPartners](/new-concept-users-and-groups#admin-area-users-and-permissions) can change the individual quotas for managed meshWorkspaces at any time using the [administration area](/new-concept-workspace#workspace-quota-management).
+The default only applies to newly registered [meshWorkspaces](/concepts/workspace). [meshPartners](/concepts/users-and-groups#admin-area-users-and-permissions) can change the individual quotas for managed meshWorkspaces at any time using the [administration area](/concepts/workspace#workspace-quota-management).
 
 
 ## Workspace User Invitations

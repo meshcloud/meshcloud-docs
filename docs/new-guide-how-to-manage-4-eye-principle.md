@@ -41,4 +41,4 @@ This guide explains how the 4 eye principle handles user binding requests in mes
 
 ### Concepts
 
-- [Users and Groups](new-concept-users-and-groups.md)
+- [Users and Groups](concepts/users-and-groups.md)

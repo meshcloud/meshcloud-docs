@@ -31,8 +31,8 @@ Please be aware that we focus the guide on the critical configuration items for 
 
 ### Concepts
 
-- [Building Block](new-concept-buildingblock.md)
-- [Marketplace](new-concept-marketplace.md)
+- [Building Block](concepts/building-block.md)
+- [Marketplace](concepts/marketplace.md)
 
 ### Guides
 

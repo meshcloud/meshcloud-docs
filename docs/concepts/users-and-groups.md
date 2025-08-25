@@ -1,5 +1,5 @@
 ---
-id: new-concept-users-and-groups
+id: users-and-groups
 title: Users, Groups and Roles
 ---
 
@@ -66,41 +66,41 @@ available to users of the administration area:
 
 |                                                                                                              | Organization Admin        | Organization User     | Platform Engineer | Ops Support | FinOps Manager | Onboarding Support | Compliance Manager | Replication Operator |
 |--------------------------------------------------------------------------------------------------------------| :------------------: | :------------------: | :---------------: |:-----------:| :--------: | :----------------: | :----------------: | :------------------: |
-| [Workspace&nbsp;List](/new-concept-workspace)                                                                |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
+| [Workspace&nbsp;List](/concepts/workspace)                                                                |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
 | &nbsp;&nbsp;Payment&nbsp;Methods&nbsp;List                                                                   |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
 | &nbsp;&nbsp;Manage&nbsp;Payment&nbsp;Methods                                                                 |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| &nbsp;&nbsp;[Project&nbsp;List](/new-concept-project)                                                        |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
+| &nbsp;&nbsp;[Project&nbsp;List](/concepts/project)                                                        |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |  &#10003;  |      &#10003;      |      &#10003;      |         &#10003;     |
 | &nbsp;&nbsp;&nbsp;&nbsp;Manage&nbsp;Quota                                                                    |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;Edit&nbsp;project&nbsp;tags                                                          |       &#10003;       |       &#10003;       |     &#10003;      |             |  &#10003;  |                    |      &#10003;      |                      |
 | &nbsp;&nbsp;List&nbsp;Workspace&nbsp;Users                                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](/new-concept-workspace#access-managed-workspace-accounts)        |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](/new-concept-workspace#send-messages-to-workspace-users)         |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Add&nbsp;yourself](/concepts/workspace#access-managed-workspace-accounts)        |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;[Send&nbsp;message](/concepts/workspace#send-messages-to-workspace-users)         |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;role&nbsp;requests                                                      |       &#10003;       |       &#10003;       |                   |  &#10003;   |            |      &#10003;      |                    |                      |
 | Compliance                                                                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; List [policies](/new-concept-policy)                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; Manage [policies](/new-concept-policy)                                                          |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; List [Tags](/new-concept-tag)                                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
-| &nbsp;&nbsp; Manage [Tags](/new-concept-tag)                                                                 |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; List [policies](/concepts/policy)                                                            |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; Manage [policies](/concepts/policy)                                                          |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; List [Tags](/concepts/tag)                                                                   |       &#10003;       |       &#10003;       |                   |             |            |                    |      &#10003;      |                      |
+| &nbsp;&nbsp; Manage [Tags](/concepts/tag)                                                                 |       &#10003;       |                      |                   |             |            |                    |      &#10003;      |                      |
 | Project Management                                                                                           |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
 | &nbsp;&nbsp;[Delete&nbsp;Tenants](/new-guide-how-to-manage-a-tenant#tenant-deletion-flow)                    |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |      &#10003;      |                    |                      |
-| &nbsp;&nbsp;[Chargeback&nbsp;Statements](/new-concept-cost-management#chargeback-statements)                 |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| [Platforms](/new-concept-platform)                                                                           |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Platform&nbsp;Restrictions](/new-concept-platform#restricted-platforms)                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
-| &nbsp;&nbsp;[Landing&nbsp;Zones](/new-concept-landingzone)                                            |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Usage&nbsp;Reports](/new-concept-cost-management#tenant-usage-reports)                          |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
-| &nbsp;&nbsp;[Tenants](/new-concept-tenant)                                                                   |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |         &#10003;     |
-| &nbsp;&nbsp;View [Unmanaged Tenants](/new-concept-tenant#unmanaged-tenants)                                  |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |         &#10003;     |
-| &nbsp;&nbsp;Assign [Unmanaged Tenants](/new-concept-tenant#unmanaged-tenants#assigning-unmanaged-tenants)    |       &#10003;       |             |           |             |            |                    |                    |             |
+| &nbsp;&nbsp;[Chargeback&nbsp;Statements](/concepts/cost-management#chargeback-statements)                 |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
+| [Platforms](/concepts/platform)                                                                           |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Platform&nbsp;Restrictions](/concepts/platform#restricted-platforms)                         |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |                      |
+| &nbsp;&nbsp;[Landing&nbsp;Zones](/concepts/landing-zone)                                            |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Usage&nbsp;Reports](/concepts/cost-management#tenant-usage-reports)                          |       &#10003;       |       &#10003;       |                   |             |  &#10003;  |                    |                    |                      |
+| &nbsp;&nbsp;[Tenants](/concepts/tenant)                                                                   |       &#10003;       |       &#10003;       |     &#10003;      |  &#10003;   |            |                    |                    |         &#10003;     |
+| &nbsp;&nbsp;View [Unmanaged Tenants](/concepts/tenant#unmanaged-tenants)                                  |       &#10003;       |       &#10003;       |     &#10003;      |             |            |                    |                    |         &#10003;     |
+| &nbsp;&nbsp;Assign [Unmanaged Tenants](/concepts/tenant#unmanaged-tenants#assigning-unmanaged-tenants)    |       &#10003;       |             |           |             |            |                    |                    |             |
 | User&nbsp;List                                                                                               |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;Create User                                                                                      |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;Delete&nbsp;User                                                                                 |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | &nbsp;&nbsp;Download&nbsp;User&nbsp;Info                                                                     |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
 | [API Users](/new-guide-how-to-manage-api-users)                                                              |       &#10003;       |            |                   |             |            |                    |                    |                      |
-| [Service&nbsp;Broker](/new-concept-osb-services)                                                             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](/new-concept-osb-services#approve-service-broker)             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
-| [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/new-concept-buildingblock)                          | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003; |
-| &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/new-concept-buildingblock) | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003;|
-| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/new-concept-buildingblock) | &#10003; | &#10003; | &#10003; |             | | | |
+| [Service&nbsp;Broker](/concepts/osb-services)                                                             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| &nbsp;&nbsp;[Approve&nbsp;Service&nbsp;Broker](/concepts/osb-services#approve-service-broker)             |       &#10003;       |       &#10003;       |                   |             |            |                    |                    |                      |
+| [List Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/concepts/building-block)                          | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003; |
+| &nbsp;&nbsp;&nbsp;[Manage&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/concepts/building-block) | &#10003; | &#10003; | &#10003; |  &#10003;   | | | | &#10003;|
+| &nbsp;&nbsp;&nbsp;[Delete&nbsp;Building&nbsp;Blocks&nbsp;&amp;&nbsp;Definitions](/concepts/building-block) | &#10003; | &#10003; | &#10003; |             | | | |
 
 ## User and Role Bindings
 
@@ -151,8 +151,8 @@ Add platform and landing zone to configuration in the Platform Builder to enable
 
 ### Concepts
 
-- [Workspace](new-concept-workspace.md)
-- [Project](new-concept-project.md)
+- [Workspace](concepts/workspace.md)
+- [Project](concepts/project.md)
 
 ### Guides
 

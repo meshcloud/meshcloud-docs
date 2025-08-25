@@ -59,9 +59,9 @@ This guide walks you through adding your application or platform team members to
 
 ### Concepts
 
-- [Workspace](/new-concept-workspace.md)
-- [Projects](/new-concept-project.md)
-- [Workspace Users and Permissions](/new-concept-users-and-groups.md#workspace-users-and-permissions)
+- [Workspace](/concepts/workspace.md)
+- [Projects](/concepts/project.md)
+- [Workspace Users and Permissions](/concepts/users-and-groups.md#workspace-users-and-permissions)
 
 ### Guides
 

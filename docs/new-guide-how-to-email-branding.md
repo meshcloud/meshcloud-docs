@@ -47,4 +47,4 @@ This guide explains how to customize email notifications in meshStack to reflect
 
 ## Related Resources
 
-- [Communications](new-concept-communication.md)
+- [Communications](concepts/communication.md)

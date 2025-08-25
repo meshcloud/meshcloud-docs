@@ -1,5 +1,5 @@
 ---
-id: new-concept-marketplace
+id: marketplace
 title: Marketplace
 ---
 
@@ -15,8 +15,8 @@ Below is an example diagram illustrating the marketplace concept:
 
 ## See also
 
-- [Building Block Concept](/new-concept-buildingblock.md)
+- [Building Block Concept](/concepts/building-block.md)
 - [How to Manage a Building Block Definition](/new-guide-how-to-manage-a-building-block-definition.md)
-- [meshStack Hub](/new-concept-meshstack-hub.md)
-- [meshStack Marketplace Documentation](/new-concept-marketplace)
+- [meshStack Hub](/concepts/meshstack-hub.md)
+- [meshStack Marketplace Documentation](/concepts/marketplace)
 

@@ -69,8 +69,8 @@ As this has implications for all workspace users, it is recommended to follow th
 
 ### Concepts
 
-- [Project](new-concept-project.md)
-- [Users and Groups](new-concept-users-and-groups.md)
+- [Project](concepts/project.md)
+- [Users and Groups](concepts/users-and-groups.md)
 
 ### Guides
 
