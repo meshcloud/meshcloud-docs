@@ -1,5 +1,5 @@
 ---
-id: new-concept-tenant
+id: tenant
 title: Tenant
 ---
 
@@ -52,8 +52,8 @@ meshStack also enables you to view tenants discovered in integrated platforms th
 
 ### Concepts
 
-- [Platform](new-concept-platform.md)
-- [Project](new-concept-project.md)
+- [Platform](concepts/platform.md)
+- [Project](concepts/project.md)
 
 ### Guides
 

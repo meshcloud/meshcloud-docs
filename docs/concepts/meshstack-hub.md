@@ -1,5 +1,5 @@
 ---
-id: new-concept-meshstack-hub
+id: meshstack-hub
 title: meshStack Hub
 ---
 

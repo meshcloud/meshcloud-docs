@@ -38,4 +38,4 @@ Use Copilot’s “Get help” button for context-aware suggestions and faster w
 
 ### Concepts
 
-- [Copilot](new-concept-copilot.md)
+- [Copilot](concepts/copilot.md)

@@ -1,5 +1,5 @@
 ---
-id: new-concept-buildingblock
+id: building-block
 title: Building Block
 ---
 
@@ -133,8 +133,8 @@ meshStack simplifies credential management by offering preconfigured inputs for 
 
 ### Concepts
 
-- [Platforms](new-concept-platform.md)
-- [User Permissions](new-concept-users-and-groups.md)
+- [Platforms](concepts/platform.md)
+- [User Permissions](concepts/users-and-groups.md)
 
 ### Guides
 

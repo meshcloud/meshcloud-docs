@@ -83,9 +83,9 @@ Application teams will now be able to see the new platform in the marketplace an
 
 ### Concepts
 
-- [Platform](new-concept-platform.md)
-- [Building Block](new-concept-buildingblock.md)
-- [Landing Zone](new-concept-landingzone.md)
+- [Platform](concepts/platform.md)
+- [Building Block](concepts/building-block.md)
+- [Landing Zone](concepts/landing-zone.md)
 
 ### Guides
 

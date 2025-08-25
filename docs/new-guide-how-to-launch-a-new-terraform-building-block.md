@@ -301,8 +301,8 @@ The owner of the Building Block definition can access the logs by switching to â
 
 ### Concepts
 
-- [Building Block](new-concept-buildingblock.md)
-- [Marketplace](new-concept-marketplace.md)
+- [Building Block](concepts/building-block.md)
+- [Marketplace](concepts/marketplace.md)
 
 ### Guides
 

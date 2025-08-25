@@ -162,9 +162,9 @@ You can filter tenants that were deleted successfully by selecting the status co
 
 ### Concepts
 
-- [Tenant](new-concept-tenant.md)
-- [Landing Zone](new-concept-landingzone.md)
-- [Platform](new-concept-platform.md)
+- [Tenant](concepts/tenant.md)
+- [Landing Zone](concepts/landing-zone.md)
+- [Platform](concepts/platform.md)
 
 ### Guides
 

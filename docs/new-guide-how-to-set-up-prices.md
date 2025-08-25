@@ -45,9 +45,9 @@ Not all platforms support setting prices for tenants.
 
 ### Concepts
 
-- [Cost Management](new-concept-cost-management.md)
-- [Platform](new-concept-platform.md)
-- [Building Blocks](new-concept-buildingblock.md)
+- [Cost Management](concepts/cost-management.md)
+- [Platform](concepts/platform.md)
+- [Building Blocks](concepts/building-block.md)
 
 ### Guides
 

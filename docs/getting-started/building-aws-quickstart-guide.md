@@ -12,7 +12,7 @@ quickly set up your first meshStack building block and deploy AWS resources usin
 
 By the end of this guide, you will have achieved:
 
-1. Creating a [building block definition](/new-concept-buildingblock) that deploys an AWS S3 Bucket using Terraform.
+1. Creating a [building block definition](/concepts/building-block) that deploys an AWS S3 Bucket using Terraform.
 2. Deployed & tested the building block.
 3. Publishing the building block on the marketplace.
 
@@ -95,7 +95,7 @@ Before starting, ensure you have the following:
 
    You will land on the “Dependencies” page.
 
-   > meshStack can work with [dependencies between building blocks](/new-concept-buildingblock#dependencies).
+   > meshStack can work with [dependencies between building blocks](/concepts/building-block#dependencies).
    > We will skip this in this quickstart guide.
 
    Click “Next” again, and you should see a modal pop-up with imported inputs, authentication, and outputs.

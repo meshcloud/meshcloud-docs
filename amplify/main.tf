@@ -21,15 +21,15 @@ locals {
     # },
     # {
     #   source = "/meshcloud.workspace"
-    #   target = "/new-concept-workspace"
+    #   target = "/concepts/workspace"
     # },
     # {
     #   source = "/meshcloud.project"
-    #   target = "/new-concept-project"
+    #   target = "/concepts/project"
     # },
     # {
     #   source = "/meshcloud.tenant"
-    #   target = "/new-concept-tenant"
+    #   target = "/concepts/tenant"
     # },
     # {
     #   source = "/meshcloud.tenant-quota"
@@ -37,7 +37,7 @@ locals {
     # },
     # {
     #   source = "/meshcloud.landing-zones"
-    #   target = "/new-concept-landingzone"
+    #   target = "/concepts/landing-zone"
     # },
     # {
     #   source = "/meshcloud.profile"
@@ -45,11 +45,11 @@ locals {
     # },
     # {
     #   source = "/meshcloud.platforms"
-    #   target = "/new-concept-platform"
+    #   target = "/concepts/platform"
     # },
     # {
     #   source = "/meshcloud.cost-management"
-    #   target = "/new-concept-cost-management"
+    #   target = "/concepts/cost-management"
     # },
     # {
     #   source = "/meshcloud.chargeback-v2"
@@ -57,31 +57,31 @@ locals {
     # },
     # {
     #   source = "/meshcloud.payment-methods"
-    #   target = "new-concept-payment-methods"
+    #   target = "concepts/payment-methods"
     # },
     # {
     #   source = "/meshcloud.budget-alerts"
-    #   target = "/new-concept-payment-methods/#budget-alerts"
+    #   target = "/concepts/payment-methods/#budget-alerts"
     # },
     # {
     #   source = "/meshcloud.metadata-tags"
-    #   target = "/new-concept-tag"
+    #   target = "/concepts/tag"
     # },
     # {
     #   source = "/meshcloud.policies"
-    #   target = "/new-concept-policy"
+    #   target = "/concepts/policy"
     # },
     # {
     #   source = "/marketplace.index"
-    #   target = "/new-concept-marketplace"
+    #   target = "/concepts/marketplace"
     # },
     # {
     #   source = "/marketplace.platform-builder"
-    #   target = "/new-concept-meshstackareas"
+    #   target = "/concepts/meshstack-areas"
     # },
     # {
     #   source = "/marketplace.service-instances"
-    #   target = "/new-concept-osb-services/"
+    #   target = "/concepts/osb-services/"
     # },
     # {
     #   source = "/meshstack.how-to.create-project"
@@ -97,7 +97,7 @@ locals {
     # },
     # {
     #   source = "/administration.index"
-    #   target = "/new-concept-users-and-groups/#admin-area-users-and-permissions"
+    #   target = "/concepts/users-and-groups/#admin-area-users-and-permissions"
     # },
     # {
     #   source = "/meshstack.onboarding"
@@ -105,15 +105,15 @@ locals {
     # },
     # {
     #   source = "/administration.workspaces"
-    #   target = "/new-concept-workspace"
+    #   target = "/concepts/workspace"
     # },
     # {
     #   source = "/administration.projects"
-    #   target = "/new-concept-project"
+    #   target = "/concepts/project"
     # },
     # {
     #   source = "/administration.tenants"
-    #   target = "/new-concept-tenant"
+    #   target = "/concepts/tenant"
     # },
     # {
     #   source = "/meshstack.replication-configuration"
@@ -125,31 +125,31 @@ locals {
     # },
     # {
     #   source = "/administration.users"
-    #   target = "/new-concept-users-and-groups"
+    #   target = "/concepts/users-and-groups"
     # },
     # {
     #   source = "/administration.platforms"
-    #   target = "/new-concept-platform"
+    #   target = "/concepts/platform"
     # },
     # {
     #   source = "/administration.landing-zones"
-    #   target = "/new-concept-landingzone"
+    #   target = "/concepts/landing-zone"
     # },
     # {
     #   source = "/administration.building-blocks"
-    #   target = "/new-concept-buildingblock"
+    #   target = "/concepts/building-block"
     # },
     # {
     #   source = "/administration.service-brokers"
-    #   target = "/new-concept-osb-services"
+    #   target = "/concepts/osb-services"
     # },
     # {
     #   source = "/administration.policies"
-    #   target = "/new-concept-policy"
+    #   target = "/concepts/policy"
     # },
     # {
     #   source = "/administration.unmanaged-tenants"
-    #   target = "/new-concept-tenant/#unmanaged-tenants"
+    #   target = "/concepts/tenant/#unmanaged-tenants"
     # },
     # {
     #   source = "/administration.meshstack-settings"
@@ -161,7 +161,7 @@ locals {
     # },
     # {
     #   source = "/administration.apiusers"
-    #   target = "/new-concept-users-and-groups/#api-users"
+    #   target = "/concepts/users-and-groups/#api-users"
     # },
     # {
     #   source = "/administration.dns"
@@ -217,7 +217,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.billing"
-    #   target = "/new-concept-cost-management/"
+    #   target = "/concepts/cost-management/"
     # },
     # {
     #   source = "/meshstack.billing-configuration"
@@ -363,7 +363,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.how-to.integrate-meshplatform"
-    #   target = "/new-concept-platform"
+    #   target = "/concepts/platform"
     # },
     # {
     #   source = "/meshstack.how-to.integrate-meshplatform-aws-manually"
@@ -383,11 +383,11 @@ locals {
     # },
     # {
     #   source = "/meshstack.how-to.manage-partner-level-permissions"
-    #   target = "/new-concept-users-and-groups/#admin-area-users-and-permissions"
+    #   target = "/concepts/users-and-groups/#admin-area-users-and-permissions"
     # },
     # {
     #   source = "/meshstack.how-to-API-keys"
-    #   target = "/new-concept-users-and-groups/#api-keys"
+    #   target = "/concepts/users-and-groups/#api-keys"
     # },
     # {
     #   source = "/meshstack.how-to.get-started-building-blocks"

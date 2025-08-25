@@ -1,5 +1,5 @@
 ---
-id: new-concept-platform
+id: platform
 title: Platform
 ---
 
@@ -67,12 +67,12 @@ Depending on the platform, quota limits may be placed on usage such as CPU, memo
 
 ### Concepts
 
-- [Building Blocks](new-concept-buildingblock.md)
-- [Tenant](new-concept-tenant.md)
-- [Platform Builder](new-concept-meshstackareas.md#platform-builder)
-- [Platform Location](new-concept-platform-location.md)
-- [Landing Zone](new-concept-landingzone.md)
-- [meshHub](new-concept-meshstack-hub.md)
+- [Building Blocks](concepts/building-block.md)
+- [Tenant](concepts/tenant.md)
+- [Platform Builder](concepts/meshstack-areas.md#platform-builder)
+- [Platform Location](concepts/platform-location.md)
+- [Landing Zone](concepts/landing-zone.md)
+- [meshHub](concepts/meshstack-hub.md)
 
 ### Guides
 

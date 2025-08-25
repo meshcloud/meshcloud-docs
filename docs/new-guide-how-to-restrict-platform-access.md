@@ -28,8 +28,8 @@ You may have provider or business platforms that should only be accessed by cert
 
 ### Concepts
 
-- [Platform](new-concept-platform.md)
-- [Workspace](new-concept-workspace.md)
+- [Platform](concepts/platform.md)
+- [Workspace](concepts/workspace.md)
 
 ### Guides
 

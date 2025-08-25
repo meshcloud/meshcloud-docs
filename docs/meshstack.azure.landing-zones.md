@@ -3,9 +3,9 @@ id: meshstack.azure.landing-zones
 title: Landing Zones
 ---
 
-In Azure, a [Landing Zone](/new-concept-landingzone) is defined via a Management Group the Subscription for the project will be assigned to. Policies can be applied to these Management Groups. Optionally a Blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the Subscription and additional specific policies can be defined. A Blueprint can be configured to decline users to change or delete the resources and policies created by the Blueprint.
+In Azure, a [Landing Zone](/concepts/landing-zone) is defined via a Management Group the Subscription for the project will be assigned to. Policies can be applied to these Management Groups. Optionally a Blueprint can also be defined. Via an Azure Blueprint default resources can be deployed to the Subscription and additional specific policies can be defined. A Blueprint can be configured to decline users to change or delete the resources and policies created by the Blueprint.
 
-Platform engineers can define and configure [Landing Zone](/new-concept-landingzone) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
+Platform engineers can define and configure [Landing Zone](/concepts/landing-zone) in the `Administration` section. If a user configures a meshProject to use an Azure meshPlatform, the user must pick from one of the available Landing Zones available. This Landing Zone defines platform specific configuration that is automatically applied and reconciled by the meshStack replicator.
 
 The next section describe the individual building blocks that platform engineers can configure in an Azure Landing Zone.
 
@@ -15,9 +15,9 @@ The following description targets the regular Azure Subscription based integrati
 
 ### Management Group Assignment
 
-All newly created [meshProjects](/new-concept-project) get their corresponding Subscription assigned to this [Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
+All newly created [meshProjects](/concepts/project) get their corresponding Subscription assigned to this [Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview). **Please use the Management Group ID** (not its name), when setting it up in the Landing Zone. When the name is used, the group can not be found during the replication process.
 
-> Management Groups used in different Azure [Landing Zones](/new-concept-landingzone) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
+> Management Groups used in different Azure [Landing Zones](/concepts/landing-zone) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
 
 ### Blueprint Assignment
 
@@ -43,7 +43,7 @@ The following parameter can be used in the Blueprint:
 | workspaceIdentifier | Workspace Identifier                                                                       |
 | projectIdentifier  | The project identifier                                                                    |
 | SubscriptionId     | The ID of the Azure Subscription associated with this meshProject                         |
-| tagCostCenter      | Example for a  [metadata tags](/new-concept-tag) named `costCenter`           |
+| tagCostCenter      | Example for a  [metadata tags](/concepts/tag) named `costCenter`           |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or workspace tags can also be used in the Blueprints.
 The following modifications are applied to metadata tag keys by meshstack before making them available as parameters:
@@ -52,7 +52,7 @@ The following modifications are applied to metadata tag keys by meshstack before
 - First letter of metadata tag key is capitalized
 
 In the example, the value of the tag `costCenter` will be made available via the key `tagCostCenter`.
-See [metadata tags](/new-concept-tag) for more information.
+See [metadata tags](/concepts/tag) for more information.
 
 > If you are planning on converting any of the Blueprint parameters into Azure tags, please be aware of the limits and requirements
 > that Azure has [described in their docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations).
@@ -72,7 +72,7 @@ When parameters are marked as static in the Azure Panel, they can not be replace
 
 Blueprints are versioned in Azure and can be managed via the Azure Portal. To avoid the accidental assignment of new (and possibly faulty) Blueprints, platform engineers can configure the `Max. Auto Upgrade Blueprint Version` field. If you enter a version identifier here which corresponds to a existing Blueprint version in the Azure portal:
 
-- Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](/new-concept-tenant)
+- Existing projects with this Landing Zone will get their Blueprint updated to this version on the next [replication](/concepts/tenant)
 - Newly created projects will get the latest Blueprint version assigned (possibly higher then the version configured here)
 
 #### Managed Identity

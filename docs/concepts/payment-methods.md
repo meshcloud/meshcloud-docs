@@ -1,5 +1,5 @@
 ---
-id: new-concept-payment-methods
+id: payment-methods
 title: Payment Methods
 ---
 
@@ -50,10 +50,10 @@ Budget alerts notify workspace owners and managers by email when project costs a
 
 ### Concepts
 
-- [Project](new-concept-project.md)
-- [Workspace](new-concept-workspace.md)
-- [Cost Management](new-concept-cost-management.md)
-- [Tags](new-concept-tag.md)
+- [Project](concepts/project.md)
+- [Workspace](concepts/workspace.md)
+- [Cost Management](concepts/cost-management.md)
+- [Tags](concepts/tag.md)
 
 ### Guides
 

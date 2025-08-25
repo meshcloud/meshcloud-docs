@@ -1,5 +1,5 @@
 ---
-id: new-concept-tag
+id: tag
 title: Tag
 ---
 
@@ -46,10 +46,10 @@ We advise you to choose tag names that work for all platforms you use. This way,
 
 ### Concepts
 
-- [Tenant](new-concept-tenant.md)
-- [Project](new-concept-project.md)
-- [Platform](new-concept-platform.md)
-- [Workspace](new-concept-workspace.md)
+- [Tenant](concepts/tenant.md)
+- [Project](concepts/project.md)
+- [Platform](concepts/platform.md)
+- [Workspace](concepts/workspace.md)
 
 ### Guides
 

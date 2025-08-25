@@ -111,10 +111,10 @@ Now the substitute payment method will automatically be active for the project w
 
 ### Concepts
 
-- [Payment Method](new-concept-payment-methods.md)
-- [Tags](new-concept-tag.md)
-- [Workspace](new-concept-workspace.md)
-- [Project](new-concept-project.md)
+- [Payment Method](concepts/payment-methods.md)
+- [Tags](concepts/tag.md)
+- [Workspace](concepts/workspace.md)
+- [Project](concepts/project.md)
 
 ### Guides
 

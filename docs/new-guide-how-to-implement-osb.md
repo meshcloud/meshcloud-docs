@@ -90,8 +90,8 @@ Check out the [OSB API Compliant Service Brokers](https://www.openservicebrokera
 
 ### Concepts
 
-- [OSB Services](new-concept-osb-services.md)
-- [Marketplace](new-concept-marketplace.md)
+- [OSB Services](concepts/osb-services.md)
+- [Marketplace](concepts/marketplace.md)
 
 ### Guides
 

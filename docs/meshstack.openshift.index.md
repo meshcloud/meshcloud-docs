@@ -305,7 +305,7 @@ For example if you plan to use custom roles named `my-custom-view` and `my-custo
 
 ### Tagging Configuration
 
-Openshift supports meshStack's powerful multi-cloud [tagging system](/new-concept-tag).
+Openshift supports meshStack's powerful multi-cloud [tagging system](/concepts/tag).
 To enable the Openshift integration to automatically replicate tags from meshStack into the cloud platform, a label prefix must be defined in the OpenShift configuration.
 It can be found in the meshPanel in the Administration Area. Go to "meshPlatforms" on the left, click on an OpenShift platform and go to "Settings" -> "Config".
 The Label Prefix can be found under the "Replication Configuration" header.

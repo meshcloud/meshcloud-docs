@@ -3,8 +3,8 @@ id: meshstack.azure.index
 title: Integration
 ---
 
-meshStack can automatically provision Azure Subscriptions or Resource Groups as Tenants for [meshProjects](/new-concept-project) and configure them according to your organiziations policies
-using [Landing Zones](/new-concept-landingzone).
+meshStack can automatically provision Azure Subscriptions or Resource Groups as Tenants for [meshProjects](/concepts/project) and configure them according to your organiziations policies
+using [Landing Zones](/concepts/landing-zone).
 
 ## Integration Overview
 
@@ -18,7 +18,7 @@ In order to plan and execute a successful integration of Azure using meshcloud, 
 ## Azure Active Directory Integration
 
 All subscriptions in Azure must be associated with exactly one AAD Tenant storing role and permission assignments. Azure uses this AAD Tenant to evaluate permissions on all resources contained in that subscription. meshcloud manages roles and assignments
-by automatically replicating [meshProject Role Assignments](/new-concept-project) to this AAD Tenant.
+by automatically replicating [meshProject Role Assignments](/concepts/project) to this AAD Tenant.
 
 However, a key decision in any Azure integration is how your organization wants to provision user identities in this AAD Tenant. For best practices on setting up your AAD, check out our [Cloud Foundation](https://cloudfoundation.meshcloud.io/maturity-model/iam/federated-identity-and-authentication.html#azure-active-directory) website for typical implementations.
 
@@ -30,7 +30,7 @@ However, a key decision in any Azure integration is how your organization wants 
 
 All users who need access to the Azure Portal should be synced in the AAD managed by meshcloud.
 
-> meshcloud will issue a [replication](/new-concept-tenant) warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
+> meshcloud will issue a [replication](/concepts/tenant) warning for projects that have role assignments that cannot be replicated because a user identity could not be found on the home tenant.
 
 #### External User Ids (euid)
 

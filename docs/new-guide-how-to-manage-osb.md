@@ -111,8 +111,8 @@ When a user publishes a service broker, an admin needs to approve it before its 
 
 ### Concepts
 
-- [Marketplace](new-concept-marketplace.md)
-- [OSB Services](new-concept-osb-services.md)
+- [Marketplace](concepts/marketplace.md)
+- [OSB Services](concepts/osb-services.md)
 
 ### Guides
 

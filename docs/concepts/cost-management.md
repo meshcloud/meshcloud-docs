@@ -1,5 +1,5 @@
 ---
-id: new-concept-cost-management
+id: cost-management
 title: Cost Management
 ---
 
@@ -37,7 +37,7 @@ Current functionality includes:
 
 ### Concepts
 
-- [Payment Methods](new-concept-payment-methods.md)
+- [Payment Methods](concepts/payment-methods.md)
 
 ### Guides
 
