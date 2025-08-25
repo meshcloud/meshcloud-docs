@@ -21,7 +21,7 @@ Here is a mapping of the term "tenant" across different platforms:
 | CloudFoundry            | Space                    |
 
 :::info 💡Note
-If you provide your own platform, you can define the tenant equivalent via the modular building blocks in the landing zone. See [How to Provide Your Own Platform Guide](new-guide-how-to-provide-your-own-platform.md).
+If you provide your own platform, you can define the tenant equivalent via the modular building blocks in the landing zone. See [How to Provide Your Own Platform Guide](guides/developer-portal/how-to-provide-your-own-platform.md).
 :::
 
 ## Desired State of a Tenant
@@ -57,7 +57,7 @@ meshStack also enables you to view tenants discovered in integrated platforms th
 
 ### Guides
 
-- [How to Manage a Tenant](new-guide-how-to-manage-a-tenant.md)
-- [How to Manage a Platform](new-guide-how-to-manage-a-platform.md)
-- [How to Provide Your Own Platform](new-guide-how-to-provide-your-own-platform.md)
-- [How to Enforce Resource Quotas in a Tenant](new-guide-how-to-enforce-resource-quotas.md)
+- [How to Manage a Tenant](guides/core/how-to-manage-a-tenant.md)
+- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Provide Your Own Platform](guides/developer-portal/how-to-provide-your-own-platform.md)
+- [How to Enforce Resource Quotas in a Tenant](guides/developer-portal/how-to-enforce-resource-quotas.md)

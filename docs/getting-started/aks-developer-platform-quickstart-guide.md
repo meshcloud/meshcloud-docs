@@ -441,4 +441,4 @@ variable "github_username" {
 
 ## What’s Next?
 
-- [Publish all building blocks](/new-guide-how-to-launch-a-new-terraform-building-block/#publish-building-block-definition) so anyone in the organization can use it and provision namespaces in self-service.
+- [Publish all building blocks](/guides/core/how-to-launch-a-new-terraform-building-block/#publish-building-block-definition) so anyone in the organization can use it and provision namespaces in self-service.

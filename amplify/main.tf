@@ -85,11 +85,11 @@ locals {
     # },
     # {
     #   source = "/meshstack.how-to.create-project"
-    #   target = "/new-guide-how-to-manage-a-project"
+    #   target = "/guides/core/how-to-manage-a-project"
     # },
     # {
     #   source = "/meshstack.how-to.onboard-team-to-project"
-    #   target = "/new-guide-how-to-manage-a-project/#project-user-management-as-an-application-team"
+    #   target = "/guides/core/how-to-manage-a-project/#project-user-management-as-an-application-team"
     # },
     # {
     #   source = "/meshstack.index"
@@ -157,7 +157,7 @@ locals {
     # },
     # {
     #   source = "/administration.workspace-services"
-    #   target = "/new-guide-how-to-enable-a-new-platform-team"
+    #   target = "/guides/platform-ecosystem/how-to-enable-a-new-platform-team"
     # },
     # {
     #   source = "/administration.apiusers"
@@ -189,7 +189,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.authorization"
-    #   target = "/new-guide-how-to-manage-4-eye-principle"
+    #   target = "/guides/developer-portal/how-to-manage-4-eye-principle"
     # },
     # {
     #   source = "/meshstack.workspace-group-sync"
@@ -375,11 +375,11 @@ locals {
     # },
     # {
     #   source = "/meshstack.how-to.integrate-meshplatform-gcp-manually"
-    #   target = "/new-guide-how-to-integrate-gcp/"
+    #   target = "/new-integration-how-to-integrate-gcp/"
     # },
     # {
     #   source = "/meshstack.how-to.create-your-own-platform"
-    #   target = "/new-guide-how-to-provide-your-own-platform/"
+    #   target = "/guides/developer-portal/how-to-provide-your-own-platform/"
     # },
     # {
     #   source = "/meshstack.how-to.manage-partner-level-permissions"

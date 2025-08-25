@@ -53,4 +53,4 @@ We advise you to choose tag names that work for all platforms you use. This way,
 
 ### Guides
 
-- [How to Manage Tags](new-guide-how-to-manage-tags.md)
+- [How to Manage Tags](guides/core/how-to-manage-tags.md)

@@ -9,7 +9,7 @@ meshStack also periodically collects the currently active projects in order to a
 
 ## Configuration
 
-[Connection information](/new-guide-how-to-integrate-gcp#10-set-up-the-service-account-for-metering) and metering behavior can be configured via the Platform Metering Configuration.
+[Connection information](/new-integration-how-to-integrate-gcp#10-set-up-the-service-account-for-metering) and metering behavior can be configured via the Platform Metering Configuration.
 
 ## Billing Data Import
 

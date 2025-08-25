@@ -20,4 +20,4 @@ The location concept is especially useful for grouping private cloud platforms t
 
 ### Guides
 
-- [How to Manage Platforms](new-guide-how-to-manage-a-platform.md)
+- [How to Manage Platforms](guides/developer-portal/how-to-manage-a-platform.md)
