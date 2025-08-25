@@ -6,11 +6,11 @@ const sidebars: SidebarsConfig = {
   docs: [
     {
       type: 'doc',
-      id: 'new-docs.index',
+      id: 'index',
     },
     {
       type: 'doc',
-      id: 'new-meshStack',
+      id: 'meshStack',
     },
     {
       type: 'doc',
@@ -20,9 +20,9 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Getting Started',
       items: [
-        'meshstack.building-aws-quickstart-guide',
-        'meshstack.aks-platform-quickstart-guide',
-        'meshstack.aks-developer-platform-quickstart-guide',
+        'getting-started/building-aws-quickstart-guide',
+        'getting-started/aks-platform-quickstart-guide',
+        'getting-started/aks-developer-platform-quickstart-guide',
       ]
     },
     {
@@ -74,7 +74,7 @@ const sidebars: SidebarsConfig = {
             'new-guide-how-to-manage-a-building-block-definition',
             'new-guide-how-to-launch-a-new-manual-building-block',
             'new-guide-how-to-launch-a-new-terraform-building-block',
-            'meshstack.building-aws-quickstart-guide',
+            'getting-started/building-aws-quickstart-guide',
             'meshstack.aks-platform-quickstart-guide',
             'meshstack.aks-developer-platform-quickstart-guide',
             'new-guide-how-to-email-branding',
