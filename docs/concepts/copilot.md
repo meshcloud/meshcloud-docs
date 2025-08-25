@@ -48,7 +48,7 @@ When using meshStack Copilot, please keep in mind:
 
 ### Which AI model providers do you use for Copilot?
 
-meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official subprocessor list in the [Security FAQ](security-faq.md).
+meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official subprocessor list in the [Security FAQ](operations/security-faq.md).
 
 We're curious to hear if you’d like to see “bring your own model” (or API key) support so you can use meshStack Copilot with models under your own contract.
 
@@ -96,7 +96,7 @@ All conversations with meshStack Copilot, including all data provided to the mod
 ### Concepts
 
 - [Copilot](concepts/copilot.md)
-- [Security FAQ](security-faq.md)
+- [Security FAQ](operations/security-faq.md)
 
 ### Guides
 

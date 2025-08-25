@@ -3,7 +3,7 @@ id: index
 title: Integration
 ---
 
-meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](meshstack.kubernetes.index.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
+meshStack supports management of RedHat OpenShift platforms. OpenShift has a [Kubernetes](integrations/kubernetes/index.md) core and provides additional services. It is available in both Open Source flavors (OKD) as well as enterprise offerings by RedHat.
 
 meshStack supports project creation, configuration, access control, quota management and billing for OpenShift.
 

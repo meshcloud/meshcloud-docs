@@ -225,14 +225,14 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
-        'meshstack.managed-service',
-        'meshstack.email',
-        'meshstack.logging',
-        'meshstack.monitoring',
-        'meshstack.backup',
-        'security-faq',
-        'administration.dns',
-        'administration.product-feedback-collection'
+        'operations/managed-service',
+        'operations/email',
+        'operations/logging',
+        'operations/monitoring',
+        'operations/backup',
+        'operations/security-faq',
+        'operations/dns',
+        'operations/product-feedback-collection'
       ],
     },
     {

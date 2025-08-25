@@ -46,5 +46,5 @@ importing a Building Block Definition from the meshStack Hub and making it avail
 
 ### Concepts
 
-- [Building Block](concepts/building-block.md)
+- [Building Block](../../concepts/building-block.md)
 - [meshStack Hub](https://hub.meshcloud.io)

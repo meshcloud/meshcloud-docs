@@ -1,5 +1,5 @@
 ---
-id: meshstack.backup
+id: backup
 title: Backup
 ---
 
