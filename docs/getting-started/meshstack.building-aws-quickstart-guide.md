@@ -1,5 +1,5 @@
 ---
-id: meshstack.building-aws-quickstart-guide
+id: building-aws-quickstart-guide
 title: AWS S3 Quickstart Guide
 ---
 
