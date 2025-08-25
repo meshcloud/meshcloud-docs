@@ -1,5 +1,5 @@
 ---
-id: meshstack.logging
+id: logging
 title: Logging & Auditing
 ---
 

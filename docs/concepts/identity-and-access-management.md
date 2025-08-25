@@ -126,7 +126,7 @@ meshStack supports the following identity provisioning strategies:
 | :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
 |   OpenStack   |                               -                                |   [supported](integrations/openstack/index.md#access-control-integration)   |
 | Cloud Foundry |                                                                | [supported](integrations/cloud-foundry/index.md#uaa-configuration)             |
-|  Kubernetes   |                               -                                |  [supported](meshstack.kubernetes.index.md#access-control-integration)   |
+|  Kubernetes   |                               -                                |  [supported](integrations/kubernetes/index.md#access-control-integration)   |
 |   OpenShift   |                               -                                |       [supported](integrations/openshift/index.md#idp-configuration)        |
 |      AWS      |   [deprecated](/integrations/aws/index.md#meshidb-deprecated)    |               [supported](/integrations/aws/index.md#aws-sso)                |
 |     Azure     |   [AAD B2B](integrations/azure/index#workload-aad-tenant)    | [supported](integrations/azure/index#azure-active-directory-integration) |

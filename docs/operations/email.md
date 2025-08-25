@@ -1,5 +1,5 @@
 ---
-id: meshstack.email
+id: email
 title: Email
 ---
  

@@ -355,7 +355,7 @@ locals {
     # },
     # {
     #   source = "/security-faq"
-    #   target = "/security-faq"
+    #   target = "/operations/security-faq"
     # },
     # {
     #   source = "/copilot-preview"
