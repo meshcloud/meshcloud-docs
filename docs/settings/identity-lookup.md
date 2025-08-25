@@ -67,7 +67,7 @@ let IdentityProvider =
 
 ### Azure Active Directory
 
-In order to use Azure lookup functionality, you must create a new service principal as described in [Azure Service Principal Setup](meshstack.azure.index.md#service-principal-setup) and assign the following required permissions as an **application permission**:
+In order to use Azure lookup functionality, you must create a new service principal as described in [Azure Service Principal Setup](integrations/azure/index#service-principal-setup) and assign the following required permissions as an **application permission**:
 
 - `User.Read.All`
 

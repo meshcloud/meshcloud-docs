@@ -176,7 +176,7 @@ locals {
     #   target = "todo stays the same. maybe changes with new folder structure"
     # },
     # {
-    #   source = "/meshstack.identity-federation"
+    #   source = "/mtodoeshstack.identity-federation"
     #   target = "todo ask someone smart like JR to move this"
     # },
     # {
@@ -226,7 +226,7 @@ locals {
     # NOTE: the following below were all 1:1 migrated by copy-paste.
     # {
     #   source = "/meshstack.aws.index"
-    #   target = ""
+    #   target = "/integrations/aws/index"
     # },
     # {
     #   source = "/meshstack.aws.landing-zones"
@@ -242,7 +242,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.aws.reserved-instance-guide"
-    #   target = ""
+    #   target = "/integrations/aws/reserved-instance-guide"
     # },
     # {
     #   source = "/meshstack.azure.index"
@@ -375,7 +375,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.how-to.integrate-meshplatform-gcp-manually"
-    #   target = "/new-integration-how-to-integrate-gcp/"
+    #   target = "/integrations/gcp/how-to-integrate/"
     # },
     # {
     #   source = "/meshstack.how-to.create-your-own-platform"
