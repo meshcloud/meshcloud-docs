@@ -1,5 +1,5 @@
 ---
-id: new-docs.index
+id: index
 title: "Welcome"
 slug: /
 ---

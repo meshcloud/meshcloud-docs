@@ -93,7 +93,7 @@ locals {
     # },
     # {
     #   source = "/meshstack.index"
-    #   target = "/new-docs.index"
+    #   target = "/"
     # },
     # {
     #   source = "/administration.index"
