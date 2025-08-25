@@ -59,7 +59,7 @@ To summarize, in this reference architecture
 2. the platform team offers the "Managed VPC" building block
 3. no long lived secrets are allowed
 
-![Reference Architecture for building block offered by platform team when no long lived secrets are allowed and the platform team has permission to establish trust](assets/building-blocks/cf-nocred-trust.png)
+![Reference Architecture for building block offered by platform team when no long lived secrets are allowed and the platform team has permission to establish trust](/assets/building-blocks/cf-nocred-trust.png)
 
 #### Another Team offers main building block
 
@@ -69,7 +69,7 @@ To summarize, in this reference architecture
 2. a dedicated networking team offers the "Managed VPC" building block
 3. no long lived secrets are allowed
 
-![Reference Architecture for building block offered by dedicated team when no long lived secrets are allowed and the platform team has permission to establish trust](assets/building-blocks/ded-nocred-trust.png)
+![Reference Architecture for building block offered by dedicated team when no long lived secrets are allowed and the platform team has permission to establish trust](/assets/building-blocks/ded-nocred-trust.png)
 
 ### Platform Team does not have the permission to manage trust
 
@@ -80,4 +80,4 @@ To summarize, in this reference architecture
 3. no long lived secrets are allowed
 
    
-![Reference Architecture for no long lived secrets are allowed and the platform team does not have permission to establish trust](assets/building-blocks/ded-nocred-notrust.png)
+![Reference Architecture for no long lived secrets are allowed and the platform team does not have permission to establish trust](/assets/building-blocks/ded-nocred-notrust.png)

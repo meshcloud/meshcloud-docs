@@ -48,7 +48,7 @@ You'll see three quick questions about your experience.
 
 *Note: The survey is always enabled for each meshStack.*
 
-![Example of Satisfaction Survey](assets/feedback-survey-example.png)
+![Example of Satisfaction Survey](/assets/feedback-survey-example.png)
 
 ---
 

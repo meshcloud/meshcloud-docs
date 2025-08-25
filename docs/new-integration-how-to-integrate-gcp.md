@@ -1,5 +1,5 @@
 ---
-id: new-guide-how-to-integrate-gcp
+id: new-integration-how-to-integrate-gcp
 title: How to Integrate GCP
 ---
 :::note What is this guide about?
@@ -46,7 +46,7 @@ deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
-In order to enable meshStack to delete GCP Projects as part of [tenant deletion](administration.delete-tenants.md), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
+In order to enable meshStack to delete GCP Projects as part of [tenant deletion](/guides/core/how-to-manage-a-tenant#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
 
 ```text
 resourcemanager.project.delete
@@ -282,7 +282,7 @@ You may want to check the [official Google instructions](https://cloud.google.co
 
 The below screen shot show how to set up the Audit Logs for the organization `dev.meshcloud.io`
 
-![GCP Audit Logs](assets/gcp-enable-audit-logs.png)
+![GCP Audit Logs](/assets/gcp-enable-audit-logs.png)
 
 ### 17. Query Audit Logs in Google Cloud Console
 

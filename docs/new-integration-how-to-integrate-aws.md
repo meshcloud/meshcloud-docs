@@ -162,7 +162,7 @@ This `MeshfedServiceRole` should be created in the management account with the f
 }
 ```
 
-In order to enable meshStack to close AWS accounts as part of [tenant deletion](administration.delete-tenants.md), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
+In order to enable meshStack to close AWS accounts as part of [tenant deletion](/guides/core/how-to-manage-a-tenant#tenant-deletion-flow), please also include the following statement. We strongly recommend you constrain the permission to close accounts to those OUs you use in your landing zones using an [ResourceOrgPath](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-view-data-orgs.html#access_policies_access-advisor-viewing-orgs-entity-path).
 
 ```json
 {
@@ -311,9 +311,9 @@ Details about what needs to be configured inside AWS SSO can be found [here](mes
 
 > An important precondition, regarding the automated user provisioning to AWS SSO, is that the userName in AWS SSO has to be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](meshstack.identity-federation.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
 
-The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
+The following configuration options are available in the AWS Platform Replicator Config:
 
-![AWS SSO Configuration](assets/platform_maintenance/aws-sso.png)
+![AWS SSO Configuration](/assets/platform_maintenance/aws-sso.png)
 
 #### Option 2: Using meshIdB (deprecated)
 
@@ -324,13 +324,13 @@ in the Landing Zone). meshStack also sets up a trust relationship to meshIdB in 
 meshStack additionally creates according roles in the meshIdB so the AuthZ information on which accounts can be accessed
 by which user are then part of the SAML token AWS receives after logging in via meshIdB.
 
-The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
+The following configuration options are available in the AWS Platform Replicator Config:
 
-![AWS meshIdB Configuration](assets/platform_maintenance/aws-meshidb.png)
+![AWS meshIdB Configuration](/assets/platform_maintenance/aws-meshidb.png)
 
 ### 5. Decide on Naming Patterns
 
-You can define naming patterns based on the [String Templating](meshstack.replication-configuration.md#string-templating) syntax of meshStack for the following properties:
+You can define naming patterns based on the [String Templating](settings/replication-configuration#string-templating) syntax of meshStack for the following properties:
 
 - Account Email Address: Please make sure to consider that this is limited to 64 characters
 - Account Alias Pattern: The account alias must be unique across all of AWS. Platform engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
@@ -356,9 +356,9 @@ meshStack can be enabled to trigger the Account Factory via AWS Service Catalog.
 The correct Id of the Account Factory Product needs to be specified in the enrollment configuration besides the management account Id.
 meshStack will create new accounts as usual and in a later step will enroll them via the Account Factory with AWS Control Tower.
 
-The following configuration options are available in the AWS [Platform Connection Config](administration.platforms.md#platform-connection-config):
+The following configuration options are available in the AWS Platform Replicator Config:
 
-![AWS Control Tower Enrollment](assets/platform_maintenance/aws-control-tower.png)
+![AWS Control Tower Enrollment](/assets/platform_maintenance/aws-control-tower.png)
 
 > In order to enroll created accounts with AWS Control Tower, **a Landing Zone must be configured**. The `Target Organization Unit Id` from the Landing Zone
 > configuration must belong to a OU that is already enrolled with AWS Control Tower.

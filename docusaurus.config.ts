@@ -111,21 +111,9 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'meshcloud',
+          sidebarId: 'docs',
           position: 'right',
-          label: 'User Docs',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'meshstack',
-          position: 'right',
-          label: 'Administrator Docs',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'new-docs',
-          position: 'right',
-          label: 'New Docs',
+          label: 'Documentation',
         },
         {
           type: 'doc',
