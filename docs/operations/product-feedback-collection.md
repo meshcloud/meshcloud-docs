@@ -1,5 +1,5 @@
 ---
-id: administration.product-feedback-collection
+id: product-feedback-collection
 title: Product Feedback Collection
 ---
 

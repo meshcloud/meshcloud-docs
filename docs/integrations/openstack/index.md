@@ -19,7 +19,7 @@ The latest OpenStack release officially validated with meshStack is [OpenStack 2
 However, any later OpenStack releases that continues to maintain API compatibility with the API versions specified below is supported.
 
 > As OpenStack is typically deployed "behind the firewall" in a private cloud settings, you may consider using an on-prem deployment of
-> [meshStack Enterprise](meshstack.managed-service.md). This enables meshStack to safely connect to your OpenStack APIs on your private network.
+> [meshStack Enterprise](operations/managed-service.md). This enables meshStack to safely connect to your OpenStack APIs on your private network.
 
 ### Supported OpenStack Versions
 
