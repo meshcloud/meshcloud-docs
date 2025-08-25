@@ -1,5 +1,5 @@
 ---
-id: new-concept-platform-location
+id: platform-location
 title: Platform Location
 ---
 
@@ -16,7 +16,7 @@ The location concept is especially useful for grouping private cloud platforms t
 
 ### Concepts
 
-- [Platform](new-concept-platform.md)
+- [Platform](concepts/platform.md)
 
 ### Guides
 

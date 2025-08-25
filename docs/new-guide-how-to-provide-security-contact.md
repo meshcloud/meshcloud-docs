@@ -42,8 +42,8 @@ For a hands-on walkthrough, check out the interactive demo on Storylane: [View t
 
 ### Concepts
 
-- [Tag Concept](new-concept-tag.md)
-- [Communication Center](new-concept-communication.md)
+- [Tag Concept](concepts/tag.md)
+- [Communication Center](concepts/communication.md)
 
 ### Guides
 

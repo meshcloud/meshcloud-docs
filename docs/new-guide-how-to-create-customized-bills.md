@@ -34,7 +34,7 @@ Check meshStack's API documentation for details on authentication, required fiel
 
 ### Concepts
 
-- [Cost Management](new-concept-cost-management.md)
+- [Cost Management](concepts/cost-management.md)
 
 ### Guides
 

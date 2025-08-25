@@ -38,7 +38,7 @@ You can set an expiration date for API keys to ensure they are not used indefini
 
 ### Concepts
 
-- [Users and Groups](new-concept-users-and-groups.md)
+- [Users and Groups](concepts/users-and-groups.md)
 
 ### Guides
 

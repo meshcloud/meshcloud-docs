@@ -1,5 +1,5 @@
 ---
-id: new-concept-meshstackareas
+id: meshstack-areas
 title: meshStack Areas
 ---
 
@@ -20,10 +20,10 @@ meshStack consists of 3 main areas for different roles inside your organization.
 
 ### Concepts
 
-- [Workspace](/new-concept-workspace.md)
-- [Platforms](/new-concept-platform.md)
-- [Building Blocks](/new-concept-buildingblock.md)
-- [Platform Services](/new-concept-buildingblock.md)
+- [Workspace](/concepts/workspace.md)
+- [Platforms](/concepts/platform.md)
+- [Building Blocks](/concepts/building-block.md)
+- [Platform Services](/concepts/building-block.md)
 
 ### Guides
 

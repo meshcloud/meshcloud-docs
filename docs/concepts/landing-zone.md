@@ -1,7 +1,8 @@
 ---
-id: new-concept-landingzone
+id: landing-zone
 title: Landing Zone
 ---
+
 A **landing zone** is a platform specific predefined configuration of a new tenant. They are provided by platform engineers via the platform builder and are a prerequisite for the provisioning of new tenants.
 
 Landing zones are typically used to:
@@ -35,9 +36,9 @@ Building blocks for a landing zone can be configured as:
 
 ### Concepts
 
-- [Platform](new-concept-platform.md)
-- [Tenant](new-concept-tenant.md)
-- [Building Block](new-concept-buildingblock.md)
+- [Platform](concepts/platform.md)
+- [Tenant](concepts/tenant.md)
+- [Building Block](concepts/building-block.md)
 
 ## Guides
 

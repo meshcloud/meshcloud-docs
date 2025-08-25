@@ -88,7 +88,7 @@ graph LR;
 
 Some public cloud platforms like [Microsoft Azure](meshstack.azure.index.md) or [Google Cloud Platform](meshstack.gcp.index.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google Google Workspace.
 
-meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](/new-concept-platform). meshStack calls these **externally provisioned user identities** because provisioning and identity federation between on-premise and cloud-directory happens outside of meshStack.
+meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](/concepts/platform). meshStack calls these **externally provisioned user identities** because provisioning and identity federation between on-premise and cloud-directory happens outside of meshStack.
 
 ```mermaid
 graph LR;
@@ -145,7 +145,7 @@ to "platform user" objects in a platform's IAM system (e.g. an AAD user object).
 
 #### High availability
 
-meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](/new-concept-project) are temporarily unavailable in this case.
+meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](/concepts/project) are temporarily unavailable in this case.
 
 User can still authenticate and work with cloud platforms using [meshStack-provisioned identities](#meshstack-provisioned-identities), as long as the meshIdB is available. meshcloud therefore supports deploying the meshIdB in a data-center redundant HA setup.
 
@@ -227,7 +227,7 @@ to cloud platforms configured to use externally-provisioned identities.
 
 ### Identity Lookup
 
-meshStack allows Workspace Managers to [quickly onboard team members](/new-concept-workspace#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
+meshStack allows Workspace Managers to [quickly onboard team members](/concepts/workspace#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. This search process is called identity lookup.
 
 meshStack supports configuration of an optional identity lookup source. When possible, IAM architects should give preference to using the configured identity provider also as as an identity lookup source.
@@ -258,7 +258,7 @@ If the identity connector is used, see the [Identity Connector](settings/workspa
 
 ### Platform Configuration
 
-When meshStack generates the desired state for a [meshTenant](/new-concept-tenant), it uses the
+When meshStack generates the desired state for a [meshTenant](/concepts/tenant), it uses the
 assigned meshProject roles together with the meshPlatform and meshLandingZone configuration to compute the desired IAM configuration in the cloud platform.
 
 As a part of this process, meshStack has to map each meshUser to a native platform user object using the meshUser's `euid` attribute and matching it with a configurable attribute of the native platform user object. Platform engineers can configure this process in two steps.

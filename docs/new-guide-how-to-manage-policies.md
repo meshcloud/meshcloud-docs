@@ -88,8 +88,8 @@ Some policy violations cant be resolved by application teams. In this case, you 
 
 ### Concepts
 
-- [Tags](new-concept-tag.md)
-- [Policies](new-concept-policy.md)
+- [Tags](concepts/tag.md)
+- [Policies](concepts/policy.md)
 
 ### Guides
 

@@ -55,9 +55,9 @@ Managing cloud costs across multiple currencies can be confusing and lead to rep
 
 ### Concepts
 
-- [Cost Management](new-concept-cost-management.md)
-- [Platform](new-concept-platform.md)
-- [Payment Methods](new-concept-payment-methods.md)
+- [Cost Management](concepts/cost-management.md)
+- [Platform](concepts/platform.md)
+- [Payment Methods](concepts/payment-methods.md)
 
 ### Guides
 

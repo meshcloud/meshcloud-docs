@@ -4,12 +4,12 @@ title: Tenant Services
 ---
 
 > **The Tenant Services feature is deprecated! Please do not use this anymore.**
-> **We recommend the usage of [Tenant Building Blocks](/new-concept-buildingblock) for additional services for your tenants.**
+> **We recommend the usage of [Tenant Building Blocks](/concepts/building-block) for additional services for your tenants.**
 
 Tenant Services provide a convenient way for cloud foundation teams to provide "foundational" services such as virtual
 networks with intranet connectivity, CI/CD platform integration and similar scenarios. Tenant services are Open Service Broker
 (OSB) API compatible services that are flagged as "tenant-aware" services in the OSB Services platform. Service consumers
-can then bind their [meshTenants](/new-concept-tenant) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
+can then bind their [meshTenants](/concepts/tenant) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
 consumer wants the service to be provisioned.
 
 ## Service Broker Categories

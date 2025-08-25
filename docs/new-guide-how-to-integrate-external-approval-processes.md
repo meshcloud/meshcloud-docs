@@ -34,8 +34,8 @@ To further streamline the process, use the meshStack API to automate the creatio
 
 ### Concepts
 
-- [Payment Methods](new-concept-payment-methods.md)
-- [Cost Management](new-concept-cost-management.md)
+- [Payment Methods](concepts/payment-methods.md)
+- [Cost Management](concepts/cost-management.md)
 
 ### Guides
 

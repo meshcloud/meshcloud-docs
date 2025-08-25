@@ -3,10 +3,10 @@ id: meshstack.gcp.landing-zones
 title: Landing Zones
 ---
 
-In GCP, a [Landing Zone](/new-concept-landingzone) is defined via folder the project will be assigned to. Policies can be applied
+In GCP, a [Landing Zone](/concepts/landing-zone) is defined via folder the project will be assigned to. Policies can be applied
 to these folders.
 
-The [Landing Zone](/new-concept-landingzone) can be configured in the `Administration` section. If a project is selected to have a GCP tenant a Landing Zone must be selected by the user. By choosing a landing zone, platform specific configuration can be set (in this case for GCP). The options for GCP are:
+The [Landing Zone](/concepts/landing-zone) can be configured in the `Administration` section. If a project is selected to have a GCP tenant a Landing Zone must be selected by the user. By choosing a landing zone, platform specific configuration can be set (in this case for GCP). The options for GCP are:
 
 ## Resource Manager Folder Id
 
@@ -64,7 +64,7 @@ The properties of the provided configuration file will be expanded with properti
 | tagCostCenter      | ID of the CostCenter defined for this meshProject.                            |
 | projectIdentifier  | The project identifier                                                        |
 | projectId          | The ID of the GCP project associated with this meshProject                    |
-| tagCostCenter      | Example for a [metadata tag](/new-concept-tag) named `costCenter` |
+| tagCostCenter      | Example for a [metadata tag](/concepts/tag) named `costCenter` |
 
 As the example `tagCostCenter` in the above table indicates, any payment settings, project tags or workspace tags are also provided to the template.
 The following modifications are applied to metdata tag keys by meshstack before making them available as properties:
@@ -73,7 +73,7 @@ The following modifications are applied to metdata tag keys by meshstack before 
 - First letter of metadata tag key is capitalized
 
 In the example, a metadata tag named `costCenter` would be provided as a property with name `tagCostCenter`.
-See [metadata tags](/new-concept-tag) for more information.
+See [metadata tags](/concepts/tag) for more information.
 
 > If you are planning on converting any of the template properties into GCP labels, please be aware of the limits and requirements
 > that GCP has [described in their docs](https://cloud.google.com/compute/docs/labeling-resources#restrictions).

@@ -1,5 +1,5 @@
 ---
-id: new-concept-project
+id: project
 title: Project
 ---
 
@@ -21,9 +21,9 @@ Below is a visual example of how projects are structured in meshStack:
 
 ### Concepts
 
-- [Workspace](/new-concept-workspace.md)
-- [Tenant](/new-concept-tenant.md)
-- [Users and Groups](/new-concept-users-and-groups.md)
+- [Workspace](/concepts/workspace.md)
+- [Tenant](/concepts/tenant.md)
+- [Users and Groups](/concepts/users-and-groups.md)
 
 ### Guides
 

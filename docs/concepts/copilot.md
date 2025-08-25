@@ -1,5 +1,5 @@
 ---
-id: new-concept-copilot
+id: copilot
 title: Copilot
 ---
 
@@ -95,7 +95,7 @@ All conversations with meshStack Copilot, including all data provided to the mod
 
 ### Concepts
 
-- [Copilot](new-concept-copilot.md)
+- [Copilot](concepts/copilot.md)
 - [Security FAQ](security-faq.md)
 
 ### Guides

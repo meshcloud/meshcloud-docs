@@ -1,5 +1,5 @@
 ---
-id: new-concept-communication
+id: communication
 title: Communications
 ---
 

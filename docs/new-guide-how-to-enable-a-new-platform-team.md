@@ -44,9 +44,9 @@ With meshStack and the Platform Ecosystem Module, you can separate different pla
 
 ### Concepts
 
-- [Workspace](new-concept-workspace.md)
-- [meshStack Areas](new-concept-meshstackareas.md)
-- [Workspace Users and Permissions](new-concept-users-and-groups.md#workspace-users-and-permissions)
+- [Workspace](concepts/workspace.md)
+- [meshStack Areas](concepts/meshstack-areas.md)
+- [Workspace Users and Permissions](concepts/users-and-groups.md#workspace-users-and-permissions)
 
 ### Guides
 

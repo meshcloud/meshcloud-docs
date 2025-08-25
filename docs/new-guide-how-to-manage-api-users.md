@@ -42,4 +42,4 @@ This guide explains how to handle API users to manage objects within meshStack.
 
 ### Concepts
 
-- [Users and Groups](new-concept-users-and-groups.md)
+- [Users and Groups](concepts/users-and-groups.md)
