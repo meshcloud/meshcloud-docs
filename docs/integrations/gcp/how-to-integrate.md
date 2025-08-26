@@ -46,7 +46,7 @@ deploymentmanager.deployments.update
 deploymentmanager.deployments.get
 ```
 
-In order to enable meshStack to delete GCP Projects as part of [tenant deletion](/guides/core/how-to-manage-a-tenant#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
+In order to enable meshStack to delete GCP Projects as part of [tenant deletion](../../guides/core/how-to-manage-a-tenant.md#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on those Folders where you want to allow automated tenant deletion.
 
 ```text
 resourcemanager.project.delete
@@ -104,7 +104,7 @@ Add this permissions by assigning the roles `roles/iam.serviceAccountOpenIdToken
 
 The Service Account will be used by meshStack to perform project replication. Operators thus need to grant it the permissions of the
 `meshfed-service` IAM role on those folders of the [GCP resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
-that make up the [Landing Zones](integrations/gcp/landing-zones.md) for client projects.
+that make up the [Landing Zones](./landing-zones.md) for client projects.
 
 > It's a best practice to segregate "user" and "infrastructure" projects in GCP using the resource hierarchy.
 > By setting granular permissions (instead of organization-wide permissions) this can limit the access of meshStack's replicator
@@ -128,7 +128,7 @@ billing.resourceAssociations.create
 
 The `meshfed-service` user needs to be granted the `meshfed-billing-creator` role in the organization that owns the target billing account.
 
-Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#set-up-the-service-account-for-replication).
+Following the principle of least privilege, operators should remove the `billing.resourceAssociations.create` permisson from the custom role `meshfed-service` created in [meshfed-service IAM Role](#1-set-up-the-service-account-for-replication).
 
 #### Option 2: Using Different Billing Accounts for Different Google Cloud Projects
 

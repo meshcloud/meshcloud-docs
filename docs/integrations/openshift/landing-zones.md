@@ -3,7 +3,7 @@ id: landing-zones
 title: Landing Zones
 ---
 
-By defining a Landing Zone for OpenShift certain configurations can be enforced during [replication](/concepts/tenant).
+By defining a Landing Zone for OpenShift certain configurations can be enforced during [replication](../../concepts/tenant.md).
 
 ## Resource Quota
 
@@ -15,4 +15,4 @@ These quotas can be defined on an OpenShift Landing Zone.
 
 Templates can be used to deploy some resources to projects that are provisioned via meshStack. Templates will be synchronized automatically with OpenShift when they are put into a Landing Zone and meshTenants are using this Landing Zone. This template shows up in the OpenShift web console and can be applied manually by the user. Currently only one template can be uploaded and managed this way.
 
-It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However, doing so requires currently that the [service principal](integrations/openshift/index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like, for example, creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the Platform Replication Configuration.
+It is possible to automatically instantiate this template inside a project via meshStack's project replication procedure. However, doing so requires currently that the [service principal](./index.md#replicator-service-account) gets all the additional rights required to instantiate the template. Like, for example, creating Pods or Network Policies. This might be not desirable and because of this it is disabled by default. To enable automatic Template instantiation set the flag `enableTemplateInstantiation` to true in the Platform Replication Configuration.

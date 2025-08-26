@@ -30,7 +30,7 @@ meshStack supports various platforms out of the box:
 - **AKS (Azure Kubernetes Service)**
 - **GKS (Google Kubernetes Service)**
 
-Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](guides/developer-portal/how-to-provide-your-own-platform.md) guide.
+Furthermore we provide the option to onboard you very own platforms. For more information on how to establish a custom platform, refer to the [How to Establish a Custom Platform](../guides/developer-portal/how-to-provide-your-own-platform.md) guide.
 
 ## Restricted Platforms
 
@@ -67,15 +67,15 @@ Depending on the platform, quota limits may be placed on usage such as CPU, memo
 
 ### Concepts
 
-- [Building Blocks](concepts/building-block.md)
-- [Tenant](concepts/tenant.md)
-- [Platform Builder](concepts/meshstack-areas.md#platform-builder)
-- [Platform Location](concepts/platform-location.md)
-- [Landing Zone](concepts/landing-zone.md)
-- [meshHub](concepts/meshstack-hub.md)
+- [Building Blocks](./building-block.md)
+- [Tenant](./tenant.md)
+- [Platform Builder](./meshstack-areas.md#the-platform-builder)
+- [Platform Location](./platform-location.md)
+- [Landing Zone](./landing-zone.md)
+- [meshHub](./meshstack-hub.md)
 
 ### Guides
 
-- [How to Provide Your Own Platform](guides/developer-portal/how-to-provide-your-own-platform.md)
-- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
-- [How to Enforce Resource Quota](guides/developer-portal/how-to-enforce-resource-quotas.md)
+- [How to Provide Your Own Platform](../guides/developer-portal/how-to-provide-your-own-platform.md)
+- [How to Manage a Platform](../guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Enforce Resource Quota](../guides/developer-portal/how-to-enforce-resource-quotas.md)

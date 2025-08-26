@@ -45,7 +45,7 @@ This is not only possible with dynamic user membership in the administrative uni
 ## Prerequisites
 
 - Complete the
-  [standard Azure integration](integrations/azure/how-to-integrate) first
+  [standard Azure integration](./how-to-integrate.md) first
 - **Global Administrator** or **Privileged Role Administrator** access to your
   Entra tenant to create the Administrative Unit
 - You need an Entra Premium P1 or P2 license to use Administrative Units

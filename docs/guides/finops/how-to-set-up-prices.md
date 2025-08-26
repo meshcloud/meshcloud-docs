@@ -45,10 +45,10 @@ Not all platforms support setting prices for tenants.
 
 ### Concepts
 
-- [Cost Management](concepts/cost-management.md)
-- [Platform](concepts/platform.md)
-- [Building Blocks](concepts/building-block.md)
+- [Cost Management](../../concepts/cost-management.md)
+- [Platform](../../concepts/platform.md)
+- [Building Blocks](../../concepts/building-block.md)
 
 ### Guides
 
-- [How to Manage Platforms](guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Manage Platforms](../developer-portal/how-to-manage-a-platform.md)

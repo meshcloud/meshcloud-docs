@@ -114,24 +114,24 @@ There are two ways to expose tags to platforms:
 
 ### meshStack metadata
 
-| Tag Key                       | Description                                                                                                                                               |
-| ----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `${projectIdentifier}`        | The project identifier                                                                                                                                    |
-| `${workspaceIdentifier}`      | The project's workspace identifier                                                                                                                        |
-| `${workspaceName}`            | The projects's workspace name                                                                                                                             |
-| `${projectName}`              | The project display name                                                                                                                                  |
-| `${landingZoneName}`          | The name of the applied [landing zone](/concepts/landing-zone). It contains `no-landingzone` if the tenant does not have a landing zone applied       |
-| `${landingZoneIdentifier}`    | The identifier of the applied [landing zone](/concepts/landing-zone). It contains `no-landingzone` if the tenant does not have a landing zone applied |
-| `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the project                                                                                      |
-| `${paymentName}`              | The display name of the payment method that is assigned to the project                                                                                    |
-| `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the project. It contains `none` if no expiration date is set for the payment method         |
-| `${paymentAmount}`            | The amount of the assigned payment method. It is `none` if no payment method is set                                                                       |
-| `${contactMail}`              | The email of workspace owner of this project. It is `none` if no owner is set                                                                             |
-| `${ownerUsername}`            | The username of the workspace owner of this project. It is `none` if no owner is set                                                                      |
-| `${ownerFirstName}`           | The first name of the workspace owner of this project. It is `none` if no owner is set                                                                    |
-| `${ownerLastName}`            | The last name of the workspace owner of this project. It is `none` if no owner is set                                                                     |
-| `${additionalOwnerUsername}`  | The username of the additional workspace owner of this project. It is `none` if no additional owner is set                                                |
-| `${additionalOwnerFirstName}` | The first name of the additional workspace owner of this project. It is `none` if no additional owner is set   
+| Tag Key                       | Description                                                                                                                                                   |
+|-------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `${projectIdentifier}`        | The project identifier                                                                                                                                        |
+| `${workspaceIdentifier}`      | The project's workspace identifier                                                                                                                            |
+| `${workspaceName}`            | The projects's workspace name                                                                                                                                 |
+| `${projectName}`              | The project display name                                                                                                                                      |
+| `${landingZoneName}`          | The name of the applied [landing zone](../../concepts/landing-zone.md). It contains `no-landingzone` if the tenant does not have a landing zone applied       |
+| `${landingZoneIdentifier}`    | The identifier of the applied [landing zone](../../concepts/landing-zone.md). It contains `no-landingzone` if the tenant does not have a landing zone applied |
+| `${paymentIdentifier}`        | The identifier of the payment method that is assigned to the project                                                                                          |
+| `${paymentName}`              | The display name of the payment method that is assigned to the project                                                                                        |
+| `${paymentExpirationDate}`    | The expiration date of the payment method that is assigned to the project. It contains `none` if no expiration date is set for the payment method             |
+| `${paymentAmount}`            | The amount of the assigned payment method. It is `none` if no payment method is set                                                                           |
+| `${contactMail}`              | The email of workspace owner of this project. It is `none` if no owner is set                                                                                 |
+| `${ownerUsername}`            | The username of the workspace owner of this project. It is `none` if no owner is set                                                                          |
+| `${ownerFirstName}`           | The first name of the workspace owner of this project. It is `none` if no owner is set                                                                        |
+| `${ownerLastName}`            | The last name of the workspace owner of this project. It is `none` if no owner is set                                                                         |
+| `${additionalOwnerUsername}`  | The username of the additional workspace owner of this project. It is `none` if no additional owner is set                                                    |
+| `${additionalOwnerFirstName}` | The first name of the additional workspace owner of this project. It is `none` if no additional owner is set                                                  |
 
 :::note Handling Tag Conflicts
 It's possible that objects such as workspace and project have tags with the same tag key. For example, both the workspace and
@@ -191,4 +191,4 @@ The tags available on an objects are defined by the meshStack admins via the adm
 
 ## Related Resources
 
-- [Tags](concepts/tag.md)
+- [Tags](../../concepts/tag.md)

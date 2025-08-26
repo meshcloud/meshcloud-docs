@@ -25,7 +25,7 @@ meshStack uses separate service principals for different tasks based on the best
 1. Pre-provisioned Subscriptions
 2. Using an Enterprise Enrollment/Customer Agreement Account
 
-Depending on the way you choose to setup, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#subscription-provisioning), the usage of an App Registration principle is **mandatory**.
+Depending on the way you choose to setup, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#5-set-up-subscription-provisioning), the usage of an App Registration principle is **mandatory**.
 
 In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
 The Service Principal must be authorized in the scope of this AAD Tenant.
@@ -49,14 +49,14 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 10. Under **API permissions** → **Add a permission** → **Microsoft Graph API** (not Azure AD Graph API) → **Application permissions**:
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
-    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#b2b-user-invitation)
+    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#16-b2b-user-invitation-deprecated))
 11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
-Platform engineers need to supply these variables to the [meshStack Configuration](#meshstack-configuration) for this Azure Platform Instance.
+Platform engineers need to supply these variables to the [meshStack Configuration](#12-meshpanel-configuration) for this Azure Platform Instance.
 
 :::tip
-For enhanced security and to limit meshStack's permissions to a specific scope within your Entra tenant, consider using the [Azure integration with Administrative Units](integrations/azure/how-to-integrate-administrative-units). This approach is recommended for organizations with strict security requirements as it reduces the global permissions needed by meshStack.
+For enhanced security and to limit meshStack's permissions to a specific scope within your Entra tenant, consider using the [Azure integration with Administrative Units](./how-to-integrate-azure-administrative-units.md). This approach is recommended for organizations with strict security requirements as it reduces the global permissions needed by meshStack.
 ::: 
 
 ### 3. Set Azure RBAC Permissions
@@ -98,16 +98,16 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Resources/subscriptions/resourceGroups/write",
 ```
 
-You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](integrations/azure/landing-zones.md).
+You must grant the meshcloud Service Principal this access to all [Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/) used in [Landing Zones](./landing-zones.md).
 
 1. In Azure Portal, navigate to the "Management Groups" blade.
 2. Click on the "Details" link of the management group you want to give access to.
 3. Select "Access Control (IAM)" from the menu.
-4. Create a role assignment of the custom IAM role created above for the [replicator Service Principal](#replicator).
+4. Create a role assignment of the custom IAM role created above for the [replicator Service Principal](#3-set-azure-rbac-permissions).
 
 > Access to the Management Groups may require the "Global Administrator" role with [elevated access](https://docs.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin). In case you're not able to see all management groups after elevating access, try signing out and back in to Azure Portal.
 
-In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](/guides/core/how-to-manage-a-tenant#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
+In order to enable meshStack to cancel Azure Subscriptions as part of [tenant deletion](../../guides/core/how-to-manage-a-tenant.md#tenant-deletion-flow), please also include the following permission. We strongly recommend you assign this permission only on Management Groups where you want to allow automated tenant deletion.
 
 
 ```hcl
@@ -221,7 +221,7 @@ The value for a billing scope and id are the same thing. The id for your enrollm
 
 The Service Principal needs the `Subscription Creator` role.
 
-When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#enterprise-enrollment-account), an EA Administrator must authorize the [meshcloud Service Principal](#service-principal-setup) on the Enrollment Account.
+When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#6-use-an-enterprise-enrollment), an EA Administrator must authorize the [meshcloud Service Principal](#1-set-up-the-replication-service-principal) on the Enrollment Account.
 
 This happens via a PUT request against `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview`.
 
@@ -273,13 +273,13 @@ Invoke-RestMethod $url -Method 'Get' -Headers $headers | Format-List
 
 Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist.
 
-In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Platform engineers should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty AAD group or the [Blueprint Service Principal](#blueprint-configuration).
+In contrast to other provisioning methods, EA provisioning will not retain a default "Classic Administrator" role assignment on the subscription from the billing account owner. Platform engineers should therefore configure at least one explicit owner under `subscriptionOwnerObjectIds`. We recommend to use the EA Account owner as Subscription Owner. It could also be an empty AAD group or the Blueprint Service Principal.
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
 ### 9. Use a Customer Agreement
 
-If your company has a Customer Agreement with Microsoft you can also use an automatic REST API in order to create new subscriptions. It is a very similiar process to the [Enterprise Agreement](#set-up-enterprise-agreement-provisioning) variant. The difference is you need two principals, one on the Billing Account tenant that creates the subscription and another one on the target AAD tenant that receives its ownership.
+If your company has a Customer Agreement with Microsoft you can also use an automatic REST API in order to create new subscriptions. It is a very similar process to the Enterprise Agreement variant. The difference is you need two principals, one on the Billing Account tenant that creates the subscription and another one on the target AAD tenant that receives its ownership.
 
 ### 10. Create Source Tenant Principal
 
@@ -292,7 +292,7 @@ If your company has a Customer Agreement with Microsoft you can also use an auto
 
 ### 11. Create Target Tenant Principal
 
-The requirements for the principal on the target tenant is identically with the one from the Enterprise Agreement provisioning. Please follow the section [Set up the Replication Service Principal](#set-up-the-replication-service-principal).
+The requirements for the principal on the target tenant is identically with the one from the Enterprise Agreement provisioning. Please follow the section [Set up the Replication Service Principal](#1-set-up-the-replication-service-principal).
 
 ### 12. meshPanel Configuration
 
@@ -308,8 +308,8 @@ If your organization does not have access to an Enterprise Enrollment, you can a
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish
 to use "Pay-as-you-go" subscriptions or if your organization partners with an [Azure Cloud Solution Provider](https://learn.microsoft.com/en-us/partner-center/azure-plan-lp) to provide your subscriptions.
 
-The meshcloud Azure [replication](/concepts/tenant) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
-name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](integrations/azure/landing-zones.md) configuration
+The meshcloud Azure [replication](../../concepts/tenant.md) detects externally-provisioned subscriptions based on a configurable prefix in the subscription
+name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./landing-zones.md) configuration
 and removed from the subscription pool.
 
 ### 14. Set up the Metering Service Principal
@@ -353,4 +353,4 @@ Before users can access an AAD tenant they've been invited to using Azure B2B, t
 - The "Go to Azure Portal" link displayed in meshPanel redirects users into Azure Portal and selects the right AAD tenant and Subscription. This will trigger the consent experience in case the user's B2B invitation is pending acceptance.
 - meshStack can instruct Azure to send invitation mails directly via the `sendAzureInvitationMail` configuration option.
 
-> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](concepts/identity-and-access-management.md#externally-provisioned-identities).
+> B2B Invitations require meshStack to know the user's valid email address which is usually fetched from the [euid](../../concepts/identity-and-access-management.md#externally-provisioned-identities).

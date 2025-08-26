@@ -36,3 +36,19 @@ The template engine allows you to use the following placeholders if not describe
 
 > **Attention** For some cloud platforms certain strings must be globally unique (for example the AWS account alias). The `projectIdentifier` is not unique in meshstack. A combination of at least the `workspaceIdentifier` and `projectIdentifier`
 > is highly recommended to avoid name collisions. For platforms with globally unique requirements like GCP or AWS a randomized part or a unique static prefix can also help to prevent sporadic replication problems.
+
+## HTTP Header Interface
+
+Some Landing Zone assets like [GCP Cloud Functions](../integrations/gcp/landing-zones.md#cloud-function-url) or [Azure Functions](../integrations/azure/landing-zones.md#azure-function-invocation) receive metadata tags from meshStack using HTTP Headers. meshStack invokes these Landing Zone assets using the following HTTP headers:
+
+| HTTP Header Name                 | Description                                                                                                                   |
+|----------------------------------|:------------------------------------------------------------------------------------------------------------------------------|
+| `x-mesh-customer-identifier`     | meshWorkspace Identifier                                                                                                      |
+| `x-mesh-project-identifier`      | meshProject identifier                                                                                                        |
+| `x-mesh-costcenter` *deprecated* | If available, ID of the CostCenter selected for this meshProject. Please use `x-mesh-tag-cost-center` or another tag instead. |
+| `x-mesh-tenant-platform-number`  | A increasing sequence number for a meshProject tenant on a specific platform.                                                 |
+| `x-mesh-landing-zone-identifier` | landing zone identifier                                                                                                       |
+| `x-mesh-tag-${format(tagName)}`  | metadata tags as defined in the tags screen in the admin area                                                                 |
+
+Headers for *metadata tags* are formatted to an http-header name by converting `camelCase` tag names into a dashed string i.e. `camel-case` and prefixing them with `x-mesh-tag-`.
+As a full example, a tag named `myCustomerTag` would be provided as an HTTP header with name `x-mesh-tag-my-customer-tag`.

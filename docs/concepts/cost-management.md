@@ -37,10 +37,10 @@ Current functionality includes:
 
 ### Concepts
 
-- [Payment Methods](concepts/payment-methods.md)
+- [Payment Methods](./payment-methods.md)
 
 ### Guides
 
-- [How to Manage Payment Methods](guides/finops/how-to-manage-payment-methods.md)
-- [How to Set Up Prices](guides/finops/how-to-set-up-prices.md)
-- [How to Set Up Currency Conversion](guides/finops/how-to-set-up-currency-conversion.md)
+- [How to Manage Payment Methods](../guides/finops/how-to-manage-payment-methods.md)
+- [How to Set Up Prices](../guides/finops/how-to-set-up-prices.md)
+- [How to Set Up Currency Conversion](../guides/finops/how-to-set-up-currency-conversion.md)

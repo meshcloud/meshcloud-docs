@@ -86,9 +86,9 @@ graph LR;
 
 ### Externally-provisioned Identities
 
-Some public cloud platforms like [Microsoft Azure](integrations/azure/index) or [Google Cloud Platform](integrations/gcp/index.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google Google Workspace.
+Some public cloud platforms like [Microsoft Azure](../integrations/azure/index.md) or [Google Cloud Platform](../integrations/gcp/index.md) feature their own directory services for cloud-based or hybrid user identities. Enterprises provision cloud identities by synchronizing an on-premise directory to the cloud. These setups are especially common for enterprises using Office 365 or Google Google Workspace.
 
-meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](/concepts/platform). meshStack calls these **externally provisioned user identities** because provisioning and identity federation between on-premise and cloud-directory happens outside of meshStack.
+meshStack supports using user identities from these cloud directories for the resepective cloud [meshPlatform](../concepts/platform.md). meshStack calls these **externally provisioned user identities** because provisioning and identity federation between on-premise and cloud-directory happens outside of meshStack.
 
 ```mermaid
 graph LR;
@@ -122,15 +122,15 @@ While it's a key consideration for meshStack to deliver a unified multi-cloud IA
 architects need to consider the unique capabilities of cloud platform IAM systems (e.g. AAD vs. Google Cloud Identity) and of their organizations' IAM architecture. Based on the platform's native capabilities,
 meshStack supports the following identity provisioning strategies:
 
-|               |   [meshStack-provisioned](#meshstack-provisioned-identities)   |        [externally-provisioned](#externally-provisioned-identities)        |
-| :-----------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: |
-|   OpenStack   |                               -                                |   [supported](integrations/openstack/index.md#access-control-integration)   |
-| Cloud Foundry |                                                                | [supported](integrations/cloud-foundry/index.md#uaa-configuration)             |
-|  Kubernetes   |                               -                                |  [supported](integrations/kubernetes/index.md#access-control-integration)   |
-|   OpenShift   |                               -                                |       [supported](integrations/openshift/index.md#idp-configuration)        |
-|      AWS      |   [deprecated](/integrations/aws/index.md#meshidb-deprecated)    |               [supported](/integrations/aws/index.md#aws-sso)                |
-|     Azure     |   [AAD B2B](integrations/azure/index#workload-aad-tenant)    | [supported](integrations/azure/index#azure-active-directory-integration) |
-|      GCP      |                               -                                |     [supported](integrations/gcp/index.md#cloud-identity-configuration)     |
+|               | [meshStack-provisioned](#meshstack-provisioned-identities) |          [externally-provisioned](#externally-provisioned-identities)          |
+|:-------------:|:----------------------------------------------------------:|:------------------------------------------------------------------------------:|
+|   OpenStack   |                             -                              |                [supported](../integrations/openstack/index.md)                 |
+| Cloud Foundry |                                                            |              [supported](../integrations/cloud-foundry/index.md)               |
+|  Kubernetes   |                             -                              |  [supported](../integrations/kubernetes/index.md#access-control-integration)   |
+|   OpenShift   |                             -                              |       [supported](../integrations/openshift/index.md#idp-configuration)        |
+|      AWS      |         [deprecated](../integrations/aws/index.md)         |                   [supported](../integrations/aws/index.md)                    |
+|     Azure     |         [AAD B2B](../integrations/azure/index.md)          | [supported](../integrations/azure/index.md#azure-active-directory-integration) |
+|      GCP      |                             -                              |                   [supported](../integrations/gcp/index.md)                    |
 
 #### Availability of Users and Atttributes
 
@@ -145,7 +145,7 @@ to "platform user" objects in a platform's IAM system (e.g. an AAD user object).
 
 #### High availability
 
-meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](/concepts/project) are temporarily unavailable in this case.
+meshStack features a carefully designed high-availability architecture. A potential loss of meshStack availability as the multi-cloud "control plane" is tolerable for the "data plane" used by developers to authenticate and work with cloud platforms. This means that developers' work can continue uninterrupted while meshStack availability is restored. Only operations that modify desired state like managing cloud permissions via [meshProjects](./project.md) are temporarily unavailable in this case.
 
 User can still authenticate and work with cloud platforms using [meshStack-provisioned identities](#meshstack-provisioned-identities), as long as the meshIdB is available. meshcloud therefore supports deploying the meshIdB in a data-center redundant HA setup.
 
@@ -208,7 +208,7 @@ euid attributes supported for the particular component or system.
 
 ### Identity Provider
 
-meshStack auto-provisions meshUsers from valid, federated login tokens provided by an [Enterprise Identity Provider](settings/identity-provider).
+meshStack auto-provisions meshUsers from valid, federated login tokens provided by an [Enterprise Identity Provider](../settings/identity-provider.md).
 In essence, any user attribute that the Identity Provider is capable to provide in a SAML assertion or OIDC token claim can be used as an `euid`.
 However, some identity providers only support a restricted set of user attributes.
 
@@ -218,7 +218,7 @@ However, some identity providers only support a restricted set of user attribute
 | AAD               | `userPrincipalName`, `mailNickName`         |
 | GCP               | `primaryEmail`                              |
 
-For further details, please consult the [Identity Provider configuration reference](settings/identity-provider).
+For further details, please consult the [Identity Provider configuration reference](../settings/identity-provider.md).
 
 meshStack updates the `euid` of a user with the latest value passed from the IdP on every log in of the user into meshPanel.
 In case platform engineers do not configure an identity lookup (see next section), this allows meshStack to retrieve an `euid` that is not an email from the IdP. However, platform engineers need to be aware that
@@ -227,7 +227,7 @@ to cloud platforms configured to use externally-provisioned identities.
 
 ### Identity Lookup
 
-meshStack allows Workspace Managers to [quickly onboard team members](/concepts/workspace#invite-users-to-a-meshworkspace-team) with an assisted onboarding workflow.
+meshStack allows Workspace Managers to quickly onboard team members with an assisted onboarding workflow.
 This onboarding workflow features an autocomplete and search for user identities in an enterprise user directory. This search process is called identity lookup.
 
 meshStack supports configuration of an optional identity lookup source. When possible, IAM architects should give preference to using the configured identity provider also as as an identity lookup source.
@@ -235,7 +235,7 @@ meshStack supports configuration of an optional identity lookup source. When pos
 Since email is a fundamental attribute of every meshUser, every identity lookup source is capable
 of providing this attribute.
 If an operator does not configure an identity lookup source, meshStack will use the email address entered by the inviting user.
-This email address can also be used to set a user's `euid`, see the [user onboarding configuration reference](/settings/self-service-onboarding#workspace-user-invitations) for details.
+This email address can also be used to set a user's `euid`, see the [user onboarding configuration reference](../settings/self-service-onboarding.md#workspace-user-invitations) for details.
 
 | Identity Lookup Source | euid attributes supported                                               |
 | ---------------------- | ----------------------------------------------------------------------- |
@@ -243,22 +243,22 @@ This email address can also be used to set a user's `euid`, see the [user onboar
 | AAD                    | email, any user attribute, incl. SchemaExtensions and Custom Attributes |
 | GCP                    | email, any Schema Extension attribute                                   |
 
-For further details, please consult the [Identity Lookup configuration reference](settings/identity-lookup).
+For further details, please consult the [Identity Lookup configuration reference](../settings/identity-lookup.md).
 
 ### Identity Connector
 
-The [Identity Connector](settings/workspace-group-sync) can automatically provision meshUsers via the meshObject API.
+The [Identity Connector](../settings/workspace-group-sync.md) can automatically provision meshUsers via the meshObject API.
 As a part of this process, the identity connector can also set the `euid` attribute.
 
 | Identity Connector Source | euid attributes supported                                 |
 | ------------------------- | --------------------------------------------------------- |
 | LDAP                      | every attribute available via LDAP query on a User entity |
 
-If the identity connector is used, see the [Identity Connector](settings/workspace-group-sync) configuration reference.
+If the identity connector is used, see the [Identity Connector](../settings/workspace-group-sync.md) configuration reference.
 
 ### Platform Configuration
 
-When meshStack generates the desired state for a [meshTenant](/concepts/tenant), it uses the
+When meshStack generates the desired state for a [meshTenant](./tenant.md), it uses the
 assigned meshProject roles together with the meshPlatform and meshLandingZone configuration to compute the desired IAM configuration in the cloud platform.
 
 As a part of this process, meshStack has to map each meshUser to a native platform user object using the meshUser's `euid` attribute and matching it with a configurable attribute of the native platform user object. Platform engineers can configure this process in two steps.

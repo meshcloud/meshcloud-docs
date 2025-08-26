@@ -23,7 +23,7 @@ To request advanced configuration changes for your meshStack instance, please co
 ### Versioning & Continuous Delivery
 
 meshcloud continuously releases new versions of meshStack to provide more value to our users.
-As can be seen by viewing our [release notes](/blog), this can happen multiple times a week.
+As can be seen by viewing our [release notes](pathname:///blog), this can happen multiple times a week.
 Our managed service ensures that your installation and configuration is up-to-date at all
 times when delivering new releases to your meshStack environment(s).
 
@@ -39,7 +39,7 @@ All meshStack releases have a version number based on the schema `$year.$minor.$
   Patch releases always refer to a particular feature release (i.e. they are backwards compatible to that
   release – except, potentially, for bug fixing) and do not introduce new functionality.
 
-All releases contain [release notes](/blog) describing the changes to the product in the respective release.
+All releases contain [release notes](pathname:///blog) describing the changes to the product in the respective release.
 
 #### Versioning Example
 
@@ -69,8 +69,8 @@ frameworks such as ISO 27001 and ISO 27017.
 
 ### Monitoring and Support
 
-Every meshStack installation includes sophisticated [logging](operations/logging.md)
-and [monitoring](operations/monitoring.md) infrastructure. meshcloud uses these tools
+Every meshStack installation includes sophisticated [logging](./logging.md)
+and [monitoring](./monitoring.md) infrastructure. meshcloud uses these tools
 to monitor system availability and diagnose any possible issues.
 
 The monitoring infrastructure of your installations can be made available to your own operations teams on request.

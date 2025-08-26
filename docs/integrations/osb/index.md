@@ -31,7 +31,7 @@ The OSB Services Platform provides support for global and local services. Servic
 
 ## OSB API Profile
 
-meshcloud implements an extended [OSB API Profile](integrations/osb/api-profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
+meshcloud implements an extended [OSB API Profile](./api-profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
 
 ## Authentication & Authorization
 
@@ -117,8 +117,8 @@ in    λ(Secret : Type)
       }
 ```
 
-Role mappings must be configured for all [meshProject roles](/concepts/project#project-roles). Note that in
-contrast to the [Azure replicator](integrations/azure/index) replication for the OSB Services platform will not create any
+Role mappings must be configured for all [meshProject roles](../../concepts/project.md). Note that in
+contrast to the [Azure replicator](../azure/index.md) replication for the OSB Services platform will not create any
 Azure-role assignments.
 
 ### AAD Group Name

@@ -46,11 +46,11 @@ We advise you to choose tag names that work for all platforms you use. This way,
 
 ### Concepts
 
-- [Tenant](concepts/tenant.md)
-- [Project](concepts/project.md)
-- [Platform](concepts/platform.md)
-- [Workspace](concepts/workspace.md)
+- [Tenant](./tenant.md)
+- [Project](./project.md)
+- [Platform](./platform.md)
+- [Workspace](./workspace.md)
 
 ### Guides
 
-- [How to Manage Tags](guides/core/how-to-manage-tags.md)
+- [How to Manage Tags](../guides/core/how-to-manage-tags.md)

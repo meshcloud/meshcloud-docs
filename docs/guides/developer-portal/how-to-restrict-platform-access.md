@@ -28,10 +28,10 @@ You may have provider or business platforms that should only be accessed by cert
 
 ### Concepts
 
-- [Platform](concepts/platform.md)
-- [Workspace](concepts/workspace.md)
+- [Platform](../../concepts/platform.md)
+- [Workspace](../../concepts/workspace.md)
 
 ### Guides
 
-- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Manage a Platform](./how-to-manage-a-platform.md)
 

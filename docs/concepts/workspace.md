@@ -15,7 +15,7 @@ Workspace creation can be configured in two ways:
 - **Self-service**: Users can create workspaces directly through meshPanel in self-service mode.
 - **API-based**: If you use an ITSM solution such as ServiceNow, you can initiate workspace creation through an API, enabling integration with existing approval workflows. This approach allows the creation process to be externalized and automated according to your organization's requirements.
 
-Each workspace includes a [Workspace Manager](concepts/meshstack-areas.md#workspace-manager) and [Platform Builder](concepts/meshstack-areas.md#platform-builder).
+Each workspace includes a [Workspace Manager](./meshstack-areas.md) and [Platform Builder](./meshstack-areas.md).
 
 ---
 Below is a visual example of how workspaces are structured in meshStack:
@@ -26,12 +26,12 @@ Below is a visual example of how workspaces are structured in meshStack:
 
 ### Concepts
 
-- [meshStack Areas](/concepts/meshstack-areas.md)
-- [Workspace Users and Permissions](/concepts/users-and-groups.md#workspace-users-and-permissions)
+- [meshStack Areas](./meshstack-areas.md)
+- [Workspace Users and Permissions](./users-and-groups.md#workspace-users-and-permissions)
 
 ### Guides
 
-- [How to Manage Workspaces](/guides/core/how-to-manage-a-workspace.md)
-- [How to Onboard your Team to a Workspace](/guides/developer-portal/how-to-onboard-your-team.md)
-- [How to Limit Workspace Resources](/guides/core/how-to-limit-workspace-resources.md)
+- [How to Manage Workspaces](../guides/core/how-to-manage-a-workspace.md)
+- [How to Onboard your Team to a Workspace](../guides/developer-portal/how-to-onboard-your-team.md)
+- [How to Limit Workspace Resources](../guides/core/how-to-limit-workspace-resources.md)
 

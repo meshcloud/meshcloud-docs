@@ -88,9 +88,9 @@ Some policy violations cant be resolved by application teams. In this case, you 
 
 ### Concepts
 
-- [Tags](concepts/tag.md)
-- [Policies](concepts/policy.md)
+- [Tags](../../concepts/tag.md)
+- [Policies](../../concepts/policy.md)
 
 ### Guides
 
-- [How to Protect Admin Roles](guides/developer-portal/how-to-protect-admin-roles.md)
+- [How to Protect Admin Roles](./how-to-protect-admin-roles.md)

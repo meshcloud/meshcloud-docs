@@ -34,9 +34,9 @@ Check meshStack's API documentation for details on authentication, required fiel
 
 ### Concepts
 
-- [Cost Management](concepts/cost-management.md)
+- [Cost Management](../../concepts/cost-management.md)
 
 ### Guides
 
-- [How to Set Up Prices](guides/finops/how-to-set-up-prices.md)
-- [How to Create Your Own Platforms](guides/developer-portal/how-to-provide-your-own-platform.md)
+- [How to Set Up Prices](./how-to-set-up-prices.md)
+- [How to Create Your Own Platforms](../developer-portal/how-to-provide-your-own-platform.md)

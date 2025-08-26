@@ -50,12 +50,12 @@ Budget alerts notify workspace owners and managers by email when project costs a
 
 ### Concepts
 
-- [Project](concepts/project.md)
-- [Workspace](concepts/workspace.md)
-- [Cost Management](concepts/cost-management.md)
-- [Tags](concepts/tag.md)
+- [Project](./project.md)
+- [Workspace](./workspace.md)
+- [Cost Management](./cost-management.md)
+- [Tags](./tag.md)
 
 ### Guides
 
-- [How to Manage Payment Methods](guides/finops/how-to-manage-payment-methods.md)
-- [How to Integrate External Approval Processes](guides/finops/how-to-integrate-external-approval-processes.md)
+- [How to Manage Payment Methods](../guides/finops/how-to-manage-payment-methods.md)
+- [How to Integrate External Approval Processes](../guides/finops/how-to-integrate-external-approval-processes.md)

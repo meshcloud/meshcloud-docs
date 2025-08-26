@@ -4,12 +4,12 @@ title: Tenant Services
 ---
 
 > **The Tenant Services feature is deprecated! Please do not use this anymore.**
-> **We recommend the usage of [Tenant Building Blocks](/concepts/building-block) for additional services for your tenants.**
+> **We recommend the usage of [Tenant Building Blocks](../../concepts/building-block.md) for additional services for your tenants.**
 
 Tenant Services provide a convenient way for cloud foundation teams to provide "foundational" services such as virtual
 networks with intranet connectivity, CI/CD platform integration and similar scenarios. Tenant services are Open Service Broker
 (OSB) API compatible services that are flagged as "tenant-aware" services in the OSB Services platform. Service consumers
-can then bind their [meshTenants](/concepts/tenant) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
+can then bind their [meshTenants](../../concepts/tenant.md) against these services using a specialized service binding type. This allows service brokers to receive tenant information like an Azure Subscription Id or AWS Account number where the
 consumer wants the service to be provisioned.
 
 ## Service Broker Categories
@@ -55,7 +55,7 @@ meshTenant belongs to which service, but they do not use meshStack's concept of 
 
 For these kind of cases we have a workaround that allows these services to become tenant-aware anyway:
 
-1. Flag the service in the service catalog as `tenantAware: true`. You can see an example of that [here](integrations/osb/api-profile.md#tenant-aware-services). If you
+1. Flag the service in the service catalog as `tenantAware: true`. You can see an example of that [here](./api-profile.md#tenant-aware-services). If you
    use our [unipipe-service-broker](https://github.com/meshcloud/unipipe-service-broker), you can do this in the [catalog.yml](https://github.com/meshcloud/unipipe-service-broker/wiki/Reference#catalogyml).
 2. When a service is now tenant-aware, the OSB Services platform expects an endpoint for creating so-called tenant bindings.
    You must implement this endpoint, because otherwise the service binding will show up as 'Failed' in meshStack.

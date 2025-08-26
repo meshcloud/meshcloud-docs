@@ -25,7 +25,7 @@ meshStack Copilot is not generally available yet; however, we're offering a publ
 
 ### How to use meshStack Copilot
 
-For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot Guide](guides/developer-engagement/how-to-copilot.md).
+For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot Guide](../guides/developer-engagement/how-to-copilot.md).
 
 ### How does Copilot work?
 
@@ -48,7 +48,7 @@ When using meshStack Copilot, please keep in mind:
 
 ### Which AI model providers do you use for Copilot?
 
-meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official subprocessor list in the [Security FAQ](operations/security-faq.md).
+meshStack Copilot currently uses Google Gemini models hosted by Google Cloud in the EU. This means your questions are processed by Google Cloud, acting as a subprocessor of meshcloud. For more details, see our official subprocessor list in the [Security FAQ](../operations/security-faq.md).
 
 We're curious to hear if you’d like to see “bring your own model” (or API key) support so you can use meshStack Copilot with models under your own contract.
 
@@ -56,10 +56,10 @@ We're curious to hear if you’d like to see “bring your own model” (or API 
 
 meshStack Copilot is designed to be a context-aware assistant that helps you with tasks like understanding your platform or generating documentation. To do this well, it needs access to the same data and knowledge a human colleague would reference.
 
-| Data Category                | Why meshStack Copilot needs it                       |
-|------------------------------|-----------------------------------------------------|
+| Data Category                | Why meshStack Copilot needs it                                       |
+|------------------------------|----------------------------------------------------------------------|
 | User info (name, email)      | To personalize responses and only give you access to permitted data. |
-| Marketplace Catalog metadata | To answer questions about platform services.        |
+| Marketplace Catalog metadata | To answer questions about platform services.                         |
 
 We'll expand this list as we add new capabilities to meshStack Copilot.
 
@@ -95,11 +95,11 @@ All conversations with meshStack Copilot, including all data provided to the mod
 
 ### Concepts
 
-- [Copilot](concepts/copilot.md)
-- [Security FAQ](operations/security-faq.md)
+- [Copilot](../concepts/copilot.md)
+- [Security FAQ](../operations/security-faq.md)
 
 ### Guides
 
-- [How to use meshStack Copilot Guide](guides/developer-engagement/how-to-copilot.md)
-- [How to Discover Services Guide](guides/developer-engagement/how-to-discover-services.md)
-- [How to Generate Building Block Documentation Guide](guides/developer-engagement/how-to-generate-building-block-documentation.md)
+- [How to use meshStack Copilot Guide](../guides/developer-engagement/how-to-copilot.md)
+- [How to Discover Services Guide](../guides/developer-engagement/how-to-discover-services.md)
+- [How to Generate Building Block Documentation Guide](../guides/developer-engagement/how-to-generate-building-block-documentation.md)

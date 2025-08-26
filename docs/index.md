@@ -1,5 +1,5 @@
 ---
-id: new-docs.index
+id: index
 title: Welcome
 ---
 
@@ -12,9 +12,9 @@ This documentation is your starting point for learning how to design, configure,
 
 If you're new, we recommend starting with these resources:
 
-- [Building your First Service](/meshstack.building-aws-quickstart-guide) – get hands on and start building your first service with meshStack: a managed AWS S3 bucket using Terraform.
-- [Concepts](/new-concept-meshstackareas) – tenants, workspaces, platforms, landing zones & much more. Learn what they are and how they work together.
-- [Building your First AKS Developer Platform](/meshstack.aks-developer-platform-quickstart-guide) – get hands on and start building your first AKS developer platform that provides users a golden path into your AKS cluster.
+- [Building your First Service](./getting-started/building-aws-quickstart-guide.md) – get hands on and start building your first service with meshStack: a managed AWS S3 bucket using Terraform.
+- [Concepts](./concepts/workspace.md) – tenants, workspaces, platforms, landing zones & much more. Learn what they are and how they work together.
+- [Building your First AKS Developer Platform](./getting-started/aks-developer-platform-quickstart-guide.md) – get hands on and start building your first AKS developer platform that provides users a golden path into your AKS cluster.
 
 ## Key Areas of the Docs
 

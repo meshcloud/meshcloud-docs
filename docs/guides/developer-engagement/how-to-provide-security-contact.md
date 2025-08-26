@@ -42,9 +42,9 @@ For a hands-on walkthrough, check out the interactive demo on Storylane: [View t
 
 ### Concepts
 
-- [Tag Concept](concepts/tag.md)
-- [Communication Center](concepts/communication.md)
+- [Tag Concept](../../concepts/tag.md)
+- [Communication Center](../../concepts/communication.md)
 
 ### Guides
 
-- [How to Manage Tags](guides/core/how-to-manage-tags.md)
+- [How to Manage Tags](../core/how-to-manage-tags.md)

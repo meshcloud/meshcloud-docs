@@ -64,7 +64,7 @@ This guide helps you manage tenants in meshStack. You'll learn how to keep your 
 
 ### Step by Step Guide
 
-1. Access the tenant list as described in the [How to Access Tenants (Platform Team)](#how-to-access-tenants-platform-team) section.
+1. Access the tenant list.
 2. Access the tenant details by clicking on "View more" in the tenant list.
 3. Review the tenant status by checking the replication information. Those provide details about the successful completion of dedicated replication steps. You can also see any tags that have been replicated to the tenant.
 
@@ -78,7 +78,7 @@ This guide helps you manage tenants in meshStack. You'll learn how to keep your 
 
 ### Step by Step Guide
 
-1. Access the tenant list as described in the [How to Access Tenants (Platform Team)](#how-to-access-tenants-platform-team) section.
+1. Access the tenant list.
 2. Select the tenant for which you want to trigger replication.
 3. In the tenant details view, locate the "Trigger Replication" button within the replication section and click it to initiate replication.
 
@@ -105,12 +105,12 @@ Alternative:
 
 ## Change Environment Ownership
 
-If project or tenant ownership changes, update user/group assignments and tags. See [How to Reflect Organizational Changes](guides/core/how-to-reflect-organizational-changes.md).
+If project or tenant ownership changes, update user/group assignments and tags. See [How to Reflect Organizational Changes](./how-to-reflect-organizational-changes.md).
 
 ## Tenant Deletion Flow
 
 :::note Info
-The behavior for deletion depends on the configuration defined in the landing zone of the tenant's platform. There are multiple options to tailor the deletion process of tenants to your organizational requirements. See [How to Ensure Compliant Deletion of Environments](guides/developer-portal/how-to-ensure-compliant-deletion-of-tenants.md).
+The behavior for deletion depends on the configuration defined in the landing zone of the tenant's platform. There are multiple options to tailor the deletion process of tenants to your organizational requirements. See [How to Ensure Compliant Deletion of Environments](../developer-portal/how-to-ensure-compliant-deletion-of-tenants.md).
 :::
 
 ### 1. Deletion Request
@@ -162,15 +162,15 @@ You can filter tenants that were deleted successfully by selecting the status co
 
 ### Concepts
 
-- [Tenant](concepts/tenant.md)
-- [Landing Zone](concepts/landing-zone.md)
-- [Platform](concepts/platform.md)
+- [Tenant](../../concepts/tenant.md)
+- [Landing Zone](../../concepts/landing-zone.md)
+- [Platform](../../concepts/platform.md)
 
 ### Guides
 
-- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
-- [How to Reflect Organizational Changes in meshStack](guides/core/how-to-reflect-organizational-changes.md)
-- [How to Restrict Platform Access](guides/developer-portal/how-to-restrict-platform-access.md)
-- [How to Protect Admin Roles](guides/developer-portal/how-to-protect-admin-roles.md)
-- [How to Enforce Resource Quota](guides/developer-portal/how-to-enforce-resource-quotas.md)
-- [How to Ensure Compliant Deletion of Environments](guides/developer-portal/how-to-ensure-compliant-deletion-of-tenants.md)
+- [How to Manage a Platform](../developer-portal/how-to-manage-a-platform.md)
+- [How to Reflect Organizational Changes in meshStack](./how-to-reflect-organizational-changes.md)
+- [How to Restrict Platform Access](../developer-portal/how-to-restrict-platform-access.md)
+- [How to Protect Admin Roles](../developer-portal/how-to-protect-admin-roles.md)
+- [How to Enforce Resource Quota](../developer-portal/how-to-enforce-resource-quotas.md)
+- [How to Ensure Compliant Deletion of Environments](../developer-portal/how-to-ensure-compliant-deletion-of-tenants.md)

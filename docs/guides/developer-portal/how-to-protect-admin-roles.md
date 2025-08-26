@@ -69,9 +69,9 @@ As this has implications for all workspace users, it is recommended to follow th
 
 ### Concepts
 
-- [Project](concepts/project.md)
-- [Users and Groups](concepts/users-and-groups.md)
+- [Project](../../concepts/project.md)
+- [Users and Groups](../../concepts/users-and-groups.md)
 
 ### Guides
 
-- [How to Customize Project Roles](guides/core/how-to-customize-project-roles.md)
+- [How to Customize Project Roles](../core/how-to-customize-project-roles.md)
