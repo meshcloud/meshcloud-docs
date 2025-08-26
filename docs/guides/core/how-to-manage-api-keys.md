@@ -14,7 +14,7 @@ You want to provide application teams dedicated API keys scoped for their worksp
 ## Prerequisites
 
 - API keys are enabled in the meshStack instance. Check in the admin area under settings > compliance > API keys.
-- No limiting quota is set on the workspace for API keys by default. If you want to limit the number of API keys per workspace, please refer to [How to Limit Workspace Resources](guides/core/how-to-limit-workspace-resources.md).
+- No limiting quota is set on the workspace for API keys by default. If you want to limit the number of API keys per workspace, please refer to [How to Limit Workspace Resources](./how-to-limit-workspace-resources.md).
 - Workspace owner or manager permissions on the workspace where you want to manage API keys or for changes in the admin area organization admin permissions.
 
 ## Step-by-Step Guide to Set Up API Keys
@@ -38,8 +38,8 @@ You can set an expiration date for API keys to ensure they are not used indefini
 
 ### Concepts
 
-- [Users and Groups](concepts/users-and-groups.md)
+- [Users and Groups](../../concepts/users-and-groups.md)
 
 ### Guides
 
-- [How to Limit Workspace Resources](guides/core/how-to-limit-workspace-resources.md)
+- [How to Limit Workspace Resources](./how-to-limit-workspace-resources.md)

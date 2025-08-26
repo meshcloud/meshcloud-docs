@@ -24,9 +24,9 @@ By the end of this guide, you will have built a complete starter kit for your us
 Before starting, ensure you have the following:
 
 - You have a basic understanding of building blocks in meshStack.
-  - *If you don’t, we recommend running through the [AWS S3 guide](getting-started/building-aws-quickstart-guide.md) to learn how building blocks work.*
+  - *If you don’t, we recommend running through the [AWS S3 guide](./building-aws-quickstart-guide.md) to learn how building blocks work.*
 - You have integrated an AKS cluster into meshStack.
-  - *If you don’t, we recommend running through the [First Platform guide for AKS](getting-started/aks-platform-quickstart-guide.md) where you are guided to integrate an AKS cluster as a platform in meshStack*
+  - *If you don’t, we recommend running through the [First Platform guide for AKS](./aks-platform-quickstart-guide.md) where you are guided to integrate an AKS cluster as a platform in meshStack*
 
 ## What Will We Do in This Guide?
 
@@ -441,4 +441,4 @@ variable "github_username" {
 
 ## What’s Next?
 
-- [Publish all building blocks](/guides/core/how-to-launch-a-new-terraform-building-block/#publish-building-block-definition) so anyone in the organization can use it and provision namespaces in self-service.
+- [Publish all building blocks](../guides/core/how-to-launch-a-new-terraform-building-block.md#publish-building-block-definition) so anyone in the organization can use it and provision namespaces in self-service.

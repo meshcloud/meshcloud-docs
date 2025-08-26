@@ -90,11 +90,11 @@ Check out the [OSB API Compliant Service Brokers](https://www.openservicebrokera
 
 ### Concepts
 
-- [OSB Services](concepts/osb-services.md)
-- [Marketplace](concepts/marketplace.md)
+- [OSB Services](../../concepts/osb-services.md)
+- [Marketplace](../../concepts/marketplace.md)
 
 ### Guides
 
-- [How to Manage OSB Services](guides/developer-portal/how-to-manage-osb.md)
-- [How to Manage a Project](guides/core/how-to-manage-a-project.md)
-- [How to Manage a Workspace](guides/core/how-to-manage-a-workspace.md)
+- [How to Manage OSB Services](../../guides/developer-portal/how-to-manage-osb.md)
+- [How to Manage a Project](../../guides/core/how-to-manage-a-project.md)
+- [How to Manage a Workspace](../../guides/core/how-to-manage-a-workspace.md)

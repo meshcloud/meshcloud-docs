@@ -16,8 +16,8 @@ The location concept is especially useful for grouping private cloud platforms t
 
 ### Concepts
 
-- [Platform](concepts/platform.md)
+- [Platform](./platform.md)
 
 ### Guides
 
-- [How to Manage Platforms](guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Manage Platforms](../guides/developer-portal/how-to-manage-a-platform.md)

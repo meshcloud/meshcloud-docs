@@ -44,5 +44,5 @@ You have two options if your budget is exceeded:
 
 ### Concepts
 
-- [Cost Management](concepts/cost-management.md)
-- [Payment Methods](concepts/payment-methods.md)
+- [Cost Management](../../concepts/cost-management.md)
+- [Payment Methods](../../concepts/payment-methods.md)

@@ -34,9 +34,9 @@ To further streamline the process, use the meshStack API to automate the creatio
 
 ### Concepts
 
-- [Payment Methods](concepts/payment-methods.md)
-- [Cost Management](concepts/cost-management.md)
+- [Payment Methods](../../concepts/payment-methods.md)
+- [Cost Management](../../concepts/cost-management.md)
 
 ### Guides
 
-- [How to Manage Payment Methods](guides/finops/how-to-manage-payment-methods.md)
+- [How to Manage Payment Methods](./how-to-manage-payment-methods.md)

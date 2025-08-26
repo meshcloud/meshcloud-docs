@@ -97,12 +97,12 @@ meshStack's tenant deletion process is designed for compliance, auditability, an
 
 ### Concepts
 
-- [Tenant](concepts/tenant.md)
-- [Landing Zone](concepts/landing-zone.md)
-- [Platform](concepts/platform.md)
+- [Tenant](../../concepts/tenant.md)
+- [Landing Zone](../../concepts/landing-zone.md)
+- [Platform](../../concepts/platform.md)
 
 ### Guides
 
-- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
-- [How to Manage Landing Zones](guides/developer-portal/how-to-manage-landing-zones.md)
-- [How to Manage a Tenant](guides/core/how-to-manage-a-tenant.md)
+- [How to Manage a Platform](./how-to-manage-a-platform.md)
+- [How to Manage Landing Zones](./how-to-manage-landing-zones.md)
+- [How to Manage a Tenant](../core/how-to-manage-a-tenant.md)

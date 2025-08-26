@@ -22,7 +22,7 @@ meshStack supports the simultaneous integration of multiple [Enterprise Identity
   - a stable and immutable user identifier (e.g. an OIDC `sub` claim)
   - a human-readable, unique username*
   - an email address
-  - an `euid` when using [externally-provisioned identities](#externally-provisioned-identities)
+  - an `euid` when using [externally-provisioned identities](../concepts/identity-and-access-management.md#externally-provisioned-identities)
 - IdPs should provide name (first name, given name) information to improve user experience
 
 > \* Please note that meshStack currently only offers limited support for propagation of changed usernames from IdPs.
@@ -77,7 +77,7 @@ To set up Azure Active Directory for IDP authentication follow these steps:
 
     ![Register non-gallery Enterprise Application](/assets/aad_identity_provider/aad-1.png)
 
-    > We create a non-gallery Enterprise Application (that creates an App Registration) instead of directly creating an App Registration here because [provisioning via SCIM](settings/user-group-provisioning#aad-configuration) will be set up later with this Enterprise Application.
+    > We create a non-gallery Enterprise Application (that creates an App Registration) instead of directly creating an App Registration here because [provisioning via SCIM](./user-group-provisioning.md#aad-configuration) will be set up later with this Enterprise Application.
 
 2. Open the App Registration for `meshcloud SSO`. Navigate to Authentication and add a new Platform of Type Web. Enter the redirect URI for your meshStack that was provided by meshcloud.
 

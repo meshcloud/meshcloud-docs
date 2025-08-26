@@ -13,9 +13,9 @@ meshStack supports project creation, configuration, access control and cost mana
 To enable integration with GCP, platform engineers configure one or multiple `meshPlatform`s of `PlatformType` GCP in meshPanel.
 
 Google Cloud Platform relies on [Google Cloud Identity (GCI)](https://cloud.google.com/identity/) for authentication and authorization. meshStack can seamlessly integrate with GCI and various hybrid identity setups.
-Organizations already using Google Cloud Directory Sync or Google Workspace can use meshStack with an [externally provisioned identities](concepts/identity-and-access-management.md) configuration.
+Organizations already using Google Cloud Directory Sync or Google Workspace can use meshStack with an [externally provisioned identities](../../concepts/identity-and-access-management.md) configuration.
 
-meshcloud helps organizations implement Google Cloud Platform in line with [governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](integrations/gcp/landing-zones.md).
+meshcloud helps organizations implement Google Cloud Platform in line with [governance best-practices](https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations) by integrating with the GCP [Organization Resource Hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) and [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview) using [Landing Zones](./landing-zones.md).
 
 In order to plan and execute a successful integration of GCP using meshcloud, organizations need to consider the following parts described in the sections below.
 
@@ -25,7 +25,7 @@ In order to plan and execute a successful integration of GCP using meshcloud, or
 
 Cloud Identity "Free" is sufficient for automated GCP IAM management through meshStack. meshStack does not require Cloud Identity Premium nor Google Workspace features.
 
-We recommend using [externally provisioned identities](concepts/identity-and-access-management.md) with GCP.
+We recommend using [externally provisioned identities](../../concepts/identity-and-access-management.md) with GCP.
 
 ## Organization Setup
 
@@ -34,4 +34,4 @@ Platform engineers need to set up a GCP Organization to be used by meshStack. Pl
 
 ## How to integrate GCP as a meshPlatform into meshStack
 
-This is described in the Guide section under [How to integrate GCP](/integrations/gcp/how-to-integrate).
+This is described in the Guide section under [How to integrate GCP](./how-to-integrate.md).

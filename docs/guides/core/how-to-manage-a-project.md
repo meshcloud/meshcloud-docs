@@ -34,7 +34,7 @@ This guide explains how to manage projects in meshStack, including user access, 
 
 1. Navigate to the admin area and select "Workspaces."
 2. Assign yourself to the workspace you want to create a project for.
-3. Follow the steps for [Creating a Project as an Application Team](/guides/core/how-to-manage-a-project.md).
+3. Follow the steps for [Creating a Project as an Application Team](./how-to-manage-a-project.md).
 
 ## Deleting a Project
 
@@ -119,7 +119,7 @@ Please be aware that users can only be added to a project if they are also part 
 
 You can find the project access management in the "Access Management" tab of the project. Select "Role Bindings."
 
-- To **add users** to a project, follow the guide [How to Onboard Your Team](/guides/developer-portal/how-to-onboard-your-team.md).
+- To **add users** to a project, follow the guide [How to Onboard Your Team](../../guides/developer-portal/how-to-onboard-your-team.md).
 - To **remove users**, simply select their role binding and click "Remove."
 - To **set an expiration date** for a user, select a deprecation date on the user.
 - To **change a user's role**, choose a different role from the drop-down menu.
@@ -134,16 +134,16 @@ You can find the project access management in the "Access Management" tab of the
 
 1. Navigate to the admin area and select "Workspaces."
 2. Assign yourself to the workspace.
-3. Follow the steps for [Project User Management as an Application Team](/guides/core/how-to-manage-a-project.md#project-user-management-as-an-application-team).
+3. Follow the steps for [Project User Management as an Application Team](./how-to-manage-a-project.md#project-user-management-as-an-application-team).
 
 ## Related Resources
 
 ### Concepts
 
-- [Project](/concepts/project.md)
-- [User Groups and Role Management](/concepts/users-and-groups.md)   
+- [Project](../../concepts/project.md)
+- [User Groups and Role Management](../../concepts/users-and-groups.md)   
 
 ### Guides
 
-- [How to Customize Project Roles](/guides/core/how-to-customize-project-roles.md)
-- [How to Protect Admin Roles](/guides/developer-portal/how-to-protect-admin-roles.md)
+- [How to Customize Project Roles](./how-to-customize-project-roles.md)
+- [How to Protect Admin Roles](../developer-portal/how-to-protect-admin-roles.md)

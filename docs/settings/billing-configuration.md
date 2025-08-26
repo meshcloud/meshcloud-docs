@@ -7,16 +7,16 @@ title: Billing Configuration
 
 > Chargeback is the process of allocating IT cost to consumers and feeding it into the company-wide finance and controlling processes.
 
-Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](/concepts/cost-management#chargeback-statements).
+Each project in meshStack is associated with a Chargeback Account. meshStack periodically generates [chargeback statements](../concepts/cost-management.md#chargeback-statements).
 
 The attributes that shall be part of the billing info on the chargeback statements can be configured.
 
 You need to specify a wait-period after which the chargeback statements are finalized. This period exists to allow the public cloud platforms to get all their usage events into the calculation. For private cloud platforms the waiting period is usually a few hours up to a day, but for public cloud providers it can be significantly longer. If you plan to use a public cloud provider, please choose the longest wait period for finalizing your chargeback statements. This ensures that all discounts and events of the month are included in the chargeback statement meshStack generates.
 
-| Provider | Suggested Wait Period                                                                                                                                                               |
-| -------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GCP      | 5 Days                                                                                                                                                                              |
-| AWS      | 6 Days                                                                                                                                                                              |
+| Provider | Suggested Wait Period                                                                                                                                                                |
+|----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GCP      | 5 Days                                                                                                                                                                               |
+| AWS      | 6 Days                                                                                                                                                                               |
 | Azure    | Depends on the workspaces Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
 
 ### Available metadata keys
@@ -37,7 +37,7 @@ The following metadata keys are derived from meshStack metadata and therefore av
 
 ### Available tag keys
 
-It is also possible to derive [meshTags](/concepts/tag) as metadata keys by using its tag name.
+It is also possible to derive [meshTags](../concepts/tag.md) as metadata keys by using its tag name.
 
 ### Configuration example
 
@@ -93,7 +93,7 @@ let example2
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](/concepts/payment-methods).
+> If you are interested in including budgeting into your chargeback process, have a look at the use of [payment methods](../concepts/payment-methods.md).
 
 ## Setting Internal Prices
 

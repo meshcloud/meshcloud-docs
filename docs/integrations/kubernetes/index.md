@@ -10,10 +10,10 @@ required APIs (described below) and configuration options available.
 
 The following Kubernetes distributions are supported and covered on this page:
 
-- **Native Kubernetes** with [Identity Federation](concepts/identity-and-access-management.md#externally-provisioned-identities) using externally provisioned identities
+- **Native Kubernetes** with [Identity Federation](../../concepts/identity-and-access-management.md#externally-provisioned-identities) using externally provisioned identities
 - **Azure Kubernetes Services** with user authentication and authorization via AKS AAD integration
 
-> meshStack additionally offers [OpenShift integration](integrations/openshift/index.md). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
+> meshStack additionally offers [OpenShift integration](../openshift/index.md). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
 
 ## Integration Overview
 
@@ -247,7 +247,7 @@ Integrating access control with meshStack requires different steps depending on 
 
 #### Generic Kubernetes Distributions
 
-meshStack will identify and assign users to roles in Kubernetes based on their `euid` (external user id) as described in [Identity Federation](concepts/identity-and-access-management.md#externally-provisioned-identities).
+meshStack will identify and assign users to roles in Kubernetes based on their `euid` (external user id) as described in [Identity Federation](../../concepts/identity-and-access-management.md#externally-provisioned-identities).
 In practice this means that meshStack will replicate `ClusterRoleBinding` with subjects like
 
 ```yaml

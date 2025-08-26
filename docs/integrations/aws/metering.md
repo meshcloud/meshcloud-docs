@@ -10,11 +10,11 @@ The `amortized cost` is used when generating the tenant usage reports.
 
 ## Configuration
 
-[Connection information](/integrations/aws/how-to-integrate#9-set-up-iam-user-for-metering) and metering behavior can be configured via the Platform Metering Configuration. Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](/integrations/aws/how-to-integrate#10-leverage-reserved-instances--savings-plans-optional).
+[Connection information](./how-to-integrate.md#9-set-up-iam-user-for-metering) and metering behavior can be configured via the Platform Metering Configuration. Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](./how-to-integrate.md#10-leverage-reserved-instances--savings-plans-optional).
 
 ## Configuring Seller Information
 
-If you would like to see the AWS costs attributed to a seller in the [chargeback statments](/concepts/cost-management#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](/settings/billing-configuration#defining-a-custom-product-catalog). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Aws` . An example is shown below.
+If you would like to see the AWS costs attributed to a seller in the [chargeback statments](../../concepts/cost-management.md#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](../../settings/billing-configuration.md). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Aws` . An example is shown below.
 
 ```json
 {

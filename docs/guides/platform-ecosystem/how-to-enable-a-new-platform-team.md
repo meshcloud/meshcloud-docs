@@ -19,13 +19,13 @@ With meshStack and the Platform Ecosystem Module, you can separate different pla
 ### Step-by-Step Guide
 
 1. In the top navigation bar, click the workspace dropdown and select "Create new workspace".
-2. Follow [How to Create a Workspace](guides/core/how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign yourself workspace owner permissions.
+2. Follow [How to Create a Workspace](../core/how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign yourself workspace owner permissions.
 3. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
 4. You now have access to the Platform Builder via the button in the top right corner.
 
 ### Next Steps
 
-- [How to Onboard Your Team](guides/developer-portal/how-to-onboard-your-team.md)
+- [How to Onboard Your Team](../developer-portal/how-to-onboard-your-team.md)
 
 ## Admin Onboarding
 
@@ -35,19 +35,19 @@ With meshStack and the Platform Ecosystem Module, you can separate different pla
 
 ### Step-by-Step Guide
 
-1. Follow [How to Create a Workspace](guides/core/how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
+1. Follow [How to Create a Workspace](../core/how-to-manage-a-workspace.md#creating-a-workspace-as-an-application-team) to create a new workspace. Assign the team lead of the platform team workspace owner permissions.
 2. Once the workspace is created, navigate to Settings > General and enable the toggle for access to the Platform Builder.
-3. Onboard the rest of the team using [How to Onboard your Team](guides/developer-portal/how-to-onboard-your-team.md) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
+3. Onboard the rest of the team using [How to Onboard your Team](../developer-portal/how-to-onboard-your-team.md) by adding them to the workspace and assigning them the role of Workspace Member or Manager.
 4. The team now has access to the Platform Builder via the button in the top right corner.
 
 ## Related Resources
 
 ### Concepts
 
-- [Workspace](concepts/workspace.md)
-- [meshStack Areas](concepts/meshstack-areas.md)
-- [Workspace Users and Permissions](concepts/users-and-groups.md#workspace-users-and-permissions)
+- [Workspace](../../concepts/workspace.md)
+- [meshStack Areas](../../concepts/meshstack-areas.md)
+- [Workspace Users and Permissions](../../concepts/users-and-groups.md#workspace-users-and-permissions)
 
 ### Guides
 
-- [How to Onboard your Team](guides/developer-portal/how-to-onboard-your-team.md)
+- [How to Onboard your Team](../developer-portal/how-to-onboard-your-team.md)

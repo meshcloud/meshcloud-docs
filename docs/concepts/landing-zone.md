@@ -36,12 +36,12 @@ Building blocks for a landing zone can be configured as:
 
 ### Concepts
 
-- [Platform](concepts/platform.md)
-- [Tenant](concepts/tenant.md)
-- [Building Block](concepts/building-block.md)
+- [Platform](./platform.md)
+- [Tenant](./tenant.md)
+- [Building Block](./building-block.md)
 
 ## Guides
 
-- [How to Manage Landing Zones](guides/developer-portal/how-to-manage-landing-zones.md)
-- [How to Manage a Platform](guides/developer-portal/how-to-manage-a-platform.md)
-- [How to Provide Your Own Platform](guides/developer-portal/how-to-provide-your-own-platform.md)
+- [How to Manage Landing Zones](../guides/developer-portal/how-to-manage-landing-zones.md)
+- [How to Manage a Platform](../guides/developer-portal/how-to-manage-a-platform.md)
+- [How to Provide Your Own Platform](../guides/developer-portal/how-to-provide-your-own-platform.md)

@@ -111,11 +111,11 @@ Now the substitute payment method will automatically be active for the project w
 
 ### Concepts
 
-- [Payment Method](concepts/payment-methods.md)
-- [Tags](concepts/tag.md)
-- [Workspace](concepts/workspace.md)
-- [Project](concepts/project.md)
+- [Payment Method](../../concepts/payment-methods.md)
+- [Tags](../../concepts/tag.md)
+- [Workspace](../../concepts/workspace.md)
+- [Project](../../concepts/project.md)
 
 ### Guides
 
-- [Budget Alerts](guides/finops/how-to-budget-alerts.md)
+- [Budget Alerts](./how-to-budget-alerts.md)

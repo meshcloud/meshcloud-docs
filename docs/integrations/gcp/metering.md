@@ -9,7 +9,7 @@ meshStack also periodically collects the currently active projects in order to a
 
 ## Configuration
 
-[Connection information](/integrations/gcp/how-to-integrate#10-set-up-the-service-account-for-metering) and metering behavior can be configured via the Platform Metering Configuration.
+[Connection information](./how-to-integrate.md#10-set-up-the-service-account-for-metering) and metering behavior can be configured via the Platform Metering Configuration.
 
 ## Billing Data Import
 
@@ -19,7 +19,7 @@ The monthly totals are calculated by aggregating by the `invoice.month` attribut
 
 ## Configuring Seller Information
 
-If you would like to see the GCP costs attributed to a seller in the [chargeback statments](/concepts/cost-management#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](/settings/billing-configuration#defining-a-custom-product-catalog). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Gcp`. An example is shown below.
+If you would like to see the GCP costs attributed to a seller in the [chargeback statments](../../concepts/cost-management.md#chargeback-statements), a product needs to be created manually in the meshcloud [Product Catalog](../../settings/billing-configuration.md). This product should have a `resourceType` of `sellerInfo` and should be scoped to a `platformType` of `Gcp`. An example is shown below.
 
 ```json
 {

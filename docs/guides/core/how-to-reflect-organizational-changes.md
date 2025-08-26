@@ -97,7 +97,7 @@ subjects:
 
 ### Concepts
 
-- [Workspace](concepts/workspace.md)
-- [Project](concepts/project.md)
-- [Tenant](concepts/tenant.md)
-- [User Groups and Role Management](concepts/users-and-groups.md)
+- [Workspace](../../concepts/workspace.md)
+- [Project](../../concepts/project.md)
+- [Tenant](../../concepts/tenant.md)
+- [User Groups and Role Management](../../concepts/users-and-groups.md)

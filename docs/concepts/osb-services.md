@@ -49,7 +49,7 @@ The OSB Services Platform provides support for global and local services. Servic
 
 ## OSB API Profile
 
-meshcloud implements an extended [OSB API Profile](integrations/osb/api-profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
+meshcloud implements an extended [OSB API Profile](../integrations/osb/api-profile.md) that allows brokers a deeper integration with meshStack. Please review the documentation to learn more about the use-cases this API profile enables.
 
 ## Authentication & Authorization
 
@@ -62,7 +62,7 @@ All communication between the OSB Services platform and Service Brokers is secur
 OSB Services platform supports two different options for authenticating and authorizing users.
 
 - (Enterprise Plans only) use an OIDC client in meshIdB
-- replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
+- replicate permissions to Azure Active Directory groups
 
 If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack
 <<<<<<< HEAD
@@ -72,10 +72,10 @@ using the [meshObject API](pathname:///api/).
 
 ### Concepts
 
-- [Marketplace](concepts/marketplace.md)
-- [Building Block Concept](concepts/building-block.md)
+- [Marketplace](./marketplace.md)
+- [Building Block Concept](./building-block.md)
 
 ### Guides
 
-- [How to Manage OSB Services](guides/developer-portal/how-to-manage-osb.md)
-- [How to Implement an OSB Service Broker](/integrations/osb/how-to-implement-osb.md)
+- [How to Manage OSB Services](../guides/developer-portal/how-to-manage-osb.md)
+- [How to Implement an OSB Service Broker](../integrations/osb/how-to-implement-osb.md)

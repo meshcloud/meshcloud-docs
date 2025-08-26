@@ -29,7 +29,7 @@ On a high level, you need the following and your platform integration is done:
 
 ### 1. Create a platform
 
-Follow [Create a Platform](guides/developer-portal/how-to-manage-a-platform.md) to create a new platform in meshStack.
+Follow [Create a Platform](./how-to-manage-a-platform.md) to create a new platform in meshStack.
 
 Make sure to:
 
@@ -41,7 +41,7 @@ Make sure to:
 ### 2. Create a Building Block
 
 Create a new Building Block Definition, for example with Terraform
-([How to Launch a New Terraform Building Block Definition](guides/core/how-to-launch-a-new-terraform-building-block))
+([How to Launch a New Terraform Building Block Definition](../core/how-to-launch-a-new-terraform-building-block.md))
 that will do the automation for your platform.
 
 Make sure to configure the following details:
@@ -83,11 +83,11 @@ Application teams will now be able to see the new platform in the marketplace an
 
 ### Concepts
 
-- [Platform](concepts/platform.md)
-- [Building Block](concepts/building-block.md)
-- [Landing Zone](concepts/landing-zone.md)
+- [Platform](../../concepts/platform.md)
+- [Building Block](../../concepts/building-block.md)
+- [Landing Zone](../../concepts/landing-zone.md)
 
 ### Guides
 
-- [How to Manage Platforms](guides/developer-portal/how-to-manage-a-platform.md)
-- [How to Create Customized Bills](guides/finops/how-to-create-customized-bills.md)
+- [How to Manage Platforms](./how-to-manage-a-platform.md)
+- [How to Create Customized Bills](../finops/how-to-create-customized-bills.md)

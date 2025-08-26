@@ -18,7 +18,7 @@ We have officially validated meshStack with support for Cloud Foundry `v3.108.0`
 
 ### UAA Federated Users
 
-meshStack will identify and assign users to roles in Cloud Foundry based on their `euid` (external user id) as described in [Identity Federation](concepts/identity-and-access-management.md#externally-provisioned-identities).
+meshStack will identify and assign users to roles in Cloud Foundry based on their `euid` (external user id) as described in [Identity Federation](../../concepts/identity-and-access-management.md#externally-provisioned-identities).
 
 You should set up your Cloud Foundry and UAA so that they store the `euid` value in the `User.userName` field of the [UAA User object](https://docs.cloudfoundry.org/api/uaa/version/77.8.0/index.html#get) and `User.username` field of the [Cloud Foundry user object](http://v3-apidocs.cloudfoundry.org/version/3.164.0/index.html#users).
 
@@ -33,14 +33,14 @@ users the following [Cloud Foundry roles](https://docs.cloudfoundry.org/concepts
 
 - the `replicator` admin account must have permission to create orgs, spaces, groups and assign roles. This user requires the
   `Admin` role and additionally needs the `cloud_controller.admin`, `uaa.admin` and  `scim.read` scopes in UAA.
-- the `metering` admin account is used to collect [metering data](integrations/cloud-foundry/metering.md). This requires the `Global Auditor`.
+- the `metering` admin account is used to collect [metering data](./metering.md). This requires the `Global Auditor`.
 
-The tenant [replication](/concepts/tenant) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's project permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
+The tenant [replication](../../concepts/tenant.md) ensures spaces and orgs are created within the CF platform and appropriate permission rights are set when users access the CF platform. If a user's project permissions are modified, meshStack updates the permissions for this user accordingly within the CF platform.
 
 ### Spaces & Organizations
 
-By default, meshStack will replicate [tenants](/concepts/tenant) as Cloud Foundry Spaces and create a
-Cloud Foundry Organization for every [workspace](/concepts/workspace).
+By default, meshStack will replicate [tenants](../../concepts/tenant.md) as Cloud Foundry Spaces and create a
+Cloud Foundry Organization for every [workspace](../../concepts/workspace.md).
 
 ### Permission Replication
 

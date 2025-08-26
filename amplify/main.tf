@@ -14,385 +14,373 @@ provider "aws" {
 }
 
 locals {
+  # These are redirects from old docs URLs to new docs URLs.
+  # We can probably remove these after a year or so. (August 2026)
   redirects = [
-    # {
-    #   source = "/meshcloud.index"
-    #   target = "/"
-    # },
-    # {
-    #   source = "/meshcloud.workspace"
-    #   target = "/concepts/workspace"
-    # },
-    # {
-    #   source = "/meshcloud.project"
-    #   target = "/concepts/project"
-    # },
-    # {
-    #   source = "/meshcloud.tenant"
-    #   target = "/concepts/tenant"
-    # },
-    # {
-    #   source = "/meshcloud.tenant-quota"
-    #   target = "/new-guide-how-enforce-resource-quotas"
-    # },
-    # {
-    #   source = "/meshcloud.landing-zones"
-    #   target = "/concepts/landing-zone"
-    # },
-    # {
-    #   source = "/meshcloud.profile"
-    #   target = "we will delete this one"
-    # },
-    # {
-    #   source = "/meshcloud.platforms"
-    #   target = "/concepts/platform"
-    # },
-    # {
-    #   source = "/meshcloud.cost-management"
-    #   target = "/concepts/cost-management"
-    # },
-    # {
-    #   source = "/meshcloud.chargeback-v2"
-    #   target = "we can delete v2 is default now"
-    # },
-    # {
-    #   source = "/meshcloud.payment-methods"
-    #   target = "concepts/payment-methods"
-    # },
-    # {
-    #   source = "/meshcloud.budget-alerts"
-    #   target = "/concepts/payment-methods/#budget-alerts"
-    # },
-    # {
-    #   source = "/meshcloud.metadata-tags"
-    #   target = "/concepts/tag"
-    # },
-    # {
-    #   source = "/meshcloud.policies"
-    #   target = "/concepts/policy"
-    # },
-    # {
-    #   source = "/marketplace.index"
-    #   target = "/concepts/marketplace"
-    # },
-    # {
-    #   source = "/marketplace.platform-builder"
-    #   target = "/concepts/meshstack-areas"
-    # },
-    # {
-    #   source = "/marketplace.service-instances"
-    #   target = "/concepts/osb-services/"
-    # },
-    # {
-    #   source = "/meshstack.how-to.create-project"
-    #   target = "/guides/core/how-to-manage-a-project"
-    # },
-    # {
-    #   source = "/meshstack.how-to.onboard-team-to-project"
-    #   target = "/guides/core/how-to-manage-a-project/#project-user-management-as-an-application-team"
-    # },
-    # {
-    #   source = "/meshstack.index"
-    #   target = "/"
-    # },
-    # {
-    #   source = "/administration.index"
-    #   target = "/concepts/users-and-groups/#admin-area-users-and-permissions"
-    # },
-    # {
-    #   source = "/meshstack.onboarding"
-    #   target = "TODO move to new Settings category"
-    # },
-    # {
-    #   source = "/administration.workspaces"
-    #   target = "/concepts/workspace"
-    # },
-    # {
-    #   source = "/administration.projects"
-    #   target = "/concepts/project"
-    # },
-    # {
-    #   source = "/administration.tenants"
-    #   target = "/concepts/tenant"
-    # },
-    # {
-    #   source = "/meshstack.replication-configuration"
-    #   target = "settings/replication-configuration"
-    # },
-    # {
-    #   source = "/administration.delete-tenants"
-    #   target = "TODO needs to be moved. update link"
-    # },
-    # {
-    #   source = "/administration.users"
-    #   target = "/concepts/users-and-groups"
-    # },
-    # {
-    #   source = "/administration.platforms"
-    #   target = "/concepts/platform"
-    # },
-    # {
-    #   source = "/administration.landing-zones"
-    #   target = "/concepts/landing-zone"
-    # },
-    # {
-    #   source = "/administration.building-blocks"
-    #   target = "/concepts/building-block"
-    # },
-    # {
-    #   source = "/administration.service-brokers"
-    #   target = "/concepts/osb-services"
-    # },
-    # {
-    #   source = "/administration.policies"
-    #   target = "/concepts/policy"
-    # },
-    # {
-    #   source = "/administration.unmanaged-tenants"
-    #   target = "/concepts/tenant/#unmanaged-tenants"
-    # },
-    # {
-    #   source = "/administration.meshstack-settings"
-    #   target = "/settings/meshstack-settings"
-    # },
-    # {
-    #   source = "/administration.workspace-services"
-    #   target = "/guides/platform-ecosystem/how-to-enable-a-new-platform-team"
-    # },
-    # {
-    #   source = "/administration.apiusers"
-    #   target = "/concepts/users-and-groups/#api-users"
-    # },
-    # {
-    #   source = "/administration.dns"
-    #   target = "TODO was copied but needs updated link"
-    # },
-    # {
-    #   source = "/meshstack.customizing"
-    #   target = "/settings/meshstack-customizing"
-    # },
-    # {
-    #   source = "/administration.product-feedback-collection"
-    #   target = "todo stays the same. maybe changes with new folder structure"
-    # },
-    # {
-    #   source = "/mtodoeshstack.identity-federation"
-    #   target = "todo ask someone smart like JR to move this"
-    # },
-    # {
-    #   source = "/meshstack.identity-provider"
-    #   target = "/settings/identity-provider"
-    # },
-    # {
-    #   source = "/meshstack.identity-lookup"
-    #   target = "/settings/identity-lookup"
-    # },
-    # {
-    #   source = "/meshstack.authorization"
-    #   target = "/guides/developer-portal/how-to-manage-4-eye-principle"
-    # },
-    # {
-    #   source = "/meshstack.workspace-group-sync"
-    #   target = "/settings/workspace-group-sync"
-    # },
-    # {
-    #   source = "/meshstack.user-group-provisioning"
-    #   target = "/settings/user-group-provisioning"
-    # },
-    # {
-    #   source = "/meshstack.building-blocks.private-runners"
-    #   target = "todo should be moved. there is a self-hosted runner one which is better"
-    # },
-    # {
-    #   source = "/meshstack.building-blocks.meshStack-http-backend"
-    #   target = "todo should be moved. we should have a Integrations > Terraform > Building Blocks with this"
-    # },
-    # {
-    #   source = "/meshstack.building-blocks.permission-delegation-aws"
-    #   target = "todo there should be some AWS x Building Blocks guide"
-    # },
-    # {
-    #   source = "/meshstack.building-pipeline-integration"
-    #   target = "todo should be specific guides for github & gitlab"
-    # },
-    # {
-    #   source = "/meshstack.billing"
-    #   target = "/concepts/cost-management/"
-    # },
-    # {
-    #   source = "/meshstack.billing-configuration"
-    #   target = "todo should be moved probably?"
-    # },
-    # NOTE: the following below were all 1:1 migrated by copy-paste.
-    # {
-    #   source = "/meshstack.aws.index"
-    #   target = "/integrations/aws/index"
-    # },
-    # {
-    #   source = "/meshstack.aws.landing-zones"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.aws.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.aws.sso-setup"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.aws.reserved-instance-guide"
-    #   target = "/integrations/aws/reserved-instance-guide"
-    # },
-    # {
-    #   source = "/meshstack.azure.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.azure.landing-zones"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.azure.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.gcp.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.gcp.landing-zones"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.gcp.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.cloudfoundry.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.cloudfoundry.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.kubernetes.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.kubernetes.landing-zones"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.kubernetes.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.github.pipeline-automation"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.openshift.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.openshift.landing-zones"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.openshift.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.openstack.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.openstack.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.meshmarketplace.index"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.meshmarketplace.metering"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.meshmarketplace.profile"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.meshmarketplace.tenant-services"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.meshmarketplace.broker-tutorial"
-    #   target = ""
-    # },
-    # NOTE: The following below were all 1:1 migrated by copy-paste.
-    # {
-    #   source = "/meshstack.managed-service"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.email"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.logging"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.monitoring"
-    #   target = ""
-    # },
-    # {
-    #   source = "/meshstack.backup"
-    #   target = ""
-    # },
-    # {
-    #   source = "/security-faq"
-    #   target = "/operations/security-faq"
-    # },
-    # {
-    #   source = "/copilot-preview"
-    #   target = "todo this one is not linked in the sidebar"
-    # },
-    # {
-    #   source = "/meshstack.how-to.integrate-meshplatform"
-    #   target = "/concepts/platform"
-    # },
-    # {
-    #   source = "/meshstack.how-to.integrate-meshplatform-aws-manually"
-    #   target = "/new-integration-how-to-integrate-aws/"
-    # },
-    # {
-    #   source = "/meshstack.how-to.integrate-meshplatform-azure-manually"
-    #   target = "/new-integration-how-to-integrate-azure/"
-    # },
-    # {
-    #   source = "/meshstack.how-to.integrate-meshplatform-gcp-manually"
-    #   target = "/integrations/gcp/how-to-integrate/"
-    # },
-    # {
-    #   source = "/meshstack.how-to.create-your-own-platform"
-    #   target = "/guides/developer-portal/how-to-provide-your-own-platform/"
-    # },
-    # {
-    #   source = "/meshstack.how-to.manage-partner-level-permissions"
-    #   target = "/concepts/users-and-groups/#admin-area-users-and-permissions"
-    # },
-    # {
-    #   source = "/meshstack.how-to-API-keys"
-    #   target = "/concepts/users-and-groups/#api-keys"
-    # },
-    # {
-    #   source = "/meshstack.how-to.get-started-building-blocks"
-    #   target = "TODO we should migrate this one. can be useful for tech people"
-    # }
+    {
+      source = "/meshcloud.index"
+      target = "/"
+    },
+    {
+      source = "/meshcloud.workspace"
+      target = "/concepts/workspace"
+    },
+    {
+      source = "/meshcloud.project"
+      target = "/concepts/project"
+    },
+    {
+      source = "/meshcloud.tenant"
+      target = "/concepts/tenant"
+    },
+    {
+      source = "/meshcloud.tenant-quota"
+      target = "/guides/developer-portal/how-to-enforce-resource-quotas"
+    },
+    {
+      source = "/meshcloud.landing-zones"
+      target = "/concepts/landing-zone"
+    },
+    {
+      source = "/meshcloud.platforms"
+      target = "/concepts/platform"
+    },
+    {
+      source = "/meshcloud.cost-management"
+      target = "/concepts/cost-management"
+    },
+    {
+      source = "/meshcloud.payment-methods"
+      target = "concepts/payment-methods"
+    },
+    {
+      source = "/meshcloud.budget-alerts"
+      target = "/concepts/payment-methods/#budget-alerts"
+    },
+    {
+      source = "/meshcloud.metadata-tags"
+      target = "/concepts/tag"
+    },
+    {
+      source = "/meshcloud.policies"
+      target = "/concepts/policy"
+    },
+    {
+      source = "/marketplace.index"
+      target = "/concepts/marketplace"
+    },
+    {
+      source = "/marketplace.platform-builder"
+      target = "/concepts/meshstack-areas#the-platform-builder"
+    },
+    {
+      source = "/marketplace.service-instances"
+      target = "/concepts/osb-services"
+    },
+    {
+      source = "/meshstack.how-to.create-project"
+      target = "/guides/core/how-to-manage-a-project"
+    },
+    {
+      source = "/meshstack.how-to.onboard-team-to-project"
+      target = "/guides/core/how-to-manage-a-project/#project-user-management-as-an-application-team"
+    },
+    {
+      source = "/meshstack.index"
+      target = "/"
+    },
+    {
+      source = "/administration.index"
+      target = "/concepts/users-and-groups/#admin-area-users-and-permissions"
+    },
+    {
+      source = "/meshstack.onboarding"
+      target = "/settings/onboarding"
+    },
+    {
+      source = "/administration.workspaces"
+      target = "/concepts/workspace"
+    },
+    {
+      source = "/administration.projects"
+      target = "/concepts/project"
+    },
+    {
+      source = "/administration.tenants"
+      target = "/concepts/tenant"
+    },
+    {
+      source = "/meshstack.replication-configuration"
+      target = "/settings/replication-configuration"
+    },
+    {
+      source = "/administration.delete-tenants"
+      target = "/guides/core/how-to-manage-a-tenant#tenant-deletion-flow"
+    },
+    {
+      source = "/administration.users"
+      target = "/concepts/users-and-groups"
+    },
+    {
+      source = "/administration.platforms"
+      target = "/concepts/platform"
+    },
+    {
+      source = "/administration.landing-zones"
+      target = "/concepts/landing-zone"
+    },
+    {
+      source = "/administration.building-blocks"
+      target = "/concepts/building-block"
+    },
+    {
+      source = "/administration.service-brokers"
+      target = "/concepts/osb-services"
+    },
+    {
+      source = "/administration.policies"
+      target = "/concepts/policy"
+    },
+    {
+      source = "/administration.unmanaged-tenants"
+      target = "/concepts/tenant/#unmanaged-tenants"
+    },
+    {
+      source = "/administration.meshstack-settings"
+      target = "/settings/meshstack-settings"
+    },
+    {
+      source = "/administration.workspace-services"
+      target = "/guides/platform-ecosystem/how-to-enable-a-new-platform-team"
+    },
+    {
+      source = "/administration.apiusers"
+      target = "/concepts/users-and-groups/#api-users"
+    },
+    {
+      source = "/administration.dns"
+      target = "/operations/dns"
+    },
+    {
+      source = "/meshstack.customizing"
+      target = "/settings/meshstack-customizing"
+    },
+    {
+      source = "/administration.product-feedback-collection"
+      target = "/operations/product-feedback-collection"
+    },
+    {
+      source = "/meshstack.identity-federation"
+      target = "/concepts/identity-and-access-management"
+    },
+    {
+      source = "/meshstack.identity-provider"
+      target = "/settings/identity-provider"
+    },
+    {
+      source = "/meshstack.identity-lookup"
+      target = "/settings/identity-lookup"
+    },
+    {
+      source = "/meshstack.authorization"
+      target = "/guides/developer-portal/how-to-manage-4-eye-principle"
+    },
+    {
+      source = "/meshstack.workspace-group-sync"
+      target = "/settings/workspace-group-sync"
+    },
+    {
+      source = "/meshstack.user-group-provisioning"
+      target = "/settings/user-group-provisioning"
+    },
+    {
+      source = "/meshstack.building-blocks.meshStack-http-backend"
+      target = "/guides/core/how-to-launch-a-new-terraform-building-block#meshstack-built-in-http-backend"
+    },
+    {
+      source = "/meshstack.building-blocks.permission-delegation-aws"
+      target = "/integrations/aws/permission-delegation"
+    },
+    {
+      source = "/meshstack.building-pipeline-integration"
+      target = "/integrations/github/github-actions"
+    },
+    {
+      source = "/meshstack.billing"
+      target = "/concepts/cost-management/"
+    },
+    {
+      source = "/meshstack.billing-configuration"
+      target = "/settings/billing-configuration"
+    },
+    {
+      source = "/meshstack.aws.index"
+      target = "/integrations/aws"
+    },
+    {
+      source = "/meshstack.aws.landing-zones"
+      target = "/integrations/aws/landing-zones"
+    },
+    {
+      source = "/meshstack.aws.metering"
+      target = "/integrations/aws/metering"
+    },
+    {
+      source = "/meshstack.aws.sso-setup"
+      target = "/integrations/aws/sso-setup"
+    },
+    {
+      source = "/meshstack.aws.reserved-instance-guide"
+      target = "/integrations/aws/reserved-instance-guide"
+    },
+    {
+      source = "/meshstack.azure.index"
+      target = "/integrations/azure"
+    },
+    {
+      source = "/meshstack.azure.landing-zones"
+      target = "/integrations/azure/landing-zones"
+    },
+    {
+      source = "/meshstack.azure.metering"
+      target = "/integrations/azure/metering"
+    },
+    {
+      source = "/meshstack.gcp.index"
+      target = "/integrations/gcp"
+    },
+    {
+      source = "/meshstack.gcp.landing-zones"
+      target = "/integrations/gcp/landing-zones"
+    },
+    {
+      source = "/meshstack.gcp.metering"
+      target = "/integrations/gcp/metering"
+    },
+    {
+      source = "/meshstack.cloudfoundry.index"
+      target = "/integrations/cloudfoundry"
+    },
+    {
+      source = "/meshstack.cloudfoundry.metering"
+      target = "/integrations/cloudfoundry/metering"
+    },
+    {
+      source = "/meshstack.kubernetes.index"
+      target = "/integrations/kubernetes"
+    },
+    {
+      source = "/meshstack.kubernetes.landing-zones"
+      target = "/integrations/kubernetes/landing-zones"
+    },
+    {
+      source = "/meshstack.kubernetes.metering"
+      target = "/integrations/kubernetes/metering"
+    },
+    {
+      source = "/meshstack.github.pipeline-automation"
+      target = "/integrations/github/github-actions"
+    },
+    {
+      source = "/meshstack.openshift.index"
+      target = "/integrations/openshift"
+    },
+    {
+      source = "/meshstack.openshift.landing-zones"
+      target = "/integrations/openshift/landing-zones"
+    },
+    {
+      source = "/meshstack.openshift.metering"
+      target = "/integrations/openshift/metering"
+    },
+    {
+      source = "/meshstack.openstack.index"
+      target = "/integrations/openstack"
+    },
+    {
+      source = "/meshstack.openstack.metering"
+      target = "/integrations/openstack/metering"
+    },
+    {
+      source = "/meshstack.meshmarketplace.index"
+      target = "/integrations/osb"
+    },
+    {
+      source = "/meshstack.meshmarketplace.metering"
+      target = "/integrations/osb/metering"
+    },
+    {
+      source = "/meshstack.meshmarketplace.profile"
+      target = "/integrations/osb/api-profile"
+    },
+    {
+      source = "/meshstack.meshmarketplace.tenant-services"
+      target = "/integrations/osb/tenant-services"
+    },
+    {
+      source = "/meshstack.meshmarketplace.broker-tutorial"
+      target = "/integrations/osb/how-to-implement-osb"
+    },
+    {
+      source = "/meshstack.managed-service"
+      target = "/operations/managed-service"
+    },
+    {
+      source = "/meshstack.email"
+      target = "/operations/email"
+    },
+    {
+      source = "/meshstack.logging"
+      target = "/operations/logging"
+    },
+    {
+      source = "/meshstack.monitoring"
+      target = "/operations/monitoring"
+    },
+    {
+      source = "/meshstack.backup"
+      target = "/operations/backup"
+    },
+    {
+      source = "/security-faq"
+      target = "/operations/security-faq"
+    },
+    {
+      source = "/copilot-preview"
+      target = "/concepts/copilot"
+    },
+    {
+      source = "/meshstack.how-to.integrate-meshplatform"
+      target = "/guides/developer-portal/how-to-manage-a-platform"
+    },
+    {
+      source = "/meshstack.how-to.integrate-meshplatform-aws-manually"
+      target = "/integrations/aws/how-to-integrate"
+    },
+    {
+      source = "/meshstack.how-to.integrate-meshplatform-azure-manually"
+      target = "/integrations/azure/how-to-integrate"
+    },
+    {
+      source = "/meshstack.how-to.integrate-meshplatform-gcp-manually"
+      target = "/integrations/gcp/how-to-integrate"
+    },
+    {
+      source = "/meshstack.how-to.create-your-own-platform"
+      target = "/guides/developer-portal/how-to-provide-your-own-platform"
+    },
+    {
+      source = "/meshstack.how-to.manage-partner-level-permissions"
+      target = "/concepts/users-and-groups/#admin-area-users-and-permissions"
+    },
+    {
+      source = "/meshstack.how-to-API-keys"
+      target = "/concepts/users-and-groups/#api-keys"
+    },
+    {
+      source = "/meshstack.how-to.get-started-building-blocks"
+      target = "/guides/core/how-to-launch-a-new-terraform-building-block"
+    }
   ]
 }
 

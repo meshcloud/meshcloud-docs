@@ -42,13 +42,13 @@ Administrators have access rights, that exceed the normal user’s
 capabilities. Therefore administrative actions require special control and
 traceability.
 
-| Event                                          | meshStack page / DB-Table (Where)                |
-| ---------------------------------------------- | -------------------------------------------------|
-| Assign yourself to a Workspace                 | Event Logs (Admin Area & in Workspace)           |
-| Change Workspace and Platform quota            | Event Logs (Admin Area & in Workspace), mesh.log |
-| Update financial information of a Project      | Event Logs (Admin Area & in Workspace), mesh.log |
-| Send message to Workspace                      | mesh.log                                         |
-| Deletion of a user                             | User table in deletedOn and deletedBy fields     |
+| Event                                     | meshStack page / DB-Table (Where)                |
+|-------------------------------------------|--------------------------------------------------|
+| Assign yourself to a Workspace            | Event Logs (Admin Area & in Workspace)           |
+| Change Workspace and Platform quota       | Event Logs (Admin Area & in Workspace), mesh.log |
+| Update financial information of a Project | Event Logs (Admin Area & in Workspace), mesh.log |
+| Send message to Workspace                 | mesh.log                                         |
+| Deletion of a user                        | User table in deletedOn and deletedBy fields     |
 
 ## Security Relevant Events
 
@@ -57,7 +57,7 @@ it summarizes all logs that are written for security related actions, like
 giving and revoking access.
 
 | Event (What?)                                                         | meshStack page / Log-File / DB-Table (Where)     |
-| --------------------------------------------------------------------- | ---------------------------------------------    |
+|-----------------------------------------------------------------------|--------------------------------------------------|
 | Successful and denied login attempts, as well as logouts              | Keycloak Events, events.log                      |
 | Created, changed, deleted Workspaces                                  | Event Logs (Admin Area & in Workspace), mesh.log |
 | Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log            |
