@@ -69,6 +69,7 @@ const config: Config = {
             'https://github.com/meshcloud/meshcloud-docs/tree/develop',
         },
         blog: {
+          blogSidebarCount: 15,
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
