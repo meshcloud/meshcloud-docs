@@ -5,7 +5,7 @@ title: Guide Writing Prompt
 
 # Guide Writing Prompt for meshStack Documentation
 
-When writing a guide for meshStack, follow this structure to ensure consistency, clarity, and a user-centric experience. Use the example from `new-guide-how-to-kickstart-your-IDP.md` as a template.
+When writing a guide for meshStack, follow this structure to ensure consistency, clarity, and a user-centric experience. Use the example from `guides/core/how-to-kickstart-your-IDP.md` as a template.
 
 ## Structure
 
