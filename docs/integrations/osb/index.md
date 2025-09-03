@@ -44,7 +44,7 @@ All communication between the OSB Services platform and Service Brokers is secur
 OSB Services platform supports two different options for authenticating and authorizing users.
 
 - (Enterprise Plans only) use an OIDC client in meshIdB
-- replicate permissions to Azure Active Directory groups ([learn more](#aad-permission-replication))
+- replicate permissions to Microsoft Entra ID groups ([learn more](#aad-permission-replication))
 
 If the above options do not work for your use case, you can also consider extracting the authorization information from meshStack
 using the [meshObject API](pathname:///api/).
@@ -80,7 +80,7 @@ offers no further configuration options. Note that these platforms do not need t
 
 ### AAD Permission Replication
 
-Platforms that want to use AAD group permission replication need to configure an instance of `AzureAd`
+Platforms that want to use Microsoft Entra ID group permission replication need to configure an instance of `AzureAd`
 
 ```dhall
 let InviteB2BUserConfig =
@@ -92,7 +92,7 @@ let InviteB2BUserConfig =
 
 in    λ(Secret : Type)
     → { groupNamePattern :
-          {- A pattern for deriving AAD Group names. Please see details described below -}
+          {- A pattern for deriving Microsoft Entra ID Group names. Please see details described below -}
           Optional Text
       , servicePrincipal :
           {- Either friendly domain name or your tenants GUID -}
