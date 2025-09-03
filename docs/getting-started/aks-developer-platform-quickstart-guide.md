@@ -80,7 +80,7 @@ This building block definition will interact with both GitHub & AKS, so we need 
 
 For GitHub, you can simply reuse what we set up before.
 
-For AKS, you will need to run the Terraform code in the backplane that will set up all necessary preparation such as preparing service principals with the right permissions. You can find this Terraform code [here](https://github.com/meshcloud/meshstack-hub/blob/main/modules/aks/github-connector/backplane).
+For AKS, you will need to run the OpenTofu code in the backplane that will set up all necessary preparation such as preparing service principals with the right permissions. You can find this OpenTofu code [here](https://github.com/meshcloud/meshstack-hub/blob/main/modules/aks/github-connector/backplane).
 
 Make sure you save the `config_tf` output and save it as a file called `config.tf`. We will use it later.
 
@@ -111,7 +111,7 @@ The last piece of the puzzle in the guide is the starter kit that will bundle up
 
 ### Preparation
 
-We will create resources within meshStack. This means we need an API Key to interact with meshStack in our Terraform code.
+We will create resources within meshStack. This means we need an API Key to interact with meshStack in our OpenTofu code.
 
 - Create a new API Key in meshStack in the Admin Area. Make sure you save the **API key ID** & **API key secret** somewhere, as you’ll need it later.
 - Give it the following permissions:
@@ -130,7 +130,7 @@ As the starter kit is very individual to your meshStack (project tags, definitio
 
 You can also change the behavior if you want in this starter kit. In its current behavior it will create a workspace building block GitHub repository, two projects with an AKS Namespace and a GitHub Actions connector
 
-- Take the following Terraform code snippet and place it in a Git repository of choice that you can access from your meshStack. Make sure you fill in locals with your own values.
+- Take the following OpenTofu code snippet and place it in a Git repository of choice that you can access from your meshStack. Make sure you fill in locals with your own values.
 
 ```hcl
 locals {
@@ -431,7 +431,7 @@ variable "github_username" {
 
 - Create a new building block definition in meshStack. Make sure you set the following:
   - Type = Workspace Building Block
-  - Implementation Type = Terraform
+  - Implementation Type = OpenTofu
   - Make sure to enable `Store Terraform State in meshStack’s http backend`
   - As the Deletion Mode pick `Purge in meshStack`, so the created resources continue living without the Starterkit. The Starterkit is only intenbded as a bootstrap.
   - For the inputs you will have to enter an API key ID & API key secret for the meshStack API user you created before.

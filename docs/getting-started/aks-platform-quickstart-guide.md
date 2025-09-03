@@ -26,17 +26,17 @@ This allows your application teams to open up meshStack and provision themselves
 Before starting, ensure you have the following:
 
 - An AKS Cluster that is publicly accessible via the internet
-- A place to run Terraform. For example, your local machine, or the Azure cloud shell.
+- A place to run OpenTofu. For example, your local machine, or the Azure cloud shell.
 
 ## Preparing Infrastructure in Azure
 
 To integrate your AKS cluster into meshStack properly, we require a few things to be in place in AKS & Azure for a successful integration.
 
-In this guide, we will use our Terraform module to set these things up. You can also do this manually, but we highly recommend doing this with Terraform, and for this guide we assume you did.
+In this guide, we will use our OpenTofu module to set these things up. You can also do this manually, but we highly recommend doing this with OpenTofu, and for this guide we assume you did.
 
-Amongst other things, the Terraform module will create a service user with the right permissions in the Kubernetes cluster and create a service principal in Azure to interact with your Entra tenant.
+Amongst other things, the OpenTofu module will create a service user with the right permissions in the Kubernetes cluster and create a service principal in Azure to interact with your Entra tenant.
 
-Click [here](https://github.com/meshcloud/terraform-aks-meshplatform) and follow along the guide in the README to use the Terraform module.
+Click [here](https://github.com/meshcloud/terraform-aks-meshplatform) and follow along the guide in the README to use the OpenTofu module.
 
 Make sure you execute the last step of exporting the outputs and save these somewhere. We need them later in this guide.
 
