@@ -10,7 +10,7 @@ meshStack is an Internal Developer Platform that empowers organizations to deliv
 With meshStack, you:
 
 - **Only need one platform** instead of integrating and managing a complex landscape consisting of various Platform Orchestration and Developer Portal products and tools
-- **Can focus on providing value from day one,** meshStack Hub provides ready to use templates and relies on common technologies such as terraform
+- **Can focus on providing value from day one,** meshStack Hub provides ready to use templates and relies on common technologies such as OpenTofu
 - **Will no longer be drowning in service requests,** as you’ll get self-service enabled by combining powerful automation with control
 
 :::info What is an Internal Developer Platform (IDP)?

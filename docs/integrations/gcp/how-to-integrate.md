@@ -13,7 +13,7 @@ This guide shows you how to integrate your GCP platform into meshStack. This is 
 
 ## Best Practice Integration
 
-The recommended way to set up GCP as a platform is via the public terraform [GCP platform module](https://github.com/meshcloud/terraform-gcp-meshplatform). The steps below are not needed if you decide to use it.
+The recommended way to set up GCP as a platform is via the public OpenTofu [GCP platform module](https://github.com/meshcloud/terraform-gcp-meshplatform). The steps below are not needed if you decide to use it.
 
 ## Step by Step Guide For Manual Integration
 
