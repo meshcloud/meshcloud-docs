@@ -47,7 +47,7 @@ There are two main reasons to use custom platforms:
 2. **Offer unsupported platforms**: Integrate managed platforms that are not supported out of the box by meshStack.
 
 :::note 💡Tip
- We already built some cloud platform integrations with Terraform that we open sourced. You can find them in [meshStack Hub](https://hub.meshcloud.io)!
+ We already built some cloud platform integrations with OpenTofu that we open sourced. You can find them in [meshStack Hub](https://hub.meshcloud.io)!
 :::
 
 ## Resource Quotas
