@@ -98,6 +98,19 @@ For Terraform-based Building Blocks, you can automatically extract Terraform out
 - **Dependency Management:** If a Building Block depends on another (e.g., a virtual machine requiring a VNET ID), you can output the required variable from one Building Block and use it as an input for the dependent Building Block.
 - **User Visibility:** Outputs that are important for end users, such as access credentials or resource endpoints, can be displayed in the tenant control plane, making them easily accessible to customer users.
 
+## Building Block Run Control
+
+Building Block Run Control configures who is allowed to create building block runs and review detailed logs of each run.
+Two options are available: `Platform Team Only` and `Platform Team and Workspace Users`.
+
+Platform teams can always trigger new building block runs and view all logs of any building block they own the building block definition of.
+
+When set to `Platform Team Only` workspace Users cannot manually trigger new building block runs except by updating inputs. Also, workspace users can only review building block run logs explicitly flagged as [user messages](https://docs.meshcloud.io/api/index.html#_update_sources_and_steps).
+
+> **Note:** Building Blocks using the OpenTofu implementation type do not emit "user messages" at this time. Therefore, if you select the `Platform Team Only` option, workspace users will not see any logs for OpenTofu building blocks.
+
+When set to `Platform Team and Workspace Users` workspace users can manually trigger new building block runs and view all logs. This option is useful for building blocks where users can be expected to troubleshoot and resolve issues on their own.
+
 ## Pricing
 
 You can set up prices for Building Blocks when ordered via the marketplace. For more information please follow the [How to Setup Prices](../guides/finops/how-to-set-up-prices.md) guide.
@@ -142,3 +155,4 @@ meshStack simplifies credential management by offering preconfigured inputs for 
 - [How to Provide Your Own Platform](../guides/developer-portal/how-to-provide-your-own-platform.md)
 - [How to Launch a New Manual Building Block Definition](../guides/core/how-to-launch-a-new-manual-building-block.md)
 - [How to Launch a New Terraform Building Block](../guides/core/how-to-launch-a-new-terraform-building-block.md)
+- [How to Manage a Building Block Definition](../guides/core/how-to-manage-a-building-block-definition.md)
