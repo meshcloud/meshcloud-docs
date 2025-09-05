@@ -13,6 +13,8 @@ Always obey the following:
 The following applies to specific file types:
 - Instructions for [writing guides](instructions/guide.instructions.md) 
 
+NEVER commit changes to the blog/ directory, which is auto-generated from release notes. ALWAYS ignore all files in blog/.
+
 ## Before Committing
 
 Always run these commands to validate your changes:
@@ -33,8 +35,8 @@ Do not commit if either command fails.
 
 ## Project Structure
 
-- `docs/` - Documentation files
-- `blog/` - Blog posts
+- `docs/` - Documentation as markdown files
+- `blog/` - Blog posts with release notes, must be ignored!
 - `static/` - Static assets
 - `src/` - Source code
 - `docusaurus.config.ts` - Main configuration
