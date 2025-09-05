@@ -124,7 +124,7 @@ These options are shared between both Azure Subscription & Azure Resource Group 
 
 ### meshRole to Platform Role Mapping
 
-The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the AAD group name generation, this setting is used or not.
+The meshProject roles must be mapped to Azure specific roles. You can control this by setting up the meshProject role to Azure group suffix mapping. However depending on your configuration of the Microsoft Entra ID group name generation, this setting is used or not.
 
 The Azure Role Definition is the RBAC ID of the Azure role you want to use. You can either create your own roles or use the [predefined global IDs](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) from Azure.
 

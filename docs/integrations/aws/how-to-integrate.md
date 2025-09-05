@@ -309,7 +309,7 @@ The integration with AWS SSO basically works like this: AuthN is done via the co
 
 Details about what needs to be configured inside AWS SSO can be found [here](./sso-setup.md).
 
-> An important precondition, regarding the automated user provisioning to AWS SSO, is that the userName in AWS SSO has to be set to the [euid](../../concepts/identity-and-access-management.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter userNames to find users. If an AAD is used as the IdP, that means the userPrincipalName in the AAD must be set to the [euid](../../concepts/identity-and-access-management.md#externally-provisioned-identities), as AAD will always set the userName in AWS SSO to its userPrincipalName.
+> An important precondition, regarding the automated user provisioning to AWS SSO, is that the userName in AWS SSO has to be set to the [euid](../../concepts/identity-and-access-management.md#externally-provisioned-identities). This limitation is caused by AWS SSO only allowing to filter userNames to find users. If a Microsoft Entra ID is used as the IdP, that means the userPrincipalName in the Microsoft Entra ID must be set to the [euid](../../concepts/identity-and-access-management.md#externally-provisioned-identities), as Microsoft Entra ID will always set the userName in AWS SSO to its userPrincipalName.
 
 The following configuration options are available in the AWS Platform Replicator Config:
 
