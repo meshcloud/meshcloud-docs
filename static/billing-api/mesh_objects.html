@@ -548,12 +548,12 @@ Content-Length: 666
 
 {
   "_links" : {
-    "meshtenantusagereports" : {
-      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}",
-      "templated" : true
-    },
     "meshchargebacks" : {
       "href" : "https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,finalizedSince,cancelledSince}",
+      "templated" : true
+    },
+    "meshtenantusagereports" : {
+      "href" : "https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}",
       "templated" : true
     },
     "self" : {
@@ -765,7 +765,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "6c4f78b5-eb32-4cad-a026-e348ea357273",
+        "platformTenantId" : "362d1043-73ff-4aa0-9703-f39211993693",
         "version" : 2
       },
       "status" : {
@@ -816,7 +816,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "13b14a18-798d-4182-b845-156f4924f922",
+        "platformTenantId" : "17cf97f7-c351-4efd-b75b-8519d11588f3",
         "version" : 1
       },
       "status" : {
@@ -1144,7 +1144,7 @@ Content-Length: 1392
     "reportCategory" : "BILLING",
     "platformType" : "Azure",
     "platform" : "azure.prod",
-    "platformTenantId" : "6c4f78b5-eb32-4cad-a026-e348ea357273",
+    "platformTenantId" : "362d1043-73ff-4aa0-9703-f39211993693",
     "version" : 2
   },
   "status" : {
@@ -1856,6 +1856,16 @@ meshTenantUsageReports.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">totalCost equals usageQuantity multiplied by usageCost.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].sellerId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional. An identifier of the seller who provides the services and is the recipient of the payment. E.g. the name of a cloud provider, or for internal costs the name of a department.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lineItems[].sellerProductGroup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional. A sub-category of the seller if more fine-grained assignment is needed. E.g. different payment methods the seller has for the services it provides in a platform.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="listingblock">
@@ -1865,7 +1875,7 @@ meshTenantUsageReports.</p>
 Content-Type: application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshobjects.v1+json
-Content-Length: 755
+Content-Length: 931
 Host: mesh-billing-url
 
 {
@@ -1876,6 +1886,8 @@ Host: mesh-billing-url
     "lineItems": [
         {
             "productName": "Virtual Machine",
+            "sellerId": "CloudHaven Inc.",
+            "sellerProductGroup": "Compute",
             "usageQuantity": 48,
             "usageType": "Hours of CPU/RAM usage",
             "usageCost": 1.2,
@@ -1885,6 +1897,8 @@ Host: mesh-billing-url
         },
         {
             "productName": "SSD storage",
+            "sellerId": "CloudHaven Inc.",
+            "sellerProductGroup": "Storage",
             "usageQuantity": 480,
             "usageType": "Hours of usage multiplied by amounts of GB",
             "usageCost": 0.05,
@@ -1910,6 +1924,8 @@ Host: mesh-billing-url
     "lineItems": [
         {
             "productName": "Virtual Machine",
+            "sellerId": "CloudHaven Inc.",
+            "sellerProductGroup": "Compute",
             "usageQuantity": 48,
             "usageType": "Hours of CPU/RAM usage",
             "usageCost": 1.2,
@@ -1919,6 +1935,8 @@ Host: mesh-billing-url
         },
         {
             "productName": "SSD storage",
+            "sellerId": "CloudHaven Inc.",
+            "sellerProductGroup": "Storage",
             "usageQuantity": 480,
             "usageType": "Hours of usage multiplied by amounts of GB",
             "usageCost": 0.05,
@@ -2005,7 +2023,7 @@ Content-Length: 133
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-09-04 15:03:41 UTC
+Last updated 2025-09-10 12:45:42 UTC
 </div>
 </div>
 </body>
