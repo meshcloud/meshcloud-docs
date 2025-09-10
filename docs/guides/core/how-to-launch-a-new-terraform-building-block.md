@@ -130,7 +130,7 @@ A Building Block input is used to supply configuration parameters to OpenTofu co
 
 #### Credentials management
 
-In most cases, OpenTofu code requires credentials to provision the infrastructure. Consider an example of a OpenTofu building block for AWS. The AWS provider typically looks as follows, assuming credentials are provided by an AWS profile named `demo-profile` stored on the same device where OpenTofu operates:
+In most cases, OpenTofu code requires credentials to provision the infrastructure. Consider an example of an OpenTofu building block for AWS. The AWS provider typically looks as follows, assuming credentials are provided by an AWS profile named `demo-profile` stored on the same device where OpenTofu operates:
 
 ```json
 provider "aws" {

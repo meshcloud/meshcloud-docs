@@ -42,7 +42,7 @@ Manual building blocks are ideal if you want start standardizing without having 
 If you are a Platform Engineer with HashiCorp Terraform modules (supported until 1.5) or OpenTofu Modules in place you can easily integrate them into meshStack to completely automate provisioning from the request to deployment. The building block definition includes OpenTofu modules, which are executed automatically during provisioning. This approach enables consistent, repeatable, and scalable infrastructure deployment.
 
 **Logs**
-When a OpenTofu Building Block is added to a project, logs are generated detailing the provisioning process and any errors. Admins and platform builder users can access these logs via the Building Block overview. Selecting a specific Building Block instance and its "Run" allows inspection of the related OpenTofu logs.
+When an OpenTofu Building Block is added to a project, logs are generated detailing the provisioning process and any errors. Admins and platform builder users can access these logs via the Building Block overview. Selecting a specific Building Block instance and its "Run" allows inspection of the related OpenTofu logs.
 
 ### GitHub Actions Workflow Implementation
 
@@ -125,7 +125,7 @@ If you need to upgrade existing instances to the latest version, navigate to the
 
 ## Credentials Management (OpenTofu Only)
 
-In some cases, OpenTofu code requires credentials to provision infrastructure. For example, a OpenTofu building block for AWS typically needs access keys. A best practice is to use environment variables such as `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In this case, your OpenTofu AWS provider configuration can be as simple as:
+In some cases, OpenTofu code requires credentials to provision infrastructure. For example, an OpenTofu building block for AWS typically needs access keys. A best practice is to use environment variables such as `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. In this case, your OpenTofu AWS provider configuration can be as simple as:
 
 ```hcl
 provider "aws" {}
@@ -140,7 +140,7 @@ These environment variables must be provided to the OpenTofu runner. In meshStac
 
 This approach is not limited to AWS. Many OpenTofu providers support authentication via environment variables. For example, the Datadog provider uses `DD_API_KEY` and `DD_APP_KEY` as environment variables. For more details, see the [Datadog Terraform provider documentation](https://registry.terraform.io/providers/DataDog/datadog/latest/docs).
 
-meshStack simplifies credential management by offering preconfigured inputs for common platforms. When creating a OpenTofu building block, you can use the "Generate Input" menu to automatically add the necessary credential inputs for AWS, Azure, or GCP. For example, selecting "Generate AWS auth inputs" will create the required AWS credential inputs. You can then assign static values or allow users to provide them at runtime.
+meshStack simplifies credential management by offering preconfigured inputs for common platforms. When creating an OpenTofu building block, you can use the "Generate Input" menu to automatically add the necessary credential inputs for AWS, Azure, or GCP. For example, selecting "Generate AWS auth inputs" will create the required AWS credential inputs. You can then assign static values or allow users to provide them at runtime.
 
 ## Related Resources
 
