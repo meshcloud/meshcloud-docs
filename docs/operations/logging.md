@@ -10,65 +10,63 @@ provide central access to the log files for meshcloud operators, a central
 logging system build around Loki and Grafana is used to collect logs and make
 them available for error analysis.
 
-meshStack keeps track of events for auditing and monitoring purposes. You can find these events in the Event Logs page under the Compliance section in the Admin Area. These logs help answer questions like:
+meshStack keeps track of events for auditing and monitoring purposes. You can
+find these events in the Event Logs page under the Compliance section in the
+Admin Area. These logs help answer questions like:
 
-- Who created a Project? (by typing the Project name under the Event table and selecting 'created' in the Type column)
-- Who granted or revoked access in a Workspace for a user? (by typing the user's name or email in the Change column, the Workspace name in the Workspace column, and selecting 'remove' in the Type column)
-- What changes were made to Landing Zone settings? (by typing 'Landing Zone' in the Event column, selecting 'change' in the Type column, and the Landing Zone name in the Change column)"
+- Who created a Project? (by typing the Project name under the Event table and
+  selecting 'created' in the Type column)
+- Who granted or revoked access in a Workspace for a user? (by typing the user's
+  name or email in the Change column, the Workspace name in the Workspace
+  column, and selecting 'remove' in the Type column)
+- What changes were made to Landing Zone settings? (by typing 'Landing Zone' in
+  the Event column, selecting 'change' in the Type column, and the Landing Zone
+  name in the Change column)"
 
-and more
+and more.
 
-Application team could find Event logs for dedicated Workspaces under the Compliance section, specifically in the Event Logs subsection. This allows Workspace Owners and Managers to easily access and review relevant activity within their dedicated Workspace.
+Application teams can find Event logs for dedicated Workspaces under the
+Compliance section, specifically in the Event Logs subsection. This allows
+Workspace Owners and Managers to easily access and review relevant activity
+within their dedicated Workspace. Administrators can access Event Logs for all
+Workspaces via the Admin Area.
 
-## Logging Actions on meshObjects and Users
+## meshStack Event Logs
 
-Changes (add, change, delete) to data are logged to provide traceability.
-Regarding logging of personal user data, meshStack only logs the Username or the
-Keycloak Id of the user. No further personal information is logged.
+Changes (add, change, delete) to key objects in meshStack are logged to provide
+traceability. Events capture what happened, when it happened and who triggered
+the event.
 
-| Event                                                                           | meshStack page (Where)                 |
-| ------------------------------------------------------------------------------- | ---------------------------------------|
-| Created / Changed / Deleted for Workspaces; Projects; Platforms                 | Event Logs (Admin Area & in Workspace) |
-| Created / Deletion Requested / Deleted for Tenants                              | Event Logs (Admin Area & in Workspace) |
-| Replication to cloud platform                                                   | Tenant Details (Admin Area)            |
-| Created / Changed / Deleted for Landing Zones                                   | Event Logs (Admin Area)                |
-| Added / Changed / Removed for Users in Workspaces and Projects                  | Event Logs (Admin Area & in Workspace) |
-| Authentication ((invalid) Logins, Logout, Timeout of session, …)                | On request                             |
-| Interactions with Service Brokers (create/update/delete instance & bindings)    | On request                             |
+Workspace Owners and Managers can view events related to their specific
+Workspaces in the "Compliance" tab in their workspace. Administrators have
+access to all events in the "Admin Area" under "Compliance".
 
-## Logging of Business-Related Administrative Access
+At the moment, the following objects are logged:
 
-Administrators have access rights, that exceed the normal user’s
-capabilities. Therefore administrative actions require special control and
-traceability.
-
-| Event                                     | meshStack page / DB-Table (Where)                |
-|-------------------------------------------|--------------------------------------------------|
-| Assign yourself to a Workspace            | Event Logs (Admin Area & in Workspace)           |
-| Change Workspace and Platform quota       | Event Logs (Admin Area & in Workspace), mesh.log |
-| Update financial information of a Project | Event Logs (Admin Area & in Workspace), mesh.log |
-| Send message to Workspace                 | mesh.log                                         |
-| Deletion of a user                        | User table in deletedOn and deletedBy fields     |
-
-## Security Relevant Events
-
-This section overlaps in some parts with the previously mentioned log files, but
-it summarizes all logs that are written for security related actions, like
-giving and revoking access.
-
-| Event (What?)                                                         | meshStack page / Log-File / DB-Table (Where)     |
-|-----------------------------------------------------------------------|--------------------------------------------------|
-| Successful and denied login attempts, as well as logouts              | Keycloak Events, events.log                      |
-| Created, changed, deleted Workspaces                                  | Event Logs (Admin Area & in Workspace), mesh.log |
-| Password changes - Authorization via meshIdB                          | Keycloak Events, events.log, mesh.log            |
-| Password changes - Authorization via federated IdP                    | Federated IdP                                    |
-| Access Right changes (i.e. user rights)                               | Event Logs (Admin Area & in Workspace), mesh.log |
-| Changes to logging configuration (especially deactivation of logging) | Can only be done by meshcloud, no logging atm    |
-| Start and stop administrative processes (Batch-Jobs)                  | mesh.log                                         |
+| Object                          | Events Logged                                                                                                            |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Workspace                       | Created, updated, deleted                                                                                                |
+| Project                         | Created, updated, deleted                                                                                                |
+| ProjectRole                     | Created, updated, deleted                                                                                                |
+| Landing Zone                    | Created, updated, deleted                                                                                                |
+| Platform Instance               | Created, updated, deleted                                                                                                |
+| Tenant                          | Created, updated, deleted                                                                                                |
+| Tag Definition                  | Created, updated, deleted                                                                                                |
+| User                            | Created, updated, deleted                                                                                                |
+| Building Block                  | Created, updated, deleted, Runs requested                                                                                |
+| Building Block Definition       | Created, updated, deleted                                                                                                |
+| OSB Service Instance            | Created, updated, deleted                                                                                                |
+| OSB Service Binding             | Created, updated, deleted                                                                                                |
+| meshStack Copilot System Prompt | Created, updated, deleted                                                                                                |
+| Payment Method                  | [Feature Request](https://feedback.meshcloud.io/feature-requests/p/event-logs-for-payment-methods)                       |
+| Admin Settings                  | [Feature Request](https://feedback.meshcloud.io/feature-requests/p/event-logs-for-welcome-and-landing-page-and-settings) |
 
 ## API Access Logs
 
-meshStack captures HTTP access logs for all API requests to provide comprehensive audit trails for incident response and security monitoring. These logs contain essential information about every request made to the meshStack API.
+meshStack captures HTTP access logs for all API requests to provide
+comprehensive audit trails for incident response and security monitoring. These
+logs contain essential information about every request made to the meshStack
+API.
 
 ### Log Format
 
@@ -93,95 +91,38 @@ Where:
 
 API access logs are available for incident response and security analysis:
 
-- **Managed meshStack**: Our support team can make these logs available upon request for incident response purposes. Contact support through your usual channels when you need access to these logs.
-- **On-premise meshStack**: Customers using meshStack on-premise can arrange for custom solutions to ingest these logs into SIEM (Security Information and Event Management) systems for real-time monitoring and analysis.
+- **Managed meshStack**: Our support team can make these logs available upon
+  request for incident response purposes. Contact support through your usual
+  channels when you need access to these logs.
+- **On-premise meshStack**: Customers using meshStack on-premise can arrange for
+  custom solutions to ingest these logs into SIEM (Security Information and
+  Event Management) systems for real-time monitoring and analysis.
 
-## Structure / Content, Format and Retention
+## Authentication Logs
 
-### Structure
+meshStack uses Keycloak as its identity and access management solution. Keycloak
+logs capture authentication and authorization events, providing insights into
+user activities and security-related events like login attempts.
 
-All log file entries always contain a formatted UTC timestamp and the log level.
+## meshStack Component Logs
 
-### Keycloak Log
+All meshStack components write internal logs to enable error analysis and
+troubleshooting. These logs capture detailed information about the operation of
+each component, including errors, warnings, and informational messages.
 
-The Keycloak log only contains operational information. It is mainly used for
-error analysis. Therefore only a few fields are provided in this log file.
+These logs do not contain personal identifiable information.
 
-- Class that wrote the log entry
-- Name of current thread
-- Message
+meshcloud support can access these logs to help troubleshoot issues in meshStack
+SaaS instances. For on-premise installations, customers can grant meshcloud
+operators access to these logs as needed.
 
-### Keycloak Event Log
+## Personally Identifiable Information
 
-Keycloak writes all User and Admin Events into its database by default.
-Additionally, those events can also be written to log files. In meshStack
-writing to events.log is enabled. The log file contains the following
-information:
-
-- Name of current thread
-- In which realm did the event occur
-- Which keycloak client has been used
-- Keycloak User Id of the user who triggered the event
-- Client IP Address
-
-Login Events:
-
-- Event Type: LOGIN, LOGIN_ERROR, LOGOUT, …
-- Event specific details, like identity provider used for login, or redirect_uri
-  after logout
-
-Admin Events:
-
-- Operation Type: CREATE, UPDATE, DELETE
-- Resource Path (which REST resource has been called)
-
-### meshStack Service logs
-
-The different meshStack services are all based on Spring Boot and write
-structurally identical log files. The default Spring Boot log format is used.
-
-- Process Id
-- Name of current thread
-- Class that wrote the log entry
-- Message
-
-It should be considered for the future to also log the userId, to correlate log
-entries to user actions.
-
-### Format
-
-All log file entries always start with an UTC datetime. This is followed by the
-log-level (DEBUG, INFO, WARN, ERROR, ...).
-
-#### Log in Keycloak
-
-`<timestamp> <log-level> [<class-name>] (<thread-name>) <message>`
-
-Example:
-
-`2018-10-23 05:42:34,357 WARN [org.keycloak.authentication.authenticators.browser.IdentityProviderAuthenticator] (default task-40) Provider not found or not enabled for realm`
-
-#### Event Log in Keycloak
-
-`<timestamp> <log-level> [<package-name>] (<thread-name>) type=<type>, realmId=<realmId>, clientId=<clientId>, userId=<userId>, custom-property=<custom-property>`
-
-Dependent on the event type, multiple custom properties can be set.
-
-Example Login Event:
-
-`2018-08-30 16:18:29,916 DEBUG [org.keycloak.events] (default task-37) type=LOGIN, realmId=meshfed, clientId=meshfed-oidc, userId=4654c50d-2782-43c5-8be3-f89ee138b71e, ipAddress=10.2.28.155, identity_provider=cloudidp, redirect_uri=https://panel.meshcloud.io, consent=no_consent_required, identity_provider_identity=my-user-id, code_id=5b05b056-bc47-4a82-ab61-b5aa4968e4f3, username=my-user-id`
-
-Example Admin Event:
-
-`2018-08-30 16:36:26,889 DEBUG [org.keycloak.events] (default task-35) operationType=UPDATE, realmId=master, clientId=200c6050-d7d1-4430-914a-f45ab139e494, userId=e7a64cb7-b692-4af0-b965-f3efba739815, ipAddress=11.12.13.14, resourcePath=clients/f99f22d7-87d7-4f4e-8235-23e07f58974e/roles/my-workspace|my-project-noadmin`
-
-#### Logs in meshStack services
-
-`<timestamp> <log-level> <process-id> --- [<thread-name>] <class-name> : <message>`
-
-Example:
-
-`2018-10-23 10:36:49.771  INFO 47534 --- [ask-scheduler-8] d.c.web.project.ProjectDeletionService   : 0 project(s) have been deleted in the platforms`
+meshStack logs can include usernames and ids of users. This data is required for
+the legitimate purpose of providing auditing of user actions for security
+incident analysis. This log data is not retained longer than necessary for these
+purposes as documented below and is protected according to meshcloud's data
+protection policies.
 
 ## Retention Times
 
@@ -191,13 +132,12 @@ logs must be deleted after a certain amount of time. The following table shows
 the recommended retention times for the different log types. The specific
 retention times will be configured individually for a meshStack installation.
 
-| Log-File / DB Entry         | Minimum Retention Time | Maximum Retention Time |
-| --------------------------- | ---------------------- | ---------------------- |
-| Keycloak Events in DB       | 2 month                | 12 month               |
-| Keycloak Events in log file | 1 month                | 6 month                |
-| Keycloak Logs               | 1 month                | 6 month                |
-| meshStack component logs    | 1 month                | 6 month                |
-| meshStack Events in DB      | 12 month               | 5 years                |
+| Log-File / DB Entry      | Minimum Retention Time | Maximum Retention Time  |
+| ------------------------ | ---------------------- | ----------------------- |
+| meshStack Events in DB   | 12 month               | 5 years (configurable)  |
+| meshStack component logs | 1 month                | 6 month                 |
+| Keycloak Events in DB    | 2 month                | 12 month (configurable) |
+| Keycloak logs            | 1 month                | 6 month                 |
 
 ## Deletion Process of Log Files
 
@@ -213,9 +153,3 @@ exceeded the defined lifetime.
 As the database is also backed up, deleted events will persist in the backup, as
 long as the backup exists. Database backups of meshStack and Keycloak are
 persisted for a configured amount of time (e.g. 24 days).
-
-## Location of Log Files
-
-All log files are stored locally in the VM, container or PaaS system, where the
-component is running. For these instances user authentication is required (e.g.
-via SSH with a private key) to access their logs.
