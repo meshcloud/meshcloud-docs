@@ -66,6 +66,36 @@ giving and revoking access.
 | Changes to logging configuration (especially deactivation of logging) | Can only be done by meshcloud, no logging atm    |
 | Start and stop administrative processes (Batch-Jobs)                  | mesh.log                                         |
 
+## API Access Logs
+
+meshStack captures HTTP access logs for all API requests to provide comprehensive audit trails for incident response and security monitoring. These logs contain essential information about every request made to the meshStack API.
+
+### Log Format
+
+API access logs follow this format:
+
+```text
+$remoteIP $HttpStatus "$method $fullPath" [$principal] $agent $accept ${duration}ms
+```
+
+Where:
+
+- `$remoteIP`: The IP address of the client making the request
+- `$HttpStatus`: The HTTP response status code (e.g., 200, 404, 500)
+- `$method`: The HTTP method used (GET, POST, PUT, DELETE, etc.)
+- `$fullPath`: The complete request path and query parameters
+- `$principal`: The authenticated user or API key making the request
+- `$agent`: The User-Agent header from the request
+- `$accept`: The Accept header from the request
+- `${duration}ms`: The request processing time in milliseconds
+
+### Availability
+
+API access logs are available for incident response and security analysis:
+
+- **Managed meshStack**: Our support team can make these logs available upon request for incident response purposes. Contact support through your usual channels when you need access to these logs.
+- **On-premise meshStack**: Customers using meshStack on-premise can arrange for custom solutions to ingest these logs into SIEM (Security Information and Event Management) systems for real-time monitoring and analysis.
+
 ## Structure / Content, Format and Retention
 
 ### Structure
