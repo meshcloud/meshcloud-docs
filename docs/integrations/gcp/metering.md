@@ -9,7 +9,7 @@ meshStack also periodically collects the currently active projects in order to a
 
 ## Configuration
 
-[Connection information](./how-to-integrate.md#10-set-up-the-service-account-for-metering) and metering behavior can be configured via the Platform Metering Configuration.
+[Connection information](./how-to-integrate.md#3-set-up-the-service-account-for-metering) and metering behavior can be configured via the Platform Metering Configuration.
 
 ## Billing Data Import
 
