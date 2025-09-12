@@ -19,6 +19,10 @@ You need to specify a wait-period after which the chargeback statements are fina
 | AWS      | 6 Days                                                                                                                                                                               |
 | Azure    | Depends on the workspaces Azure EA account, please contact us and check when Azure bills you. It can happen in the middle of a month. So delays of about 15 days are to be expected. |
 
+### Setting Up the Wait Period
+
+The wait period can be set using the Dhall setting `finalize-reports-after-days`. Please note that this setting applies to all cloud platforms and does not have the option to be changed via the panel or any public API. Adjusting this value will modify when the TURPs are finalized, which subsequently determines when chargebacks are finalized.
+
 ### Available metadata keys
 
 The following metadata keys are derived from meshStack metadata and therefore available on every meshStack implementation
@@ -115,8 +119,7 @@ If you would like to add prices for OSBs, please contact our support team and th
 
 ### Private Platform
 
-When configuring a product for private cloud billing, Partners need to choose the cloud resource type to target and how the metering engine
-should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
+When configuring a product for private cloud billing, Partners need to choose the cloud resource type to target and how the metering engine should generate usages and apply prices to them. The documentation section of each private cloud platform lists the supported resource types and the traits available in the metering engine.
 Traits are a properties of a cloud resource like CPU or RAM. Partners can use traits to configure predicates (filter resources applicable to a pricing rule) and to control how meshMetering calculates usages.
 
 meshMetering supports flexible rules for creating usages, like
