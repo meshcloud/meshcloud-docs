@@ -11,7 +11,7 @@ required APIs (described below) and configuration options available.
 The following Kubernetes distributions are supported and covered on this page:
 
 - **Native Kubernetes** with [Identity Federation](../../concepts/identity-and-access-management.md#externally-provisioned-identities) using externally provisioned identities
-- **Azure Kubernetes Services** with user authentication and authorization via AKS Microsoft Entra ID integration
+- **Azure Kubernetes Services** with user authentication and authorization via AKS Entra ID integration
 
 > meshStack additionally offers [OpenShift integration](../openshift/index.md). Configuring OpenShift has some important differences to other Kubernetes distributions, so we cover it in a separate guide.
 
@@ -263,7 +263,7 @@ For more details, please review the [Kubernetes documentation](https://kubernete
 
 #### Azure Kubernetes Services
 
-If you're using AKS, choose the platform type AKS when configuring the meshPlatform. This enables you to use Microsoft Entra ID integration with your AKS cluster.
+If you're using AKS, choose the platform type AKS when configuring the meshPlatform. This enables you to use Entra ID integration with your AKS cluster.
 
 To prepare your AKS Cluster follow the official instructions [AKS-managed Microsoft Entra ID integration](https://docs.microsoft.com/en-us/azure/aks/managed-aad).
 
