@@ -1,5 +1,5 @@
 ---
-id: how-to-launch-a-new-terraform-building-block
+id: how-to-launch-a-new-opentofu-building-block
 title: How to Launch a New OpenTofu Building Block Definition
 ---
 

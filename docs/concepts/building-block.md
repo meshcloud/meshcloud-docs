@@ -154,6 +154,5 @@ meshStack simplifies credential management by offering preconfigured inputs for 
 - [How to Generate Building Block Documentation](../guides/developer-engagement/how-to-generate-building-block-documentation.md)
 - [How to Provide Your Own Platform](../guides/developer-portal/how-to-provide-your-own-platform.md)
 - [How to Launch a New Manual Building Block Definition](../guides/core/how-to-launch-a-new-manual-building-block.md)
-- [How to Launch a New OpenTofu Building Block](../guides/core/how-to-launch-a-new-terraform-building-block.md)
-- [How to Launch a New Terraform Building Block](../guides/core/how-to-launch-a-new-terraform-building-block.md)
+- [How to Launch a New OpenTofu Building Block](../guides/core/how-to-launch-a-new-opentofu-building-block.md)
 - [How to Manage a Building Block Definition](../guides/core/how-to-manage-a-building-block-definition.md)
