@@ -47,5 +47,5 @@ A building block definition is a reusable template for automating resource provi
 
 ### Guides
 
-- [How to Launch a New Terraform Building Block](./how-to-launch-a-new-terraform-building-block.md)
+- [How to Launch a New OpenTofu Building Block](./how-to-launch-a-new-opentofu-building-block.md)
 - [How to Launch a New Manual Building Block Definition](./how-to-launch-a-new-manual-building-block.md)
