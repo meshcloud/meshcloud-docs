@@ -142,6 +142,30 @@ This approach is not limited to AWS. Many OpenTofu providers support authenticat
 
 meshStack simplifies credential management by offering preconfigured inputs for common platforms. When creating an OpenTofu building block, you can use the "Generate Input" menu to automatically add the necessary credential inputs for AWS, Azure, or GCP. For example, selecting "Generate AWS auth inputs" will create the required AWS credential inputs. You can then assign static values or allow users to provide them at runtime.
 
+## Monitoring and Troubleshooting
+
+### Building Block Execution Monitoring
+
+meshStack provides visibility into building block execution through run details and status information. Each building block instance shows its current state and execution history, helping you track provisioning progress and identify any issues.
+
+### Timeout Detection and Warning Messages
+
+Building blocks include enhanced timeout detection that provides better visibility into execution issues. When a building block run experiences timeouts, warning messages are displayed in the building block run details to help you understand what happened and why.
+
+**Building Block Timeout and Retry Behavior:**
+
+By default, building block runs have a timeout of 3 hours. When a timeout occurs, the system automatically retries the run indefinitely until one of the following happens:
+
+- **The run reaches a final state** (succeeded or failed)
+- **The run is manually aborted** by an operator
+- **A new run is triggered** for the same building block
+
+This automatic retry mechanism helps resolve temporary issues that may cause timeouts, such as network connectivity problems or temporary platform unavailability. When the circumstances change (like a network issue being resolved), the retried run can complete successfully.
+
+**Important retry behavior:** If a new run is triggered while an existing run is still being retried after timeouts, the system will stop retrying the old run and execute the new one instead. This ensures you always get the most current configuration applied.
+
+Timeout warnings in the building block run details provide transparency into execution performance and help you understand when retries are occurring.
+
 ## Related Resources
 
 ### Concepts
