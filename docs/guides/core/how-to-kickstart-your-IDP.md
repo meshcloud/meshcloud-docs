@@ -21,7 +21,7 @@ importing a Building Block Definition from the meshStack Hub and making it avail
 
 ### 1. Visit meshStack Hub
 
-- Go to [hub.meshcloud.io](https://hub.meshcloud.io) and browse the curated collection of ready-to-use Terraform modules.
+- Go to [hub.meshcloud.io](https://hub.meshcloud.io) and browse the curated collection of ready-to-use OpenTofu modules.
 - Locate the [AWS S3 Bucket](https://hub.meshcloud.io/platforms/aws/definitions/aws-s3_bucket) module. Review its description and purpose.
 
 ### 2. Import a Building Block Definition

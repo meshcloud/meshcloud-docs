@@ -14,7 +14,7 @@ This guide shows you how to integrate your Azure platform into meshStack. This i
 
 ## Best Practice Integration
 
-The recommended way to set up Azure as a platform is via the public terraform [Azure platform module](https://github.com/meshcloud/terraform-azure-meshplatform).
+The recommended way to set up Azure as a platform is via the public OpenTofu [Azure platform module](https://github.com/meshcloud/terraform-azure-meshplatform).
 
 ## Step by Step Guide For Manual Integration
 

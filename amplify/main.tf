@@ -195,7 +195,7 @@ locals {
     },
     {
       source = "/meshstack.building-blocks.meshStack-http-backend"
-      target = "/guides/core/how-to-launch-a-new-terraform-building-block#meshstack-built-in-http-backend"
+      target = "/guides/core/how-to-launch-a-new-opentofu-building-block#meshstack-built-in-http-backend"
     },
     {
       source = "/meshstack.building-blocks.permission-delegation-aws"
@@ -379,7 +379,13 @@ locals {
     },
     {
       source = "/meshstack.how-to.get-started-building-blocks"
-      target = "/guides/core/how-to-launch-a-new-terraform-building-block"
+      target = "/guides/core/how-to-launch-a-new-opentofu-building-block"
+    },
+
+    ## renames after the new docs launch
+    {
+      source = "/guides/core/how-to-launch-a-new-terraform-building-block"
+      target = "/guides/core/how-to-launch-a-new-opentofu-building-block"
     }
   ]
 }

@@ -14,7 +14,7 @@ This guide shows you how to integrate your AWS platform into meshStack. This is 
 
 ## Best Practice Integration
 
-The recommended way to set up AWS as a meshPlatform is via the public terraform [AWS platform module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you decide to use it.
+The recommended way to set up AWS as a meshPlatform is via the public OpenTofu [AWS platform module](https://github.com/meshcloud/terraform-aws-meshplatform). The steps below are not needed if you decide to use it.
 
 ## Step by Step Guide For Manual Integration
 

@@ -41,7 +41,7 @@ Make sure to:
 ### 2. Create a Building Block
 
 Create a new Building Block Definition, for example with Terraform
-([How to Launch a New Terraform Building Block Definition](../core/how-to-launch-a-new-terraform-building-block.md))
+([How to Launch a New Terraform Building Block Definition](../core/how-to-launch-a-new-opentofu-building-block.md))
 that will do the automation for your platform.
 
 Make sure to configure the following details:
