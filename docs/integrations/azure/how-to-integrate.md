@@ -49,7 +49,7 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 10. Under **API permissions** → **Add a permission** → **Microsoft Graph API** (not Azure AD Graph API) → **Application permissions**:
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
-    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#8-b2b-user-invitation-deprecated))
+    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#9-b2b-user-invitation-deprecated))
 11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
@@ -312,13 +312,26 @@ The meshcloud Azure [replication](../../concepts/tenant.md) detects externally-p
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./landing-zones.md) configuration
 and removed from the subscription pool.
 
-### 6. Set Up the Metering Service Principal
+### 6. Configure Hierarchical Management Group Assignment
+
+meshStack supports hierarchical management group assignment for Azure subscriptions, which provides more granular and flexible subscription organization within the Azure management group hierarchy.
+
+By default, Azure subscriptions are placed directly in the management group defined in the landing zone. When hierarchical assignment is enabled, subscriptions can remain in child management groups below the management group defined in the landing zone.
+
+This setting is configured in the Azure Platform Replicator Config and affects how meshStack handles subscription organization:
+
+- **When enabled (true)**: Subscriptions living in a management group below the one defined in the landing zone will remain in their current management group. This is useful for managing subscription locations with deeper and more granular hierarchy.
+- **When disabled (false)**: Subscriptions will always be moved directly to the management group defined in the landing zone.
+
+Platform operators can enable this feature by configuring the "Allow Hierarchical Management Group Assignment" setting in the Azure platform configuration within meshPanel.
+
+### 7. Set Up the Metering Service Principal
 
 To read resource usage, a metering principal is needed. It requires the following role on all resources which should be accessed by meshStacks's metering service:
 
 - `Cost Management Reader`
 
-### 7. Set Up Blueprints
+### 8. Set Up Blueprints
 
 The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
 of the app in the managed AAD Tenant.
@@ -341,7 +354,7 @@ Id                    : 2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20
 
 This `Id` needs to be configured in the Azure Platform configuration.
 
-### 8. B2B User Invitation (Deprecated)
+### 9. B2B User Invitation (Deprecated)
 
 You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform.
 This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central
