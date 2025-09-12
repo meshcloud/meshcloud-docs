@@ -73,7 +73,7 @@ Before starting, ensure you have the following:
    > This is an open-source, friendlier alternative of Terraform.
 
    - Enable the option “Use meshStack’s Http Backend” if using our template.
-     Learn more about how this meshStack backend works [here](../guides/core/how-to-launch-a-new-terraform-building-block.md#meshstack-built-in-http-backend).
+     Learn more about how this meshStack backend works [here](../guides/core/how-to-launch-a-new-opentofu-building-block.md#meshstack-built-in-http-backend).
    - Enter a git repository URL. You can either enter your own or use our template, for which the git repository URL
      is `https://github.com/meshcloud/meshstack-hub.git`
        - The AWS Bucket OpenTofu code is under folder `modules/aws/s3_bucket/buildingblock`.
