@@ -10,7 +10,7 @@ The `amortized cost` is used when generating the tenant usage reports.
 
 ## Configuration
 
-[Connection information](./how-to-integrate.md#9-set-up-iam-user-for-metering) and metering behavior can be configured via the Platform Metering Configuration. Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](./how-to-integrate.md#10-leverage-reserved-instances--savings-plans-optional).
+[Connection information](./how-to-integrate.md#10-set-up-iam-user-for-metering) and metering behavior can be configured via the Platform Metering Configuration. Besides the option of considering or excluding taxes charged on the AWS bill, the main behavior that can be steered here is the [handling of Reserved Instances and Savings Plans](./how-to-integrate.md#11-leverage-reserved-instances--savings-plans-optional).
 
 ## Configuring Seller Information
 

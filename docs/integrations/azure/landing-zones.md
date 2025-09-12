@@ -19,6 +19,15 @@ All newly created [meshProjects](../../concepts/project.md) get their correspond
 
 > Management Groups used in different Azure [Landing Zones](../../concepts/landing-zone.md) should not overlap or be nested into one another. A flatter Management Group hierarchy is significantly less complex to manage and thereby greatly reduces the risk of security issues through misconfiguration. However, you can nest Landing Zone Management Groups in other Management Groups controlled outside of meshStack to share common policies between landing zones.
 
+#### Hierarchical Management Group Assignment
+
+The behavior of the Management Group Assignment depends on the "Allow Hierarchical Management Group Assignment" setting configured in the Azure platform configuration:
+
+- **When hierarchical assignment is disabled (default)**: Subscriptions will always be moved directly to the management group defined in this landing zone parameter.
+- **When hierarchical assignment is enabled**: Subscriptions already residing in child management groups below the specified management group will remain in their current management group. This allows for more granular organization of subscriptions within complex Azure management group hierarchies while maintaining governance through the parent management group defined in the landing zone.
+
+This setting provides platform teams with greater flexibility for organizing resources in complex organizational structures while maintaining proper governance.
+
 ### Blueprint Assignment
 
 Platform engineers can optionally define one or more [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview)
