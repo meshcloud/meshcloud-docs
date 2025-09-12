@@ -67,11 +67,11 @@ let IdentityProvider =
 
 ### Microsoft Entra ID
 
-In order to use Microsoft Entra ID lookup functionality, you must create a new service principal as described in [Azure Service Principal Setup](../integrations/azure/index.md) and assign the following required permissions as an **application permission**:
+In order to use Entra ID lookup functionality, you must create a new service principal as described in [Azure Service Principal Setup](../integrations/azure/index.md) and assign the following required permissions as an **application permission**:
 
 - `User.Read.All`
 
-> You will also need to grant admin consent in Microsoft Entra ID in order to activate the  `User.Read.All` permission.
+> You will also need to grant admin consent in Entra ID in order to activate the  `User.Read.All` permission.
 
 Operators must then configure the service principal credentials and user lookup configuration as follows.
 
@@ -83,11 +83,11 @@ Operators must then configure the service principal credentials and user lookup 
 ```dhall
 let AzureCreds =
     {-
-      Setting this configuration enables the use of a Microsoft Entra ID as a user lookup source to allow
+      Setting this configuration enables the use of an Entra ID as a user lookup source to allow
       autocomplete of user information when adding new users to workspaces.
 
         aad-tenant:
-            The active directory tenant. Its either a UID of the Microsoft Entra ID or its domain
+            The active directory tenant. Its either a UID of the Entra ID or its domain
             like devmeshcloud.onmicrosoft.com
 
         client-id:
@@ -138,7 +138,7 @@ To provision new meshUsers as guest users, configure the guest detection.
 ```dhall
 let AzureGuestDetection =
     {-
-      When adding/inviting a new meshUser check Microsoft Entra ID User attributes data to determine if the meshUser shall be provisioned as a guest user in meshStack.
+      When adding/inviting a new meshUser check Entra ID User attributes data to determine if the meshUser shall be provisioned as a guest user in meshStack.
 
       Attention: This check is only performe on the first attempt when a user is added/invited
       to a workspace. If this check is configured after some users were initially added to a
@@ -150,7 +150,7 @@ let AzureGuestDetection =
             https://docs.microsoft.com/en-us/graph/api/user-get?view=graph-rest-1.0&tabs=http
 
         guestValue:
-            If the Microsoft Entra ID custom attribute matches this value, the user is considered to be a guest.
+            If the Entra ID custom attribute matches this value, the user is considered to be a guest.
     -}
       { guestProperty : Text, guestValue : Text }
 ```
@@ -159,7 +159,7 @@ let AzureGuestDetection =
 let exampleUsingOnlyUserType
     : AzureGuestDetection
     =
-      -- use only the Microsoft Entra ID userType to determine meshUser guest status
+      -- use only the Entra ID userType to determine meshUser guest status
       { guestProperty = "userType", guestValue = "Guest" }
 
 let exampleWithSchmaExtension
@@ -174,7 +174,7 @@ let exampleWithSchmaExtension
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a Microsoft Entra ID attribute as euid
+To use an Entra ID attribute as euid
 
 <!--snippet:mesh.meshfed.identitylookup.azure.euid-user-attribute#type-->
 
@@ -184,8 +184,8 @@ To use a Microsoft Entra ID attribute as euid
 ```dhall
 let AzureEuidUserAttribute =
     {-
-      When adding/inviting a new user to a workspace a (custom) attribute property from the users Microsoft Entra ID
-      schema can be used to fill in his euid. For a list of user attributes for the Microsoft Entra ID user object
+      When adding/inviting a new user to a workspace a (custom) attribute property from the users Entra ID
+      schema can be used to fill in his euid. For a list of user attributes for the Entra ID user object
       see:
 
       https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#json-representation
@@ -207,7 +207,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use an attribute from the Microsoft Entra ID extension schema as euid
+To use an attribute from the Entra ID extension schema as euid
 
 <!--snippet:mesh.meshfed.identitylookup.azure.euid-extension-schema#type-->
 
@@ -217,7 +217,7 @@ To use an attribute from the Microsoft Entra ID extension schema as euid
 ```dhall
 let AzureEuidExtensionSchema =
     {-
-      When adding/inviting a new user to a workspace a custom attribute property from the users Microsoft Entra ID
+      When adding/inviting a new user to a workspace a custom attribute property from the users Entra ID
       extension schema can be used to fill in his euid.
 
       Attention: This check is only performed on the first attempt when a user is added/invited
@@ -245,7 +245,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a Microsoft Entra ID attribute other than userPrincipalName attribute, which is the default, as the meshUsers' username (Note that this cannot be used together with AzureEmailAttributeUpdate)
+To use an Entra ID attribute other than userPrincipalName attribute, which is the default, as the meshUsers' username (Note that this cannot be used together with AzureEmailAttributeUpdate)
 
 <!--snippet:mesh.meshfed.identitylookup.azure.username-property-update#type-->
 
@@ -255,7 +255,7 @@ To use a Microsoft Entra ID attribute other than userPrincipalName attribute, wh
 ```dhall
 let AzureUsernameAttributeUpdate =
     {-
-      When adding/inviting a new user to a workspace a custom attribute property from the users Microsoft Entra ID
+      When adding/inviting a new user to a workspace a custom attribute property from the users Entra ID
       extension schema can be used to fill in his username.
 
       Cannot be used together with an AzureEmailAttributeUpdate.
@@ -279,7 +279,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-To use a Microsoft Entra ID attribute, other than the  "mail" attribute which is the default, as the meshUsers' email (Note that this cannot be used together with AzureUsernameAttributeUpdate)
+To use an Entra ID attribute, other than the  "mail" attribute which is the default, as the meshUsers' email (Note that this cannot be used together with AzureUsernameAttributeUpdate)
 
 <!--snippet:mesh.meshfed.identitylookup.azure.email-property-update#type-->
 
@@ -289,7 +289,7 @@ To use a Microsoft Entra ID attribute, other than the  "mail" attribute which is
 ```dhall
 let AzureEmailAttributeUpdate =
     {-
-      When adding/inviting a new user to a workspace a custom attribute property from the users Microsoft Entra ID
+      When adding/inviting a new user to a workspace a custom attribute property from the users Entra ID
       extension schema can be used to fill in his email.
 
       Cannot be used together with an AzureUsernameAttributeUpdate.
@@ -309,7 +309,7 @@ let example
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-> As mentioned above, both AzureEmailAttributeUpdate and AzureUsernameAttributeUpdate cannot be used at the same time. This is because  meshStack requires either the standard username (which is the userPrincipalName), or the standard email to be used as the user's username or email to uniquely identify a user already in meshStack and coming from Microsoft Entra ID lookup.
+> As mentioned above, both AzureEmailAttributeUpdate and AzureUsernameAttributeUpdate cannot be used at the same time. This is because  meshStack requires either the standard username (which is the userPrincipalName), or the standard email to be used as the user's username or email to uniquely identify a user already in meshStack and coming from Entra ID lookup.
 
 ### Google Cloud Identity
 

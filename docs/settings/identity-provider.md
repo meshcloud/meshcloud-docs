@@ -71,9 +71,9 @@ If meshcloud shall restrict access via certain AD groups, you can define another
 
 ### Microsoft Entra ID
 
-To set up Microsoft Entra ID for IDP authentication follow these steps:
+To set up Entra ID for IDP authentication follow these steps:
 
-1. Create a new non-gallery Enterprise Application in Microsoft Entra ID ([Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started)) with display name `meshcloud SSO` or similar.
+1. Create a new non-gallery Enterprise Application in Entra ID ([Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#getting-started)) with display name `meshcloud SSO` or similar.
 
     ![Register non-gallery Enterprise Application](/assets/aad_identity_provider/aad-1.png)
 
