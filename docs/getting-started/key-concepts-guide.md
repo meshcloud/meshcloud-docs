@@ -22,7 +22,7 @@ Every application team using meshStack has their own [workspace](../concepts/wor
 
 A [building block](../concepts/building-block.md) is the primitive unit of automation in meshStack. A building block has a number of inputs, an implementation, and outputs. Application teams can add building blocks to their workspace by referencing a [building block definition](../concepts/building-block.md#building-block-definition) published by the platform team.
 
-Building block definitions are versioned contracts that define how an automation receives input values and produces outputs. The most common way to implement a building block is using [OpenTofu](https://opentofu.io/), but as definitions are just versioned contracts, it's also possible to swap in other implementation types like [GitHub Actions](../concepts/building-block.md#github-actions) or [GitLab CI/CD](../concepts/building-block.md#gitlab-cicd) pipelines.
+Building block definitions are versioned contracts that define how an automation receives input values and produces outputs. The most common way to implement a building block is using [OpenTofu](https://opentofu.io/), but as definitions are just versioned contracts, it's also possible to swap in other implementation types like [GitHub Actions](../integrations/github/github-actions.md) or GitLab CI/CD pipelines.
 
 :::tip
 **Example**: The platform team has published a [GitHub Repository building block definition](https://hub.meshcloud.io/platforms/github/definitions/github-repository). Application teams can add this building block to their workspace and provide the necessary input values like their desired repository name. The building block implementation is a Terraform module that will then create the repository in GitHub and return the repository URL as an output.
@@ -54,7 +54,7 @@ Most cloud platforms like AWS or Azure have the concept of an "account" or "subs
 
 Application teams can associate building blocks directly with a specific tenant. This allows building blocks to automatically receive tenant-specific information like an AWS account ID as an input without having to model a separate "AWS Account" building block and adding it as a dependency to every other building block. You can think of tenants as an easy way to cluster building blocks together and wrap them in a shared context.
 
-This clustering is useful because most application teams need to manage multiple stages for their software projects, e.g., "development" and "production". It is a security best practice to use separate infrastructure for these, so many application teams will need "two of everything" in their workspaces. Tenants provide a natural way for platform teams to model these clusters.
+This clustering is useful because most application teams need to manage multiple stages for their software projects, e.g. "development" and "production". It is a security best practice to use separate infrastructure for these, so many application teams will need "two of everything" in their workspaces. Tenants provide a natural way for platform teams to model these clusters.
 
 But what if an application team needs more than a single tenant per stage? For example, if they have a hybrid cloud application that needs both AWS and Azure resources for each stage? A [project](../concepts/project.md) provides a logical grouping of tenants with additional metadata like a project name, description, and tags. Application teams can create multiple projects in their workspace and assign tenants to each project.
 
