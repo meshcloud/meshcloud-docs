@@ -6,13 +6,13 @@ title: AWS S3 Quickstart Guide
 ## Introduction
 
 Welcome to the **AWS building block quickstart guide**! This guide provides step-by-step instructions to help you
-quickly set up your first meshStack building block and deploy AWS resources using Terraform.
+quickly set up your first meshStack building block and deploy AWS resources using OpenTofu.
 
 ## Goals
 
 By the end of this guide, you will have achieved:
 
-1. Creating a [building block definition](../concepts/building-block.md) that deploys an AWS S3 Bucket using Terraform.
+1. Creating a [building block definition](../concepts/building-block.md) that deploys an AWS S3 Bucket using OpenTofu.
 2. Deployed & tested the building block.
 3. Publishing the building block on the marketplace.
 
@@ -21,8 +21,8 @@ By the end of this guide, you will have achieved:
 Before starting, ensure you have the following:
 
 - An AWS account with a service user that has permission to manage S3 buckets.
-  - Tip: have a look at our [Terraform code](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/backplane) for defining a service user to learn more.
-- Terraform code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/buildingblock) to get started.
+  - Tip: have a look at our [OpenTofu code](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/backplane) for defining a service user to learn more.
+- OpenTofu code to provision an S3 bucket. We highly recommend using our [template](https://github.com/meshcloud/meshstack-hub/tree/main/modules/aws/s3_bucket/buildingblock) to get started.
 - Access to a meshStack workspace that has the [Platform Builder enabled](../guides/platform-ecosystem/how-to-enable-a-new-platform-team.md).  
   If you don’t see the Platform Builder, go to Settings > General in your workspace and enable it.
 
@@ -36,7 +36,7 @@ Before starting, ensure you have the following:
 2. **Create a new building block definition**
 
    In the list, click on the button “+ Create new Definition”. A wizard will open where we will have to enter all
-   the necessary information to run the S3 bucket using Terraform.
+   the necessary information to run the S3 bucket using OpenTofu.
 
 3. **Select a type**
 
@@ -61,33 +61,33 @@ Before starting, ensure you have the following:
    - Notification user: receive notifications when things require their attention. This is set to your user by default.
    - Support & documentation: you can enter URLs that will be visible to users in the marketplace to request support or read more documentation.
 
-6. **Entering Terraform implementation details**
+6. **Entering OpenTofu implementation details**
 
-   If still on the general page, click “Next” and let’s start filling in all details for running Terraform as part of this building block.
+   If still on the general page, click “Next” and let’s start filling in all details for running OpenTofu as part of this building block.
 
    You will be asked which implementation type to use. Pick “Terraform” here. Additional settings will show up.
 
-   - Enter a desired Terraform version or leave the default value.
+   - Enter a desired OpenTofu version or leave the default value.
 
    > 💡Any versions entered over 1.5.5 will run using [OpenTofu](https://opentofu.org/).  
    > This is an open-source, friendlier alternative of Terraform.
 
    - Enable the option “Use meshStack’s Http Backend” if using our template.
-     Learn more about how this meshStack backend works [here](../guides/core/how-to-launch-a-new-terraform-building-block.md#meshstack-built-in-http-backend).
+     Learn more about how this meshStack backend works [here](../guides/core/how-to-launch-a-new-opentofu-building-block.md#meshstack-built-in-http-backend).
    - Enter a git repository URL. You can either enter your own or use our template, for which the git repository URL
      is `https://github.com/meshcloud/meshstack-hub.git`
-       - The AWS Bucket Terraform code is under folder `modules/aws/s3_bucket/buildingblock`.
+       - The AWS Bucket OpenTofu code is under folder `modules/aws/s3_bucket/buildingblock`.
          Make sure to enter this folder under "Git Repository Path".
-   - You can leave "Git Reference" empty for now. With this field, you can pin the used Terraform files to a certain
+   - You can leave "Git Reference" empty for now. With this field, you can pin the used OpenTofu files to a certain
      git tag, branch, or commit.
    - If you don’t use a self-hosted git repository, a “Test Connection” button will appear.
-   - Click this button and if everything is correct you should see all Terraform files related to your AWS S3 bucket.
+   - Click this button and if everything is correct you should see all OpenTofu files related to your AWS S3 bucket.
        - If anything has gone wrong, you will receive an error message instead. Analyze the given error, try to
          resolve the issue, and try again.
    - For “Execution Mode” leave this as it is. In complex scenarios, you can take over the status reporting of your
      building block using meshStack APIs.
    - For “Deletion Mode” leave this as it is too. We highly recommend using “Delete Resources” which means that
-     meshStack will clean up the underlying infrastructure resources upon deletion using `terraform destroy`.
+     meshStack will clean up the underlying infrastructure resources upon deletion using `tofu destroy`.
 
 7. **Entering inputs**
 
@@ -100,15 +100,15 @@ Before starting, ensure you have the following:
 
    Click “Next” again, and you should see a modal pop-up with imported inputs, authentication, and outputs.
 
-   meshStack read out the Terraform files and automatically generated fitting inputs based on the defined variables, outputs, and providers.
+   meshStack read out the OpenTofu files and automatically generated fitting inputs based on the defined variables, outputs, and providers.
 
    Leave all of them checked and click “Add selected”.
 
-   You will now see all variables that are defined in Terraform plus the AWS authentication environment variables that
+   You will now see all variables that are defined in OpenTofu plus the AWS authentication environment variables that
    are needed to manage resources in AWS. Let’s fill those in:
 
    (If you are unsure what rights are needed, take a look at our
-   [Terraform IAM definition](https://github.com/meshcloud/meshstack-hub/blob/main/modules/aws/s3_bucket/backplane/iam.tf)
+   [OpenTofu IAM definition](https://github.com/meshcloud/meshstack-hub/blob/main/modules/aws/s3_bucket/backplane/iam.tf)
    for this quickstart guide)
 
    - For `AWS_ACCESS_KEY_ID` add the ID of an access key in AWS that has the right to manage S3 resources in the “Static Value” field.
@@ -142,7 +142,7 @@ There should be a wizard explaining what the next step is. Let’s follow those 
 
    You will be redirected to the list of building blocks, and you should see the newly created building block in a pending state.  
    Let’s open it up and see if it runs successfully. Click on the name of the building block and open up the first run.
-   You should see the Terraform logs which are automatically refreshed.
+   You should see the OpenTofu logs which are automatically refreshed.
 
 4. **Green light?**
 

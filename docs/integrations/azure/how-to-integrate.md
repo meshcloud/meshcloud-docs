@@ -14,13 +14,13 @@ This guide shows you how to integrate your Azure platform into meshStack. This i
 
 ## Best Practice Integration
 
-The recommended way to set up Azure as a platform is via the public terraform [Azure platform module](https://github.com/meshcloud/terraform-azure-meshplatform).
+The recommended way to set up Azure as a platform is via the public OpenTofu [Azure platform module](https://github.com/meshcloud/terraform-azure-meshplatform).
 
-## Step by Step Guide For Manual Integration
+## Step-by-Step Guide for Manual Integration
 
-### 1. Set up the Replication Service Principal
+### 1. Set Up the Replication Service Principal
 
-meshStack uses separate service principals for different tasks based on the best practice of least privilege principle. There are two possible ways to setup Subscription creation:
+meshStack uses separate service principals for different tasks based on the best practice of least privilege principle. There are two possible ways to set up Subscription creation:
 
 1. Pre-provisioned Subscriptions
 2. Using an Enterprise Enrollment/Customer Agreement Account
@@ -49,15 +49,15 @@ The Service Principal must be authorized in the scope of this AAD Tenant.
 10. Under **API permissions** → **Add a permission** → **Microsoft Graph API** (not Azure AD Graph API) → **Application permissions**:
     - `Directory.Read.All` - this permission is required to search the directory for existing users, groups and service principals
     - `Group.ReadWrite.All`  this permissions is required to create new groups
-    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#16-b2b-user-invitation-deprecated))
+    - `User.Invite.All` - this permission is required if you want to enable [B2B User Invitation](#8-b2b-user-invitation-deprecated))
 11. Click **Grant permissions** and make sure to also grant admin consent for each permission by clicking **Grant admin consent** in the permissions screen of the app.
 12. In the **Overview** section of your app also write down the **Directory (tenant) ID**.
 
-Platform engineers need to supply these variables to the [meshStack Configuration](#12-meshpanel-configuration) for this Azure Platform Instance.
+Platform engineers need to supply these variables to the meshStack Configuration for this Azure Platform Instance.
 
 :::tip
 For enhanced security and to limit meshStack's permissions to a specific scope within your Entra tenant, consider using the [Azure integration with Administrative Units](./how-to-integrate-azure-administrative-units.md). This approach is recommended for organizations with strict security requirements as it reduces the global permissions needed by meshStack.
-::: 
+:::
 
 ### 3. Set Azure RBAC Permissions
 
@@ -94,7 +94,7 @@ All permissions left are therefore granted only via the Management Group hierarc
 "Microsoft.Subscription/rename/action",
 
 # The following permission is only required if you plan to use this principal for Azure Resource Group
-# integeration.
+# integration.
 "Microsoft.Resources/subscriptions/resourceGroups/write",
 ```
 
@@ -114,7 +114,7 @@ In order to enable meshStack to cancel Azure Subscriptions as part of [tenant de
 "Microsoft.Subscription/cancel/action"
 ```
 
-### 4. Set up a policy to prevent Privilege Escalation
+### 4. Set Up a policy to prevent Privilege Escalation
 
 Furthermore in order to prevent the replicator from assigning itself more permissions, we recommended to add the following policy on a root management group level:
 
@@ -149,24 +149,24 @@ Furthermore in order to prevent the replicator from assigning itself more permis
 }
 ```
 
-### 5. Set up Subscription Provisioning
+### 5. Set Up Subscription Provisioning
 
 To provide Azure Subscription for your organization's meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. The Enterprise Enrollment is always the preferred one if you have an Enterprise Agreement as it allows full automation by meshStack for account creation.
 
-### 6. Use an Enterprise Enrollment
+#### Option 1: Use an Enterprise Enrollment
 
 meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement, Microsoft Customer Agreement or a Microsoft Partner Agreement and want to provide a large number of subscriptions in a fully automated fashion.
 
 > Microsoft currently has limitation of a [maximum of 2000 Subscriptions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/programmatically-create-subscription?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api) per Enrollment Account (EA). It's therefore possible to configure meshStack to consume subscriptions from multiple EA's for the same meshPlatform. Please contact our experts for more details.
 
-### 7. Set up the Enrollment Account
+##### Set Up the Enrollment Account
 
 We recommend using dedicated enrollment accounts (EA) for exclusive use by meshcloud.
 
 > EA Administrators must be careful to choose an EA Account Owner that is placed in the meshcloud AAD Tenant!
 
 Subscriptions provisioned through the EA get automatically associated with the AAD Home-Tenant of the EA Account Owner.
-If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Teant before creating the enrollment account.
+If your organization uses Microsoft (i.e. outlook.com) identities as EA Account Owner, please invite the EA Owner user first into the meshcloud AAD Tenant before creating the enrollment account.
 
 For setting up the replicator configuration you need the scope of the enrollment account. Microsoft states this is the ID, however their documentation is inconclusive about this. The recommendation is to use a REST call to [get the Enrollment Account ID/Scope](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to) (it should be executed in the scope of a user who is the owner of this EA account):
 
@@ -217,21 +217,21 @@ the response is:
 
 The value for a billing scope and id are the same thing. The id for your enrollment account is the billing scope under which the subscription request is initiated. Please note the field `value[].enrollmentAccounts[].id` of your desired enrollment account, as it needs to be used as the `enrollmentAccountId` in the Platform Replicator Config.
 
-#### 8. Grant Enterprise Enrollment Account Permissions
+##### Grant Enterprise Enrollment Account Permissions
 
 The Service Principal needs the `Subscription Creator` role.
 
-When using an [Enterprise Enrollment Account (EA) for Subscription provisioning](#6-use-an-enterprise-enrollment), an EA Administrator must authorize the [meshcloud Service Principal](#1-set-up-the-replication-service-principal) on the Enrollment Account.
+When using an Enterprise Enrollment Account (EA) for Subscription provisioning, an EA Administrator must authorize the [meshcloud Service Principal](#1-set-up-the-replication-service-principal) on the Enrollment Account.
 
 This happens via a PUT request against `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}?api-version=2019-10-01-preview`.
 
-#### Option 1: Use the Try it Button
+###### Option 1: Use the Try it Button
 
-The Mircosoft [API documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) offers a **Try it** button which you can use to execute the call.
+The Microsoft [API documentation](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) offers a **Try it** button which you can use to execute the call.
 
-Using the Try it Button is also mentioned in the Mircosoft [role assignment documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
+Using the Try it Button is also mentioned in the Microsoft [role assignment documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
 
-#### Option 2: Use a PowerShell Script
+###### Option 2: Use a PowerShell Script
 
 Replace the parameters in the following PowerShell script and execute it in a cloud shell:
 
@@ -263,13 +263,13 @@ $body = "{
 # Send request
 Invoke-RestMethod $url -Method 'Put' -Headers $headers -Body $body | Format-List
 
-# Check that the creation was successfull
+# Check that the creation was successful
 Invoke-RestMethod $url -Method 'Get' -Headers $headers | Format-List
 ```
 
 > The Azure documentation also mentions to use the correct API versions for both the Subscription creation and the role assignment call. For Subscription creation, the replicator uses the API version `...?api-version=2020-09-01`, which reliably works together with the above mentioned PUT call of the EA Account role assignment with the API version: `...?api-version=2019-10-01-preview`.
 
-### 8. Ensure Retained Subscription Owners
+##### Ensure Retained Subscription Owners
 
 Azure requires that there's at least one "Owner" or "Classic Administrator" role assignment on each Subscription. Unfortunately, it's not a sufficient workaround to inherit the Owner role via the Management Group Hierarchy onto the Subscription. Instead a direct role assignment must exist.
 
@@ -277,11 +277,11 @@ In contrast to other provisioning methods, EA provisioning will not retain a def
 
 > You should never grant subscription owner roles to the meshStack replicator SPN.
 
-### 9. Use a Customer Agreement
+#### Option 2: Use a Customer Agreement
 
 If your company has a Customer Agreement with Microsoft you can also use an automatic REST API in order to create new subscriptions. It is a very similar process to the Enterprise Agreement variant. The difference is you need two principals, one on the Billing Account tenant that creates the subscription and another one on the target AAD tenant that receives its ownership.
 
-### 10. Create Source Tenant Principal
+##### Create Source Tenant Principal
 
 1. On the tenant that contains your billing account create a new Enterprise Application.
 2. Add either a client secret or federated credentials to it and note down the `Directory (tenant) ID`, `Application (client) ID`, `Object ID`.
@@ -290,11 +290,11 @@ If your company has a Customer Agreement with Microsoft you can also use an auto
 3. Select the billing profile or invoice section under which you want to create the subscriptions by following the [documentation](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement?tabs=rest#find-billing-profiles--invoice-sections-to-create-subscriptions) from Microsoft. Write down the ID that looks something like this `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`.
 4. Go to the billing account and give the newly generated principal one of those roles there: `Owner`, `Contributer`, `Azure Subscription Creator` on an invoice section or `Owner` or `Contributor` on a billing profile or billing account. This allows the principal to generate new Subscriptions.
 
-### 11. Create Target Tenant Principal
+##### Create Target Tenant Principal
 
 The requirements for the principal on the target tenant is identically with the one from the Enterprise Agreement provisioning. Please follow the section [Set up the Replication Service Principal](#1-set-up-the-replication-service-principal).
 
-### 12. meshPanel Configuration
+##### meshPanel Configuration
 
 When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source tenant AAD.
 
@@ -302,7 +302,7 @@ The `Destination AAD ID` must be an ID. Please don't use the domain name variant
 
 > If the source AAD tenant is the same as the destination AAD tenant, ensure to use an ID and not the domain name variant for the source AAD tenant as well.
 
-### 13. Use pre-provisioned Subscriptions
+#### Option 3. Use pre-provisioned Subscriptions
 
 If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to
 consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish
@@ -312,13 +312,13 @@ The meshcloud Azure [replication](../../concepts/tenant.md) detects externally-p
 name. Upon assignment to a meshProject, the subscription is inflated with the right [Landing Zone](./landing-zones.md) configuration
 and removed from the subscription pool.
 
-### 14. Set up the Metering Service Principal
+### 6. Set Up the Metering Service Principal
 
 To read resource usage, a metering principal is needed. It requires the following role on all resources which should be accessed by meshStacks's metering service:
 
 - `Cost Management Reader`
 
-### 15. Set up Blueprint
+### 7. Set Up Blueprints
 
 The `Azure Blueprints` service principal id is different in every AAD Tenant, so we need to find the id
 of the app in the managed AAD Tenant.
@@ -341,7 +341,7 @@ Id                    : 2a6a62ad-e28b-4eb4-8f1e-ce93dbc76d20
 
 This `Id` needs to be configured in the Azure Platform configuration.
 
-### 16. B2B User Invitation (Deprecated)
+### 8. B2B User Invitation (Deprecated)
 
 You can optionally activate AAD B2B guest invitations for users missing in the AAD tenant managed by the meshPlatform.
 This configuration is useful if you have one or more "workload" AAD tenants for Azure Subscriptions while having a central

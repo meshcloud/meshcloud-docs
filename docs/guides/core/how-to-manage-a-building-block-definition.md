@@ -7,9 +7,7 @@ This guide explains how to manage building block definitions in meshStack, inclu
 
 ## What is a Building Block Definition?
 
-A building block definition is a reusable template for automating resource provisioning. Platform teams create and manage these definitions in the platform builder. Building blocks can be workspace- or tenant-scoped and support various implementation types (manual, Terraform, GitHub Actions, GitLab CI/CD).
-
----
+A building block definition is a reusable template for automating resource provisioning. Platform teams create and manage these definitions in the platform builder. Building blocks can be workspace- or tenant-scoped and support various implementation types (manual, OpenTofu, GitHub Actions, GitLab CI/CD).
 
 ## Creating a Building Block Definition
 
@@ -18,11 +16,9 @@ A building block definition is a reusable template for automating resource provi
 3. **Configure Details**:
    - Name, description, and type (workspace or tenant).
    - Specify dependencies if needed.
-   - Choose implementation type (manual, Terraform, GitHub Actions, GitLab CI/CD).
+   - Choose implementation type (manual, OpenTofu, GitHub Actions, GitLab CI/CD).
    - Provide scripts, modules, or workflow references as required.
 4. **Save and Publish**: Save the definition. It becomes available for use in workspaces or tenants as configured.
-
----
 
 ## Updating and Versioning
 
@@ -30,22 +26,26 @@ A building block definition is a reusable template for automating resource provi
 - **Versioning**: Create new versions to introduce changes without disrupting existing building blocks. Maintain backward compatibility where possible.
 - **Deprecation**: Mark outdated definitions as deprecated to prevent new usage while maintaining existing deployments.
 
----
-
 ## Managing Dependencies
 
 - Define dependencies between building blocks to ensure correct provisioning order and configuration.
 - Review and update dependencies as your automation landscape evolves.
-
----
 
 ## Best Practices
 
 - Use clear naming and documentation for each building block definition.
 - Regularly review and update definitions to reflect best practices and security requirements.
 - Test new or updated building blocks in a non-production environment before rollout.
-
----
+- Set [run control policy](../../concepts/building-block.md#building-block-run-control) appropriate to the shared responsibility model of your build block.
 
 ## Related Resources
 
+### Concepts
+
+- [Building Block](../../concepts/building-block.md)
+- [Platforms](../../concepts/platform.md)
+
+### Guides
+
+- [How to Launch a New OpenTofu Building Block](./how-to-launch-a-new-opentofu-building-block.md)
+- [How to Launch a New Manual Building Block Definition](./how-to-launch-a-new-manual-building-block.md)
