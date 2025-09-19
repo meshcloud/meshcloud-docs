@@ -18,7 +18,7 @@ By the end of this guide, you will have:
 
 ### Workspaces and Building Blocks
 
-Every application team using meshStack has their own [workspace](../concepts/workspace.md). A workspace is a logical container for all resources related to a specific application or software project. 
+Every application team using meshStack has their own [workspace](../concepts/workspace.md). A workspace is a logical container for all resources related to a specific team, application or software project. 
 
 A [building block](../concepts/building-block.md) is the primitive unit of automation in meshStack. A building block has a number of inputs, an implementation, and outputs. Application teams can add building blocks to their workspace by referencing a [building block definition](../concepts/building-block.md#building-block-definition) published by the platform team.
 
