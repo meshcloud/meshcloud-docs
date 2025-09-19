@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       items: [
         'getting-started/building-aws-quickstart-guide',
+        'getting-started/building-azure-quickstart-guide',
         'getting-started/aks-platform-quickstart-guide',
         'getting-started/aks-developer-platform-quickstart-guide',
       ]
