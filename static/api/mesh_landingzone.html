@@ -589,7 +589,7 @@ Content-Length: 2020
         "description" : "my test landing zone for AWS",
         "displayName" : "test-landing-zone-aws",
         "platformRef" : {
-          "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+          "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
           "kind" : "meshPlatform"
         },
         "automateDeletionApproval" : false,
@@ -795,7 +795,7 @@ Host: mesh-backend-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>status.restricted</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the landing zone is restricted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If true, users will be unable to select this landing zone in meshPanel. Only Platform teams can create tenants using restricted landing zones with the meshObject API.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
@@ -834,7 +834,7 @@ Content-Length: 1519
     "description" : "my test landing zone for AWS",
     "displayName" : "test-landing-zone-aws",
     "platformRef" : {
-      "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+      "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -935,7 +935,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aws",
     "description" : "A new aws landing zone for testing",
     "platformRef" : {
-      "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+      "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -978,7 +978,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aws",
     "description" : "A new aws landing zone for testing",
     "platformRef" : {
-      "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+      "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1037,7 +1037,7 @@ Content-Length: 1343
     "description" : "A new aws landing zone for testing",
     "displayName" : "New Landing Zone aws",
     "platformRef" : {
-      "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+      "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1147,7 +1147,7 @@ Host: mesh-backend-url
     "displayName": "Updated Landing Zone",
     "description": "An updated landing zone description",
     "platformRef": {
-      "uuid": "faa30b8e-6a3b-4c8e-a2ae-972444c6e565"
+      "uuid": "dc0dec08-8473-4e07-85ff-a38d1cccde59"
     },
     "automateDeletionApproval": true,
     "automateDeletionReplication": true,
@@ -1183,7 +1183,7 @@ Host: mesh-backend-url
     "displayName": "Updated Landing Zone",
     "description": "An updated landing zone description",
     "platformRef": {
-      "uuid": "faa30b8e-6a3b-4c8e-a2ae-972444c6e565"
+      "uuid": "dc0dec08-8473-4e07-85ff-a38d1cccde59"
     },
     "automateDeletionApproval": true,
     "automateDeletionReplication": true,
@@ -1233,7 +1233,7 @@ Content-Length: 1086
     "description" : "An updated landing zone description",
     "displayName" : "Updated Landing Zone",
     "platformRef" : {
-      "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+      "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : true,
@@ -1409,7 +1409,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone gcp",
     "description" : "A new gcp landing zone for testing",
     "platformRef" : {
-      "uuid" : "0dd5fbdd-cf23-4122-91bc-93b9240ececf",
+      "uuid" : "a87259b5-f93c-4711-8d66-16d16d60df22",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1512,7 +1512,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aws",
     "description" : "A new aws landing zone for testing",
     "platformRef" : {
-      "uuid" : "faa30b8e-6a3b-4c8e-a2ae-972444c6e565",
+      "uuid" : "dc0dec08-8473-4e07-85ff-a38d1cccde59",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1567,6 +1567,21 @@ Host: mesh-backend-url
 <td class="tableblock halign-left valign-top"><p class="tableblock">An array of mappings between the meshRole and the Azure specific access role. If empty, default role mappings defined on meshPlatform level are used. For more information see <a href="https://docs.meshcloud.io/meshstack.azure.landing-zones#meshrole-to-platform-role-mapping">the Landing Zone documentation</a>. If empty, the default that is configured on platform level will be used.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azure.azureRoleMappings[].azureGroupSuffix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The given role name will be injected into the group name via the group naming pattern configured on the platform instance.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azure.azureRoleMappings[].azureRoleDefinitions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Role Definitions with the given IDs will be attached to this Azure Role</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azure.azureRoleMappings[].azureRoleDefinitions[].abacCondition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional. an ABAC condition for the role assignment in form of a string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azure.azureManagementGroupId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subscriptions with this Landing Zone will be added to this Management Group. Please make sure to use the Management Group ID and not the group name!</p></td>
@@ -1609,7 +1624,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone azure",
     "description" : "A new azure landing zone for testing",
     "platformRef" : {
-      "uuid" : "3f199c65-d6d5-4253-9a01-c2b4bf58f447",
+      "uuid" : "bc287c03-92a8-4e29-bd9a-7aa0fbbf7d08",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1691,7 +1706,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aks",
     "description" : "A new aks landing zone for testing",
     "platformRef" : {
-      "uuid" : "a6f817a1-3345-4dbf-aba7-75a1b51711c5",
+      "uuid" : "6a58fadf-ea87-4d4c-bf99-c42899101fff",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1747,6 +1762,16 @@ Host: mesh-backend-url
 <td class="tableblock halign-left valign-top"><p class="tableblock">Roles need to be mapped from the meshRole to the Cloud specific access role. If empty, the default that is configured on platform level will be used.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azurerg.azureRgRoleMappings[].azureGroupSuffix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The given role name will be injected into the group name via the group naming pattern configured on the platform instance.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azurerg.azureRgRoleMappings[].azureRoleDefinitionIds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Role Definitions with the given IDs will be attached to this Azure Role</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.platformProperties.azurerg.azureFunction</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional. Assign an Azure function to the Landing Zone configuration to trigger a small piece of code in the cloud.</p></td>
@@ -1784,7 +1809,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone azurerg",
     "description" : "A new azurerg landing zone for testing",
     "platformRef" : {
-      "uuid" : "cb7af55a-c4b1-4372-9f85-959a845332b0",
+      "uuid" : "fbe5de7a-a26c-47d4-a843-37c3579ab028",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1877,7 +1902,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone openshift",
     "description" : "A new openshift landing zone for testing",
     "platformRef" : {
-      "uuid" : "205f2fbc-e1ff-4377-9e50-1d9f1ec2564f",
+      "uuid" : "69832c72-c19f-44b9-ae28-c21f19a413b0",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1944,7 +1969,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone kubernetes",
     "description" : "A new kubernetes landing zone for testing",
     "platformRef" : {
-      "uuid" : "41172b3a-8a4d-4eec-adc0-72ab69af1884",
+      "uuid" : "47f9776a-2cb2-4c18-a0be-d310659f982b",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1972,7 +1997,7 @@ Host: mesh-backend-url
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-09-22 13:30:32 UTC
+Last updated 2025-09-22 13:38:17 UTC
 </div>
 </div>
 </body>
