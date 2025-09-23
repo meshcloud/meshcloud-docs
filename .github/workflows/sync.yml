@@ -1,0 +1,57 @@
+name: "Sync with Upstream Repository"
+
+on:
+  schedule:
+    # Run every hour at the top of the hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    # Allow manual triggering for testing
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    # Prevent triggering this job in the upstream repo
+    if: github.repository != 'meshcloud/meshcloud-docs' 
+    
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/meshcloud/meshcloud-docs.git
+          git remote -v
+      
+      - name: Fetch from upstream
+        run: |
+          git fetch upstream
+      
+      - name: Sync develop branch
+        run: |
+          echo "Syncing develop branch..."
+          git checkout -B develop upstream/develop
+          git push --force-with-lease origin develop
+      
+      - name: Sync master branch  
+        run: |
+          echo "Syncing master branch..."
+          git checkout -B master upstream/master
+          git push --force-with-lease origin master
+      
+      - name: Summary
+        run: |
+          echo "✅ Successfully synced both develop and master branches from upstream"
+          echo "📍 Upstream: https://github.com/meshcloud/meshcloud-docs"
+          echo "📍 This repo: ${{ github.repository }}"

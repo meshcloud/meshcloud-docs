@@ -594,7 +594,7 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 3380
+Content-Length: 3387
 
 {
   "_embedded" : {
@@ -602,10 +602,44 @@ Content-Length: 3380
       "kind" : "meshTenant",
       "apiVersion" : "v4-preview",
       "metadata" : {
-        "uuid" : "774ed8cf-228e-4056-97e2-b70c3b7ac9f9",
+        "uuid" : "23cd9b7a-e3ed-4ab4-9d30-ff0b14e0d40f",
         "ownedByWorkspace" : "test-workspace",
         "ownedByProject" : "test-project",
-        "createdOn" : "2025-09-09T07:44:37.235551269Z"
+        "createdOn" : "2025-09-23T06:52:38.992832503Z"
+      },
+      "spec" : {
+        "platformIdentifier" : "sr.eu-de-netde",
+        "landingZoneIdentifier" : "stage-dev",
+        "platformTenantId" : "bfb96178-ea6f-4648-a6cc-22f4f5d130af",
+        "quotas" : [ {
+          "key" : "limits.cpu",
+          "value" : 2000
+        }, {
+          "key" : "limits.memory",
+          "value" : 10000
+        } ]
+      },
+      "status" : {
+        "tenantName" : "test-workspace.test-project.sr.eu-de-netde",
+        "platformTypeIdentifier" : "SERVICEREGISTRY",
+        "tags" : { }
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/23cd9b7a-e3ed-4ab4-9d30-ff0b14e0d40f"
+        },
+        "meshusers" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=sr.eu-de-netde"
+        }
+      }
+    }, {
+      "kind" : "meshTenant",
+      "apiVersion" : "v4-preview",
+      "metadata" : {
+        "uuid" : "8c2b587d-95f3-4723-93a5-a2f01792fe83",
+        "ownedByWorkspace" : "test-workspace",
+        "ownedByProject" : "test-project",
+        "createdOn" : "2025-09-23T06:52:38.986116774Z"
       },
       "spec" : {
         "platformIdentifier" : "aws.aws-meshstack-dev",
@@ -626,43 +660,10 @@ Content-Length: 3380
       },
       "_links" : {
         "self" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/774ed8cf-228e-4056-97e2-b70c3b7ac9f9"
+          "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/8c2b587d-95f3-4723-93a5-a2f01792fe83"
         },
         "meshusers" : {
           "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=aws.aws-meshstack-dev"
-        }
-      }
-    }, {
-      "kind" : "meshTenant",
-      "apiVersion" : "v4-preview",
-      "metadata" : {
-        "uuid" : "34fd58ca-f983-40f1-a44c-0adb2c2e9c43",
-        "ownedByWorkspace" : "test-workspace",
-        "ownedByProject" : "test-project",
-        "createdOn" : "2025-09-09T07:44:37.238601148Z",
-        "markedForDeletionOn" : "2025-09-10T07:44:37.238601148Z",
-        "deletedOn" : "2025-09-11T07:44:37.238601148Z"
-      },
-      "spec" : {
-        "platformIdentifier" : "okd-on-gcp.openshift",
-        "landingZoneIdentifier" : "stage-dev",
-        "platformTenantId" : "7139bd0c-65cd-4cb0-a0d6-864fd94254bf",
-        "quotas" : [ {
-          "key" : "limits.cpu",
-          "value" : 2000
-        }, {
-          "key" : "limits.memory",
-          "value" : 10000
-        } ]
-      },
-      "status" : {
-        "tenantName" : "test-workspace.test-project.okd-on-gcp.openshift",
-        "platformTypeIdentifier" : "OPENSHIFT",
-        "tags" : { }
-      },
-      "_links" : {
-        "meshusers" : {
-          "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=okd-on-gcp.openshift"
         }
       }
     } ]
@@ -718,7 +719,7 @@ Content-Length: 3380
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtenants/774ed8cf-228e-4056-97e2-b70c3b7ac9f9 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshtenants/23cd9b7a-e3ed-4ab4-9d30-ff0b14e0d40f HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
 Host: mesh-backend-url</code></pre>
@@ -727,7 +728,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/774ed8cf-228e-4056-97e2-b70c3b7ac9f9' -i -u 'valid_username:valid_password' -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/23cd9b7a-e3ed-4ab4-9d30-ff0b14e0d40f' -i -u 'valid_username:valid_password' -X GET \
     -H 'Accept: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json'</code></pre>
 </div>
 </div>
@@ -864,21 +865,21 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1079
+Content-Length: 1070
 
 {
   "kind" : "meshTenant",
   "apiVersion" : "v4-preview",
   "metadata" : {
-    "uuid" : "774ed8cf-228e-4056-97e2-b70c3b7ac9f9",
+    "uuid" : "23cd9b7a-e3ed-4ab4-9d30-ff0b14e0d40f",
     "ownedByWorkspace" : "test-workspace",
     "ownedByProject" : "test-project",
-    "createdOn" : "2025-09-09T07:44:37.235551269Z"
+    "createdOn" : "2025-09-23T06:52:38.992832503Z"
   },
   "spec" : {
-    "platformIdentifier" : "aws.aws-meshstack-dev",
+    "platformIdentifier" : "sr.eu-de-netde",
     "landingZoneIdentifier" : "stage-dev",
-    "platformTenantId" : "2f3561e8-51f4-451f-bc92-9e5c8c6dd98f",
+    "platformTenantId" : "bfb96178-ea6f-4648-a6cc-22f4f5d130af",
     "quotas" : [ {
       "key" : "limits.cpu",
       "value" : 2000
@@ -888,16 +889,16 @@ Content-Length: 1079
     } ]
   },
   "status" : {
-    "tenantName" : "test-workspace.test-project.aws.aws-meshstack-dev",
-    "platformTypeIdentifier" : "AWS",
+    "tenantName" : "test-workspace.test-project.sr.eu-de-netde",
+    "platformTypeIdentifier" : "SERVICEREGISTRY",
     "tags" : { }
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/774ed8cf-228e-4056-97e2-b70c3b7ac9f9"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/23cd9b7a-e3ed-4ab4-9d30-ff0b14e0d40f"
     },
     "meshusers" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=aws.aws-meshstack-dev"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=sr.eu-de-netde"
     }
   }
 }</code></pre>
@@ -1068,7 +1069,7 @@ Host: mesh-backend-url
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://mesh-backend-url/api/meshobjects/meshtenants/402bfd06-aa57-45eb-9b5a-a9fba6a7d833
+Location: https://mesh-backend-url/api/meshobjects/meshtenants/5a1201fc-2a74-4544-8a96-592bc9eeccb5
 Content-Type: application/vnd.meshcloud.api.meshtenant.v4-preview.hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 0
@@ -1083,10 +1084,10 @@ Content-Length: 963
   "kind" : "meshTenant",
   "apiVersion" : "v4-preview",
   "metadata" : {
-    "uuid" : "402bfd06-aa57-45eb-9b5a-a9fba6a7d833",
+    "uuid" : "5a1201fc-2a74-4544-8a96-592bc9eeccb5",
     "ownedByWorkspace" : "test-workspace",
     "ownedByProject" : "test-project",
-    "createdOn" : "2025-09-09T07:44:37.930819711Z"
+    "createdOn" : "2025-09-23T06:52:39.693021976Z"
   },
   "spec" : {
     "platformIdentifier" : "azure.meshcloud-azure-dev",
@@ -1101,7 +1102,7 @@ Content-Length: 963
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/402bfd06-aa57-45eb-9b5a-a9fba6a7d833"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshtenants/5a1201fc-2a74-4544-8a96-592bc9eeccb5"
     },
     "meshusers" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshusers?workspaceIdentifier=test-workspace&amp;projectIdentifier=test-project&amp;platformIdentifier=azure.meshcloud-azure-dev"
@@ -1120,7 +1121,7 @@ so the meshTenant might not be immediately deleted but rather marked for deletio
 <div class="listingblock">
 <div class="title">Example Request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtenants/402bfd06-aa57-45eb-9b5a-a9fba6a7d833 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshtenants/5a1201fc-2a74-4544-8a96-592bc9eeccb5 HTTP/1.1
 Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
 Host: mesh-backend-url</code></pre>
 </div>
@@ -1128,7 +1129,7 @@ Host: mesh-backend-url</code></pre>
 <div class="listingblock">
 <div class="title">Example Curl Request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/402bfd06-aa57-45eb-9b5a-a9fba6a7d833' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshtenants/5a1201fc-2a74-4544-8a96-592bc9eeccb5' -i -u 'valid_username:valid_password' -X DELETE</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1152,7 +1153,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-09-09 07:42:22 UTC
+Last updated 2025-09-23 06:49:38 UTC
 </div>
 </div>
 </body>

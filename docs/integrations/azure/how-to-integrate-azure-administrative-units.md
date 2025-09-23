@@ -72,8 +72,8 @@ identities:
    - This allows meshStack to create and manage groups within this administrative unit.
 7. Note down the **Administrative Unit ID** - you'll need this for configuring your Azure platform in meshStack
 
-:::tip Use Terraform for Automated Setup
-For automated setup, we recommend using the [Azure meshPlatform Terraform Module](https://registry.terraform.io/modules/meshcloud/meshplatform/azure/latest) with the `administrative_unit_name` variable set. This module will handle the creation of the replication service principal, the administrative unit, and proper role assignments automatically.
+:::tip Use OpenTofu for Automated Setup
+For automated setup, we recommend using the [Azure meshPlatform OpenTofu Module](https://registry.terraform.io/modules/meshcloud/meshplatform/azure/latest) with the `administrative_unit_name` variable set. This module will handle the creation of the replication service principal, the administrative unit, and proper role assignments automatically.
 :::
 
 ### 2. Configure the Azure Platform in meshStack

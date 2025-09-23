@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Getting Started',
       items: [
+        'getting-started/key-concepts-guide',
         'getting-started/building-aws-quickstart-guide',
         'getting-started/building-azure-quickstart-guide',
         'getting-started/aks-platform-quickstart-guide',
@@ -72,7 +73,7 @@ const sidebars: SidebarsConfig = {
             'guides/core/how-to-provide-organization-context',
             'guides/core/how-to-manage-a-building-block-definition',
             'guides/core/how-to-launch-a-new-manual-building-block',
-            'guides/core/how-to-launch-a-new-terraform-building-block',
+            'guides/core/how-to-launch-a-new-opentofu-building-block',
             'guides/core/how-to-extract-data'
           ],
         },
