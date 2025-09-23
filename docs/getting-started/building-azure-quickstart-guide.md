@@ -36,7 +36,9 @@ Before starting, ensure you have the following:
 
 2. **Create a new building block definition**
 
-   In the list, click on the button “+ Create new Definition”. A wizard will open where we will have to enter all
+   In the list, click on the button “+ Create new Definition”.    You will be asked which implementation type to use. Pick "OpenTofu" here. 
+   
+   A wizard will open where we will have to enter all
    the necessary information to run the Storage Account bucket using Terraform.
 
 3. **Select a type**
@@ -65,8 +67,6 @@ Before starting, ensure you have the following:
 6. **Entering Terraform implementation details**
 
    If still on the general page, click “Next” and let’s start filling in all details for running Terraform as part of this building block.
-
-   You will be asked which implementation type to use. Pick “Terraform” here. Additional settings will show up.
 
    - Enter a desired Terraform version or leave the default value.
 
