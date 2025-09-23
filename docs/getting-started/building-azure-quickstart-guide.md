@@ -36,7 +36,7 @@ Before starting, ensure you have the following:
 
 2. **Create a new building block definition**
 
-   In the list, click on the button “+ Create new Definition”.    You will be asked which implementation type to use. Pick "OpenTofu" here. 
+   In the list, click on the button “+ Create new Definition”. You will be asked which implementation type to use. Pick "OpenTofu" here. 
    
    A wizard will open where we will have to enter all
    the necessary information to run the Storage Account bucket using Terraform.
@@ -71,7 +71,7 @@ Before starting, ensure you have the following:
    - Enter a desired Terraform version or leave the default value.
 
    > 💡Any versions entered over 1.5.5 will run using [OpenTofu](https://opentofu.org/).  
-   > This is an open-source, friendlier alternative of Terraform.
+   > This is an open-source friendlier alternative of Terraform.
 
    - Enable the option “Use meshStack’s Http Backend” if using our template.
      Learn more about how this meshStack backend works [here](../guides/core/how-to-launch-a-new-opentofu-building-block.md#meshstack-built-in-http-backend).
