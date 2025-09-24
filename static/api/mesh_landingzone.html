@@ -589,7 +589,7 @@ Content-Length: 2020
         "description" : "my test landing zone for AWS",
         "displayName" : "test-landing-zone-aws",
         "platformRef" : {
-          "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+          "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
           "kind" : "meshPlatform"
         },
         "automateDeletionApproval" : false,
@@ -834,7 +834,7 @@ Content-Length: 1519
     "description" : "my test landing zone for AWS",
     "displayName" : "test-landing-zone-aws",
     "platformRef" : {
-      "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+      "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -935,7 +935,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aws",
     "description" : "A new aws landing zone for testing",
     "platformRef" : {
-      "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+      "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -978,7 +978,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aws",
     "description" : "A new aws landing zone for testing",
     "platformRef" : {
-      "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+      "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1037,7 +1037,7 @@ Content-Length: 1343
     "description" : "A new aws landing zone for testing",
     "displayName" : "New Landing Zone aws",
     "platformRef" : {
-      "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+      "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1147,7 +1147,7 @@ Host: mesh-backend-url
     "displayName": "Updated Landing Zone",
     "description": "An updated landing zone description",
     "platformRef": {
-      "uuid": "a093ee41-4973-4024-8526-63d18075f9ae"
+      "uuid": "ae5cbb32-1c49-4569-8f51-49fede90ae12"
     },
     "automateDeletionApproval": true,
     "automateDeletionReplication": true,
@@ -1183,7 +1183,7 @@ Host: mesh-backend-url
     "displayName": "Updated Landing Zone",
     "description": "An updated landing zone description",
     "platformRef": {
-      "uuid": "a093ee41-4973-4024-8526-63d18075f9ae"
+      "uuid": "ae5cbb32-1c49-4569-8f51-49fede90ae12"
     },
     "automateDeletionApproval": true,
     "automateDeletionReplication": true,
@@ -1233,7 +1233,7 @@ Content-Length: 1086
     "description" : "An updated landing zone description",
     "displayName" : "Updated Landing Zone",
     "platformRef" : {
-      "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+      "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : true,
@@ -1336,13 +1336,46 @@ X-Frame-Options: DENY</code></pre>
 <div class="sect4">
 <h5 id="mesh_landing_zone_properties">Platform Properties</h5>
 <div class="paragraph">
-<p>The values that you have to provide inside <code>spec.platformProperty</code> depend on the
-platform type of the platform associated to the landing zone.
-The <code>platformType</code> must be provided inside <code>spec.platformProperties.platformType</code>,
-and this platform type determines which properties must be set:
-For example, if <code>platformType</code> is <code>Aws</code>, then <code>awsTargetOrgUnitId</code> is mandatory,
-for <code>Gcp</code>, the <code>gcpFolderId</code> is mandatory. The following tables list all
-required and optional properties for the supported platform types.</p>
+<p>The following convention is used for the <code>spec.platformProperties</code> object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "platformProperties" : {
+    "type": "$PLATFORM",
+    "$PLATFORM": { … all platform specific properties … }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, in the case of AWS:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-JSON" data-lang="JSON">{
+  "platformProperties" : {
+    "type": "aws",
+    "aws": { … all AWS specific properties … }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or GCP:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-JSON" data-lang="JSON">{
+  "platformProperties" : {
+    "type": "gcp",
+    "gcp": { … all GCP specific properties … }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following tables list all required and optional properties for the supported platform types.</p>
 </div>
 <div class="sect5">
 <h6 id="_gcp">GCP</h6>
@@ -1409,7 +1442,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone gcp",
     "description" : "A new gcp landing zone for testing",
     "platformRef" : {
-      "uuid" : "b060f9d4-fdc2-4b24-a55d-0d21ee85ae85",
+      "uuid" : "3339fea7-e29c-4c72-9134-baf70a63c1ba",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1512,7 +1545,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aws",
     "description" : "A new aws landing zone for testing",
     "platformRef" : {
-      "uuid" : "a093ee41-4973-4024-8526-63d18075f9ae",
+      "uuid" : "ae5cbb32-1c49-4569-8f51-49fede90ae12",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1624,7 +1657,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone azure",
     "description" : "A new azure landing zone for testing",
     "platformRef" : {
-      "uuid" : "2a963b1b-c5fd-49f6-9a5b-015e185633bd",
+      "uuid" : "d66696e4-92bd-4e25-83f2-78915e5bb7e9",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1706,7 +1739,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone aks",
     "description" : "A new aks landing zone for testing",
     "platformRef" : {
-      "uuid" : "3e8d05a9-2389-4548-8658-8abc90c3d7e2",
+      "uuid" : "12304554-f380-4664-a4b7-dc77b73838df",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1809,7 +1842,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone azurerg",
     "description" : "A new azurerg landing zone for testing",
     "platformRef" : {
-      "uuid" : "c0cfa3c4-49ee-46a1-b91b-4132fd89c72d",
+      "uuid" : "6134b28c-adb3-4b2e-a7aa-f71641d07010",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1902,7 +1935,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone openshift",
     "description" : "A new openshift landing zone for testing",
     "platformRef" : {
-      "uuid" : "97aa6015-e3f9-4648-bf91-ddab87b99a1d",
+      "uuid" : "436e70c8-fdc1-4c8a-8165-fe5f1e09dd7a",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1969,7 +2002,7 @@ Host: mesh-backend-url
     "displayName" : "New Landing Zone kubernetes",
     "description" : "A new kubernetes landing zone for testing",
     "platformRef" : {
-      "uuid" : "ab6b99c9-d514-4055-957a-5ce14f1c2dbb",
+      "uuid" : "735b720c-0050-4149-acfd-de978dc2790c",
       "kind" : "meshPlatform"
     },
     "automateDeletionApproval" : false,
@@ -1997,7 +2030,7 @@ Host: mesh-backend-url
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-09-23 13:32:23 UTC
+Last updated 2025-09-24 07:06:32 UTC
 </div>
 </div>
 </body>
