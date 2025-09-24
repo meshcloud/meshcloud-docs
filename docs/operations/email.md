@@ -6,9 +6,6 @@ title: Email
 For all email based communication (e.g. for [workspace registration](../settings/self-service-onboarding.md#workspace-registration)
 or [workspace user invitations](../settings/self-service-onboarding.md#workspace-user-invitations)) meshStack will use the configured SMTP server.
 
-> Tip for enterprise meshStacks: you can configure a custom e-mail footer by creating an object in the `messages` configuration below using mapKey `mail.footer`.
-> Any valid HTML can be set as a value here. Contact your customer success team to get it set up.
-
 <!--snippet:mesh.meshfed.mail-->
 
 The following configuration options are available at `mesh.meshfed.mail`:
@@ -50,20 +47,6 @@ The following configuration options are available at `mesh.meshfed.mail`:
         auth:
             If True, enables authentication (must be supported by SMTP server)
 
-    theme:
-        logo:
-            href:
-                Location of the logo file
-
-            url:
-                Url that the image links to
-
-        button-color:
-            Color hex code for buttons
-
-        messages:
-            List of mappings to configure template messages
-
 -}
   { enabled : Bool
   , username : Text
@@ -72,8 +55,6 @@ The following configuration options are available at `mesh.meshfed.mail`:
   , sender : { address : Text, reply-to : Optional Text }
   , smtp :
       { ssl : { enable : Bool }, starttls : { enable : Bool }, auth : Bool }
-  , theme : { logo : { href : Text, url : Text }, button-color : Text }
-  , messages : List { mapKey : Text, mapValue : Text }
   }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -103,7 +84,7 @@ Optionally meshStack sends out mails to fixed set of recipients configured in dh
 
 ### Can the style of the mails be influenced? For example via HTML?
 
-Button color and logo are configurable. The `theme.messages` templates support HTML elements like `<br>`.
+Yes you can do this completely yourself via the Admin Area. To learn more read [How to Brand Emails sent by meshStack](../guides/developer-engagement/how-to-email-branding.md).
 
 ### Can BCC be added
 

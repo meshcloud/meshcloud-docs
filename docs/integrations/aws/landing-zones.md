@@ -19,6 +19,15 @@ You must provide the ID of the OU which can be found in the AWS Organizational M
 
 You can also use a root account under which the accounts will be placed when they are created. Root IDs start with `r-*`.
 
+#### Hierarchical Organizational Unit Assignment
+
+The behavior of the Target Organization Unit ID depends on the "Allow Hierarchical Organizational Unit Assignment" setting configured in the AWS platform configuration:
+
+- **When hierarchical assignment is disabled (default)**: Accounts will always be moved directly to the organizational unit defined in this landing zone parameter.
+- **When hierarchical assignment is enabled**: Accounts already residing in child organizational units below the specified OU will remain in their current organizational unit. This allows for more granular organization of accounts within complex AWS Organizations hierarchies while maintaining governance through the parent OU defined in the landing zone.
+
+This setting provides platform teams with greater flexibility for organizing resources in complex organizational structures while maintaining proper governance.
+
 ### Account Enrollment
 
 This parameter defines whether created AWS accounts of this Landing Zone are enrolled with AWS Control Tower or not. In order to successfully enroll accounts, an already enrolled [Target Organization Unit ID](#target-organization-unit-id) has to be defined. The enrollment also requires a global enrollment configuration set for the AWS platform, as specified in [AWS Control Tower Integration](./index.md)

@@ -328,14 +328,27 @@ The following configuration options are available in the AWS Platform Replicator
 
 ![AWS meshIdB Configuration](/assets/platform_maintenance/aws-meshidb.png)
 
-### 5. Decide on Naming Patterns
+### 5. Configure Hierarchical Organizational Unit Assignment
+
+meshStack supports hierarchical organizational unit assignment for AWS accounts, which provides more granular and flexible account organization within the AWS Organizations hierarchy.
+
+By default, AWS accounts are placed directly in the organizational unit defined in the landing zone. When hierarchical assignment is enabled, accounts can remain in child organizational units below the OU defined in the landing zone.
+
+This setting is configured in the AWS Platform Replicator Config and affects how meshStack handles account organization:
+
+- **When enabled (true)**: Accounts living in an organizational unit below the one defined in the landing zone will remain in their current organizational unit. This is useful for managing account locations with deeper and more granular hierarchy.
+- **When disabled (false)**: Accounts will always be moved directly to the organizational unit defined in the landing zone (only from root OU currently).
+
+Platform operators can enable this feature by configuring the "Allow Hierarchical Organizational Unit Assignment" setting in the AWS platform configuration within meshPanel.
+
+### 6. Decide on Naming Patterns
 
 You can define naming patterns based on the [String Templating](../../settings/replication-configuration.md#string-templating) syntax of meshStack for the following properties:
 
 - Account Email Address: Please make sure to consider that this is limited to 64 characters
 - Account Alias Pattern: The account alias must be unique across all of AWS. Platform engineers should therefore consider using a company-specific prefix together with a combination of meshWorkspace and meshProject identifier. You can decide if you want to enforce setting the account alias on every replication via a flag in the configuration.
 
-### 6. Identifier Configuration
+### 7. Identifier Configuration
 
 Platform engineers that want to use AWS must configure their deployment to restrict identifier lengths to meet AWS requirements. The maximum allowed lengths are:
 
@@ -344,7 +357,7 @@ customer_identifier_length: 16
 project_identifier_length: 30
 ```
 
-### 7. Integrate AWS Control Tower
+### 8. Integrate AWS Control Tower
 
 A `PlatformInstance` can be configured to integrate with an existing AWS Control Tower setup.
 In order to manage accounts created by meshStack with AWS Control Tower, these need to be "enrolled".
@@ -425,7 +438,7 @@ The following prerequisites must be fulfilled for the enrollment to work:
 > enabled in AWS Organizations that prevents that.
 
 
-### 8. Set Minimum Access Rights on Provisioned Accounts
+### 9. Set Minimum Access Rights on Provisioned Accounts
 
 When provisioning a new account, a default role with administration privileges will be created in the new account. This role is by default named [OrganizationAccountAccessRole](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
 but the name can be configured via meshStack. The MeshfedServiceRole will assume this newly created role in the provisioned account to perform tasks such as setting the account alias or setting up the user roles. meshStack has the capability to self downgrade this role's permissions to a minimum. This can be configured via the `self-downgrade-access-role` configuration flag.
@@ -490,7 +503,7 @@ If you prefer that meshStack does not have the capability to upgrade its own rol
 
 If you would like to audit the actions taken by this role, you can enable AWS CloudTrail on all the accounts provisioned by meshStack by using an AWS CloudFormation StackSet, which is also supported by meshLandingZones. With the auditing enabled, it will always be possible to identify at which point in time meshStack added additional rights to its role. It will help to easily identify that meshStack was only able to do certain actions given the rights assigned at a certain point in time.
 
-### 9. Set Up IAM User for Metering
+### 10. Set Up IAM User for Metering
 
 ```mermaid
 graph LR;
@@ -565,7 +578,7 @@ A role  should be created in the AWS `management account` which has the followin
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-### 10. Leverage Reserved Instances & Savings Plans (Optional)
+### 11. Leverage Reserved Instances & Savings Plans (Optional)
 
 This section applies only if your application teams (represented by meshWorkspaces) pay you (the Cloud Foundation team), upfront to purchase Reserved Instances
 and Savings Plans directly on their AWS accounts, which give them priority for consuming the RI or SP.
@@ -579,7 +592,7 @@ This line item will be added to the report every month until the end of the Rese
 
 To achieve this, meshStack collects the information about Reserved Instances and Savings Plans via the cost explorer API.
 
-### 11. Set Up AWS Tenant Import (Optional)
+### 12. Set Up AWS Tenant Import (Optional)
 
 To import an unmanaged AWS account into a workspace and project, the account must be configured for meshStack integration. This configuration involves setting up an IAM role with a trust relationship to the root or master account of the AWS organization to which the account belongs.
 
