@@ -140,7 +140,34 @@ These environment variables must be provided to the OpenTofu runner. In meshStac
 
 This approach is not limited to AWS. Many OpenTofu providers support authentication via environment variables. For example, the Datadog provider uses `DD_API_KEY` and `DD_APP_KEY` as environment variables. For more details, see the [Datadog Terraform provider documentation](https://registry.terraform.io/providers/DataDog/datadog/latest/docs).
 
-meshStack simplifies credential management by offering preconfigured inputs for common platforms. When creating an OpenTofu building block, you can use the "Generate Input" menu to automatically add the necessary credential inputs for AWS, Azure, or GCP. For example, selecting "Generate AWS auth inputs" will create the required AWS credential inputs. You can then assign static values or allow users to provide them at runtime.
+### Cloud Provider Authentication Methods
+
+meshStack simplifies credential management by offering preconfigured inputs for the three major cloud platforms (AWS, Azure, and GCP). When creating an OpenTofu building block, you can use the "Generate Input" menu to automatically add the necessary credential inputs based on your preferred authentication method:
+
+**Traditional Credential-Based Authentication:**
+
+- **AWS**: Select "Generate AWS auth inputs" to create inputs for access key authentication using `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+- **Azure**: Select "Generate Azure auth inputs" to create inputs for service principal authentication using client credentials
+- **GCP**: Select "Generate GCP auth inputs" to create inputs for service account key authentication
+
+**Workload Identity Federation (Recommended):**
+
+:::info What is Workload Identity Federation (WIF)?
+Workload identity federation is a secure authentication method that allows applications and services to access cloud resources without using long-lived credentials like service account keys or access keys. Instead, it uses temporary, automatically-rotated tokens based on the identity of the workload (such as a Kubernetes service account or GitHub Actions workflow). This eliminates the security risks associated with storing and managing static credentials.
+:::
+
+For enhanced security, meshStack supports workload identity federation across all three major cloud providers. Workload identity federation allows your building blocks to securely access GCP, AWS, and Azure resources without storing long-lived credentials.
+
+- **AWS**: Select "Generate AWS WIF auth inputs" and fill in the required fields to use WIF
+- **Azure**: Select "Generate Azure WIF auth inputs" and fill in the required fields to use WIF
+- **GCP**: Select "Generate GCP WIF auth inputs" and fill in the required fields to use WIF
+
+> **Security Notice:** The WIF configuration is for the shared Terraform/OpenTofu runner hosted in meshStack. The identity is shared among all users with admin access and workspace access with platform builder enabled. Setting up WIF requires trusting these users with your cloud resources.
+
+Workload identity federation is the recommended approach as it provides better security by:
+
+- Eliminating the need to store and rotate long-lived access keys
+- Reducing the risk of credential exposure
 
 ## Monitoring and Troubleshooting
 
