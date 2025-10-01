@@ -576,7 +576,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   "metadata" : {
     "name" : "aks-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "1686fe82-c2ff-41ca-9810-cd3ebd96b438"
+    "uuid" : "9bb27c9f-a6a6-40be-8aee-ac0d8b8c9996"
   },
   "spec" : {
     "locationRef" : {
@@ -630,7 +630,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/1686fe82-c2ff-41ca-9810-cd3ebd96b438"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/9bb27c9f-a6a6-40be-8aee-ac0d8b8c9996"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -721,7 +721,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aks.replication.servicePrincipal.objectId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">he Object ID of the Enterprise Application. You can get this Object ID via the API (e.g. when using our Terraform provider) or from Enterprise applications pane in Microsoft Entra admin center.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Object ID of the Enterprise Application. You can get this Object ID via the API (e.g. when using our Terraform provider) or from Enterprise applications pane in Microsoft Entra admin center.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aks.replication.aksSubscriptionId</code></p></td>
@@ -753,6 +753,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Strategy for user lookup in Azure ('userPrincipalName' or 'email')</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aks.replication.administrativeUnitId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you enter an administrative unit ID the replicated (and potentially existing) groups will be put into this AU. This can be used to limit the permission scopes which are required for the replicator principal. If you remove the AU ID again or change it, the groups will not be removed from the old AU.</p></td>
+</tr>
 </tbody>
 </table>
 <div id="mesh_platform_config_aws" class="listingblock">
@@ -764,7 +769,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   "metadata" : {
     "name" : "aws-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "1a9a2e99-521b-43c1-a0f1-754065ea2170"
+    "uuid" : "c581183b-29fc-4d50-835f-7cd12babaaea"
   },
   "spec" : {
     "locationRef" : {
@@ -849,7 +854,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/1a9a2e99-521b-43c1-a0f1-754065ea2170"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/c581183b-29fc-4d50-835f-7cd12babaaea"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -895,7 +900,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aws.replication.accessConfig</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshStack currently supports 2 types of authentication. Workload Identity Federation (using OIDC) is the one that we recommend as it enables secure access to your AWS account without using long lived credentials. Alternatively, you can use credential based authentication by providing access and secret keys. Either the serviceUserConfig or workloadIdentityConfig must be provided.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshStack currently supports 2 types of authentication. Workload Identity Federation (using OIDC) is the one that we recommend as it enables secure access to your AWS account without using long lived credentials. Alternatively, you can use credential based authentication by providing access and secret keys. Either the <code>serviceUserConfig</code> or <code>workloadIdentityConfig</code> must be provided.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aws.replication.accessConfig.organizationRootAccountRole</code></p></td>
@@ -955,7 +960,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aws.replication.accountAliasPattern</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">With a String Pattern you can define how the account alias of the created AWS account will be named. E.g. <mark>{workspaceIdentifier}-</mark>{projectIdentifier}.
+<td class="tableblock halign-left valign-top"><p class="tableblock">With a String Pattern you can define how the account alias of the created AWS account will be named. E.g. #{workspaceIdentifier}-#{projectIdentifier}.
 Attention: Account Alias must be globally unique in AWS. So consider defining a unique prefix.</p></td>
 </tr>
 <tr>
@@ -966,7 +971,7 @@ Attention: Account Alias must be globally unique in AWS. So consider defining a 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aws.replication.accountEmailPattern</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">With a String Pattern you can define how the account email address of the created AWS account will be set. E.g. 'aws+<mark>{workspaceIdentifier}.</mark>{projectIdentifier}@yourcompany.com'. Please consider that this email address is limited to 64 characters! Also have a look at our docs for more information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">With a String Pattern you can define how the account email address of the created AWS account will be set. E.g. 'aws+#{workspaceIdentifier}.#{projectIdentifier}@yourcompany.com'. Please consider that this email address is limited to 64 characters! Also have a look at our docs for more information.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aws.replication.tenantTags</code></p></td>
@@ -1089,7 +1094,7 @@ Attention: Account Alias must be globally unique in AWS. So consider defining a 
   "metadata" : {
     "name" : "azure-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "fd20d9d0-7a7e-4a4e-99d2-46001de20e02"
+    "uuid" : "0e254780-0804-4c0a-a21a-4b045d193100"
   },
   "spec" : {
     "locationRef" : {
@@ -1190,7 +1195,7 @@ Attention: Account Alias must be globally unique in AWS. So consider defining a 
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/fd20d9d0-7a7e-4a4e-99d2-46001de20e02"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/0e254780-0804-4c0a-a21a-4b045d193100"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1261,7 +1266,7 @@ Attention: Account Alias must be globally unique in AWS. So consider defining a 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To provide Azure Subscription for your organization&#8217;s meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. One of the subFields enterpriseEnrollment, customerAgreement or preProvisioned must be provided!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To provide Azure Subscription for your organization&#8217;s meshProjects, meshcloud supports using Enterprise Enrollment or allocating from a pool of pre-provisioned subscriptions. One of the subFields <code>enterpriseEnrollment</code>, <code>customerAgreement</code> or <code>preProvisioned</code> must be provided!</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.subscriptionOwnerObjectIds</code></p></td>
@@ -1275,14 +1280,79 @@ You can not use the replicator object ID here, because meshStack always removes 
 <td class="tableblock halign-left valign-top"><p class="tableblock">meshcloud can automatically provision new subscriptions from an Enterprise Enrollment Account owned by your organization. This is suitable for large organizations that have a Microsoft Enterprise Agreement, Microsoft Customer Agreement or a Microsoft Partner Agreement and want to provide a large number of subscriptions in a fully automated fashion.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.enterpriseEnrollment.enrollmentAccountId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the EA Enrollment Account used for the Subscription creation. Should look like this: <code>/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321</code>. For more information, review the <a href="https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest-getEnrollments%2Crest-EA#find-accounts-you-have-access-to">Azure docs</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.enterpriseEnrollment.subscriptionOfferType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Microsoft Subscription offer type to use when creating subscriptions. Only <code>Production</code> for standard and <code>DevTest</code> for Dev/Test subscriptions are supported for the Non Legacy Subscription Enrollment. For the Legacy Subscription Enrollment also other types can be defined.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.enterpriseEnrollment.useLegacySubscriptionEnrollment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated: Uses the old Subscription enrollment API in its preview version. This enrollment is less reliable and should not be used for new Azure Platform Integrations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.enterpriseEnrollment.subscriptionCreationErrorCooldownSec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This value must be defined in seconds. It is a safety mechanism to avoid duplicate Subscription creation in case of an error on Azure&#8217;s MCA API. This delay should be a bit higher than it usually takes to create subscriptions. For big installations this is somewhere between 5-15 minutes. The default of 900s should be fine for most installations.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">meshcloud can automatically provision new subscriptions from a Customer Agreement Account owned by your organization. This is suitable for larger organizations that have such a Customer Agreement with Microsoft, and want to provide a large number of subscriptions in a fully automated fashion.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.destinationEntraId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft Entra ID Tenant UUID where created subscriptions should be moved. Set this to the Microsoft Entra ID Tenant hosting your landing zones.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.sourceEntraTenant</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft Entra ID Tenant UUID or domain name used for creating subscriptions. Set this to the Microsoft Entra ID Tenant owning the MCA Billing Scope. If source and destination Microsoft Entra ID Tenants are the same, you need to use UUID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.billingScope</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the MCA Billing Scope used for creating subscriptions. Must follow this format: <code>/providers/Microsoft.Billing/billingAccounts/$accountId/billingProfiles/$profileId/invoiceSections/$sectionId</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.subscriptionCreationErrorCooldownSec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This value must be defined in seconds. It is a safety mechanism to avoid duplicate Subscription creation in case of an error on Azure&#8217;s MCA API. This delay should be a bit higher than it usually takes to create subscriptions. For big installations this is somewhere between 5-15 minutes. The default of 900s should be fine for most installations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.sourceServicePrincipal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure the SPN used by meshStack to create a new Subscription in your MCA billing scope. For more information on the required permissions, see the <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement-across-tenants">Azure docs</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.sourceServicePrincipal.clientId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Application (Client) ID. In Azure Portal, this is the Application ID of the "Enterprise Application" but can also be retrieved via the "App Registration" object as "Application (Client) ID".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.sourceServicePrincipal.authType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be one of <code>CREDENTIALS</code> or <code>WORKLOAD_IDENTITY</code>. Workload Identity Federation is the one that we recommend as it enables the most secure approach to provide access to your Azure tenant without using long lived credentials. Credential Authentication is an alternative approach where you have to provide a clientSecret manually to meshStack and meshStack stores it encrypted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.customerAgreement.sourceServicePrincipal.credentialsAuthClientSecret</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must be set if and only if <code>authType</code> is <code>CREDENTIALS</code>. A valid secret for accessing the application. In Azure Portal, this can be configured on the "App Registration" under Certificates &amp; secrets. <a href="https://docs.meshcloud.io/operations/security-faq/#how-does-meshstack-securely-handle-my-cloud-platform-credentials">How is this information secured?</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.preProvisioned</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If your organization does not have access to an Enterprise Enrollment, you can alternatively configure meshcloud to consume subscriptions from a pool of externally-provisioned subscriptions. This is useful for smaller organizations that wish to use 'Pay-as-you-go' subscriptions or if you&#8217;re organization partners with an Azure Cloud Solution Provider to provide your subscriptions. The meshcloud Azure replication detects externally-provisioned subscriptions based on a configurable prefix in the subscription name. Upon assignment to a meshProject, the subscription is inflated with the right Landing Zone configuration and removed from the subscription pool.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.provisioning.preProvisioned.unusedSubscriptionNamePrefix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix that identifies unused subscriptions. Subscriptions will be renamed during meshStack&#8217;s project replication, at which point they should no longer carry this prefix.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.userLookUpStrategy</code></p></td>
@@ -1322,7 +1392,7 @@ You can not use the replicator object ID here, because meshStack always removes 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.blueprintLocation</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">he Azure location where replication creates and updates Blueprint Assignments. Note that it&#8217;s still possible that the Blueprint creates resources in other locations, this is merely the location where the Blueprint Assignment is managed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Azure location where replication creates and updates Blueprint Assignments. Note that it&#8217;s still possible that the Blueprint creates resources in other locations, this is merely the location where the Blueprint Assignment is managed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.roleMappings</code></p></td>
@@ -1362,7 +1432,7 @@ You can not use the replicator object ID here, because meshStack always removes 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.administrativeUnitId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Administrative unit ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you enter an administrative unit ID the replicated (and potentially existing) groups will be put into this AU. This can be used to limit the permission scopes which are required for the replicator principal. If you remove the AU ID again or change it, the groups will not be removed from the old AU.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure.replication.allowHierarchicalManagementGroupAssignment</code></p></td>
@@ -1380,7 +1450,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   "metadata" : {
     "name" : "azurerg-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "aeeee136-f54d-491a-850c-36e3bf884ba0"
+    "uuid" : "23547016-3c5b-4976-94aa-7bec74e044d4"
   },
   "spec" : {
     "locationRef" : {
@@ -1446,7 +1516,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/aeeee136-f54d-491a-850c-36e3bf884ba0"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/23547016-3c5b-4976-94aa-7bec74e044d4"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1584,6 +1654,11 @@ You can not use the replicator object ID here, because meshStack always removes 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If you enter an administrative unit ID the replicated (and potentially existing) groups will be put into this AU. This can be used to limit the permission scopes which are required for the replicator principal. If you remove the AU ID again or change it, the groups will not be removed from the old AU.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azurerg.replication.allowHierarchicalManagementGroupAssignment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration flag to enable or disable hierarchical management group assignment in Azure. If set to true: Subscriptions can be moved to child management groups of the management group defined in the Landing Zone. This is useful if you want to manage the subscription location with a deeper and more granular hierarchy. If set to false: Subscriptions will always be moved directly to the management group defined in the Landing Zone.</p></td>
+</tr>
 </tbody>
 </table>
 <div id="mesh_platform_config_gcp" class="listingblock">
@@ -1595,7 +1670,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   "metadata" : {
     "name" : "gcp-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "6b3b5dc9-c812-46fe-bc93-2674fd37471f"
+    "uuid" : "144a1b62-af36-4d70-a1a4-98347adb25fd"
   },
   "spec" : {
     "locationRef" : {
@@ -1662,7 +1737,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/6b3b5dc9-c812-46fe-bc93-2674fd37471f"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/144a1b62-af36-4d70-a1a4-98347adb25fd"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1831,7 +1906,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   "metadata" : {
     "name" : "kubernetes-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "03c1bd4d-5edf-412a-9f70-de5e6deffbad"
+    "uuid" : "23cf8a7b-d682-4cb7-98f9-da8ed15b44f3"
   },
   "spec" : {
     "locationRef" : {
@@ -1872,7 +1947,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/03c1bd4d-5edf-412a-9f70-de5e6deffbad"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/23cf8a7b-d682-4cb7-98f9-da8ed15b44f3"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1946,7 +2021,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   "metadata" : {
     "name" : "openshift-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "f183a154-0df3-4156-b139-be9bf508dc54"
+    "uuid" : "9461e3c4-88ad-43b1-8bfd-5e795b12daaf"
   },
   "spec" : {
     "locationRef" : {
@@ -2008,7 +2083,7 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/f183a154-0df3-4156-b139-be9bf508dc54"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/9461e3c4-88ad-43b1-8bfd-5e795b12daaf"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -2137,7 +2212,7 @@ You can not use the replicator object ID here, because meshStack always removes 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-10-01 08:19:57 UTC
+Last updated 2025-10-01 10:16:29 UTC
 </div>
 </div>
 </body>
