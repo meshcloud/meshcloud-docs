@@ -91,9 +91,11 @@ To set up Entra ID for IDP authentication follow these steps:
 
     ![Read Client ID and Tenant ID of App Registration](/assets/aad_identity_provider/aad-4.png)
 
-5. Provide delegated admin consent for the `User.ReadAll` permission of the app registration.
+5. Provide the OpenID Connect scopes: email, openid, and profile. These scopes allow meshStack to access the user's primary email
+address, unique identifier, and basic profile information such as given name and surname. This information is included in the
+token and eliminates the need to request broader Microsoft Graph permissions like `User.Read` or `User.Read.All`.
 
-    ![Grant admin consent](/assets/aad_identity_provider/aad-5.png)
+    ![Provide OpenID Connect scopes](/assets/aad_identity_provider/aad-5-1.png)
 
 ### Google Cloud Directory (GCD)
 
