@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>meshPlatform Configurations</title>
+<title>meshPlatform (v2-preview)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,7 +441,1095 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect3">
-<h4 id="mesh_platform_configs">meshPlatform Configurations</h4>
+<h4 id="mesh_platform_v2">meshPlatform (v2-preview)</h4>
+<div class="paragraph">
+<p>All endpoints on meshPlatforms (v2-preview).</p>
+</div>
+<div class="paragraph">
+<p>A meshPlatform represents a cloud platform integration in meshStack. It defines how meshStack connects to and manages
+resources on cloud platforms like Azure, AWS, GCP, or Kubernetes clusters. Each meshPlatform is owned by a workspace
+and can be configured with specific access restrictions and marketplace availability.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: This API enables management for platform configuration around replication, but not yet for metering.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: This API does not yet support pricing on platforms.</p>
+</div>
+<div class="paragraph">
+<p>Please refer to the <a href="#mesh_platform_configs_v2">meshPlatform Configurations (v2-preview)</a> section for details on how to configure meshPlatforms.</p>
+</div>
+<div class="sect4">
+<h5 id="mesh_platform_list">List meshPlatforms</h5>
+<div class="paragraph">
+<p>Provides a paged list of meshPlatforms. Deleted meshPlatforms are not provided via this endpoint.</p>
+</div>
+<div class="paragraph">
+<p>Depending on your permissions, you will see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Admin users</strong>: All meshPlatforms in the system</p>
+</li>
+<li>
+<p><strong>Workspace users</strong>: Only meshPlatforms owned by their workspace, public platforms, or platforms they contribute to</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Request Parameters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>searchTerm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search term to filter meshPlatforms. Currently supports filtering by workspace identifier, e.g., <code>searchTerm=ownedByWorkspace=mobile-app-team</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshplatforms?searchTerm=ownedByWorkspace%3Dmobile-app-team&amp;page=0&amp;size=1 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshplatforms?searchTerm=ownedByWorkspace%3Dmobile-app-team&amp;page=0&amp;size=1' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the actual content of the paged response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshPlatforms[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_platform_response_fields">meshPlatform</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 2274
+
+{
+  "_embedded" : {
+    "meshPlatforms" : [ {
+      "kind" : "meshPlatform",
+      "apiVersion" : "v2-preview",
+      "metadata" : {
+        "name" : "azure-aks-prod",
+        "ownedByWorkspace" : "mobile-app-team",
+        "uuid" : "3a635a61-18d4-4f50-87aa-4d49e6a5d964"
+      },
+      "spec" : {
+        "locationRef" : {
+          "name" : "azure-prod",
+          "kind" : "meshLocation"
+        },
+        "availability" : {
+          "restriction" : "PUBLIC",
+          "restrictedToWorkspaces" : [ ],
+          "publicationState" : "PUBLISHED"
+        },
+        "displayName" : "Azure AKS Production",
+        "description" : "azure-aks-prod",
+        "endpoint" : "abc",
+        "supportUrl" : "https://support.azure.com",
+        "documentationUrl" : "https://docs.azure.com",
+        "config" : {
+          "type" : "aks",
+          "aks" : {
+            "baseUrl" : "https://management.azure.com",
+            "disableSslValidation" : false
+          }
+        },
+        "contributingWorkspaces" : [ ]
+      },
+      "status" : {
+        "metering" : "NOT_DEFINED",
+        "availability" : {
+          "publicationState" : "PUBLISHED"
+        },
+        "platform" : "ACTIVE"
+      },
+      "_links" : {
+        "self" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964"
+        },
+        "owner" : {
+          "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/mobile-app-team"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "first" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms?searchTerm=ownedByWorkspace%3Dmobile-app-team&amp;page=0&amp;size=1&amp;sort=id,asc"
+    },
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms?searchTerm=ownedByWorkspace%3Dmobile-app-team&amp;page=0&amp;size=1"
+    },
+    "next" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms?searchTerm=ownedByWorkspace%3Dmobile-app-team&amp;page=1&amp;size=1&amp;sort=id,asc"
+    },
+    "last" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms?searchTerm=ownedByWorkspace%3Dmobile-app-team&amp;page=1&amp;size=1&amp;sort=id,asc"
+    }
+  },
+  "page" : {
+    "size" : 1,
+    "totalElements" : 2,
+    "totalPages" : 2,
+    "number" : 0
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_meshplatform">Get meshPlatform</h5>
+<div class="paragraph">
+<p>Get a single meshPlatform by its UUID. Deleted meshPlatforms are not provided via this endpoint. Please note that the configuration value is only filled for supported platform types. If the platform type is not supported, the configuration value will be empty. The supported platform types are listed here: <a href="#mesh_platform_configs_v2">meshPlatform Configurations (v2-preview)</a>.</p>
+</div>
+<div class="paragraph">
+<p>Access is granted based on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Platform ownership (workspace owns the platform)</p>
+</li>
+<li>
+<p>Platform visibility (public platforms)</p>
+</li>
+<li>
+<p>Platform contribution (workspace is a contributor)</p>
+</li>
+<li>
+<p>Platform marketplace publication status</p>
+</li>
+<li>
+<p>Admin permissions</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964' -i -u 'valid_username:valid_password' -X GET \
+    -H 'Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 1264
+
+{
+  "kind" : "meshPlatform",
+  "apiVersion" : "v2-preview",
+  "metadata" : {
+    "name" : "azure-aks-prod",
+    "ownedByWorkspace" : "mobile-app-team",
+    "uuid" : "3a635a61-18d4-4f50-87aa-4d49e6a5d964"
+  },
+  "spec" : {
+    "locationRef" : {
+      "name" : "azure-prod",
+      "kind" : "meshLocation"
+    },
+    "availability" : {
+      "restriction" : "PUBLIC",
+      "restrictedToWorkspaces" : [ ],
+      "publicationState" : "PUBLISHED"
+    },
+    "displayName" : "Azure AKS Production",
+    "description" : "azure-aks-prod",
+    "endpoint" : "abc",
+    "supportUrl" : "https://support.azure.com",
+    "documentationUrl" : "https://docs.azure.com",
+    "config" : {
+      "type" : "aks",
+      "aks" : {
+        "baseUrl" : "https://management.azure.com",
+        "disableSslValidation" : false
+      }
+    },
+    "contributingWorkspaces" : [ ]
+  },
+  "status" : {
+    "metering" : "NOT_DEFINED",
+    "availability" : {
+      "publicationState" : "PUBLISHED"
+    },
+    "platform" : "ACTIVE"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964"
+    },
+    "owner" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/mobile-app-team"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<table id="mesh_platform_response_fields" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. meshPlatform Response Fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apiVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of meshPlatform datatype. Matches the version part provided within the <code>Accept</code> request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a common meshObject structure exists, every meshObject has a 'kind'. This is always 'meshPlatform' for this endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains metadata to uniquely identify the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The platform identifier as 'name' to identify the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.ownedByWorkspace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the workspace that owns this meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.uuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique UUID of the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadata.deletedOn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timestamp when the meshPlatform was deleted, null if not deleted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All fields in this section describe the meshPlatform configuration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.displayName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The human-readable display name of the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional description of the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.endpoint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The web console URL endpoint of the platform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.supportUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional URL for platform support documentation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.documentationUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional URL for platform documentation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.locationRef</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to the location where this platform is situated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.locationRef.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the location.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.availability</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Availability configuration for the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.availability.restriction</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access restriction level: PUBLIC, PRIVATE, or RESTRICTED.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.availability.restrictedToWorkspaces</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the restriction is set to RESTRICTED, you can specify the workspace identifiers this meshPlatform is restricted to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.contributingWorkspaces</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A list of workspace identifiers that may contribute to this meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.availability.publicationState</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Publication status in the marketplace: PUBLISHED, UNPUBLISHED, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Platform-specific configuration settings. Exactly one of its keys needs to be set.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The platform type, i.e. that type of the of platform the config belongs to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aws</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.aks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Azure Kubernetes Service configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azure</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Azure configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.azurerg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Azure Resource Group configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.kubernetes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.gcp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GCP configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spec.config.openshift</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Openshift configuration, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Current status information of the meshPlatform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Available <a href="#mesh_platform_links">links</a> on a meshPlatform.</p></td>
+</tr>
+</tbody>
+</table>
+<table id="mesh_platform_links" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. meshPlatform Links</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Relation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to fetch the owning meshWorkspace.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_post_meshplatform">Post meshPlatform</h5>
+<div class="paragraph">
+<p>Create a new meshPlatform.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Creating a meshPlatform requires proper platform configuration to be functional. After creation, you must:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Configure platform connection</strong>: Set up authentication and connection details via the platform configuration API</p>
+</li>
+<li>
+<p><strong>Create landing zones</strong>: Define landing zones to allow tenant provisioning</p>
+</li>
+<li>
+<p><strong>Set up replication</strong>: Configure platform replication settings if needed</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The newly created platform will initially be in an unconfigured state and won&#8217;t be able to provision tenants until
+the platform configuration is completed.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /api/meshobjects/meshplatforms HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+Content-Length: 853
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v2-preview",
+  "kind": "meshPlatform",
+  "metadata": {
+    "name": "azure-dev",
+    "ownedByWorkspace": "mobile-app-team"
+  },
+  "spec": {
+    "displayName": "Azure Development",
+    "description": "Azure development environment",
+    "endpoint": "https://portal.azure.com",
+    "supportUrl": "https://support.azure.com",
+    "documentationUrl": "https://docs.azure.com",
+    "locationRef": {
+      "kind": "meshLocation",
+      "name": "azure-prod"
+    },
+    "contributingWorkspaces": [],
+    "availability": {
+      "restriction": "PRIVATE",
+      "publicationState": "UNPUBLISHED",
+      "restrictedToWorkspaces": ["mobile-app-team"]
+    },
+    "config": {
+      "type": "aks",
+      "aks": {
+        "baseUrl": "https://management.azure.com",
+        "disableSslValidation": false,
+        "replication": null
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshplatforms' -i -u 'valid_username:valid_password' -X POST \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json' \
+    -d '{
+  "apiVersion": "v2-preview",
+  "kind": "meshPlatform",
+  "metadata": {
+    "name": "azure-dev",
+    "ownedByWorkspace": "mobile-app-team"
+  },
+  "spec": {
+    "displayName": "Azure Development",
+    "description": "Azure development environment",
+    "endpoint": "https://portal.azure.com",
+    "supportUrl": "https://support.azure.com",
+    "documentationUrl": "https://docs.azure.com",
+    "locationRef": {
+      "kind": "meshLocation",
+      "name": "azure-prod"
+    },
+    "contributingWorkspaces": [],
+    "availability": {
+      "restriction": "PRIVATE",
+      "publicationState": "UNPUBLISHED",
+      "restrictedToWorkspaces": ["mobile-app-team"]
+    },
+    "config": {
+      "type": "aks",
+      "aks": {
+        "baseUrl": "https://management.azure.com",
+        "disableSslValidation": false,
+        "replication": null
+      }
+    }
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Request Fields</div>
+<p>A meshPlatform object. See <a href="#mesh_platform_response_fields">meshPlatform Response Fields</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Location: https://mesh-backend-url/api/meshobjects/meshplatforms/1a8071e0-fa8a-403f-a038-7e28dc49f522
+Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 1315
+
+{
+  "kind" : "meshPlatform",
+  "apiVersion" : "v2-preview",
+  "metadata" : {
+    "name" : "azure-dev",
+    "ownedByWorkspace" : "mobile-app-team",
+    "uuid" : "1a8071e0-fa8a-403f-a038-7e28dc49f522"
+  },
+  "spec" : {
+    "locationRef" : {
+      "name" : "azure-prod",
+      "kind" : "meshLocation"
+    },
+    "availability" : {
+      "restriction" : "PRIVATE",
+      "restrictedToWorkspaces" : [ "mobile-app-team" ],
+      "publicationState" : "UNPUBLISHED"
+    },
+    "displayName" : "Azure Development",
+    "description" : "Azure development environment",
+    "endpoint" : "https://portal.azure.com",
+    "supportUrl" : "https://support.azure.com",
+    "documentationUrl" : "https://docs.azure.com",
+    "config" : {
+      "type" : "aks",
+      "aks" : {
+        "baseUrl" : "https://management.azure.com",
+        "disableSslValidation" : false
+      }
+    },
+    "contributingWorkspaces" : [ ]
+  },
+  "status" : {
+    "metering" : "NOT_DEFINED",
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
+    },
+    "platform" : "ACTIVE"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/1a8071e0-fa8a-403f-a038-7e28dc49f522"
+    },
+    "owner" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/mobile-app-team"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>A meshPlatform object. See <a href="#mesh_platform_response_fields">meshPlatform Response Fields</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_put_meshplatform">Put meshPlatform</h5>
+<div class="paragraph">
+<p>Update an existing meshPlatform by its UUID.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please note that changing certain attributes like platform configuration can have serious consequences for existing
+tenants and ongoing operations. Changes to platform connectivity may disrupt:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tenant replication processes</p>
+</li>
+<li>
+<p>Metering data collection</p>
+</li>
+<li>
+<p>User access to platform tenants</p>
+</li>
+<li>
+<p>Building block operations</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Proceed with caution and ensure proper testing in non-production environments.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content-Type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964 HTTP/1.1
+Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json;charset=UTF-8
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+Content-Length: 929
+Host: mesh-backend-url
+
+{
+  "apiVersion": "v2-preview",
+  "kind": "meshPlatform",
+  "metadata": {
+    "uuid": "3a635a61-18d4-4f50-87aa-4d49e6a5d964",
+    "name": "azure-aks-prod",
+    "ownedByWorkspace": "mobile-app-team"
+  },
+  "spec": {
+    "displayName": "Azure AKS Production Updated",
+    "description": "Updated Azure production environment",
+    "endpoint": "https://portal.azure.com",
+    "supportUrl": "https://support.azure.com",
+    "documentationUrl": "https://docs.azure.com",
+    "locationRef": {
+      "kind": "meshLocation",
+      "name": "azure-prod"
+    },
+    "contributingWorkspaces": [],
+    "availability": {
+      "restriction": "RESTRICTED",
+      "publicationState": "PUBLISHED",
+      "restrictedToWorkspaces": ["mobile-app-team"]
+    },
+    "config": {
+      "type": "aks",
+      "aks": {
+        "baseUrl": "https://management.azure.com",
+        "disableSslValidation": false,
+        "replication": null
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964' -i -u 'valid_username:valid_password' -X PUT \
+    -H 'Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json;charset=UTF-8' \
+    -H 'Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json' \
+    -d '{
+  "apiVersion": "v2-preview",
+  "kind": "meshPlatform",
+  "metadata": {
+    "uuid": "3a635a61-18d4-4f50-87aa-4d49e6a5d964",
+    "name": "azure-aks-prod",
+    "ownedByWorkspace": "mobile-app-team"
+  },
+  "spec": {
+    "displayName": "Azure AKS Production Updated",
+    "description": "Updated Azure production environment",
+    "endpoint": "https://portal.azure.com",
+    "supportUrl": "https://support.azure.com",
+    "documentationUrl": "https://docs.azure.com",
+    "locationRef": {
+      "kind": "meshLocation",
+      "name": "azure-prod"
+    },
+    "contributingWorkspaces": [],
+    "availability": {
+      "restriction": "RESTRICTED",
+      "publicationState": "PUBLISHED",
+      "restrictedToWorkspaces": ["mobile-app-team"]
+    },
+    "config": {
+      "type": "aks",
+      "aks": {
+        "baseUrl": "https://management.azure.com",
+        "disableSslValidation": false,
+        "replication": null
+      }
+    }
+  }
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Request Fields</div>
+<p>A meshPlatform object. See <a href="#mesh_platform_response_fields">meshPlatform Response Fields</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 1337
+
+{
+  "kind" : "meshPlatform",
+  "apiVersion" : "v2-preview",
+  "metadata" : {
+    "name" : "azure-aks-prod",
+    "ownedByWorkspace" : "mobile-app-team",
+    "uuid" : "3a635a61-18d4-4f50-87aa-4d49e6a5d964"
+  },
+  "spec" : {
+    "locationRef" : {
+      "name" : "azure-prod",
+      "kind" : "meshLocation"
+    },
+    "availability" : {
+      "restriction" : "RESTRICTED",
+      "restrictedToWorkspaces" : [ "mobile-app-team" ],
+      "publicationState" : "PUBLISHED"
+    },
+    "displayName" : "Azure AKS Production Updated",
+    "description" : "Updated Azure production environment",
+    "endpoint" : "https://portal.azure.com",
+    "supportUrl" : "https://support.azure.com",
+    "documentationUrl" : "https://docs.azure.com",
+    "config" : {
+      "type" : "aks",
+      "aks" : {
+        "baseUrl" : "https://management.azure.com",
+        "disableSslValidation" : false
+      }
+    },
+    "contributingWorkspaces" : [ ]
+  },
+  "status" : {
+    "metering" : "NOT_DEFINED",
+    "availability" : {
+      "publicationState" : "PUBLISHED"
+    },
+    "platform" : "ACTIVE"
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964"
+    },
+    "owner" : {
+      "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/mobile-app-team"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Response Fields</div>
+<p>A meshPlatform object. See <a href="#mesh_platform_response_fields">meshPlatform Response Fields</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete_meshplatform">Delete meshPlatform</h5>
+<div class="paragraph">
+<p>Delete a meshPlatform by its UUID.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Deleting a meshPlatform has significant consequences:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tenants</strong>: All associated meshTenants will be automatically deleted in meshStack, but the actual cloud resources remain untouched</p>
+</li>
+<li>
+<p><strong>Billing</strong>: Usage reports for the current month won&#8217;t be finalized and won&#8217;t be included in chargeback statements</p>
+</li>
+<li>
+<p><strong>Access</strong>: Users lose access to platform tenants via meshStack (but can still access them directly in the cloud platform)</p>
+</li>
+<li>
+<p><strong>Identifier</strong>: You cannot create a new meshPlatform with the same identifier in the same location</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This operation cannot be undone. Ensure you have proper backups and have communicated the impact to affected users.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Request Headers</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This endpoint of meshObject API is individually <a href="#versioning">versioned</a>. Use <code>application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json</code> for this version of the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Example Request</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964 HTTP/1.1
+Authorization: Basic dmFsaWRfdXNlcm5hbWU6dmFsaWRfcGFzc3dvcmQ=
+Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json
+Host: mesh-backend-url</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Curl Request</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://mesh-backend-url/api/meshobjects/meshplatforms/3a635a61-18d4-4f50-87aa-4d49e6a5d964' -i -u 'valid_username:valid_password' -X DELETE \
+    -H 'Accept: application/vnd.meshcloud.api.meshplatform.v2-preview.hal+json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example Response</div>
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 204 No Content
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mesh_platform_configs_v2">meshPlatform Configurations (v2-preview)</h4>
 <div class="paragraph">
 <p>A meshPlatform has a specific type and based on that type needs to be configured with individual configuration fields. You find example configurations with explanation annotations in this section.</p>
 </div>
@@ -572,21 +1660,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "aks-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "1610cbe3-fd4f-460f-87b1-9a46c5a69fab"
+    "uuid" : "a6f81e80-6ee8-4318-8dcd-2334666ef32b"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-aks",
     "description" : "test-platform-aks",
@@ -623,14 +1711,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/1610cbe3-fd4f-460f-87b1-9a46c5a69fab"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/a6f81e80-6ee8-4318-8dcd-2334666ef32b"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -765,21 +1853,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "aws-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "8c00d6a5-db6c-4faa-b22f-b3b92ef1c6cb"
+    "uuid" : "c56f55a9-edd1-4d54-af82-e503841bd939"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-aws",
     "description" : "test-platform-aws",
@@ -847,14 +1935,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/8c00d6a5-db6c-4faa-b22f-b3b92ef1c6cb"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/c56f55a9-edd1-4d54-af82-e503841bd939"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1090,21 +2178,21 @@ Attention: Account Alias must be globally unique in AWS. So consider defining a 
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "azure-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "6b1964e7-9c34-4ae2-9323-5622f5113e09"
+    "uuid" : "7813b1d4-b8da-4f62-8812-cc3732a81bb8"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-azure",
     "description" : "test-platform-azure",
@@ -1188,14 +2276,14 @@ Attention: Account Alias must be globally unique in AWS. So consider defining a 
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/6b1964e7-9c34-4ae2-9323-5622f5113e09"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/7813b1d4-b8da-4f62-8812-cc3732a81bb8"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1446,21 +2534,21 @@ You can not use the replicator object ID here, because meshStack always removes 
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "azurerg-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "2f464b81-5515-4bbb-aaa2-afd4da23c46d"
+    "uuid" : "0b8cab60-6b66-4209-bbb4-711816697838"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-azurerg",
     "description" : "test-platform-azurerg",
@@ -1509,14 +2597,14 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/2f464b81-5515-4bbb-aaa2-afd4da23c46d"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/0b8cab60-6b66-4209-bbb4-711816697838"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1666,21 +2754,21 @@ You can not use the replicator object ID here, because meshStack always removes 
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "gcp-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "27358df6-371a-4334-9a8a-4c47474c5c81"
+    "uuid" : "fb56eb8f-f1d9-4171-b88f-ca894f97c5f9"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-gcp",
     "description" : "test-platform-gcp",
@@ -1730,14 +2818,14 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/27358df6-371a-4334-9a8a-4c47474c5c81"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/fb56eb8f-f1d9-4171-b88f-ca894f97c5f9"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -1902,21 +2990,21 @@ You can not use the replicator object ID here, because meshStack always removes 
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "kubernetes-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "7655b397-8c77-451a-9fd5-a42309f6b2b3"
+    "uuid" : "fb33ae5c-d214-4d5a-a45f-7b04895f1b73"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-kubernetes",
     "description" : "test-platform-kubernetes",
@@ -1940,14 +3028,14 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/7655b397-8c77-451a-9fd5-a42309f6b2b3"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/fb33ae5c-d214-4d5a-a45f-7b04895f1b73"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"
@@ -2017,21 +3105,21 @@ You can not use the replicator object ID here, because meshStack always removes 
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
   "kind" : "meshPlatform",
-  "apiVersion" : "v1",
+  "apiVersion" : "v2-preview",
   "metadata" : {
     "name" : "openshift-dev",
     "ownedByWorkspace" : "test-workspace",
-    "uuid" : "95df645a-776c-4715-9e83-84e551ff7c3e"
+    "uuid" : "99b33402-0308-44b8-a243-cc786a2ec3a7"
   },
   "spec" : {
     "locationRef" : {
-      "identifier" : "test-dev",
+      "name" : "test-dev",
       "kind" : "meshLocation"
     },
     "availability" : {
       "restriction" : "PRIVATE",
       "restrictedToWorkspaces" : [ "test-workspace" ],
-      "marketplaceStatus" : "UNPUBLISHED"
+      "publicationState" : "UNPUBLISHED"
     },
     "displayName" : "test-platform-openshift",
     "description" : "test-platform-openshift",
@@ -2076,14 +3164,14 @@ You can not use the replicator object ID here, because meshStack always removes 
   },
   "status" : {
     "metering" : "NOT_DEFINED",
-    "marketPlace" : {
-      "status" : "UNPUBLISHED"
+    "availability" : {
+      "publicationState" : "UNPUBLISHED"
     },
     "platform" : "ACTIVE"
   },
   "_links" : {
     "self" : {
-      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/95df645a-776c-4715-9e83-84e551ff7c3e"
+      "href" : "https://mesh-backend-url/api/meshobjects/meshplatforms/99b33402-0308-44b8-a243-cc786a2ec3a7"
     },
     "owner" : {
       "href" : "https://mesh-backend-url/api/meshobjects/meshworkspaces/test-workspace"

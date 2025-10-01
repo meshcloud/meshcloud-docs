@@ -22,7 +22,7 @@ Every application team using meshStack has their own [workspace](../concepts/wor
 
 A [building block](../concepts/building-block.md) is the primitive unit of automation in meshStack. A building block has a number of inputs, an implementation, and outputs. Application teams can add building blocks to their workspace by referencing a [building block definition](../concepts/building-block.md#building-block-definition) published by the platform team.
 
-Building block definitions are versioned contracts that define how an automation receives input values and produces outputs. The most common way to implement a building block is using [OpenTofu](https://opentofu.io/), but as definitions are just versioned contracts, it's also possible to swap in other implementation types like [GitHub Actions](../integrations/github/github-actions.md) or GitLab CI/CD pipelines.
+Building block definitions are versioned contracts that define how an automation receives input values and produces outputs. The most common way to implement a building block is using [OpenTofu](https://opentofu.org/), but as definitions are just versioned contracts, it's also possible to swap in other implementation types like [GitHub Actions](../integrations/github/github-actions.md) or GitLab CI/CD pipelines.
 
 :::tip
 **Example**: The platform team has published a [GitHub Repository building block definition](https://hub.meshcloud.io/platforms/github/definitions/github-repository). Application teams can add this building block to their workspace and provide the necessary input values like their desired repository name. The building block implementation is a Terraform module that will then create the repository in GitHub and return the repository URL as an output.
