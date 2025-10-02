@@ -1,0 +1,75 @@
+---
+id: api-key-login-response
+title: "API Key Login"
+description: "To call the API with an API Key, first issue an API call to the backend to receive a short-lived bearer"
+sidebar_label: "API Key Login"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktv4zgM/isED9OL82iaPmKgh92dSzELbLHpnNpiqkhMrMaWXIlO6g3y3xe0nUfbAabXBbaXWhJFfiS/j8oGWS0ipvf42+0NfKMa/vQL6/AxQUNRB1uy9Q5TvPOgVZ4DZwRiuracgXLQXUtgbkNksDFWtNtvL/jmzkzpJTkjy0Ca7IpAQcx84F5uV2RgRipQeHDsl+T6MBVjBYFeKoos154GqrSDXOA9teHF79znuV9bt4Al1RGsa6N5U4OfN987F+3Rg3t67a3X697ch6JXhZyc9obME8iG4j7c5qQiwYxArVWgBDhTDJzZCORM6a1j8C6voQx+ZQ3FBqaxgbTgfHAFxWzKSi9PItyY2z5MPdS+gkytSBIhyxkF0N7N7aIKJIfhONM2pw5859gHKJSrVJ7XD84WZU4FOX5rwx7ex8YEfUlBSRdvDKaoSvuN6qbJf1MsvYuECZYqqIKYglBhg04VhCn+4R2T495dXYqRFR5kpAwFfE+PzhTEFIoqstQvUoPp5KcFPxFskrQNZDDlUFGCUWdUKEw3yBIzxcjBugVuE6RXJVk3KZS51U1Kg5+6xu1j65oi/+5NLf50C1A+f30/3RwhOWC8R51bcvzDGkx235F0IMYEF0E5/tHgfkx2+P3smbSclkH6wJai+Dyy/ZDrB+VlBI09iF0C68zqbF/jkw6GDmTIsVV5POlLvd7C+1QUkf+0sQcVo9dWMZlWag1FRdNLqvtwJ2JoPYONUEUyIi/t3XPltHg8CHRfMqFCJF0FymtQFWcCVyvu+H/UlWP81nwe+81XwW0Xjppgx5ihKr0DHagN0GZw83WPnv0vIW0TZMsdA22vGUSj4XA0GY8vz8dHFI0tyT7qLN3gSuWVeNhnd32lLk4vzibj3uRKmd74fHzaU0Oa9Gh0NZyfm8loNJ58edPMazXThuaLzD4v88L58iVErlbr1/qf4enobHx+cXk1+XKg2PVHiuBW/kQkLbQG8tnwUv69ra1simVBnHkZIKWPDZ8VZ5jiYSZjgpHCajdCqpDLtGAuYzoYbFRpv4d8iwmuVLBqdqjSdzGUqHNV5Yzprop9GWVRRlnfesH7KAF0FSzXUxFn62GmotVHFJGI2A0SWbfnkoF1c98Ydk3cj8qGI8brSiZq022BSSG2FTjtD/tDaa9kXignProB+fbNfEfLo5nz/+v5n309O1oxvfKgzJV1woSq5WyrgXthMSaY7344ZaKQ9B43m5mKJLTfyvZLRaHG9P7xoAFZbZPdmyqyWVL98eHdDY3PPXx7pd7+Nb3DBGfdC1h4I06OrJPjhUDZbv8Fz6iJ9g==
+sidebar_class_name: "post api-method"
+info_path: api/meshstack-api-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"API Key Login"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/login"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+To call the API with an API Key, first issue an API call to the backend to receive a short-lived bearer
+token. Send a request to `/api/login` with the following keys in the body of the request in the
+`x-www-form-urlencoded` format. Please be aware, that this endpoint only provides a redirect to
+meshStack's IdP. So you have to either configure your request to follow the redirect or manually
+implement the redirect to meshStack's IdP.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Content-Type","in":"header","description":"Content Type must be set to 'x-www-form-urlencoded'.","required":true,"schema":{"type":"string"},"example":"application/x-www-form-urlencoded"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"required":["client_id","client_secret","grant_type"],"type":"object","properties":{"grant_type":{"type":"string","description":"The grant type, which must be 'client_credentials'."},"client_secret":{"type":"string","description":"The Key Secret associated with your API key. This secret is used in conjunction with the client_id to securely authenticate your application."},"client_id":{"type":"string","description":"The Key ID assigned to your API key upon creation. This ID is used to authenticate your application."}},"title":"api-login2002944754"},"examples":{"apiKeyLoginResponse":{"value":"client_id=8a616394-98ad-4541-a0e9-e280f5d92249&client_secret=abcdefghijklmnopqrstuvwxyz0123456789&grant_type=client_credentials"}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"307":{"description":"307"}}}
+>
+  
+</StatusCodes>
+
+
+      
