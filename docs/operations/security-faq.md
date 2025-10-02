@@ -8,7 +8,7 @@ the most frequently asked questions from organizations' cybersecurity department
 
 ## Information Security
 
-### How does meshcloud GmbH ensure us a secure experience with meshStack?
+### What security measures does meshcloud GmbH have in place for meshStack?
 
 meshcloud GmbH is an [ISO 27001 certified](https://www.meshcloud.io/2021/10/28/meshcloud-is-iso-27001-certified/) company. The scope of the certification covers the design, development, implementation, operation, and support of multi-cloud management and governance solutions for public and private cloud platforms.
 
@@ -16,24 +16,34 @@ meshcloud GmbH is furthermore a [TISAX certified](https://www.meshcloud.io/en/bl
 
 The design, development, implementation, and maintenance process of the meshStack follows the secure development lifecycle.
 
-meshStack is hosted by default hosted in GCP, a leading cloud provider. The geolocation is primarily within the EU but can be changed upon the customer’s requirement. This includes also the storage for backups. meshStack leverages different services of the cloud to provide security in terms of data encryption, protection against DoS attacks, access control, etc.
+meshStack is hosted by default in GCP, a leading cloud provider. The geolocation is within the EU but can be changed upon the customer’s requirement. This includes also the storage for backups. meshStack leverages different services of the cloud to provide security in terms of data encryption, protection against DoS attacks, access control, etc.
 
 Additionally, meshcloud GmbH has its own incident response team. The team is responsible for handling reported incidents along with informing the customers about major changes in their Information Security Management.
 
 ### How is my data secured within meshStack?
 
-The cloud components used by meshStack are configured according to best practices.
+The cloud components used by meshStack are configured according to best practices and make use of the encryption capabilities provided by the underlying cloud platform.
 
-Hard disk encryption or container services with encrypted storage are used for different operations. Cloud storage such as AWS S3 is used to store & backup encrypted customer data and databases. The cloud components are also configured to encrypt the data in transit.
+Hard disk encryption and encrypted object storage are used for different operations. The cloud components are also configured to encrypt the data in transit.
 
 - [**AWS data encryption whitepaper**](https://docs.aws.amazon.com/whitepapers/latest/introduction-aws-security/data-encryption.html)
 - [**GCP encryption at rest whitepaper**](https://cloud.google.com/docs/security/encryption/default-encryption)
 - [**GCP encryption in transit whitepaper**](https://cloud.google.com/docs/security/encryption-in-transit)
 - [**Azure encryption overview**](https://docs.microsoft.com/en-us/azure/security/fundamentals/encryption-overview)
 
-### How does meshStack securely handle my cloud platform credentials?
+### How does meshStack securely handle my platform credentials?
 
-In order to connect to the cloud platforms and execute replication steps or metering credentials to the cloud platform have to be provided to meshStack. Asymmetric encryption is used for these secrets. The service that actually stores newly entered secrets encrypts them with a public key. Only the replicator and metering services can read their according secrets with their private key to actually connect to the cloud platforms.
+:::note
+Handing over platform credentials can be avoided entirely by using workload identity federation with supported platforms.
+:::
+
+When you integrate cloud platforms or use building blocks with meshStack, you may need to provide credentials to enable essential functions like user management and metering. meshStack secures platform credentials through multiple layers of technical and procedural safeguards. While all data in meshStack is encrypted at rest, user provided secrets receive these additional protections:
+
+- **Asymmetric Encryption:** We use asymmetric encryption with RSA keys, following the recommendations of the German Federal Office for Information Security (BSI). This method ensures that only specific components can decrypt sensitive data. For example, the component that replicates tenants can decrypt credentials, while components that receive new configurations can only encrypt them.
+
+- **Log and Error Sanitization:** To prevent accidental leaks, logs from components handling credentials are not exported from their hosting environment. Any error messages shown to users are sanitized to remove sensitive information.
+
+- **Secure Development Practices:** All code changes affecting security-sensitive areas undergo mandatory code reviews by multiple engineers to enforce strict security standards.
 
 ### How does meshcloud GmbH secure the Infrastructure for my meshStack?
 
@@ -47,7 +57,7 @@ Kubernetes nodes are secured by a shared responsibility model. meshcloud GmbH us
 
 Technical safeguards are implemented such as detecting and responding to Distributed Denial-of-Service (DDoS) attacks, data encryption, etc by leveraging cloud provider services.
 
-A dedicated Virtual Cloud Network is provided for the meshStack. This network is completely encapsulated from other meshStack and their dedicated customer networks. The network configuration also includes the usage of Security Groups to strictly configure communication in the network.
+A dedicated Virtual Cloud Network is provided for the meshStack. This network is completely encapsulated from other meshStacks and their dedicated customer networks. The network configuration also includes the usage of Security Groups to strictly configure communication in the network.
 
 ### Does meshStack support Single Sign-On (SSO) and Multi-Factor-Authentication (MFA)?
 
@@ -61,17 +71,15 @@ MFA must be activated in the Enterprise IDP which is integrated with your meshSt
 
 Yes, you can perform security tests like Penetration Tests on meshStack but this always requires prior information and getting signed approval from meshcloud GmbH.
 
-### Can meshcloud GmbH employees (aka meshis) access our organizational data?
+### Can meshcloud GmbH employees access our organizational data?
 
-No, meshis (employee at meshcloud) do not primarily have any access to your organizational data. Though, in certain scenarios such as for support cases if you would like to give the access or permission to your cloud environment then you can assign it to any of our relevant meshi's.
-
-This may differ for Preview features, that are not generally available yet, as we are still improving performance and functionality.
+By default, meshcloud employees do not have access to your organizational data. For certain support cases, you may choose to grant access to your cloud environment. This is something you would need to explicitly assign to the relevant meshcloud employee.
 
 ## Data Protection
 
 ### Does meshStack process any Personal Identifiable Information (PII)?
 
-meshStack stores your *First Name*, *Last Name*, *Email Address*, and *Last Login Date*. All these are stored in our database for user management (which is also managed via “a locally managed instance of ***[Keycloak](https://www.keycloak.org/)”***).
+meshStack stores your _First Name_, _Last Name_, _Email Address_, and _Last Login Date_. All these are stored in our database for user management (which is also managed via “a locally managed instance of **_[Keycloak](https://www.keycloak.org/)”_**).
 
 The External User Identifier (EUID), usually the email address, is replicated to the respective integrated cloud platforms, e.g. AWS, GCP, Azure, etc.
 
