@@ -50,19 +50,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Object Root V1",
-      items: [
-        {
-          type: "doc",
-          id: "api/mesh-objects-root-v",
-          label: "Get meshObjects root",
-          className: "api-method get",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Object Root V2",
+      label: "Object Root",
       items: [
         {
           type: "doc",
@@ -120,12 +108,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/mesh-building-block-definition-v-1",
-          label: "Get building block definition",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
           id: "api/mesh-building-block-definition-put-v-1",
           label: "Update building block definition",
           className: "api-method put",
@@ -135,6 +117,12 @@ const sidebar: SidebarsConfig = {
           id: "api/mesh-building-block-definition-delete-v-1",
           label: "Delete building block definition",
           className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/mesh-building-block-definition-v-1",
+          label: "Get building block definition",
+          className: "api-method get",
         },
       ],
     },
@@ -159,30 +147,6 @@ const sidebar: SidebarsConfig = {
           id: "api/mesh-building-block-run",
           label: "Update source for a building block run",
           className: "api-method patch",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Building Blocks V2",
-      items: [
-        {
-          type: "doc",
-          id: "api/mesh-building-block-list",
-          label: "List building blocks",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/mesh-building-block-post",
-          label: "Create building block",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api/mesh-building-block",
-          label: "Get building block",
-          className: "api-method get",
         },
       ],
     },
@@ -326,7 +290,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Payment Methods V2",
+      label: "Payment Methods",
       items: [
         {
           type: "doc",
@@ -366,15 +330,33 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "api/mesh-platform-list-v-1",
+          id: "api/mesh-platform-list-v",
           label: "List platforms",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "api/mesh-platform-v-1-post",
-          label: "Create platform",
+          id: "api/mesh-platform-v",
+          label: "Platform config aks",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/mesh-platform-v-2",
+          label: "Get platform",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/mesh-platform-v-2-put",
+          label: "Update platform",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/mesh-platform-v-2-delete",
+          label: "Delete platform",
+          className: "api-method delete",
         },
         {
           type: "doc",
@@ -393,6 +375,30 @@ const sidebar: SidebarsConfig = {
           id: "api/mesh-platform-v-1-delete",
           label: "Delete platform",
           className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Platform Config V2",
+      items: [
+        {
+          type: "doc",
+          id: "api/mesh-platform-v",
+          label: "Platform config aks",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Platform Config V1",
+      items: [
+        {
+          type: "doc",
+          id: "api/mesh-platform-v",
+          label: "Platform config aks",
+          className: "api-method post",
         },
       ],
     },
@@ -434,7 +440,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Projects V2",
+      label: "Projects",
       items: [
         {
           type: "doc",
@@ -464,7 +470,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Service Instances V2",
+      label: "Service Instances",
       items: [
         {
           type: "doc",
@@ -472,12 +478,6 @@ const sidebar: SidebarsConfig = {
           label: "List service instances",
           className: "api-method get",
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Service Instances",
-      items: [
         {
           type: "doc",
           id: "api/mesh-service-instance-post",
@@ -542,7 +542,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Tenants V4",
+      label: "Tenants",
       items: [
         {
           type: "doc",
@@ -568,24 +568,6 @@ const sidebar: SidebarsConfig = {
           label: "Delete tenant",
           className: "api-method delete",
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Tenants V3",
-      items: [
-        {
-          type: "doc",
-          id: "api/mesh-tenant-list-v",
-          label: "List tenants",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/mesh-tenant-post-v",
-          label: "Create tenant",
-          className: "api-method post",
-        },
         {
           type: "doc",
           id: "api/mesh-tenant-v-3",
@@ -602,7 +584,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Users V2",
+      label: "Users",
       items: [
         {
           type: "doc",
@@ -692,7 +674,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Project Bindings V3",
+      label: "Project Bindings",
       items: [
         {
           type: "doc",
