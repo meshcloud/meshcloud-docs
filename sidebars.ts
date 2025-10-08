@@ -255,7 +255,19 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
-  api: apiSidebar
+  api: [
+      {
+          type: 'doc',
+          id: 'api/api-authorization',
+          label: 'Authorization',
+      },
+      {
+          type: 'category',
+          label: 'Resources',
+          collapsed: false,
+          items: apiSidebar
+      }
+  ]
 };
 
 export default sidebars;

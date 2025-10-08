@@ -120,7 +120,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'api/api-root',
+          docId: 'api/api-authorization',
           position: 'right',
           label: 'API Docs',
         },
@@ -190,7 +190,7 @@ const config: Config = {
             specPath: "meshstack-openapi-docs.json",
             outputDir: "docs/api",
             sidebarOptions: {
-              groupPathsBy: "tag",
+              groupPathsBy: "tag"
             },
           } satisfies OpenApiPlugin.Options,
         }
