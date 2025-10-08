@@ -1,5 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 import apiSidebar from './docs/api/sidebar';
+import meteringApiSidebar from './docs/metering-api/sidebar';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -256,17 +257,23 @@ const sidebars: SidebarsConfig = {
     },
   ],
   api: [
-      {
-          type: 'doc',
-          id: 'api/api-authorization',
-          label: 'Authorization',
-      },
-      {
-          type: 'category',
-          label: 'Resources',
-          collapsed: false,
-          items: apiSidebar
-      }
+    {
+      type: 'doc',
+      id: 'api/api-authorization',
+      label: 'Authorization',
+    },
+    {
+      type: 'category',
+      label: 'Resources',
+      collapsed: false,
+      items: apiSidebar
+    },
+    {
+      type: 'category',
+      label: 'Metering API',
+      collapsed: false,
+      items: meteringApiSidebar
+    },
   ]
 };
 

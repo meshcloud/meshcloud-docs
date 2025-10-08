@@ -186,9 +186,16 @@ const config: Config = {
         id: 'api', // plugin id
         docsPluginId: 'classic', // configured for preset-classic
         config: {
-          petstore: {
+          meshfed: {
             specPath: "meshstack-openapi-docs.json",
             outputDir: "docs/api",
+            sidebarOptions: {
+              groupPathsBy: "tag"
+            },
+          } satisfies OpenApiPlugin.Options,
+          metering: {
+            specPath: "meshmetering-openapi-docs.json",
+            outputDir: "docs/metering-api",
             sidebarOptions: {
               groupPathsBy: "tag"
             },
