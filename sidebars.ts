@@ -259,8 +259,16 @@ const sidebars: SidebarsConfig = {
   api: [
     {
       type: 'doc',
-      id: 'api/api-authorization',
-      label: 'Authorization',
+      id: 'api/introduction',
+      label: 'Introduction',
+    },
+    {
+      type: 'category',
+      label: 'Authentication',
+      items: [
+        'api/authentication/api-keys',
+        'api/authentication/basic-auth'
+      ]
     },
     {
       type: 'category',

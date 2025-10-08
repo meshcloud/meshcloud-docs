@@ -120,7 +120,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'api/api-authorization',
+          docId: 'api/introduction',
           position: 'right',
           label: 'API Docs',
         },
