@@ -293,24 +293,6 @@ module.exports = [
       },
       {
         "type": "doc",
-        "id": "api/mesh-platform-v-2",
-        "label": "Get platform",
-        "className": "api-method get"
-      },
-      {
-        "type": "doc",
-        "id": "api/mesh-platform-v-2-put",
-        "label": "Update platform",
-        "className": "api-method put"
-      },
-      {
-        "type": "doc",
-        "id": "api/mesh-platform-v-2-delete",
-        "label": "Delete platform",
-        "className": "api-method delete"
-      },
-      {
-        "type": "doc",
         "id": "api/mesh-platform-v-1",
         "label": "Get platform",
         "className": "api-method get"
@@ -324,6 +306,24 @@ module.exports = [
       {
         "type": "doc",
         "id": "api/mesh-platform-v-1-delete",
+        "label": "Delete platform",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/mesh-platform-v-2",
+        "label": "Get platform",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/mesh-platform-v-2-put",
+        "label": "Update platform",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/mesh-platform-v-2-delete",
         "label": "Delete platform",
         "className": "api-method delete"
       }
@@ -509,15 +509,15 @@ module.exports = [
       },
       {
         "type": "doc",
-        "id": "api/mesh-tenant-v-4",
-        "label": "Get tenant",
-        "className": "api-method get"
-      },
-      {
-        "type": "doc",
         "id": "api/mesh-tenant-delete-v-4",
         "label": "Delete tenant",
         "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/mesh-tenant-v-4",
+        "label": "Get tenant",
+        "className": "api-method get"
       },
       {
         "type": "doc",
