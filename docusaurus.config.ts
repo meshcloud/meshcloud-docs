@@ -187,14 +187,14 @@ const config: Config = {
         docsPluginId: 'classic', // configured for preset-classic
         config: {
           meshfed: {
-            specPath: "meshstack-openapi-docs.json",
+            specPath: "static/api/meshstack-openapi-docs.json",
             outputDir: "docs/api",
             sidebarOptions: {
               groupPathsBy: "tag"
             },
           } satisfies OpenApiPlugin.Options,
           metering: {
-            specPath: "meshmetering-openapi-docs.json",
+            specPath: "static/billing-api/meshmetering-openapi-docs.json",
             outputDir: "docs/metering-api",
             sidebarOptions: {
               groupPathsBy: "tag"
@@ -203,15 +203,6 @@ const config: Config = {
         }
       },
     ],
-    // [
-    //   "@docusaurus/plugin-content-docs",
-    //   {
-    //     id: "api", // must match docsPluginId above
-    //     path: "docs/api", // folder where generated API docs live
-    //     routeBasePath: "api", // served at /api
-    //     sidebarPath: require.resolve("./docs/api/sidebar.ts"),
-    //   },
-    // ],
   ]
 };
 
