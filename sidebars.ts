@@ -257,11 +257,7 @@ const sidebars: SidebarsConfig = {
     },
   ],
   api: [
-    {
-      type: 'doc',
-      id: 'api/introduction',
-      label: 'Introduction',
-    },
+    'api/introduction',
     {
       type: 'category',
       label: 'Authentication',
@@ -270,6 +266,7 @@ const sidebars: SidebarsConfig = {
         'api/authentication/basic-auth'
       ]
     },
+    'api/technical-specifications',
     {
       type: 'category',
       label: 'Resources',
