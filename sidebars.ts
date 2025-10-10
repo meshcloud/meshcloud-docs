@@ -277,7 +277,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Metering API',
       collapsed: false,
-      items: meteringApiSidebar[1].items
+      items: meteringApiSidebar
     },
   ]
 };
