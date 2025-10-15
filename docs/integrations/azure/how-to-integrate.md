@@ -296,7 +296,7 @@ The requirements for the principal on the target tenant is identically with the 
 
 ##### meshPanel Configuration
 
-When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source tenant Entra ID.
+When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source Entra ID tenant.
 
 The `Destination Entra ID Tenant` must be a UUID. Please don't use the domain name variant of it e.g. `*.onmicrosoft.com` but use its UUID form. The principal data in the **Access Configuration** part refers to the  service principal in the target Entra ID Tenant.
 

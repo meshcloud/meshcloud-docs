@@ -139,7 +139,7 @@ routines outside of meshStack. Depending on the existing IAM landscape in your o
 setting up synchronization to on-premise directories and other IAM systems.
 
 In order to correctly replicate user permissions, meshStack needs to map meshUser objects with permissions on a meshProject
-to "platform user" objects in a platform's IAM system (e.g. an Microsoft Entra ID user object). To perform this mapping, meshStack requires an `external user id` (shorthand `euid`) attribute that needs to be present on all user objects and in all cloud platforms. This attribute can typically be an existing `email` or `username`, however it needs to be unique, stable and available on all systems.
+to "platform user" objects in a platform's IAM system (e.g. a Microsoft Entra ID user object). To perform this mapping, meshStack requires an `external user id` (shorthand `euid`) attribute that needs to be present on all user objects and in all cloud platforms. This attribute can typically be an existing `email` or `username`, however it needs to be unique, stable and available on all systems.
 
 > meshStack will log replication warnings when it fails to replicate permissions for externally provisioned user identities, e.g. because a user could not be located on the platform.
 
@@ -336,7 +336,7 @@ The following configuration options are available at `mesh.replicator`:
 let Replicator =
     {-
       aadUserLookupStrategy:
-        Determines the attribute used for looking up users in Microsoft Entra IDs.
+        Determines the attribute used for looking up users in Microsoft Entra ID.
         This setting is shared across all Azure and meshMarketplace platforms configured to use an Microsoft Entra ID
         for user permission replication.
     -}
