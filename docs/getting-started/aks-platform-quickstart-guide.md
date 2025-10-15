@@ -104,7 +104,7 @@ Make sure you execute the last step of exporting the outputs and save these some
 
    In the section below under “Additional Access Configuration” go AKS-specific configuration so that meshStack can manage user & groups in your Microsoft Entra ID tenant.
 
-   Under “AAD Tenant” enter either the domain name or ID of your Microsoft Entra ID tenant that holds the service principal.
+   Follow the instructions on screen and enter the domain name or ID of your Microsoft Entra ID tenant that holds the service principal.
 
    For Authentication Type, you get to pick whether you use Workload Identity Federation or Credentials. Please continue below in the section of your choice. We recommend Workload Identity Federation because it is more secure.
 
