@@ -28,7 +28,7 @@ jobs:
       - name: docs - install
         run: yarn install --frozen-lockfile
       - name: docs - build
-        run: yarn lint && yarn build
+        run: yarn build && yarn lint # We first build and then lint because some files might reference generated OpenAPI markdown files
       - name: snippets - install
         run: yarn install --frozen-lockfile
         working-directory: snippets
