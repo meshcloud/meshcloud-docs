@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -54,7 +55,7 @@ const config: Config = {
     mermaid: true,
     format: 'detect'
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-mermaid', 'docusaurus-theme-openapi-docs'],
 
   presets: [
     [
@@ -67,6 +68,7 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/meshcloud/meshcloud-docs/tree/develop',
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },
         blog: {
           blogSidebarCount: 15,
@@ -118,7 +120,7 @@ const config: Config = {
         },
         {
           type: 'doc',
-          docId: 'apis.index',
+          docId: 'api/introduction',
           position: 'right',
           label: 'API Docs',
         },
@@ -176,6 +178,32 @@ const config: Config = {
       additionalLanguages: ['dhall', 'json', 'yaml', 'bash', 'powershell'],
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'api', // plugin id
+        docsPluginId: 'classic', // configured for preset-classic
+        config: {
+          meshfed: {
+            specPath: "static/api/meshstack-openapi-docs.json",
+            outputDir: "docs/api",
+            sidebarOptions: {
+              groupPathsBy: "tag"
+            },
+          } satisfies OpenApiPlugin.Options,
+          metering: {
+            specPath: "static/billing-api/meshmetering-openapi-docs.json",
+            outputDir: "docs/metering-api",
+            sidebarOptions: {
+              groupPathsBy: "tag"
+            },
+          } satisfies OpenApiPlugin.Options,
+        }
+      },
+    ],
+  ]
 };
 
 // For the production build we include the Plausible tracking script.
