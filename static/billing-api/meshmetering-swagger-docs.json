@@ -10,13 +10,15 @@
   "paths" : {
     "/api" : {
       "get" : {
-        "tags" : [ "api" ],
+        "tags" : [ "API Root" ],
+        "summary" : "API Root",
+        "description" : "Access the root endpoint of the billing API to discover available billing resources\n\n**Authentication:** This endpoint supports API User authentication.",
         "operationId" : "apiRoot",
         "produces" : [ "application/vnd.meshcloud.api.v1.hal+json" ],
         "parameters" : [ {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.v1.hal+json` as an `Accept` header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.v1.hal+json` as an `Accept` header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -38,13 +40,15 @@
     },
     "/api/meshobjects" : {
       "get" : {
-        "tags" : [ "api" ],
+        "tags" : [ "API Root" ],
+        "summary" : "Get meshObjects root",
+        "description" : "Access the root endpoint of the billing meshObjects API to discover available billing mesh object types\n\n**Authentication:** This endpoint supports API User authentication.",
         "operationId" : "meshObjectsRoot",
         "produces" : [ "application/vnd.meshcloud.api.meshobjects.v1.hal+json" ],
         "parameters" : [ {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshobjects.v1.hal+json` as an `Accept` header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.meshobjects.v1.hal+json` as an `Accept` header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -52,7 +56,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshobjects.v1.hal+json" : "{\n  \"_links\" : {\n    \"meshchargebacks\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,finalizedSince,cancelledSince}\",\n      \"templated\" : true\n    },\n    \"meshtenantusagereports\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}\",\n      \"templated\" : true\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshobjects.v1.hal+json" : "{\n  \"_links\" : {\n    \"meshtenantusagereports\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports{?ownedByWorkspace,ownedByProject,isManaged,platform,platformType,platformTenantId,period,reportCategory,paymentMethodIdentifier,meshTenantId,finalizedAfter,cancelledAfter,status,showCancelled,sort}\",\n      \"templated\" : true\n    },\n    \"meshchargebacks\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshchargebacks{?workspaceIdentifier,projectIdentifier,period,finalized,finalizedSince,cancelledSince}\",\n      \"templated\" : true\n    },\n    \"self\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshObjectsRoot"
@@ -66,7 +70,9 @@
     },
     "/api/meshobjects/meshchargebacks" : {
       "get" : {
-        "tags" : [ "api" ],
+        "tags" : [ "Chargebacks" ],
+        "summary" : "List chargebacks",
+        "description" : "List all meshChargebacks with optional filtering by workspace, project, and billing period.\n**Note**: If no request parameters for filtering are specified, all meshChargebacks are returned\nindependently of these parameters. By default, meshChargebacks are sorted descending by period.\n\n**Info**: The meshTenantUsageReport endpoints are the preferred endpoints to get cost data from\nmeshStack. The meshTenantUsageReport endpoints provide more detailed information and more filter\noptions than the chargeback statements. They contain basically the same information as a chargeback,\nbut only per tenant, not per project.\n\nFor customers who export chargeback statements on a monthly basis, the following recommendation applies:\nchargeback statements of the previous month should be processed no earlier than one day after the\nconfigured finalization date, at 7 a.m. (German local time). By default, chargeback statements are\nfinalized at the 6th of a month, therefore, they can be processed starting at the 7th of a month\nat 7 a.m. If you are unsure about the configuration of the finalization day of chargebacks in your\nmeshStack, please contact our support team.\n\n**Authentication:** This endpoint supports API User authentication.",
         "operationId" : "meshChargebackList",
         "produces" : [ "application/vnd.meshcloud.api.meshchargeback.v3.hal+json" ],
         "parameters" : [ {
@@ -96,14 +102,14 @@
         }, {
           "name" : "page",
           "in" : "query",
-          "description" : "The page number (default=0). See <<paging,Paging information>>.",
-          "required" : true,
+          "description" : "The page number (default=0). Information about [paging](/api/technical-specifications/#paging)",
+          "required" : false,
           "type" : "string"
         }, {
           "name" : "size",
           "in" : "query",
-          "description" : "The amount of elements in a single page (default={default-page-size}). See <<paging,Paging information>>.",
-          "required" : true,
+          "description" : "The amount of elements in a single page (default=50). Information about [paging](/api/technical-specifications/#paging)",
+          "required" : false,
           "type" : "string"
         }, {
           "name" : "sort",
@@ -114,7 +120,7 @@
         }, {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshchargeback.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.meshchargeback.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -136,7 +142,9 @@
     },
     "/api/meshobjects/meshtenantusagereports" : {
       "get" : {
-        "tags" : [ "api" ],
+        "tags" : [ "Tenant Usage Reports" ],
+        "summary" : "List tenant usage reports",
+        "description" : "List all meshTenantUsageReports with optional filtering by workspace, project, and time period.\n\n**Note**: If no request parameters for filtering are specified, all meshTenantUsageReports,\nexcept for cancelled ones, are returned. A meshTenantUsageReport gets cancelled, if any changes\noccur after finalization of it. A new meshTenantUsageReport with an incremented version gets\ncreated in case of such an update. So the old one is available as cancelled, and the new as\nfinalized. By default, meshTenantUsageReports are sorted descending by period.\n\nA meshTenantUsageReport contains all cost and payment information as well as tags for one tenant in\none period (month). Via the API, you receive more detailed information than via the UI. Besides tags\nand payment information, you also get the seller information separated via line items\nin the meshTenantUsageReport.\n\n**Authentication:** This endpoint supports API User authentication.",
         "operationId" : "meshTenantUsageReportsList",
         "produces" : [ "application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json" ],
         "parameters" : [ {
@@ -196,13 +204,13 @@
         }, {
           "name" : "finalizedAfter",
           "in" : "query",
-          "description" : "Filter for meshTenantUsageReports that were finalized after the provided <<data_types,date>> (e.g. `2025-06-01T00:00:00Z`). You can use this filter to retrieve all meshTenantUsageReports finalized after your last request for processing them in your billing system. You can e.g. provide the latest finalizationDate you received in your last request. You may then receive the newly finalized usage reports of the new period and probably updated usage reports of previous periods. This filter parameter is exclusive, meaning it will only match reports that were finalized after the given date. (optional)",
+          "description" : "Filter for meshTenantUsageReports that were finalized after the provided date (e.g. `2025-06-01T00:00:00Z`). You can use this filter to retrieve all meshTenantUsageReports finalized after your last request for processing them in your billing system. You can e.g. provide the latest finalizationDate you received in your last request. You may then receive the newly finalized usage reports of the new period and probably updated usage reports of previous periods. This filter parameter is exclusive, meaning it will only match reports that were finalized after the given date. (optional)",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "cancelledAfter",
           "in" : "query",
-          "description" : "Filter for meshTenantUsageReports that were cancelled after the provided <<data_types,date>> (e.g. 2025-06-01T00:00:00Z). When you apply this filter is provided, you will only get cancelled usage reports, meaning outdated data that was already updated. This filter parameter is exclusive, meaning it will only match reports that were cancelled after the given date. (optional)",
+          "description" : "Filter for meshTenantUsageReports that were cancelled after the provided date (e.g. 2025-06-01T00:00:00Z). When you apply this filter is provided, you will only get cancelled usage reports, meaning outdated data that was already updated. This filter parameter is exclusive, meaning it will only match reports that were cancelled after the given date. (optional)",
           "required" : false,
           "type" : "string"
         }, {
@@ -220,14 +228,14 @@
         }, {
           "name" : "page",
           "in" : "query",
-          "description" : "The page number (default=0). See <<paging,Paging information>>.",
-          "required" : true,
+          "description" : "The page number (default=0). Information about [paging](/api/technical-specifications/#paging)",
+          "required" : false,
           "type" : "string"
         }, {
           "name" : "size",
           "in" : "query",
-          "description" : "The amount of elements in a single page (default={default-page-size}). See <<paging,Paging information>>.",
-          "required" : true,
+          "description" : "The amount of elements in a single page (default=50). Information about [paging](/api/technical-specifications/#paging)",
+          "required" : false,
           "type" : "string"
         }, {
           "name" : "sort",
@@ -238,7 +246,7 @@
         }, {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -246,7 +254,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshTenantUsageReports\" : [ {\n      \"kind\" : \"meshTenantUsageReport\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"uuid\" : \"720f8801-d500-4ff3-bdc2-aae5d6c1e2df\",\n        \"ownedByWorkspace\" : \"test-workspace-2\",\n        \"ownedByProject\" : \"test-project\",\n        \"createdAt\" : \"2025-01-07T01:00:00Z\"\n      },\n      \"spec\" : {\n        \"period\" : \"2024-12\",\n        \"reportCategory\" : \"BILLING\",\n        \"platformType\" : \"Azure\",\n        \"platform\" : \"azure.prod\",\n        \"platformTenantId\" : \"922a8d0a-f804-4e2b-8aae-fa75309d6c98\",\n        \"version\" : 2\n      },\n      \"status\" : {\n        \"generatedAt\" : \"2025-01-07T01:00:00Z\",\n        \"finalizedAt\" : \"2025-01-07T01:00:00Z\",\n        \"paymentMethod\" : {\n          \"identifier\" : \"test-payment-method\",\n          \"name\" : \"Test Payment Method\",\n          \"amount\" : 100,\n          \"expirationDate\" : \"2025-06-01T00:00:00Z\"\n        },\n        \"timeframe\" : {\n          \"from\" : \"2024-12-01T00:00:00Z\",\n          \"to\" : \"2025-01-01T00:00:00Z\"\n        },\n        \"tags\" : {\n          \"env\" : [ \"prod\" ],\n          \"costCenter\" : [ \"4058\" ]\n        },\n        \"lineItems\" : [ {\n          \"netAmount\" : {\n            \"amount\" : 50.0,\n            \"currency\" : \"EUR\",\n            \"baseAmount\" : 40.0,\n            \"baseCurrency\" : \"USD\",\n            \"exchangeRate\" : 1.1\n          },\n          \"sellerId\" : \"Platform Team\",\n          \"sellerProductGroup\" : \"Azure\"\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshTenantUsageReport\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"uuid\" : \"ec072338-4703-437b-8f9e-2f3d3b7b27b3\",\n        \"ownedByWorkspace\" : \"test-workspace-2\",\n        \"ownedByProject\" : \"test-project\",\n        \"createdAt\" : \"2025-01-05T01:00:00Z\"\n      },\n      \"spec\" : {\n        \"period\" : \"2024-12\",\n        \"reportCategory\" : \"BILLING\",\n        \"platformType\" : \"Azure\",\n        \"platform\" : \"azure.prod\",\n        \"platformTenantId\" : \"4b2b90d4-2b39-45f2-9c55-693da31f8b82\",\n        \"version\" : 1\n      },\n      \"status\" : {\n        \"generatedAt\" : \"2025-01-05T01:00:00Z\",\n        \"finalizedAt\" : \"2025-01-05T01:00:00Z\",\n        \"cancelledAt\" : \"2025-01-07T01:00:00Z\",\n        \"paymentMethod\" : {\n          \"identifier\" : \"test-payment-method\",\n          \"name\" : \"Test Payment Method\",\n          \"amount\" : 100,\n          \"expirationDate\" : \"2025-06-01T00:00:00Z\"\n        },\n        \"timeframe\" : {\n          \"from\" : \"2024-12-01T00:00:00Z\",\n          \"to\" : \"2025-01-01T00:00:00Z\"\n        },\n        \"tags\" : {\n          \"env\" : [ \"prod\" ],\n          \"costCenter\" : [ \"4058\" ]\n        },\n        \"lineItems\" : [ {\n          \"netAmount\" : {\n            \"amount\" : 40.0,\n            \"currency\" : \"EUR\",\n            \"baseAmount\" : 32.0,\n            \"baseCurrency\" : \"USD\",\n            \"exchangeRate\" : 1.1\n          },\n          \"sellerId\" : \"Platform Team\",\n          \"sellerProductGroup\" : \"Azure\"\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports/ec072338-4703-437b-8f9e-2f3d3b7b27b3\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports?ownedByWorkspace=test-workspace-2&showCancelled=true&page=0&size=10&sort=period,desc\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 10,\n    \"totalElements\" : 2,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
+              "application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json" : "{\n  \"_embedded\" : {\n    \"meshTenantUsageReports\" : [ {\n      \"kind\" : \"meshTenantUsageReport\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"uuid\" : \"720f8801-d500-4ff3-bdc2-aae5d6c1e2df\",\n        \"ownedByWorkspace\" : \"test-workspace-2\",\n        \"ownedByProject\" : \"test-project\",\n        \"createdAt\" : \"2025-01-07T01:00:00Z\"\n      },\n      \"spec\" : {\n        \"period\" : \"2024-12\",\n        \"reportCategory\" : \"BILLING\",\n        \"platformType\" : \"Azure\",\n        \"platform\" : \"azure.prod\",\n        \"platformTenantId\" : \"0491ab04-8213-4089-809b-d9ceb99cba11\",\n        \"version\" : 2\n      },\n      \"status\" : {\n        \"generatedAt\" : \"2025-01-07T01:00:00Z\",\n        \"finalizedAt\" : \"2025-01-07T01:00:00Z\",\n        \"paymentMethod\" : {\n          \"identifier\" : \"test-payment-method\",\n          \"name\" : \"Test Payment Method\",\n          \"amount\" : 100,\n          \"expirationDate\" : \"2025-06-01T00:00:00Z\"\n        },\n        \"timeframe\" : {\n          \"from\" : \"2024-12-01T00:00:00Z\",\n          \"to\" : \"2025-01-01T00:00:00Z\"\n        },\n        \"tags\" : {\n          \"env\" : [ \"prod\" ],\n          \"costCenter\" : [ \"4058\" ]\n        },\n        \"lineItems\" : [ {\n          \"netAmount\" : {\n            \"amount\" : 50.0,\n            \"currency\" : \"EUR\",\n            \"baseAmount\" : 40.0,\n            \"baseCurrency\" : \"USD\",\n            \"exchangeRate\" : 1.1\n          },\n          \"sellerId\" : \"Platform Team\",\n          \"sellerProductGroup\" : \"Azure\"\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df\"\n        }\n      }\n    }, {\n      \"kind\" : \"meshTenantUsageReport\",\n      \"apiVersion\" : \"v3\",\n      \"metadata\" : {\n        \"uuid\" : \"ec072338-4703-437b-8f9e-2f3d3b7b27b3\",\n        \"ownedByWorkspace\" : \"test-workspace-2\",\n        \"ownedByProject\" : \"test-project\",\n        \"createdAt\" : \"2025-01-05T01:00:00Z\"\n      },\n      \"spec\" : {\n        \"period\" : \"2024-12\",\n        \"reportCategory\" : \"BILLING\",\n        \"platformType\" : \"Azure\",\n        \"platform\" : \"azure.prod\",\n        \"platformTenantId\" : \"70db50e2-2306-4be9-bc66-5b4960b1fad2\",\n        \"version\" : 1\n      },\n      \"status\" : {\n        \"generatedAt\" : \"2025-01-05T01:00:00Z\",\n        \"finalizedAt\" : \"2025-01-05T01:00:00Z\",\n        \"cancelledAt\" : \"2025-01-07T01:00:00Z\",\n        \"paymentMethod\" : {\n          \"identifier\" : \"test-payment-method\",\n          \"name\" : \"Test Payment Method\",\n          \"amount\" : 100,\n          \"expirationDate\" : \"2025-06-01T00:00:00Z\"\n        },\n        \"timeframe\" : {\n          \"from\" : \"2024-12-01T00:00:00Z\",\n          \"to\" : \"2025-01-01T00:00:00Z\"\n        },\n        \"tags\" : {\n          \"env\" : [ \"prod\" ],\n          \"costCenter\" : [ \"4058\" ]\n        },\n        \"lineItems\" : [ {\n          \"netAmount\" : {\n            \"amount\" : 40.0,\n            \"currency\" : \"EUR\",\n            \"baseAmount\" : 32.0,\n            \"baseCurrency\" : \"USD\",\n            \"exchangeRate\" : 1.1\n          },\n          \"sellerId\" : \"Platform Team\",\n          \"sellerProductGroup\" : \"Azure\"\n        } ]\n      },\n      \"_links\" : {\n        \"self\" : {\n          \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports/ec072338-4703-437b-8f9e-2f3d3b7b27b3\"\n        }\n      }\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports?ownedByWorkspace=test-workspace-2&showCancelled=true&page=0&size=10&sort=period,desc\"\n    }\n  },\n  \"page\" : {\n    \"size\" : 10,\n    \"totalElements\" : 2,\n    \"totalPages\" : 1,\n    \"number\" : 0\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshTenantUsageReportsList"
@@ -258,15 +266,23 @@
         } ]
       }
     },
-    "/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df" : {
+    "/api/meshobjects/meshtenantusagereports/{uuid}" : {
       "get" : {
-        "tags" : [ "api" ],
+        "tags" : [ "Tenant Usage Reports" ],
+        "summary" : "Get tenant usage report",
+        "description" : "Retrieve detailed information about a specific meshTenantUsageReport including line items and payment details\n\n**Authentication:** This endpoint supports API User authentication.",
         "operationId" : "meshTenantUsageReport",
         "produces" : [ "application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json" ],
         "parameters" : [ {
+          "name" : "uuid",
+          "in" : "path",
+          "description" : "The UUID that uniquely identifies the meshTenantUsageReport.",
+          "required" : true,
+          "type" : "string"
+        }, {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -274,7 +290,7 @@
           "200" : {
             "description" : "",
             "examples" : {
-              "application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json" : "{\n  \"kind\" : \"meshTenantUsageReport\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"uuid\" : \"720f8801-d500-4ff3-bdc2-aae5d6c1e2df\",\n    \"ownedByWorkspace\" : \"test-workspace-2\",\n    \"ownedByProject\" : \"test-project\",\n    \"createdAt\" : \"2025-01-07T01:00:00Z\"\n  },\n  \"spec\" : {\n    \"period\" : \"2024-12\",\n    \"reportCategory\" : \"BILLING\",\n    \"platformType\" : \"Azure\",\n    \"platform\" : \"azure.prod\",\n    \"platformTenantId\" : \"922a8d0a-f804-4e2b-8aae-fa75309d6c98\",\n    \"version\" : 2\n  },\n  \"status\" : {\n    \"generatedAt\" : \"2025-01-07T01:00:00Z\",\n    \"finalizedAt\" : \"2025-01-07T01:00:00Z\",\n    \"paymentMethod\" : {\n      \"identifier\" : \"test-payment-method\",\n      \"name\" : \"Test Payment Method\",\n      \"amount\" : 100,\n      \"expirationDate\" : \"2025-06-01T00:00:00Z\"\n    },\n    \"timeframe\" : {\n      \"from\" : \"2024-12-01T00:00:00Z\",\n      \"to\" : \"2025-01-01T00:00:00Z\"\n    },\n    \"tags\" : {\n      \"env\" : [ \"prod\" ],\n      \"costCenter\" : [ \"4058\" ]\n    },\n    \"lineItems\" : [ {\n      \"netAmount\" : {\n        \"amount\" : 50.0,\n        \"currency\" : \"EUR\",\n        \"baseAmount\" : 40.0,\n        \"baseCurrency\" : \"USD\",\n        \"exchangeRate\" : 1.1\n      },\n      \"sellerId\" : \"Platform Team\",\n      \"sellerProductGroup\" : \"Azure\"\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df\"\n    }\n  }\n}"
+              "application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json" : "{\n  \"kind\" : \"meshTenantUsageReport\",\n  \"apiVersion\" : \"v3\",\n  \"metadata\" : {\n    \"uuid\" : \"720f8801-d500-4ff3-bdc2-aae5d6c1e2df\",\n    \"ownedByWorkspace\" : \"test-workspace-2\",\n    \"ownedByProject\" : \"test-project\",\n    \"createdAt\" : \"2025-01-07T01:00:00Z\"\n  },\n  \"spec\" : {\n    \"period\" : \"2024-12\",\n    \"reportCategory\" : \"BILLING\",\n    \"platformType\" : \"Azure\",\n    \"platform\" : \"azure.prod\",\n    \"platformTenantId\" : \"0491ab04-8213-4089-809b-d9ceb99cba11\",\n    \"version\" : 2\n  },\n  \"status\" : {\n    \"generatedAt\" : \"2025-01-07T01:00:00Z\",\n    \"finalizedAt\" : \"2025-01-07T01:00:00Z\",\n    \"paymentMethod\" : {\n      \"identifier\" : \"test-payment-method\",\n      \"name\" : \"Test Payment Method\",\n      \"amount\" : 100,\n      \"expirationDate\" : \"2025-06-01T00:00:00Z\"\n    },\n    \"timeframe\" : {\n      \"from\" : \"2024-12-01T00:00:00Z\",\n      \"to\" : \"2025-01-01T00:00:00Z\"\n    },\n    \"tags\" : {\n      \"env\" : [ \"prod\" ],\n      \"costCenter\" : [ \"4058\" ]\n    },\n    \"lineItems\" : [ {\n      \"netAmount\" : {\n        \"amount\" : 50.0,\n        \"currency\" : \"EUR\",\n        \"baseAmount\" : 40.0,\n        \"baseCurrency\" : \"USD\",\n        \"exchangeRate\" : 1.1\n      },\n      \"sellerId\" : \"Platform Team\",\n      \"sellerProductGroup\" : \"Azure\"\n    } ]\n  },\n  \"_links\" : {\n    \"self\" : {\n      \"href\" : \"https://mesh-billing-url/api/meshobjects/meshtenantusagereports/720f8801-d500-4ff3-bdc2-aae5d6c1e2df\"\n    }\n  }\n}"
             },
             "schema" : {
               "$ref" : "#/definitions/meshTenantUsageReport"
@@ -286,15 +302,29 @@
         } ]
       }
     },
-    "/api/meshobjects/meshchargebacks/2025-02-01Z/testPartner%3AtestWorkspace%3AtestProject%3A1" : {
+    "/api/meshobjects/meshchargebacks/{period}/{scopeId}" : {
       "get" : {
-        "tags" : [ "api" ],
+        "tags" : [ "Chargebacks" ],
+        "summary" : "Get chargeback",
+        "description" : "Retrieve detailed information about a specific meshChargeback including line items and cost breakdown\n\n**Authentication:** This endpoint supports API User authentication.",
         "operationId" : "meshChargeback",
         "produces" : [ "application/vnd.meshcloud.api.meshchargeback.v3.hal+json" ],
         "parameters" : [ {
+          "name" : "period",
+          "in" : "path",
+          "description" : "The period of the chargeback in YYYY-MM-DDZ format (e.g. '2025-02-01Z').",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "scopeId",
+          "in" : "path",
+          "description" : "The 'scope' consisting of partner identifier, workspace identifier and project identifier separated by ':' (e.g. 'testPartner:testWorkspace:testProject').",
+          "required" : true,
+          "type" : "string"
+        }, {
           "name" : "Accept",
           "in" : "header",
-          "description" : "meshApi is <<versioning,versioned>> and you should use  `application/vnd.meshcloud.api.meshchargeback.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.meshchargeback.v3.hal+json` as an `Accept` header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.",
           "required" : true,
           "type" : "string"
         } ],
@@ -313,6 +343,65 @@
           "basic" : [ ]
         } ]
       }
+    },
+    "/api/meshobjects/meshresourceusagereports/{platformTenantId}/{period}" : {
+      "put" : {
+        "tags" : [ "Resource Usage Reports" ],
+        "summary" : "Import Resource Usage Report",
+        "description" : "Use this endpoint to provide cost data from external systems to meshStack. A meshResourceUsageReport will be picked up by the billing system of meshStack and subsequently included into regular meshTenantUsageReports.\n\n**Authentication:** This endpoint supports API User authentication.",
+        "operationId" : "meshResourceUsageReportPut",
+        "consumes" : [ "application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8" ],
+        "produces" : [ "application/vnd.meshcloud.api.meshobjects.v1+json" ],
+        "parameters" : [ {
+          "name" : "platformTenantId",
+          "in" : "path",
+          "description" : "The Platform Tenant ID of the tenant causing the costs.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "period",
+          "in" : "path",
+          "description" : "The month during which the costs have occurred, e.g. 2023-05-01Z for May 2023.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Content-Type",
+          "in" : "header",
+          "description" : "meshObject Import is versioned and `application/vnd.meshcloud.api.meshobjects.v1+yaml` or `application/vnd.meshcloud.api.meshobjects.v1+json` can be used as a `Content-Type`.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "meshApi is versioned and you should use  `application/vnd.meshcloud.api.meshobjects.v1+json` as an `Accept` header to be guaranteed the V1 response format of this endpoint. New versions will be added in future.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/api_meshobjects_meshresourceusagereports_platformTenantId_period1788543860"
+          },
+          "x-examples" : {
+            "application/vnd.meshcloud.api.meshobjects.v1+json;charset=UTF-8" : "{\n    \"apiVersion\": \"v1\",\n    \"kind\": \"meshResourceUsageReport\",\n    \"fullPlatformIdentifier\": \"my-platform-instance.my-location\",\n    \"source\": \"Name of Source System\",\n    \"lineItems\": [\n        {\n            \"productName\": \"Virtual Machine\",\n            \"sellerId\": \"CloudHaven Inc.\",\n            \"sellerProductGroup\": \"Compute\",\n            \"usageQuantity\": 48,\n            \"usageType\": \"Hours of CPU/RAM usage\",\n            \"usageCost\": 1.2,\n            \"currency\": \"USD\",\n            \"usageUnit\": \"h\",\n            \"totalCost\": 57.6\n        },\n        {\n            \"productName\": \"SSD storage\",\n            \"sellerId\": \"CloudHaven Inc.\",\n            \"sellerProductGroup\": \"Storage\",\n            \"usageQuantity\": 480,\n            \"usageType\": \"Hours of usage multiplied by amounts of GB\",\n            \"usageCost\": 0.05,\n            \"currency\": \"USD\",\n            \"usageUnit\": \"h\",\n            \"totalCost\": 24\n        }\n    ]\n}"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "examples" : {
+              "application/vnd.meshcloud.api.meshobjects.v1+json" : "{\n  \"meshObject\" : \"meshResourceUsageReport\",\n  \"status\" : \"SUCCESS\",\n  \"resultCode\" : null,\n  \"message\" : null,\n  \"remarks\" : null\n}"
+            },
+            "schema" : {
+              "$ref" : "#/definitions/meshResourceUsageReportPut"
+            }
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ]
+      }
     }
   },
   "securityDefinitions" : {
@@ -321,13 +410,40 @@
     }
   },
   "definitions" : {
+    "meshResourceUsageReportPut" : {
+      "type" : "object",
+      "required" : [ "meshObject", "status" ],
+      "properties" : {
+        "meshObject" : {
+          "type" : "string",
+          "description" : "The name of the meshObject (this is always set to meshResourceUsageReport)"
+        },
+        "resultCode" : {
+          "type" : "string",
+          "description" : "Optional. Specific result code for this import result. If no error has occurred, it's set to null.\nOtherwise, it's set to SERVER_ERROR, as this is is\nthe only possible error code at the moment."
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "Optional. A user readable message with more details. (might be null)"
+        },
+        "remarks" : {
+          "type" : "array",
+          "description" : "Optional. User readable remarks on this import result. (might be null)",
+          "items" : { }
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "The import result status for this meshResourceUsageReport. (SUCCESS or FAILED)"
+        }
+      }
+    },
     "meshTenantUsageReportsList" : {
       "type" : "object",
       "required" : [ "_embedded", "_links", "page" ],
       "properties" : {
         "_links" : {
           "type" : "object",
-          "description" : "Currently only contains the self link and <<paging,pagination>> links.",
+          "description" : "Currently only contains the self link and pagination links.",
           "properties" : { }
         },
         "_embedded" : {
@@ -336,7 +452,7 @@
           "properties" : {
             "meshTenantUsageReports" : {
               "type" : "array",
-              "description" : "List of <<mesh_tenantUsageReport_response_fields,meshTenantUsageReport>>.",
+              "description" : "List of meshTenantUsageReports.",
               "items" : { }
             }
           },
@@ -344,18 +460,7 @@
         },
         "page" : {
           "type" : "object",
-          "description" : "See <<paging,Paging information>>.",
-          "properties" : { }
-        }
-      }
-    },
-    "meshObjectsRoot" : {
-      "type" : "object",
-      "required" : [ "_links" ],
-      "properties" : {
-        "_links" : {
-          "type" : "object",
-          "description" : "All available <<mesh_object_links,meshObject Links>> for the authenticated user.",
+          "description" : "Information about [paging](/api/technical-specifications/#paging)",
           "properties" : { }
         }
       }
@@ -366,7 +471,7 @@
       "properties" : {
         "_links" : {
           "type" : "object",
-          "description" : "All available <<index_links,Top-Level Links>> for the authenticated user.",
+          "description" : "All available Top-Level Links for the authenticated user.",
           "properties" : { }
         }
       }
@@ -551,6 +656,34 @@
         }
       }
     },
+    "meshChargebackList" : {
+      "type" : "object",
+      "required" : [ "_embedded", "_links", "page" ],
+      "properties" : {
+        "_links" : {
+          "type" : "object",
+          "description" : "Currently only contains the self link and pagination links.",
+          "properties" : { }
+        },
+        "_embedded" : {
+          "type" : "object",
+          "description" : "Contains the actual content of the paged response.",
+          "properties" : {
+            "meshChargebacks" : {
+              "type" : "array",
+              "description" : "List of meshChargeback objects.",
+              "items" : { }
+            }
+          },
+          "required" : [ "meshChargebacks" ]
+        },
+        "page" : {
+          "type" : "object",
+          "description" : "Information about [paging](/api/technical-specifications/#paging)",
+          "properties" : { }
+        }
+      }
+    },
     "meshChargeback" : {
       "type" : "object",
       "required" : [ "_links", "apiVersion", "kind", "metadata", "spec", "status" ],
@@ -592,7 +725,7 @@
         },
         "_links" : {
           "type" : "object",
-          "description" : "Available links <<links>> on a meshChargeback.",
+          "description" : "Available links on a meshChargeback.",
           "properties" : { }
         },
         "kind" : {
@@ -731,33 +864,84 @@
         }
       }
     },
-    "meshChargebackList" : {
+    "meshObjectsRoot" : {
       "type" : "object",
-      "required" : [ "_embedded", "_links", "page" ],
+      "required" : [ "_links" ],
       "properties" : {
         "_links" : {
           "type" : "object",
-          "description" : "Currently only contains the self link and <<paging,pagination>> links.",
-          "properties" : { }
-        },
-        "_embedded" : {
-          "type" : "object",
-          "description" : "Contains the actual content of the paged response.",
-          "properties" : {
-            "meshChargebacks" : {
-              "type" : "array",
-              "description" : "List of <<mesh_chargeback_response_fields,meshChargeback>>.",
-              "items" : { }
-            }
-          },
-          "required" : [ "meshChargebacks" ]
-        },
-        "page" : {
-          "type" : "object",
-          "description" : "See <<paging,Paging information>>.",
+          "description" : "All available meshObject Links for the authenticated user.",
           "properties" : { }
         }
       }
+    },
+    "api_meshobjects_meshresourceusagereports_platformTenantId_period1788543860" : {
+      "type" : "object",
+      "required" : [ "apiVersion", "fullPlatformIdentifier", "kind", "source" ],
+      "properties" : {
+        "lineItems" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "usageUnit" : {
+                "type" : "string",
+                "description" : "The unit of the given usageQuantity, for example, h for hours or d for days."
+              },
+              "usageCost" : {
+                "type" : "number",
+                "description" : "The cost per consumed usageUnit. usageQuantity multiplied by usageCost should always equal totalCost."
+              },
+              "sellerId" : {
+                "type" : "string",
+                "description" : "Optional. An identifier of the seller who provides the services and is the recipient of the payment. E.g. the name of a cloud provider, or for internal costs the name of a department."
+              },
+              "currency" : {
+                "type" : "string",
+                "description" : "The ISO-4217 compliant currency code, e.g. EUR or USD."
+              },
+              "usageQuantity" : {
+                "type" : "number",
+                "description" : "The usage quantity, for example, 48 if a product was used for 48 hours."
+              },
+              "sellerProductGroup" : {
+                "type" : "string",
+                "description" : "Optional. A sub-category of the seller if more fine-grained assignment is needed. E.g. different payment methods the seller has for the services it provides in a platform."
+              },
+              "totalCost" : {
+                "type" : "number",
+                "description" : "totalCost equals usageQuantity multiplied by usageCost."
+              },
+              "productName" : {
+                "type" : "string",
+                "description" : "Name of the product."
+              },
+              "usageType" : {
+                "type" : "string",
+                "description" : "To elaborate on the usageUnit, this field is used to describe what exactly is consumed and billed, for example, 'hours of CPU/RAM usage'."
+              }
+            },
+            "required" : [ "currency", "productName", "totalCost", "usageCost", "usageQuantity", "usageType", "usageUnit" ]
+          }
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "description" : "Required for backwards compatibility. v1 is the only supported version at the moment."
+        },
+        "fullPlatformIdentifier" : {
+          "type" : "string",
+          "description" : "An identifier in the format $platformInstance.$location, where $platformInstance refers to the identifier of the meshPlatform, and $location refers to the identifier of the meshLocation."
+        },
+        "kind" : {
+          "type" : "string",
+          "description" : "Always set this to meshResourceUsageReport."
+        },
+        "source" : {
+          "type" : "string",
+          "description" : "Name of the system where this ResourceUsageReport originates from."
+        }
+      },
+      "example" : "{\n    \"apiVersion\": \"v1\",\n    \"kind\": \"meshResourceUsageReport\",\n    \"fullPlatformIdentifier\": \"my-platform-instance.my-location\",\n    \"source\": \"Name of Source System\",\n    \"lineItems\": [\n        {\n            \"productName\": \"Virtual Machine\",\n            \"sellerId\": \"CloudHaven Inc.\",\n            \"sellerProductGroup\": \"Compute\",\n            \"usageQuantity\": 48,\n            \"usageType\": \"Hours of CPU/RAM usage\",\n            \"usageCost\": 1.2,\n            \"currency\": \"USD\",\n            \"usageUnit\": \"h\",\n            \"totalCost\": 57.6\n        },\n        {\n            \"productName\": \"SSD storage\",\n            \"sellerId\": \"CloudHaven Inc.\",\n            \"sellerProductGroup\": \"Storage\",\n            \"usageQuantity\": 480,\n            \"usageType\": \"Hours of usage multiplied by amounts of GB\",\n            \"usageCost\": 0.05,\n            \"currency\": \"USD\",\n            \"usageUnit\": \"h\",\n            \"totalCost\": 24\n        }\n    ]\n}"
     }
   }
 }

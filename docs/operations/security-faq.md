@@ -63,7 +63,7 @@ A dedicated Virtual Cloud Network is provided for the meshStack. This network is
 
 Yes, meshStack supports SSO and MFA.
 
-Activating SSO requires the integration between your own Enterprise Identity Provider (IDP) (e.g. Azure AD) with your respective meshStack.
+Activating SSO requires the integration between your own Enterprise Identity Provider (IDP) (e.g. Microsoft Entra ID) with your respective meshStack.
 
 MFA must be activated in the Enterprise IDP which is integrated with your meshStack.
 

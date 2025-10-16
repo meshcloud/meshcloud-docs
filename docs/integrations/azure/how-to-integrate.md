@@ -27,15 +27,15 @@ meshStack uses separate service principals for different tasks based on the best
 
 Depending on the way you choose to setup, you can either use an App Registration or an Enterprise Application principal. But in order to use an Enterprise Enrollment Account with automatic [Subscription provisioning](#5-set-up-subscription-provisioning), the usage of an App Registration principle is **mandatory**.
 
-In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the AAD Tenant containing your Azure Subscriptions and workloads.
-The Service Principal must be authorized in the scope of this AAD Tenant.
+In order to manage user roles and permissions, meshcloud requires a Service Principal for the replicator which is placed in the Entra ID Tenant containing your Azure Subscriptions and workloads.
+The Service Principal must be authorized in the scope of this Entra ID Tenant.
 
-### 2. Set AAD Level Permissions
+### 2. Set Entra ID Level Permissions
 
-1. Under **Azure Active Directory** &rarr; **Enterprise applications**, click on **New application**.
+1. Under **Entra ID** &rarr; **Enterprise applications**, click on **New application**.
 2. Click on **Create your own application**.
 3. Choose a name for example, `meshReplicator`.
-4. Choose "Register an application to integrate with Azure AD".
+4. Choose "Register an application to integrate with Entra ID".
 
 ![Enterprise application registration](/assets/app-creation-1.png)
 5. Choose "Accounts in this organizational directory only, Single tenant".
@@ -296,9 +296,9 @@ The requirements for the principal on the target tenant is identically with the 
 
 ##### meshPanel Configuration
 
-When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source tenant AAD.
+When creating a new platform configuration in the meshPanels admin section, choose Customer Agreement and fill in the form with the data you just noted down. The `Principal Client Secret`, `Principal Object ID` and `Billing Account Principal Client ID` refer to the data of the service principal from the billing/source Entra ID tenant.
 
-The `Destination AAD ID` must be an ID. Please don't use the domain name variant of it e.g. `*.onmicrosoft.com` but use its UUID form. The principal data in the **Access Configuration** part refers to the target tenant AAD service principal.
+The `Destination Entra ID Tenant` must be a UUID. Please don't use the domain name variant of it e.g. `*.onmicrosoft.com` but use its UUID form. The principal data in the **Access Configuration** part refers to the  service principal in the target Entra ID Tenant.
 
 > If the source AAD tenant is the same as the destination AAD tenant, ensure to use an ID and not the domain name variant for the source AAD tenant as well.
 

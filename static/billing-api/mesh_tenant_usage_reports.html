@@ -473,7 +473,7 @@ as cancelled, and the new as finalized. By default, meshTenantUsageReports are s
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is versioned and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -528,11 +528,11 @@ as cancelled, and the new as finalized. By default, meshTenantUsageReports are s
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>finalizedAfter</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that were finalized after the provided <a href="#data_types">date</a> (e.g. <code>2025-06-01T00:00:00Z</code>). You can use this filter to retrieve all meshTenantUsageReports finalized after your last request for processing them in your billing system. You can e.g. provide the latest finalizationDate you received in your last request. You may then receive the newly finalized usage reports of the new period and probably updated usage reports of previous periods. This filter parameter is exclusive, meaning it will only match reports that were finalized after the given date. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that were finalized after the provided date (e.g. <code>2025-06-01T00:00:00Z</code>). You can use this filter to retrieve all meshTenantUsageReports finalized after your last request for processing them in your billing system. You can e.g. provide the latest finalizationDate you received in your last request. You may then receive the newly finalized usage reports of the new period and probably updated usage reports of previous periods. This filter parameter is exclusive, meaning it will only match reports that were finalized after the given date. (optional)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cancelledAfter</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that were cancelled after the provided <a href="#data_types">date</a> (e.g. 2025-06-01T00:00:00Z). When you apply this filter is provided, you will only get cancelled usage reports, meaning outdated data that was already updated. This filter parameter is exclusive, meaning it will only match reports that were cancelled after the given date. (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter for meshTenantUsageReports that were cancelled after the provided date (e.g. 2025-06-01T00:00:00Z). When you apply this filter is provided, you will only get cancelled usage reports, meaning outdated data that was already updated. This filter parameter is exclusive, meaning it will only match reports that were cancelled after the given date. (optional)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>showCancelled</code></p></td>
@@ -544,11 +544,11 @@ as cancelled, and the new as finalized. By default, meshTenantUsageReports are s
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). See <a href="#paging">Paging information</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The page number (default=0). Information about [paging](/api/technical-specifications/#paging)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default={default-page-size}). See <a href="#paging">Paging information</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of elements in a single page (default=50). Information about [paging](/api/technical-specifications/#paging)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort</code></p></td>
@@ -595,17 +595,17 @@ Host: mesh-billing-url</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.meshTenantUsageReports[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of <a href="#mesh_tenantUsageReport_response_fields">meshTenantUsageReport</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of meshTenantUsageReports.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See <a href="#paging">Paging information</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information about [paging](/api/technical-specifications/#paging)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_links</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and <a href="#paging">pagination</a> links.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currently only contains the self link and pagination links.</p></td>
 </tr>
 </tbody>
 </table>
@@ -642,7 +642,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "922a8d0a-f804-4e2b-8aae-fa75309d6c98",
+        "platformTenantId" : "0491ab04-8213-4089-809b-d9ceb99cba11",
         "version" : 2
       },
       "status" : {
@@ -693,7 +693,7 @@ Content-Length: 3609
         "reportCategory" : "BILLING",
         "platformType" : "Azure",
         "platform" : "azure.prod",
-        "platformTenantId" : "4b2b90d4-2b39-45f2-9c55-693da31f8b82",
+        "platformTenantId" : "70db50e2-2306-4be9-bc66-5b4960b1fad2",
         "version" : 1
       },
       "status" : {
@@ -768,7 +768,7 @@ Content-Length: 3609
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is <a href="#versioning">versioned</a> and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meshApi is versioned and you should use  <code>application/vnd.meshcloud.api.meshtenantusagereport.v3.hal+json</code> as an <code>Accept</code> header to be guaranteed the V3 response format of this endpoint. New versions might be added in future.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1021,7 +1021,7 @@ Content-Length: 1392
     "reportCategory" : "BILLING",
     "platformType" : "Azure",
     "platform" : "azure.prod",
-    "platformTenantId" : "922a8d0a-f804-4e2b-8aae-fa75309d6c98",
+    "platformTenantId" : "0491ab04-8213-4089-809b-d9ceb99cba11",
     "version" : 2
   },
   "status" : {
@@ -1066,7 +1066,7 @@ Content-Length: 1392
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-10-15 09:26:17 UTC
+Last updated 2025-10-16 09:51:41 UTC
 </div>
 </div>
 </body>

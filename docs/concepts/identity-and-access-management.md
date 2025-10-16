@@ -22,7 +22,7 @@ graph LR;
     end
     IdP--OIDC/SAML-->IdB
     subgraph Azure
-      aad["Azure Active Directory"];
+      aad["Microsoft Entra ID"];
     end
     subgraph AWS
       awssso["AWS SSO"];
@@ -119,7 +119,7 @@ The next subsections discuss important considerations for choosing the right ide
 
 The cloud platforms supported by meshStack offer different technical IAM integration capabilities.
 While it's a key consideration for meshStack to deliver a unified multi-cloud IAM control plane,
-architects need to consider the unique capabilities of cloud platform IAM systems (e.g. AAD vs. Google Cloud Identity) and of their organizations' IAM architecture. Based on the platform's native capabilities,
+architects need to consider the unique capabilities of cloud platform IAM systems (e.g. Microsoft Entra ID vs. Google Cloud Identity) and of their organizations' IAM architecture. Based on the platform's native capabilities,
 meshStack supports the following identity provisioning strategies:
 
 |               | [meshStack-provisioned](#meshstack-provisioned-identities) |          [externally-provisioned](#externally-provisioned-identities)          |
@@ -129,7 +129,7 @@ meshStack supports the following identity provisioning strategies:
 |  Kubernetes   |                             -                              |  [supported](../integrations/kubernetes/index.md#access-control-integration)   |
 |   OpenShift   |                             -                              |       [supported](../integrations/openshift/index.md#idp-configuration)        |
 |      AWS      |         [deprecated](../integrations/aws/index.md)         |                   [supported](../integrations/aws/index.md)                    |
-|     Azure     |         [AAD B2B](../integrations/azure/index.md)          | [supported](../integrations/azure/index.md#azure-active-directory-integration) |
+|     Azure     |         [Microsoft Entra ID B2B](../integrations/azure/index.md)          | [supported](../integrations/azure/index.md#azure-active-directory-integration) |
 |      GCP      |                             -                              |                   [supported](../integrations/gcp/index.md)                    |
 
 #### Availability of Users and Atttributes
@@ -139,7 +139,7 @@ routines outside of meshStack. Depending on the existing IAM landscape in your o
 setting up synchronization to on-premise directories and other IAM systems.
 
 In order to correctly replicate user permissions, meshStack needs to map meshUser objects with permissions on a meshProject
-to "platform user" objects in a platform's IAM system (e.g. an AAD user object). To perform this mapping, meshStack requires an `external user id` (shorthand `euid`) attribute that needs to be present on all user objects and in all cloud platforms. This attribute can typically be an existing `email` or `username`, however it needs to be unique, stable and available on all systems.
+to "platform user" objects in a platform's IAM system (e.g. a Microsoft Entra ID user object). To perform this mapping, meshStack requires an `external user id` (shorthand `euid`) attribute that needs to be present on all user objects and in all cloud platforms. This attribute can typically be an existing `email` or `username`, however it needs to be unique, stable and available on all systems.
 
 > meshStack will log replication warnings when it fails to replicate permissions for externally provisioned user identities, e.g. because a user could not be located on the platform.
 
@@ -160,7 +160,7 @@ The diagram below explains the components involved in an `euid` configuration an
 graph LR;
     subgraph Enterprise IAM
       IdP["Identity Provider"];
-      IdLSource[(Identity Lookup Source<br>AAD or GCD)]
+      IdLSource[(Identity Lookup Source<br>Microsoft Entra ID or GCD)]
       IdCSource[(Identity Connector Source<br>LDAP)]
       IdP["Identity Provider"]-.-IdLSource
       IdP["Identity Provider"]-.-IdCSource
@@ -177,7 +177,7 @@ graph LR;
     IdLSource--user data with euid-->IdL
     IdCSource--user data with euid-->IdC
     subgraph Azure
-      aad["Azure Active Directory"];
+      aad["Microsoft Entra ID"];
     end
     subgraph AWS
       awssso["AWS SSO"];
@@ -202,7 +202,7 @@ graph LR;
 ```
 
 Note that the diagram shows IAM systems by their "role". It is possible that a solution IAM architecture
-uses the same IAM system in multiple roles simultaneously. For example, it's common to use the same AAD tenant as an Identity Provider, Identity Lookup Source and as a target IAM system for an Azure meshPlatform.
+uses the same IAM system in multiple roles simultaneously. For example, it's common to use the same Microsoft Entra ID tenant as an Identity Provider, Identity Lookup Source and as a target IAM system for an Azure meshPlatform.
 Nonetheless, operators need to configure each of these roles individually. The following sections provide links to the appropriate configuration references and summarises
 euid attributes supported for the particular component or system.
 
@@ -215,7 +215,7 @@ However, some identity providers only support a restricted set of user attribute
 | Identity Provider | euid attributes supported                   |
 | ----------------- | ------------------------------------------- |
 | AD FS             | every attribute available via claims mapper |
-| AAD               | `userPrincipalName`, `mailNickName`         |
+| Microsoft Entra ID               | `userPrincipalName`, `mailNickName`         |
 | GCP               | `primaryEmail`                              |
 
 For further details, please consult the [Identity Provider configuration reference](../settings/identity-provider.md).
@@ -240,7 +240,7 @@ This email address can also be used to set a user's `euid`, see the [user onboar
 | Identity Lookup Source | euid attributes supported                                               |
 | ---------------------- | ----------------------------------------------------------------------- |
 | none                   | email (manual input)                                                    |
-| AAD                    | email, any user attribute, incl. SchemaExtensions and Custom Attributes |
+| Microsoft Entra ID                    | email, any user attribute, incl. SchemaExtensions and Custom Attributes |
 | GCP                    | email, any Schema Extension attribute                                   |
 
 For further details, please consult the [Identity Lookup configuration reference](../settings/identity-lookup.md).
@@ -323,9 +323,9 @@ meshStack can thus only support lookup in one or two platform user attributes.
 | Cloud Foundry      | `User.username`                           |
 | meshMarketplace\*  | `userPrincipalName`, `mail`               |
 
-\*_with AAD permission Replication_
+\*_with Microsoft Entra ID permission Replication_
 
-At the moment only AAD offers a choice of user lookup attributes. Platform engineers can configure these globally for all meshPlatforms.
+At the moment only Microsoft Entra ID offers a choice of user lookup attributes. Platform engineers can configure these globally for all meshPlatforms.
 
 <!--snippet:mesh.replicator-->
 
@@ -336,8 +336,8 @@ The following configuration options are available at `mesh.replicator`:
 let Replicator =
     {-
       aadUserLookupStrategy:
-        Determines the attribute used for looking up users in AADs.
-        This setting is shared across all Azure and meshMarketplace platforms configured to use an AAD
+        Determines the attribute used for looking up users in Microsoft Entra ID.
+        This setting is shared across all Azure and meshMarketplace platforms configured to use an Microsoft Entra ID
         for user permission replication.
     -}
       { aadUserLookupStrategy : Platform.Azure.AzureLookupStrategy }
@@ -352,13 +352,13 @@ let Replicator =
 ```dhall
 let AzureLookupStrategy =
     {-
-      Determines how meshStack which AAD user object attribute meshStack will use to map a meshUser by its euid.
+      Determines how meshStack which Microsoft Entra ID user object attribute meshStack will use to map a meshUser by its euid.
 
       UserByMailLookupStrategy:
-       compares the meshUser's euid to the 'mail' attribute on the AAD User.
+       compares the meshUser's euid to the 'mail' attribute on the Microsoft Entra ID User.
 
       UserByUsernameLookupStrategy:
-         compares the meshUser's euid to the 'userPrincipalName' attribute on the AAD User.
+         compares the meshUser's euid to the 'userPrincipalName' attribute on the Microsoft Entra ID User.
 
       Both strategies use case insensitive comparison.
     -}
@@ -381,10 +381,10 @@ Additionally added group permissions are discouraged, but possible for some plat
 | GCP                    |               ✅                |
 | OpenStack              |               ✅                |
 | OpenShift              |               ✅                |
-| AKS (AAD Permissions¹) |               ❌                |
+| AKS (Microsoft Entra ID Permissions¹) |               ❌                |
 | CloudFoundry²          |               ✅                |
 
-¹: This applies only the the user group permissions that are applied in the AAD to give the users general access to the AKS cluster. The cluster role assignments in the cluster are not affected.
+¹: This applies only the the user group permissions that are applied in the Microsoft Entra ID to give the users general access to the AKS cluster. The cluster role assignments in the cluster are not affected.
 
 ²: In Cloud Foundry the permissions are handled by the IDP and no direct group permissions replication is happening on the platform.
 
