@@ -1,4 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import apiSidebar from './docs/api/sidebar';
+import meteringApiSidebar from './docs/metering-api/sidebar';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -255,6 +257,30 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+  api: [
+    'api/introduction',
+    {
+      type: 'category',
+      label: 'Authentication',
+      items: [
+        'api/authentication/api-keys',
+        'api/authentication/basic-auth'
+      ]
+    },
+    'api/technical-specifications',
+    {
+      type: 'category',
+      label: 'Resources',
+      collapsed: false,
+      items: apiSidebar
+    },
+    {
+      type: 'category',
+      label: 'Metering API',
+      collapsed: false,
+      items: meteringApiSidebar
+    },
+  ]
 };
 
 export default sidebars;
