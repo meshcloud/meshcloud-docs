@@ -280,6 +280,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: meteringApiSidebar
     },
+    'api/deprecated-resources'
   ]
 };
 
