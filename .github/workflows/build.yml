@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -28,7 +28,7 @@ jobs:
       - name: docs - install
         run: yarn install --frozen-lockfile
       - name: docs - build
-        run: yarn lint && yarn build
+        run: yarn build && yarn lint # We first build and then lint because some files might reference generated OpenAPI markdown files
       - name: snippets - install
         run: yarn install --frozen-lockfile
         working-directory: snippets

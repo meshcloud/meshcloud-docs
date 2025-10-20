@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "yarn run apidocs:rebuild && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -15,7 +15,8 @@
     "typecheck": "tsc",
     "lint": "run-s lint:*",
     "lint:text": "textlint docs/",
-    "lint:markdown": "markdownlint docs/*.md --config .markdownlint.json"
+    "lint:markdown": "markdownlint docs/*.md --config .markdownlint.json",
+    "apidocs:rebuild": "docusaurus clean-api-docs all && docusaurus gen-api-docs all && ts-node hack/fix-api-sidebar.ts"
   },
   "dependencies": {
     "@docusaurus/core": "3.8.0",
@@ -23,10 +24,13 @@
     "@docusaurus/theme-mermaid": "3.8.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "docusaurus-plugin-openapi-docs": "^4.5.1",
+    "docusaurus-theme-openapi-docs": "^4.5.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "textlint-rule-terminology": "4"
+    "textlint-rule-terminology": "4",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.0",
