@@ -34,28 +34,13 @@ There are two main types of communications in meshStack:
 
 2. **Action Required**: Automates assignment of actionable tasks including security reviews, access validation, and metadata accuracy checks. These tasks ensure compliance and accountability by embedding ownership directly into workflows, providing stakeholders with real-time visibility into progress and reducing manual tracking overhead. You can also assign a due date to the action required communication to ensure timely completion.
 
-## Creating Communications
+## Skip Email Notifications
 
-When creating a communication in meshStack, you have several options to configure how it's delivered to recipients.
+When creating a communication in meshStack, you can control how it's delivered to recipients.
+Communications are always visible in meshPanel in the workspace receiving the communication. 
+All users responsible for the communication's target object, for example a building block, will receive an email notification about the new communication.
 
-### Skip Email Notifications
-
-A checkbox option labeled "Skip email notifications to recipients" is available in the general information section when creating a communication. This feature allows you to control whether email notifications are sent to recipients.
-
-**Default Behavior (Checkbox Unchecked)**
-- Communications are created and visible in the panel
-- Email notifications are sent to all recipients
-
-**Skip Email Notifications (Checkbox Checked)**
-- Communications are created and visible in the panel
-- No email notifications are sent to recipients
-
-**When to Use This Feature**
-
-Skip email notifications when you want to:
-- Create communications that are only visible in the panel
-- Avoid sending additional email notifications when recipients may already be aware through other channels
-- Manage communication visibility without generating email traffic
+The "skip email notifications" option allows you to instruct meshStack to skip sending this email.
 
 ## Related Resources
 
