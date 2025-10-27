@@ -93,7 +93,12 @@ const sidebars: SidebarsConfig = {
             'guides/developer-portal/how-to-ensure-compliant-deletion-of-tenants',
             'guides/developer-portal/how-to-manage-landing-zones',
             'guides/developer-portal/how-to-manage-policies',
-            'guides/developer-portal/how-to-manage-osb'
+            'guides/developer-portal/how-to-manage-osb',
+            'guides/developer-portal/how-to-provide-security-contact',
+            'guides/developer-portal/how-to-copilot',
+            'guides/developer-portal/how-to-discover-services',
+            'guides/developer-portal/how-to-generate-building-block-documentation',
+            'guides/developer-portal/how-to-email-branding'
           ],
         },
         {
@@ -114,17 +119,6 @@ const sidebars: SidebarsConfig = {
           label: 'Platform Ecosystem',
           items: [
             'guides/platform-ecosystem/how-to-enable-a-new-platform-team',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Developer Engagement',
-          items: [
-            'guides/developer-engagement/how-to-provide-security-contact',
-            'guides/developer-engagement/how-to-copilot',
-            'guides/developer-engagement/how-to-discover-services',
-            'guides/developer-engagement/how-to-generate-building-block-documentation',
-            'guides/developer-engagement/how-to-email-branding'
           ],
         },
       ],
