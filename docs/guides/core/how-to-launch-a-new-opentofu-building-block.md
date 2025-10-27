@@ -306,5 +306,5 @@ The owner of the Building Block definition can access the logs by switching to â
 
 ### Guides
 
-- [How to Generate Building Block Documentation](../../guides/developer-engagement/how-to-generate-building-block-documentation.md)
+- [How to Generate Building Block Documentation](../../guides/developer-portal/how-to-generate-building-block-documentation.md)
 - [How to Launch a New Manual Building Block](../../guides/core/how-to-launch-a-new-manual-building-block.md)

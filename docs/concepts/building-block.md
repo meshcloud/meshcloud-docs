@@ -202,7 +202,7 @@ Timeout warnings in the building block run details provide transparency into exe
 
 ### Guides
 
-- [How to Generate Building Block Documentation](../guides/developer-engagement/how-to-generate-building-block-documentation.md)
+- [How to Generate Building Block Documentation](../guides/developer-portal/how-to-generate-building-block-documentation.md)
 - [How to Provide Your Own Platform](../guides/developer-portal/how-to-provide-your-own-platform.md)
 - [How to Launch a New Manual Building Block Definition](../guides/core/how-to-launch-a-new-manual-building-block.md)
 - [How to Launch a New OpenTofu Building Block](../guides/core/how-to-launch-a-new-opentofu-building-block.md)

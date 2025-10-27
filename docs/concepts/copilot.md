@@ -25,7 +25,7 @@ meshStack Copilot is not generally available yet; however, we're offering a publ
 
 ### How to use meshStack Copilot
 
-For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot Guide](../guides/developer-engagement/how-to-copilot.md).
+For step-by-step instructions on how to enable and use meshStack Copilot, see our [How to use meshStack Copilot Guide](../guides/developer-portal/how-to-copilot.md).
 
 ### How does Copilot work?
 
@@ -100,6 +100,6 @@ All conversations with meshStack Copilot, including all data provided to the mod
 
 ### Guides
 
-- [How to use meshStack Copilot Guide](../guides/developer-engagement/how-to-copilot.md)
-- [How to Discover Services Guide](../guides/developer-engagement/how-to-discover-services.md)
-- [How to Generate Building Block Documentation Guide](../guides/developer-engagement/how-to-generate-building-block-documentation.md)
+- [How to use meshStack Copilot Guide](../guides/developer-portal/how-to-copilot.md)
+- [How to Discover Services Guide](../guides/developer-portal/how-to-discover-services.md)
+- [How to Generate Building Block Documentation Guide](../guides/developer-portal/how-to-generate-building-block-documentation.md)

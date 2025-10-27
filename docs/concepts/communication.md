@@ -4,27 +4,13 @@ title: Communications
 ---
 
 > **Note:**  
-> Communications are available in the Communication Center Light with the meshStack module **Developer Portal** and the **Developer Engagement** module.
+> Communications are available in meshStack with the meshStack module **Developer Portal**.
 
 Communications in meshStack provide a structured way to manage and deliver messages to users across different platforms and workspaces. Communications can be sent out by administrators via the admin area and platform engineers via the platform builder.
 
 ## Communication Center
 
 The communication center is the central place for creating and managing communications to application teams within meshStack. It allows administrators and platform engineers to get in touch with application teams at scale and track progress.
-
-### Module Capability Comparison
-
-| Feature | Developer Portal "Light Version" | Developer Engagement "Full Version"|
-|---|:---:|:---:|
-| Communication Type Notification | ☑️ | ☑️ |
-| Communication Type "Action Required" with due date and reminder | ⬜ | ☑️ |
-| Communications Targeting a Workspace by name or Platform | ☑️ | ☑️ |
-| Communications Targeting Workspaces by tag, Tenants and Building Blocks | ⬜ | ☑️ |
-| Create communications via meshObject API | ⬜ | ☑️ |
-| Message of the Day | ☑️ | ☑️ |
-| Email Notifications about new Communications | ☑️ | ☑️ |
-| Communication Section in Platform Builder | ☑️ (limited) | ☑️ |
-| Communication Center in Admin Area | ☑️ | ☑️ |
 
 ## Communication Types
 
@@ -44,5 +30,5 @@ The "skip email notifications" option allows you to instruct meshStack to skip s
 
 ## Related Resources
 
-- [How to Maintain Security Contacts with meshStack](../guides/developer-engagement/how-to-provide-security-contact.md)
-- [How to Customize Emails in meshStack](../guides/developer-engagement/how-to-email-branding.md)
+- [How to Maintain Security Contacts with meshStack](../guides/developer-portal/how-to-provide-security-contact.md)
+- [How to Customize Emails in meshStack](../guides/developer-portal/how-to-email-branding.md)

@@ -84,7 +84,7 @@ Optionally meshStack sends out mails to fixed set of recipients configured in dh
 
 ### Can the style of the mails be influenced? For example via HTML?
 
-Yes you can do this completely yourself via the Admin Area. To learn more read [How to Brand Emails sent by meshStack](../guides/developer-engagement/how-to-email-branding.md).
+Yes you can do this completely yourself via the Admin Area. To learn more read [How to Brand Emails sent by meshStack](../guides/developer-portal/how-to-email-branding.md).
 
 ### Can BCC be added
 

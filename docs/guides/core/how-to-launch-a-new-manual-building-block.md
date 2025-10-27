@@ -36,6 +36,6 @@ Please be aware that we focus the guide on the critical configuration items for 
 
 ### Guides
 
-- [How to Generate Building Block Documentation with Copilot](../../guides/developer-engagement/how-to-generate-building-block-documentation.md)
+- [How to Generate Building Block Documentation with Copilot](../../guides/developer-portal/how-to-generate-building-block-documentation.md)
 - [How to Launch a New OpenTofu Building Block](../../guides/core/how-to-launch-a-new-opentofu-building-block.md)
 - [How to Offer an AWS S3 Bucket via Marketplace](../../getting-started/building-aws-quickstart-guide.md)
