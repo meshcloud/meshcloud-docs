@@ -52,6 +52,10 @@ GitHub Actions building blocks use GitHub Actions workflows to automate resource
 
 GitLab CI/CD building blocks utilize GitLab's pipeline capabilities to automate provisioning steps. The building block definition specifies a `.gitlab-ci.yml` configuration, which runs jobs and scripts to set up resources. This approach integrates seamlessly with GitLab-based development and deployment workflows.
 
+### Azure DevOps Pipelines Implementation
+
+Azure DevOps Pipelines building blocks leverage Azure DevOps pipeline capabilities to automate provisioning and configuration tasks. The building block definition references a pipeline in Azure DevOps, which is triggered and executed as part of the provisioning process. This approach integrates seamlessly with teams using Azure DevOps for source control and automation workflows.
+
 ## Building Block Inputs
 
 Building Blocks work on the principle of collecting input parameters from various sources to customize the provisioning process.
