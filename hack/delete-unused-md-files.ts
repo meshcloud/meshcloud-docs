@@ -6,7 +6,7 @@ import fs from "fs";
 import path from "path";
 import sidebars from "../sidebars";
 
-const filesToIgnore = ['apis.index.md'];
+const filesToIgnore = [];
 
 const docsDir = path.join(__dirname, "..", "docs");
 

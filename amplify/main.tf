@@ -410,6 +410,12 @@ resource "aws_amplify_app" "docs" {
 
   ## Redirect old API documentation to new OpenAPI-based docs
   custom_rule {
+    source = "/apis.index"
+    target = "/api/introduction/"
+    status = "301"
+  }
+
+  custom_rule {
     source = "/api/index.html"
     target = "/api/introduction/"
     status = "301"
@@ -427,7 +433,6 @@ resource "aws_amplify_app" "docs" {
     target = "https://plausible.io/js/plausible.js"
     status = 200
   }
-
 
   custom_rule {
     source = "/api/event"
