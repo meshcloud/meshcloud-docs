@@ -408,6 +408,19 @@ resource "aws_amplify_app" "docs" {
 
   # note: rules here are processed top to bottom!
 
+  ## Redirect old API documentation to new OpenAPI-based docs
+  custom_rule {
+    source = "/api/index.html"
+    target = "/api/introduction/"
+    status = "301"
+  }
+
+  custom_rule {
+    source = "/billing-api/index.html"
+    target = "/metering-api/metering-api-root/"
+    status = "301"
+  }
+
   ## Redirects required for bypassing adblockers with plausible.io
   custom_rule {
     source = "/js/script.js"
