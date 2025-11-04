@@ -57,7 +57,7 @@ Kubernetes nodes are secured by a shared responsibility model. meshcloud GmbH us
 
 Technical safeguards are implemented such as detecting and responding to Distributed Denial-of-Service (DDoS) attacks, data encryption, etc by leveraging cloud provider services.
 
-A dedicated Virtual Cloud Network is provided for the meshStack. This network is completely encapsulated from other meshStacks and their dedicated customer networks. The network configuration also includes the usage of Security Groups to strictly configure communication in the network.
+Each meshStack deployment is provided with a dedicated namespace and network isolation through network policies to ensure complete separation from other meshStack instances and customer environments. Network policies are strictly configured to allow only necessary communication paths and traffic while blocking all other network traffic by default.
 
 ### Does meshStack support Single Sign-On (SSO) and Multi-Factor-Authentication (MFA)?
 
