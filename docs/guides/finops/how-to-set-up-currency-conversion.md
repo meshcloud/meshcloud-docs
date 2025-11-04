@@ -48,7 +48,7 @@ Managing cloud costs across multiple currencies can be confusing and lead to rep
 ### 2b. Enable Custom API Exchange Rates
 
 - In the **Financials** tab, select **Custom API Exchange Rates**.
-- Provide your own exchange rates via API. You can find the API docs for this [here](https://docs.meshcloud.io/api/index.html#_meshexchangerate)
+- Provide your own exchange rates via API. You can find the API docs in the [API section](../../api/introduction.md).
 - If no rates are provided by the finalization date and the currency converter is turned on, meshStack default exchange rates will apply for that month.
 
 ### Related Resources

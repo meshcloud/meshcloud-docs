@@ -120,7 +120,7 @@ Deprecation follows a phased approach:
   meshStack. API clients using the old endpoint will receive an HTTP 406, HTTP 415 or HTTP 404 response as appropriate
   for the request.
 
-Please refer to the [Deprecated Resources](pathname:///api/index.html#deprecated-resources) section for a list of deprecated and outdated endpoints.
+Please refer to the [Deprecated Resources](./deprecated-resources.mdx) section for a list of deprecated and outdated endpoints.
 
 ## Rate Limiting
 

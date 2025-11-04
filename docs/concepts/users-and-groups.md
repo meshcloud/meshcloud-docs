@@ -36,7 +36,7 @@ A group is a collection of users, used to manage permissions collectively. Group
 ### Admin Groups
 
 To avoid assigning multiple users individually, you can create Admin Groups. These groups can be assigned to roles in the same way as individual users.
-You can view Admin Groups within your Administration Area. Currently, the creation of Admin Groups is only possible via the [meshStack API](pathname:///api/), namely [meshWorkspaceUserGroups API endpoint](pathname:///api/index.html#mesh_workspaceusergroup).
+You can view Admin Groups within your Administration Area. Currently, the creation of Admin Groups is only possible via the [meshStack API](../api/introduction.md).
 
 ### Workspace User Groups
 
