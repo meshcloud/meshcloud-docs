@@ -97,7 +97,7 @@ Service instances are charged for each started hour using the normalized hourly 
 
 #### Quantity-based Units
 
-Direct support for charging based on quantity units (e.g., "GB of messages stored") is not available. However, you can report custom cost data using the meshResourceUsageReports API to meshStack. Refer to the [Metering API documentation](../../api/introduction.md) for more details.
+Direct support for charging based on quantity units (e.g., "GB of messages stored") is not available. However, you can report custom cost data using the meshResourceUsageReports API to meshStack. Refer to the [Metering API documentation](pathname:///metering-api/mesh-resource-usage-report-put/) for more details.
 
 #### Setup Fees
 
