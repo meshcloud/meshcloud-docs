@@ -105,7 +105,7 @@ Two options are available: `Platform Team Only` and `Platform Team and Workspace
 
 Platform teams can always trigger new building block runs and view all logs of any building block they own the building block definition of.
 
-When set to `Platform Team Only` workspace Users cannot manually trigger new building block runs except by updating inputs. Also, workspace users can only review building block run logs explicitly flagged as [user messages](https://docs.meshcloud.io/api/index.html#_update_sources_and_steps).
+When set to `Platform Team Only` workspace Users cannot manually trigger new building block runs except by updating inputs. Also, workspace users can only review building block run logs explicitly flagged as user messages.
 
 > **Note:** Building Blocks using the OpenTofu implementation type do not emit "user messages" at this time. Therefore, if you select the `Platform Team Only` option, workspace users will not see any logs for OpenTofu building blocks.
 
@@ -202,7 +202,7 @@ Timeout warnings in the building block run details provide transparency into exe
 
 ### Guides
 
-- [How to Generate Building Block Documentation](../guides/developer-engagement/how-to-generate-building-block-documentation.md)
+- [How to Generate Building Block Documentation](../guides/developer-portal/how-to-generate-building-block-documentation.md)
 - [How to Provide Your Own Platform](../guides/developer-portal/how-to-provide-your-own-platform.md)
 - [How to Launch a New Manual Building Block Definition](../guides/core/how-to-launch-a-new-manual-building-block.md)
 - [How to Launch a New OpenTofu Building Block](../guides/core/how-to-launch-a-new-opentofu-building-block.md)

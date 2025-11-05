@@ -14,7 +14,7 @@ Maintaining accurate and up-to-date security contact information is critical for
 ## Prerequisites
 
 - You have admin access to meshStack and permission to manage tags and communications.
-- You have the Developer Portal and Developer Engagement module enabled.
+- You have the Developer Portal module enabled.
 
 ## Step by Step Guide
 

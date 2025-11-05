@@ -415,7 +415,6 @@ resource "aws_amplify_app" "docs" {
     status = 200
   }
 
-
   custom_rule {
     source = "/api/event"
     target = "https://plausible.io/api/event"
@@ -465,6 +464,26 @@ resource "aws_amplify_app" "docs" {
     target = "/blog/rss.xml"
   }
 
+
+  ## Redirect old API documentation to new OpenAPI-based docs
+  custom_rule {
+    source = "/apis.index"
+    target = "/api/introduction/"
+    status = "301"
+  }
+
+  custom_rule {
+    source = "/api/index.html"
+    target = "/api/introduction/"
+    status = "301"
+  }
+
+  custom_rule {
+    source = "/billing-api/index.html"
+    target = "/metering-api/metering-api-root/"
+    status = "301"
+  }
+  
   // some legacy links still use the format /mydocs instead of /mydocs/ 
   // for these links fallback to client side routing
   // https://docs.aws.amazon.com/amplify/latest/APIReference/API_CustomRule.html
