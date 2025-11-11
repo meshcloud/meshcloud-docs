@@ -171,41 +171,109 @@ In order for meshStack to fetch the right token, it needs to know the unique ID 
 
 #### Required Platform Configuration
 
+Before configuring Azure Function invocation, ensure you have:
+- An Azure Function App deployed and running
+- The meshStack replicator Service Principal already created in your Azure tenant
+- Appropriate permissions to modify Enterprise Applications and API permissions in Azure
+
 In order to make an Azure Function only accessible via the replicator's Service Principal, follow these steps:
 
 > If these steps are automated via Terraform you end up with a non working Azure Function. Until Terraform solves this problem, please perform the setup steps manually in the Azure panel.
 
-1. Create a SAMI or UAMI for your function (this is only required if you need the function to have permissions for Azure based resources like starting VMs, connecting Log Workspaces etc).
+1. Create a SAMI or UAMI for your function. This managed identity is used by the function to authenticate and perform operations on Azure resources.
 
     ![System assigned identity](/assets/azure_function/system-assigned-identity.png)
+
+    > **Important:** After creating the managed identity, assign it the necessary Azure RBAC permissions based on what your function needs to do. Common permissions include:
+    > - `Contributor` or `Owner` role on the target subscription or resource group (if the function creates or modifies resources)
+    > - `User Access Administrator` role (if the function assigns RBAC roles to users or groups)
+    > - Specific permissions like `Microsoft.Resources/tags/write` for tagging operations
+    > - `Reader` role at minimum for read-only operations
+    >
+    > You can assign these roles in the Azure Portal under the subscription's or resource group's "Access control (IAM)" section, using the managed identity's Object ID.
 
 2. Lock down your function to only allow assigned users in the `Properties` section of the Enterprise Application created for the SAMI or UAMI in step 1.
 
     ![Assigned users only](/assets/azure_function/assigned-users.png)
 
-3. Modify the Manifest of the Enterprise Application from step 2. Create a custom [Application Role](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles). It's only possible to assign real users and unfortunatly no Service Principals directly to the function so this additional steps are required. Edit the Application Roles manifest like in this JSON:
+3. Configure the Function App's Authentication to allow the replicator Service Principal.
+
+    a. Go to your Function App → **Authentication**
+    
+    b. Click on the Microsoft identity provider to edit it
+    
+    c. Under **Additional checks** section, find **Client application requirement**
+    
+    d. Select **"Allow requests from specific client applications"**
+    
+    e. Click **+ Add allowed client application**
+    
+    f. Enter the **Application (client) ID** of your meshStack replicator Service Principal
+       - You can find this in **Microsoft Entra ID** → **App registrations** → your replicator SP → **Overview** → **Application (client) ID**
+    
+    g. Click **Add** and then **Save** the authentication configuration
+    
+    > **Note:** This step is critical. Without adding the replicator's client ID to the allowed applications list, you will receive a 403 Forbidden error when meshStack attempts to invoke the function, even if all other permissions are correctly configured.
+
+4. Create a custom Application Role in the Enterprise Application manifest. This role will allow the replicator Service Principal to authenticate and invoke your function. 
+
+    In the Enterprise Application from step 2, navigate to the Manifest and add a new entry to the `appRoles` array. You can choose any name for the `displayName` and `value` fields (we use "SPP-Access" and "Access" as examples here):
 
     ```json
     {
       "allowedMemberTypes": [
         "Application"
       ],
-      "description": "Allows an SPP to get a token to a restricted application",
+      "description": "Allows the replicator Service Principal to invoke this Azure Function",
       "displayName": "SPP-Access",
-      "id": "<RANDOM_UUID>",
+      "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
       "isEnabled": true,
-      "lang": null,
-      "origin": "Application",
       "value": "Access"
     }
     ```
 
+    > **Note:** Replace the `id` value with a newly generated UUID/GUID. You can generate one using:
+    > - PowerShell: `New-Guid`
+    > - Linux/Mac: `uuidgen`
+    > - Online UUID generator: https://www.uuidgenerator.net/
+
     ![App Role Manifest](/assets/azure_function/app-role-manifest.png)
 
-4. Now modify the API permissions of the **App Registration** belonging to the **replicator Service Principal**. This will allow meshStack's replicator to invoke the Azure Function. Open the `API permissions` screen and add the newly created `SPP-Access` Application Role. Don't forget to grant admin consent again afterwards.
+5. Grant the replicator Service Principal permission to use the Application Role you just created.
+
+    **What you're doing:** Allowing the meshStack replicator to call your Azure Function by granting it the Application Role you created.
+
+    **Detailed steps:**
+
+    a. First, get your Function App's Application ID:
+       - Go to **Microsoft Entra ID** → **Enterprise Applications**
+       - Search for your Function App name
+       - Click on it → **Properties**
+       - Copy the **Application ID** (you'll need this in step d)
+
+    b. Navigate to your replicator's App Registration:
+       - Go to **Microsoft Entra ID** → **App registrations**
+       - Find and click on your **meshStack replicator Service Principal**
+
+    c. Add API permissions:
+       - Click **API permissions** (left menu)
+       - Click **+ Add a permission**
+       - Click the **APIs my organization uses** tab
+       - **Paste the Application ID** you copied in step (a) into the search box
+       - Click on your Function App when it appears
+
+    d. Select your Application Role:
+       - You should now see **Application permissions** section
+       - Check the box next to the role you created in step 4 (e.g., "SPP-Access" or whatever name you chose)
+       - Click **Add permissions**
+
+    e. Grant admin consent:
+       - Back in the API permissions screen, click **Grant admin consent for [your tenant]**
+       - Click **Yes** to confirm
+       - Verify the status shows a green checkmark
 
     ![Assign the Application Role to SP](/assets/azure_function/sp-role.png)
 
-5. _Optional_ In case you see an authorization error when the replicator wants to invoke the function try to set `"accessTokenAcceptedVersion" : "2"` in the app registration manifests of the replicator service principal and the app registration manifest of the Azure Function.
+6. _Optional_ In case you see an authorization error when the replicator wants to invoke the function try to set `"accessTokenAcceptedVersion" : "2"` in the app registration manifests of the replicator service principal and the app registration manifest of the Azure Function.
 
 After these steps, the meshStack replicator should be able to fetch a token scoped to this Application Role so it can invoke the Azure Function using App Authentication.
