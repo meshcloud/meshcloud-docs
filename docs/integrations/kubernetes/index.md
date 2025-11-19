@@ -209,14 +209,52 @@ roleRef:
 
 ### Service Account Token
 
-Next, retrieve the access token for the service accounts:
+#### Kubernetes 1.24 and Later
+
+Starting with Kubernetes 1.24, service account tokens are no longer automatically created as secrets. You need to manually create long-lived token secrets for the service accounts.
+
+Create the secrets for both service accounts:
+
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: meshfed-service-token
+  namespace: meshcloud
+  annotations:
+    kubernetes.io/service-account.name: meshfed-service
+type: kubernetes.io/service-account-token
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: meshfed-metering-token
+  namespace: meshcloud
+  annotations:
+    kubernetes.io/service-account.name: meshfed-metering
+type: kubernetes.io/service-account-token
+```
+
+Apply these secrets with `kubectl apply -f <filename>.yaml`.
+
+Next, retrieve the access tokens:
+
+```bash
+kubectl get secret meshfed-service-token -n meshcloud -o jsonpath='{.data.token}' | base64 --decode
+kubectl get secret meshfed-metering-token -n meshcloud -o jsonpath='{.data.token}' | base64 --decode
+```
+
+#### Kubernetes 1.23 and Earlier
+
+For Kubernetes versions before 1.24, tokens are automatically created. Retrieve them using:
 
 ```bash
 kubectl get serviceaccount meshfed-service -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs kubectl describe secret -n meshcloud
 kubectl get serviceaccount meshfed-metering -n meshcloud -o json | jq '.secrets[].name' | grep token | xargs kubectl describe secret -n meshcloud
 ```
 
-Platform engineers need to securely inject these access token into the configuration of the Kubernetes modules.
+Platform engineers need to securely inject these access tokens into the configuration of the Kubernetes modules.
 
 ### Custom meshProject Roles
 

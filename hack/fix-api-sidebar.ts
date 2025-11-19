@@ -16,6 +16,30 @@ function removeIntroduction(relativePath, introId) {
     return filtered;
 }
 
+/**
+ * Sorts sidebar items alphabetically by label (case-insensitive)
+ */
+function sortSidebarItems(sidebar) {
+    return sidebar.map((item) => {
+        if (item.type === 'category' && item.items && Array.isArray(item.items)) {
+            // Sort the items within the category
+            const sortedItems = [...item.items].sort((a, b) => {
+                // Handle both doc items and nested categories
+                const labelA = typeof a === 'string' ? a : (a.label || '');
+                const labelB = typeof b === 'string' ? b : (b.label || '');
+                return labelA.localeCompare(labelB, undefined, { sensitivity: 'base' });
+            });
+            
+            // Recursively sort nested categories
+            return {
+                ...item,
+                items: sortSidebarItems(sortedItems)
+            };
+        }
+        return item;
+    });
+}
+
 // Process main API sidebar
 let filteredSidebar = removeIntroduction('../docs/api/sidebar.ts', 'api/meshstack-api-documentation');
 
@@ -41,14 +65,25 @@ if (objectItems.length > 0) {
     });
 }
 
+// Sort all sidebar items
+const sortedSidebar = sortSidebarItems(filteredSidebar);
+
 fs.writeFileSync(
     path.join(__dirname, '../docs/api/sidebar.ts'),
-    `module.exports = ${JSON.stringify(filteredSidebar, null, 2)};\n`
+    `module.exports = ${JSON.stringify(sortedSidebar, null, 2)};\n`
 );
 
-console.log('✅ Main API sidebar updated: Introduction removed, object entries grouped!');
+console.log('✅ Main API sidebar updated: Introduction removed, object entries grouped, endpoints sorted!');
 
 // Process metering-api sidebar
-removeIntroduction('../docs/metering-api/sidebar.ts', 'metering-api/meshmetering-api-documentation');
+let meteringApiSidebar = removeIntroduction('../docs/metering-api/sidebar.ts', 'metering-api/meshmetering-api-documentation');
 
-console.log('✅ Metering API sidebar updated: Introduction removed!');
+// Sort metering API sidebar items
+const sortedMeteringApiSidebar = sortSidebarItems(meteringApiSidebar);
+
+fs.writeFileSync(
+    path.join(__dirname, '../docs/metering-api/sidebar.ts'),
+    `module.exports = ${JSON.stringify(sortedMeteringApiSidebar, null, 2)};\n`
+);
+
+console.log('✅ Metering API sidebar updated: Introduction removed, endpoints sorted!');
