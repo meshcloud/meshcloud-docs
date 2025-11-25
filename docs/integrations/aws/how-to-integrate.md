@@ -423,9 +423,11 @@ The following prerequisites must be fulfilled for the enrollment to work:
         "controltower:CreateManagedAccount",
         "controltower:DescribeManagedAccount",
         "controltower:DeregisterManagedAccount",
+        "controltower:ListLandingZones",
+        "controltower:GetLandingZone",
         "s3:GetObject",
         "organizations:describeOrganization",
-        "sso:DescribeRegisteredRegions"
+        "sso:DescribeRegisteredRegions"        
       ],
       "Resource": "*"
     }
