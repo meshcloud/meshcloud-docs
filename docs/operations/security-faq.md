@@ -117,7 +117,7 @@ b. **Additional 3rd party services used by meshcloud GmbH**
 **Google Workspace:** This is used for office applications and digital storage e.g. Office Software. Google Workspace is configured to store data within the EU region for meshcloud GmbH.
 
 ```text
-Google Workspace security overview: https://workspace.google.com/learn-more/security/security-whitepaper/page-1.html
+Google Workspace security overview: https://policies.google.com/privacy?hl=en-US#europeanrequirements
 Address: 1600 Amphitheatre Pkwy
          Mountain View
          California 94043, United States
