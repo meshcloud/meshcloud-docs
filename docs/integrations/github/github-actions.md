@@ -140,15 +140,24 @@ This setup allows application teams to quickly and efficiently access automation
 
 ### Status Updates
 
-meshStack does not monitor the status of the GitHub Action Workflow. This means by default the pipeline will stay "In Progress" indefinitely after triggering the workflow. This is because meshStack does not have a built-in mechanism to track the completion or failure of GitHub Actions workflows.
+GitHub Workflow Building Blocks support automatic status polling. You can choose between two execution modes when configuring your Building Block Definition:
 
-However, you can use the meshStack API to update the status during and after the execution of the workflow. We highly recommend using our pre-built GitHub Actions workflow steps to do so.
+- **Synchronous (Automatic Status Polling):** meshStack automatically polls GitHub for workflow and job status updates after triggering the workflow. This provides real-time status updates in meshStack without requiring any custom integration or manual API calls. To enable this, set the "Execution Mode" to **Synchronous** in the Building Block Definition's implementation settings.
+- **Asynchronous (Manual Status Updates):** meshStack does not monitor the status of the GitHub Action Workflow. The pipeline remains "In Progress" until you update the status manually via the meshStack API. Use this mode if you prefer to manage status updates yourself or need custom integration steps.
 
-You will need an API Key to authenticate with the meshStack API.
+#### How to Enable Automatic Status Polling
 
-You should do two things within the pipeline to update the status of the run:
+1. In the Building Block Definition's implementation settings, set **Execution Mode** to **Synchronous**.
+2. meshStack triggers the GitHub workflow and automatically tracks its progress by polling GitHub's API for workflow and job statuses.
+3. No additional integration code is required. Status updates are reflected in meshStack in real time.
 
-- Register Sources. This is something you do at the beginning of a run. It lets meshStack know what step(s) can be expected by the pipeline
-- Update Status. This updates the status of a single step in the process.
+If you use **Asynchronous** mode, you can update the status during and after the execution of the workflow using the meshStack API. It is recommended to use the pre-built GitHub Actions workflow steps for this purpose.
 
-We highly recommend having a look at [this example](https://github.com/likvid-bank/likvid-cloudfoundation/blob/main/.github/workflows/ionos-cp-workflow.yml) where you can see all of these steps being done.
+An API Key is required to authenticate with the meshStack API.
+
+Two actions should be performed within the pipeline to update the status of the run:
+
+- Register Sources: Performed at the beginning of a run. This lets meshStack know what step(s) can be expected by the pipeline.
+- Update Status: Updates the status of a single step in the process.
+
+Refer to [this example](https://github.com/likvid-bank/likvid-cloudfoundation/blob/main/.github/workflows/ionos-cp-workflow.yml) to see all of these steps in practice.
