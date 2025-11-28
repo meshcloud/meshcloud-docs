@@ -381,6 +381,10 @@ locals {
       source = "/meshstack.how-to.get-started-building-blocks"
       target = "/guides/core/how-to-launch-a-new-opentofu-building-block"
     },
+    {
+      source = "/administration.emergency-users"
+      target = "/guides/core/how-to-get-emergency-workspace-access"
+    },
 
     ## renames after the new docs launch
     {
@@ -483,8 +487,8 @@ resource "aws_amplify_app" "docs" {
     target = "/metering-api/metering-api-root/"
     status = "301"
   }
-  
-  // some legacy links still use the format /mydocs instead of /mydocs/ 
+
+  // some legacy links still use the format /mydocs instead of /mydocs/
   // for these links fallback to client side routing
   // https://docs.aws.amazon.com/amplify/latest/APIReference/API_CustomRule.html
   // "404-200" means "if the request 404s because the requested file does not exist, return index.html instead as a "rewrite"

@@ -76,7 +76,8 @@ const sidebars: SidebarsConfig = {
             'guides/core/how-to-manage-a-building-block-definition',
             'guides/core/how-to-launch-a-new-manual-building-block',
             'guides/core/how-to-launch-a-new-opentofu-building-block',
-            'guides/core/how-to-extract-data'
+            'guides/core/how-to-extract-data',
+            'guides/core/how-to-get-emergency-workspace-access',
           ],
         },
         {
