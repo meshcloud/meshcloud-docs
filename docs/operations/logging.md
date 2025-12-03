@@ -38,8 +38,9 @@ traceability. Events capture what happened, when it happened and who triggered
 the event.
 
 Workspace Owners and Managers can view events related to their specific
-Workspaces in the "Compliance" tab in their workspace. Administrators have
-access to all events in the "Admin Area" under "Compliance".
+Workspaces in the "Compliance" tab in their workspace. Administrators and
+users with the "Auditor" role have access to all events in the "Admin Area"
+under "Compliance".
 
 At the moment, the following objects are logged:
 
