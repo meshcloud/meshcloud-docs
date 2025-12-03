@@ -42,6 +42,9 @@ Workspaces in the "Compliance" tab in their workspace. Administrators and
 users with the "Auditor" role have access to all events in the "Admin Area"
 under "Compliance".
 
+Events can also be exported via API. See the "Event Logs" section in our API
+documentation for more details.
+
 At the moment, the following objects are logged:
 
 | Object                          | Events Logged                                                                                                            |
