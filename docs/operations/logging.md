@@ -59,7 +59,10 @@ At the moment, the following objects are logged:
 | OSB Service Instance            | Created, updated, deleted                                                                                                |
 | OSB Service Binding             | Created, updated, deleted                                                                                                |
 | meshStack Copilot System Prompt | Created, updated, deleted                                                                                                |
-| Payment Method                  | [Feature Request](https://feedback.meshcloud.io/feature-requests/p/event-logs-for-payment-methods)                       |
+| Payment Method                  | Created, updated, deleted                                                                                                |
+| Policies                        | Created, updated, deleted                                                                                                |
+| API Keys                        | Created, updated, deleted                                                                                                |
+| API Users                       | Created, updated, deleted                                                                                                |
 | Admin Settings                  | [Feature Request](https://feedback.meshcloud.io/feature-requests/p/event-logs-for-welcome-and-landing-page-and-settings) |
 
 ## API Access Logs
