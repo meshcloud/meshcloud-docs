@@ -93,6 +93,23 @@ This input type is useful for granting users access to specific resources within
 ]
 ```
 
+### Sensitive Inputs
+
+Sensitive inputs are a useful feature for passing secrets like API keys or tokens to your building blocks.
+However, you should be aware of their limitations. Before using sensitive inputs, Platform engineers should consider if their use case can be alternatively solved using [Workload Identity Federation](#cloud-provider-authentication-methods) or an external key management system.
+
+Sensitive inputs are encrypted at rest using asymmetric cryptography. Our API can technically never return plaintext secrets. Values are only decryptable by the building block runner assigned to the building block definition.
+
+:::warning Changing Runners
+When changing the runner or changing the runner's public key, inputs can no longer be decrypted.
+- **For static inputs:** You need to publish a new building block definition version and resubmit plaintext values to make the building block runnable again.
+- **For user inputs:** Users need to update input values on their building blocks.
+:::
+
+Building block runners will decrypt sensitive inputs and have them accessible in their environment. Run logs are thus at risk of leaking these secrets, for example in GitHub Actions logs or Terraform logs. Platform engineers should carefully review their pipeline configuration to ensure they are not inadvertently exposing secrets.
+
+meshStack does currently not support sensitive outputs.
+
 ## Building Block Outputs
 
 Building Blocks can provide output values to both admins and users after provisioning. These outputs can include information such as resource IDs, connection strings, or other relevant data generated during automation.
