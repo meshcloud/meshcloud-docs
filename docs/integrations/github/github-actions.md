@@ -15,9 +15,18 @@ Platform engineers can offer "GitHub Actions Building Blocks" that trigger a Git
 
 **Note:** Follow Steps 1 and 2 only the first time you set up a GitHub Action Workflow integration. After the initial setup, you can go directly to Step 3 for additional triggers.
 
-## Step 1: Set Up the GitHub Platform in meshStack
+## Step 1: Set Up the GitHub Integration in meshStack
 
-To set up GitHub as a platform, go to the Admin area in meshStack, select **Platforms**, and click on **Create New Platform** at the top right. Complete the required fields and select **GitHub** as the platform type.
+To set up GitHub as an integration, go to the Admin area in meshStack, 
+select **Integrations**, and click on **Create Integration** at the top right. 
+Select **GitHub Integration** as the integration type and complete the required fields.
+
+The Platform Builder area also allows managing integrations for that workspace.
+Integrations are always bound to a meshStack workspace and
+cannot be transferred or shared.
+
+You can also set up the integration while configuring the building block definition,
+[see below](#step-3-create-a-workflow-trigger).
 
 ## Step 2: Configure Pipeline Automation
 
@@ -30,8 +39,8 @@ First of all you will need a so-called GitHub App. This is what meshStack uses t
 Once you have your GitHub App, meshStack needs to know the following to be integrated with GitHub:
 
 - the owner of the GitHub organization
-- the ID of the GitHub App
-- the app’s private key (this is a .pem file)
+- the Application ID of the GitHub App (*not* Client ID)
+- the app’s private key (this is a `*.pem` file)
 
 Those values are available to you once you [installed the GitHub App to a repository](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app) and [generated a private key](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys).
 
