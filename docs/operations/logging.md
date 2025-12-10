@@ -38,8 +38,12 @@ traceability. Events capture what happened, when it happened and who triggered
 the event.
 
 Workspace Owners and Managers can view events related to their specific
-Workspaces in the "Compliance" tab in their workspace. Administrators have
-access to all events in the "Admin Area" under "Compliance".
+Workspaces in the "Compliance" tab in their workspace. Administrators and
+users with the "Auditor" role have access to all events in the "Admin Area"
+under "Compliance".
+
+Events can also be exported via API. See the "Event Logs" section in our API
+documentation for more details.
 
 At the moment, the following objects are logged:
 
@@ -58,7 +62,10 @@ At the moment, the following objects are logged:
 | OSB Service Instance            | Created, updated, deleted                                                                                                |
 | OSB Service Binding             | Created, updated, deleted                                                                                                |
 | meshStack Copilot System Prompt | Created, updated, deleted                                                                                                |
-| Payment Method                  | [Feature Request](https://feedback.meshcloud.io/feature-requests/p/event-logs-for-payment-methods)                       |
+| Payment Method                  | Created, updated, deleted                                                                                                |
+| Policies                        | Created, updated, deleted                                                                                                |
+| API Keys                        | Created, updated, deleted                                                                                                |
+| API Users                       | Created, updated, deleted                                                                                                |
 | Admin Settings                  | [Feature Request](https://feedback.meshcloud.io/feature-requests/p/event-logs-for-welcome-and-landing-page-and-settings) |
 
 ## API Access Logs
