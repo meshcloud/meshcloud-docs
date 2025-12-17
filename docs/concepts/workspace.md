@@ -22,6 +22,18 @@ Below is a visual example of how workspaces are structured in meshStack:
 
 ![Workspace concept diagram](/assets/new_concept/concept_workspace.png)
 
+## Workspace Identifiers
+
+Each workspace has a unique identifier that is used to reference the workspace in APIs, integrations, and platform resources.
+
+**Default Restrictions:**
+- Must be alphanumeric with hyphens allowed (but not leading, trailing, or consecutive hyphens)
+- Maximum length of 16 characters
+- Cannot be changed after workspace creation
+
+These default restrictions can be configured differently upon request to accommodate your organization's needs.
+The restrictions exist to ensure the combined `${workspaceIdentifier}.${projectIdentifier}` fits within cloud platform constraints (e.g., AWS account aliases: 64 chars, Kubernetes namespaces: 63 chars).
+
 ## Related Resources
 
 ### Concepts
