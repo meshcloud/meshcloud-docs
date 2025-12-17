@@ -17,6 +17,22 @@ Below is a visual example of how projects are structured in meshStack:
 
 ![Project concept diagram](/assets/new_concept/concept_project.png)
 
+## Project Names and Identifiers
+
+Each project has both a display name and a unique identifier.
+
+**Project Name (Display Name)**
+- Maximum length of 30 characters
+- Can contain any characters
+
+**Project Identifier**
+- Must contain only lowercase alphanumeric characters and hyphens (but not leading, trailing, or consecutive hyphens)
+- Maximum length of 30 characters
+- Cannot be changed after project creation
+
+These default restrictions can be configured differently upon request to accommodate your organization's needs.
+The restrictions exist to ensure the combined `${workspaceIdentifier}.${projectIdentifier}` fits within cloud platform constraints (e.g., AWS account aliases: 64 chars, Kubernetes namespaces: 63 chars).
+
 ## Related Resources
 
 ### Concepts

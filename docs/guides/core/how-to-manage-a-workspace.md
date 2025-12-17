@@ -19,7 +19,7 @@ Here are short guides on how to handle the most common tasks in a workspace.
 **Step by Step Guide:**
 
 1. Start the wizard by selecting "Create Workspace" in the workspace drop-down in the top navigation bar.
-2. Fill in the required details such as name, ID, and tag information.
+2. Fill in the required details such as name, [identifier](../../concepts/workspace.md#workspace-identifiers) and tag information.
 3. Onboard the initial team members.
 4. Review the workspace details and confirm creation.
 
@@ -33,7 +33,7 @@ Here are short guides on how to handle the most common tasks in a workspace.
 
 1. Navigate to the admin area and select "Workspaces."
 2. Click on "Create Workspace."
-3. Fill in the required details such as name, ID, and tag information.
+3. Fill in the required details such as name, [identifier](../../concepts/workspace.md#workspace-identifiers) and tag information.
 4. Assign initial users and roles.
 5. Review the workspace details and confirm creation.
 

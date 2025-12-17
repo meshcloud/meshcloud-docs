@@ -21,7 +21,7 @@ This guide explains how to manage projects in meshStack, including user access, 
 **Step by Step Guide:**
 
 1. Start the wizard by selecting "Create Project" in the project tab inside the workspace manager.
-2. Fill in the required details such as name, ID, and tag information.
+2. Fill in the required details such as name, [identifier](../../concepts/project.md#project-names-and-identifiers), and tag information.
 3. Review the project details and confirm creation.
 
 ### Creating a Project as an Administrator
