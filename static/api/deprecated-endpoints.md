@@ -6,10 +6,10 @@
 | 2025-03-01 | `GET /api/meshobjects/meshcustomers`<br/>`meshCustomer.v1` | Replace all uses of the `meshCustomer` object with `meshWorkspace`. |
 | 2025-03-01 | `GET /api/meshobjects/meshserviceinstances/{serviceIdentifier}`<br/>`meshServiceInstance.v1` | Please upgrade to `meshServiceInstance.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
 | 2025-03-01 | `GET /api/meshobjects/meshserviceinstances`<br/>`meshServiceInstance.v1` | Please upgrade to `meshServiceInstance.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
-| 2025-03-01 | `GET /api/meshobjects/meshcustomerusergroups/{fullCustomerUserGroupIdentifier}`<br/>`meshCustomerUserGroup.v1` | Replace all uses of `meshCustomerUserGroup` object with `meshWorkspaceUserGroup`. |
 | 2025-03-01 | `GET /api/meshobjects/meshcustomerusergroups`<br/>`meshCustomerUserGroup.v1` | Replace all uses of `meshCustomerUserGroup` object with `meshWorkspaceUserGroup`. |
-| 2025-07-01 | `GET /api/meshobjects/meshpaymentmethods/{identifier}`<br/>`meshPaymentMethod.v1` | Please upgrade to `meshPaymentMethod.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
+| 2025-03-01 | `GET /api/meshobjects/meshcustomerusergroups/{fullCustomerUserGroupIdentifier}`<br/>`meshCustomerUserGroup.v1` | Replace all uses of `meshCustomerUserGroup` object with `meshWorkspaceUserGroup`. |
 | 2025-07-01 | `GET /api/meshobjects/meshpaymentmethods`<br/>`meshPaymentMethod.v1` | Please upgrade to `meshPaymentMethod.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
+| 2025-07-01 | `GET /api/meshobjects/meshpaymentmethods/{identifier}`<br/>`meshPaymentMethod.v1` | Please upgrade to `meshPaymentMethod.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
 | 2025-07-01 | `GET /api/meshobjects/meshprojects`<br/>`meshProject.v1` | Please use `meshProject.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
 | 2025-07-01 | `GET /api/meshobjects/meshprojects/{fullProjectIdentifier}`<br/>`meshProject.v1` | Please use `meshProject.v2`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
 | 2025-07-01 | `GET /api/meshobjects/meshtenants/{tenantIdentifier}`<br/>`meshTenant.v1` | Please upgrade to `meshTenant.v3`, which is owned by a `meshWorkspace` instead of a `meshCustomer`. |
@@ -27,10 +27,10 @@
 |  | `GET /api/meshobjects/meshtenants/{tenantIdentifier}`<br/>`meshTenant.v3` | Please consider upgrading to `meshTenant.v4`, which uses a UUID to identify a meshTenant. |
 |  | `POST /api/meshobjects/meshtenants`<br/>`meshTenant.v3` | Please consider upgrading to `meshTenant.v4`, which uses a UUID to identify a meshTenant. |
 |  | `GET /api/meshobjects/meshtenants`<br/>`meshTenant.v3` | Please consider upgrading to `meshTenant.v4`, which uses a UUID to identify a meshTenant. |
-|  | `GET /api/meshobjects/meshbuildingblocks`<br/>`meshBuildingBlock.v1` | Please consider adopting `meshBuildingBlock.v2`, which supports building blocks on workspace level as well. |
 |  | `GET /api/meshobjects/meshbuildingblocks/{buildingBlockUuid}`<br/>`meshBuildingBlock.v1` | Please consider adopting `meshBuildingBlock.v2`, which supports building blocks on workspace level as well. |
 |  | `POST /api/meshobjects/meshbuildingblocks`<br/>`meshBuildingBlock.v1` | Please consider adopting `meshBuildingBlock.v2`, which supports building blocks on workspace level as well. |
-|  | `GET /api/meshobjects/meshplatforms`<br/>`meshPlatform.v1` | Please update to `meshPlatform.vv2-preview` at your earliest convenience. |
-|  | `POST /api/meshobjects/meshplatforms`<br/>`meshPlatform.v1` | Please update to `meshPlatform.vv2-preview` at your earliest convenience. |
+|  | `GET /api/meshobjects/meshbuildingblocks`<br/>`meshBuildingBlock.v1` | Please consider adopting `meshBuildingBlock.v2`, which supports building blocks on workspace level as well. |
 |  | `PUT /api/meshobjects/meshplatforms/{uuid}`<br/>`meshPlatform.v1` | Please update to `meshPlatform.vv2-preview` at your earliest convenience. |
+|  | `POST /api/meshobjects/meshplatforms`<br/>`meshPlatform.v1` | Please update to `meshPlatform.vv2-preview` at your earliest convenience. |
+|  | `GET /api/meshobjects/meshplatforms`<br/>`meshPlatform.v1` | Please update to `meshPlatform.vv2-preview` at your earliest convenience. |
 |  | `GET /api/meshobjects/meshplatforms/{uuid}`<br/>`meshPlatform.v1` | Please update to `meshPlatform.vv2-preview` at your earliest convenience. |
