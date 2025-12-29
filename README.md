@@ -1,3 +1,13 @@
+# 🚨 Archived Repository Notice
+
+**This repository is no longer maintained and used as the source for [docs.meshcloud.io](https://docs.meshcloud.io/).**
+
+We sincerely thank everyone who has contributed to this project over the years. Your support and input have been invaluable.
+
+If you have feedback or questions, we’re happy to hear from you. Just send us an email at [support@meshcloud.io](mailto:support@meshcloud.io).
+
+---
+
 # meshcloud Documentation
 
 ![CI Build](https://github.com/meshcloud/meshcloud-docs/workflows/CI%20Build/badge.svg?branch=develop)
